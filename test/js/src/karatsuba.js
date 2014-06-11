@@ -177,7 +177,7 @@ test('karatsuba 8 big endian bound checks', function(assert){
 	var add = alu.wrapbin(alu.badd_t(r));
 	var sub = alu.wrapbin(alu.bsub_t(r));
 	var num = Uint8Array;
-	var mov = algo.wrapmov(algo.copy);
+	var mov = alu.wrapmov(algo.copy);
 	var fill = algo.fill;
 
 	var _bkaratsuba = alu.bkaratsuba_t(add, sub, undefined, num, mov, r, alu.wrapbin);
