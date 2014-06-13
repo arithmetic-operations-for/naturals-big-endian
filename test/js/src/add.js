@@ -5,7 +5,7 @@ var algo = require('algo');
 
 
 var check = function(ctor, r, e){
-	var name = util.format("bignum.add (%s, %d, %s)", ctor.name, r, e === alu.badd_t ? 'big endian' : 'little endian');
+	var name = util.format("alu.add (%s, %d, %s)", ctor.name, r, e === alu.badd_t ? 'big endian' : 'little endian');
 	console.log(name);
 
 	var todouble_t = function(r, e){
