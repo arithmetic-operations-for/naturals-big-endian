@@ -22,7 +22,7 @@ var bsub_t = function(r){
 	 */
 
 	return function(a, i0, i1, b, j0, j1, c, k0, k1){
-		var t, T, C = 0;
+		var T, C = 0;
 
 		while(--j1 >= j0){
 			--i1; --k1;
@@ -40,7 +40,7 @@ var bsub_t = function(r){
 
 		if(C){
 			while(--k1 >= k0){
-				c[k0] = r - 1;
+				c[k1] = r - 1;
 			}
 		}
 
@@ -69,7 +69,7 @@ var lsub_t = function(r){
 	 */
 
 	return function(a, i0, i1, b, j0, j1, c, k0, k1){
-		var t, T, C = 0;
+		var T, C = 0;
 
 		while(j0 < j1){
 			T = C;
