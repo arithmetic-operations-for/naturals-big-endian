@@ -83,8 +83,6 @@ var TRAITS = [
 
 var ENDIANESS = [alu.badd_t, alu.ladd_t];
 
-for(var i = 0; i < TRAITS.length; ++i){
-	for(var j = 0; j < ENDIANESS.length; ++j){
-		check(TRAITS[i][0], TRAITS[i][1], ENDIANESS[j]);
-	}
-}
+for(var i = 0; i < TRAITS.length; ++i)
+for(var j = 0; j < ENDIANESS.length; ++j)
+	check(TRAITS[i][0], TRAITS[i][1], ENDIANESS[j]);

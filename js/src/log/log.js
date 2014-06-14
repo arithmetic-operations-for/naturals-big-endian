@@ -1,0 +1,4 @@
+
+/**
+ * FOR A NUMBER n COMPUTE THE GREATEST k SUCH THAT 2^k < n
+ */

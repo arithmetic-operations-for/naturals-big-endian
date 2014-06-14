@@ -13,11 +13,11 @@ var check = function(Ctor, cmp, iter){
 
 	var f = 16;
 	var r = Math.pow(2, Ctor.BYTES_PER_ELEMENT * 8);
+	var parse = alu.parse_t(r, f, iter);
 
 	console.log(name);
 	test(name, function(){
 
-		var parse = alu.parse_t(r, f, iter);
 
 		for (var k = 0; k < TEST.length; ++k) {
 			var test = TEST[k];
