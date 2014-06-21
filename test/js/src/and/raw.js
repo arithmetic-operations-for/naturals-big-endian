@@ -7,6 +7,7 @@ var fmt = util.format;
 var check = function(Ctor, iter){
 
 	var name = fmt("alu.and<%s, %s>", Ctor.name, iter[0]);
+	console.log(name);
 
 	iter = iter[1];
 
