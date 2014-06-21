@@ -35,8 +35,6 @@ var check = function(Ctor, cmp, iter){
 			var b = new Ctor(bj);
 			parse(bs, 0, bs.length, b, bi, bj);
 
-			// console.log(a, b);
-			// expect(0);
 			var actual = cmp(a, ai, aj, b, bi, bj);
 			var expected = test[2];
 
