@@ -3,8 +3,13 @@
 	'use strict';
 
 
-/* /home/genius/alu/js/src/add */
-/* /home/genius/alu/js/src/add/add.js */
+/* /home/genius/Bureau/alu/js/src/abs */
+/* /home/genius/Bureau/alu/js/src/abs/abs.js */
+/**
+ * COMPUTE THE ABSOLUTE VALUE OF NUMBER n
+ */
+/* /home/genius/Bureau/alu/js/src/add */
+/* /home/genius/Bureau/alu/js/src/add/add.js */
 
 /**
  * @param r base (radix)
@@ -102,8 +107,362 @@ var ladd_t = function(r){
 
 exports.badd_t = badd_t;
 exports.ladd_t = ladd_t;
-/* /home/genius/alu/js/src/mul */
-/* /home/genius/alu/js/src/mul/karatsuba.js */
+/* /home/genius/Bureau/alu/js/src/and */
+/* /home/genius/Bureau/alu/js/src/and/and.js */
+
+/**
+ *
+ * BINARY and APPLIED ON a AND b
+ *
+ * Meaningful only when r is a power of 2.
+ *
+ * |a| = |b| = |c| > 0
+ *
+ *
+ */
+
+var and = function (a, a0, b, b0, c, c0, c1) {
+
+	while (c0 < c1) c[c0++] = a[a0++] & b[b0++];
+
+};
+
+
+/**
+ * BIG ENDIAN BINARY and APPLIED ON a AND b
+ *
+ * Meaningful only when r is a power of 2.
+ *
+ * |a| >= |b| > 0
+ *
+ * treats b as if it was represented with the same number of blocks as a
+ */
+
+var band_t = function(r){
+
+	var _r = r / 2;
+
+	return function (a, a0, a1, b, b0, b1, c, c0, c1) {
+
+		var at = a1 - b1 + b0;
+		var ct = c0 + at - a0;
+
+		if (b[b0] < _r) while (c0 < ct) c[c0++] = 0;
+		else            while (c0 < ct) c[c0++] = a[a0++];
+
+		while (c0 < c1) c[c0++] = a[at++] & b[b0++];
+
+	};
+
+};
+
+
+
+
+/**
+ * LITTLE ENDIAN BINARY and APPLIED ON a AND b
+ *
+ * Meaningful only when r is a power of 2.
+ *
+ * |a| >= |b| > 0
+ *
+ * treats b as if it was represented with the same number of blocks as a
+ */
+
+var land_t = function(r){
+
+	var _r = r / 2;
+
+	return function (a, a0, a1, b, b0, b1, c, c0, c1) {
+
+		var ct = c0 + b1 - b0;
+
+		while (c0 < ct) c[c0++] = a[a0++] & b[b0++];
+
+		if (b[b0 - 1] < _r) while (c0 < c1) c[c0++] = 0;
+		else                while (c0 < c1) c[c0++] = a[a0++];
+
+
+	};
+
+};
+
+
+exports.and = and;
+exports.land_t = land_t;
+exports.band_t = band_t;
+/* /home/genius/Bureau/alu/js/src/cmp */
+/* /home/genius/Bureau/alu/js/src/cmp/cmp.js */
+
+var bcmp_t = function(){
+
+
+	/**
+	 * Compares two big endian arrays, |a| >= |b|
+	 *
+	 * @param a first operand
+	 * @param ai a left
+	 * @param aj a right
+	 * @param b second operand
+	 * @param bi b left
+	 * @param bj b right
+	 *
+	 * @return 1 if a > b; 0 if a = b; -1 otherwise.
+	 */
+
+	return function(a, ai, aj, b, bi, bj){
+
+		var tmp = aj - bj + bi;
+
+		for (; ai < tmp; ++ai)
+			if (a[ai] > 0) return 1;
+
+
+		// same size aj - ai === bj - bi
+		for (; ai < aj; ++ai, ++bi) {
+			if (a[ai] > b[bi]) return  1;
+			if (a[ai] < b[bi]) return -1;
+		}
+
+		return 0;
+	};
+
+};
+
+var lcmp_t = function(){
+
+	/**
+	 * Compares two little endian arrays, |a| >= |b|
+	 *
+	 * @param a first operand
+	 * @param ai a left
+	 * @param aj a right
+	 * @param b second operand
+	 * @param bi b left
+	 * @param bj b right
+	 *
+	 * @return 1 if a > b; 0 if a = b; -1 otherwise.
+	 */
+
+	return function(a, ai, aj, b, bi, bj){
+
+		var tmp = ai + bj - bi;
+
+		--aj; --bj;
+
+		for (; aj >= tmp; --aj)
+			if (a[aj] > 0) return 1;
+
+
+		// same size aj - ai === bj - bi
+		for (; aj >= ai; --aj, --bj) {
+			if (a[aj] > b[bj]) return  1;
+			if (a[aj] < b[bj]) return -1;
+		}
+
+		return 0;
+	};
+};
+
+exports.bcmp_t = bcmp_t;
+exports.lcmp_t = lcmp_t;
+/* /home/genius/Bureau/alu/js/src/cmp/eq.js */
+
+
+/**
+ * Wrapper for a comparison operator that returns true iff
+ * _a_ is equal to _b_.
+ */
+
+var eq_t = function(cmp){
+	return function (a, ai, aj, b, bi, bj) {
+		return cmp(a, ai, aj, b, bi, bj) === 0;
+	};
+};
+
+exports.eq_t = eq_t;
+/* /home/genius/Bureau/alu/js/src/cmp/ge.js */
+
+
+/**
+ * Wrapper for a comparison operator that returns true iff
+ * _a_ is greater or equal to _b_.
+ */
+
+var ge_t = function(cmp){
+	return function (a, ai, aj, b, bi, bj) {
+		return cmp(a, ai, aj, b, bi, bj) >= 0;
+	};
+};
+
+exports.ge_t = ge_t;
+/* /home/genius/Bureau/alu/js/src/cmp/gt.js */
+
+
+/**
+ * Wrapper for a comparison operator that returns true iff
+ * _a_ is greater than _b_.
+ */
+
+var gt_t = function(cmp){
+	return function (a, ai, aj, b, bi, bj) {
+		return cmp(a, ai, aj, b, bi, bj) > 0;
+	};
+};
+
+exports.gt_t = gt_t;
+/* /home/genius/Bureau/alu/js/src/cmp/le.js */
+
+
+/**
+ * Wrapper for a comparison operator that returns true iff
+ * _a_ is less or equal to _b_.
+ */
+
+var le_t = function(cmp){
+	return function (a, ai, aj, b, bi, bj) {
+		return cmp(a, ai, aj, b, bi, bj) <= 0;
+	};
+};
+
+exports.le_t = le_t;
+/* /home/genius/Bureau/alu/js/src/cmp/lt.js */
+
+
+/**
+ * Wrapper for a comparison operator that returns true iff
+ * _a_ is less than _b_.
+ */
+
+var lt_t = function(cmp){
+	return function (a, ai, aj, b, bi, bj) {
+		return cmp(a, ai, aj, b, bi, bj) < 0;
+	};
+};
+
+exports.lt_t = lt_t;
+/* /home/genius/Bureau/alu/js/src/cmp/ne.js */
+
+
+/**
+ * Wrapper for a comparison operator that returns true iff
+ * _a_ is not equal to _b_.
+ */
+
+var ne_t = function(cmp){
+	return function (a, ai, aj, b, bi, bj) {
+		return cmp(a, ai, aj, b, bi, bj) !== 0;
+	};
+};
+
+exports.ne_t = ne_t;
+/* /home/genius/Bureau/alu/js/src/div */
+/* /home/genius/Bureau/alu/js/src/div/div.js */
+
+
+
+var bdiv_t = function(mov, lt, sub){
+
+	/**
+	 * Computes quotient and remainder of two big endian arrays.
+	 * <p>
+	 * Computes quotient and remainder of two big endian arrays
+	 * using long division algorithm (the one teached in
+	 * european primary schools).
+	 *
+	 * @param a dividend
+	 * @param ai a left
+	 * @param aj a right
+	 * @param b divisor
+	 * @param bi b left
+	 * @param bj b right
+	 * @param q quotient, must be 0 initialized
+	 * @param qi q left
+	 * @param qj q right
+	 * @param r remainder
+	 * @param ri r left
+	 * @param rj r right
+	 */
+
+	var div = function(a, ai, aj, b, bi, bj, q, qi, qj, r, ri, rj){
+		var k, t = ri + 1;
+
+		// copy dividend in remainder
+		mov(a, ai, aj, r, ri);
+
+		do {
+
+			// trim leading zeros
+			//     - maybe could try to put this procedure inside the sub loop
+			while (ri < rj && r[ri] === 0) ++ri;
+
+			// search for a remainder block interval
+			// greater than the divisor
+			//     - maybe could try binary search on the lt function
+			//     for another implementation
+			k = ri + 1;
+			while (k <= rj && lt(r, ri, k, b, bi, bj)) ++k;
+
+			// remainder smaller than divisor --> end
+			if (k > rj) break;
+
+			// divide current block interval by quotient
+			do{
+
+				// increment quotient block corresponding
+				// to current ls block of remainder interval
+				++q[qi + k - t];
+
+				// subtract divisor from current remainder
+				// block interval
+				sub(r, ri, k, b, bi, bj, r, ri, k);
+
+			} while(!lt(r, ri, k, b, bi, bj));
+
+
+		} while(k <= rj);
+
+	};
+
+	return div;
+
+};
+
+exports.bdiv_t = bdiv_t;
+/* /home/genius/Bureau/alu/js/src/gcd */
+/* /home/genius/Bureau/alu/js/src/gcd/gcd.js */
+/**
+ * COMPUTE THE GREATEST COMMON DIVISOR OF a AND b
+ */
+/* /home/genius/Bureau/alu/js/src/lcm */
+/* /home/genius/Bureau/alu/js/src/lcm/lcm.js */
+/**
+ * COMPUTE THE LEAST COMMON MULTIPLE OF a AND b
+ */
+/* /home/genius/Bureau/alu/js/src/log */
+/* /home/genius/Bureau/alu/js/src/log/log.js */
+
+/**
+ * FOR A NUMBER n COMPUTE THE GREATEST k SUCH THAT 2^k < n
+ */
+/* /home/genius/Bureau/alu/js/src/mod */
+/* /home/genius/Bureau/alu/js/src/mod/mod.js */
+
+/**
+ * COMPUTE MODULUS (a % b)
+ */
+/* /home/genius/Bureau/alu/js/src/mod/montgomery.js */
+
+/**
+ * COMPUTE MODULUS USING MONTGOMERY REDUCTION : http://en.wikipedia.org/wiki/Montgomery_reduction
+ */
+/* /home/genius/Bureau/alu/js/src/mpow */
+/* /home/genius/Bureau/alu/js/src/mpow/mpow.js */
+/**
+ * MODULAR EXPONENTIATION : http://en.wikipedia.org/wiki/Modular_exponentiation
+ */
+/* /home/genius/Bureau/alu/js/src/mul */
+/* /home/genius/Bureau/alu/js/src/mul/karatsuba.js */
 /**
  * /!\ BLOCK MULTIPLICATION RESULT MUST HOLD IN THE JAVASCRIPT NUMBER TYPE (DOUBLE i.e. 53 bits)
  *
@@ -225,8 +584,95 @@ var bkaratsuba_t = function(add, sub, mul, num, mov, r, wrap){
 
 
 exports.bkaratsuba_t = bkaratsuba_t;
-/* /home/genius/alu/js/src/stringify */
-/* /home/genius/alu/js/src/stringify/stringify.js */
+/* /home/genius/Bureau/alu/js/src/mul/mul.js */
+	/**
+	 * Computes product of two big endian arrays.
+	 * <p>
+	 * Computes product of two big endian arrays
+	 * using long multiplication algorithm (the one teached in
+	 * european primary schools)
+	 */
+/* /home/genius/Bureau/alu/js/src/neg */
+/* /home/genius/Bureau/alu/js/src/neg/neg.js */
+/**
+ * COMPUTE THE NEGATIVE VALUE OF NUMBER n
+ */
+/* /home/genius/Bureau/alu/js/src/not */
+/* /home/genius/Bureau/alu/js/src/not/not.js */
+/**
+ * BINARY not APPLIED ON a
+ */
+/* /home/genius/Bureau/alu/js/src/or */
+/* /home/genius/Bureau/alu/js/src/or/or.js */
+/**
+ * BINARY or APPLIED ON a AND b
+ */
+/* /home/genius/Bureau/alu/js/src/parse */
+/* /home/genius/Bureau/alu/js/src/parse/parse.js */
+
+/**
+ * Function template for number parsing.
+ * Endianess provided by the iterator function
+ * iterator function must be reverse ordered
+ *
+ * @param {int} f from radix
+ * @param {int} t to radix
+ * @param {function} iter iterator function
+ */
+
+
+var parse_t = function(t, f, iter){
+
+	if(t >= f){
+
+		if(f > 36) throw 'f > 36 not implemented';
+
+		var z = 0, log = t;
+		while(log >= f){
+			if (log % f) break;
+			log /= f;
+			++z;
+		}
+
+		if (log !== 1) throw 'log(f) does not divide log(t) not implemented';
+
+		// immediate log(t) divides log(f)
+		return function(s, si, sj, a, ai, aj){
+			var len = sj - si, k = sj - z, n = Math.ceil(len / z);
+			var block = function(i){
+				a[i] = parseInt(s.slice(Math.max(0, k), k + z), f);
+				k -= z;
+			};
+
+			iter(aj - n, aj, block);
+
+		};
+
+	}
+	else throw 'f > t not implemented';
+
+
+};
+
+
+exports.parse_t = parse_t;
+/* /home/genius/Bureau/alu/js/src/pow */
+/* /home/genius/Bureau/alu/js/src/pow/pow.js */
+/**
+ * COMPUTES a^b
+ */
+/* /home/genius/Bureau/alu/js/src/sha */
+/* /home/genius/Bureau/alu/js/src/sha/sha.js */
+/**
+ * ARITHMETIC SHIFT
+ */
+/* /home/genius/Bureau/alu/js/src/shl */
+/* /home/genius/Bureau/alu/js/src/shl/shl.js */
+/**
+ * LOGICAL SHIFT
+ */
+/* /home/genius/Bureau/alu/js/src/stringify */
+/* /home/genius/Bureau/alu/js/src/stringify/stringify.js */
 
 /**
  * Function template for number stringification.
@@ -269,8 +715,8 @@ var stringify_t = function(f, t, iter, zfill_t){
 };
 
 exports.stringify_t = stringify_t;
-/* /home/genius/alu/js/src/sub */
-/* /home/genius/alu/js/src/sub/sub.js */
+/* /home/genius/Bureau/alu/js/src/sub */
+/* /home/genius/Bureau/alu/js/src/sub/sub.js */
 
 /**
  * @param r base (radix)
@@ -295,7 +741,7 @@ var bsub_t = function(r){
 	 */
 
 	return function(a, i0, i1, b, j0, j1, c, k0, k1){
-		var t, T, C = 0;
+		var T, C = 0;
 
 		while(--j1 >= j0){
 			--i1; --k1;
@@ -313,7 +759,7 @@ var bsub_t = function(r){
 
 		if(C){
 			while(--k1 >= k0){
-				c[k0] = r - 1;
+				c[k1] = r - 1;
 			}
 		}
 
@@ -342,7 +788,7 @@ var lsub_t = function(r){
 	 */
 
 	return function(a, i0, i1, b, j0, j1, c, k0, k1){
-		var t, T, C = 0;
+		var T, C = 0;
 
 		while(j0 < j1){
 			T = C;
@@ -372,8 +818,8 @@ var lsub_t = function(r){
 exports.bsub_t = bsub_t;
 exports.lsub_t = lsub_t;
 
-/* /home/genius/alu/js/src/wrap */
-/* /home/genius/alu/js/src/wrap/wrap.js */
+/* /home/genius/Bureau/alu/js/src/wrap */
+/* /home/genius/Bureau/alu/js/src/wrap/wrap.js */
 /**
  * Wrapper for binary operator.
  * Ensures
@@ -425,4 +871,9 @@ var wrapmov = function(fn){
 exports.wrapbin = wrapbin;
 exports.wrapmov = wrapmov;
 
+/* /home/genius/Bureau/alu/js/src/xor */
+/* /home/genius/Bureau/alu/js/src/xor/xor.js */
+/**
+ * BINARY xor APPLIED ON a AND b
+ */
 })(typeof exports === 'undefined' ? this['alu'] = {} : exports);
