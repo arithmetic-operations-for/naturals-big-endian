@@ -24,7 +24,7 @@ var check = function(Ctor, iter){
 
 			var as = test[0];
 			var ai = 0;
-			var aj = Math.ceil(as.length * Math.log(f) / (Ctor.BYTES_PER_ELEMENT * 8));
+			var aj = Math.ceil(as.length * Math.log(f) / Math.log(r));
 			var a = new Ctor(aj);
 			var c = new Ctor(aj);
 			parse(as, 0, as.length, a, ai, aj);
@@ -32,7 +32,7 @@ var check = function(Ctor, iter){
 
 			var bs = test[1];
 			var bi = 0;
-			var bj = Math.ceil(bs.length * Math.log(f) / (Ctor.BYTES_PER_ELEMENT * 8));
+			var bj = Math.ceil(bs.length * Math.log(f) / Math.log(r));
 			var b = new Ctor(bj);
 			parse(bs, 0, bs.length, b, bi, bj);
 
@@ -40,7 +40,7 @@ var check = function(Ctor, iter){
 
 			var ds = test[2];
 			var di = 0;
-			var dj = Math.ceil(ds.length * Math.log(f) / (Ctor.BYTES_PER_ELEMENT * 8));
+			var dj = Math.ceil(ds.length * Math.log(f) / Math.log(r));
 			var d = new Ctor(dj);
 			parse(ds, 0, ds.length, d, di, dj);
 

@@ -40,23 +40,23 @@ var check = function(Ctor, cmp, biter, div, sub, fiter){
 
 			var as = test[0];
 			var ai = 0;
-			var aj = Math.ceil(as.length / Ctor.BYTES_PER_ELEMENT / 2);
+			var aj = Math.ceil(as.length * Math.log(f) / Math.log(r));
 			var a = new Ctor(aj);
-			var r = new Ctor(aj);
+			var _r = new Ctor(aj);
 			var q = new Ctor(aj);
 			parse(as, 0, as.length, a, ai, aj);
 
 
 			var bs = test[1];
 			var bi = 0;
-			var bj = Math.ceil(bs.length / Ctor.BYTES_PER_ELEMENT / 2);
+			var bj = Math.ceil(bs.length * Math.log(f) / Math.log(r));
 			var b = new Ctor(bj);
 			parse(bs, 0, bs.length, b, bi, bj);
 
-			div(a, ai, aj, b, bi, bj, q, ai, aj, r, ai, aj);
+			div(a, ai, aj, b, bi, bj, q, ai, aj, _r, ai, aj);
 			var qactual = parseInt(stringify(q, ai, aj), f);
 			var qexpected = parseInt(test[2], f);
-			var ractual = parseInt(stringify(r, ai, aj), f);
+			var ractual = parseInt(stringify(_r, ai, aj), f);
 			var rexpected = parseInt(test[3], f);
 
 			var a10 = parseInt(as, 16);
