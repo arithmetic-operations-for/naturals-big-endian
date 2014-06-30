@@ -10,10 +10,10 @@ var bmul_t = function(r){
 	 */
 
 	var mul = function(a, ai, aj, b, bi, bj, c, ci, cj){
-		var ak, ck = --cj, ct, t, u, v;
+		var ak, ck = --cj, ct, t, u, v, w;
 
-		while (bj --> bi) {
-			for (ak = aj; ak --> ai;) {
+		while (bj --> bi && ck >= ci) {
+			for (ak = aj, w = 0; ak --> ai && ck >= ci; --ck) {
 				t = b[bj] * a[ak];
 				u = t % r;
 				v = c[ck] + u;
@@ -25,16 +25,22 @@ var bmul_t = function(r){
 					c[ct] = v % r;
 				}
 
-				c[--ck] += (t - u) / r;
+				v = c[ck] + w;
+
+				c[ck] = v;
 
 				for (ct = ck - 1; v >= r && ct >= ci; --ct) {
 					v = c[ct] + 1;
 					c[ct] = v % r;
 				}
+
+				w = (t - u) / r;
 			}
 			ck = --cj;
 		}
 	};
+
+	return mul;
 
 };
 
