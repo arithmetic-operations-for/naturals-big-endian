@@ -3,13 +3,13 @@
 	'use strict';
 
 
-/* /home/genius/Bureau/alu/js/src/abs */
-/* /home/genius/Bureau/alu/js/src/abs/abs.js */
+/* /home/genius/dev/alu/js/src/abs */
+/* /home/genius/dev/alu/js/src/abs/abs.js */
 /**
  * COMPUTE THE ABSOLUTE VALUE OF NUMBER n
  */
-/* /home/genius/Bureau/alu/js/src/add */
-/* /home/genius/Bureau/alu/js/src/add/add.js */
+/* /home/genius/dev/alu/js/src/add */
+/* /home/genius/dev/alu/js/src/add/add.js */
 
 /**
  * @param r base (radix)
@@ -107,8 +107,8 @@ var ladd_t = function(r){
 
 exports.badd_t = badd_t;
 exports.ladd_t = ladd_t;
-/* /home/genius/Bureau/alu/js/src/and */
-/* /home/genius/Bureau/alu/js/src/and/and.js */
+/* /home/genius/dev/alu/js/src/and */
+/* /home/genius/dev/alu/js/src/and/and.js */
 
 /**
  * 
@@ -191,8 +191,8 @@ var land_t = function(r){
 exports.and = and;
 exports.land_t = land_t;
 exports.band_t = band_t;
-/* /home/genius/Bureau/alu/js/src/cmp */
-/* /home/genius/Bureau/alu/js/src/cmp/cmp.js */
+/* /home/genius/dev/alu/js/src/cmp */
+/* /home/genius/dev/alu/js/src/cmp/cmp.js */
 
 var bcmp_t = function(){
 
@@ -266,7 +266,7 @@ var lcmp_t = function(){
 
 exports.bcmp_t = bcmp_t;
 exports.lcmp_t = lcmp_t;
-/* /home/genius/Bureau/alu/js/src/cmp/eq.js */
+/* /home/genius/dev/alu/js/src/cmp/eq.js */
 
 
 /**
@@ -281,7 +281,7 @@ var eq_t = function(cmp){
 };
 
 exports.eq_t = eq_t;
-/* /home/genius/Bureau/alu/js/src/cmp/ge.js */
+/* /home/genius/dev/alu/js/src/cmp/ge.js */
 
 
 /**
@@ -296,7 +296,7 @@ var ge_t = function(cmp){
 };
 
 exports.ge_t = ge_t;
-/* /home/genius/Bureau/alu/js/src/cmp/gt.js */
+/* /home/genius/dev/alu/js/src/cmp/gt.js */
 
 
 /**
@@ -311,7 +311,7 @@ var gt_t = function(cmp){
 };
 
 exports.gt_t = gt_t;
-/* /home/genius/Bureau/alu/js/src/cmp/le.js */
+/* /home/genius/dev/alu/js/src/cmp/le.js */
 
 
 /**
@@ -326,7 +326,7 @@ var le_t = function(cmp){
 };
 
 exports.le_t = le_t;
-/* /home/genius/Bureau/alu/js/src/cmp/lt.js */
+/* /home/genius/dev/alu/js/src/cmp/lt.js */
 
 
 /**
@@ -341,7 +341,7 @@ var lt_t = function(cmp){
 };
 
 exports.lt_t = lt_t;
-/* /home/genius/Bureau/alu/js/src/cmp/ne.js */
+/* /home/genius/dev/alu/js/src/cmp/ne.js */
 
 
 /**
@@ -356,8 +356,8 @@ var ne_t = function(cmp){
 };
 
 exports.ne_t = ne_t;
-/* /home/genius/Bureau/alu/js/src/div */
-/* /home/genius/Bureau/alu/js/src/div/div.js */
+/* /home/genius/dev/alu/js/src/div */
+/* /home/genius/dev/alu/js/src/div/div.js */
 
 
 
@@ -429,40 +429,40 @@ var bdiv_t = function(mov, lt, sub){
 };
 
 exports.bdiv_t = bdiv_t;
-/* /home/genius/Bureau/alu/js/src/gcd */
-/* /home/genius/Bureau/alu/js/src/gcd/gcd.js */
+/* /home/genius/dev/alu/js/src/gcd */
+/* /home/genius/dev/alu/js/src/gcd/gcd.js */
 /**
  * COMPUTE THE GREATEST COMMON DIVISOR OF a AND b
  */
-/* /home/genius/Bureau/alu/js/src/lcm */
-/* /home/genius/Bureau/alu/js/src/lcm/lcm.js */
+/* /home/genius/dev/alu/js/src/lcm */
+/* /home/genius/dev/alu/js/src/lcm/lcm.js */
 /**
  * COMPUTE THE LEAST COMMON MULTIPLE OF a AND b
  */
-/* /home/genius/Bureau/alu/js/src/log */
-/* /home/genius/Bureau/alu/js/src/log/log.js */
+/* /home/genius/dev/alu/js/src/log */
+/* /home/genius/dev/alu/js/src/log/log.js */
 
 /**
  * FOR A NUMBER n COMPUTE THE GREATEST k SUCH THAT 2^k < n
  */
-/* /home/genius/Bureau/alu/js/src/mod */
-/* /home/genius/Bureau/alu/js/src/mod/mod.js */
+/* /home/genius/dev/alu/js/src/mod */
+/* /home/genius/dev/alu/js/src/mod/mod.js */
 
 /**
  * COMPUTE MODULUS (a % b)
  */
-/* /home/genius/Bureau/alu/js/src/mod/montgomery.js */
+/* /home/genius/dev/alu/js/src/mod/montgomery.js */
 
 /**
  * COMPUTE MODULUS USING MONTGOMERY REDUCTION : http://en.wikipedia.org/wiki/Montgomery_reduction
  */
-/* /home/genius/Bureau/alu/js/src/mpow */
-/* /home/genius/Bureau/alu/js/src/mpow/mpow.js */
+/* /home/genius/dev/alu/js/src/mpow */
+/* /home/genius/dev/alu/js/src/mpow/mpow.js */
 /**
  * MODULAR EXPONENTIATION : http://en.wikipedia.org/wiki/Modular_exponentiation
  */
-/* /home/genius/Bureau/alu/js/src/mul */
-/* /home/genius/Bureau/alu/js/src/mul/karatsuba.js */
+/* /home/genius/dev/alu/js/src/mul */
+/* /home/genius/dev/alu/js/src/mul/karatsuba.js */
 /**
  * /!\ BLOCK MULTIPLICATION RESULT MUST HOLD IN THE JAVASCRIPT NUMBER TYPE (DOUBLE i.e. 53 bits)
  *
@@ -584,7 +584,10 @@ var bkaratsuba_t = function(add, sub, mul, num, mov, r, wrap){
 
 
 exports.bkaratsuba_t = bkaratsuba_t;
-/* /home/genius/Bureau/alu/js/src/mul/mul.js */
+/* /home/genius/dev/alu/js/src/mul/mul.js */
+
+var bmul_t = function(r){
+
 	/**
 	 * Computes product of two big endian arrays.
 	 * <p>
@@ -592,23 +595,58 @@ exports.bkaratsuba_t = bkaratsuba_t;
 	 * using long multiplication algorithm (the one teached in
 	 * european primary schools)
 	 */
-/* /home/genius/Bureau/alu/js/src/neg */
-/* /home/genius/Bureau/alu/js/src/neg/neg.js */
+
+	var mul = function(a, ai, aj, b, bi, bj, c, ci, cj){
+		var ak, ck = --cj, ct, t, u, v, w, y, z;
+
+		while (bj --> bi && ck >= ci) {
+			for (ak = aj, w = 0; ak --> ai && ck >= ci; --ck) {
+				t = b[bj] * a[ak];
+				u = t % r;
+				v = c[ck] + u + w;
+
+				y = v % r;
+
+				c[ck] = y;
+
+				z = (v - y) / r;
+				
+				for (ct = ck - 1; z > 0 && ct >= ci; --ct) {
+					v = c[ct] + z;
+					y = v % r;
+					c[ct] = y;
+					z = (v - y) / r;
+				}
+
+				w = (t - u) / r;
+			}
+			ck = --cj;
+		}
+	};
+
+	return mul;
+
+};
+
+
+exports.bmul_t = bmul_t;
+/* /home/genius/dev/alu/js/src/neg */
+/* /home/genius/dev/alu/js/src/neg/neg.js */
 /**
  * COMPUTE THE NEGATIVE VALUE OF NUMBER n
  */
-/* /home/genius/Bureau/alu/js/src/not */
-/* /home/genius/Bureau/alu/js/src/not/not.js */
+/* /home/genius/dev/alu/js/src/not */
+/* /home/genius/dev/alu/js/src/not/not.js */
 /**
  * BINARY not APPLIED ON a
  */
-/* /home/genius/Bureau/alu/js/src/or */
-/* /home/genius/Bureau/alu/js/src/or/or.js */
+/* /home/genius/dev/alu/js/src/or */
+/* /home/genius/dev/alu/js/src/or/or.js */
 /**
  * BINARY or APPLIED ON a AND b
  */
-/* /home/genius/Bureau/alu/js/src/parse */
-/* /home/genius/Bureau/alu/js/src/parse/parse.js */
+/* /home/genius/dev/alu/js/src/parse */
+/* /home/genius/dev/alu/js/src/parse/parse.js */
 
 /**
  * Function template for number parsing.
@@ -656,23 +694,23 @@ var parse_t = function(t, f, iter){
 
 
 exports.parse_t = parse_t;
-/* /home/genius/Bureau/alu/js/src/pow */
-/* /home/genius/Bureau/alu/js/src/pow/pow.js */
+/* /home/genius/dev/alu/js/src/pow */
+/* /home/genius/dev/alu/js/src/pow/pow.js */
 /**
  * COMPUTES a^b
  */
-/* /home/genius/Bureau/alu/js/src/sha */
-/* /home/genius/Bureau/alu/js/src/sha/sha.js */
+/* /home/genius/dev/alu/js/src/sha */
+/* /home/genius/dev/alu/js/src/sha/sha.js */
 /**
  * ARITHMETIC SHIFT
  */
-/* /home/genius/Bureau/alu/js/src/shl */
-/* /home/genius/Bureau/alu/js/src/shl/shl.js */
+/* /home/genius/dev/alu/js/src/shl */
+/* /home/genius/dev/alu/js/src/shl/shl.js */
 /**
  * LOGICAL SHIFT
  */
-/* /home/genius/Bureau/alu/js/src/stringify */
-/* /home/genius/Bureau/alu/js/src/stringify/stringify.js */
+/* /home/genius/dev/alu/js/src/stringify */
+/* /home/genius/dev/alu/js/src/stringify/stringify.js */
 
 /**
  * Function template for number stringification.
@@ -715,8 +753,8 @@ var stringify_t = function(f, t, iter, zfill_t){
 };
 
 exports.stringify_t = stringify_t;
-/* /home/genius/Bureau/alu/js/src/sub */
-/* /home/genius/Bureau/alu/js/src/sub/sub.js */
+/* /home/genius/dev/alu/js/src/sub */
+/* /home/genius/dev/alu/js/src/sub/sub.js */
 
 /**
  * @param r base (radix)
@@ -818,14 +856,14 @@ var lsub_t = function(r){
 exports.bsub_t = bsub_t;
 exports.lsub_t = lsub_t;
 
-/* /home/genius/Bureau/alu/js/src/wrap */
-/* /home/genius/Bureau/alu/js/src/wrap/wrap.js */
+/* /home/genius/dev/alu/js/src/wrap */
+/* /home/genius/dev/alu/js/src/wrap/wrap.js */
 /**
  * Wrapper for binary operator.
  * Ensures
  * 
  *     i >= j
- *     i0, j0, k0 > 0
+ *     i0, j0, k0 >= 0
  * 
  */
 
@@ -871,8 +909,8 @@ var wrapmov = function(fn){
 exports.wrapbin = wrapbin;
 exports.wrapmov = wrapmov;
 
-/* /home/genius/Bureau/alu/js/src/xor */
-/* /home/genius/Bureau/alu/js/src/xor/xor.js */
+/* /home/genius/dev/alu/js/src/xor */
+/* /home/genius/dev/alu/js/src/xor/xor.js */
 /**
  * BINARY xor APPLIED ON a AND b
  */
