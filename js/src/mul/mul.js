@@ -37,3 +37,6 @@ var bmul_t = function(r){
 	};
 
 };
+
+
+exports.bmul_t = bmul_t;
