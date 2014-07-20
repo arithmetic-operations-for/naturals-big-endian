@@ -1,15 +1,15 @@
-(function(exports){
+(function(exports, undefined){
 
 	'use strict';
 
 
-/* /home/genius/dev/alu/js/src/abs */
-/* /home/genius/dev/alu/js/src/abs/abs.js */
+/* js/src/abs */
+/* js/src/abs/abs.js */
 /**
  * COMPUTE THE ABSOLUTE VALUE OF NUMBER n
  */
-/* /home/genius/dev/alu/js/src/add */
-/* /home/genius/dev/alu/js/src/add/add.js */
+/* js/src/add */
+/* js/src/add/add.js */
 
 /**
  * @param r base (radix)
@@ -107,8 +107,8 @@ var ladd_t = function(r){
 
 exports.badd_t = badd_t;
 exports.ladd_t = ladd_t;
-/* /home/genius/dev/alu/js/src/and */
-/* /home/genius/dev/alu/js/src/and/and.js */
+/* js/src/and */
+/* js/src/and/and.js */
 
 /**
  * 
@@ -191,8 +191,8 @@ var land_t = function(r){
 exports.and = and;
 exports.land_t = land_t;
 exports.band_t = band_t;
-/* /home/genius/dev/alu/js/src/cmp */
-/* /home/genius/dev/alu/js/src/cmp/cmp.js */
+/* js/src/cmp */
+/* js/src/cmp/cmp.js */
 
 var bcmp_t = function(){
 
@@ -266,7 +266,7 @@ var lcmp_t = function(){
 
 exports.bcmp_t = bcmp_t;
 exports.lcmp_t = lcmp_t;
-/* /home/genius/dev/alu/js/src/cmp/eq.js */
+/* js/src/cmp/eq.js */
 
 
 /**
@@ -281,7 +281,7 @@ var eq_t = function(cmp){
 };
 
 exports.eq_t = eq_t;
-/* /home/genius/dev/alu/js/src/cmp/ge.js */
+/* js/src/cmp/ge.js */
 
 
 /**
@@ -296,7 +296,7 @@ var ge_t = function(cmp){
 };
 
 exports.ge_t = ge_t;
-/* /home/genius/dev/alu/js/src/cmp/gt.js */
+/* js/src/cmp/gt.js */
 
 
 /**
@@ -311,7 +311,7 @@ var gt_t = function(cmp){
 };
 
 exports.gt_t = gt_t;
-/* /home/genius/dev/alu/js/src/cmp/le.js */
+/* js/src/cmp/le.js */
 
 
 /**
@@ -326,7 +326,7 @@ var le_t = function(cmp){
 };
 
 exports.le_t = le_t;
-/* /home/genius/dev/alu/js/src/cmp/lt.js */
+/* js/src/cmp/lt.js */
 
 
 /**
@@ -341,7 +341,7 @@ var lt_t = function(cmp){
 };
 
 exports.lt_t = lt_t;
-/* /home/genius/dev/alu/js/src/cmp/ne.js */
+/* js/src/cmp/ne.js */
 
 
 /**
@@ -356,8 +356,8 @@ var ne_t = function(cmp){
 };
 
 exports.ne_t = ne_t;
-/* /home/genius/dev/alu/js/src/div */
-/* /home/genius/dev/alu/js/src/div/div.js */
+/* js/src/div */
+/* js/src/div/div.js */
 
 
 
@@ -429,40 +429,40 @@ var bdiv_t = function(mov, lt, sub){
 };
 
 exports.bdiv_t = bdiv_t;
-/* /home/genius/dev/alu/js/src/gcd */
-/* /home/genius/dev/alu/js/src/gcd/gcd.js */
+/* js/src/gcd */
+/* js/src/gcd/gcd.js */
 /**
  * COMPUTE THE GREATEST COMMON DIVISOR OF a AND b
  */
-/* /home/genius/dev/alu/js/src/lcm */
-/* /home/genius/dev/alu/js/src/lcm/lcm.js */
+/* js/src/lcm */
+/* js/src/lcm/lcm.js */
 /**
  * COMPUTE THE LEAST COMMON MULTIPLE OF a AND b
  */
-/* /home/genius/dev/alu/js/src/log */
-/* /home/genius/dev/alu/js/src/log/log.js */
+/* js/src/log */
+/* js/src/log/log.js */
 
 /**
  * FOR A NUMBER n COMPUTE THE GREATEST k SUCH THAT 2^k < n
  */
-/* /home/genius/dev/alu/js/src/mod */
-/* /home/genius/dev/alu/js/src/mod/mod.js */
+/* js/src/mod */
+/* js/src/mod/mod.js */
 
 /**
  * COMPUTE MODULUS (a % b)
  */
-/* /home/genius/dev/alu/js/src/mod/montgomery.js */
+/* js/src/mod/montgomery.js */
 
 /**
  * COMPUTE MODULUS USING MONTGOMERY REDUCTION : http://en.wikipedia.org/wiki/Montgomery_reduction
  */
-/* /home/genius/dev/alu/js/src/mpow */
-/* /home/genius/dev/alu/js/src/mpow/mpow.js */
+/* js/src/mpow */
+/* js/src/mpow/mpow.js */
 /**
  * MODULAR EXPONENTIATION : http://en.wikipedia.org/wiki/Modular_exponentiation
  */
-/* /home/genius/dev/alu/js/src/mul */
-/* /home/genius/dev/alu/js/src/mul/karatsuba.js */
+/* js/src/mul */
+/* js/src/mul/karatsuba.js */
 /**
  * /!\ BLOCK MULTIPLICATION RESULT MUST HOLD IN THE JAVASCRIPT NUMBER TYPE (DOUBLE i.e. 53 bits)
  *
@@ -584,7 +584,7 @@ var bkaratsuba_t = function(add, sub, mul, num, mov, r, wrap){
 
 
 exports.bkaratsuba_t = bkaratsuba_t;
-/* /home/genius/dev/alu/js/src/mul/mul.js */
+/* js/src/mul/mul.js */
 
 var bmul_t = function(r){
 
@@ -630,23 +630,26 @@ var bmul_t = function(r){
 
 
 exports.bmul_t = bmul_t;
-/* /home/genius/dev/alu/js/src/neg */
-/* /home/genius/dev/alu/js/src/neg/neg.js */
+/* js/src/neg */
+/* js/src/neg/neg.js */
 /**
  * COMPUTE THE NEGATIVE VALUE OF NUMBER n
  */
-/* /home/genius/dev/alu/js/src/not */
-/* /home/genius/dev/alu/js/src/not/not.js */
+/* js/src/not */
+/* js/src/not/not.js */
 /**
  * BINARY not APPLIED ON a
  */
-/* /home/genius/dev/alu/js/src/or */
-/* /home/genius/dev/alu/js/src/or/or.js */
+/* js/src/ns.js */
+exports.ns = 'alu';
+
+/* js/src/or */
+/* js/src/or/or.js */
 /**
  * BINARY or APPLIED ON a AND b
  */
-/* /home/genius/dev/alu/js/src/parse */
-/* /home/genius/dev/alu/js/src/parse/parse.js */
+/* js/src/parse */
+/* js/src/parse/parse.js */
 
 /**
  * Function template for number parsing.
@@ -694,23 +697,23 @@ var parse_t = function(t, f, iter){
 
 
 exports.parse_t = parse_t;
-/* /home/genius/dev/alu/js/src/pow */
-/* /home/genius/dev/alu/js/src/pow/pow.js */
+/* js/src/pow */
+/* js/src/pow/pow.js */
 /**
  * COMPUTES a^b
  */
-/* /home/genius/dev/alu/js/src/sha */
-/* /home/genius/dev/alu/js/src/sha/sha.js */
+/* js/src/sha */
+/* js/src/sha/sha.js */
 /**
  * ARITHMETIC SHIFT
  */
-/* /home/genius/dev/alu/js/src/shl */
-/* /home/genius/dev/alu/js/src/shl/shl.js */
+/* js/src/shl */
+/* js/src/shl/shl.js */
 /**
  * LOGICAL SHIFT
  */
-/* /home/genius/dev/alu/js/src/stringify */
-/* /home/genius/dev/alu/js/src/stringify/stringify.js */
+/* js/src/stringify */
+/* js/src/stringify/stringify.js */
 
 /**
  * Function template for number stringification.
@@ -753,8 +756,8 @@ var stringify_t = function(f, t, iter, zfill_t){
 };
 
 exports.stringify_t = stringify_t;
-/* /home/genius/dev/alu/js/src/sub */
-/* /home/genius/dev/alu/js/src/sub/sub.js */
+/* js/src/sub */
+/* js/src/sub/sub.js */
 
 /**
  * @param r base (radix)
@@ -856,8 +859,8 @@ var lsub_t = function(r){
 exports.bsub_t = bsub_t;
 exports.lsub_t = lsub_t;
 
-/* /home/genius/dev/alu/js/src/wrap */
-/* /home/genius/dev/alu/js/src/wrap/wrap.js */
+/* js/src/wrap */
+/* js/src/wrap/wrap.js */
 /**
  * Wrapper for binary operator.
  * Ensures
@@ -909,8 +912,8 @@ var wrapmov = function(fn){
 exports.wrapbin = wrapbin;
 exports.wrapmov = wrapmov;
 
-/* /home/genius/dev/alu/js/src/xor */
-/* /home/genius/dev/alu/js/src/xor/xor.js */
+/* js/src/xor */
+/* js/src/xor/xor.js */
 /**
  * BINARY xor APPLIED ON a AND b
  */
