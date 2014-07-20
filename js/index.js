@@ -1,5 +1,12 @@
-var recquire_t = require('recquire');
+var pkg = require('aureooms-node-package');
+var ns  = require('./src/ns.js').ns;
 
-var recquire = recquire_t('algo', 'index.js', 'intro.js', 'outro.js', false, true);
 
-recquire(__dirname + '/src/', module.exports, -1);
+var opt = {
+	ns      : ns,
+	src     : __dirname + '/src/',
+	exports : module.exports,
+	base    : 0
+};
+
+pkg.include(opt);
