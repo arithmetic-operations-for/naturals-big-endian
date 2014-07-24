@@ -5,12 +5,12 @@
 	"main": "js/dist/alu.js",
 	"dependencies": {},
 	"devDependencies": {
-		"aureooms-node-package": "^0.0.6",
+		"aureooms-node-package": "^0.1.0",
 		"algo": "^0.1.8"
 	},
 	"scripts": {
-		"build": "node js/build.js",
-		"test": "node test/js/run.js"
+		"build": "./node_modules/.bin/aureooms-node-package-build",
+		"test": "./node_modules/.bin/aureooms-node-package-test"
 	},
 	"repository": {
 		"type": "git",

@@ -1,6 +1,8 @@
 var pkg = require('aureooms-node-package');
-var ns  = require('./src/ns.js').ns;
 
+var fs  = require('fs');
+var data = fs.readFileSync(pkg.config, 'utf8');
+var ns = JSON.parse(data).ns;
 
 var opt = {
 	ns      : ns,
