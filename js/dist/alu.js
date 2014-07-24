@@ -640,9 +640,6 @@ exports.bmul_t = bmul_t;
 /**
  * BINARY not APPLIED ON a
  */
-/* js/src/ns.js */
-exports.ns = 'alu';
-
 /* js/src/or */
 /* js/src/or/or.js */
 /**
