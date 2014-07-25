@@ -2,13 +2,14 @@ var pkg = require('aureooms-node-package');
 
 var fs  = require('fs');
 var data = fs.readFileSync(pkg.config, 'utf8');
-var ns = JSON.parse(data).ns;
+var opt = JSON.parse(data);
 
-var opt = {
-	ns      : ns,
+opt = {
+	ns      : opt.ns,
 	src     : __dirname + '/src/',
 	exports : module.exports,
-	base    : 0
+	base    : 0,
+	debug   : opt.debug
 };
 
 pkg.include(opt);
