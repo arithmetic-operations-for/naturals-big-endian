@@ -1,6 +1,6 @@
 
 /**
- * @param r base (radix)
+ * @param {int} r base (radix)
  */
 
 
@@ -10,15 +10,15 @@ var bsub_t = function(r){
 	 * Subtracts two big endian arrays, k >= i >= j
 	 * wraps
 	 *
-	 * @param a first operand
-	 * @param i0 a left
-	 * @param i1 a right
-	 * @param b second operand
-	 * @param j0 b left
-	 * @param j1 b right
-	 * @param c result, must be 0 initialized
-	 * @param k0 c left
-	 * @param k1 c right
+	 * @param {array} a first operand
+	 * @param {int} i0 a left
+	 * @param {int} i1 a right
+	 * @param {array} b second operand
+	 * @param {int} j0 b left
+	 * @param {int} j1 b right
+	 * @param {array} c result, must be 0 initialized
+	 * @param {int} k0 c left
+	 * @param {int} k1 c right
 	 */
 
 	return function(a, i0, i1, b, j0, j1, c, k0, k1){
@@ -47,7 +47,7 @@ var bsub_t = function(r){
 	};
 };
 /**
- * @param r base (radix)
+ * @param {int} r base (radix)
  */
 
 
@@ -57,15 +57,15 @@ var lsub_t = function(r){
 	 * Subtracts two little endian arrays, k >= i >= j
 	 * wraps
 	 *
-	 * @param a first operand
-	 * @param i0 a left
-	 * @param i1 a right
-	 * @param b second operand
-	 * @param j0 b left
-	 * @param j1 b right
-	 * @param c result, must be 0 initialized
-	 * @param k0 c left
-	 * @param k1 c right
+	 * @param {array} a first operand
+	 * @param {int} i0 a left
+	 * @param {int} i1 a right
+	 * @param {array} b second operand
+	 * @param {int} j0 b left
+	 * @param {int} j1 b right
+	 * @param {array} c result, must be 0 initialized
+	 * @param {int} k0 c left
+	 * @param {int} k1 c right
 	 */
 
 	return function(a, i0, i1, b, j0, j1, c, k0, k1){

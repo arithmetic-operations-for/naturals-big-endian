@@ -5,14 +5,14 @@ var bcmp_t = function(){
 	/**
 	 * Compares two big endian arrays, |a| >= |b|
 	 *
-	 * @param a first operand
-	 * @param ai a left
-	 * @param aj a right
-	 * @param b second operand
-	 * @param bi b left
-	 * @param bj b right
+	 * @param {array} a first operand
+	 * @param {int} ai a left
+	 * @param {int} aj a right
+	 * @param {array} b second operand
+	 * @param {int} bi b left
+	 * @param {int} bj b right
 	 *
-	 * @return 1 if a > b; 0 if a = b; -1 otherwise.
+	 * @return {int} 1 if a > b; 0 if a = b; -1 otherwise.
 	 */
 
 	return function(a, ai, aj, b, bi, bj){
@@ -39,14 +39,14 @@ var lcmp_t = function(){
 	/**
 	 * Compares two little endian arrays, |a| >= |b|
 	 *
-	 * @param a first operand
-	 * @param ai a left
-	 * @param aj a right
-	 * @param b second operand
-	 * @param bi b left
-	 * @param bj b right
+	 * @param {array} a first operand
+	 * @param {int} ai a left
+	 * @param {int} aj a right
+	 * @param {array} b second operand
+	 * @param {int} bi b left
+	 * @param {int} bj b right
 	 *
-	 * @return 1 if a > b; 0 if a = b; -1 otherwise.
+	 * @return {int} 1 if a > b; 0 if a = b; -1 otherwise.
 	 */
 
 	return function(a, ai, aj, b, bi, bj){
