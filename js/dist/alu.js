@@ -8,30 +8,34 @@
 /**
  * COMPUTE THE ABSOLUTE VALUE OF NUMBER n
  */
+
+exports.abs = function abs() {};
+
+
 /* js/src/add */
 /* js/src/add/add.js */
 
 /**
- * @param r base (radix)
+ * @param {int} r base (radix)
  */
 
 
-var badd_t = function(r){
+exports.badd_t = function badd_t (r) {
 
 
 	/**
 	 * Adds two big endian arrays, k >= i >= j
 	 * wraps
 	 * 
-	 * @param a first operand
-	 * @param i0 a left
-	 * @param i1 a right
-	 * @param b second operand
-	 * @param j0 b left
-	 * @param j1 b right
-	 * @param c result, must be 0 initialized
-	 * @param k0 c left
-	 * @param k1 c right
+	 * @param {array} a first operand
+	 * @param {int} i0 a left
+	 * @param {int} i1 a right
+	 * @param {array} b second operand
+	 * @param {int} j0 b left
+	 * @param {int} j1 b right
+	 * @param {array} c result, must be 0 initialized
+	 * @param {int} k0 c left
+	 * @param {int} k1 c right
 	 */
 
 	return function(a, i0, i1, b, j0, j1, c, k0, k1){
@@ -61,24 +65,24 @@ var badd_t = function(r){
 
 
 /**
- * @param r base (radix)
+ * @param {int} r base (radix)
  */
 
-var ladd_t = function(r){
+var ladd_t = exports.ladd_t = function(r){
 
 	/**
 	 * Adds two little endian arrays, k >= i >= j
 	 * wraps
 	 * 
-	 * @param a first operand
-	 * @param i0 a left
-	 * @param i1 a right
-	 * @param b second operand
-	 * @param j0 b left
-	 * @param j1 b right
-	 * @param c result, must be 0 initialized
-	 * @param k0 c left
-	 * @param k1 c right
+	 * @param {array} a first operand
+	 * @param {int} i0 a left
+	 * @param {int} i1 a right
+	 * @param {array} b second operand
+	 * @param {int} j0 b left
+	 * @param {int} j1 b right
+	 * @param {array} c result, must be 0 initialized
+	 * @param {int} k0 c left
+	 * @param {int} k1 c right
 	 */
 
 	return function(a, i0, i1, b, j0, j1, c, k0, k1){
@@ -104,9 +108,6 @@ var ladd_t = function(r){
 
 	};
 };
-
-exports.badd_t = badd_t;
-exports.ladd_t = ladd_t;
 /* js/src/and */
 /* js/src/and/and.js */
 
@@ -200,14 +201,14 @@ var bcmp_t = function(){
 	/**
 	 * Compares two big endian arrays, |a| >= |b|
 	 * 
-	 * @param a first operand
-	 * @param ai a left
-	 * @param aj a right
-	 * @param b second operand
-	 * @param bi b left
-	 * @param bj b right
-	 * 
-	 * @return 1 if a > b; 0 if a = b; -1 otherwise.
+	 * @param {array} a first operand
+	 * @param {int} ai a left
+	 * @param {int} aj a right
+	 * @param {array} b second operand
+	 * @param {int} bi b left
+	 * @param {int} bj b right
+	 *
+	 * @return {int} 1 if a > b; 0 if a = b; -1 otherwise.
 	 */
 
 	return function(a, ai, aj, b, bi, bj){
@@ -234,14 +235,14 @@ var lcmp_t = function(){
 	/**
 	 * Compares two little endian arrays, |a| >= |b|
 	 * 
-	 * @param a first operand
-	 * @param ai a left
-	 * @param aj a right
-	 * @param b second operand
-	 * @param bi b left
-	 * @param bj b right
+	 * @param {array} a first operand
+	 * @param {int} ai a left
+	 * @param {int} aj a right
+	 * @param {array} b second operand
+	 * @param {int} bi b left
+	 * @param {int} bj b right
 	 * 
-	 * @return 1 if a > b; 0 if a = b; -1 otherwise.
+	 * @return {int} 1 if a > b; 0 if a = b; -1 otherwise.
 	 */
 
 	return function(a, ai, aj, b, bi, bj){
@@ -370,18 +371,18 @@ var bdiv_t = function(mov, lt, sub){
 	 * using long division algorithm (the one teached in
 	 * european primary schools).
 	 * 
-	 * @param a dividend
-	 * @param ai a left
-	 * @param aj a right
-	 * @param b divisor
-	 * @param bi b left
-	 * @param bj b right
-	 * @param q quotient, must be 0 initialized
-	 * @param qi q left
-	 * @param qj q right
-	 * @param r remainder
-	 * @param ri r left
-	 * @param rj r right
+	 * @param {array} a dividend
+	 * @param {int} ai a left
+	 * @param {int} aj a right
+	 * @param {array} b divisor
+	 * @param {int} bi b left
+	 * @param {int} bj b right
+	 * @param {array} q quotient, must be 0 initialized
+	 * @param {int} qi q left
+	 * @param {int} qj q right
+	 * @param {array} r remainder
+	 * @param {int} ri r left
+	 * @param {int} rj r right
 	 */
 
 	var div = function(a, ai, aj, b, bi, bj, q, qi, qj, r, ri, rj){
@@ -505,15 +506,15 @@ var bkaratsuba_t = function(add, sub, mul, num, mov, r, wrap){
 	 * i >= j, k >= 2 * i
 	 * 
 	 * 
-	 * @param a first operand
-	 * @param i0 a left
-	 * @param i1 a right
-	 * @param b second operand
-	 * @param j0 b left
-	 * @param j1 b right
-	 * @param c result, must be 0 initialized
-	 * @param k0 c left
-	 * @param k1 c right
+	 * @param {array} a first operand
+	 * @param {int} i0 a left
+	 * @param {int} i1 a right
+	 * @param {array} b second operand
+	 * @param {int} j0 b left
+	 * @param {int} j1 b right
+	 * @param {array} c result, must be 0 initialized
+	 * @param {int} k0 c left
+	 * @param {int} k1 c right
 	 */
 
 	var karatsuba = function(a, i0, i1, b, j0, j1, c, k0, k1){
@@ -757,7 +758,7 @@ exports.stringify_t = stringify_t;
 /* js/src/sub/sub.js */
 
 /**
- * @param r base (radix)
+ * @param {int} r base (radix)
  */
 
 
@@ -767,15 +768,15 @@ var bsub_t = function(r){
 	 * Subtracts two big endian arrays, k >= i >= j
 	 * wraps
 	 * 
-	 * @param a first operand
-	 * @param i0 a left
-	 * @param i1 a right
-	 * @param b second operand
-	 * @param j0 b left
-	 * @param j1 b right
-	 * @param c result, must be 0 initialized
-	 * @param k0 c left
-	 * @param k1 c right
+	 * @param {array} a first operand
+	 * @param {int} i0 a left
+	 * @param {int} i1 a right
+	 * @param {array} b second operand
+	 * @param {int} j0 b left
+	 * @param {int} j1 b right
+	 * @param {array} c result, must be 0 initialized
+	 * @param {int} k0 c left
+	 * @param {int} k1 c right
 	 */
 
 	return function(a, i0, i1, b, j0, j1, c, k0, k1){
@@ -804,7 +805,7 @@ var bsub_t = function(r){
 	};
 };
 /**
- * @param r base (radix)
+ * @param {int} r base (radix)
  */
 
 
@@ -814,15 +815,15 @@ var lsub_t = function(r){
 	 * Subtracts two little endian arrays, k >= i >= j
 	 * wraps
 	 * 
-	 * @param a first operand
-	 * @param i0 a left
-	 * @param i1 a right
-	 * @param b second operand
-	 * @param j0 b left
-	 * @param j1 b right
-	 * @param c result, must be 0 initialized
-	 * @param k0 c left
-	 * @param k1 c right
+	 * @param {array} a first operand
+	 * @param {int} i0 a left
+	 * @param {int} i1 a right
+	 * @param {array} b second operand
+	 * @param {int} j0 b left
+	 * @param {int} j1 b right
+	 * @param {array} c result, must be 0 initialized
+	 * @param {int} k0 c left
+	 * @param {int} k1 c right
 	 */
 
 	return function(a, i0, i1, b, j0, j1, c, k0, k1){
