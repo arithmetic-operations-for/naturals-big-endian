@@ -1,10 +1,10 @@
 
 /**
- * @param r base (radix)
+ * @param {int} r base (radix)
  */
 
 
-var badd_t = function(r){
+var badd_t = exports.badd_t = function(r){
 
 
 	/**
@@ -49,10 +49,10 @@ var badd_t = function(r){
 
 
 /**
- * @param r base (radix)
+ * @param {int} r base (radix)
  */
 
-var ladd_t = function(r){
+var ladd_t = exports.ladd_t = function(r){
 
 	/**
 	 * Adds two little endian arrays, k >= i >= j
@@ -92,6 +92,3 @@ var ladd_t = function(r){
 
 	};
 };
-
-exports.badd_t = badd_t;
-exports.ladd_t = ladd_t;
