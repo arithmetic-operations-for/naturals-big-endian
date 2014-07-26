@@ -1,0 +1,40 @@
+<!DOCTYPE html><html lang="en"><head><title>stringify/stringify</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../"><meta name="groc-document-path" content="stringify/stringify"><meta name="groc-project-path" content="js/src/stringify/stringify.js"><meta name="groc-github-url" content="https://github.com/aureooms/alu"><link rel="stylesheet" type="text/css" media="all" href="../assets/style.css"><script type="text/javascript" src="../assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/aureooms/alu/blob/master/js/src/stringify/stringify.js">js/src/stringify/stringify.js</a></div></div><div id="document"><div class="segment"></div><div class="segment"><div class="comments doc-section"><div class="wrapper"><p>Function template for number stringification.
+Endianess provided by the iterator function</p>
+
+<p>Parameters:</p>
+
+<ul>
+<li><p><strong>f must be an int.</strong><br/>(from radix)</p></li>
+<li><p><strong>t must be an int.</strong><br/>(to radix)</p></li>
+<li><p><strong>iter must be a function.</strong><br/>(iterator function)</p></li>
+</ul></div></div><div class="code"><div class="wrapper"><span class="kd">var</span> <span class="nx">stringify_t</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">f</span><span class="p">,</span> <span class="nx">t</span><span class="p">,</span> <span class="nx">iter</span><span class="p">,</span> <span class="nx">zfill_t</span><span class="p">){</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="nx">t</span> <span class="o">&lt;=</span> <span class="nx">f</span><span class="p">){</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="nx">t</span> <span class="o">&gt;</span> <span class="mi">36</span><span class="p">)</span> <span class="k">throw</span> <span class="s1">&#39;t &gt; 36 not implemented&#39;</span><span class="p">;</span>
+
+    <span class="kd">var</span> <span class="nx">z</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="nx">f</span> <span class="o">&gt;=</span> <span class="nx">t</span><span class="p">){</span>
+      <span class="k">if</span><span class="p">(</span><span class="nx">f</span> <span class="o">%</span> <span class="nx">t</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+      <span class="nx">f</span> <span class="o">/=</span> <span class="nx">t</span><span class="p">;</span>
+      <span class="o">++</span><span class="nx">z</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="nx">f</span> <span class="o">!==</span> <span class="mi">1</span><span class="p">)</span> <span class="k">throw</span> <span class="s1">&#39;log(t) does not divide log(f) not implemented&#39;</span><span class="p">;</span>
+
+    <span class="kd">var</span> <span class="nx">zfill</span> <span class="o">=</span> <span class="nx">zfill_t</span><span class="p">(</span><span class="nx">z</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">i0</span><span class="p">,</span> <span class="nx">i1</span><span class="p">){</span>
+      <span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="p">[];</span>
+      <span class="nx">iter</span><span class="p">(</span><span class="nx">i0</span><span class="p">,</span> <span class="nx">i1</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">){</span>
+        <span class="nx">s</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">zfill</span><span class="p">(</span><span class="nb">Number</span><span class="p">(</span><span class="o">+</span><span class="nx">a</span><span class="p">[</span><span class="nx">i</span><span class="p">]).</span><span class="nx">toString</span><span class="p">(</span><span class="nx">t</span><span class="p">)));</span>
+      <span class="p">});</span>
+      <span class="k">return</span> <span class="nx">s</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+    <span class="p">};</span>
+
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="k">throw</span> <span class="s1">&#39;t &gt; f not implemented&#39;</span><span class="p">;</span>
+
+<span class="p">};</span>
+
+<span class="nx">exports</span><span class="p">.</span><span class="nx">stringify_t</span> <span class="o">=</span> <span class="nx">stringify_t</span><span class="p">;</span></div></div></div></div></body></html>

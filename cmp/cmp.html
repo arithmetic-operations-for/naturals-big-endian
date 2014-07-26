@@ -1,0 +1,59 @@
+<!DOCTYPE html><html lang="en"><head><title>cmp/cmp</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../"><meta name="groc-document-path" content="cmp/cmp"><meta name="groc-project-path" content="js/src/cmp/cmp.js"><meta name="groc-github-url" content="https://github.com/aureooms/alu"><link rel="stylesheet" type="text/css" media="all" href="../assets/style.css"><script type="text/javascript" src="../assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/aureooms/alu/blob/master/js/src/cmp/cmp.js">js/src/cmp/cmp.js</a></div></div><div id="document"><div class="segment"><div class="code"><div class="wrapper"><span class="kd">var</span> <span class="nx">bcmp_t</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span></div></div></div><div class="segment"><div class="comments doc-section"><div class="wrapper"><p>Compares two big endian arrays, |a| >= |b|</p>
+
+<p>Parameters:</p>
+
+<ul>
+<li><p><strong>a must be an array.</strong><br/>(first operand)</p></li>
+<li><p><strong>ai must be an int.</strong><br/>(a left)</p></li>
+<li><p><strong>aj must be an int.</strong><br/>(a right)</p></li>
+<li><p><strong>b must be an array.</strong><br/>(second operand)</p></li>
+<li><p><strong>bi must be an int.</strong><br/>(b left)</p></li>
+<li><p><strong>bj must be an int.</strong><br/>(b right)</p></li>
+</ul>
+
+<p><strong>Returns an int</strong><br/>(1 if a > b; 0 if a = b; -1 otherwise.)</p></div></div><div class="code"><div class="wrapper">  <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">ai</span><span class="p">,</span> <span class="nx">aj</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">bi</span><span class="p">,</span> <span class="nx">bj</span><span class="p">){</span>
+
+    <span class="kd">var</span> <span class="nx">tmp</span> <span class="o">=</span> <span class="nx">aj</span> <span class="o">-</span> <span class="nx">bj</span> <span class="o">+</span> <span class="nx">bi</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(;</span> <span class="nx">ai</span> <span class="o">&lt;</span> <span class="nx">tmp</span><span class="p">;</span> <span class="o">++</span><span class="nx">ai</span><span class="p">)</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">a</span><span class="p">[</span><span class="nx">ai</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>same size aj - ai === bj - bi</p></div></div><div class="code"><div class="wrapper">    <span class="k">for</span> <span class="p">(;</span> <span class="nx">ai</span> <span class="o">&lt;</span> <span class="nx">aj</span><span class="p">;</span> <span class="o">++</span><span class="nx">ai</span><span class="p">,</span> <span class="o">++</span><span class="nx">bi</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">a</span><span class="p">[</span><span class="nx">ai</span><span class="p">]</span> <span class="o">&gt;</span> <span class="nx">b</span><span class="p">[</span><span class="nx">bi</span><span class="p">])</span> <span class="k">return</span>  <span class="mi">1</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">a</span><span class="p">[</span><span class="nx">ai</span><span class="p">]</span> <span class="o">&lt;</span> <span class="nx">b</span><span class="p">[</span><span class="nx">bi</span><span class="p">])</span> <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">};</span>
+
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">lcmp_t</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span></div></div></div><div class="segment"><div class="comments doc-section"><div class="wrapper"><p>Compares two little endian arrays, |a| >= |b|</p>
+
+<p>Parameters:</p>
+
+<ul>
+<li><p><strong>a must be an array.</strong><br/>(first operand)</p></li>
+<li><p><strong>ai must be an int.</strong><br/>(a left)</p></li>
+<li><p><strong>aj must be an int.</strong><br/>(a right)</p></li>
+<li><p><strong>b must be an array.</strong><br/>(second operand)</p></li>
+<li><p><strong>bi must be an int.</strong><br/>(b left)</p></li>
+<li><p><strong>bj must be an int.</strong><br/>(b right)</p></li>
+</ul>
+
+<p><strong>Returns an int</strong><br/>(1 if a > b; 0 if a = b; -1 otherwise.)</p></div></div><div class="code"><div class="wrapper">  <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">ai</span><span class="p">,</span> <span class="nx">aj</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">bi</span><span class="p">,</span> <span class="nx">bj</span><span class="p">){</span>
+
+    <span class="kd">var</span> <span class="nx">tmp</span> <span class="o">=</span> <span class="nx">ai</span> <span class="o">+</span> <span class="nx">bj</span> <span class="o">-</span> <span class="nx">bi</span><span class="p">;</span>
+
+    <span class="o">--</span><span class="nx">aj</span><span class="p">;</span> <span class="o">--</span><span class="nx">bj</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(;</span> <span class="nx">aj</span> <span class="o">&gt;=</span> <span class="nx">tmp</span><span class="p">;</span> <span class="o">--</span><span class="nx">aj</span><span class="p">)</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">a</span><span class="p">[</span><span class="nx">aj</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>same size aj - ai === bj - bi</p></div></div><div class="code"><div class="wrapper">    <span class="k">for</span> <span class="p">(;</span> <span class="nx">aj</span> <span class="o">&gt;=</span> <span class="nx">ai</span><span class="p">;</span> <span class="o">--</span><span class="nx">aj</span><span class="p">,</span> <span class="o">--</span><span class="nx">bj</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">a</span><span class="p">[</span><span class="nx">aj</span><span class="p">]</span> <span class="o">&gt;</span> <span class="nx">b</span><span class="p">[</span><span class="nx">bj</span><span class="p">])</span> <span class="k">return</span>  <span class="mi">1</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">a</span><span class="p">[</span><span class="nx">aj</span><span class="p">]</span> <span class="o">&lt;</span> <span class="nx">b</span><span class="p">[</span><span class="nx">bj</span><span class="p">])</span> <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+
+<span class="nx">exports</span><span class="p">.</span><span class="nx">bcmp_t</span> <span class="o">=</span> <span class="nx">bcmp_t</span><span class="p">;</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">lcmp_t</span> <span class="o">=</span> <span class="nx">lcmp_t</span><span class="p">;</span></div></div></div></div></body></html>

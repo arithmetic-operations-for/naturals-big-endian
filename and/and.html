@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="en"><head><title>and/and</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../"><meta name="groc-document-path" content="and/and"><meta name="groc-project-path" content="js/src/and/and.js"><meta name="groc-github-url" content="https://github.com/aureooms/alu"><link rel="stylesheet" type="text/css" media="all" href="../assets/style.css"><script type="text/javascript" src="../assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/aureooms/alu/blob/master/js/src/and/and.js">js/src/and/and.js</a></div></div><div id="document"><div class="segment"></div><div class="segment"><div class="comments "><div class="wrapper"><p>BINARY and APPLIED ON a AND b</p>
+
+<p>Meaningful only when r is a power of 2.</p>
+
+<p>|a| = |b| = |c| > 0</p></div></div><div class="code"><div class="wrapper"><span class="kd">var</span> <span class="nx">and</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">a0</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">b0</span><span class="p">,</span> <span class="nx">c</span><span class="p">,</span> <span class="nx">c0</span><span class="p">,</span> <span class="nx">c1</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="k">while</span> <span class="p">(</span><span class="nx">c0</span> <span class="o">&lt;</span> <span class="nx">c1</span><span class="p">)</span> <span class="nx">c</span><span class="p">[</span><span class="nx">c0</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="nx">a</span><span class="p">[</span><span class="nx">a0</span><span class="o">++</span><span class="p">]</span> <span class="o">&amp;</span> <span class="nx">b</span><span class="p">[</span><span class="nx">b0</span><span class="o">++</span><span class="p">];</span>
+
+<span class="p">};</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>BIG ENDIAN BINARY and APPLIED ON a AND b</p>
+
+<p>Meaningful only when r is a power of 2.</p>
+
+<p>|a| >= |b| > 0</p>
+
+<p>treats b as if it was represented with the same number of blocks as a</p></div></div><div class="code"><div class="wrapper"><span class="kd">var</span> <span class="nx">band_t</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">r</span><span class="p">){</span>
+
+  <span class="kd">var</span> <span class="nx">_r</span> <span class="o">=</span> <span class="nx">r</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+
+  <span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">a0</span><span class="p">,</span> <span class="nx">a1</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">b0</span><span class="p">,</span> <span class="nx">b1</span><span class="p">,</span> <span class="nx">c</span><span class="p">,</span> <span class="nx">c0</span><span class="p">,</span> <span class="nx">c1</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="kd">var</span> <span class="nx">at</span> <span class="o">=</span> <span class="nx">a1</span> <span class="o">-</span> <span class="nx">b1</span> <span class="o">+</span> <span class="nx">b0</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">ct</span> <span class="o">=</span> <span class="nx">c0</span> <span class="o">+</span> <span class="nx">at</span> <span class="o">-</span> <span class="nx">a0</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">b</span><span class="p">[</span><span class="nx">b0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="nx">_r</span><span class="p">)</span> <span class="k">while</span> <span class="p">(</span><span class="nx">c0</span> <span class="o">&lt;</span> <span class="nx">ct</span><span class="p">)</span> <span class="nx">c</span><span class="p">[</span><span class="nx">c0</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">else</span>            <span class="k">while</span> <span class="p">(</span><span class="nx">c0</span> <span class="o">&lt;</span> <span class="nx">ct</span><span class="p">)</span> <span class="nx">c</span><span class="p">[</span><span class="nx">c0</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="nx">a</span><span class="p">[</span><span class="nx">a0</span><span class="o">++</span><span class="p">];</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="nx">c0</span> <span class="o">&lt;</span> <span class="nx">c1</span><span class="p">)</span> <span class="nx">c</span><span class="p">[</span><span class="nx">c0</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="nx">a</span><span class="p">[</span><span class="nx">at</span><span class="o">++</span><span class="p">]</span> <span class="o">&amp;</span> <span class="nx">b</span><span class="p">[</span><span class="nx">b0</span><span class="o">++</span><span class="p">];</span>
+
+  <span class="p">};</span>
+
+<span class="p">};</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>LITTLE ENDIAN BINARY and APPLIED ON a AND b</p>
+
+<p>Meaningful only when r is a power of 2.</p>
+
+<p>|a| >= |b| > 0</p>
+
+<p>treats b as if it was represented with the same number of blocks as a</p></div></div><div class="code"><div class="wrapper"><span class="kd">var</span> <span class="nx">land_t</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">r</span><span class="p">){</span>
+
+  <span class="kd">var</span> <span class="nx">_r</span> <span class="o">=</span> <span class="nx">r</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+
+  <span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">a0</span><span class="p">,</span> <span class="nx">a1</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">b0</span><span class="p">,</span> <span class="nx">b1</span><span class="p">,</span> <span class="nx">c</span><span class="p">,</span> <span class="nx">c0</span><span class="p">,</span> <span class="nx">c1</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="kd">var</span> <span class="nx">ct</span> <span class="o">=</span> <span class="nx">c0</span> <span class="o">+</span> <span class="nx">b1</span> <span class="o">-</span> <span class="nx">b0</span><span class="p">;</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="nx">c0</span> <span class="o">&lt;</span> <span class="nx">ct</span><span class="p">)</span> <span class="nx">c</span><span class="p">[</span><span class="nx">c0</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="nx">a</span><span class="p">[</span><span class="nx">a0</span><span class="o">++</span><span class="p">]</span> <span class="o">&amp;</span> <span class="nx">b</span><span class="p">[</span><span class="nx">b0</span><span class="o">++</span><span class="p">];</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">b</span><span class="p">[</span><span class="nx">b0</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="nx">_r</span><span class="p">)</span> <span class="k">while</span> <span class="p">(</span><span class="nx">c0</span> <span class="o">&lt;</span> <span class="nx">c1</span><span class="p">)</span> <span class="nx">c</span><span class="p">[</span><span class="nx">c0</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">else</span>                <span class="k">while</span> <span class="p">(</span><span class="nx">c0</span> <span class="o">&lt;</span> <span class="nx">c1</span><span class="p">)</span> <span class="nx">c</span><span class="p">[</span><span class="nx">c0</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="nx">a</span><span class="p">[</span><span class="nx">a0</span><span class="o">++</span><span class="p">];</span>
+
+
+  <span class="p">};</span>
+
+<span class="p">};</span>
+
+
+<span class="nx">exports</span><span class="p">.</span><span class="nx">and</span> <span class="o">=</span> <span class="nx">and</span><span class="p">;</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">land_t</span> <span class="o">=</span> <span class="nx">land_t</span><span class="p">;</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">band_t</span> <span class="o">=</span> <span class="nx">band_t</span><span class="p">;</span></div></div></div></div></body></html>

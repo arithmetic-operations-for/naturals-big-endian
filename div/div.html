@@ -1,0 +1,45 @@
+<!DOCTYPE html><html lang="en"><head><title>div/div</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../"><meta name="groc-document-path" content="div/div"><meta name="groc-project-path" content="js/src/div/div.js"><meta name="groc-github-url" content="https://github.com/aureooms/alu"><link rel="stylesheet" type="text/css" media="all" href="../assets/style.css"><script type="text/javascript" src="../assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/aureooms/alu/blob/master/js/src/div/div.js">js/src/div/div.js</a></div></div><div id="document"><div class="segment"><div class="code"><div class="wrapper"><span class="kd">var</span> <span class="nx">bdiv_t</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">mov</span><span class="p">,</span> <span class="nx">lt</span><span class="p">,</span> <span class="nx">sub</span><span class="p">){</span></div></div></div><div class="segment"><div class="comments doc-section"><div class="wrapper"><p>Computes quotient and remainder of two big endian arrays.
+<p>
+Computes quotient and remainder of two big endian arrays
+using long division algorithm (the one teached in
+european primary schools).</p>
+
+<p>Parameters:</p>
+
+<ul>
+<li><p><strong>a must be an array.</strong><br/>(dividend)</p></li>
+<li><p><strong>ai must be an int.</strong><br/>(a left)</p></li>
+<li><p><strong>aj must be an int.</strong><br/>(a right)</p></li>
+<li><p><strong>b must be an array.</strong><br/>(divisor)</p></li>
+<li><p><strong>bi must be an int.</strong><br/>(b left)</p></li>
+<li><p><strong>bj must be an int.</strong><br/>(b right)</p></li>
+<li><p><strong>q must be an array.</strong><br/>(quotient, must be 0 initialized)</p></li>
+<li><p><strong>qi must be an int.</strong><br/>(q left)</p></li>
+<li><p><strong>qj must be an int.</strong><br/>(q right)</p></li>
+<li><p><strong>r must be an array.</strong><br/>(remainder)</p></li>
+<li><p><strong>ri must be an int.</strong><br/>(r left)</p></li>
+<li><p><strong>rj must be an int.</strong><br/>(r right)</p></li>
+</ul></div></div><div class="code"><div class="wrapper">  <span class="kd">var</span> <span class="nx">div</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">ai</span><span class="p">,</span> <span class="nx">aj</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">bi</span><span class="p">,</span> <span class="nx">bj</span><span class="p">,</span> <span class="nx">q</span><span class="p">,</span> <span class="nx">qi</span><span class="p">,</span> <span class="nx">qj</span><span class="p">,</span> <span class="nx">r</span><span class="p">,</span> <span class="nx">ri</span><span class="p">,</span> <span class="nx">rj</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">t</span> <span class="o">=</span> <span class="nx">ri</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>copy dividend in remainder</p></div></div><div class="code"><div class="wrapper">    <span class="nx">mov</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">ai</span><span class="p">,</span> <span class="nx">aj</span><span class="p">,</span> <span class="nx">r</span><span class="p">,</span> <span class="nx">ri</span><span class="p">);</span>
+
+    <span class="k">do</span> <span class="p">{</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>trim leading zeros
+    - maybe could try to put this procedure inside the sub loop</p></div></div><div class="code"><div class="wrapper">      <span class="k">while</span> <span class="p">(</span><span class="nx">ri</span> <span class="o">&lt;</span> <span class="nx">rj</span> <span class="o">&amp;&amp;</span> <span class="nx">r</span><span class="p">[</span><span class="nx">ri</span><span class="p">]</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="o">++</span><span class="nx">ri</span><span class="p">;</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>search for a remainder block interval
+greater than the divisor
+    - maybe could try binary search on the lt function
+    for another implementation</p></div></div><div class="code"><div class="wrapper">      <span class="nx">k</span> <span class="o">=</span> <span class="nx">ri</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="k">while</span> <span class="p">(</span><span class="nx">k</span> <span class="o">&lt;=</span> <span class="nx">rj</span> <span class="o">&amp;&amp;</span> <span class="nx">lt</span><span class="p">(</span><span class="nx">r</span><span class="p">,</span> <span class="nx">ri</span><span class="p">,</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">bi</span><span class="p">,</span> <span class="nx">bj</span><span class="p">))</span> <span class="o">++</span><span class="nx">k</span><span class="p">;</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>remainder smaller than divisor --> end</p></div></div><div class="code"><div class="wrapper">      <span class="k">if</span> <span class="p">(</span><span class="nx">k</span> <span class="o">&gt;</span> <span class="nx">rj</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>divide current block interval by quotient</p></div></div><div class="code"><div class="wrapper">      <span class="k">do</span><span class="p">{</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>increment quotient block corresponding
+to current ls block of remainder interval</p></div></div><div class="code"><div class="wrapper">        <span class="o">++</span><span class="nx">q</span><span class="p">[</span><span class="nx">qi</span> <span class="o">+</span> <span class="nx">k</span> <span class="o">-</span> <span class="nx">t</span><span class="p">];</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>subtract divisor from current remainder
+block interval</p></div></div><div class="code"><div class="wrapper">        <span class="nx">sub</span><span class="p">(</span><span class="nx">r</span><span class="p">,</span> <span class="nx">ri</span><span class="p">,</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">bi</span><span class="p">,</span> <span class="nx">bj</span><span class="p">,</span> <span class="nx">r</span><span class="p">,</span> <span class="nx">ri</span><span class="p">,</span> <span class="nx">k</span><span class="p">);</span>
+
+      <span class="p">}</span> <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="nx">lt</span><span class="p">(</span><span class="nx">r</span><span class="p">,</span> <span class="nx">ri</span><span class="p">,</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">bi</span><span class="p">,</span> <span class="nx">bj</span><span class="p">));</span>
+
+
+    <span class="p">}</span> <span class="k">while</span><span class="p">(</span><span class="nx">k</span> <span class="o">&lt;=</span> <span class="nx">rj</span><span class="p">);</span>
+
+  <span class="p">};</span>
+
+  <span class="k">return</span> <span class="nx">div</span><span class="p">;</span>
+
+<span class="p">};</span>
+
+<span class="nx">exports</span><span class="p">.</span><span class="nx">bdiv_t</span> <span class="o">=</span> <span class="nx">bdiv_t</span><span class="p">;</span></div></div></div></div></body></html>
