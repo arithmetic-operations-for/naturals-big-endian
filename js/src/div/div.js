@@ -10,18 +10,18 @@ var bdiv_t = function(mov, lt, sub){
 	 * using long division algorithm (the one teached in
 	 * european primary schools).
 	 * 
-	 * @param a dividend
-	 * @param ai a left
-	 * @param aj a right
-	 * @param b divisor
-	 * @param bi b left
-	 * @param bj b right
-	 * @param q quotient, must be 0 initialized
-	 * @param qi q left
-	 * @param qj q right
-	 * @param r remainder
-	 * @param ri r left
-	 * @param rj r right
+	 * @param {array} a dividend
+	 * @param {int} ai a left
+	 * @param {int} aj a right
+	 * @param {array} b divisor
+	 * @param {int} bi b left
+	 * @param {int} bj b right
+	 * @param {array} q quotient, must be 0 initialized
+	 * @param {int} qi q left
+	 * @param {int} qj q right
+	 * @param {array} r remainder
+	 * @param {int} ri r left
+	 * @param {int} rj r right
 	 */
 
 	var div = function(a, ai, aj, b, bi, bj, q, qi, qj, r, ri, rj){
