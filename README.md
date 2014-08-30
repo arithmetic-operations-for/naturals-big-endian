@@ -1,7 +1,7 @@
 [alu](http://aureooms.github.io/alu)
 ===
 
-natural numbers algorithm templates for JavaScript
+multi-precision arithmetic code bricks for JavaScript
 
 [![Build Status](https://drone.io/github.com/aureooms/alu/status.png)](https://drone.io/github.com/aureooms/alu/latest)
 [![Coverage Status](https://coveralls.io/repos/aureooms/alu/badge.png)](https://coveralls.io/r/aureooms/alu)
