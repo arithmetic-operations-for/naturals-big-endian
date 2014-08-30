@@ -15,15 +15,15 @@ test('alu.bkaratsuba 16 big endian', function(assert){
 	var r = Math.pow(2, 16);
 	var add = alu.badd_t(r);
 	var sub = alu.bsub_t(r);
-	var num = Uint16Array;
+	var calloc = function(n){ return Uint16Array(n); };
 	var mov = algo.copy;
 	var fill = algo.fill;
 
 
-	var _bkaratsuba = alu.bkaratsuba_t(add, sub, undefined, num, mov, r);
-	var bkaratsuba = alu.bkaratsuba_t(add, sub, _bkaratsuba, num, mov, r);
+	var _bkaratsuba = alu.bkaratsuba_t(add, sub, undefined, calloc, mov, r);
+	var bkaratsuba = alu.bkaratsuba_t(add, sub, _bkaratsuba, calloc, mov, r);
 
-	var a = new num(4), b = new num(4), c = new num(8);
+	var a = calloc(4), b = calloc(4), c = calloc(8);
 
 	a[3] = 4;
 	b[3] = 4;
@@ -66,14 +66,14 @@ test('alu.bkaratsuba 8 big endian', function(assert){
 	var r = Math.pow(2, 8);
 	var add = alu.badd_t(r);
 	var sub = alu.bsub_t(r);
-	var num = Uint8Array;
+	var calloc = function(n){ return Uint8Array(n); };
 	var mov = algo.copy;
 	var fill = algo.fill;
 
-	var _bkaratsuba = alu.bkaratsuba_t(add, sub, undefined, num, mov, r);
-	var bkaratsuba = alu.bkaratsuba_t(add, sub, _bkaratsuba, num, mov, r);
+	var _bkaratsuba = alu.bkaratsuba_t(add, sub, undefined, calloc, mov, r);
+	var bkaratsuba = alu.bkaratsuba_t(add, sub, _bkaratsuba, calloc, mov, r);
 
-	var a = new num(4), b = new num(4), c = new num(8);
+	var a = calloc(4), b = calloc(4), c = calloc(8);
 
 	a[3] = 4;
 	b[3] = 4;
@@ -176,14 +176,14 @@ test('alu.bkaratsuba 8 big endian bound checks', function(assert){
 	var r = Math.pow(2, 8);
 	var add = alu.wrapbin(alu.badd_t(r));
 	var sub = alu.wrapbin(alu.bsub_t(r));
-	var num = Uint8Array;
+	var calloc = function(n){ return Uint8Array(n); };
 	var mov = alu.wrapmov(algo.copy);
 	var fill = algo.fill;
 
-	var _bkaratsuba = alu.bkaratsuba_t(add, sub, undefined, num, mov, r, alu.wrapbin);
-	var bkaratsuba = alu.bkaratsuba_t(add, sub, _bkaratsuba, num, mov, r, alu.wrapbin);
+	var _bkaratsuba = alu.bkaratsuba_t(add, sub, undefined, calloc, mov, r, alu.wrapbin);
+	var bkaratsuba = alu.bkaratsuba_t(add, sub, _bkaratsuba, calloc, mov, r, alu.wrapbin);
 
-	var a = new num(4), b = new num(4), c = new num(8);
+	var a = calloc(4), b = calloc(4), c = calloc(8);
 
 	a[3] = 4;
 	b[3] = 4;
