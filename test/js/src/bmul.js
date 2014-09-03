@@ -2,6 +2,7 @@ var algo = require('algo');
 
 
 test('alu.bmul 16 big endian', function(assert){
+	console.log('alu.bmul 16 big endian');
 
 	var ia2a = function(a) {
 		var o = [];
@@ -49,6 +50,7 @@ test('alu.bmul 16 big endian', function(assert){
 
 
 test('alu.bmul 8 big endian', function(assert){
+	console.log('alu.bmul 8 big endian');
 
 	var ia2a = function(a) {
 		var o = [];
@@ -150,6 +152,7 @@ test('alu.bmul 8 big endian', function(assert){
 });
 
 test('alu.bmul 8 big endian bound checks', function(assert){
+	console.log('alu.bmul 8 big endian bound checks');
 
 	var ia2a = function(a) {
 		var o = [];

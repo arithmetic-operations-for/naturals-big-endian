@@ -3,6 +3,8 @@ var algo = require('algo');
 
 test('alu.stringify', function(assert){
 
+	console.log('alu.stringify');
+
 	var zfill_t = function(n){
 		return algo.zfill_t(n, function(c, n){
 			return algo.lfill_t(c, n, algo.strmul);

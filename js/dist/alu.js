@@ -357,6 +357,184 @@ var ne_t = function(cmp){
 };
 
 exports.ne_t = ne_t;
+/* js/src/convert */
+/* js/src/convert/convert.js */
+
+
+var bconvert_t = function(ar, br, bjoin_t, bsplit_t) {
+
+	var f, t, z;
+
+	f = ar;
+	t = br;
+	z = 0;
+
+	if (br <= ar) {
+
+		while (f >= t) {
+			if (f % t) break;
+			f /= t;
+			++z;
+		}
+
+		if (f === 1) {
+			return bsplit_t(br, z);
+		}
+
+		else {
+			// TODO
+			throw 'f >= t + log(t) does not divide log(f) not implemented';
+		}
+	}
+
+	else {
+
+		while (t >= f) {
+			if (t % f) break;
+			t /= f;
+			++z;
+		}
+
+		if (t === 1) {
+			return bjoin_t(ar, z);
+		}
+
+		else {
+			// TODO
+			throw 't > f + log(f) does not divide log(t) not implemented';
+		}
+	}
+}
+
+exports.bconvert_t = bconvert_t;
+/* js/src/convert/join.js */
+
+
+
+var bjoin_t = function(ar, z) {
+
+	var join = function(a, ai, aj, b, bi, bj) {
+
+		var m, n, q, r, i, w, t;
+
+		m = aj - ai;
+		n = bj - bi;
+
+		// number of parts of first
+		// destination block if incomplete
+		r = m % z;
+
+		// number of complete blocks in destination
+		q = (m - r) / z;
+
+		// total number of blocks in destination
+		// (complete ones + first if incomplete)
+		w = q + !!r;
+
+
+		if (n >= w) {
+			// if destination can contain more than
+			// what is available in source then
+			// compute the effective write start
+			// in destination and set i to the correct
+			// offset according to the size
+			// (in source blocks) of the
+			// first destination block if incomplete
+			bi = bj - w;
+			i = (z - r) % z;
+		}
+		else {
+			// if source contains more than what
+			// destination can handle set the effective
+			// read start in source and set i to 0 because
+			// all blocks will be complete
+			ai = aj - n * z;
+			i = 0;
+		}
+
+		for (; ai < aj && bi < bj; ++bi) {
+			t = 0;
+			for (; i < z; ++i) {
+				t *= ar;     // aggregate source blocks
+				t += a[ai];  // using simple
+				++ai;        // multiply + add
+			}
+			b[bi] = t;  // set block in destination
+			i = 0;
+		}
+
+	};
+
+	return join;
+
+};
+
+exports.bjoin_t = bjoin_t;
+/* js/src/convert/split.js */
+
+
+
+var bsplit_t = function(br, z) {
+
+	var split = function(a, ai, aj, b, bi, bj) {
+
+		var m, n, q, r, i, w, t;
+
+		m = bj - bi;
+		n = aj - ai;
+
+		// number of parts of first
+		// destination block if incomplete
+		r = m % z;
+
+		// number of complete blocks in destination
+		q = (m - r) / z;
+
+		// total number of blocks in destination
+		// (complete ones + first if incomplete)
+		w = q + !!r;
+
+
+		if (n >= w) {
+			// if source contains more than what
+			// destination can handle set the effective
+			// read start in source and set i to the correct
+			// offset according to the size
+			// (in destination blocks) of the
+			// first source block if incomplete
+			ai = aj - w;
+			i = (z - r) % z;
+		}
+		else {
+			// if destination can contain more than
+			// what is available in source then
+			// compute the effective write start
+			// in destination and set i to 0 because
+			// all blocks will be complete
+			bi = bj - n * z;
+			i = 0;
+		}
+
+		for (; ai < aj && bi < bj; ++ai) {
+			q = a[ai];
+			t = bi + z - 1 - i;
+			bi += z - i;
+			for (; i < z; ++i) {
+				r = q % br;        // unpack source blocks
+				q = (q - r) / br;  // using simple
+				b[t] = r;          // modulo + quotient
+				--t;
+			}
+			i = 0;
+		}
+
+	};
+
+	return split;
+
+};
+
+exports.bsplit_t = bsplit_t;
 /* js/src/div */
 /* js/src/div/div.js */
 

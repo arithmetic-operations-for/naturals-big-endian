@@ -3,6 +3,8 @@ var algo = require('algo');
 
 test('alu.parse', function(assert){
 
+	console.log('alu.parse');
+
 	var a, s;
 
 	var fparse8_2  = alu.parse_t(Math.pow(2, 8), 2, algo.biter);
