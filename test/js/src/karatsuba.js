@@ -2,6 +2,7 @@ var algo = require('algo');
 
 
 test('alu.bkaratsuba 16 big endian', function(assert){
+	console.log('alu.bkaratsuba 16 big endian');
 
 	var ia2a = function(a) {
 		var o = [];
@@ -53,6 +54,7 @@ test('alu.bkaratsuba 16 big endian', function(assert){
 
 
 test('alu.bkaratsuba 8 big endian', function(assert){
+	console.log('alu.bkaratsuba 8 big endian');
 
 	var ia2a = function(a) {
 		var o = [];
@@ -156,6 +158,7 @@ test('alu.bkaratsuba 8 big endian', function(assert){
 });
 
 test('alu.bkaratsuba 8 big endian bound checks', function(assert){
+	console.log('alu.bkaratsuba 8 big endian bound checks');
 
 	var ia2a = function(a) {
 		var o = [];
