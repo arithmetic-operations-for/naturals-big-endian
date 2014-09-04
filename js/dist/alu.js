@@ -358,6 +358,81 @@ var ne_t = function(cmp){
 
 exports.ne_t = ne_t;
 /* js/src/convert */
+/* js/src/convert/basechange.js */
+
+
+var bbasechange_t = function(ar, br, calloc, mov){
+
+	var basechange = function(a, ai, aj, b, bi, bj){
+
+		var m, n, d, q, z, r, ri, f, t, tmp, w;
+
+		f = ar;
+		t = br;
+
+		if (f > t) {
+			d = calloc(1);
+			d[0] = br;
+			z = 1;
+		}
+		else {
+			z = 0;
+
+			while (t > 1) {
+				t /= f;
+				++z;
+			}
+
+			z += (t === 1);
+
+			d = calloc(z);
+
+			t = br;
+
+			w = z;
+
+			while (t > 0) {
+				tmp = t % f;
+				d[--w] = tmp;
+				t = (t - tmp) / f;
+			}
+		}
+
+		m = aj - ai;
+		n = bj - bi;
+
+		q = calloc(m);
+		r = calloc(m);
+		mov(a, ai, aj, r, 0);
+
+
+		ri = 0;
+		--bj;
+
+		while (!lt(r, 0, m, d, 0, z)) {
+			div(r, 0, m, d, 0, z, q, 0);
+			for (w = 1; w <= z; ++w) {
+				b[bj] *= ar;
+				b[bj] += r[m - w];
+			}
+			mov(q, 0, m, r, 0);
+			--bj;
+		}
+
+		for (w = 1; w <= z; ++w) {
+			b[bj] *= ar;
+			b[bj] += r[m - w];
+		}
+
+
+	};
+
+	return basechange;
+
+};
+
+
+exports.bbasechange_t = bbasechange_t;
 /* js/src/convert/convert.js */
 
 
@@ -540,7 +615,7 @@ exports.bsplit_t = bsplit_t;
 
 
 
-var bdiv_t = function(mov, lt, sub){
+var bdiv_t = function(lt, sub){
 
 	/**
 	 * Computes quotient and remainder of two big endian arrays.
@@ -549,30 +624,34 @@ var bdiv_t = function(mov, lt, sub){
 	 * using long division algorithm (the one teached in
 	 * european primary schools).
 	 *
-	 * @param {array} a dividend
-	 * @param {int} ai a left
-	 * @param {int} aj a right
+	 * /!\ This algorithm modifies its first operand.
+	 *
+	 * HYP : q is at least as large as r
+	 *       b is not zero
+	 *
+	 * @param {array} r dividend and remainder
+	 * @param {int} ri r left
+	 * @param {int} rj r right
 	 * @param {array} b divisor
 	 * @param {int} bi b left
 	 * @param {int} bj b right
 	 * @param {array} q quotient, must be 0 initialized
 	 * @param {int} qi q left
-	 * @param {int} qj q right
-	 * @param {array} r remainder
-	 * @param {int} ri r left
-	 * @param {int} rj r right
 	 */
 
-	var div = function(a, ai, aj, b, bi, bj, q, qi, qj, r, ri, rj){
-		var k, t = ri + 1;
+	// /!\ There are implicit hypotheses
+	//     made on the size of the operands.
+	//     Should clarify.
 
-		// copy dividend in remainder
-		mov(a, ai, aj, r, ri);
+	var div = function(r, ri, rj, b, bi, bj, q, qi){
+		var k, t = ri + 1;
 
 		do {
 
 			// trim leading zeros
 			//     - maybe could try to put this procedure inside the sub loop
+			//     - or assume that the number is trimed at the begining
+			//       and put this statement at the end of the main loop
 			while (ri < rj && r[ri] === 0) ++ri;
 
 			// search for a remainder block interval
@@ -599,7 +678,7 @@ var bdiv_t = function(mov, lt, sub){
 			} while(!lt(r, ri, k, b, bi, bj));
 
 
-		} while(k <= rj);
+		} while(true);
 
 	};
 
@@ -1073,36 +1152,36 @@ var bsub_t = function(r){
 	 * wraps
 	 *
 	 * @param {array} a first operand
-	 * @param {int} i0 a left
-	 * @param {int} i1 a right
+	 * @param {int} ai a left
+	 * @param {int} aj a right
 	 * @param {array} b second operand
-	 * @param {int} j0 b left
-	 * @param {int} j1 b right
+	 * @param {int} bi b left
+	 * @param {int} bj b right
 	 * @param {array} c result, must be 0 initialized
-	 * @param {int} k0 c left
-	 * @param {int} k1 c right
+	 * @param {int} ci c left
+	 * @param {int} cj c right
 	 */
 
-	return function(a, i0, i1, b, j0, j1, c, k0, k1){
+	return function(a, ai, aj, b, bi, bj, c, ci, cj){
 		var T, C = 0;
 
-		while(--j1 >= j0){
-			--i1; --k1;
+		while(--bj >= bi){
+			--aj; --cj;
 			T = C;
-			C = a[i1] < b[j1] + T;
-			c[k1] = a[i1] - b[j1] + (C*r - T);
+			C = a[aj] < b[bj] + T;
+			c[cj] = a[aj] - b[bj] + (C*r - T);
 		}
 
-		while(--i1 >= i0){
-			--k1;
+		while(--aj >= ai){
+			--cj;
 			T = C;
-			C = a[i1] < T;
-			c[k1] = a[i1] + (C*r - T);
+			C = a[aj] < T;
+			c[cj] = a[aj] + (C*r - T);
 		}
 
 		if(C){
-			while(--k1 >= k0){
-				c[k1] = r - 1;
+			while(--cj >= ci){
+				c[cj] = r - 1;
 			}
 		}
 
@@ -1120,37 +1199,37 @@ var lsub_t = function(r){
 	 * wraps
 	 *
 	 * @param {array} a first operand
-	 * @param {int} i0 a left
-	 * @param {int} i1 a right
+	 * @param {int} ai a left
+	 * @param {int} aj a right
 	 * @param {array} b second operand
-	 * @param {int} j0 b left
-	 * @param {int} j1 b right
+	 * @param {int} bi b left
+	 * @param {int} bj b right
 	 * @param {array} c result, must be 0 initialized
-	 * @param {int} k0 c left
-	 * @param {int} k1 c right
+	 * @param {int} ci c left
+	 * @param {int} cj c right
 	 */
 
-	return function(a, i0, i1, b, j0, j1, c, k0, k1){
+	return function(a, ai, aj, b, bi, bj, c, ci, cj){
 		var T, C = 0;
 
-		while(j0 < j1){
+		while(bi < bj){
 			T = C;
-			C = a[i0] < b[j0] + T;
-			c[k0] = a[i0] - b[j0] + (C*r - T);
-			++i0; ++j0; ++k0;
+			C = a[ai] < b[bi] + T;
+			c[ci] = a[ai] - b[bi] + (C*r - T);
+			++ai; ++bi; ++ci;
 		}
 
-		while(i0 < i1){
+		while(ai < aj){
 			T = C;
-			C = a[i0] < T;
-			c[k0] = a[i0] + (C*r - T);
-			++i0; ++k0;
+			C = a[ai] < T;
+			c[ci] = a[ai] + (C*r - T);
+			++ai; ++ci;
 		}
 
 		if(C){
-			while(k0 < k1){
-				c[k0] = r - 1;
-				++k0;
+			while(ci < cj){
+				c[ci] = r - 1;
+				++ci;
 			}
 		}
 
@@ -1162,7 +1241,7 @@ exports.bsub_t = bsub_t;
 exports.lsub_t = lsub_t;
 
 /* js/src/wrap */
-/* js/src/wrap/wrap.js */
+/* js/src/wrap/wrapbin.js */
 /**
  * Wrapper for binary operator.
  * Ensures
@@ -1194,6 +1273,32 @@ var wrapbin = function(fn){
 	};
 };
 
+exports.wrapbin = wrapbin;
+
+/* js/src/wrap/wrapcmp.js */
+
+
+
+var wrapcmp = function(cmp) {
+
+
+	return function(a, ai, aj, b, bi, bj){
+
+		if (aj - ai + bi - bj < 0) {
+			return - cmp(b, bi, bj, a, ai, aj);
+		}
+		else {
+			return cmp(a, ai, aj, b, bi, bj);
+		}
+
+	};
+
+};
+
+exports.wrapcmp = wrapcmp;
+/* js/src/wrap/wrapmov.js */
+
+
 var wrapmov = function(fn){
 	return function(a, i, j, b, k){
 
@@ -1210,10 +1315,7 @@ var wrapmov = function(fn){
 	};
 };
 
-
-exports.wrapbin = wrapbin;
 exports.wrapmov = wrapmov;
-
 /* js/src/xor */
 /* js/src/xor/xor.js */
 /**

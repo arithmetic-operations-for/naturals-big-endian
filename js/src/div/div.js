@@ -1,7 +1,7 @@
 
 
 
-var bdiv_t = function(mov, lt, sub){
+var bdiv_t = function(lt, sub){
 
 	/**
 	 * Computes quotient and remainder of two big endian arrays.
@@ -10,30 +10,34 @@ var bdiv_t = function(mov, lt, sub){
 	 * using long division algorithm (the one teached in
 	 * european primary schools).
 	 *
-	 * @param {array} a dividend
-	 * @param {int} ai a left
-	 * @param {int} aj a right
+	 * /!\ This algorithm modifies its first operand.
+	 *
+	 * HYP : q is at least as large as r
+	 *       b is not zero
+	 *
+	 * @param {array} r dividend and remainder
+	 * @param {int} ri r left
+	 * @param {int} rj r right
 	 * @param {array} b divisor
 	 * @param {int} bi b left
 	 * @param {int} bj b right
 	 * @param {array} q quotient, must be 0 initialized
 	 * @param {int} qi q left
-	 * @param {int} qj q right
-	 * @param {array} r remainder
-	 * @param {int} ri r left
-	 * @param {int} rj r right
 	 */
 
-	var div = function(a, ai, aj, b, bi, bj, q, qi, qj, r, ri, rj){
-		var k, t = ri + 1;
+	// /!\ There are implicit hypotheses
+	//     made on the size of the operands.
+	//     Should clarify.
 
-		// copy dividend in remainder
-		mov(a, ai, aj, r, ri);
+	var div = function(r, ri, rj, b, bi, bj, q, qi){
+		var k, t = ri + 1;
 
 		do {
 
 			// trim leading zeros
 			//     - maybe could try to put this procedure inside the sub loop
+			//     - or assume that the number is trimed at the begining
+			//       and put this statement at the end of the main loop
 			while (ri < rj && r[ri] === 0) ++ri;
 
 			// search for a remainder block interval
@@ -60,7 +64,7 @@ var bdiv_t = function(mov, lt, sub){
 			} while(!lt(r, ri, k, b, bi, bj));
 
 
-		} while(k <= rj);
+		} while(true);
 
 	};
 

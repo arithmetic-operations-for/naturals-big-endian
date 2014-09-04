@@ -11,36 +11,36 @@ var bsub_t = function(r){
 	 * wraps
 	 *
 	 * @param {array} a first operand
-	 * @param {int} i0 a left
-	 * @param {int} i1 a right
+	 * @param {int} ai a left
+	 * @param {int} aj a right
 	 * @param {array} b second operand
-	 * @param {int} j0 b left
-	 * @param {int} j1 b right
+	 * @param {int} bi b left
+	 * @param {int} bj b right
 	 * @param {array} c result, must be 0 initialized
-	 * @param {int} k0 c left
-	 * @param {int} k1 c right
+	 * @param {int} ci c left
+	 * @param {int} cj c right
 	 */
 
-	return function(a, i0, i1, b, j0, j1, c, k0, k1){
+	return function(a, ai, aj, b, bi, bj, c, ci, cj){
 		var T, C = 0;
 
-		while(--j1 >= j0){
-			--i1; --k1;
+		while(--bj >= bi){
+			--aj; --cj;
 			T = C;
-			C = a[i1] < b[j1] + T;
-			c[k1] = a[i1] - b[j1] + (C*r - T);
+			C = a[aj] < b[bj] + T;
+			c[cj] = a[aj] - b[bj] + (C*r - T);
 		}
 
-		while(--i1 >= i0){
-			--k1;
+		while(--aj >= ai){
+			--cj;
 			T = C;
-			C = a[i1] < T;
-			c[k1] = a[i1] + (C*r - T);
+			C = a[aj] < T;
+			c[cj] = a[aj] + (C*r - T);
 		}
 
 		if(C){
-			while(--k1 >= k0){
-				c[k1] = r - 1;
+			while(--cj >= ci){
+				c[cj] = r - 1;
 			}
 		}
 
@@ -58,37 +58,37 @@ var lsub_t = function(r){
 	 * wraps
 	 *
 	 * @param {array} a first operand
-	 * @param {int} i0 a left
-	 * @param {int} i1 a right
+	 * @param {int} ai a left
+	 * @param {int} aj a right
 	 * @param {array} b second operand
-	 * @param {int} j0 b left
-	 * @param {int} j1 b right
+	 * @param {int} bi b left
+	 * @param {int} bj b right
 	 * @param {array} c result, must be 0 initialized
-	 * @param {int} k0 c left
-	 * @param {int} k1 c right
+	 * @param {int} ci c left
+	 * @param {int} cj c right
 	 */
 
-	return function(a, i0, i1, b, j0, j1, c, k0, k1){
+	return function(a, ai, aj, b, bi, bj, c, ci, cj){
 		var T, C = 0;
 
-		while(j0 < j1){
+		while(bi < bj){
 			T = C;
-			C = a[i0] < b[j0] + T;
-			c[k0] = a[i0] - b[j0] + (C*r - T);
-			++i0; ++j0; ++k0;
+			C = a[ai] < b[bi] + T;
+			c[ci] = a[ai] - b[bi] + (C*r - T);
+			++ai; ++bi; ++ci;
 		}
 
-		while(i0 < i1){
+		while(ai < aj){
 			T = C;
-			C = a[i0] < T;
-			c[k0] = a[i0] + (C*r - T);
-			++i0; ++k0;
+			C = a[ai] < T;
+			c[ci] = a[ai] + (C*r - T);
+			++ai; ++ci;
 		}
 
 		if(C){
-			while(k0 < k1){
-				c[k0] = r - 1;
-				++k0;
+			while(ci < cj){
+				c[ci] = r - 1;
+				++ci;
 			}
 		}
 
