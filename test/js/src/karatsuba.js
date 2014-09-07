@@ -16,7 +16,7 @@ test('alu.bkaratsuba 16 big endian', function(assert){
 	var r = Math.pow(2, 16);
 	var add = alu.badd_t(r);
 	var sub = alu.bsub_t(r);
-	var calloc = function(n){ return Uint16Array(n); };
+	var calloc = function(n){ return new Uint16Array(n); };
 	var mov = algo.copy;
 	var fill = algo.fill;
 
@@ -68,7 +68,7 @@ test('alu.bkaratsuba 8 big endian', function(assert){
 	var r = Math.pow(2, 8);
 	var add = alu.badd_t(r);
 	var sub = alu.bsub_t(r);
-	var calloc = function(n){ return Uint8Array(n); };
+	var calloc = function(n){ return new Uint8Array(n); };
 	var mov = algo.copy;
 	var fill = algo.fill;
 
@@ -179,7 +179,7 @@ test('alu.bkaratsuba 8 big endian bound checks', function(assert){
 	var r = Math.pow(2, 8);
 	var add = alu.wrapbin(alu.badd_t(r));
 	var sub = alu.wrapbin(alu.bsub_t(r));
-	var calloc = function(n){ return Uint8Array(n); };
+	var calloc = function(n){ return new Uint8Array(n); };
 	var mov = alu.wrapmov(algo.copy);
 	var fill = algo.fill;
 
