@@ -48,6 +48,12 @@
  * (a1 - a0)(b1 - b0) = (a1 b1 + a0 b0) - (a1 b0 + a0 b1)
  * (a0 - a1)(b1 - b0) = (a1 b0 + a0 b1) - (a1 b1 + a0 b0)
  * a b = (r^{2n} + r^{n})a1 b1 + r^{n}(a0 - a1)(b1 - b0) + (r^{n} + 1)a0 b0
+ *
+ * This algorithm is a generalization of the Toom-Cook algorithm, when m = n = 2.
+ *
+ * For further reference, see
+ *  - http://en.wikipedia.org/wiki/Karatsuba_algorithm
+ *  - http://en.wikipedia.org/wiki/Toom–Cook_multiplication
  */
 
 var bkaratsuba_t = function(add, sub, mul, calloc, mov, r, wrap){
