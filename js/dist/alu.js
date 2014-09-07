@@ -695,6 +695,10 @@ exports.bdiv_t = bdiv_t;
 
 // http://en.wikipedia.org/wiki/Fourier_division
 
+/* js/src/div/knuthd.js */
+
+// http://books.google.be/books?id=VicPJYM0I5QC&pg=PA184&lpg=PA184&dq=knuth+algorithm+d&source=bl&ots=2n-NJWuw1o&sig=47hDkFG780BqE2mmi9OMPqbK4Fs&hl=en&sa=X&ei=_ioMVKbKFMawOZT_gaAH&ved=0CDkQ6AEwAw#v=onepage&q=knuth%20algorithm%20d&f=false
+
 /* js/src/gcd */
 /* js/src/gcd/gcd.js */
 /**
