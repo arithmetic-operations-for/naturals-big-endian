@@ -1343,4 +1343,4 @@ exports.wrapmov = wrapmov;
 /**
  * BINARY xor APPLIED ON a AND b
  */
-})(typeof exports === 'undefined' ? this['alu'] = {} : exports);
+})(typeof exports === 'undefined' ? this['integer'] = {} : exports);

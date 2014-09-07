@@ -1,6 +1,6 @@
 
 
-var algo = require("algo");
+var algo = require("aureooms-js-algo");
 var util = require("util");
 var fmt = util.format;
 var randint = algo.randint;
@@ -87,10 +87,10 @@ var runtest = function(name, n, mul53_t, hb, lb, r, calloc){
 var n = 10;
 var R = function(range){ return 2 + randint(0, range - 2)};
 var Rlen = 5;
-var MUL53 = [alu.lmul53_t, alu.bmul53_t];
+var MUL53 = [integer.lmul53_t, integer.bmul53_t];
 var HB = [1, 0];
 var LB = [0, 1];
-var NAME = ["alu.lmul53_t", "alu.bmul53_t"];
+var NAME = ["integer.lmul53_t", "integer.bmul53_t"];
 var ALLOC = [
 	function(n){ return new Uint16Array(n); }
 ];

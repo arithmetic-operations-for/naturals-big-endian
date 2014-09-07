@@ -1,9 +1,9 @@
-var algo = require('algo');
+var algo = require('aureooms-js-algo');
 
 
-test('alu.stringify', function(assert){
+test('integer.stringify', function(assert){
 
-	console.log('alu.stringify');
+	console.log('integer.stringify');
 
 	var zfill_t = function(n){
 		return algo.zfill_t(n, function(c, n){
@@ -11,37 +11,37 @@ test('alu.stringify', function(assert){
 		});
 	};
 
-	var fstringify8_2  = alu.stringify_t(Math.pow(2, 8), 2, algo.fiter, zfill_t);
-	var fstringify8_4  = alu.stringify_t(Math.pow(2, 8), 4, algo.fiter, zfill_t);
-	var fstringify8_16 = alu.stringify_t(Math.pow(2, 8), 16, algo.fiter, zfill_t);
+	var fstringify8_2  = integer.stringify_t(Math.pow(2, 8), 2, algo.fiter, zfill_t);
+	var fstringify8_4  = integer.stringify_t(Math.pow(2, 8), 4, algo.fiter, zfill_t);
+	var fstringify8_16 = integer.stringify_t(Math.pow(2, 8), 16, algo.fiter, zfill_t);
 
-	var fstringify16_2  = alu.stringify_t(Math.pow(2, 16), 2, algo.fiter, zfill_t);
-	var fstringify16_4  = alu.stringify_t(Math.pow(2, 16), 4, algo.fiter, zfill_t);
-	var fstringify16_16 = alu.stringify_t(Math.pow(2, 16), 16, algo.fiter, zfill_t);
+	var fstringify16_2  = integer.stringify_t(Math.pow(2, 16), 2, algo.fiter, zfill_t);
+	var fstringify16_4  = integer.stringify_t(Math.pow(2, 16), 4, algo.fiter, zfill_t);
+	var fstringify16_16 = integer.stringify_t(Math.pow(2, 16), 16, algo.fiter, zfill_t);
 
-	var fstringify32_2  = alu.stringify_t(Math.pow(2, 32), 2, algo.fiter, zfill_t);
-	var fstringify32_4  = alu.stringify_t(Math.pow(2, 32), 4, algo.fiter, zfill_t);
-	var fstringify32_16 = alu.stringify_t(Math.pow(2, 32), 16, algo.fiter, zfill_t);
+	var fstringify32_2  = integer.stringify_t(Math.pow(2, 32), 2, algo.fiter, zfill_t);
+	var fstringify32_4  = integer.stringify_t(Math.pow(2, 32), 4, algo.fiter, zfill_t);
+	var fstringify32_16 = integer.stringify_t(Math.pow(2, 32), 16, algo.fiter, zfill_t);
 
-	var fstringify10   = alu.stringify_t(10, 10, algo.fiter, zfill_t);
-	var fstringify100  = alu.stringify_t(100, 10, algo.fiter, zfill_t);
-	var fstringify1000 = alu.stringify_t(1000, 10, algo.fiter, zfill_t);
+	var fstringify10   = integer.stringify_t(10, 10, algo.fiter, zfill_t);
+	var fstringify100  = integer.stringify_t(100, 10, algo.fiter, zfill_t);
+	var fstringify1000 = integer.stringify_t(1000, 10, algo.fiter, zfill_t);
 
-	var bstringify8_2  = alu.stringify_t(Math.pow(2, 8), 2, algo.biter, zfill_t);
-	var bstringify8_4  = alu.stringify_t(Math.pow(2, 8), 4, algo.biter, zfill_t);
-	var bstringify8_16 = alu.stringify_t(Math.pow(2, 8), 16, algo.biter, zfill_t);
+	var bstringify8_2  = integer.stringify_t(Math.pow(2, 8), 2, algo.biter, zfill_t);
+	var bstringify8_4  = integer.stringify_t(Math.pow(2, 8), 4, algo.biter, zfill_t);
+	var bstringify8_16 = integer.stringify_t(Math.pow(2, 8), 16, algo.biter, zfill_t);
 
-	var bstringify16_2  = alu.stringify_t(Math.pow(2, 16), 2, algo.biter, zfill_t);
-	var bstringify16_4  = alu.stringify_t(Math.pow(2, 16), 4, algo.biter, zfill_t);
-	var bstringify16_16 = alu.stringify_t(Math.pow(2, 16), 16, algo.biter, zfill_t);
+	var bstringify16_2  = integer.stringify_t(Math.pow(2, 16), 2, algo.biter, zfill_t);
+	var bstringify16_4  = integer.stringify_t(Math.pow(2, 16), 4, algo.biter, zfill_t);
+	var bstringify16_16 = integer.stringify_t(Math.pow(2, 16), 16, algo.biter, zfill_t);
 
-	var bstringify32_2  = alu.stringify_t(Math.pow(2, 32), 2, algo.biter, zfill_t);
-	var bstringify32_4  = alu.stringify_t(Math.pow(2, 32), 4, algo.biter, zfill_t);
-	var bstringify32_16 = alu.stringify_t(Math.pow(2, 32), 16, algo.biter, zfill_t);
+	var bstringify32_2  = integer.stringify_t(Math.pow(2, 32), 2, algo.biter, zfill_t);
+	var bstringify32_4  = integer.stringify_t(Math.pow(2, 32), 4, algo.biter, zfill_t);
+	var bstringify32_16 = integer.stringify_t(Math.pow(2, 32), 16, algo.biter, zfill_t);
 
-	var bstringify10   = alu.stringify_t(10, 10, algo.biter, zfill_t);
-	var bstringify100  = alu.stringify_t(100, 10, algo.biter, zfill_t);
-	var bstringify1000 = alu.stringify_t(1000, 10, algo.biter, zfill_t);
+	var bstringify10   = integer.stringify_t(10, 10, algo.biter, zfill_t);
+	var bstringify100  = integer.stringify_t(100, 10, algo.biter, zfill_t);
+	var bstringify1000 = integer.stringify_t(1000, 10, algo.biter, zfill_t);
 
 
 
@@ -83,19 +83,19 @@ test('alu.stringify', function(assert){
 	deepEqual(bstringify1000(['320', '20', '21'], 0, 3), '021020320', '1000');
 
 	throws(function(){
-		alu.stringify_t(Math.pow(2, 32), 8, algo.biter, zfill_t);
+		integer.stringify_t(Math.pow(2, 32), 8, algo.biter, zfill_t);
 	}, /not implemented/, 'log(t) does not divide log(f)');
 
 	throws(function(){
-		alu.stringify_t(36, 4, algo.biter, zfill_t);
+		integer.stringify_t(36, 4, algo.biter, zfill_t);
 	}, /not implemented/, 'log(t) does not divide log(f)');
 
 	throws(function(){
-		alu.stringify_t(12, 14, algo.biter, zfill_t);
+		integer.stringify_t(12, 14, algo.biter, zfill_t);
 	}, /not implemented/, 't > f');
 
 	throws(function(){
-		alu.stringify_t(37*37, 37, algo.biter, zfill_t);
+		integer.stringify_t(37*37, 37, algo.biter, zfill_t);
 	}, /not implemented/, 't > 36');
 
 });

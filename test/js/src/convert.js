@@ -2,32 +2,32 @@
 
 
 
-test("alu.bconvert_t", function(){
+test("integer.bconvert_t", function(){
 
-	console.log("alu.bconvert_t");
+	console.log("integer.bconvert_t");
 
 	var bjoin, bsplit, bjoin_t, bsplit_t;
 
-	bjoin_t = alu.bjoin_t;
-	bsplit_t = alu.bsplit_t;
+	bjoin_t = integer.bjoin_t;
+	bsplit_t = integer.bsplit_t;
 
-	bjoin = alu.bconvert_t(10, 1000, bjoin_t, bsplit_t);
-	bsplit = alu.bconvert_t(1000, 10, bjoin_t, bsplit_t);
+	bjoin = integer.bconvert_t(10, 1000, bjoin_t, bsplit_t);
+	bsplit = integer.bconvert_t(1000, 10, bjoin_t, bsplit_t);
 
 	throws(function(){
-		alu.bconvert_t(222, 100, bjoin_t, bsplit_t);
+		integer.bconvert_t(222, 100, bjoin_t, bsplit_t);
 	}, /not implemented/, "f >= t + log(t) does not divide log(f)");
 
 	throws(function(){
-		alu.bconvert_t(100, 222, bjoin_t, bsplit_t);
+		integer.bconvert_t(100, 222, bjoin_t, bsplit_t);
 	}, /not implemented/, "t > f + log(f) does not divide log(t)");
 
 	throws(function(){
-		alu.bconvert_t(1000, 100, bjoin_t, bsplit_t);
+		integer.bconvert_t(1000, 100, bjoin_t, bsplit_t);
 	}, /not implemented/, "f >= t + log(t) does not divide log(f)");
 
 	throws(function(){
-		alu.bconvert_t(100, 1000, bjoin_t, bsplit_t);
+		integer.bconvert_t(100, 1000, bjoin_t, bsplit_t);
 	}, /not implemented/, "t > f + log(f) does not divide log(t)");
 
 	var a, b, c;

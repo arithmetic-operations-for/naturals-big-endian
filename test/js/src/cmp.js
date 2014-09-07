@@ -6,14 +6,14 @@ var fmt = util.format;
 
 
 var check = function(Ctor, cmp, iter, transform){
-	var name = fmt("alu.cmp<%s, %s, %s>", Ctor.name, cmp[0], iter[0]);
+	var name = fmt("integer.cmp<%s, %s, %s>", Ctor.name, cmp[0], iter[0]);
 
 	cmp = cmp[1];
 	iter = iter[1];
 
 	var f = 16;
 	var r = Math.pow(2, Ctor.BYTES_PER_ELEMENT * 8);
-	var parse = alu.parse_t(r, f, iter);
+	var parse = integer.parse_t(r, f, iter);
 
 	console.log(name);
 	test(name, function(){
@@ -139,7 +139,7 @@ var TEST = [
 ];
 
 
-var algo = require('algo');
+var algo = require('aureooms-js-algo');
 
 var TRAITS = [
 	Uint8Array,
@@ -148,25 +148,25 @@ var TRAITS = [
 ];
 
 
-var bcmp = alu.bcmp_t();
-var lcmp = alu.lcmp_t();
+var bcmp = integer.bcmp_t();
+var lcmp = integer.lcmp_t();
 var dummy = function(x){ return x; };
 
 var ENDIANESS = [
-	[['alu.bcmp_t', bcmp], ['algo.biter', algo.biter], dummy],
-	[['alu.lcmp_t', lcmp], ['algo.fiter', algo.fiter], dummy],
-	[['alu.eq<bcmp_t>', alu.eq_t(bcmp)], ['algo.biter', algo.biter], algo.eq],
-	[['alu.eq<lcmp_t>', alu.eq_t(lcmp)], ['algo.fiter', algo.fiter], algo.eq],
-	[['alu.ge<bcmp_t>', alu.ge_t(bcmp)], ['algo.biter', algo.biter], algo.ge],
-	[['alu.ge<lcmp_t>', alu.ge_t(lcmp)], ['algo.fiter', algo.fiter], algo.ge],
-	[['alu.gt<bcmp_t>', alu.gt_t(bcmp)], ['algo.biter', algo.biter], algo.gt],
-	[['alu.gt<lcmp_t>', alu.gt_t(lcmp)], ['algo.fiter', algo.fiter], algo.gt],
-	[['alu.le<bcmp_t>', alu.le_t(bcmp)], ['algo.biter', algo.biter], algo.le],
-	[['alu.le<lcmp_t>', alu.le_t(lcmp)], ['algo.fiter', algo.fiter], algo.le],
-	[['alu.lt<bcmp_t>', alu.lt_t(bcmp)], ['algo.biter', algo.biter], algo.lt],
-	[['alu.lt<lcmp_t>', alu.lt_t(lcmp)], ['algo.fiter', algo.fiter], algo.lt],
-	[['alu.ne<bcmp_t>', alu.ne_t(bcmp)], ['algo.biter', algo.biter], algo.ne],
-	[['alu.ne<lcmp_t>', alu.ne_t(lcmp)], ['algo.fiter', algo.fiter], algo.ne],
+	[['integer.bcmp_t', bcmp], ['algo.biter', algo.biter], dummy],
+	[['integer.lcmp_t', lcmp], ['algo.fiter', algo.fiter], dummy],
+	[['integer.eq<bcmp_t>', integer.eq_t(bcmp)], ['algo.biter', algo.biter], algo.eq],
+	[['integer.eq<lcmp_t>', integer.eq_t(lcmp)], ['algo.fiter', algo.fiter], algo.eq],
+	[['integer.ge<bcmp_t>', integer.ge_t(bcmp)], ['algo.biter', algo.biter], algo.ge],
+	[['integer.ge<lcmp_t>', integer.ge_t(lcmp)], ['algo.fiter', algo.fiter], algo.ge],
+	[['integer.gt<bcmp_t>', integer.gt_t(bcmp)], ['algo.biter', algo.biter], algo.gt],
+	[['integer.gt<lcmp_t>', integer.gt_t(lcmp)], ['algo.fiter', algo.fiter], algo.gt],
+	[['integer.le<bcmp_t>', integer.le_t(bcmp)], ['algo.biter', algo.biter], algo.le],
+	[['integer.le<lcmp_t>', integer.le_t(lcmp)], ['algo.fiter', algo.fiter], algo.le],
+	[['integer.lt<bcmp_t>', integer.lt_t(bcmp)], ['algo.biter', algo.biter], algo.lt],
+	[['integer.lt<lcmp_t>', integer.lt_t(lcmp)], ['algo.fiter', algo.fiter], algo.lt],
+	[['integer.ne<bcmp_t>', integer.ne_t(bcmp)], ['algo.biter', algo.biter], algo.ne],
+	[['integer.ne<lcmp_t>', integer.ne_t(lcmp)], ['algo.fiter', algo.fiter], algo.ne],
 ];
 
 for (var j = 0; j < ENDIANESS.length; ++j)

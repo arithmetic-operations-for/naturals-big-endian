@@ -1,8 +1,8 @@
-var algo = require('algo');
+var algo = require('aureooms-js-algo');
 
 
-test('alu.bmul 16 big endian', function(assert){
-	console.log('alu.bmul 16 big endian');
+test('integer.bmul 16 big endian', function(assert){
+	console.log('integer.bmul 16 big endian');
 
 	var ia2a = function(a) {
 		var o = [];
@@ -18,7 +18,7 @@ test('alu.bmul 16 big endian', function(assert){
 	var fill = algo.fill;
 
 	var mov = algo.copy;
-	var bmul = alu.bmul_t(r);
+	var bmul = integer.bmul_t(r);
 
 	var a = new num(4), b = new num(4), c = new num(8);
 
@@ -49,8 +49,8 @@ test('alu.bmul 16 big endian', function(assert){
 });
 
 
-test('alu.bmul 8 big endian', function(assert){
-	console.log('alu.bmul 8 big endian');
+test('integer.bmul 8 big endian', function(assert){
+	console.log('integer.bmul 8 big endian');
 
 	var ia2a = function(a) {
 		var o = [];
@@ -67,7 +67,7 @@ test('alu.bmul 8 big endian', function(assert){
 
 
 	var mov = algo.copy;
-	var bmul = alu.bmul_t(r);
+	var bmul = integer.bmul_t(r);
 
 	var a = new num(4), b = new num(4), c = new num(8);
 
@@ -151,8 +151,8 @@ test('alu.bmul 8 big endian', function(assert){
 
 });
 
-test('alu.bmul 8 big endian bound checks', function(assert){
-	console.log('alu.bmul 8 big endian bound checks');
+test('integer.bmul 8 big endian bound checks', function(assert){
+	console.log('integer.bmul 8 big endian bound checks');
 
 	var ia2a = function(a) {
 		var o = [];
@@ -174,8 +174,8 @@ test('alu.bmul 8 big endian bound checks', function(assert){
 	var num = Uint8Array;
 	var fill = algo.fill;
 
-	var mov = alu.wrapmov(algo.copy);
-	var bmul = alu.wrapbin(alu.bmul_t(r));
+	var mov = integer.wrapmov(algo.copy);
+	var bmul = integer.wrapbin(integer.bmul_t(r));
 
 	var a = new num(4), b = new num(4), c = new num(8);
 

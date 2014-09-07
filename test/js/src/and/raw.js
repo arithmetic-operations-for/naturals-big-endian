@@ -1,4 +1,4 @@
-var algo = require('algo');
+var algo = require('aureooms-js-algo');
 var util = require('util');
 
 var fmt = util.format;
@@ -6,18 +6,18 @@ var fmt = util.format;
 
 var check = function(Ctor, iter){
 
-	var name = fmt("alu.and<%s, %s>", Ctor.name, iter[0]);
+	var name = fmt("integer.and<%s, %s>", Ctor.name, iter[0]);
 	console.log(name);
 
 	iter = iter[1];
 
 	test(name, function(){
 
-		var and = alu.and;
+		var and = integer.and;
 
 		var f = 2;
 		var r = Math.pow(2, Ctor.BYTES_PER_ELEMENT * 8);
-		var parse = alu.parse_t(r, f, iter);
+		var parse = integer.parse_t(r, f, iter);
 
 		for (var k = 0; k < TEST.length; ++k) {
 			var test = TEST[k];

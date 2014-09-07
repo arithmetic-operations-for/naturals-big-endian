@@ -1,44 +1,44 @@
-var algo = require('algo');
+var algo = require('aureooms-js-algo');
 
 
-test('alu.parse', function(assert){
+test('integer.parse', function(assert){
 
-	console.log('alu.parse');
+	console.log('integer.parse');
 
 	var a, s;
 
-	var fparse8_2  = alu.parse_t(Math.pow(2, 8), 2, algo.biter);
-	var fparse8_4  = alu.parse_t(Math.pow(2, 8), 4, algo.biter);
-	var fparse8_16 = alu.parse_t(Math.pow(2, 8), 16, algo.biter);
+	var fparse8_2  = integer.parse_t(Math.pow(2, 8), 2, algo.biter);
+	var fparse8_4  = integer.parse_t(Math.pow(2, 8), 4, algo.biter);
+	var fparse8_16 = integer.parse_t(Math.pow(2, 8), 16, algo.biter);
 
-	var fparse16_2  = alu.parse_t(Math.pow(2, 16), 2, algo.biter);
-	var fparse16_4  = alu.parse_t(Math.pow(2, 16), 4, algo.biter);
-	var fparse16_16 = alu.parse_t(Math.pow(2, 16), 16, algo.biter);
+	var fparse16_2  = integer.parse_t(Math.pow(2, 16), 2, algo.biter);
+	var fparse16_4  = integer.parse_t(Math.pow(2, 16), 4, algo.biter);
+	var fparse16_16 = integer.parse_t(Math.pow(2, 16), 16, algo.biter);
 
-	var fparse32_2  = alu.parse_t(Math.pow(2, 32), 2, algo.biter);
-	var fparse32_4  = alu.parse_t(Math.pow(2, 32), 4, algo.biter);
-	var fparse32_16 = alu.parse_t(Math.pow(2, 32), 16, algo.biter);
+	var fparse32_2  = integer.parse_t(Math.pow(2, 32), 2, algo.biter);
+	var fparse32_4  = integer.parse_t(Math.pow(2, 32), 4, algo.biter);
+	var fparse32_16 = integer.parse_t(Math.pow(2, 32), 16, algo.biter);
 
-	var fparse10   = alu.parse_t(10, 10, algo.biter);
-	var fparse100  = alu.parse_t(100, 10, algo.biter);
-	var fparse1000 = alu.parse_t(1000, 10, algo.biter);
+	var fparse10   = integer.parse_t(10, 10, algo.biter);
+	var fparse100  = integer.parse_t(100, 10, algo.biter);
+	var fparse1000 = integer.parse_t(1000, 10, algo.biter);
 
 
-	var bparse8_2  = alu.parse_t(Math.pow(2, 8), 2, algo.fiter);
-	var bparse8_4  = alu.parse_t(Math.pow(2, 8), 4, algo.fiter);
-	var bparse8_16 = alu.parse_t(Math.pow(2, 8), 16, algo.fiter);
+	var bparse8_2  = integer.parse_t(Math.pow(2, 8), 2, algo.fiter);
+	var bparse8_4  = integer.parse_t(Math.pow(2, 8), 4, algo.fiter);
+	var bparse8_16 = integer.parse_t(Math.pow(2, 8), 16, algo.fiter);
 
-	var bparse16_2  = alu.parse_t(Math.pow(2, 16), 2, algo.fiter);
-	var bparse16_4  = alu.parse_t(Math.pow(2, 16), 4, algo.fiter);
-	var bparse16_16 = alu.parse_t(Math.pow(2, 16), 16, algo.fiter);
+	var bparse16_2  = integer.parse_t(Math.pow(2, 16), 2, algo.fiter);
+	var bparse16_4  = integer.parse_t(Math.pow(2, 16), 4, algo.fiter);
+	var bparse16_16 = integer.parse_t(Math.pow(2, 16), 16, algo.fiter);
 
-	var bparse32_2  = alu.parse_t(Math.pow(2, 32), 2, algo.fiter);
-	var bparse32_4  = alu.parse_t(Math.pow(2, 32), 4, algo.fiter);
-	var bparse32_16 = alu.parse_t(Math.pow(2, 32), 16, algo.fiter);
+	var bparse32_2  = integer.parse_t(Math.pow(2, 32), 2, algo.fiter);
+	var bparse32_4  = integer.parse_t(Math.pow(2, 32), 4, algo.fiter);
+	var bparse32_16 = integer.parse_t(Math.pow(2, 32), 16, algo.fiter);
 
-	var bparse10   = alu.parse_t(10, 10, algo.fiter);
-	var bparse100  = alu.parse_t(100, 10, algo.fiter);
-	var bparse1000 = alu.parse_t(1000, 10, algo.fiter);
+	var bparse10   = integer.parse_t(10, 10, algo.fiter);
+	var bparse100  = integer.parse_t(100, 10, algo.fiter);
+	var bparse1000 = integer.parse_t(1000, 10, algo.fiter);
 
 
 	a = new Uint32Array(3);
@@ -160,19 +160,19 @@ test('alu.parse', function(assert){
 
 
 	throws(function(){
-		alu.parse_t(Math.pow(2, 32), 8, algo.biter);
+		integer.parse_t(Math.pow(2, 32), 8, algo.biter);
 	}, /not implemented/, 'log(f) does not divide log(t)');
 
 	throws(function(){
-		alu.parse_t(36, 4, algo.biter);
+		integer.parse_t(36, 4, algo.biter);
 	}, /not implemented/, 'log(f) does not divide log(t)');
 
 	throws(function(){
-		alu.parse_t(12, 14, algo.biter);
+		integer.parse_t(12, 14, algo.biter);
 	}, /not implemented/, 'f > t');
 
 	throws(function(){
-		alu.parse_t(37*37, 37, algo.biter);
+		integer.parse_t(37*37, 37, algo.biter);
 	}, /not implemented/, 'f > 36');
 
 });

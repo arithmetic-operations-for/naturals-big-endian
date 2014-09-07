@@ -1,4 +1,4 @@
-var algo = require('algo');
+var algo = require('aureooms-js-algo');
 var util = require('util');
 
 var fmt = util.format;
@@ -17,7 +17,7 @@ var check = function(Ctor, and_t, iter){
 
 		var f = 2;
 		var r = Math.pow(2, Ctor.BYTES_PER_ELEMENT * 8);
-		var parse = alu.parse_t(r, f, iter);
+		var parse = integer.parse_t(r, f, iter);
 
 		var and = and_t(r);
 
@@ -85,8 +85,8 @@ var CTOR = [
 ];
 
 var ENDIANESS = [
-	[['alu.band_t', alu.band_t], ['algo.biter', algo.biter]],
-	[['alu.land_t', alu.land_t], ['algo.fiter', algo.fiter]],
+	[['integer.band_t', integer.band_t], ['algo.biter', algo.biter]],
+	[['integer.land_t', integer.land_t], ['algo.fiter', algo.fiter]],
 ];
 
 
