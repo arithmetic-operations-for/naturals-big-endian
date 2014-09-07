@@ -1,13 +1,13 @@
-[alu](http://aureooms.github.io/alu)
+[js-integer](http://aureooms.github.io/js-integer)
 ===
 
-multi-precision arithmetic code bricks for JavaScript
+integer numbers code bricks for JavaScript
 
-[![Build Status](https://travis-ci.org/aureooms/alu.svg)](https://travis-ci.org/aureooms/alu)
-[![Coverage Status](https://coveralls.io/repos/aureooms/alu/badge.png)](https://coveralls.io/r/aureooms/alu)
-[![Dependencies Status](https://david-dm.org/aureooms/alu.png)](https://david-dm.org/aureooms/alu#info=dependencies)
-[![devDependencies Status](https://david-dm.org/aureooms/alu/dev-status.png)](https://david-dm.org/aureooms/alu#info=devDependencies)
-[![Code Climate](https://codeclimate.com/github/aureooms/alu.png)](https://codeclimate.com/github/aureooms/alu)
+[![Build Status](https://travis-ci.org/aureooms/js-integer.svg)](https://travis-ci.org/aureooms/js-integer)
+[![Coverage Status](https://coveralls.io/repos/aureooms/js-integer/badge.png)](https://coveralls.io/r/aureooms/js-integer)
+[![Dependencies Status](https://david-dm.org/aureooms/js-integer.png)](https://david-dm.org/aureooms/js-integer#info=dependencies)
+[![devDependencies Status](https://david-dm.org/aureooms/js-integer/dev-status.png)](https://david-dm.org/aureooms/js-integer#info=devDependencies)
+[![Code Climate](https://codeclimate.com/github/aureooms/js-integer.png)](https://codeclimate.com/github/aureooms/js-integer)
 
 references:
 
