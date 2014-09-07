@@ -4,10 +4,10 @@ var util = require('util');
 var fmt = util.format;
 
 var check = function(Ctor, cmp, biter, div, sub, fiter){
-	var name = fmt("alu.div<%s, %s, %s, %s, %s, %s>", Ctor.name, div[0], sub[0], cmp[0], biter[0], fiter[0]);
+	var name = fmt("integer.div<%s, %s, %s, %s, %s, %s>", Ctor.name, div[0], sub[0], cmp[0], biter[0], fiter[0]);
 	console.log(name);
 
-	cmp = alu.wrapcmp(cmp[1]);
+	cmp = integer.wrapcmp(cmp[1]);
 	biter = biter[1];
 	div = div[1];
 	sub = sub[1];
@@ -30,11 +30,11 @@ var check = function(Ctor, cmp, biter, div, sub, fiter){
 		});
 	};
 
-	var parse = alu.parse_t(r, f, biter);
-	var stringify = alu.stringify_t(r, f, fiter, zfill_t);
+	var parse = integer.parse_t(r, f, biter);
+	var stringify = integer.stringify_t(r, f, fiter, zfill_t);
 	var fill = algo.fill;
 
-	var lt = alu.lt_t(cmp);
+	var lt = integer.lt_t(cmp);
 	sub = sub(r);
 	div = div(lt, sub);
 
@@ -99,7 +99,7 @@ var TEST = [
 
 ];
 
-var algo = require('algo');
+var algo = require('aureooms-js-algo');
 
 var TRAITS = [
 	Uint8Array,
@@ -109,17 +109,17 @@ var TRAITS = [
 
 var ENDIANESS = [
 	[
-		['alu.bcmp_t', alu.bcmp_t()],
+		['integer.bcmp_t', integer.bcmp_t()],
 		['algo.biter', algo.biter],
-		['algo.bdiv_t', alu.bdiv_t],
-		['alu.bsub_t', alu.bsub_t],
+		['algo.bdiv_t', integer.bdiv_t],
+		['integer.bsub_t', integer.bsub_t],
 		['algo.fiter', algo.fiter],
 	],
 	// [
-	// 	['alu.lcmp_t', alu.lcmp_t()],
+	// 	['integer.lcmp_t', integer.lcmp_t()],
 	// 	['algo.fiter', algo.fiter],
 	// 	['algo.ldiv_t', algo.ldiv_t],
-	// 	['alu.lsub_t', alu.lsub_t],
+	// 	['integer.lsub_t', integer.lsub_t],
 	// 	['algo.biter', algo.biter],
 	// ],
 ];

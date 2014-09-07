@@ -1,15 +1,15 @@
 
 
 var util = require('util');
-var algo = require('algo');
+var algo = require('aureooms-js-algo');
 
 
 var check = function(ctor, r, e){
-	var name = util.format("alu.add (%s, %d, %s)", ctor.name, r, e === alu.badd_t ? 'big endian' : 'little endian');
+	var name = util.format("integer.add (%s, %d, %s)", ctor.name, r, e === integer.badd_t ? 'big endian' : 'little endian');
 	console.log(name);
 
 	var todouble_t = function(r, e){
-		if(e === alu.badd_t){
+		if(e === integer.badd_t){
 			return function(a, i0, i1){
 				var x = 0, y = 1;
 				while(--i1 >= i0){
@@ -35,7 +35,7 @@ var check = function(ctor, r, e){
 	var todouble = todouble_t(r, e);
 	var add = e(r);
 	var randint = algo.randint;
-	var lsb = function(a){ return e === alu.badd_t ? a.length - 1 : 0; };
+	var lsb = function(a){ return e === integer.badd_t ? a.length - 1 : 0; };
 
 	test(name, function(assert){
 		var n = 10, m = 10, i, j;
@@ -81,7 +81,7 @@ var TRAITS = [
 	[Uint32Array, Math.pow(2, 32)]
 ];
 
-var ENDIANESS = [alu.badd_t, alu.ladd_t];
+var ENDIANESS = [integer.badd_t, integer.ladd_t];
 
 for(var i = 0; i < TRAITS.length; ++i)
 for(var j = 0; j < ENDIANESS.length; ++j)

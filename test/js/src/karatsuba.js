@@ -1,8 +1,8 @@
-var algo = require('algo');
+var algo = require('aureooms-js-algo');
 
 
-test('alu.bkaratsuba 16 big endian', function(assert){
-	console.log('alu.bkaratsuba 16 big endian');
+test('integer.bkaratsuba 16 big endian', function(assert){
+	console.log('integer.bkaratsuba 16 big endian');
 
 	var ia2a = function(a) {
 		var o = [];
@@ -14,15 +14,15 @@ test('alu.bkaratsuba 16 big endian', function(assert){
 	};
 
 	var r = Math.pow(2, 16);
-	var add = alu.badd_t(r);
-	var sub = alu.bsub_t(r);
+	var add = integer.badd_t(r);
+	var sub = integer.bsub_t(r);
 	var calloc = function(n){ return new Uint16Array(n); };
 	var mov = algo.copy;
 	var fill = algo.fill;
 
 
-	var _bkaratsuba = alu.bkaratsuba_t(add, sub, undefined, calloc, mov, r);
-	var bkaratsuba = alu.bkaratsuba_t(add, sub, _bkaratsuba, calloc, mov, r);
+	var _bkaratsuba = integer.bkaratsuba_t(add, sub, undefined, calloc, mov, r);
+	var bkaratsuba = integer.bkaratsuba_t(add, sub, _bkaratsuba, calloc, mov, r);
 
 	var a = calloc(4), b = calloc(4), c = calloc(8);
 
@@ -53,8 +53,8 @@ test('alu.bkaratsuba 16 big endian', function(assert){
 });
 
 
-test('alu.bkaratsuba 8 big endian', function(assert){
-	console.log('alu.bkaratsuba 8 big endian');
+test('integer.bkaratsuba 8 big endian', function(assert){
+	console.log('integer.bkaratsuba 8 big endian');
 
 	var ia2a = function(a) {
 		var o = [];
@@ -66,14 +66,14 @@ test('alu.bkaratsuba 8 big endian', function(assert){
 	};
 
 	var r = Math.pow(2, 8);
-	var add = alu.badd_t(r);
-	var sub = alu.bsub_t(r);
+	var add = integer.badd_t(r);
+	var sub = integer.bsub_t(r);
 	var calloc = function(n){ return new Uint8Array(n); };
 	var mov = algo.copy;
 	var fill = algo.fill;
 
-	var _bkaratsuba = alu.bkaratsuba_t(add, sub, undefined, calloc, mov, r);
-	var bkaratsuba = alu.bkaratsuba_t(add, sub, _bkaratsuba, calloc, mov, r);
+	var _bkaratsuba = integer.bkaratsuba_t(add, sub, undefined, calloc, mov, r);
+	var bkaratsuba = integer.bkaratsuba_t(add, sub, _bkaratsuba, calloc, mov, r);
 
 	var a = calloc(4), b = calloc(4), c = calloc(8);
 
@@ -157,8 +157,8 @@ test('alu.bkaratsuba 8 big endian', function(assert){
 
 });
 
-test('alu.bkaratsuba 8 big endian bound checks', function(assert){
-	console.log('alu.bkaratsuba 8 big endian bound checks');
+test('integer.bkaratsuba 8 big endian bound checks', function(assert){
+	console.log('integer.bkaratsuba 8 big endian bound checks');
 
 	var ia2a = function(a) {
 		var o = [];
@@ -177,14 +177,14 @@ test('alu.bkaratsuba 8 big endian bound checks', function(assert){
 	};
 
 	var r = Math.pow(2, 8);
-	var add = alu.wrapbin(alu.badd_t(r));
-	var sub = alu.wrapbin(alu.bsub_t(r));
+	var add = integer.wrapbin(integer.badd_t(r));
+	var sub = integer.wrapbin(integer.bsub_t(r));
 	var calloc = function(n){ return new Uint8Array(n); };
-	var mov = alu.wrapmov(algo.copy);
+	var mov = integer.wrapmov(algo.copy);
 	var fill = algo.fill;
 
-	var _bkaratsuba = alu.bkaratsuba_t(add, sub, undefined, calloc, mov, r, alu.wrapbin);
-	var bkaratsuba = alu.bkaratsuba_t(add, sub, _bkaratsuba, calloc, mov, r, alu.wrapbin);
+	var _bkaratsuba = integer.bkaratsuba_t(add, sub, undefined, calloc, mov, r, integer.wrapbin);
+	var bkaratsuba = integer.bkaratsuba_t(add, sub, _bkaratsuba, calloc, mov, r, integer.wrapbin);
 
 	var a = calloc(4), b = calloc(4), c = calloc(8);
 
