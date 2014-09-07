@@ -611,6 +611,10 @@ var bsplit_t = function(br, z) {
 
 exports.bsplit_t = bsplit_t;
 /* js/src/div */
+/* js/src/div/dcdiv.js */
+
+// https://gmplib.org/manual/Divide-and-Conquer-Division.html
+
 /* js/src/div/div.js */
 
 
@@ -687,6 +691,10 @@ var bdiv_t = function(lt, sub){
 };
 
 exports.bdiv_t = bdiv_t;
+/* js/src/div/fourierdiv.js */
+
+// http://en.wikipedia.org/wiki/Fourier_division
+
 /* js/src/gcd */
 /* js/src/gcd/gcd.js */
 /**
@@ -771,6 +779,12 @@ exports.bdiv_t = bdiv_t;
  * (a1 - a0)(b1 - b0) = (a1 b1 + a0 b0) - (a1 b0 + a0 b1)
  * (a0 - a1)(b1 - b0) = (a1 b0 + a0 b1) - (a1 b1 + a0 b0)
  * a b = (r^{2n} + r^{n})a1 b1 + r^{n}(a0 - a1)(b1 - b0) + (r^{n} + 1)a0 b0
+ *
+ * This algorithm is a generalization of the Toom-Cook algorithm, when m = n = 2.
+ * 
+ * For further reference, see
+ *  - http://en.wikipedia.org/wiki/Karatsuba_algorithm
+ *  - http://en.wikipedia.org/wiki/Toom–Cook_multiplication
  */
 
 var bkaratsuba_t = function(add, sub, mul, calloc, mov, r, wrap){
@@ -1014,6 +1028,10 @@ var lmul53_t = function(r){
 
 
 exports.lmul53_t = lmul53_t;
+/* js/src/mul/toomcook.js */
+
+// http://en.wikipedia.org/wiki/Toom–Cook_multiplication
+
 /* js/src/neg */
 /* js/src/neg/neg.js */
 /**
