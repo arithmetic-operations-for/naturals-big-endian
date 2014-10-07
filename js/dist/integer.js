@@ -1101,10 +1101,74 @@ var parse_t = function(t, f, iter){
 
 exports.parse_t = parse_t;
 /* js/src/pow */
+/* js/src/pow/ebs.js */
+/**
+ * Computes pow(a, b) using exponentiation by squaring.
+ *
+ * *could add an additional base case for b = 1*
+ *
+ */
+
+var __ebs__ = function (alloc, iszero, setone, iseven, div2, minus1) {
+
+	var ebs = function (a, ai, aj, b, bi, bj, c, ci, cj) {
+
+		var t, u, m, n;
+
+		if ( iszero(b, bi, bj) ) {
+			setone(c, ci, cj);
+		}
+		else if ( iseven(b, bi, bj) ) {
+			m = bj - bi;
+			t = alloc(m);
+			t = div2(b, bi, bj, t, 0, m);
+
+			n = cj - ci;
+			u = alloc(n);
+
+			ebs(a, ai, aj, t, 0, m, u, 0, n);
+
+			mul(u, 0, n, u, 0, n, c, ci, cj);
+		}
+		else{
+			m = bj - bi;
+			t = alloc(m);
+			t = minus1(b, bi, bj, t, 0, m);
+
+			n = cj - ci;
+			u = alloc(n);
+
+			ebs(a, ai, aj, t, 0, m, u, 0, n);
+
+			mul(a, ai, aj, u, 0, n, c, ci, cj);
+		}
+	};
+};
+
 /* js/src/pow/pow.js */
 /**
- * COMPUTES a^b
+ * Computes pow(a, b) using naive exponentiation.
+ *
  */
+
+var __pow__ = function (alloc, isnotzero, setone, iseven, div2, minus1) {
+
+	var pow = function (a, ai, aj, b, bi, bj, c, ci, cj) {
+
+		var t, m;
+
+		setone(c, ci, cj);
+
+		while (isnotzero(b, bi, bj)) {
+
+			mul(c, ci, cj, a, ai, aj, c, ci, cj);
+
+			minus1(b, bi, bj, b, bi, bj);
+		}
+
+	};
+};
+
 /* js/src/sha */
 /* js/src/sha/sha.js */
 /**
