@@ -12,3 +12,4 @@ integer numbers code bricks for JavaScript
 references:
 
  - [The GNU Multiple Precision Arithmetic Library](https://gmplib.org/)
+ - https://gmplib.org/gmp-man-6.0.0a.pdf
