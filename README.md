@@ -1,7 +1,7 @@
 [js-integer](http://aureooms.github.io/js-integer)
-===
+==
 
-integer numbers code bricks for JavaScript
+Integer numbers code bricks for JavaScript.
 
 [![NPM license](http://img.shields.io/npm/l/aureooms-js-integer.svg?style=flat)](https://raw.githubusercontent.com/aureooms/js-integer/master/LICENSE)
 [![NPM version](http://img.shields.io/npm/v/aureooms-js-integer.svg?style=flat)](https://www.npmjs.org/package/aureooms-js-integer)
@@ -16,7 +16,7 @@ integer numbers code bricks for JavaScript
 [![Inline docs](http://inch-ci.org/github/aureooms/js-integer.svg?branch=master&style=shields)](http://inch-ci.org/github/aureooms/js-integer)
 
 
-references:
+## Reference
 
  - [The GNU Multiple Precision Arithmetic Library](https://gmplib.org/)
  - https://gmplib.org/gmp-man-6.0.0a.pdf
