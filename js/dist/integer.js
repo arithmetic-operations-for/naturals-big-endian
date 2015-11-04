@@ -8,16 +8,331 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 
 	var definition = function definition(exports, undefined) {
 
-		/* js/src/abs */
-		/* js/src/abs/abs.js */
+		/* js/src/0-core */
+		/* js/src/0-core/_legacy */
+		/* js/src/0-core/_legacy/convert */
+		/* js/src/0-core/_legacy/convert/basechange.js */
+
+		var bbasechange_t = function bbasechange_t(ar, br, calloc, mov) {
+
+			var basechange = function basechange(a, ai, aj, b, bi, bj) {
+
+				var m, n, d, q, z, r, ri, f, t, tmp, w;
+
+				f = ar;
+				t = br;
+
+				if (f > t) {
+					d = calloc(1);
+					d[0] = br;
+					z = 1;
+				} else {
+					z = 0;
+
+					while (t > 1) {
+						t /= f;
+						++z;
+					}
+
+					z += t === 1;
+
+					d = calloc(z);
+
+					t = br;
+
+					w = z;
+
+					while (t > 0) {
+						tmp = t % f;
+						d[--w] = tmp;
+						t = (t - tmp) / f;
+					}
+				}
+
+				m = aj - ai;
+				n = bj - bi;
+
+				q = calloc(m);
+				r = calloc(m);
+				mov(a, ai, aj, r, 0);
+
+				ri = 0;
+				--bj;
+
+				while (!lt(r, 0, m, d, 0, z)) {
+					div(r, 0, m, d, 0, z, q, 0);
+					for (w = 1; w <= z; ++w) {
+						b[bj] *= ar;
+						b[bj] += r[m - w];
+					}
+					mov(q, 0, m, r, 0);
+					--bj;
+				}
+
+				for (w = 1; w <= z; ++w) {
+					b[bj] *= ar;
+					b[bj] += r[m - w];
+				}
+			};
+
+			return basechange;
+		};
+
+		exports.bbasechange_t = bbasechange_t;
+		/* js/src/0-core/_legacy/convert/convert.js */
+
+		var bconvert_t = function bconvert_t(ar, br, bjoin_t, bsplit_t) {
+
+			var f, t, z;
+
+			f = ar;
+			t = br;
+			z = 0;
+
+			if (br <= ar) {
+
+				while (f >= t) {
+					if (f % t) break;
+					f /= t;
+					++z;
+				}
+
+				if (f === 1) {
+					return bsplit_t(br, z);
+				} else {
+					// TODO
+					throw 'f >= t + log(t) does not divide log(f) not implemented';
+				}
+			} else {
+
+				while (t >= f) {
+					if (t % f) break;
+					t /= f;
+					++z;
+				}
+
+				if (t === 1) {
+					return bjoin_t(ar, z);
+				} else {
+					// TODO
+					throw 't > f + log(f) does not divide log(t) not implemented';
+				}
+			}
+		};
+
+		exports.bconvert_t = bconvert_t;
+		/* js/src/0-core/_legacy/convert/join.js */
+
+		var bjoin_t = function bjoin_t(ar, z) {
+
+			var join = function join(a, ai, aj, b, bi, bj) {
+
+				var m, n, q, r, i, w, t;
+
+				m = aj - ai;
+				n = bj - bi;
+
+				// number of parts of first
+				// destination block if incomplete
+				r = m % z;
+
+				// number of complete blocks in destination
+				q = (m - r) / z;
+
+				// total number of blocks in destination
+				// (complete ones + first if incomplete)
+				w = q + !!r;
+
+				if (n >= w) {
+					// if destination can contain more than
+					// what is available in source then
+					// compute the effective write start
+					// in destination and set i to the correct
+					// offset according to the size
+					// (in source blocks) of the
+					// first destination block if incomplete
+					bi = bj - w;
+					i = (z - r) % z;
+				} else {
+					// if source contains more than what
+					// destination can handle set the effective
+					// read start in source and set i to 0 because
+					// all blocks will be complete
+					ai = aj - n * z;
+					i = 0;
+				}
+
+				for (; ai < aj && bi < bj; ++bi) {
+					t = 0;
+					for (; i < z; ++i) {
+						t *= ar; // aggregate source blocks
+						t += a[ai]; // using simple
+						++ai; // multiply + add
+					}
+					b[bi] = t; // set block in destination
+					i = 0;
+				}
+			};
+
+			return join;
+		};
+
+		exports.bjoin_t = bjoin_t;
+		/* js/src/0-core/_legacy/convert/split.js */
+
+		var bsplit_t = function bsplit_t(br, z) {
+
+			var split = function split(a, ai, aj, b, bi, bj) {
+
+				var m, n, q, r, i, w, t;
+
+				m = bj - bi;
+				n = aj - ai;
+
+				// number of parts of first
+				// destination block if incomplete
+				r = m % z;
+
+				// number of complete blocks in destination
+				q = (m - r) / z;
+
+				// total number of blocks in destination
+				// (complete ones + first if incomplete)
+				w = q + !!r;
+
+				if (n >= w) {
+					// if source contains more than what
+					// destination can handle set the effective
+					// read start in source and set i to the correct
+					// offset according to the size
+					// (in destination blocks) of the
+					// first source block if incomplete
+					ai = aj - w;
+					i = (z - r) % z;
+				} else {
+					// if destination can contain more than
+					// what is available in source then
+					// compute the effective write start
+					// in destination and set i to 0 because
+					// all blocks will be complete
+					bi = bj - n * z;
+					i = 0;
+				}
+
+				for (; ai < aj && bi < bj; ++ai) {
+					q = a[ai];
+					t = bi + z - 1 - i;
+					bi += z - i;
+					for (; i < z; ++i) {
+						r = q % br; // unpack source blocks
+						q = (q - r) / br; // using simple
+						b[t] = r; // modulo + quotient
+						--t;
+					}
+					i = 0;
+				}
+			};
+
+			return split;
+		};
+
+		exports.bsplit_t = bsplit_t;
+		/* js/src/0-core/_legacy/parse */
+		/* js/src/0-core/_legacy/parse/parse.js */
+
+		/**
+   * Function template for number parsing.
+   * Endianess provided by the iterator function
+   * iterator function must be reverse ordered
+   *
+   * @param {int} f from radix
+   * @param {int} t to radix
+   * @param {function} iter iterator function
+   */
+
+		var parse_t = function parse_t(t, f, iter) {
+
+			if (t >= f) {
+
+				if (f > 36) throw 'f > 36 not implemented';
+
+				var z = 0,
+				    log = t;
+				while (log >= f) {
+					if (log % f) break;
+					log /= f;
+					++z;
+				}
+
+				if (log !== 1) throw 'log(f) does not divide log(t) not implemented';
+
+				// immediate log(t) divides log(f)
+				return function (s, si, sj, a, ai, aj) {
+					var len = sj - si,
+					    k = sj - z,
+					    n = Math.ceil(len / z);
+					var block = function block(i) {
+						a[i] = parseInt(s.slice(Math.max(0, k), k + z), f);
+						k -= z;
+					};
+
+					iter(aj - n, aj, block);
+				};
+			} else throw 'f > t not implemented';
+		};
+
+		exports.parse_t = parse_t;
+		/* js/src/0-core/_legacy/stringify */
+		/* js/src/0-core/_legacy/stringify/stringify.js */
+
+		/**
+   * Function template for number stringification.
+   * Endianess provided by the iterator function
+   *
+   * @param {int} f from radix
+   * @param {int} t to radix
+   * @param {function} iter iterator function
+   */
+
+		var stringify_t = function stringify_t(f, t, iter, zfill_t) {
+
+			if (t <= f) {
+
+				if (t > 36) throw 't > 36 not implemented';
+
+				var z = 0;
+				while (f >= t) {
+					if (f % t) break;
+					f /= t;
+					++z;
+				}
+
+				if (f !== 1) throw 'log(t) does not divide log(f) not implemented';
+
+				var zfill = zfill_t(z);
+
+				return function (a, i0, i1) {
+					var s = [];
+					iter(i0, i1, function (i) {
+						s.push(zfill(Number(+a[i]).toString(t)));
+					});
+					return s.join('');
+				};
+			} else throw 't > f not implemented';
+		};
+
+		exports.stringify_t = stringify_t;
+		/* js/src/0-core/abs */
+		/* js/src/0-core/abs/abs.js */
 		/**
    * COMPUTE THE ABSOLUTE VALUE OF NUMBER n
    */
 
 		// exports.abs = function abs() {};
 
-		/* js/src/add */
-		/* js/src/add/add.js */
+		/* js/src/0-core/arithmetic */
+		/* js/src/0-core/arithmetic/add */
+		/* js/src/0-core/arithmetic/add/add.js */
 
 		/**
    * @param {int} r base (radix)
@@ -108,855 +423,12 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 				}
 			};
 		};
-		/* js/src/and */
-		/* js/src/and/and.js */
-
-		/**
-   *
-   * BINARY and APPLIED ON a AND b
-   *
-   * Meaningful only when r is a power of 2.
-   *
-   * |a| = |b| = |c| > 0
-   *
-   *
-   */
-
-		var and = function and(a, a0, b, b0, c, c0, c1) {
-
-			while (c0 < c1) c[c0++] = a[a0++] & b[b0++];
-		};
-
-		/**
-   * BIG ENDIAN BINARY and APPLIED ON a AND b
-   *
-   * Meaningful only when r is a power of 2.
-   *
-   * |a| >= |b| > 0
-   *
-   * treats b as if it was represented with the same number of blocks as a
-   */
-
-		var band_t = function band_t(r) {
-
-			var _r = r / 2;
-
-			return function (a, a0, a1, b, b0, b1, c, c0, c1) {
-
-				var at = a1 - b1 + b0;
-				var ct = c0 + at - a0;
-
-				if (b[b0] < _r) while (c0 < ct) c[c0++] = 0;else while (c0 < ct) c[c0++] = a[a0++];
-
-				while (c0 < c1) c[c0++] = a[at++] & b[b0++];
-			};
-		};
-
-		/**
-   * LITTLE ENDIAN BINARY and APPLIED ON a AND b
-   *
-   * Meaningful only when r is a power of 2.
-   *
-   * |a| >= |b| > 0
-   *
-   * treats b as if it was represented with the same number of blocks as a
-   */
-
-		var land_t = function land_t(r) {
-
-			var _r = r / 2;
-
-			return function (a, a0, a1, b, b0, b1, c, c0, c1) {
-
-				var ct = c0 + b1 - b0;
-
-				while (c0 < ct) c[c0++] = a[a0++] & b[b0++];
-
-				if (b[b0 - 1] < _r) while (c0 < c1) c[c0++] = 0;else while (c0 < c1) c[c0++] = a[a0++];
-			};
-		};
-
-		exports.and = and;
-		exports.land_t = land_t;
-		exports.band_t = band_t;
-		/* js/src/cmp */
-		/* js/src/cmp/cmp.js */
-
-		var bcmp_t = function bcmp_t() {
-
-			/**
-    * Compares two big endian arrays, |a| >= |b|
-    *
-    * @param {array} a first operand
-    * @param {int} ai a left
-    * @param {int} aj a right
-    * @param {array} b second operand
-    * @param {int} bi b left
-    * @param {int} bj b right
-    *
-    * @return {int} 1 if a > b; 0 if a = b; -1 otherwise.
-    */
-
-			return function (a, ai, aj, b, bi, bj) {
-
-				var tmp = aj - bj + bi;
-
-				for (; ai < tmp; ++ai) if (a[ai] > 0) return 1;
-
-				// same size aj - ai === bj - bi
-				for (; ai < aj; ++ai, ++bi) {
-					if (a[ai] > b[bi]) return 1;
-					if (a[ai] < b[bi]) return -1;
-				}
-
-				return 0;
-			};
-		};
-
-		var lcmp_t = function lcmp_t() {
-
-			/**
-    * Compares two little endian arrays, |a| >= |b|
-    *
-    * @param {array} a first operand
-    * @param {int} ai a left
-    * @param {int} aj a right
-    * @param {array} b second operand
-    * @param {int} bi b left
-    * @param {int} bj b right
-    *
-    * @return {int} 1 if a > b; 0 if a = b; -1 otherwise.
-    */
-
-			return function (a, ai, aj, b, bi, bj) {
-
-				var tmp = ai + bj - bi;
-
-				--aj;--bj;
-
-				for (; aj >= tmp; --aj) if (a[aj] > 0) return 1;
-
-				// same size aj - ai === bj - bi
-				for (; aj >= ai; --aj, --bj) {
-					if (a[aj] > b[bj]) return 1;
-					if (a[aj] < b[bj]) return -1;
-				}
-
-				return 0;
-			};
-		};
-
-		exports.bcmp_t = bcmp_t;
-		exports.lcmp_t = lcmp_t;
-		/* js/src/cmp/eq.js */
-
-		/**
-   * Wrapper for a comparison operator that returns true iff
-   * _a_ is equal to _b_.
-   */
-
-		var eq_t = function eq_t(cmp) {
-			return function (a, ai, aj, b, bi, bj) {
-				return cmp(a, ai, aj, b, bi, bj) === 0;
-			};
-		};
-
-		exports.eq_t = eq_t;
-		/* js/src/cmp/ge.js */
-
-		/**
-   * Wrapper for a comparison operator that returns true iff
-   * _a_ is greater or equal to _b_.
-   */
-
-		var ge_t = function ge_t(cmp) {
-			return function (a, ai, aj, b, bi, bj) {
-				return cmp(a, ai, aj, b, bi, bj) >= 0;
-			};
-		};
-
-		exports.ge_t = ge_t;
-		/* js/src/cmp/gt.js */
-
-		/**
-   * Wrapper for a comparison operator that returns true iff
-   * _a_ is greater than _b_.
-   */
-
-		var gt_t = function gt_t(cmp) {
-			return function (a, ai, aj, b, bi, bj) {
-				return cmp(a, ai, aj, b, bi, bj) > 0;
-			};
-		};
-
-		exports.gt_t = gt_t;
-		/* js/src/cmp/le.js */
-
-		/**
-   * Wrapper for a comparison operator that returns true iff
-   * _a_ is less or equal to _b_.
-   */
-
-		var le_t = function le_t(cmp) {
-			return function (a, ai, aj, b, bi, bj) {
-				return cmp(a, ai, aj, b, bi, bj) <= 0;
-			};
-		};
-
-		exports.le_t = le_t;
-		/* js/src/cmp/lt.js */
-
-		/**
-   * Wrapper for a comparison operator that returns true iff
-   * _a_ is less than _b_.
-   */
-
-		var lt_t = function lt_t(cmp) {
-			return function (a, ai, aj, b, bi, bj) {
-				return cmp(a, ai, aj, b, bi, bj) < 0;
-			};
-		};
-
-		exports.lt_t = lt_t;
-		/* js/src/cmp/ne.js */
-
-		/**
-   * Wrapper for a comparison operator that returns true iff
-   * _a_ is not equal to _b_.
-   */
-
-		var ne_t = function ne_t(cmp) {
-			return function (a, ai, aj, b, bi, bj) {
-				return cmp(a, ai, aj, b, bi, bj) !== 0;
-			};
-		};
-
-		exports.ne_t = ne_t;
-		/* js/src/convert */
-		/* js/src/convert/basechange.js */
-
-		var bbasechange_t = function bbasechange_t(ar, br, calloc, mov) {
-
-			var basechange = function basechange(a, ai, aj, b, bi, bj) {
-
-				var m, n, d, q, z, r, ri, f, t, tmp, w;
-
-				f = ar;
-				t = br;
-
-				if (f > t) {
-					d = calloc(1);
-					d[0] = br;
-					z = 1;
-				} else {
-					z = 0;
-
-					while (t > 1) {
-						t /= f;
-						++z;
-					}
-
-					z += t === 1;
-
-					d = calloc(z);
-
-					t = br;
-
-					w = z;
-
-					while (t > 0) {
-						tmp = t % f;
-						d[--w] = tmp;
-						t = (t - tmp) / f;
-					}
-				}
-
-				m = aj - ai;
-				n = bj - bi;
-
-				q = calloc(m);
-				r = calloc(m);
-				mov(a, ai, aj, r, 0);
-
-				ri = 0;
-				--bj;
-
-				while (!lt(r, 0, m, d, 0, z)) {
-					div(r, 0, m, d, 0, z, q, 0);
-					for (w = 1; w <= z; ++w) {
-						b[bj] *= ar;
-						b[bj] += r[m - w];
-					}
-					mov(q, 0, m, r, 0);
-					--bj;
-				}
-
-				for (w = 1; w <= z; ++w) {
-					b[bj] *= ar;
-					b[bj] += r[m - w];
-				}
-			};
-
-			return basechange;
-		};
-
-		exports.bbasechange_t = bbasechange_t;
-		/* js/src/convert/convert.js */
-
-		var bconvert_t = function bconvert_t(ar, br, bjoin_t, bsplit_t) {
-
-			var f, t, z;
-
-			f = ar;
-			t = br;
-			z = 0;
-
-			if (br <= ar) {
-
-				while (f >= t) {
-					if (f % t) break;
-					f /= t;
-					++z;
-				}
-
-				if (f === 1) {
-					return bsplit_t(br, z);
-				} else {
-					// TODO
-					throw 'f >= t + log(t) does not divide log(f) not implemented';
-				}
-			} else {
-
-				while (t >= f) {
-					if (t % f) break;
-					t /= f;
-					++z;
-				}
-
-				if (t === 1) {
-					return bjoin_t(ar, z);
-				} else {
-					// TODO
-					throw 't > f + log(f) does not divide log(t) not implemented';
-				}
-			}
-		};
-
-		exports.bconvert_t = bconvert_t;
-		/* js/src/convert/core */
-		/* js/src/convert/core/_alloc.js */
-
-		var _alloc = function _alloc(n) {
-
-			var data = new Array(n);
-
-			for (var i = 0; i < n; ++i) {
-				data[i] = 0;
-			}return data;
-		};
-
-		exports._alloc = _alloc;
-
-		/* js/src/convert/core/_build.js */
-
-		var _build = function _build(base, number) {
-
-			var data = [];
-
-			var q = number;
-			var d = base;
-
-			while (q >= d) {
-				var r = q % d;
-				data.push(r);
-				q = (q - r) / d;
-			}
-
-			data.push(q);
-
-			return data.reverse();
-		};
-
-		exports._build = _build;
-
-		/* js/src/convert/core/_chr.js */
-
-		var _chr = function _chr(x) {
-
-			if (x < 10) return String.fromCharCode(48 + x);
-			return String.fromCharCode(87 + x);
-		};
-
-		exports._chr = _chr;
-
-		/* js/src/convert/core/_convert.js */
-
-		/**
-   *
-   * @param {Number} f the base to convert from
-   * @param {Number} t the base to convert to
-   * @param {Array} a the origin array
-   * @param {Number} ai start offset in the origin array
-   * @param {Number} aj end offset in the origin array
-   * @param {Array} b the destination array
-   * @param {Number} bi start offset in the destination array
-   * @param {Number} bj end offset in the destination array
-   */
-
-		var _convert = function _convert(f, t, a, ai, aj, b, bi, bj) {
-
-			if (f > t) return _convert_to_smaller(f, t, a, ai, aj, b, bi, bj);
-			if (f < t) return _convert_to_larger(f, t, a, ai, aj, b, bi, bj);
-			return _copy(a, ai, aj, b, bi);
-		};
-
-		exports._convert = _convert;
-
-		/* js/src/convert/core/_convert_slow.js */
-
-		/**
-   *
-   * @param {Number} f the base to convert from
-   * @param {Number} t the base to convert to
-   * @param {Array} a the origin array
-   * @param {Number} ai start offset in the origin array
-   * @param {Number} aj end offset in the origin array
-   * @param {Array} b the destination array
-   * @param {Number} bi start offset in the destination array
-   * @param {Number} bj end offset in the destination array
-   */
-
-		var _convert_slow = function _convert_slow(f, t, a, ai, aj, b, bi, bj) {
-
-			var d = _build(f, t);
-			var di = 0;
-			var dj = d.length;
-			var qi = 0;
-			var qj = aj - ai;
-
-			while (true) {
-
-				var q = _alloc(qj - qi);
-
-				_div(a, ai, aj, d, di, dj, q, qi);
-
-				--bj;
-				var x = 0;
-
-				for (var k = ai; k < aj; ++k) {
-					x *= t;
-					x += a[k];
-				}
-
-				b[bj] = x;
-
-				if (_jz(q, qi, qj)) return;
-
-				_copy(q, qi, qj, a, ai);
-			}
-		};
-
-		exports._convert_slow = _convert_slow;
-
-		/* js/src/convert/core/_convert_to_larger.js */
-
-		/**
-   *
-   * @param {Number} f the base to convert from
-   * @param {Number} t the base to convert to
-   * @param {Array} a the origin array
-   * @param {Number} ai start offset in the origin array
-   * @param {Number} aj end offset in the origin array
-   * @param {Array} b the destination array
-   * @param {Number} bi start offset in the destination array
-   * @param {Number} bj end offset in the destination array
-   */
-
-		var _convert_to_larger = function _convert_to_larger(f, t, a, ai, aj, b, bi, bj) {
-			var _log2 = _log(t, f);
-
-			var _log22 = _slicedToArray(_log2, 2);
-
-			var z = _log22[0];
-			var x = _log22[1];
-
-			if (x === 1) return _convert_to_larger_fast(f, z, a, ai, aj, b, bi, bj);
-
-			return _convert_slow(f, t, a, ai, aj, b, bi, bj);
-		};
-
-		exports._convert_to_larger = _convert_to_larger;
-
-		/* js/src/convert/core/_convert_to_larger_fast.js */
-
-		/**
-   *
-   * @param {Number} ar the base to convert from
-   * @param {Number} z if br is the base to convert to then log(br) = z log(ar)
-   * @param {Array} a the origin array
-   * @param {Number} ai start offset in the origin array
-   * @param {Number} aj end offset in the origin array
-   * @param {Array} b the destination array
-   * @param {Number} bi start offset in the destination array
-   * @param {Number} bj end offset in the destination array
-   */
-
-		var _convert_to_larger_fast = function _convert_to_larger_fast(ar, z, a, ai, aj, b, bi, bj) {
-
-			var m, n, q, r, i, w, t;
-
-			m = aj - ai;
-			n = bj - bi;
-
-			// number of parts of first
-			// destination block if incomplete
-			r = m % z;
-
-			// number of complete blocks in destination
-			q = (m - r) / z;
-
-			// total number of blocks in destination
-			// (complete ones + first if incomplete)
-			w = q + !!r;
-
-			if (n >= w) {
-				// if destination can contain more than
-				// what is available in source then
-				// compute the effective write start
-				// in destination and set i to the correct
-				// offset according to the size
-				// (in source blocks) of the
-				// first destination block if incomplete
-				bi = bj - w;
-				i = (z - r) % z;
-			} else {
-				// if source contains more than what
-				// destination can handle set the effective
-				// read start in source and set i to 0 because
-				// all blocks will be complete
-				ai = aj - n * z;
-				i = 0;
-			}
-
-			for (; ai < aj && bi < bj; ++bi) {
-				t = 0;
-				for (; i < z; ++i) {
-					t *= ar; // aggregate source blocks
-					t += a[ai]; // using simple
-					++ai; // multiply + add
-				}
-				b[bi] = t; // set block in destination
-				i = 0;
-			}
-		};
-
-		exports._convert_to_larger_fast = _convert_to_larger_fast;
-
-		/* js/src/convert/core/_convert_to_smaller.js */
-
-		/**
-   *
-   * @param {Number} f the base to convert from
-   * @param {Number} t the base to convert to
-   * @param {Array} a the origin array
-   * @param {Number} ai start offset in the origin array
-   * @param {Number} aj end offset in the origin array
-   * @param {Array} b the destination array
-   * @param {Number} bi start offset in the destination array
-   * @param {Number} bj end offset in the destination array
-   */
-
-		var _convert_to_smaller = function _convert_to_smaller(f, t, a, ai, aj, b, bi, bj) {
-			var _log3 = _log(f, t);
-
-			var _log32 = _slicedToArray(_log3, 2);
-
-			var z = _log32[0];
-			var x = _log32[1];
-
-			if (x === 1) return _convert_to_smaller_fast(t, z, a, ai, aj, b, bi, bj);
-
-			return _convert_slow(f, t, a, ai, aj, b, bi, bj);
-		};
-
-		exports._convert_to_smaller = _convert_to_smaller;
-
-		/* js/src/convert/core/_convert_to_smaller_fast.js */
-
-		/**
-   *
-   * @param {Number} br the base to convert to
-   * @param {Number} z if ar is the base to convert to then log(ar) = z log(br)
-   * @param {Array} a the origin array
-   * @param {Number} ai start offset in the origin array
-   * @param {Number} aj end offset in the origin array
-   * @param {Array} b the destination array
-   * @param {Number} bi start offset in the destination array
-   * @param {Number} bj end offset in the destination array
-   */
-
-		var _convert_to_smaller_fast = function _convert_to_smaller_fast(br, z, a, ai, aj, b, bi, bj) {
-
-			var m, n, q, r, i, w, t;
-
-			m = bj - bi;
-			n = aj - ai;
-
-			// number of parts of first
-			// destination block if incomplete
-			r = m % z;
-
-			// number of complete blocks in destination
-			q = (m - r) / z;
-
-			// total number of blocks in destination
-			// (complete ones + first if incomplete)
-			w = q + !!r;
-
-			if (n >= w) {
-				// if source contains more than what
-				// destination can handle set the effective
-				// read start in source and set i to the correct
-				// offset according to the size
-				// (in destination blocks) of the
-				// first source block if incomplete
-				ai = aj - w;
-				i = (z - r) % z;
-			} else {
-				// if destination can contain more than
-				// what is available in source then
-				// compute the effective write start
-				// in destination and set i to 0 because
-				// all blocks will be complete
-				bi = bj - n * z;
-				i = 0;
-			}
-
-			for (; ai < aj && bi < bj; ++ai) {
-				q = a[ai];
-				t = bi + z - 1 - i;
-				bi += z - i;
-				for (; i < z; ++i) {
-					r = q % br; // unpack source blocks
-					q = (q - r) / br; // using simple
-					b[t] = r; // modulo + quotient
-					--t;
-				}
-				i = 0;
-			}
-		};
-
-		exports._convert_to_smaller_fast = _convert_to_smaller_fast;
-
-		/* js/src/convert/core/_copy.js */
-
-		var _copy = function _copy(a, ai, aj, b, bi) {
-
-			for (; ai < aj; ++ai, ++bi) b[bi] = a[ai];
-		};
-
-		exports._copy = _copy;
-
-		/* js/src/convert/core/_int.js */
-
-		var _int = function _int(x) {
-
-			if (x >= '0' && x <= '9') return x.charCodeAt(0) - 48;
-			if (x >= 'A' && x <= 'Z') return x.charCodeAt(0) - 55;
-			if (x >= 'a' && x <= 'z') return x.charCodeAt(0) - 87;
-
-			throw 'invalid literal for _int: ' + x;
-		};
-
-		exports._int = _int;
-
-		/* js/src/convert/core/_log.js */
-
-		var _log = function _log(x, y) {
-
-			while (x >= y) {
-				if (x % y) break;
-				x /= y;
-				++z;
-			}
-
-			return [z, x];
-		};
-
-		exports._log = _log;
-
-		/* js/src/convert/core/convert.js */
-
-		var convert = function convert(f, t, a, ai, aj) {
-
-			var bi = 0;
-			var bj = Math.ceil(f / t * (aj - ai));
-			var b = _alloc(bj - bi);
-
-			_convert(f, t, a, ai, aj, b, bi, bj);
-
-			return b;
-		};
-
-		exports.convert = convert;
-
-		/* js/src/convert/core/parse.js */
-
-		var parse = function parse(f, t, string) {
-
-			if (f > 36) throw 'f > 36 not implemented';
-
-			var n = string.length;
-
-			var a = [];
-
-			for (var k = 0; k < n; ++k) {
-				a.push(_int(string[k]));
-			}return convert(f, t, a, 0, n);
-		};
-
-		exports.parse = parse;
-
-		/* js/src/convert/core/stringify.js */
-
-		var stringify = function stringify(f, t, a, ai, aj) {
-
-			if (t > 36) throw 't > 36 not implemented';
-
-			var b = convert(f, t, a, ai, aj);
-			var n = b.length;
-
-			var data = [];
-
-			for (var k = 0; k < n; ++k) {
-				data.push(_chr(b[k]));
-			}return data.join('');
-		};
-
-		exports.stringify = stringify;
-
-		/* js/src/convert/join.js */
-
-		var bjoin_t = function bjoin_t(ar, z) {
-
-			var join = function join(a, ai, aj, b, bi, bj) {
-
-				var m, n, q, r, i, w, t;
-
-				m = aj - ai;
-				n = bj - bi;
-
-				// number of parts of first
-				// destination block if incomplete
-				r = m % z;
-
-				// number of complete blocks in destination
-				q = (m - r) / z;
-
-				// total number of blocks in destination
-				// (complete ones + first if incomplete)
-				w = q + !!r;
-
-				if (n >= w) {
-					// if destination can contain more than
-					// what is available in source then
-					// compute the effective write start
-					// in destination and set i to the correct
-					// offset according to the size
-					// (in source blocks) of the
-					// first destination block if incomplete
-					bi = bj - w;
-					i = (z - r) % z;
-				} else {
-					// if source contains more than what
-					// destination can handle set the effective
-					// read start in source and set i to 0 because
-					// all blocks will be complete
-					ai = aj - n * z;
-					i = 0;
-				}
-
-				for (; ai < aj && bi < bj; ++bi) {
-					t = 0;
-					for (; i < z; ++i) {
-						t *= ar; // aggregate source blocks
-						t += a[ai]; // using simple
-						++ai; // multiply + add
-					}
-					b[bi] = t; // set block in destination
-					i = 0;
-				}
-			};
-
-			return join;
-		};
-
-		exports.bjoin_t = bjoin_t;
-		/* js/src/convert/split.js */
-
-		var bsplit_t = function bsplit_t(br, z) {
-
-			var split = function split(a, ai, aj, b, bi, bj) {
-
-				var m, n, q, r, i, w, t;
-
-				m = bj - bi;
-				n = aj - ai;
-
-				// number of parts of first
-				// destination block if incomplete
-				r = m % z;
-
-				// number of complete blocks in destination
-				q = (m - r) / z;
-
-				// total number of blocks in destination
-				// (complete ones + first if incomplete)
-				w = q + !!r;
-
-				if (n >= w) {
-					// if source contains more than what
-					// destination can handle set the effective
-					// read start in source and set i to the correct
-					// offset according to the size
-					// (in destination blocks) of the
-					// first source block if incomplete
-					ai = aj - w;
-					i = (z - r) % z;
-				} else {
-					// if destination can contain more than
-					// what is available in source then
-					// compute the effective write start
-					// in destination and set i to 0 because
-					// all blocks will be complete
-					bi = bj - n * z;
-					i = 0;
-				}
-
-				for (; ai < aj && bi < bj; ++ai) {
-					q = a[ai];
-					t = bi + z - 1 - i;
-					bi += z - i;
-					for (; i < z; ++i) {
-						r = q % br; // unpack source blocks
-						q = (q - r) / br; // using simple
-						b[t] = r; // modulo + quotient
-						--t;
-					}
-					i = 0;
-				}
-			};
-
-			return split;
-		};
-
-		exports.bsplit_t = bsplit_t;
-		/* js/src/div */
-		/* js/src/div/dcdiv.js */
+		/* js/src/0-core/arithmetic/div */
+		/* js/src/0-core/arithmetic/div/dcdiv.js */
 
 		// https://gmplib.org/manual/Divide-and-Conquer-Division.html
 
-		/* js/src/div/div.js */
+		/* js/src/0-core/arithmetic/div/div.js */
 
 		var bdiv_t = function bdiv_t(lt, sub) {
 
@@ -1026,48 +498,16 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 		};
 
 		exports.bdiv_t = bdiv_t;
-		/* js/src/div/fourierdiv.js */
+		/* js/src/0-core/arithmetic/div/fourierdiv.js */
 
 		// http://en.wikipedia.org/wiki/Fourier_division
 
-		/* js/src/div/knuthd.js */
+		/* js/src/0-core/arithmetic/div/knuthd.js */
 
 		// http://books.google.be/books?id=VicPJYM0I5QC&pg=PA184&lpg=PA184&dq=knuth+algorithm+d&source=bl&ots=2n-NJWuw1o&sig=47hDkFG780BqE2mmi9OMPqbK4Fs&hl=en&sa=X&ei=_ioMVKbKFMawOZT_gaAH&ved=0CDkQ6AEwAw#v=onepage&q=knuth%20algorithm%20d&f=false
 
-		/* js/src/gcd */
-		/* js/src/gcd/gcd.js */
-		/**
-   * COMPUTE THE GREATEST COMMON DIVISOR OF a AND b
-   */
-		/* js/src/lcm */
-		/* js/src/lcm/lcm.js */
-		/**
-   * COMPUTE THE LEAST COMMON MULTIPLE OF a AND b
-   */
-		/* js/src/log */
-		/* js/src/log/log.js */
-
-		/**
-   * FOR A NUMBER n COMPUTE THE GREATEST k SUCH THAT 2^k < n
-   */
-		/* js/src/mod */
-		/* js/src/mod/mod.js */
-
-		/**
-   * COMPUTE MODULUS (a % b)
-   */
-		/* js/src/mod/montgomery.js */
-
-		/**
-   * COMPUTE MODULUS USING MONTGOMERY REDUCTION : http://en.wikipedia.org/wiki/Montgomery_reduction
-   */
-		/* js/src/mpow */
-		/* js/src/mpow/mpow.js */
-		/**
-   * MODULAR EXPONENTIATION : http://en.wikipedia.org/wiki/Modular_exponentiation
-   */
-		/* js/src/mul */
-		/* js/src/mul/karatsuba.js */
+		/* js/src/0-core/arithmetic/mul */
+		/* js/src/0-core/arithmetic/mul/karatsuba.js */
 		/**
    * /!\ BLOCK MULTIPLICATION RESULT MUST HOLD IN THE JAVASCRIPT NUMBER TYPE (DOUBLE i.e. 53 bits)
    *
@@ -1220,7 +660,7 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 		};
 
 		exports.bkaratsuba_t = bkaratsuba_t;
-		/* js/src/mul/mul.js */
+		/* js/src/0-core/arithmetic/mul/mul.js */
 
 		var bmul_t = function bmul_t(r) {
 
@@ -1272,7 +712,7 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 		};
 
 		exports.bmul_t = bmul_t;
-		/* js/src/mul/mul53.js */
+		/* js/src/0-core/arithmetic/mul/mul53.js */
 		/**
    * /!\ BLOCK MULTIPLICATION RESULT MUST HOLD IN THE JAVASCRIPT NUMBER TYPE (DOUBLE i.e. 53 bits)
    *
@@ -1362,188 +802,12 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 		};
 
 		exports.lmul53_t = lmul53_t;
-		/* js/src/mul/toomcook.js */
+		/* js/src/0-core/arithmetic/mul/toomcook.js */
 
 		// http://en.wikipedia.org/wiki/Toom–Cook_multiplication
 
-		/* js/src/neg */
-		/* js/src/neg/neg.js */
-		/**
-   * COMPUTE THE NEGATIVE VALUE OF NUMBER n
-   */
-		/* js/src/not */
-		/* js/src/not/not.js */
-		/**
-   * BINARY not APPLIED ON a
-   */
-		/* js/src/or */
-		/* js/src/or/or.js */
-		/**
-   * BINARY or APPLIED ON a AND b
-   */
-		/* js/src/parse */
-		/* js/src/parse/parse.js */
-
-		/**
-   * Function template for number parsing.
-   * Endianess provided by the iterator function
-   * iterator function must be reverse ordered
-   *
-   * @param {int} f from radix
-   * @param {int} t to radix
-   * @param {function} iter iterator function
-   */
-
-		var parse_t = function parse_t(t, f, iter) {
-
-			if (t >= f) {
-
-				if (f > 36) throw 'f > 36 not implemented';
-
-				var z = 0,
-				    log = t;
-				while (log >= f) {
-					if (log % f) break;
-					log /= f;
-					++z;
-				}
-
-				if (log !== 1) throw 'log(f) does not divide log(t) not implemented';
-
-				// immediate log(t) divides log(f)
-				return function (s, si, sj, a, ai, aj) {
-					var len = sj - si,
-					    k = sj - z,
-					    n = Math.ceil(len / z);
-					var block = function block(i) {
-						a[i] = parseInt(s.slice(Math.max(0, k), k + z), f);
-						k -= z;
-					};
-
-					iter(aj - n, aj, block);
-				};
-			} else throw 'f > t not implemented';
-		};
-
-		exports.parse_t = parse_t;
-		/* js/src/pow */
-		/* js/src/pow/ebs.js */
-		/**
-   * Computes pow(a, b) using exponentiation by squaring.
-   *
-   * *could add an additional base case for b = 1*
-   *
-   */
-
-		var __ebs__ = function __ebs__(alloc, iszero, setone, iseven, div2, minus1) {
-
-			var ebs = function ebs(a, ai, aj, b, bi, bj, c, ci, cj) {
-
-				var t, u, m, n;
-
-				if (iszero(b, bi, bj)) {
-					setone(c, ci, cj);
-				} else if (iseven(b, bi, bj)) {
-					m = bj - bi;
-					t = alloc(m);
-					t = div2(b, bi, bj, t, 0, m);
-
-					n = cj - ci;
-					u = alloc(n);
-
-					ebs(a, ai, aj, t, 0, m, u, 0, n);
-
-					mul(u, 0, n, u, 0, n, c, ci, cj);
-				} else {
-					m = bj - bi;
-					t = alloc(m);
-					t = minus1(b, bi, bj, t, 0, m);
-
-					n = cj - ci;
-					u = alloc(n);
-
-					ebs(a, ai, aj, t, 0, m, u, 0, n);
-
-					mul(a, ai, aj, u, 0, n, c, ci, cj);
-				}
-			};
-		};
-
-		/* js/src/pow/pow.js */
-		/**
-   * Computes pow(a, b) using naive exponentiation.
-   *
-   */
-
-		var __pow__ = function __pow__(alloc, isnotzero, setone, iseven, div2, minus1) {
-
-			var pow = function pow(a, ai, aj, b, bi, bj, c, ci, cj) {
-
-				var t, m;
-
-				setone(c, ci, cj);
-
-				while (isnotzero(b, bi, bj)) {
-
-					mul(c, ci, cj, a, ai, aj, c, ci, cj);
-
-					minus1(b, bi, bj, b, bi, bj);
-				}
-			};
-		};
-
-		/* js/src/sha */
-		/* js/src/sha/sha.js */
-		/**
-   * ARITHMETIC SHIFT
-   */
-		/* js/src/shl */
-		/* js/src/shl/shl.js */
-		/**
-   * LOGICAL SHIFT
-   */
-		/* js/src/stringify */
-		/* js/src/stringify/stringify.js */
-
-		/**
-   * Function template for number stringification.
-   * Endianess provided by the iterator function
-   *
-   * @param {int} f from radix
-   * @param {int} t to radix
-   * @param {function} iter iterator function
-   */
-
-		var stringify_t = function stringify_t(f, t, iter, zfill_t) {
-
-			if (t <= f) {
-
-				if (t > 36) throw 't > 36 not implemented';
-
-				var z = 0;
-				while (f >= t) {
-					if (f % t) break;
-					f /= t;
-					++z;
-				}
-
-				if (f !== 1) throw 'log(t) does not divide log(f) not implemented';
-
-				var zfill = zfill_t(z);
-
-				return function (a, i0, i1) {
-					var s = [];
-					iter(i0, i1, function (i) {
-						s.push(zfill(Number(+a[i]).toString(t)));
-					});
-					return s.join('');
-				};
-			} else throw 't > f not implemented';
-		};
-
-		exports.stringify_t = stringify_t;
-		/* js/src/sub */
-		/* js/src/sub/sub.js */
+		/* js/src/0-core/arithmetic/sub */
+		/* js/src/0-core/arithmetic/sub/sub.js */
 
 		/**
    * @param {int} r base (radix)
@@ -1642,8 +906,381 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 		exports.bsub_t = bsub_t;
 		exports.lsub_t = lsub_t;
 
-		/* js/src/wrap */
-		/* js/src/wrap/wrapbin.js */
+		/* js/src/0-core/binary */
+		/* js/src/0-core/binary/and */
+		/* js/src/0-core/binary/and/and.js */
+
+		/**
+   *
+   * BINARY and APPLIED ON a AND b
+   *
+   * Meaningful only when r is a power of 2.
+   *
+   * |a| = |b| = |c| > 0
+   *
+   *
+   */
+
+		var and = function and(a, a0, b, b0, c, c0, c1) {
+
+			while (c0 < c1) c[c0++] = a[a0++] & b[b0++];
+		};
+
+		/**
+   * BIG ENDIAN BINARY and APPLIED ON a AND b
+   *
+   * Meaningful only when r is a power of 2.
+   *
+   * |a| >= |b| > 0
+   *
+   * treats b as if it was represented with the same number of blocks as a
+   */
+
+		var band_t = function band_t(r) {
+
+			var _r = r / 2;
+
+			return function (a, a0, a1, b, b0, b1, c, c0, c1) {
+
+				var at = a1 - b1 + b0;
+				var ct = c0 + at - a0;
+
+				if (b[b0] < _r) while (c0 < ct) c[c0++] = 0;else while (c0 < ct) c[c0++] = a[a0++];
+
+				while (c0 < c1) c[c0++] = a[at++] & b[b0++];
+			};
+		};
+
+		/**
+   * LITTLE ENDIAN BINARY and APPLIED ON a AND b
+   *
+   * Meaningful only when r is a power of 2.
+   *
+   * |a| >= |b| > 0
+   *
+   * treats b as if it was represented with the same number of blocks as a
+   */
+
+		var land_t = function land_t(r) {
+
+			var _r = r / 2;
+
+			return function (a, a0, a1, b, b0, b1, c, c0, c1) {
+
+				var ct = c0 + b1 - b0;
+
+				while (c0 < ct) c[c0++] = a[a0++] & b[b0++];
+
+				if (b[b0 - 1] < _r) while (c0 < c1) c[c0++] = 0;else while (c0 < c1) c[c0++] = a[a0++];
+			};
+		};
+
+		exports.and = and;
+		exports.land_t = land_t;
+		exports.band_t = band_t;
+		/* js/src/0-core/binary/not */
+		/* js/src/0-core/binary/not/not.js */
+		/**
+   * BINARY not APPLIED ON a
+   */
+		/* js/src/0-core/binary/or */
+		/* js/src/0-core/binary/or/or.js */
+		/**
+   * BINARY or APPLIED ON a AND b
+   */
+		/* js/src/0-core/binary/xor */
+		/* js/src/0-core/binary/xor/xor.js */
+		/**
+   * BINARY xor APPLIED ON a AND b
+   */
+		/* js/src/0-core/compare */
+		/* js/src/0-core/compare/_jz.js */
+
+		/**
+   * Returns true if number is 0.
+   *
+   * @param {array} a first operand
+   * @param {int} ai a left
+   * @param {int} aj a right
+   */
+
+		var _jz = function _jz(a, ai, aj) {
+
+			for (; ai < aj; ++ai) if (a[ai] !== 0) return false;
+
+			return true;
+		};
+
+		exports._jz = _jz;
+
+		/* js/src/0-core/compare/cmp.js */
+
+		var bcmp_t = function bcmp_t() {
+
+			/**
+    * Compares two big endian arrays, |a| >= |b|
+    *
+    * @param {array} a first operand
+    * @param {int} ai a left
+    * @param {int} aj a right
+    * @param {array} b second operand
+    * @param {int} bi b left
+    * @param {int} bj b right
+    *
+    * @return {int} 1 if a > b; 0 if a = b; -1 otherwise.
+    */
+
+			return function (a, ai, aj, b, bi, bj) {
+
+				var tmp = aj - bj + bi;
+
+				for (; ai < tmp; ++ai) if (a[ai] > 0) return 1;
+
+				// same size aj - ai === bj - bi
+				for (; ai < aj; ++ai, ++bi) {
+					if (a[ai] > b[bi]) return 1;
+					if (a[ai] < b[bi]) return -1;
+				}
+
+				return 0;
+			};
+		};
+
+		var lcmp_t = function lcmp_t() {
+
+			/**
+    * Compares two little endian arrays, |a| >= |b|
+    *
+    * @param {array} a first operand
+    * @param {int} ai a left
+    * @param {int} aj a right
+    * @param {array} b second operand
+    * @param {int} bi b left
+    * @param {int} bj b right
+    *
+    * @return {int} 1 if a > b; 0 if a = b; -1 otherwise.
+    */
+
+			return function (a, ai, aj, b, bi, bj) {
+
+				var tmp = ai + bj - bi;
+
+				--aj;--bj;
+
+				for (; aj >= tmp; --aj) if (a[aj] > 0) return 1;
+
+				// same size aj - ai === bj - bi
+				for (; aj >= ai; --aj, --bj) {
+					if (a[aj] > b[bj]) return 1;
+					if (a[aj] < b[bj]) return -1;
+				}
+
+				return 0;
+			};
+		};
+
+		exports.bcmp_t = bcmp_t;
+		exports.lcmp_t = lcmp_t;
+		/* js/src/0-core/compare/eq.js */
+
+		/**
+   * Wrapper for a comparison operator that returns true iff
+   * _a_ is equal to _b_.
+   */
+
+		var eq_t = function eq_t(cmp) {
+			return function (a, ai, aj, b, bi, bj) {
+				return cmp(a, ai, aj, b, bi, bj) === 0;
+			};
+		};
+
+		exports.eq_t = eq_t;
+		/* js/src/0-core/compare/ge.js */
+
+		/**
+   * Wrapper for a comparison operator that returns true iff
+   * _a_ is greater or equal to _b_.
+   */
+
+		var ge_t = function ge_t(cmp) {
+			return function (a, ai, aj, b, bi, bj) {
+				return cmp(a, ai, aj, b, bi, bj) >= 0;
+			};
+		};
+
+		exports.ge_t = ge_t;
+		/* js/src/0-core/compare/gt.js */
+
+		/**
+   * Wrapper for a comparison operator that returns true iff
+   * _a_ is greater than _b_.
+   */
+
+		var gt_t = function gt_t(cmp) {
+			return function (a, ai, aj, b, bi, bj) {
+				return cmp(a, ai, aj, b, bi, bj) > 0;
+			};
+		};
+
+		exports.gt_t = gt_t;
+		/* js/src/0-core/compare/le.js */
+
+		/**
+   * Wrapper for a comparison operator that returns true iff
+   * _a_ is less or equal to _b_.
+   */
+
+		var le_t = function le_t(cmp) {
+			return function (a, ai, aj, b, bi, bj) {
+				return cmp(a, ai, aj, b, bi, bj) <= 0;
+			};
+		};
+
+		exports.le_t = le_t;
+		/* js/src/0-core/compare/lt.js */
+
+		/**
+   * Wrapper for a comparison operator that returns true iff
+   * _a_ is less than _b_.
+   */
+
+		var lt_t = function lt_t(cmp) {
+			return function (a, ai, aj, b, bi, bj) {
+				return cmp(a, ai, aj, b, bi, bj) < 0;
+			};
+		};
+
+		exports.lt_t = lt_t;
+		/* js/src/0-core/compare/ne.js */
+
+		/**
+   * Wrapper for a comparison operator that returns true iff
+   * _a_ is not equal to _b_.
+   */
+
+		var ne_t = function ne_t(cmp) {
+			return function (a, ai, aj, b, bi, bj) {
+				return cmp(a, ai, aj, b, bi, bj) !== 0;
+			};
+		};
+
+		exports.ne_t = ne_t;
+		/* js/src/0-core/others */
+		/* js/src/0-core/others/gcd */
+		/* js/src/0-core/others/gcd/gcd.js */
+		/**
+   * COMPUTE THE GREATEST COMMON DIVISOR OF a AND b
+   */
+		/* js/src/0-core/others/lcm */
+		/* js/src/0-core/others/lcm/lcm.js */
+		/**
+   * COMPUTE THE LEAST COMMON MULTIPLE OF a AND b
+   */
+		/* js/src/0-core/others/log */
+		/* js/src/0-core/others/log/log.js */
+
+		/**
+   * FOR A NUMBER n COMPUTE THE GREATEST k SUCH THAT 2^k < n
+   */
+		/* js/src/0-core/others/mod */
+		/* js/src/0-core/others/mod/mod.js */
+
+		/**
+   * COMPUTE MODULUS (a % b)
+   */
+		/* js/src/0-core/others/mod/montgomery.js */
+
+		/**
+   * COMPUTE MODULUS USING MONTGOMERY REDUCTION : http://en.wikipedia.org/wiki/Montgomery_reduction
+   */
+		/* js/src/0-core/others/mpow */
+		/* js/src/0-core/others/mpow/mpow.js */
+		/**
+   * MODULAR EXPONENTIATION : http://en.wikipedia.org/wiki/Modular_exponentiation
+   */
+		/* js/src/0-core/others/neg */
+		/* js/src/0-core/others/neg/neg.js */
+		/**
+   * COMPUTE THE NEGATIVE VALUE OF NUMBER n
+   */
+		/* js/src/0-core/others/pow */
+		/* js/src/0-core/others/pow/ebs.js */
+		/**
+   * Computes pow(a, b) using exponentiation by squaring.
+   *
+   * *could add an additional base case for b = 1*
+   *
+   */
+
+		var __ebs__ = function __ebs__(alloc, iszero, setone, iseven, div2, minus1) {
+
+			var ebs = function ebs(a, ai, aj, b, bi, bj, c, ci, cj) {
+
+				var t, u, m, n;
+
+				if (iszero(b, bi, bj)) {
+					setone(c, ci, cj);
+				} else if (iseven(b, bi, bj)) {
+					m = bj - bi;
+					t = alloc(m);
+					t = div2(b, bi, bj, t, 0, m);
+
+					n = cj - ci;
+					u = alloc(n);
+
+					ebs(a, ai, aj, t, 0, m, u, 0, n);
+
+					mul(u, 0, n, u, 0, n, c, ci, cj);
+				} else {
+					m = bj - bi;
+					t = alloc(m);
+					t = minus1(b, bi, bj, t, 0, m);
+
+					n = cj - ci;
+					u = alloc(n);
+
+					ebs(a, ai, aj, t, 0, m, u, 0, n);
+
+					mul(a, ai, aj, u, 0, n, c, ci, cj);
+				}
+			};
+		};
+
+		/* js/src/0-core/others/pow/pow.js */
+		/**
+   * Computes pow(a, b) using naive exponentiation.
+   *
+   */
+
+		var __pow__ = function __pow__(alloc, isnotzero, setone, iseven, div2, minus1) {
+
+			var pow = function pow(a, ai, aj, b, bi, bj, c, ci, cj) {
+
+				var t, m;
+
+				setone(c, ci, cj);
+
+				while (isnotzero(b, bi, bj)) {
+
+					mul(c, ci, cj, a, ai, aj, c, ci, cj);
+
+					minus1(b, bi, bj, b, bi, bj);
+				}
+			};
+		};
+
+		/* js/src/0-core/others/sha */
+		/* js/src/0-core/others/sha/sha.js */
+		/**
+   * ARITHMETIC SHIFT
+   */
+		/* js/src/0-core/others/shl */
+		/* js/src/0-core/others/shl/shl.js */
+		/**
+   * LOGICAL SHIFT
+   */
+		/* js/src/0-core/others/wrap */
+		/* js/src/0-core/others/wrap/wrapbin.js */
 		/**
    * Wrapper for binary operator.
    * Ensures
@@ -1673,7 +1310,7 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 
 		exports.wrapbin = wrapbin;
 
-		/* js/src/wrap/wrapcmp.js */
+		/* js/src/0-core/others/wrap/wrapcmp.js */
 
 		var wrapcmp = function wrapcmp(cmp) {
 
@@ -1688,7 +1325,7 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 		};
 
 		exports.wrapcmp = wrapcmp;
-		/* js/src/wrap/wrapmov.js */
+		/* js/src/0-core/others/wrap/wrapmov.js */
 
 		var wrapmov = function wrapmov(fn) {
 			return function (a, i, j, b, k) {
@@ -1706,11 +1343,399 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 		};
 
 		exports.wrapmov = wrapmov;
-		/* js/src/xor */
-		/* js/src/xor/xor.js */
+		/* js/src/1-api */
+		/* js/src/1-api/convert */
+		/* js/src/1-api/convert/_alloc.js */
+
+		var _alloc = function _alloc(n) {
+
+			var data = new Array(n);
+
+			for (var i = 0; i < n; ++i) {
+				data[i] = 0;
+			}return data;
+		};
+
+		exports._alloc = _alloc;
+
+		/* js/src/1-api/convert/_build.js */
+
+		var _build = function _build(base, number) {
+
+			var data = [];
+
+			var q = number;
+			var d = base;
+
+			while (q >= d) {
+				var r = q % d;
+				data.push(r);
+				q = (q - r) / d;
+			}
+
+			data.push(q);
+
+			return data.reverse();
+		};
+
+		exports._build = _build;
+
+		/* js/src/1-api/convert/_chr.js */
+
+		var _chr = function _chr(x) {
+
+			if (x < 10) return String.fromCharCode(48 + x);
+			return String.fromCharCode(87 + x);
+		};
+
+		exports._chr = _chr;
+
+		/* js/src/1-api/convert/_convert.js */
+
 		/**
-   * BINARY xor APPLIED ON a AND b
+   *
+   * @param {Number} f the base to convert from
+   * @param {Number} t the base to convert to
+   * @param {Array} a the origin array
+   * @param {Number} ai start offset in the origin array
+   * @param {Number} aj end offset in the origin array
+   * @param {Array} b the destination array
+   * @param {Number} bi start offset in the destination array
+   * @param {Number} bj end offset in the destination array
    */
+
+		var _convert = function _convert(f, t, a, ai, aj, b, bi, bj) {
+
+			if (f > t) return _convert_to_smaller(f, t, a, ai, aj, b, bi, bj);
+			if (f < t) return _convert_to_larger(f, t, a, ai, aj, b, bi, bj);
+			return _copy(a, ai, aj, b, bi);
+		};
+
+		exports._convert = _convert;
+
+		/* js/src/1-api/convert/_convert_slow.js */
+
+		/**
+   *
+   * @param {Number} f the base to convert from
+   * @param {Number} t the base to convert to
+   * @param {Array} a the origin array
+   * @param {Number} ai start offset in the origin array
+   * @param {Number} aj end offset in the origin array
+   * @param {Array} b the destination array
+   * @param {Number} bi start offset in the destination array
+   * @param {Number} bj end offset in the destination array
+   */
+
+		var _convert_slow = function _convert_slow(f, t, a, ai, aj, b, bi, bj) {
+
+			var d = _build(f, t);
+			var di = 0;
+			var dj = d.length;
+			var qi = 0;
+			var qj = aj - ai;
+
+			while (true) {
+
+				var q = _alloc(qj - qi);
+
+				_div(a, ai, aj, d, di, dj, q, qi);
+
+				--bj;
+				var x = 0;
+
+				for (var k = ai; k < aj; ++k) {
+					x *= t;
+					x += a[k];
+				}
+
+				b[bj] = x;
+
+				if (_jz(q, qi, qj)) return;
+
+				_copy(q, qi, qj, a, ai);
+			}
+		};
+
+		exports._convert_slow = _convert_slow;
+
+		/* js/src/1-api/convert/_convert_to_larger.js */
+
+		/**
+   *
+   * @param {Number} f the base to convert from
+   * @param {Number} t the base to convert to
+   * @param {Array} a the origin array
+   * @param {Number} ai start offset in the origin array
+   * @param {Number} aj end offset in the origin array
+   * @param {Array} b the destination array
+   * @param {Number} bi start offset in the destination array
+   * @param {Number} bj end offset in the destination array
+   */
+
+		var _convert_to_larger = function _convert_to_larger(f, t, a, ai, aj, b, bi, bj) {
+			var _log2 = _log(t, f);
+
+			var _log22 = _slicedToArray(_log2, 2);
+
+			var z = _log22[0];
+			var x = _log22[1];
+
+			if (x === 1) return _convert_to_larger_fast(f, z, a, ai, aj, b, bi, bj);
+
+			return _convert_slow(f, t, a, ai, aj, b, bi, bj);
+		};
+
+		exports._convert_to_larger = _convert_to_larger;
+
+		/* js/src/1-api/convert/_convert_to_larger_fast.js */
+
+		/**
+   *
+   * @param {Number} ar the base to convert from
+   * @param {Number} z if br is the base to convert to then log(br) = z log(ar)
+   * @param {Array} a the origin array
+   * @param {Number} ai start offset in the origin array
+   * @param {Number} aj end offset in the origin array
+   * @param {Array} b the destination array
+   * @param {Number} bi start offset in the destination array
+   * @param {Number} bj end offset in the destination array
+   */
+
+		var _convert_to_larger_fast = function _convert_to_larger_fast(ar, z, a, ai, aj, b, bi, bj) {
+
+			var m, n, q, r, i, w, t;
+
+			m = aj - ai;
+			n = bj - bi;
+
+			// number of parts of first
+			// destination block if incomplete
+			r = m % z;
+
+			// number of complete blocks in destination
+			q = (m - r) / z;
+
+			// total number of blocks in destination
+			// (complete ones + first if incomplete)
+			w = q + !!r;
+
+			if (n >= w) {
+				// if destination can contain more than
+				// what is available in source then
+				// compute the effective write start
+				// in destination and set i to the correct
+				// offset according to the size
+				// (in source blocks) of the
+				// first destination block if incomplete
+				bi = bj - w;
+				i = (z - r) % z;
+			} else {
+				// if source contains more than what
+				// destination can handle set the effective
+				// read start in source and set i to 0 because
+				// all blocks will be complete
+				ai = aj - n * z;
+				i = 0;
+			}
+
+			for (; ai < aj && bi < bj; ++bi) {
+				t = 0;
+				for (; i < z; ++i) {
+					t *= ar; // aggregate source blocks
+					t += a[ai]; // using simple
+					++ai; // multiply + add
+				}
+				b[bi] = t; // set block in destination
+				i = 0;
+			}
+		};
+
+		exports._convert_to_larger_fast = _convert_to_larger_fast;
+
+		/* js/src/1-api/convert/_convert_to_smaller.js */
+
+		/**
+   *
+   * @param {Number} f the base to convert from
+   * @param {Number} t the base to convert to
+   * @param {Array} a the origin array
+   * @param {Number} ai start offset in the origin array
+   * @param {Number} aj end offset in the origin array
+   * @param {Array} b the destination array
+   * @param {Number} bi start offset in the destination array
+   * @param {Number} bj end offset in the destination array
+   */
+
+		var _convert_to_smaller = function _convert_to_smaller(f, t, a, ai, aj, b, bi, bj) {
+			var _log3 = _log(f, t);
+
+			var _log32 = _slicedToArray(_log3, 2);
+
+			var z = _log32[0];
+			var x = _log32[1];
+
+			if (x === 1) return _convert_to_smaller_fast(t, z, a, ai, aj, b, bi, bj);
+
+			return _convert_slow(f, t, a, ai, aj, b, bi, bj);
+		};
+
+		exports._convert_to_smaller = _convert_to_smaller;
+
+		/* js/src/1-api/convert/_convert_to_smaller_fast.js */
+
+		/**
+   *
+   * @param {Number} br the base to convert to
+   * @param {Number} z if ar is the base to convert to then log(ar) = z log(br)
+   * @param {Array} a the origin array
+   * @param {Number} ai start offset in the origin array
+   * @param {Number} aj end offset in the origin array
+   * @param {Array} b the destination array
+   * @param {Number} bi start offset in the destination array
+   * @param {Number} bj end offset in the destination array
+   */
+
+		var _convert_to_smaller_fast = function _convert_to_smaller_fast(br, z, a, ai, aj, b, bi, bj) {
+
+			var m, n, q, r, i, w, t;
+
+			m = bj - bi;
+			n = aj - ai;
+
+			// number of parts of first
+			// destination block if incomplete
+			r = m % z;
+
+			// number of complete blocks in destination
+			q = (m - r) / z;
+
+			// total number of blocks in destination
+			// (complete ones + first if incomplete)
+			w = q + !!r;
+
+			if (n >= w) {
+				// if source contains more than what
+				// destination can handle set the effective
+				// read start in source and set i to the correct
+				// offset according to the size
+				// (in destination blocks) of the
+				// first source block if incomplete
+				ai = aj - w;
+				i = (z - r) % z;
+			} else {
+				// if destination can contain more than
+				// what is available in source then
+				// compute the effective write start
+				// in destination and set i to 0 because
+				// all blocks will be complete
+				bi = bj - n * z;
+				i = 0;
+			}
+
+			for (; ai < aj && bi < bj; ++ai) {
+				q = a[ai];
+				t = bi + z - 1 - i;
+				bi += z - i;
+				for (; i < z; ++i) {
+					r = q % br; // unpack source blocks
+					q = (q - r) / br; // using simple
+					b[t] = r; // modulo + quotient
+					--t;
+				}
+				i = 0;
+			}
+		};
+
+		exports._convert_to_smaller_fast = _convert_to_smaller_fast;
+
+		/* js/src/1-api/convert/_copy.js */
+
+		var _copy = function _copy(a, ai, aj, b, bi) {
+
+			for (; ai < aj; ++ai, ++bi) b[bi] = a[ai];
+		};
+
+		exports._copy = _copy;
+
+		/* js/src/1-api/convert/_int.js */
+
+		var _int = function _int(x) {
+
+			if (x >= '0' && x <= '9') return x.charCodeAt(0) - 48;
+			if (x >= 'A' && x <= 'Z') return x.charCodeAt(0) - 55;
+			if (x >= 'a' && x <= 'z') return x.charCodeAt(0) - 87;
+
+			throw 'invalid literal for _int: ' + x;
+		};
+
+		exports._int = _int;
+
+		/* js/src/1-api/convert/_log.js */
+
+		var _log = function _log(x, y) {
+
+			while (x >= y) {
+				if (x % y) break;
+				x /= y;
+				++z;
+			}
+
+			return [z, x];
+		};
+
+		exports._log = _log;
+
+		/* js/src/1-api/convert/convert.js */
+
+		var convert = function convert(f, t, a, ai, aj) {
+
+			var bi = 0;
+			var bj = Math.ceil(Math.log(f) / Math.log(t) * (aj - ai));
+			var b = _alloc(bj - bi);
+
+			_convert(f, t, a, ai, aj, b, bi, bj);
+
+			return b;
+		};
+
+		exports.convert = convert;
+
+		/* js/src/1-api/convert/parse.js */
+
+		var parse = function parse(f, t, string) {
+
+			if (f > 36) throw 'f > 36 not implemented';
+
+			var n = string.length;
+
+			var a = [];
+
+			for (var k = 0; k < n; ++k) {
+				a.push(_int(string[k]));
+			}return convert(f, t, a, 0, n);
+		};
+
+		exports.parse = parse;
+
+		/* js/src/1-api/convert/stringify.js */
+
+		var stringify = function stringify(f, t, a, ai, aj) {
+
+			if (t > 36) throw 't > 36 not implemented';
+
+			var b = convert(f, t, a, ai, aj);
+			var n = b.length;
+
+			var data = [];
+
+			for (var k = 0; k < n; ++k) {
+				data.push(_chr(b[k]));
+			}return data.join('');
+		};
+
+		exports.stringify = stringify;
+
 		return exports;
 	};
 	if (typeof exports === "object") {
