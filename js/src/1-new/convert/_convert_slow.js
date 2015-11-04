@@ -24,13 +24,13 @@ const _convert_slow = function ( f , t , a , ai , aj , b , bi , bj ) {
 
 		const q = _alloc( qj - qi ) ;
 
-		_div( a , ai , aj , d , di , dj , q , qi ) ;
+		_div( f , a , ai , aj , d , di , dj , q , qi ) ;
 
 		--bj ;
 		let x = 0 ;
 
 		for ( let k = ai ; k < aj ; ++k ) {
-			x *= t ;
+			x *= f ;
 			x += a[k] ;
 		}
 

@@ -1441,7 +1441,7 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 		exports._sub = _sub;
 
 		/* js/src/1-new/compare */
-		/* js/src/1-new/compare/_cmp.js */
+		/* js/src/1-new/compare/_CMP.js */
 
 		/**
    * Compares two big endian arrays, |a| >= |b|
@@ -1456,7 +1456,7 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
    * @return {int} 1 if a > b; 0 if a = b; -1 otherwise.
    */
 
-		var _cmp = function _cmp(a, ai, aj, b, bi, bj) {
+		var _CMP = function _CMP(a, ai, aj, b, bi, bj) {
 
 			var tmp = aj - bj + bi;
 
@@ -1469,6 +1469,15 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 			}
 
 			return 0;
+		};
+
+		exports._CMP = _CMP;
+
+		/* js/src/1-new/compare/_cmp.js */
+
+		var _cmp = function _cmp(a, ai, aj, b, bi, bj) {
+
+			if (aj - ai < bj - bi) return -_CMP(b, bi, bj, a, ai, aj);else return _CMP(a, ai, aj, b, bi, bj);
 		};
 
 		exports._cmp = _cmp;
@@ -1635,13 +1644,13 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 
 				var q = _alloc(qj - qi);
 
-				_div(a, ai, aj, d, di, dj, q, qi);
+				_div(f, a, ai, aj, d, di, dj, q, qi);
 
 				--bj;
 				var x = 0;
 
 				for (var k = ai; k < aj; ++k) {
-					x *= t;
+					x *= f;
 					x += a[k];
 				}
 
@@ -1870,6 +1879,8 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 		/* js/src/1-new/convert/_log.js */
 
 		var _log = function _log(x, y) {
+
+			var z = 0;
 
 			while (x >= y) {
 				if (x % y) break;
