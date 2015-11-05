@@ -30,4 +30,17 @@ test( 'parse' , function ( assert ) {
 	assert.deepEqual( integer.parse( 10 , 16 , '256' ) , [ 1 , 0 , 0 ] ) ;
 	assert.deepEqual( integer.parse( 16 , 10 , '100' ) , [ 0 , 2 , 5 , 6 ] ) ;
 
+	assert.deepEqual( integer.parse( 10 , 16 , '255' ) , [ 0 , 15 , 15 ] ) ;
+	assert.deepEqual( integer.parse( 16 , 10 , 'ff' ) , [ 2 , 5 , 5 ] ) ;
+
+	assert.deepEqual( integer.parse( 16 , 100 , 'ff' ) , [ 2 , 55 ] ) ;
+	assert.deepEqual( integer.parse( 16 , 1000 , 'ff' ) , [ 255 ] ) ;
+	assert.deepEqual( integer.parse( 16 , 10000 , 'ff' ) , [ 255 ] ) ;
+
+	assert.deepEqual( integer.parse( 16 , 100 , 'fedcba9876543210' ) , [ 18 , 36 , 47 , 58 , 54 , 44 , 93 , 06 , 47 , 20 ] ) ;
+	assert.deepEqual(
+		integer.parse( 36 , 10000 , '1234567890azertyuiopqsdfghjklmwxcvbn' ) ,
+		[ 0,312,6485,6500,0280,6599,6167,8564,7451,522,8125,564,4362,6409,4355]
+	) ;
+
 } ) ;
