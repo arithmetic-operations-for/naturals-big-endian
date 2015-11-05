@@ -40,7 +40,7 @@ test( 'parse' , function ( assert ) {
 	assert.deepEqual( integer.parse( 16 , 100 , 'fedcba9876543210' ) , [ 18 , 36 , 47 , 58 , 54 , 44 , 93 , 06 , 47 , 20 ] ) ;
 	assert.deepEqual(
 		integer.parse( 36 , 10000 , '1234567890azertyuiopqsdfghjklmwxcvbn' ) ,
-		[ 0,312,6485,6500,0280,6599,6167,8564,7451,522,8125,564,4362,6409,4355]
+		[ 0,312,6485,6500,280,6599,6167,8564,7451,522,8125,564,4362,6409,4355]
 	) ;
 
 } ) ;
