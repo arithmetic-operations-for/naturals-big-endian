@@ -1327,11 +1327,7 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 
 		var _alloc = function _alloc(n) {
 
-			var data = new Array(n);
-
-			for (var i = 0; i < n; ++i) {
-				data[i] = 0;
-			}return data;
+			return new Array(n);
 		};
 
 		exports._alloc = _alloc;
@@ -1412,10 +1408,11 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 			var dj = d.length;
 			var qi = 0;
 			var qj = aj - ai;
+			var q = _alloc(qj - qi);
 
 			while (true) {
 
-				var q = _alloc(qj - qi);
+				_reset(q, qi, qj);
 
 				_div(f, a, ai, aj, d, di, dj, q, qi);
 
@@ -1636,6 +1633,17 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 
 		exports._copy = _copy;
 
+		/* js/src/1-new/convert/_fill.js */
+
+		var _fill = function _fill(a, ai, aj, v) {
+
+			for (var i = ai; i < aj; ++i) {
+				a[i] = v;
+			}
+		};
+
+		exports._fill = _fill;
+
 		/* js/src/1-new/convert/_int.js */
 
 		var _int = function _int(x) {
@@ -1666,45 +1674,19 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 
 		exports._log = _log;
 
-		/* js/src/1-new/convert/convert.js */
+		/* js/src/1-new/convert/_reset.js */
 
-		var convert = function convert(f, t, a, ai, aj) {
+		var _reset = function _reset(a, ai, aj) {
 
-			var bi = 0;
-			var bj = Math.ceil(Math.log(f) / Math.log(t) * (aj - ai));
-			var b = _alloc(bj - bi);
-
-			_convert(f, t, a, ai, aj, b, bi, bj);
-
-			return b;
+			_fill(a, ai, aj, 0);
 		};
 
-		exports.convert = convert;
+		exports._reset = _reset;
 
-		/* js/src/1-new/convert/parse.js */
+		/* js/src/1-new/convert/_to_string.js */
 
-		var parse = function parse(f, t, string) {
+		var _to_string = function _to_string(b) {
 
-			if (f > 36) throw 'f > 36 not implemented';
-
-			var n = string.length;
-
-			var a = [];
-
-			for (var k = 0; k < n; ++k) {
-				a.push(_int(string[k]));
-			}return convert(f, t, a, 0, n);
-		};
-
-		exports.parse = parse;
-
-		/* js/src/1-new/convert/stringify.js */
-
-		var stringify = function stringify(f, t, a, ai, aj) {
-
-			if (t > 36) throw 't > 36 not implemented';
-
-			var b = convert(f, t, a, ai, aj);
 			var n = b.length;
 
 			var data = [];
@@ -1714,7 +1696,128 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 			}return data.join('');
 		};
 
+		exports._to_string = _to_string;
+
+		/* js/src/1-new/convert/_trim_positive.js */
+
+		var _trim_positive = function _trim_positive(a, ai, aj) {
+
+			while (a[ai] === 0 && ai < aj) ++ai;
+
+			return ai;
+		};
+
+		exports._trim_positive = _trim_positive;
+
+		/* js/src/1-new/convert/_zeros.js */
+
+		var _zeros = function _zeros(n) {
+
+			var a = _alloc(n);
+
+			_reset(a, 0, n);
+
+			return a;
+		};
+
+		exports._zeros = _zeros;
+
+		/* js/src/1-new/convert/convert.js */
+
+		var convert = function convert(f, t, a, ai, aj) {
+
+			var b = convert_keep_zeros(f, t, a, ai, aj);
+
+			return trim_natural(b, 0, b.length);
+		};
+
+		exports.convert = convert;
+
+		/* js/src/1-new/convert/convert_keep_zeros.js */
+
+		var convert_keep_zeros = function convert_keep_zeros(f, t, a, ai, aj) {
+
+			var bi = 0;
+			var bj = Math.ceil(Math.log(f) / Math.log(t) * (aj - ai));
+			var b = _zeros(bj - bi);
+
+			_convert(f, t, a, ai, aj, b, bi, bj);
+
+			return b;
+		};
+
+		exports.convert_keep_zeros = convert_keep_zeros;
+
+		/* js/src/1-new/convert/parse.js */
+
+		var parse = function parse(f, t, string) {
+
+			var b = parse_keep_zeros(f, t, string);
+
+			return trim_natural(b, 0, b.length);
+		};
+
+		exports.parse = parse;
+
+		/* js/src/1-new/convert/parse_keep_zeros.js */
+
+		var parse_keep_zeros = function parse_keep_zeros(f, t, string) {
+
+			if (f > 36) throw 'f > 36 not implemented';
+
+			var n = string.length;
+
+			var a = [];
+
+			for (var k = 0; k < n; ++k) {
+				a.push(_int(string[k]));
+			}return convert_keep_zeros(f, t, a, 0, n);
+		};
+
+		exports.parse_keep_zeros = parse_keep_zeros;
+
+		/* js/src/1-new/convert/stringify.js */
+
+		var stringify = function stringify(f, t, a, ai, aj) {
+
+			if (t > 36) throw 't > 36 not implemented';
+
+			var b = convert(f, t, a, ai, aj);
+
+			return _to_string(b);
+		};
+
 		exports.stringify = stringify;
+
+		/* js/src/1-new/convert/stringify_keep_zeros.js */
+
+		var stringify_keep_zeros = function stringify_keep_zeros(f, t, a, ai, aj) {
+
+			if (t > 36) throw 't > 36 not implemented';
+
+			var b = convert_keep_zeros(f, t, a, ai, aj);
+
+			return _to_string(b);
+		};
+
+		exports.stringify_keep_zeros = stringify_keep_zeros;
+
+		/* js/src/1-new/convert/trim_natural.js */
+
+		var trim_natural = function trim_natural(a, ai, aj) {
+
+			var x = _trim_positive(a, ai, aj);
+
+			if (x >= aj) return [0];
+
+			var b = _alloc(aj - x);
+
+			_copy(a, x, aj, b, 0);
+
+			return b;
+		};
+
+		exports.trim_natural = trim_natural;
 
 		return exports;
 	};

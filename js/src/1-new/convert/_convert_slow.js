@@ -19,10 +19,11 @@ const _convert_slow = function ( f , t , a , ai , aj , b , bi , bj ) {
 	const dj = d.length ;
 	const qi = 0 ;
 	const qj = aj - ai ;
+	const q = _alloc( qj - qi ) ;
 
 	while ( true ) {
 
-		const q = _alloc( qj - qi ) ;
+		_reset( q , qi , qj ) ;
 
 		_div( f , a , ai , aj , d , di , dj , q , qi ) ;
 

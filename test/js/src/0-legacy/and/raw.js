@@ -17,21 +17,21 @@ var check = function(Ctor){
 			var test = TEST[k];
 
 			var as = test[0];
-			var a = new Ctor( integer.parse( f , r , as ) ) ;
+			var a = new Ctor( integer.parse_keep_zeros( f , r , as ) ) ;
 			var ai = 0 ;
 			var aj = a.length ;
 			var c = new Ctor(aj);
 
 
 			var bs = test[1];
-			var b = new Ctor( integer.parse( f , r , bs ) ) ;
+			var b = new Ctor( integer.parse_keep_zeros( f , r , bs ) ) ;
 			var bi = 0;
 			var bj = b.length;
 
 			integer.and(a, ai, b, bi, c, ai, aj);
 
 			var ds = test[2];
-			var d = new Ctor( integer.parse( f , r , ds ) ) ;
+			var d = new Ctor( integer.parse_keep_zeros( f , r , ds ) ) ;
 			var di = 0;
 			var dj = d.length;
 

@@ -1,15 +1,9 @@
 
 const parse = function ( f , t , string ) {
 
-	if ( f > 36 ) throw 'f > 36 not implemented' ;
+	const b = parse_keep_zeros( f , t , string ) ;
 
-	const n = string.length ;
-
-	const a = [ ] ;
-
-	for ( let k = 0 ; k < n ; ++k ) a.push( _int( string[k] ) ) ;
-
-	return convert( f , t , a , 0 , n ) ;
+	return trim_natural( b , 0 , b.length ) ;
 
 } ;
 
