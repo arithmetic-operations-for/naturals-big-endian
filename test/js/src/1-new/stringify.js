@@ -44,6 +44,11 @@ test( 'stringify' , function ( assert ) {
 		//[ 0,312,6485,6500,280,6599,6167,8564,7451,522,8125,564,4362,6409,4355] , 0 , 15
 	//) , '1234567890azertyuiopqsdfghjklmwxcvbn' ) ;
 
+	assert.deepEqual(
+		integer.stringify( 10 , 36 ,
+		[ 3,1,2,6,4,8,5,6,5,0,0,0,2,8,0,6,5,9,9,6,1,6,7,8,5,6,4,7,4,5,1,0,5,2,2,8,1,2,5,0,5,6,4,4,3,6,2,6,4,0,9,4,3,5,5] , 0 , 55
+	) , '1234567890azertyuiopqsdfghjklmwxcvbn' ) ;
+
 	assert.deepEqual( integer.stringify( 10000 , 36 , [ 55 , 3415 ] , 0 , 2 ) , 'bv0n' ) ;
 
 } ) ;
