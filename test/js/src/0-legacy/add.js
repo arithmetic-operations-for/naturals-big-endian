@@ -1,7 +1,7 @@
 
 
 var util = require('util');
-var algo = require('aureooms-js-algo');
+var random = require('aureooms-js-random');
 
 
 var check = function(ctor, r, e){
@@ -34,7 +34,7 @@ var check = function(ctor, r, e){
 
 	var todouble = todouble_t(r, e);
 	var add = e(r);
-	var randint = algo.randint;
+	var randint = random.randint;
 	var lsb = function(a){ return e === integer.badd_t ? a.length - 1 : 0; };
 
 	test(name, function(assert){

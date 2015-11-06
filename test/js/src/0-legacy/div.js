@@ -1,5 +1,4 @@
 
-
 var util = require('util');
 var fmt = util.format;
 
@@ -32,7 +31,6 @@ var check = function(Ctor, cmp, biter, div, sub, fiter){
 
 	var parse = integer.parse_t(r, f, biter);
 	var stringify = integer.stringify_t(r, f, fiter, zfill_t);
-	var fill = algo.fill;
 
 	var lt = integer.lt_t(cmp);
 	sub = sub(r);

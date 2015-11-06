@@ -1,9 +1,9 @@
 
 
-var algo = require("aureooms-js-algo");
+var random = require("aureooms-js-random");
 var util = require("util");
 var fmt = util.format;
-var randint = algo.randint;
+var randint = random.randint;
 
 
 var runtest = function(name, n, mul53_t, hb, lb, r, calloc){

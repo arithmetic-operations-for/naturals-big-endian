@@ -1,4 +1,5 @@
 
+var operator = require( 'aureooms-js-operator' ) ;
 
 var util = require('util');
 var fmt = util.format;
@@ -155,18 +156,18 @@ var dummy = function(x){ return x; };
 var ENDIANESS = [
 	[['integer.bcmp_t', bcmp], ['algo.biter', algo.biter], dummy],
 	[['integer.lcmp_t', lcmp], ['algo.fiter', algo.fiter], dummy],
-	[['integer.eq<bcmp_t>', integer.eq_t(bcmp)], ['algo.biter', algo.biter], algo.eq],
-	[['integer.eq<lcmp_t>', integer.eq_t(lcmp)], ['algo.fiter', algo.fiter], algo.eq],
-	[['integer.ge<bcmp_t>', integer.ge_t(bcmp)], ['algo.biter', algo.biter], algo.ge],
-	[['integer.ge<lcmp_t>', integer.ge_t(lcmp)], ['algo.fiter', algo.fiter], algo.ge],
-	[['integer.gt<bcmp_t>', integer.gt_t(bcmp)], ['algo.biter', algo.biter], algo.gt],
-	[['integer.gt<lcmp_t>', integer.gt_t(lcmp)], ['algo.fiter', algo.fiter], algo.gt],
-	[['integer.le<bcmp_t>', integer.le_t(bcmp)], ['algo.biter', algo.biter], algo.le],
-	[['integer.le<lcmp_t>', integer.le_t(lcmp)], ['algo.fiter', algo.fiter], algo.le],
-	[['integer.lt<bcmp_t>', integer.lt_t(bcmp)], ['algo.biter', algo.biter], algo.lt],
-	[['integer.lt<lcmp_t>', integer.lt_t(lcmp)], ['algo.fiter', algo.fiter], algo.lt],
-	[['integer.ne<bcmp_t>', integer.ne_t(bcmp)], ['algo.biter', algo.biter], algo.ne],
-	[['integer.ne<lcmp_t>', integer.ne_t(lcmp)], ['algo.fiter', algo.fiter], algo.ne],
+	[['integer.eq<bcmp_t>', integer.eq_t(bcmp)], ['algo.biter', algo.biter], operator.eq],
+	[['integer.eq<lcmp_t>', integer.eq_t(lcmp)], ['algo.fiter', algo.fiter], operator.eq],
+	[['integer.ge<bcmp_t>', integer.ge_t(bcmp)], ['algo.biter', algo.biter], operator.ge],
+	[['integer.ge<lcmp_t>', integer.ge_t(lcmp)], ['algo.fiter', algo.fiter], operator.ge],
+	[['integer.gt<bcmp_t>', integer.gt_t(bcmp)], ['algo.biter', algo.biter], operator.gt],
+	[['integer.gt<lcmp_t>', integer.gt_t(lcmp)], ['algo.fiter', algo.fiter], operator.gt],
+	[['integer.le<bcmp_t>', integer.le_t(bcmp)], ['algo.biter', algo.biter], operator.le],
+	[['integer.le<lcmp_t>', integer.le_t(lcmp)], ['algo.fiter', algo.fiter], operator.le],
+	[['integer.lt<bcmp_t>', integer.lt_t(bcmp)], ['algo.biter', algo.biter], operator.lt],
+	[['integer.lt<lcmp_t>', integer.lt_t(lcmp)], ['algo.fiter', algo.fiter], operator.lt],
+	[['integer.ne<bcmp_t>', integer.ne_t(bcmp)], ['algo.biter', algo.biter], operator.ne],
+	[['integer.ne<lcmp_t>', integer.ne_t(lcmp)], ['algo.fiter', algo.fiter], operator.ne],
 ];
 
 for (var j = 0; j < ENDIANESS.length; ++j)
