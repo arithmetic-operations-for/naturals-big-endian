@@ -4,8 +4,8 @@
 Integer numbers code bricks for JavaScript.
 
 ```js
-integer.parse( 16 , 100 , 'ff' ) ; [ 2 , 55 ]
-integer.stringify( 100 , 16 , [ 2 , 55 ] ) ; 'ff'
+integer.parse( 16 , 100 , 'ff' ) ; // [ 2 , 55 ]
+integer.stringify( 100 , 16 , [ 2 , 55 ] ) ; // 'ff'
 ```
 
 [![NPM license](http://img.shields.io/npm/l/aureooms-js-integer.svg?style=flat)](https://raw.githubusercontent.com/aureooms/js-integer/master/LICENSE)
