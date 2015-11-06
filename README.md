@@ -3,6 +3,11 @@
 
 Integer numbers code bricks for JavaScript.
 
+```js
+integer.parse( 16 , 100 , 'ff' ) ; [ 2 , 55 ]
+integer.stringify( 100 , 16 , [ 2 , 55 ] ) ; 'ff'
+```
+
 [![NPM license](http://img.shields.io/npm/l/aureooms-js-integer.svg?style=flat)](https://raw.githubusercontent.com/aureooms/js-integer/master/LICENSE)
 [![NPM version](http://img.shields.io/npm/v/aureooms-js-integer.svg?style=flat)](https://www.npmjs.org/package/aureooms-js-integer)
 [![Bower version](http://img.shields.io/bower/v/aureooms-js-integer.svg?style=flat)](http://bower.io/search/?q=aureooms-js-integer)
@@ -20,4 +25,4 @@ Integer numbers code bricks for JavaScript.
 
  - [The GNU Multiple Precision Arithmetic Library](https://gmplib.org/)
  - https://gmplib.org/gmp-man-6.0.0a.pdf
- - https://en.wikipedia.org/wiki/Sch%C3%B6nhage%E2%80%93Strassen_algorithm
+ - https://en.wikipedia.org/wiki/Sch%C3%B6nhage%E2%80%93Strassen\_algorithm
