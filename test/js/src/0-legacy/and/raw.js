@@ -1,11 +1,12 @@
 var util = require('util');
 
 var fmt = util.format;
+var integer = integerbigendian ;
 
 
 var check = function(Ctor){
 
-	var name = fmt("integer.and<%s, %s>", Ctor.name);
+	var name = fmt("integer.and<%s>", Ctor.name);
 	console.log(name);
 
 	test(name, function(){

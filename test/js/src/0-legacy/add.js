@@ -2,40 +2,28 @@
 
 var util = require('util');
 var random = require('aureooms-js-random');
+var integer = integerbigendian ;
 
 
 var check = function(ctor, r, e){
-	var name = util.format("integer.add (%s, %d, %s)", ctor.name, r, e === integer.badd_t ? 'big endian' : 'little endian');
+	var name = util.format("integer.add (%s, %d)", ctor.name, r);
 	console.log(name);
 
-	var todouble_t = function(r, e){
-		if(e === integer.badd_t){
-			return function(a, i0, i1){
-				var x = 0, y = 1;
-				while(--i1 >= i0){
-					x += a[i1] * y;
-					y *= r;
-				}
-				return x;
-			};
-		}
-		else{
-			return function(a, i0, i1){
-				var x = 0, y = 1;
-				while(i0 < i1){
-					x += a[i0] * y;
-					y *= r;
-					++i0;
-				}
-				return x;
-			};
-		}
+	var todouble_t = function(r){
+		return function(a, i0, i1){
+			var x = 0, y = 1;
+			while(--i1 >= i0){
+				x += a[i1] * y;
+				y *= r;
+			}
+			return x;
+		};
 	};
 
-	var todouble = todouble_t(r, e);
+	var todouble = todouble_t(r);
 	var add = e(r);
 	var randint = random.randint;
-	var lsb = function(a){ return e === integer.badd_t ? a.length - 1 : 0; };
+	var lsb = function(a){ return a.length - 1 ; };
 
 	test(name, function(assert){
 		var n = 10, m = 10, i, j;
@@ -81,7 +69,7 @@ var TRAITS = [
 	[Uint32Array, Math.pow(2, 32)]
 ];
 
-var ENDIANESS = [integer.badd_t, integer.ladd_t];
+var ENDIANESS = [integer.badd_t];
 
 for(var i = 0; i < TRAITS.length; ++i)
 for(var j = 0; j < ENDIANESS.length; ++j)

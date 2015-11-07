@@ -1,3 +1,4 @@
+var integer = integerbigendian ;
 
 test( 'stringify' , function ( assert ) {
 

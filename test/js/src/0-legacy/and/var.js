@@ -1,23 +1,21 @@
-var algo = require('aureooms-js-algo');
 var util = require('util');
 
 var fmt = util.format;
+var integer = integerbigendian ;
 
 
-var check = function(Ctor, and_t, iter){
+var check = function(Ctor, and_t){
 
-	var name = fmt("%s<%s, %s>", and_t[0], Ctor.name, iter[0]);
+	var name = fmt("%s<%s>", and_t[0], Ctor.name);
 	console.log(name);
 
 	and_t = and_t[1];
-	iter = iter[1];
 
 	test(name, function(){
 
 
 		var f = 2;
 		var r = Math.pow(2, Ctor.BYTES_PER_ELEMENT * 8);
-		var parse = integer.parse_t(r, f, iter);
 
 		var and = and_t(r);
 
@@ -25,27 +23,22 @@ var check = function(Ctor, and_t, iter){
 			var test = TEST[k];
 
 			var as = test[0];
-			var ai = 0;
-			var aj = Math.ceil(as.length * Math.log(f) / Math.log(r));
-			var a = new Ctor(aj);
-			parse(as, 0, as.length, a, ai, aj);
-
+			var a = new Ctor( integer.parse_keep_zeros( f , r , as ) ) ;
+			var ai = 0 ;
+			var aj = a.length ;
 
 			var bs = test[1];
-			var bi = 0;
-			var bj = Math.ceil(bs.length * Math.log(f) / Math.log(r));
-			var b = new Ctor(bj);
-			parse(bs, 0, bs.length, b, bi, bj);
+			var b = new Ctor( integer.parse_keep_zeros( f , r , bs ) ) ;
+			var bi = 0 ;
+			var bj = b.length ;
 
 			var c = new Ctor(aj);
 			and(a, ai, aj, b, bi, bj, c, ai, aj);
 
 			var ds = test[2];
-			var di = 0;
-			var dj = Math.ceil(ds.length * Math.log(f) / Math.log(r));
-			var d = new Ctor(dj);
-			parse(ds, 0, ds.length, d, di, dj);
-
+			var d = new Ctor( integer.parse_keep_zeros( f , r , ds ) ) ;
+			var di = 0 ;
+			var dj = d.length ;
 
 			deepEqual(c, d, fmt("and('%s','%s') === '%s'", as, bs, ds));
 		}
@@ -85,12 +78,9 @@ var CTOR = [
 ];
 
 var ENDIANESS = [
-	[['integer.band_t', integer.band_t], ['algo.biter', algo.biter]],
-	[['integer.land_t', integer.land_t], ['algo.fiter', algo.fiter]],
+	[['integer.band_t', integer.band_t]],
 ];
-
-
 
 for (var e = 0; e < ENDIANESS.length; ++e)
 for (var c = 0; c < CTOR.length; ++c)
-	check(CTOR[c], ENDIANESS[e][0], ENDIANESS[e][1]);
+	check(CTOR[c], ENDIANESS[e][0]);
