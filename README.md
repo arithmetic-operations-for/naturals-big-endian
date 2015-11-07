@@ -1,7 +1,7 @@
 [js-integer-big-endian](http://aureooms.github.io/js-integer-big-endian)
 ==
 
-Integer numbers code bricks for JavaScript.
+Arbitrary precision arithmetic for integers in big endian order.
 
 ```js
 integer.parse( 16 , 100 , 'ff' ) ; // [ 2 , 55 ]
@@ -26,5 +26,4 @@ integer.stringify( 100 , 16 , [ 2 , 55 ] ) ; // 'ff'
  - [The GNU Multiple Precision Arithmetic Library](https://gmplib.org/)
  - https://gmplib.org/gmp-man-6.0.0a.pdf
  - https://en.wikipedia.org/wiki/Sch%C3%B6nhage%E2%80%93Strassen_algorithm
-
-***( forked from [js-integer](https://github.com/aureooms/js-integer) )***
+ - http://bioinfo.ict.ac.cn/~dbu/AlgorithmCourses/Lectures/Hasselstrom2003.pdf
