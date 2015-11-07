@@ -1,10 +1,10 @@
 
-
+var memory = require("aureooms-js-memory");
 var random = require("aureooms-js-random");
 var util = require("util");
 var fmt = util.format;
 var randint = random.randint;
-
+var integer = integerbigendian ;
 
 var runtest = function(name, n, mul53_t, hb, lb, r, calloc){
 
@@ -85,15 +85,13 @@ var runtest = function(name, n, mul53_t, hb, lb, r, calloc){
 
 
 var n = 10;
-var R = function(range){ return 2 + randint(0, range - 2)};
+var R = function(range){ return 2 + randint(0, range - 2) ;};
 var Rlen = 5;
-var MUL53 = [integer.lmul53_t, integer.bmul53_t];
-var HB = [1, 0];
-var LB = [0, 1];
-var NAME = ["integer.lmul53_t", "integer.bmul53_t"];
-var ALLOC = [
-	function(n){ return new Uint16Array(n); }
-];
+var MUL53 = [integer.bmul53_t];
+var HB = [0];
+var LB = [1];
+var NAME = ["integer.bmul53_t"];
+var ALLOC = [ memory._calloc( Uint16Array ) ];
 var RANGE = [
 	Math.pow(2, Uint16Array.BYTES_PER_ELEMENT * 8)
 ];

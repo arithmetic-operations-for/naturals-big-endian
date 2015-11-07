@@ -30,7 +30,7 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 			/**
     * Adds two big endian arrays, k >= i >= j
     * wraps
-    * 
+    *
     * @param {array} a first operand
     * @param {int} i0 a left
     * @param {int} i1 a right
@@ -66,50 +66,6 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 			};
 		};
 
-		/**
-   * @param {int} r base (radix)
-   */
-
-		var ladd_t = exports.ladd_t = function (r) {
-
-			/**
-    * Adds two little endian arrays, k >= i >= j
-    * wraps
-    * 
-    * @param {array} a first operand
-    * @param {int} i0 a left
-    * @param {int} i1 a right
-    * @param {array} b second operand
-    * @param {int} j0 b left
-    * @param {int} j1 b right
-    * @param {array} c result, must be 0 initialized
-    * @param {int} k0 c left
-    * @param {int} k1 c right
-    */
-
-			return function (a, i0, i1, b, j0, j1, c, k0, k1) {
-				var t,
-				    C = 0;
-
-				while (j0 < j1) {
-					t = a[i0] + b[j0] + C;
-					c[k0] = t % r;
-					C = t / r >= 1;
-					++i0;++j0;++k0;
-				}
-
-				while (i0 < i1) {
-					t = a[i0] + C;
-					c[k0] = t % r;
-					C = t / r >= 1;
-					++i0;++k0;
-				}
-
-				if (k0 < k1) {
-					c[k0] = +C;
-				}
-			};
-		};
 		/* js/src/0-legacy/arithmetic/div */
 		/* js/src/0-legacy/arithmetic/div/dcdiv.js */
 
@@ -404,7 +360,7 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
    * /!\ BLOCK MULTIPLICATION RESULT MUST HOLD IN THE JAVASCRIPT NUMBER TYPE (DOUBLE i.e. 53 bits)
    *
    * big endian 1 block multiplication
-   * 
+   *
    */
 
 		var bmul53_t = function bmul53_t(r) {
@@ -412,8 +368,8 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 			/**
     * Multiply two blocks, result is put in a 1 or 2 blocks big endian array.
     * aj - ai <= 1, bj - bi <= 1, cj - ci <= 2
-    * 
-    * 
+    *
+    *
     * @param {array} a first operand
     * @param {int} ai a left
     * @param {int} aj a right
@@ -445,50 +401,6 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 
 		exports.bmul53_t = bmul53_t;
 
-		/**
-   * /!\ BLOCK MULTIPLICATION RESULT MUST HOLD IN THE JAVASCRIPT NUMBER TYPE (DOUBLE i.e. 53 bits)
-   *
-   * little endian 1 block multiplication
-   * 
-   */
-
-		var lmul53_t = function lmul53_t(r) {
-
-			/**
-    * Multiply two blocks, result is put in a 1 or 2 blocks little endian array.
-    * aj - ai <= 1, bj - bi <= 1, cj - ci <= 2
-    * 
-    * 
-    * @param {array} a first operand
-    * @param {int} ai a left
-    * @param {int} aj a right
-    * @param {array} b second operand
-    * @param {int} bi b left
-    * @param {int} bj b right
-    * @param {array} c result, must be 0 initialized
-    * @param {int} ci c left
-    * @param {int} cj c right
-    */
-
-			var mul = function mul(a, ai, aj, b, bi, bj, c, ci, cj) {
-
-				var v;
-
-				// EMPTY CASE
-				if (aj <= ai || bj <= bi || cj <= ci) return;
-
-				v = a[ai] * b[bi];
-				c[ci] = v % r;
-
-				if (cj > ci + 1) {
-					c[ci + 1] = (v - c[ci]) / r;
-				}
-			};
-
-			return mul;
-		};
-
-		exports.lmul53_t = lmul53_t;
 		/* js/src/0-legacy/arithmetic/mul/toomcook.js */
 
 		// http://en.wikipedia.org/wiki/Toom–Cook_multiplication
@@ -505,7 +417,7 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 			/**
     * Subtracts two big endian arrays, k >= i >= j
     * wraps
-    * 
+    *
     * @param {array} a first operand
     * @param {int} ai a left
     * @param {int} aj a right
@@ -542,70 +454,22 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 				}
 			};
 		};
-		/**
-   * @param {int} r base (radix)
-   */
-
-		var lsub_t = function lsub_t(r) {
-
-			/**
-    * Subtracts two little endian arrays, k >= i >= j
-    * wraps
-    * 
-    * @param {array} a first operand
-    * @param {int} ai a left
-    * @param {int} aj a right
-    * @param {array} b second operand
-    * @param {int} bi b left
-    * @param {int} bj b right
-    * @param {array} c result, must be 0 initialized
-    * @param {int} ci c left
-    * @param {int} cj c right
-    */
-
-			return function (a, ai, aj, b, bi, bj, c, ci, cj) {
-				var T,
-				    C = 0;
-
-				while (bi < bj) {
-					T = C;
-					C = a[ai] < b[bi] + T;
-					c[ci] = a[ai] - b[bi] + (C * r - T);
-					++ai;++bi;++ci;
-				}
-
-				while (ai < aj) {
-					T = C;
-					C = a[ai] < T;
-					c[ci] = a[ai] + (C * r - T);
-					++ai;++ci;
-				}
-
-				if (C) {
-					while (ci < cj) {
-						c[ci] = r - 1;
-						++ci;
-					}
-				}
-			};
-		};
 
 		exports.bsub_t = bsub_t;
-		exports.lsub_t = lsub_t;
 
 		/* js/src/0-legacy/binary */
 		/* js/src/0-legacy/binary/and */
 		/* js/src/0-legacy/binary/and/and.js */
 
 		/**
-   * 
+   *
    * BINARY and APPLIED ON a AND b
    *
    * Meaningful only when r is a power of 2.
    *
    * |a| = |b| = |c| > 0
-   * 
-   * 
+   *
+   *
    */
 
 		var and = function and(a, a0, b, b0, c, c0, c1) {
@@ -638,33 +502,9 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 			};
 		};
 
-		/**
-   * LITTLE ENDIAN BINARY and APPLIED ON a AND b
-   *
-   * Meaningful only when r is a power of 2.
-   *
-   * |a| >= |b| > 0
-   *
-   * treats b as if it was represented with the same number of blocks as a
-   */
-
-		var land_t = function land_t(r) {
-
-			var _r = r / 2;
-
-			return function (a, a0, a1, b, b0, b1, c, c0, c1) {
-
-				var ct = c0 + b1 - b0;
-
-				while (c0 < ct) c[c0++] = a[a0++] & b[b0++];
-
-				if (b[b0 - 1] < _r) while (c0 < c1) c[c0++] = 0;else while (c0 < c1) c[c0++] = a[a0++];
-			};
-		};
-
 		exports.and = and;
-		exports.land_t = land_t;
 		exports.band_t = band_t;
+
 		/* js/src/0-legacy/binary/not */
 		/* js/src/0-legacy/binary/not/not.js */
 		/**
@@ -680,159 +520,6 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 		/**
    * BINARY xor APPLIED ON a AND b
    */
-		/* js/src/0-legacy/compare */
-		/* js/src/0-legacy/compare/cmp.js */
-
-		var bcmp_t = function bcmp_t() {
-
-			/**
-    * Compares two big endian arrays, |a| >= |b|
-    * 
-    * @param {array} a first operand
-    * @param {int} ai a left
-    * @param {int} aj a right
-    * @param {array} b second operand
-    * @param {int} bi b left
-    * @param {int} bj b right
-    *
-    * @return {int} 1 if a > b; 0 if a = b; -1 otherwise.
-    */
-
-			return function (a, ai, aj, b, bi, bj) {
-
-				var tmp = aj - bj + bi;
-
-				for (; ai < tmp; ++ai) if (a[ai] > 0) return 1;
-
-				// same size aj - ai === bj - bi
-				for (; ai < aj; ++ai, ++bi) {
-					if (a[ai] > b[bi]) return 1;
-					if (a[ai] < b[bi]) return -1;
-				}
-
-				return 0;
-			};
-		};
-
-		var lcmp_t = function lcmp_t() {
-
-			/**
-    * Compares two little endian arrays, |a| >= |b|
-    * 
-    * @param {array} a first operand
-    * @param {int} ai a left
-    * @param {int} aj a right
-    * @param {array} b second operand
-    * @param {int} bi b left
-    * @param {int} bj b right
-    * 
-    * @return {int} 1 if a > b; 0 if a = b; -1 otherwise.
-    */
-
-			return function (a, ai, aj, b, bi, bj) {
-
-				var tmp = ai + bj - bi;
-
-				--aj;--bj;
-
-				for (; aj >= tmp; --aj) if (a[aj] > 0) return 1;
-
-				// same size aj - ai === bj - bi
-				for (; aj >= ai; --aj, --bj) {
-					if (a[aj] > b[bj]) return 1;
-					if (a[aj] < b[bj]) return -1;
-				}
-
-				return 0;
-			};
-		};
-
-		exports.bcmp_t = bcmp_t;
-		exports.lcmp_t = lcmp_t;
-		/* js/src/0-legacy/compare/eq.js */
-
-		/**
-   * Wrapper for a comparison operator that returns true iff
-   * _a_ is equal to _b_.
-   */
-
-		var eq_t = function eq_t(cmp) {
-			return function (a, ai, aj, b, bi, bj) {
-				return cmp(a, ai, aj, b, bi, bj) === 0;
-			};
-		};
-
-		exports.eq_t = eq_t;
-		/* js/src/0-legacy/compare/ge.js */
-
-		/**
-   * Wrapper for a comparison operator that returns true iff
-   * _a_ is greater or equal to _b_.
-   */
-
-		var ge_t = function ge_t(cmp) {
-			return function (a, ai, aj, b, bi, bj) {
-				return cmp(a, ai, aj, b, bi, bj) >= 0;
-			};
-		};
-
-		exports.ge_t = ge_t;
-		/* js/src/0-legacy/compare/gt.js */
-
-		/**
-   * Wrapper for a comparison operator that returns true iff
-   * _a_ is greater than _b_.
-   */
-
-		var gt_t = function gt_t(cmp) {
-			return function (a, ai, aj, b, bi, bj) {
-				return cmp(a, ai, aj, b, bi, bj) > 0;
-			};
-		};
-
-		exports.gt_t = gt_t;
-		/* js/src/0-legacy/compare/le.js */
-
-		/**
-   * Wrapper for a comparison operator that returns true iff
-   * _a_ is less or equal to _b_.
-   */
-
-		var le_t = function le_t(cmp) {
-			return function (a, ai, aj, b, bi, bj) {
-				return cmp(a, ai, aj, b, bi, bj) <= 0;
-			};
-		};
-
-		exports.le_t = le_t;
-		/* js/src/0-legacy/compare/lt.js */
-
-		/**
-   * Wrapper for a comparison operator that returns true iff
-   * _a_ is less than _b_.
-   */
-
-		var lt_t = function lt_t(cmp) {
-			return function (a, ai, aj, b, bi, bj) {
-				return cmp(a, ai, aj, b, bi, bj) < 0;
-			};
-		};
-
-		exports.lt_t = lt_t;
-		/* js/src/0-legacy/compare/ne.js */
-
-		/**
-   * Wrapper for a comparison operator that returns true iff
-   * _a_ is not equal to _b_.
-   */
-
-		var ne_t = function ne_t(cmp) {
-			return function (a, ai, aj, b, bi, bj) {
-				return cmp(a, ai, aj, b, bi, bj) !== 0;
-			};
-		};
-
-		exports.ne_t = ne_t;
 		/* js/src/0-legacy/others */
 		/* js/src/0-legacy/others/gcd */
 		/* js/src/0-legacy/others/gcd/gcd.js */
@@ -978,21 +665,6 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 
 		exports.wrapbin = wrapbin;
 
-		/* js/src/0-legacy/others/wrap/wrapcmp.js */
-
-		var wrapcmp = function wrapcmp(cmp) {
-
-			return function (a, ai, aj, b, bi, bj) {
-
-				if (aj - ai + bi - bj < 0) {
-					return -cmp(b, bi, bj, a, ai, aj);
-				} else {
-					return cmp(a, ai, aj, b, bi, bj);
-				}
-			};
-		};
-
-		exports.wrapcmp = wrapcmp;
 		/* js/src/0-legacy/others/wrap/wrapmov.js */
 
 		var wrapmov = function wrapmov(fn) {
@@ -1011,91 +683,6 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 		};
 
 		exports.wrapmov = wrapmov;
-		/* js/src/0-legacy/parse */
-		/* js/src/0-legacy/parse/parse.js */
-
-		/**
-   * Function template for number parsing.
-   * Endianess provided by the iterator function
-   * iterator function must be reverse ordered
-   * 
-   * @param {int} f from radix
-   * @param {int} t to radix
-   * @param {function} iter iterator function
-   */
-
-		var parse_t = function parse_t(t, f, iter) {
-
-			if (t >= f) {
-
-				if (f > 36) throw 'f > 36 not implemented';
-
-				var z = 0,
-				    log = t;
-				while (log >= f) {
-					if (log % f) break;
-					log /= f;
-					++z;
-				}
-
-				if (log !== 1) throw 'log(f) does not divide log(t) not implemented';
-
-				// immediate log(t) divides log(f)
-				return function (s, si, sj, a, ai, aj) {
-					var len = sj - si,
-					    k = sj - z,
-					    n = Math.ceil(len / z);
-					var block = function block(i) {
-						a[i] = parseInt(s.slice(Math.max(0, k), k + z), f);
-						k -= z;
-					};
-
-					iter(aj - n, aj, block);
-				};
-			} else throw 'f > t not implemented';
-		};
-
-		exports.parse_t = parse_t;
-		/* js/src/0-legacy/stringify */
-		/* js/src/0-legacy/stringify/stringify.js */
-
-		/**
-   * Function template for number stringification.
-   * Endianess provided by the iterator function
-   * 
-   * @param {int} f from radix
-   * @param {int} t to radix
-   * @param {function} iter iterator function
-   */
-
-		var stringify_t = function stringify_t(f, t, iter, zfill_t) {
-
-			if (t <= f) {
-
-				if (t > 36) throw 't > 36 not implemented';
-
-				var z = 0;
-				while (f >= t) {
-					if (f % t) break;
-					f /= t;
-					++z;
-				}
-
-				if (f !== 1) throw 'log(t) does not divide log(f) not implemented';
-
-				var zfill = zfill_t(z);
-
-				return function (a, i0, i1) {
-					var s = [];
-					iter(i0, i1, function (i) {
-						s.push(zfill(Number(+a[i]).toString(t)));
-					});
-					return s.join('');
-				};
-			} else throw 't > f not implemented';
-		};
-
-		exports.stringify_t = stringify_t;
 		/* js/src/1-new */
 		/* js/src/1-new/arithmetic */
 		/* js/src/1-new/arithmetic/div */

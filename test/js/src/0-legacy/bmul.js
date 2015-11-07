@@ -1,4 +1,5 @@
 var array = require('aureooms-js-array');
+var integer = integerbigendian ;
 
 
 test('integer.bmul 16 big endian', function(assert){

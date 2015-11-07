@@ -3,38 +3,32 @@ var operator = require( 'aureooms-js-operator' ) ;
 
 var util = require('util');
 var fmt = util.format;
+var integer = integerbigendian ;
 
+var check = function(Ctor, cmp, transform){
 
-
-var check = function(Ctor, cmp, iter, transform){
-	var name = fmt("integer.cmp<%s, %s, %s>", Ctor.name, cmp[0], iter[0]);
+	var name = fmt("integer.cmp<%s, %s>", Ctor.name, cmp[0]);
+	console.log(name);
 
 	cmp = cmp[1];
-	iter = iter[1];
 
 	var f = 16;
 	var r = Math.pow(2, Ctor.BYTES_PER_ELEMENT * 8);
-	var parse = integer.parse_t(r, f, iter);
 
-	console.log(name);
 	test(name, function(){
-
 
 		for (var k = 0; k < TEST.length; ++k) {
 			var test = TEST[k];
 
-			var as = test[0];
-			var ai = 0;
-			var aj = Math.ceil(as.length * Math.log(f) / Math.log(r));
-			var a = new Ctor(aj);
-			parse(as, 0, as.length, a, ai, aj);
+			var as = test[0] ;
+			var a = new Ctor( integer.parse( f , r , as ) ) ;
+			var ai = 0 ;
+			var aj = a.length ;
 
-
-			var bs = test[1];
-			var bi = 0;
-			var bj = Math.ceil(bs.length * Math.log(f) / Math.log(r));
-			var b = new Ctor(bj);
-			parse(bs, 0, bs.length, b, bi, bj);
+			var bs = test[1] ;
+			var b = new Ctor( integer.parse( f , r , bs ) ) ;
+			var bi = 0 ;
+			var bj = b.length ;
 
 			var actual = cmp(a, ai, aj, b, bi, bj);
 			var expected = transform(test[2], 0);
@@ -140,36 +134,22 @@ var TEST = [
 ];
 
 
-var algo = require('aureooms-js-algo');
-
 var TRAITS = [
 	Uint8Array,
 	Uint16Array,
 	Uint32Array,
 ];
 
-
-var bcmp = integer.bcmp_t();
-var lcmp = integer.lcmp_t();
-var dummy = function(x){ return x; };
-
-var ENDIANESS = [
-	[['integer.bcmp_t', bcmp], ['algo.biter', algo.biter], dummy],
-	[['integer.lcmp_t', lcmp], ['algo.fiter', algo.fiter], dummy],
-	[['integer.eq<bcmp_t>', integer.eq_t(bcmp)], ['algo.biter', algo.biter], operator.eq],
-	[['integer.eq<lcmp_t>', integer.eq_t(lcmp)], ['algo.fiter', algo.fiter], operator.eq],
-	[['integer.ge<bcmp_t>', integer.ge_t(bcmp)], ['algo.biter', algo.biter], operator.ge],
-	[['integer.ge<lcmp_t>', integer.ge_t(lcmp)], ['algo.fiter', algo.fiter], operator.ge],
-	[['integer.gt<bcmp_t>', integer.gt_t(bcmp)], ['algo.biter', algo.biter], operator.gt],
-	[['integer.gt<lcmp_t>', integer.gt_t(lcmp)], ['algo.fiter', algo.fiter], operator.gt],
-	[['integer.le<bcmp_t>', integer.le_t(bcmp)], ['algo.biter', algo.biter], operator.le],
-	[['integer.le<lcmp_t>', integer.le_t(lcmp)], ['algo.fiter', algo.fiter], operator.le],
-	[['integer.lt<bcmp_t>', integer.lt_t(bcmp)], ['algo.biter', algo.biter], operator.lt],
-	[['integer.lt<lcmp_t>', integer.lt_t(lcmp)], ['algo.fiter', algo.fiter], operator.lt],
-	[['integer.ne<bcmp_t>', integer.ne_t(bcmp)], ['algo.biter', algo.biter], operator.ne],
-	[['integer.ne<lcmp_t>', integer.ne_t(lcmp)], ['algo.fiter', algo.fiter], operator.ne],
+var OPERATOR = [
+	[['integer._cmp', integer._cmp], operator.identity],
+	[['integer._eq', integer._eq], operator.eq],
+	[['integer._ge', integer._ge], operator.ge],
+	[['integer._gt', integer._gt], operator.gt],
+	[['integer._le', integer._le], operator.le],
+	[['integer._lt', integer._lt], operator.lt],
+	[['integer._ne', integer._ne], operator.ne],
 ];
 
-for (var j = 0; j < ENDIANESS.length; ++j)
+for (var j = 0; j < OPERATOR.length; ++j)
 for (var i = 0; i < TRAITS.length; ++i)
-	check(TRAITS[i], ENDIANESS[j][0], ENDIANESS[j][1], ENDIANESS[j][2]);
+	check(TRAITS[i], OPERATOR[j][0], OPERATOR[j][1]);
