@@ -23,7 +23,7 @@ var bmul_t = function(r){
 				c[ck] = y;
 
 				z = (v - y) / r;
-				
+
 				for (ct = ck - 1; z > 0 && ct >= ci; --ct) {
 					v = c[ct] + z;
 					y = v % r;

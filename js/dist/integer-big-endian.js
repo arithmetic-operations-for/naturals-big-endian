@@ -154,7 +154,7 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 		/**
    * /!\ BLOCK MULTIPLICATION RESULT MUST HOLD IN THE JAVASCRIPT NUMBER TYPE (DOUBLE i.e. 53 bits)
    *
-   * 
+   *
    * @param {function} add addition algorithm
    * @param {function} sub subtraction algorithm
    * @param {function} mul multiplication algorithm
@@ -162,7 +162,7 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
    * @param {function} calloc array allocator
    * @param {uint} r base (radix)
    *
-   * 
+   *
    * EXPLANATION
    * ###########
    *
@@ -174,7 +174,7 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
    * b = b1 r^{n} + b0 (2)
    *
    * We express the product of a and b using their lower and upper parts.
-   * 
+   *
    * a b = (a1 r^{n} + a0) (b1 r^{n} + b0) (3)
    *     = a1 b1 r^{2n} + (a1 b0 + a0 b1) r^{n} + a0 b0 (4)
    *
@@ -182,18 +182,18 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
    * Using a simple trick, we can reduce this computation to 3 multiplications.
    *
    * We give the 3 terms of (4) the names z0, z1 and z2.
-   * 
+   *
    * z2 = a1 b1
    * z1 = a1 b0 + a0 b1
    * z0 = a0 b0
-   * 
+   *
    * a b  = z2 r^{2n} + z1 r^{n} + z0
    *
    * We then express z1 using z0, z2 and one additional multiplication.
-   *       
+   *
    * (a1 + a0)(b1 + b0) = a1 b1 + a0 b0 + (a1 b0 + a0 b1)
    *                    = z2 + z0 + z1
-   *                    
+   *
    * z1 = (a1 + a0)(b1 + b0) - z2 - z0
    *
    * AN ANOTHER WAY AROUND (not used here)
@@ -203,7 +203,7 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
    * a b = (r^{2n} + r^{n})a1 b1 + r^{n}(a0 - a1)(b1 - b0) + (r^{n} + 1)a0 b0
    *
    * This algorithm is a generalization of the Toom-Cook algorithm, when m = n = 2.
-   * 
+   *
    * For further reference, see
    *  - http://en.wikipedia.org/wiki/Karatsuba_algorithm
    *  - http://en.wikipedia.org/wiki/Toom–Cook_multiplication
@@ -214,8 +214,8 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 			/**
     * Multiply two big endian arrays using karatsuba algorithm,
     * i >= j, k >= 2 * i
-    * 
-    * 
+    *
+    *
     * @param {array} a first operand
     * @param {int} ai a left
     * @param {int} aj a right
@@ -303,6 +303,7 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 		};
 
 		exports.bkaratsuba_t = bkaratsuba_t;
+
 		/* js/src/0-legacy/arithmetic/mul/mul.js */
 
 		var bmul_t = function bmul_t(r) {
@@ -355,6 +356,7 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 		};
 
 		exports.bmul_t = bmul_t;
+
 		/* js/src/0-legacy/arithmetic/mul/mul53.js */
 		/**
    * /!\ BLOCK MULTIPLICATION RESULT MUST HOLD IN THE JAVASCRIPT NUMBER TYPE (DOUBLE i.e. 53 bits)
