@@ -1,0 +1,11 @@
+<!DOCTYPE html><html lang="en"><head><title>1-new/convert/_int</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../"><meta name="groc-document-path" content="1-new/convert/_int"><meta name="groc-project-path" content="js/src/1-new/convert/_int.js"><meta name="groc-github-url" content="https://github.com/aureooms/js-integer-big-endian"><link rel="stylesheet" type="text/css" media="all" href="../../assets/style.css"><script type="text/javascript" src="../../assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/aureooms/js-integer-big-endian/blob/master/js/src/1-new/convert/_int.js">js/src/1-new/convert/_int.js</a></div></div><div id="document"><div class="segment"><div class="code"><div class="wrapper"><span class="hljs-keyword">const</span> _int = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"> x </span>) </span>{
+
+	<span class="hljs-keyword">if</span> ( x &gt;= <span class="hljs-string">'0'</span> &amp;&amp; x &lt;= <span class="hljs-string">'9'</span> ) <span class="hljs-keyword">return</span> x.charCodeAt( <span class="hljs-number">0</span> ) - <span class="hljs-number">48</span> ;
+	<span class="hljs-keyword">if</span> ( x &gt;= <span class="hljs-string">'A'</span> &amp;&amp; x &lt;= <span class="hljs-string">'Z'</span> ) <span class="hljs-keyword">return</span> x.charCodeAt( <span class="hljs-number">0</span> ) - <span class="hljs-number">55</span> ;
+	<span class="hljs-keyword">if</span> ( x &gt;= <span class="hljs-string">'a'</span> &amp;&amp; x &lt;= <span class="hljs-string">'z'</span> ) <span class="hljs-keyword">return</span> x.charCodeAt( <span class="hljs-number">0</span> ) - <span class="hljs-number">87</span> ;
+
+	<span class="hljs-keyword">throw</span> <span class="hljs-string">'invalid literal for _int: '</span> + x ;
+
+} ;
+
+exports._int = _int ;</div></div></div></div></body></html>
