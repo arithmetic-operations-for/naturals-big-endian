@@ -303,6 +303,7 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 		};
 
 		exports.bkaratsuba_t = bkaratsuba_t;
+
 		/* js/src/0-legacy/arithmetic/mul/mul.js */
 
 		var bmul_t = function bmul_t(r) {
@@ -355,6 +356,7 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 		};
 
 		exports.bmul_t = bmul_t;
+
 		/* js/src/0-legacy/arithmetic/mul/mul53.js */
 		/**
    * /!\ BLOCK MULTIPLICATION RESULT MUST HOLD IN THE JAVASCRIPT NUMBER TYPE (DOUBLE i.e. 53 bits)
