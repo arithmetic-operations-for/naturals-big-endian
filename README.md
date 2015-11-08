@@ -6,6 +6,7 @@ Arbitrary precision arithmetic for integers in big endian order.
 ```js
 integer.parse( 16 , 100 , 'ff' ) ; // [ 2 , 55 ]
 integer.stringify( 100 , 16 , [ 2 , 55 ] ) ; // 'ff'
+integer.translate( 10 , 16 , '255' ) ; // 'ff'
 ```
 
 [![NPM license](http://img.shields.io/npm/l/aureooms-js-integer-big-endian.svg?style=flat)](https://raw.githubusercontent.com/aureooms/js-integer-big-endian/master/LICENSE)
