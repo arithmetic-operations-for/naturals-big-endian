@@ -20,6 +20,84 @@ integer.stringify( 100 , 16 , [ 2 , 55 ] ) ; // 'ff'
 [![GitHub issues](http://img.shields.io/github/issues/aureooms/js-integer-big-endian.svg?style=flat)](https://github.com/aureooms/js-integer-big-endian/issues)
 [![Inline docs](http://inch-ci.org/github/aureooms/js-integer-big-endian.svg?branch=master&style=shields)](http://inch-ci.org/github/aureooms/js-integer-big-endian)
 
+Can be managed through [jspm](https://github.com/jspm/jspm-cli),
+[duo](https://github.com/duojs/duo),
+[component](https://github.com/componentjs/component),
+[bower](https://github.com/bower/bower),
+[ender](https://github.com/ender-js/Ender),
+[jam](https://github.com/caolan/jam),
+[spm](https://github.com/spmjs/spm),
+and [npm](https://github.com/npm/npm).
+
+## Install
+
+### jspm
+```terminal
+jspm install github:aureooms/js-integer-big-endian
+# or
+jspm install npm:aureooms-js-integer-big-endian
+```
+### duo
+No install step needed for duo!
+
+### component
+```terminal
+component install aureooms/js-integer-big-endian
+```
+
+### bower
+```terminal
+bower install aureooms-js-integer-big-endian
+```
+
+### ender
+```terminal
+ender add aureooms-js-integer-big-endian
+```
+
+### jam
+```terminal
+jam install aureooms-js-integer-big-endian
+```
+
+### spm
+```terminal
+spm install aureooms-js-integer-big-endian --save
+```
+
+### npm
+```terminal
+npm install aureooms-js-integer-big-endian --save
+```
+
+## Require
+### jspm
+```js
+let integerbigendian = require( "github:aureooms/js-integer-big-endian" ) ;
+// or
+import integerbigendian from 'aureooms-js-integer-big-endian' ;
+```
+### duo
+```js
+let integerbigendian = require( "aureooms/js-integer-big-endian" ) ;
+```
+
+### component, ender, spm, npm
+```js
+let integerbigendian = require( "aureooms-js-integer-big-endian" ) ;
+```
+
+### bower
+The script tag exposes the global variable `integerbigendian`.
+```html
+<script src="bower_components/aureooms-js-integer-big-endian/js/dist/integer-big-endian.min.js"></script>
+```
+Alternatively, you can use any tool mentioned [here](http://bower.io/docs/tools/).
+
+### jam
+```js
+require( [ "aureooms-js-integer-big-endian" ] , function ( integerbigendian ) { ... } ) ;
+```
 
 ## Reference
 
