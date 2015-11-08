@@ -1,6 +1,8 @@
 var integer = integerbigendian ;
 
-test( '_add' , function ( assert ) {
+test( 'integer._add' , function ( assert ) {
+
+	console.log( 'integer._add' ) ;
 
 	function t ( A , B , C ) {
 
@@ -17,5 +19,6 @@ test( '_add' , function ( assert ) {
 	t( '1' , '1' , '2' ) ;
 	t( '47' , '124' , '171' ) ;
 	t( '999' , '1' , '1000' ) ;
+	t( '1234567890' , '9876543210' , '11111111100' ) ;
 
 } ) ;
