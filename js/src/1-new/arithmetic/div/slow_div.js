@@ -28,7 +28,7 @@
 //     made on the size of the operands.
 //     Should clarify.
 
-const _div = function ( x , r , ri , rj , b , bi , bj , q , qi ) {
+const slow_div = function ( x , r , ri , rj , b , bi , bj , q , qi ) {
 
 	var k, t = ri + 1;
 
@@ -68,4 +68,4 @@ const _div = function ( x , r , ri , rj , b , bi , bj , q , qi ) {
 
 };
 
-exports._div = _div ;
+exports.slow_div = slow_div ;

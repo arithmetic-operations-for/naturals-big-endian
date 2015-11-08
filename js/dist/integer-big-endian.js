@@ -687,8 +687,234 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 		exports.wrapmov = wrapmov;
 		/* js/src/1-new */
 		/* js/src/1-new/arithmetic */
+		/* js/src/1-new/arithmetic/add */
+		/* js/src/1-new/arithmetic/add/_increment.js */
+
+		/**
+   * Adds 1 to a big endian array.
+   *
+   * @param {Number} r radix
+   * @param {Array} a first operand
+   * @param {Number} ai a left
+   * @param {Number} aj a right
+   */
+		var _increment = function _increment(r, a, ai, aj) {
+
+			var _r = r - 1;
+
+			while (--aj >= ai) {
+
+				if (a[aj] < _r) {
+					++a[aj];
+					return;
+				}
+
+				a[aj] = 0;
+			}
+		};
+
+		exports._increment = _increment;
+
 		/* js/src/1-new/arithmetic/div */
-		/* js/src/1-new/arithmetic/div/_div.js */
+		/* js/src/1-new/arithmetic/div/_div_limb.js */
+
+		/**
+   *
+   * Divides a big endian number by a single limb number.
+   * Can only work with limbs of size at most sqrt( 2^53 ).
+   *
+   */
+
+		var _div_limb = function _div_limb(r, z, a, ai, aj, q, qi) {
+
+			_div_limb_partial(r, 0, z, a, ai, aj, q, qi);
+		};
+
+		exports._div_limb = _div_limb;
+
+		/* js/src/1-new/arithmetic/div/_div_limb_partial.js */
+
+		/**
+   * Divides a big endian number by a single limb number.
+   * Can only work with limbs of size at most sqrt( 2^53 ).
+   * Allows to start with a partial quotient.
+   */
+
+		var _div_limb_partial = function _div_limb_partial(r, x, z, a, ai, aj, q, qi) {
+
+			while (ai < aj) {
+
+				x *= r;x += a[ai];
+
+				q[qi] = x / z | 0;
+				x %= z;
+
+				++qi;++ai;
+			}
+
+			a[aj - 1] = x;
+		};
+
+		exports._div_limb_partial = _div_limb_partial;
+
+		/* js/src/1-new/arithmetic/div/_schoolbook_div.js */
+
+		/**
+   *
+   * Input
+   * -----
+   *
+   *  Two integers A and B such that r^(m-1) <= A < r^m and (r^n)/2 <= B < r^(n).
+   *
+   * Output
+   * -----
+   *
+   *  The quotient floor( A/B ) and the remainder A mod B.
+   *
+   */
+
+		var _schoolbook_div = function _schoolbook_div(r, a, ai, aj, b, bi, bj, q, qi) {
+
+			var m = aj - ai;
+			var n = bj - bi;
+
+			// If m < n, return the quotient 0 and the remainder A.
+			if (m < n) return;
+
+			if (m === n) {
+
+				// If m = n, then if A < B, return the quotient 0 and the remainder A;
+				if (_lt(a, ai, aj, b, bi, bj)) return;
+
+				// if A ≥ B, return the quotient 1 and the remainder A - B.
+				q[qi + m - 1] = 1;
+				_isub(r, a, ai, aj, b, bi, bj);
+				return;
+			}
+
+			// If m = n + 1, compute the quotient and remainder of A/B
+			// using algorithm 3.1 and return them.
+			if (m === n + 1) return _schoolbook_div_subroutine(r, a, ai, aj, b, bi, bj, q, qi);
+
+			// 4. A' <- A/β^{m-n-1} and s <- A mod β^{m-n-1}
+			var _aj = ai + n + 1;
+
+			// 5. Compute the quotient q' and the remainder r' of A'/B using algorithm 3.1.
+			_schoolbook_div_subroutine(r, a, ai, _aj, b, bi, bj, q, qi);
+
+			// 6. Compute the quotient q and remainder r of( β^{m-n-1} r' + s ) / B recursively.
+			var ak = _trim_positive(a, ai, _aj);
+			_schoolbook_div(r, a, ak, aj, b, bi, bj, q, qi + ak - ai);
+
+			// 7. Return the quotient Q = β^{m-n-1} q' + q and remainder R = r
+		};
+
+		exports._schoolbook_div = _schoolbook_div;
+
+		/* js/src/1-new/arithmetic/div/_schoolbook_div_subroutine.js */
+		/**
+   *
+   * Input
+   * -----
+   *
+   *  Two integers A and B such that 0 <= A < r^n+1 and (r^n)/2 <= B < r^(n).
+   *
+   * Output
+   * -----
+   *
+   *  The quotient floor( A/B ) and the remainder A mod B.
+   *
+   * @param {Number} r radix
+   * @param {Array} a dividend
+   * @param {Number} ai
+   * @param {Number} aj
+   * @param {Array} b divisor (aj - ai = bj - bi + 1)
+   * @param {Number} bi
+   * @param {Number} bj
+   * @param {Array} q quotient (length is at least qi + aj - ai)
+   * @param {Number} qi
+   *
+   */
+
+		var _schoolbook_div_subroutine = function _schoolbook_div_subroutine(r, a, ai, aj, b, bi, bj, q, qi) {
+
+			var m = aj - ai;
+
+			// If A ≥ B*β, compute the quotient q and remainder r of ( A − B*β ) / B
+			// recursively, and return β + q and r.
+			if (_ge(a, ai, aj - 1, b, bi, bj)) {
+				_isub(r, a, ai, aj - 1, b, bi, bj);
+				_schoolbook_div_subroutine(r, a, ai, aj, b, bi, bj, q, qi);
+				_increment(r, q, qi, qi + m - 1);
+				return;
+			}
+
+			// If A < B*β, then A/B < β
+			// q <- min [ ( β a_0 + a_1 ) / b_0 , β - 1 ]
+			var _q = Math.min(r - 1, Math.floor((a[ai] * r + a[ai + 1]) / b[bi]));
+
+			// fix _q
+			var T = _zeros(m);
+			_mul_limb(r, _q, b, bi, bj, T, 0, m);
+
+			if (_gt(T, 0, m, a, ai, aj)) {
+				--_q;
+				_isub(r, T, 0, m, b, bi, bj);
+
+				if (_gt(T, 0, m, a, ai, aj)) {
+					--_q;
+					_isub(r, T, 0, m, b, bi, bj);
+				}
+			}
+
+			q[qi + m - 1] = _q;
+
+			_isub(r, a, ai, aj, T, 0, m);
+		};
+
+		exports._schoolbook_div_subroutine = _schoolbook_div_subroutine;
+
+		/* js/src/1-new/arithmetic/div/schoolbook_div.js */
+
+		/**
+   * Computes q <- a / b and a <- a % b.
+   * No leading zeros allowed.
+   * q has length at least qi + aj - ai
+   */
+		var schoolbook_div = function schoolbook_div(r, a, ai, aj, b, bi, bj, q, qi) {
+
+			var _r = Math.ceil(r / 2);
+			var x = b[bi];
+
+			if (x < _r) {
+
+				// we need x to be >= _r so we multiply b by ceil( _r / x )
+				// this gives us <= ( 1 + _r / x ) b < r^(bj-bi)
+				// (this can be implemented faster using bit shifts if r = 2^k )
+				var z = Math.ceil(_r / x);
+				var m = aj - ai + 1;
+				var n = bj - bi;
+
+				var _a = _zeros(m);
+				_mul_limb(r, z, a, ai, aj, _a, 0, m);
+
+				var _b = _zeros(n);
+				_mul_limb(r, z, b, bi, bj, _b, 0, n);
+
+				var _q = _zeros(m);
+
+				_schoolbook_div(r, _a, 0, m, _b, 0, n, _q, 0);
+				_div_limb_partial(r, _a[0], z, _a, 1, m, a, ai);
+				_copy(_q, 1, m, q, qi);
+				return;
+			}
+
+			return _schoolbook_div(r, a, ai, aj, b, bi, bj, q, qi);
+		};
+
+		exports.schoolbook_div = schoolbook_div;
+
+		/* js/src/1-new/arithmetic/div/slow_div.js */
 
 		/**
    * Computes quotient and remainder of two big endian arrays.
@@ -717,7 +943,7 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 		//     made on the size of the operands.
 		//     Should clarify.
 
-		var _div = function _div(x, r, ri, rj, b, bi, bj, q, qi) {
+		var slow_div = function slow_div(x, r, ri, rj, b, bi, bj, q, qi) {
 
 			var k,
 			    t = ri + 1;
@@ -754,9 +980,77 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 			} while (true);
 		};
 
-		exports._div = _div;
+		exports.slow_div = slow_div;
+
+		/* js/src/1-new/arithmetic/mul */
+		/* js/src/1-new/arithmetic/mul/_mul_limb.js */
+		/**
+   * Compute x * b where x is a single limb.
+   */
+
+		var _mul_limb = function _mul_limb(r, x, b, bi, bj, c, ci, cj) {
+
+			var C = 0;
+
+			while (true) {
+
+				--bj;
+				--cj;
+
+				if (bj < bi) {
+					if (cj >= ci) c[cj] = C;
+					return;
+				}
+
+				if (cj < ci) return;
+
+				var t = b[bj] * x + C;
+				var u = t % r;
+
+				c[cj] = u;
+
+				C = (t - u) / r;
+			}
+		};
+
+		exports._mul_limb = _mul_limb;
 
 		/* js/src/1-new/arithmetic/sub */
+		/* js/src/1-new/arithmetic/sub/_isub.js */
+
+		/**
+   * Subtracts B from A, |A| >= |B|.
+   * Wraps.
+   *
+   * @param {int} r base (radix)
+   * @param {array} a first operand
+   * @param {int} ai a left
+   * @param {int} aj a right
+   * @param {array} b second operand
+   * @param {int} bi b left
+   * @param {int} bj b right
+   */
+
+		var _isub = function _isub(r, a, ai, aj, b, bi, bj) {
+
+			var C = 0;
+
+			while (--bj >= bi) {
+				--aj;
+				var T = C;
+				C = a[aj] < b[bj] + T;
+				a[aj] = a[aj] - b[bj] + (C * r - T);
+			}
+
+			while (C && --aj >= ai) {
+				var T = C;
+				C = a[aj] < T;
+				a[aj] += C * r - T;
+			}
+		};
+
+		exports._isub = _isub;
+
 		/* js/src/1-new/arithmetic/sub/_sub.js */
 
 		/**
@@ -1407,6 +1701,11 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 		};
 
 		exports.trim_natural = trim_natural;
+
+		/* js/src/2-api */
+		/* js/src/2-api/div.js */
+		var _div = schoolbook_div;
+		exports._div = _div;
 
 		return exports;
 	};
