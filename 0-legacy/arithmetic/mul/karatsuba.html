@@ -62,8 +62,7 @@ i &gt;= j, k &gt;= 2 * i</p>
 			t2 = calloc(n + <span class="hljs-number">1</span>); <span class="hljs-comment">// and guarantee reducing k for the</span>
 			t3 = calloc(N + <span class="hljs-number">1</span>); <span class="hljs-comment">// recursive calls</span>
 			z2 = calloc(N_);
-			z0 = calloc(N);
-			</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>RECURSIVE CALLS</p></div></div><div class="code"><div class="wrapper">			mul(a, ai, i_, b, bi, j_, z2, <span class="hljs-number">0</span>, N_);            <span class="hljs-comment">// z2 = a1.b1</span>
+			z0 = calloc(N);</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>RECURSIVE CALLS</p></div></div><div class="code"><div class="wrapper">			mul(a, ai, i_, b, bi, j_, z2, <span class="hljs-number">0</span>, N_);            <span class="hljs-comment">// z2 = a1.b1</span>
 			mul(a, i_, aj, b, j_, bj, z0, <span class="hljs-number">0</span>, N);             <span class="hljs-comment">// z0 = a0.b0</span>
 			add(a, i_, aj, a, ai, i_, t1, <span class="hljs-number">0</span>, n + <span class="hljs-number">1</span>);         <span class="hljs-comment">// (a0 + a1)</span>
 			add(b, bi, j_, b, j_, bj, t2, <span class="hljs-number">0</span>, n + <span class="hljs-number">1</span>);         <span class="hljs-comment">// (b1 + b0)</span>

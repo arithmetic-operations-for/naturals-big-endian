@@ -1,0 +1,33 @@
+<!DOCTYPE html><html lang="en"><head><title>1-new/arithmetic/div/schoolbook_div</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../../"><meta name="groc-document-path" content="1-new/arithmetic/div/schoolbook_div"><meta name="groc-project-path" content="js/src/1-new/arithmetic/div/schoolbook_div.js"><meta name="groc-github-url" content="https://github.com/aureooms/js-integer-big-endian"><link rel="stylesheet" type="text/css" media="all" href="../../../assets/style.css"><script type="text/javascript" src="../../../assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/aureooms/js-integer-big-endian/blob/master/js/src/1-new/arithmetic/div/schoolbook_div.js">js/src/1-new/arithmetic/div/schoolbook_div.js</a></div></div><div id="document"><div class="segment"></div><div class="segment"><div class="comments "><div class="wrapper"><p>Computes q &lt;- a / b and a &lt;- a % b.
+No leading zeros allowed.
+q has length at least qi + aj - ai</p></div></div><div class="code"><div class="wrapper"><span class="hljs-keyword">const</span> schoolbook_div = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"> r , a , ai , aj , b , bi , bj , q , qi </span>) </span>{
+
+	<span class="hljs-keyword">const</span> _r = <span class="hljs-built_in">Math</span>.ceil( r / <span class="hljs-number">2</span> ) ;
+	<span class="hljs-keyword">const</span> x = b[bi] ;
+
+	<span class="hljs-keyword">if</span> ( x &lt; _r ) {</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>we need x to be &gt;= _r so we multiply b by ceil( _r / x )
+this gives us &lt;= ( 1 + _r / x ) b &lt; r^(bj-bi)
+(this can be implemented faster using bit shifts if r = 2^k )</p></div></div><div class="code"><div class="wrapper">		<span class="hljs-keyword">const</span> z = <span class="hljs-built_in">Math</span>.ceil( _r / x ) ;
+		<span class="hljs-keyword">const</span> m = aj - ai + <span class="hljs-number">1</span> ;
+		<span class="hljs-keyword">const</span> n = bj - bi ;
+
+		<span class="hljs-keyword">const</span> _a = _zeros( m ) ;
+		_mul_limb( r , z , a , ai , aj , _a , <span class="hljs-number">0</span> , m ) ;
+
+		<span class="hljs-keyword">const</span> _b = _zeros( n ) ;
+		_mul_limb( r , z , b , bi , bj , _b , <span class="hljs-number">0</span> , n ) ;
+
+		<span class="hljs-keyword">const</span> _q = _zeros( m ) ;
+
+		_schoolbook_div( r , _a , <span class="hljs-number">0</span> , m , _b , <span class="hljs-number">0</span> , n , _q , <span class="hljs-number">0</span> ) ;
+		_div_limb_partial( r , _a[<span class="hljs-number">0</span>] , z , _a , <span class="hljs-number">1</span> , m , a , ai ) ;
+		_copy( _q , <span class="hljs-number">1</span> , m , q , qi ) ;
+		<span class="hljs-keyword">return</span> ;
+
+	}
+
+	<span class="hljs-keyword">return</span> _schoolbook_div( r , a , ai , aj , b , bi , bj , q , qi ) ;
+
+} ;
+
+exports.schoolbook_div = schoolbook_div ;</div></div></div></div></body></html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html><html lang="en"><head><title>1-new/arithmetic/div/_div_limb_partial</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../../"><meta name="groc-document-path" content="1-new/arithmetic/div/_div_limb_partial"><meta name="groc-project-path" content="js/src/1-new/arithmetic/div/_div_limb_partial.js"><meta name="groc-github-url" content="https://github.com/aureooms/js-integer-big-endian"><link rel="stylesheet" type="text/css" media="all" href="../../../assets/style.css"><script type="text/javascript" src="../../../assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/aureooms/js-integer-big-endian/blob/master/js/src/1-new/arithmetic/div/_div_limb_partial.js">js/src/1-new/arithmetic/div/_div_limb_partial.js</a></div></div><div id="document"><div class="segment"></div><div class="segment"><div class="comments "><div class="wrapper"><p>Divides a big endian number by a single limb number.
+Can only work with limbs of size at most sqrt( 2^53 ).
+Allows to start with a partial quotient.</p></div></div><div class="code"><div class="wrapper"><span class="hljs-keyword">const</span> _div_limb_partial = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"> r , x , z , a , ai , aj , q , qi </span>) </span>{
+
+	<span class="hljs-keyword">while</span> ( ai &lt; aj ) {
+
+		x *= r ; x += a[ai] ;
+
+		q[qi] = x / z | <span class="hljs-number">0</span> ;
+		x %= z ;
+
+		++qi ; ++ai ;
+
+	}
+
+	a[aj-<span class="hljs-number">1</span>] = x ;
+
+} ;
+
+exports._div_limb_partial = _div_limb_partial ;</div></div></div></div></body></html>
