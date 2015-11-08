@@ -41,11 +41,10 @@ test( 'stringify' , function ( assert ) {
 
 	assert.deepEqual( integer.stringify( 100 , 16 , [ 18 , 36 , 47 , 58 , 54 , 44 , 93 , 6 , 47 , 20 ] , 0 , 10 ) , 'fedcba9876543210' ) ;
 
-	// Really slow for with current division algorithm
-	//assert.deepEqual(
-		//integer.stringify( 10000 , 36 ,
-		//[ 0,312,6485,6500,280,6599,6167,8564,7451,522,8125,564,4362,6409,4355] , 0 , 15
-	//) , '1234567890azertyuiopqsdfghjklmwxcvbn' ) ;
+	assert.deepEqual(
+		integer.stringify( 10000 , 36 ,
+		[ 0,312,6485,6500,280,6599,6167,8564,7451,522,8125,564,4362,6409,4355] , 0 , 15
+	) , '1234567890azertyuiopqsdfghjklmwxcvbn' ) ;
 
 	assert.deepEqual(
 		integer.stringify( 10 , 36 ,
