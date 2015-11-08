@@ -688,6 +688,77 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 		/* js/src/1-new */
 		/* js/src/1-new/arithmetic */
 		/* js/src/1-new/arithmetic/add */
+		/* js/src/1-new/arithmetic/add/_ADD.js */
+		/**
+   * Adds two big endian arrays and puts result in a destination array.
+   * Wraps on overflow. |C| >= |A| >= |B|.
+   *
+   * @param {Number} r base (radix)
+   * @param {Array} a first operand
+   * @param {Number} ai a left
+   * @param {Number} aj a right
+   * @param {Array} b second operand
+   * @param {Number} bi b left
+   * @param {Number} bj b right
+   * @param {Array} c result, must be 0 initialized
+   * @param {Number} ci c left
+   * @param {Number} cj c right
+   */
+
+		var _ADD = function _ADD(r, a, ai, aj, b, bi, bj, c, ci, cj) {
+
+			var C = 0;
+
+			while (--bj >= bi) {
+				var t = a[--aj] + b[bj] + C;
+				c[--cj] = t % r;
+				C = t >= r;
+			}
+
+			while (--aj >= ai) {
+				var t = a[aj] + C;
+				c[--cj] = t % r;
+				C = t >= r;
+			}
+
+			if (--cj >= ci) c[cj] = +C;
+		};
+
+		exports._ADD = _ADD;
+
+		/* js/src/1-new/arithmetic/add/_add.js */
+		/**
+   * Adds two big endian arrays and puts result in a destination array.
+   * Wraps on overflow.
+   *
+   * @param {Number} r base (radix)
+   * @param {Array} a first operand
+   * @param {Number} ai a left
+   * @param {Number} aj a right
+   * @param {Array} b second operand
+   * @param {Number} bi b left
+   * @param {Number} bj b right
+   * @param {Array} c result, must be 0 initialized
+   * @param {Number} ci c left
+   * @param {Number} cj c right
+
+   */
+
+		var _add = function _add(r, a, ai, aj, b, bi, bj, c, ci, cj) {
+
+			ci = Math.max(0, ci);
+			var k = cj - ci;
+
+			ai = Math.max(0, ai, aj - k);
+			bi = Math.max(0, bi, bj - k);
+			var m = aj - ai;
+			var n = bj - bi;
+
+			return m < n ? _ADD(r, b, bi, bj, a, ai, aj, c, ci, cj) : _ADD(r, a, ai, aj, b, bi, bj, c, ci, cj);
+		};
+
+		exports._add = _add;
+
 		/* js/src/1-new/arithmetic/add/_increment.js */
 
 		/**
@@ -1684,6 +1755,16 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 		};
 
 		exports.stringify_keep_zeros = stringify_keep_zeros;
+
+		/* js/src/1-new/convert/translate.js */
+
+		var translate = function translate(f, t, string) {
+
+			var a = parse(f, t, string);
+			return stringify(t, t, a, 0, a.length);
+		};
+
+		exports.translate = translate;
 
 		/* js/src/1-new/convert/trim_natural.js */
 
