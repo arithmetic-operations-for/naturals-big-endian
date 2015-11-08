@@ -304,59 +304,6 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 
 		exports.bkaratsuba_t = bkaratsuba_t;
 
-		/* js/src/0-legacy/arithmetic/mul/mul.js */
-
-		var bmul_t = function bmul_t(r) {
-
-			/**
-    * Computes product of two big endian arrays.
-    * <p>
-    * Computes product of two big endian arrays
-    * using long multiplication algorithm (the one teached in
-    * european primary schools)
-    */
-
-			var mul = function mul(a, ai, aj, b, bi, bj, c, ci, cj) {
-				var ak,
-				    ck = --cj,
-				    ct,
-				    t,
-				    u,
-				    v,
-				    w,
-				    y,
-				    z;
-
-				while (bj-- > bi && ck >= ci) {
-					for (ak = aj, w = 0; ak-- > ai && ck >= ci; --ck) {
-						t = b[bj] * a[ak];
-						u = t % r;
-						v = c[ck] + u + w;
-
-						y = v % r;
-
-						c[ck] = y;
-
-						z = (v - y) / r;
-
-						for (ct = ck - 1; z > 0 && ct >= ci; --ct) {
-							v = c[ct] + z;
-							y = v % r;
-							c[ct] = y;
-							z = (v - y) / r;
-						}
-
-						w = (t - u) / r;
-					}
-					ck = --cj;
-				}
-			};
-
-			return mul;
-		};
-
-		exports.bmul_t = bmul_t;
-
 		/* js/src/0-legacy/arithmetic/mul/mul53.js */
 		/**
    * /!\ BLOCK MULTIPLICATION RESULT MUST HOLD IN THE JAVASCRIPT NUMBER TYPE (DOUBLE i.e. 53 bits)
@@ -1086,6 +1033,39 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 
 		exports._mul_limb = _mul_limb;
 
+		/* js/src/1-new/arithmetic/mul/_schoolbook_mul.js */
+
+		/**
+   * Computes the product of two big endian arrays using schoolbook
+   * multiplication. |C| >= |A|+|B|.
+   */
+
+		var _schoolbook_mul = function _schoolbook_mul(r, a, ai, aj, b, bi, bj, c, ci, cj) {
+
+			var m = aj - ai;
+			var n = bj - bi;
+			--aj;
+			--bj;
+			--cj;
+
+			for (var i = 0; i < m; ++i) {
+
+				var q = 0;
+
+				for (var j = 0; j < n; ++j) {
+
+					var t = c[cj - i - j] + q + a[aj - i] * b[bj - j];
+					var s = t % r;
+					c[cj - i - j] = s;
+					q = (t - s) / r;
+				}
+
+				c[cj - i - n] = q;
+			}
+		};
+
+		exports._schoolbook_mul = _schoolbook_mul;
+
 		/* js/src/1-new/arithmetic/sub */
 		/* js/src/1-new/arithmetic/sub/_isub.js */
 
@@ -1784,9 +1764,13 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 		exports.trim_natural = trim_natural;
 
 		/* js/src/2-api */
-		/* js/src/2-api/div.js */
+		/* js/src/2-api/_div.js */
 		var _div = schoolbook_div;
 		exports._div = _div;
+
+		/* js/src/2-api/_mul.js */
+		var _mul = _schoolbook_mul;
+		exports._mul = _mul;
 
 		return exports;
 	};
