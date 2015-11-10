@@ -408,6 +408,132 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 		exports._increment = _increment;
 
 		/* js/src/1-new/arithmetic/div */
+		/* js/src/1-new/arithmetic/div/_dc_div_21.js */
+
+		/**
+   * Algorithm 3.3 Divide-and-conquer division (2 by 1)
+   * ==================================================
+   *
+   * Input
+   * -----
+   *  Two nonnegative integers A and B, such that A < β^n B and β^n /2 ≤ B < β^n.
+   *  n must be even.
+   *
+   *                    -----------                 -----
+   *                   |  :  |  :  |               |  :  |
+   *                    -----------                 -----
+   *
+   * Output
+   * ------
+   *  The quotient floor( A/B ) and the remainder A mod B.
+   *
+   * Complexity
+   * ----------
+   *  T(n) = 2T'(n/2) + K
+   *
+   */
+		var _dc_div_21 = function _dc_div_21(r, a, ai, aj, b, bi, bj, c, ci, cj) {
+
+			// 1. Let A = A_3 β^{3n/2} + A_2 β^n + A_1 β^{n/2} + A_0 and
+			//    B = B_1 β^{n/2} + B_0,
+			//    with 0 ≤ A_i < β^{n/2} and 0 ≤ B_i < β^{n/2}.
+
+			var m = aj - ai;
+			var k = m >>> 2;
+
+			// 2. Compute the high half Q_1 of the quotient as
+			//    Q_1 = ( A_3 β^n + A_2 β^{n/2} + A_1 ) / B
+			//    with remainder R_1 using algorithm 3.4.
+
+			_dc_div_32(r, a, ai, aj - k, b, bi, bj, c, ci, cj - k);
+
+			// 3. Compute the low half Q_0 of the quotient as
+			//    Q_0 = ( R_1 β^{n/2} + A_0 ) / B
+			//    with remainder R_0 using algorithm 3.4.
+
+			_dc_div_32(r, a, ai + k, aj, b, bi, bj, c, cj - k, cj);
+
+			// 4. Return the quotient Q = Q_1 β^{n/2} + Q_0 and the remainder R = R_0 .
+		};
+
+		exports._dc_div_21 = _dc_div_21;
+
+		/* js/src/1-new/arithmetic/div/_dc_div_32.js */
+
+		/**
+   * Algorithm 3.4 Divide-and-conquer division (3 by 2)
+   * ==================================================
+   *
+   * Input
+   * -----
+   *  Two nonnegative integers A and B,
+   *  such that A < β^n B and β^n /2 ≤ B < β^{2n}.
+   *  n must be even.
+   *
+   *                    --------                 -----
+   *                   |  |  |  |               |  |  |
+   *                    --------                 -----
+   *
+   * Output
+   * ------
+   *  The quotient floor( A/B ) and the remainder A mod B.
+   *
+   * Complexity
+   * ----------
+   *  T'(n) ≤ T(n) + M(n) + Ln
+   *
+   */
+		var _dc_div_32 = function _dc_div_32(r, a, ai, aj, b, bi, bj, c, ci, cj) {
+
+			// 1. Let A = A_2 β^{2n} + A_1 β^n + A_0 and
+			//    B = B_1 β^{n} + B_0,
+			//    with 0 ≤ A_i < β^n and 0 ≤ B_i < β^n.
+
+			var n = bj - bi;
+			var k = m >>> 1;
+
+			// 2. If A_2 < B_1, compute Q = floor( ( A_2 β^n + A_1 ) / B ) with
+			//    remainder R_1 using algorithm 3.3;
+
+			if (_lt(a, ai, ai + n, b, bi, bi + n)) {
+				_dc_div_21(r, a, ai, aj - n, b, bi, bi + n, c, ci + n, cj);
+			}
+
+			//    otherwise let Q = β^n - 1, and R_1 = ( A_2 - B_1 ) β^n + A_1 + B_1
+
+			else {
+					_fill(c, cj - n, cj, r - 1);
+					_iadd(r, a, ai, aj - n, b, bi, bi + n);
+					_isub(r, a, ai, ai + n, b, bi, bi + n);
+				}
+
+			// 3. R <- R_1 ^n + A_4 - Q*B_0
+
+			var zi = 0;
+			var zj = n << 1;
+			var z = _zeros(zj);
+			_mul(r, c, cj - n, cj, b, bi + n, bj, z, zi, zj);
+			_isub(r, a, ai, aj, z, zi, zj);
+
+			// 4. if R < 0 , R <- R + B and Q <- Q - 1
+
+			if (!_jz(a, ai, ai + n)) {
+				_iadd(r, a, ai, aj, b, bi, bj);
+				_decrement(r, c, cj - n, cj);
+
+				// 5. if R < 0 , R <- R + B and Q <- Q - 1
+
+				if (!_jz(a, ai, ai + n)) {
+					_iadd(r, a, ai, aj, b, bi, bj);
+					_decrement(r, c, cj - n, cj);
+				}
+			}
+
+			// 6. Return Q and R
+		};
+
+		exports._dc_div_32 = _dc_div_32;
+
 		/* js/src/1-new/arithmetic/div/_div_limb.js */
 
 		/**
@@ -584,20 +710,20 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 				// this gives us <= ( 1 + _r / x ) b < r^(bj-bi)
 				// (this can be implemented faster using bit shifts if r = 2^k )
 				var z = Math.ceil(_r / x);
-				var m = aj - ai + 1;
+				var _m = aj - ai + 1;
 				var n = bj - bi;
 
-				var _a = _zeros(m);
-				_mul_limb(r, z, a, ai, aj, _a, 0, m);
+				var _a = _zeros(_m);
+				_mul_limb(r, z, a, ai, aj, _a, 0, _m);
 
 				var _b = _zeros(n);
 				_mul_limb(r, z, b, bi, bj, _b, 0, n);
 
-				var _q = _zeros(m);
+				var _q = _zeros(_m);
 
-				_schoolbook_div(r, _a, 0, m, _b, 0, n, _q, 0);
-				_div_limb_partial(r, _a[0], z, _a, 1, m, a, ai);
-				_copy(_q, 1, m, q, qi);
+				_schoolbook_div(r, _a, 0, _m, _b, 0, n, _q, 0);
+				_div_limb_partial(r, _a[0], z, _a, 1, _m, a, ai);
+				_copy(_q, 1, _m, q, qi);
 				return;
 			}
 
@@ -856,6 +982,31 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 		exports._toom22 = _toom22;
 
 		/* js/src/1-new/arithmetic/sub */
+		/* js/src/1-new/arithmetic/sub/_decrement.js */
+
+		/**
+   * Subtracts 1 from a big endian array.
+   *
+   * @param {Number} r radix
+   * @param {Array} a first operand
+   * @param {Number} ai a left
+   * @param {Number} aj a right
+   */
+		var _decrement = function _decrement(r, a, ai, aj) {
+
+			while (--aj >= ai) {
+
+				if (a[aj] > 0) {
+					--a[aj];
+					return;
+				}
+
+				a[aj] = r - 1;
+			}
+		};
+
+		exports._decrement = _decrement;
+
 		/* js/src/1-new/arithmetic/sub/_isub.js */
 
 		/**
@@ -935,6 +1086,80 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 		};
 
 		exports._sub = _sub;
+
+		/* js/src/1-new/array */
+		/* js/src/1-new/array/_alloc.js */
+
+		var _alloc = function _alloc(n) {
+
+			return new Array(n);
+		};
+
+		exports._alloc = _alloc;
+
+		/* js/src/1-new/array/_build.js */
+
+		var _build = function _build(base, number) {
+
+			var data = [];
+
+			var q = number;
+			var d = base;
+
+			while (q >= d) {
+				var r = q % d;
+				data.push(r);
+				q = (q - r) / d;
+			}
+
+			data.push(q);
+
+			return data.reverse();
+		};
+
+		exports._build = _build;
+
+		/* js/src/1-new/array/_copy.js */
+
+		var _copy = function _copy(a, ai, aj, b, bi) {
+
+			for (; ai < aj; ++ai, ++bi) b[bi] = a[ai];
+		};
+
+		exports._copy = _copy;
+
+		/* js/src/1-new/array/_fill.js */
+
+		var _fill = function _fill(a, ai, aj, v) {
+
+			for (var i = ai; i < aj; ++i) {
+				a[i] = v;
+			}
+		};
+
+		exports._fill = _fill;
+
+		/* js/src/1-new/array/_reset.js */
+
+		var _reset = function _reset(a, ai, aj) {
+
+			_fill(a, ai, aj, 0);
+		};
+
+		exports._reset = _reset;
+
+		/* js/src/1-new/array/_zeros.js */
+
+		var _zeros = function _zeros(n) {
+
+			var a = _alloc(n);
+
+			_reset(a, 0, n);
+
+			return a;
+		};
+
+		exports._zeros = _zeros;
 
 		/* js/src/1-new/compare */
 		/* js/src/1-new/compare/_CMP.js */
@@ -1046,37 +1271,6 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 		exports._ne = _ne;
 
 		/* js/src/1-new/convert */
-		/* js/src/1-new/convert/_alloc.js */
-
-		var _alloc = function _alloc(n) {
-
-			return new Array(n);
-		};
-
-		exports._alloc = _alloc;
-
-		/* js/src/1-new/convert/_build.js */
-
-		var _build = function _build(base, number) {
-
-			var data = [];
-
-			var q = number;
-			var d = base;
-
-			while (q >= d) {
-				var r = q % d;
-				data.push(r);
-				q = (q - r) / d;
-			}
-
-			data.push(q);
-
-			return data.reverse();
-		};
-
-		exports._build = _build;
-
 		/* js/src/1-new/convert/_chr.js */
 
 		var _chr = function _chr(x) {
@@ -1347,26 +1541,6 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 
 		exports._convert_to_smaller_fast = _convert_to_smaller_fast;
 
-		/* js/src/1-new/convert/_copy.js */
-
-		var _copy = function _copy(a, ai, aj, b, bi) {
-
-			for (; ai < aj; ++ai, ++bi) b[bi] = a[ai];
-		};
-
-		exports._copy = _copy;
-
-		/* js/src/1-new/convert/_fill.js */
-
-		var _fill = function _fill(a, ai, aj, v) {
-
-			for (var i = ai; i < aj; ++i) {
-				a[i] = v;
-			}
-		};
-
-		exports._fill = _fill;
-
 		/* js/src/1-new/convert/_int.js */
 
 		var _int = function _int(x) {
@@ -1397,15 +1571,6 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 
 		exports._log = _log;
 
-		/* js/src/1-new/convert/_reset.js */
-
-		var _reset = function _reset(a, ai, aj) {
-
-			_fill(a, ai, aj, 0);
-		};
-
-		exports._reset = _reset;
-
 		/* js/src/1-new/convert/_to_string.js */
 
 		var _to_string = function _to_string(b) {
@@ -1431,19 +1596,6 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 		};
 
 		exports._trim_positive = _trim_positive;
-
-		/* js/src/1-new/convert/_zeros.js */
-
-		var _zeros = function _zeros(n) {
-
-			var a = _alloc(n);
-
-			_reset(a, 0, n);
-
-			return a;
-		};
-
-		exports._zeros = _zeros;
 
 		/* js/src/1-new/convert/convert.js */
 
