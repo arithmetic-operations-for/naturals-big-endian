@@ -673,6 +673,39 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 
 		exports._ADD = _ADD;
 
+		/* js/src/1-new/arithmetic/add/_IADD.js */
+		/**
+   * Adds a big endian array to another.
+   * Wraps on overflow. |A| >= |B|.
+   *
+   * @param {Number} r base (radix)
+   * @param {Array} a first operand
+   * @param {Number} ai a left
+   * @param {Number} aj a right
+   * @param {Array} b second operand
+   * @param {Number} bi b left
+   * @param {Number} bj b right
+   */
+
+		var _IADD = function _IADD(r, a, ai, aj, b, bi, bj) {
+
+			var C = 0;
+
+			while (--bj >= bi) {
+				var t = a[--aj] + b[bj] + C;
+				a[aj] = t % r;
+				C = t >= r;
+			}
+
+			while (--aj >= ai) {
+				var t = a[aj] + C;
+				a[aj] = t % r;
+				C = t >= r;
+			}
+		};
+
+		exports._IADD = _IADD;
+
 		/* js/src/1-new/arithmetic/add/_add.js */
 		/**
    * Adds two big endian arrays and puts result in a destination array.
@@ -705,6 +738,20 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 		};
 
 		exports._add = _add;
+
+		/* js/src/1-new/arithmetic/add/_iadd.js */
+
+		/**
+   * Placeholder implementation.
+   */
+		var _iadd = function _iadd(r, a, ai, aj, b, bi, bj) {
+
+			var m = aj - ai;
+
+			return _IADD(r, a, ai, aj, b, Math.max(bi, bj - m), bj);
+		};
+
+		exports._iadd = _iadd;
 
 		/* js/src/1-new/arithmetic/add/_increment.js */
 
@@ -1001,6 +1048,116 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 		exports.slow_div = slow_div;
 
 		/* js/src/1-new/arithmetic/mul */
+		/* js/src/1-new/arithmetic/mul/_karatsuba.js */
+		/**
+   *
+   * Multiply two big endian arrays using karatsuba algorithm,
+   * |A| >= |B| > 0, |C| >= 2 * |A|, |A| > 1.
+   *
+   * /!\ BLOCK MULTIPLICATION RESULT MUST HOLD IN THE JAVASCRIPT NUMBER TYPE
+   *     (DOUBLE i.e. 53 bits)
+   *
+   * EXPLANATION
+   * ###########
+   *
+   * We consider the numbers a and b, both of size N = 2n.
+   *
+   * We divide a and b into their lower and upper parts.
+   *
+   * a = a1 r^{n} + a0 (1)
+   * b = b1 r^{n} + b0 (2)
+   *
+   * We express the product of a and b using their lower and upper parts.
+   *
+   * a b = (a1 r^{n} + a0) (b1 r^{n} + b0) (3)
+   *     = a1 b1 r^{2n} + (a1 b0 + a0 b1) r^{n} + a0 b0 (4)
+   *
+   * This gives us 4 multiplications with operands of size n.
+   * Using a simple trick, we can reduce this computation to 3 multiplications.
+   *
+   * We give the 3 terms of (4) the names z0, z1 and z2.
+   *
+   * z2 = a1 b1
+   * z1 = a1 b0 + a0 b1
+   * z0 = a0 b0
+   *
+   * a b  = z2 r^{2n} + z1 r^{n} + z0
+   *
+   * We then express z1 using z0, z2 and one additional multiplication.
+   *
+   * (a1 + a0)(b1 + b0) = a1 b1 + a0 b0 + (a1 b0 + a0 b1)
+   *                    = z2 + z0 + z1
+   *
+   * z1 = (a1 + a0)(b1 + b0) - z2 - z0
+   *
+   * AN ANOTHER WAY AROUND (not used here)
+   *
+   * (a1 - a0)(b1 - b0) = (a1 b1 + a0 b0) - (a1 b0 + a0 b1)
+   * (a0 - a1)(b1 - b0) = (a1 b0 + a0 b1) - (a1 b1 + a0 b0)
+   * a b = (r^{2n} + r^{n})a1 b1 + r^{n}(a0 - a1)(b1 - b0) + (r^{n} + 1)a0 b0
+   *
+   * This algorithm is a specific case of the Toom-Cook algorithm, when m = n =
+   * 2.
+   *
+   * For further reference, see
+   *  - http://en.wikipedia.org/wiki/Karatsuba_algorithm
+   *  - http://en.wikipedia.org/wiki/Toom–Cook_multiplication
+   *
+   * @param {Number} r base (radix)
+   * @param {Array} a first operand
+   * @param {Number} ai a left
+   * @param {Number} aj a right
+   * @param {Array} b second operand
+   * @param {Number} bi b left
+   * @param {Number} bj b right
+   * @param {Array} c result, must be 0 initialized
+   * @param {Number} ci c left
+   * @param {Number} cj c right
+   */
+
+		var _karatsuba = function _karatsuba(r, a, ai, aj, b, bi, bj, c, ci, cj) {
+
+			var i = aj - ai;
+			var j = bj - bi;
+			var k = cj - ci;
+
+			var n = Math.ceil(i / 2);
+			var I = i + j;
+			var N = 2 * n;
+			var N_ = I - N;
+			var i_ = aj - n;
+			var j_ = Math.max(bi, bj - n);
+
+			var t1 = _zeros(n + 1); // + 1 to handle addition overflows
+			var t2 = _zeros(n + 1); // and guarantee reducing k for the
+			var t3 = _zeros(N + 1); // recursive calls
+			var z2 = _zeros(N_);
+			var z0 = _zeros(N);
+
+			// RECURSIVE CALLS
+			_mul(r, a, ai, i_, b, bi, j_, z2, 0, N_); // z2 = a1.b1
+			_mul(r, a, i_, aj, b, j_, bj, z0, 0, N); // z0 = a0.b0
+			_add(r, a, ai, i_, a, i_, aj, t1, 0, n + 1); // (a0 + a1)
+			_add(r, b, bi, j_, b, j_, bj, t2, 0, n + 1); // (b1 + b0)
+			_mul(r, t1, 1, n + 1, t2, 1, n + 1, t3, 1, N + 1); // (a0 + a1)(b1 + b0)
+
+			// BUILD OUTPUT
+			_copy(z2, 0, N_, c, cj - I); // + z2 . r^{2n}
+			_copy(z0, 0, N, c, cj - N); // + z0
+
+			// overflow on t1, add t2 . r^{n}
+			if (t1[0]) _iadd(r, t3, 0, n + 1, t2, 0, n + 1);
+
+			// overflow on t2, add t1 . r^{n} (except t1[0])
+			if (t2[0]) _iadd(r, t3, 0, n + 1, t1, 1, n + 1);
+
+			_iadd(r, c, ci, cj - n, t3, 0, N + 1); // + (a0 + a1)(b1 + b0) . r^{n}
+			_isub(r, c, ci, cj - n, z2, 0, N_); // - z2 . r^{n}
+			_isub(r, c, ci, cj - n, z0, 0, N); // - z1 . r^{n}
+		};
+
+		exports._karatsuba = _karatsuba;
+
 		/* js/src/1-new/arithmetic/mul/_mul_limb.js */
 		/**
    * Compute x * b where x is a single limb.
@@ -1065,6 +1222,11 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 		};
 
 		exports._schoolbook_mul = _schoolbook_mul;
+
+		/* js/src/1-new/arithmetic/mul/_toom22.js */
+
+		var _toom22 = _karatsuba;
+		exports._toom22 = _toom22;
 
 		/* js/src/1-new/arithmetic/sub */
 		/* js/src/1-new/arithmetic/sub/_isub.js */
@@ -1763,13 +1925,42 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 
 		exports.trim_natural = trim_natural;
 
+		/* js/src/1-new/thresholds */
+		/* js/src/1-new/thresholds/multiplication.js */
+
+		var THRESHOLD_MUL_TOOM22 = 22;
+
 		/* js/src/2-api */
 		/* js/src/2-api/_div.js */
 		var _div = schoolbook_div;
 		exports._div = _div;
 
 		/* js/src/2-api/_mul.js */
-		var _mul = _schoolbook_mul;
+
+		/**
+   * |A| >= |B|, |C| >= |A| + |B|.
+   */
+
+		var _mul = function _mul(r, a, ai, aj, b, bi, bj, c, ci, cj) {
+
+			var m = aj - ai;
+			var n = bj - bi;
+
+			//if ( m === n ) {
+
+			//if ( a === b && ai === bi ) return _sqr( r , a , ai , aj , c , ci , cj ) ;
+
+			//return _mul_n( r , a , ai , aj , b , bi , bj , c , ci , cj ) ;
+
+			//}
+
+			if (n < THRESHOLD_MUL_TOOM22) {
+				return _schoolbook_mul(r, a, ai, aj, b, bi, bj, c, ci, cj);
+			}
+
+			return _karatsuba(r, a, ai, aj, b, bi, bj, c, ci, cj);
+		};
+
 		exports._mul = _mul;
 
 		return exports;
