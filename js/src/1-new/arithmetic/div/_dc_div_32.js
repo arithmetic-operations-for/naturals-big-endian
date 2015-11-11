@@ -6,7 +6,7 @@
  * Input
  * -----
  *  Two nonnegative integers A and B,
- *  such that A < β^n B and β^n /2 ≤ B < β^{2n}.
+ *  such that A < β^n B and β^{2n} / 2 ≤ B < β^{2n}.
  *  n must be even.
  *
  *                    --------                 -----

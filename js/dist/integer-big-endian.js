@@ -408,6 +408,77 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 		exports._increment = _increment;
 
 		/* js/src/1-new/arithmetic/div */
+		/* js/src/1-new/arithmetic/div/_dc_div.js */
+
+		/**
+   * Input
+   * -----
+   *  - No leading zeros
+   *  - |A| = |C|
+   *
+   */
+		var _dc_div = function _dc_div(X, a, ai, aj, b, bi, bj, c, ci, cj) {
+
+			// [BZ98] Fast Recursive Division
+
+			var r = aj - ai;
+			var s = bj - bi;
+
+			// shift to get n = 2^k for some k
+			var _m = 1;
+			var _k = 0;
+
+			while (_m < s) {
+				_m <<= 1;
+				++_k;
+			}
+
+			var m = _m;
+			var k = _k;
+			var n = m;
+
+			var shift = n - s;
+
+			var w = r + shift + 1;
+			var t = Math.ceil(w / n);
+			var _ai = 0;
+			var _aj = t * n; // + 1 because of
+			var _a = _zeros(_aj); // potential normalization overflow
+			var _ak = aj - shift - r;
+			_copy(a, ai, aj, _a, T);
+
+			var _bi = 0;
+			var _bj = n;
+			var _b = _zeros(n);
+			_copy(b, bi, bj, _b, 0);
+
+			var x = _b[_bi];
+			var _X = X / 2;
+
+			if (x < _X) {
+
+				// normalize
+				var _z = Math.ceil(_r / x);
+				_mul_limb(X, _z, _a, _ai, _aj);
+				_mul_limb(X, _z, _b, _bi, _bj);
+			}
+
+			var _cj = (t - 1) * n;
+			var _c = _zeros(_cj);
+
+			for (var i = 0; i < _aj - n; i += n) {
+
+				_dc_div_21(X, _a, i, i + (n << 1), _b, _bi, _bj, _c, i, i + n);
+			}
+
+			_copy(_c, _cj - r, _cj, c, ci);
+
+			var j = _mod_limb(X, z, _a, _ai, _ak);
+			_div_limb_partial(X, j, z, _a, _ak, _aj - shift, a, ai, aj);
+		};
+
+		exports._dc_div = _dc_div;
+
 		/* js/src/1-new/arithmetic/div/_dc_div_21.js */
 
 		/**
@@ -416,7 +487,8 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
    *
    * Input
    * -----
-   *  Two nonnegative integers A and B, such that A < β^n B and β^n /2 ≤ B < β^n.
+   *  Two nonnegative integers A and B,
+   *  such that A < β^n B and β^n / 2 ≤ B < β^n.
    *  n must be even.
    *
    *                    -----------                 -----
@@ -467,7 +539,7 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
    * Input
    * -----
    *  Two nonnegative integers A and B,
-   *  such that A < β^n B and β^n /2 ≤ B < β^{2n}.
+   *  such that A < β^n B and β^{2n} / 2 ≤ B < β^{2n}.
    *  n must be even.
    *
    *                    --------                 -----
@@ -574,6 +646,30 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 		};
 
 		exports._div_limb_partial = _div_limb_partial;
+
+		/* js/src/1-new/arithmetic/div/_mod_limb.js */
+
+		/**
+   * Divides a big endian number by a single limb number and returns only the
+   * remainder. Can only work with limbs of size at most sqrt( 2^53 ).
+   */
+
+		var _mod_limb = function _mod_limb(r, z, a, ai, aj) {
+
+			var x = 0;
+
+			while (ai < aj) {
+
+				x *= r;
+				x += a[ai];
+				x %= z;
+				++ai;
+			}
+
+			return x;
+		};
+
+		exports._mod_limb = _mod_limb;
 
 		/* js/src/1-new/arithmetic/div/_schoolbook_div.js */
 
@@ -709,21 +805,21 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 				// we need x to be >= _r so we multiply b by ceil( _r / x )
 				// this gives us <= ( 1 + _r / x ) b < r^(bj-bi)
 				// (this can be implemented faster using bit shifts if r = 2^k )
-				var z = Math.ceil(_r / x);
-				var _m = aj - ai + 1;
+				var _z2 = Math.ceil(_r / x);
+				var _m2 = aj - ai + 1;
 				var n = bj - bi;
 
-				var _a = _zeros(_m);
-				_mul_limb(r, z, a, ai, aj, _a, 0, _m);
+				var _a = _zeros(_m2);
+				_mul_limb(r, _z2, a, ai, aj, _a, 0, _m2);
 
 				var _b = _zeros(n);
-				_mul_limb(r, z, b, bi, bj, _b, 0, n);
+				_mul_limb(r, _z2, b, bi, bj, _b, 0, n);
 
-				var _q = _zeros(_m);
+				var _q = _zeros(_m2);
 
-				_schoolbook_div(r, _a, 0, _m, _b, 0, n, _q, 0);
-				_div_limb_partial(r, _a[0], z, _a, 1, _m, a, ai);
-				_copy(_q, 1, _m, q, qi);
+				_schoolbook_div(r, _a, 0, _m2, _b, 0, n, _q, 0);
+				_div_limb_partial(r, _a[0], _z2, _a, 1, _m2, a, ai);
+				_copy(_q, 1, _m2, q, qi);
 				return;
 			}
 
@@ -801,6 +897,28 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 		exports.slow_div = slow_div;
 
 		/* js/src/1-new/arithmetic/mul */
+		/* js/src/1-new/arithmetic/mul/_imul_limb.js */
+		/**
+   * Multiply b by x where x is a single limb.
+   */
+
+		var _imul_limb = function _imul_limb(r, x, b, bi, bj) {
+
+			var C = 0;
+
+			while (--bj >= bi) {
+
+				var t = b[bj] * x + C;
+				var u = t % r;
+
+				b[bj] = u;
+
+				C = (t - u) / r;
+			}
+		};
+
+		exports._imul_limb = _imul_limb;
+
 		/* js/src/1-new/arithmetic/mul/_karatsuba.js */
 		/**
    *
@@ -1028,15 +1146,15 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 
 			while (--bj >= bi) {
 				--aj;
-				var T = C;
-				C = a[aj] < b[bj] + T;
-				a[aj] = a[aj] - b[bj] + (C * r - T);
+				var _T = C;
+				C = a[aj] < b[bj] + _T;
+				a[aj] = a[aj] - b[bj] + (C * r - _T);
 			}
 
 			while (C && --aj >= ai) {
-				var T = C;
-				C = a[aj] < T;
-				a[aj] += C * r - T;
+				var _T2 = C;
+				C = a[aj] < _T2;
+				a[aj] += C * r - _T2;
 			}
 		};
 

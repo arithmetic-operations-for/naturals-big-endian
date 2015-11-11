@@ -5,7 +5,8 @@
  *
  * Input
  * -----
- *  Two nonnegative integers A and B, such that A < β^n B and β^n /2 ≤ B < β^n.
+ *  Two nonnegative integers A and B,
+ *  such that A < β^n B and β^n / 2 ≤ B < β^n.
  *  n must be even.
  *
  *                    -----------                 -----
