@@ -6,8 +6,7 @@ test( 'integer._dc_div' , function ( assert ) {
 console.log( 'integer._dc_div' ) ;
 
 var t = function ( dividend , divisor , quotient , remainder ) {
-	console.log( dividend , divisor , quotient , remainder ) ;
-	var B = Math.pow(2,16) | 0 ;
+	var B = 10 ;
 
 	var D = integer.parse( 10 , B , dividend ) ;
 	var d = integer.parse( 10 , B , divisor ) ;
