@@ -27,7 +27,7 @@ const schoolbook_div = function ( r , a , ai , aj , b , bi , bj , q , qi ) {
 		const _q = _zeros( m ) ;
 
 		_schoolbook_div( r , _a , 0 , m , _b , 0 , n , _q , 0 ) ;
-		_div_limb_partial( r , _a[0] , z , _a , 1 , m , a , ai ) ;
+		_div_limb_partial_fast( r , _a[0] , z , _a , 1 , m , a , ai ) ;
 		_copy( _q , 1 , m , q , qi ) ;
 		return ;
 

@@ -19,10 +19,6 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 
 		/* js/src/0-legacy/arithmetic */
 		/* js/src/0-legacy/arithmetic/div */
-		/* js/src/0-legacy/arithmetic/div/dcdiv.js */
-
-		// https://gmplib.org/manual/Divide-and-Conquer-Division.html
-
 		/* js/src/0-legacy/arithmetic/div/fourierdiv.js */
 
 		// http://en.wikipedia.org/wiki/Fourier_division
@@ -416,6 +412,10 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
    *  - No leading zeros
    *  - |A| = |C|
    *
+   * References
+   * ----------
+   *   - https://gmplib.org/manual/Divide-and-Conquer-Division.html
+   *
    */
 		var _dc_div = function _dc_div(X, a, ai, aj, b, bi, bj, c, ci, cj) {
 
@@ -423,6 +423,10 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 
 			var r = aj - ai;
 			var s = bj - bi;
+
+			if (r < s || r === s && _CMP_n(a, ai, aj, b, bi) < 0) return;
+
+			//console.log( '_dc_div' , X , a.length , ai , aj , b.length , bi , bj , c.length , ci , cj ) ;
 
 			// shift to get n = 2^k for some k
 			var _m = 1;
@@ -444,8 +448,8 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 			var _ai = 0;
 			var _aj = t * n; // + 1 because of
 			var _a = _zeros(_aj); // potential normalization overflow
-			var _ak = aj - shift - r;
-			_copy(a, ai, aj, _a, T);
+			var _ak = _aj - shift - r;
+			_copy(a, ai, aj, _a, _ak);
 
 			var _bi = 0;
 			var _bj = n;
@@ -454,27 +458,40 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 
 			var x = _b[_bi];
 			var _X = X / 2;
+			var _normalize = x < _X;
+			var z = Math.ceil(_X / x);
 
-			if (x < _X) {
+			if (_normalize) {
 
-				// normalize
-				var _z = Math.ceil(_r / x);
-				_mul_limb(X, _z, _a, _ai, _aj);
-				_mul_limb(X, _z, _b, _bi, _bj);
+				_imul_limb(X, z, _a, _ai, _aj);
+				_imul_limb(X, z, _b, _bi, _bj);
 			}
 
-			var _cj = (t - 1) * n;
+			var _cj = t * n;
 			var _c = _zeros(_cj);
+			//const _C = _zeros( n << 1 ) ;
 
 			for (var i = 0; i < _aj - n; i += n) {
 
-				_dc_div_21(X, _a, i, i + (n << 1), _b, _bi, _bj, _c, i, i + n);
+				_dc_div_21(X, _a, i, i + (n << 1), _b, _bi, _bj, _c, i, i + (n << 1));
+				//_dc_div_21( X , _a , i , i + ( n << 1 ) , _b , _bi , _bj , _C , 0 , n << 1 ) ;
+				//_copy( _C , n , n << 1 , _c , i + n ) ;
+				//_reset( _C , 0 , n << 1 ) ;
 			}
 
-			_copy(_c, _cj - r, _cj, c, ci);
+			//console.log( '_fast_div' , _a , _b , _c ) ;
 
-			var j = _mod_limb(X, z, _a, _ai, _ak);
-			_div_limb_partial(X, j, z, _a, _ak, _aj - shift, a, ai, aj);
+			if (_normalize) {
+				//console.log( '_normalize' , X , z , _a , _ak , _aj - shift , a , ai , aj ) ;
+				var p = _mod_limb(X, z, _a, _ai, _ak);
+				_div_limb_partial_fast(X, p, z, _a, _ak, _aj - shift, a, ai, aj);
+			} else {
+				//console.log( '_copy' , _a , _ak , _aj - shift , a , ai , aj ) ;
+				_copy(_a, _ak, _aj - shift, a, ai, aj);
+			}
+
+			//console.log( '_quotient' , _c , _cj - r , _cj , c , ci ) ;
+			_copy(_c, _cj - r, _cj, c, ci);
 		};
 
 		exports._dc_div = _dc_div;
@@ -506,6 +523,12 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
    */
 		var _dc_div_21 = function _dc_div_21(r, a, ai, aj, b, bi, bj, c, ci, cj) {
 
+			//console.log( '_dc_div_21' , r , a.length , ai , aj , b.length , bi , bj , c.length , ci , cj ) ;
+
+			if (bj - bi < THRESHOLD_DIV_DC) {
+				return _schoolbook_div(r, a, ai, aj, b, bi, bj, c, ci);
+			}
+
 			// 1. Let A = A_3 β^{3n/2} + A_2 β^n + A_1 β^{n/2} + A_0 and
 			//    B = B_1 β^{n/2} + B_0,
 			//    with 0 ≤ A_i < β^{n/2} and 0 ≤ B_i < β^{n/2}.
@@ -523,7 +546,7 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 			//    Q_0 = ( R_1 β^{n/2} + A_0 ) / B
 			//    with remainder R_0 using algorithm 3.4.
 
-			_dc_div_32(r, a, ai + k, aj, b, bi, bj, c, cj - k, cj);
+			_dc_div_32(r, a, ai + k, aj, b, bi, bj, c, ci + k, cj);
 
 			// 4. Return the quotient Q = Q_1 β^{n/2} + Q_0 and the remainder R = R_0 .
 		};
@@ -556,15 +579,16 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
    *
    */
 		var _dc_div_32 = function _dc_div_32(r, a, ai, aj, b, bi, bj, c, ci, cj) {
+			//console.log( '_dc_div_32' , r , a.length , ai , aj , b .length, bi , bj , c.length , ci , cj ) ;
 
 			// 1. Let A = A_2 β^{2n} + A_1 β^n + A_0 and
 			//    B = B_1 β^{n} + B_0,
 			//    with 0 ≤ A_i < β^n and 0 ≤ B_i < β^n.
 
-			var n = bj - bi;
-			var k = m >>> 1;
+			var k = bj - bi;
+			var n = k >>> 1;
 
-			// 2. If A_2 < B_1, compute Q = floor( ( A_2 β^n + A_1 ) / B ) with
+			// 2. If A_2 < B_1, compute Q = floor( ( A_2 β^n + A_1 ) / B_1 ) with
 			//    remainder R_1 using algorithm 3.3;
 
 			if (_lt(a, ai, ai + n, b, bi, bi + n)) {
@@ -613,6 +637,7 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
    * Divides a big endian number by a single limb number.
    * Can only work with limbs of size at most sqrt( 2^53 ).
    *
+   * r <= x
    */
 
 		var _div_limb = function _div_limb(r, z, a, ai, aj, q, qi) {
@@ -628,6 +653,7 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
    * Divides a big endian number by a single limb number.
    * Can only work with limbs of size at most sqrt( 2^53 ).
    * Allows to start with a partial quotient.
+   *
    */
 
 		var _div_limb_partial = function _div_limb_partial(r, x, z, a, ai, aj, q, qi) {
@@ -638,6 +664,7 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 
 				q[qi] = x / z | 0;
 				x %= z;
+				a[ai] = 0;
 
 				++qi;++ai;
 			}
@@ -646,6 +673,31 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 		};
 
 		exports._div_limb_partial = _div_limb_partial;
+
+		/* js/src/1-new/arithmetic/div/_div_limb_partial_fast.js */
+
+		/**
+   * Divides a big endian number by a single limb number.
+   * Can only work with limbs of size at most sqrt( 2^53 ).
+   * Allows to start with a partial quotient.
+   *
+   * Does not update the remainder.
+   */
+
+		var _div_limb_partial_fast = function _div_limb_partial_fast(r, x, z, a, ai, aj, q, qi) {
+
+			while (ai < aj) {
+
+				x *= r;x += a[ai];
+
+				q[qi] = x / z | 0;
+				x %= z;
+
+				++qi;++ai;
+			}
+		};
+
+		exports._div_limb_partial_fast = _div_limb_partial_fast;
 
 		/* js/src/1-new/arithmetic/div/_mod_limb.js */
 
@@ -701,7 +753,7 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 				if (_lt(a, ai, aj, b, bi, bj)) return;
 
 				// if A ≥ B, return the quotient 1 and the remainder A - B.
-				q[qi + m - 1] = 1;
+				++q[qi + m - 1];
 				_isub(r, a, ai, aj, b, bi, bj);
 				return;
 			}
@@ -781,7 +833,7 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 				}
 			}
 
-			q[qi + m - 1] = _q;
+			q[qi + m - 1] += _q;
 
 			_isub(r, a, ai, aj, T, 0, m);
 		};
@@ -805,21 +857,21 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 				// we need x to be >= _r so we multiply b by ceil( _r / x )
 				// this gives us <= ( 1 + _r / x ) b < r^(bj-bi)
 				// (this can be implemented faster using bit shifts if r = 2^k )
-				var _z2 = Math.ceil(_r / x);
-				var _m2 = aj - ai + 1;
+				var z = Math.ceil(_r / x);
+				var m = aj - ai + 1;
 				var n = bj - bi;
 
-				var _a = _zeros(_m2);
-				_mul_limb(r, _z2, a, ai, aj, _a, 0, _m2);
+				var _a = _zeros(m);
+				_mul_limb(r, z, a, ai, aj, _a, 0, m);
 
 				var _b = _zeros(n);
-				_mul_limb(r, _z2, b, bi, bj, _b, 0, n);
+				_mul_limb(r, z, b, bi, bj, _b, 0, n);
 
-				var _q = _zeros(_m2);
+				var _q = _zeros(m);
 
-				_schoolbook_div(r, _a, 0, _m2, _b, 0, n, _q, 0);
-				_div_limb_partial(r, _a[0], _z2, _a, 1, _m2, a, ai);
-				_copy(_q, 1, _m2, q, qi);
+				_schoolbook_div(r, _a, 0, m, _b, 0, n, _q, 0);
+				_div_limb_partial_fast(r, _a[0], z, _a, 1, m, a, ai);
+				_copy(_q, 1, m, q, qi);
 				return;
 			}
 
@@ -1146,15 +1198,15 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 
 			while (--bj >= bi) {
 				--aj;
-				var _T = C;
-				C = a[aj] < b[bj] + _T;
-				a[aj] = a[aj] - b[bj] + (C * r - _T);
+				var T = C;
+				C = a[aj] < b[bj] + T;
+				a[aj] = a[aj] - b[bj] + (C * r - T);
 			}
 
 			while (C && --aj >= ai) {
-				var _T2 = C;
-				C = a[aj] < _T2;
-				a[aj] += C * r - _T2;
+				var T = C;
+				C = a[aj] < T;
+				a[aj] += C * r - T;
 			}
 		};
 
@@ -1312,6 +1364,32 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 
 		exports._CMP = _CMP;
 
+		/* js/src/1-new/compare/_CMP_n.js */
+
+		/**
+   * Compares two big endian arrays, |a| = |b|
+   *
+   * @param {Array} a first operand
+   * @param {Number} ai a left
+   * @param {Number} aj a right
+   * @param {Array} b second operand
+   * @param {Number} bi b left
+   *
+   * @return {Number} 1 if a > b; 0 if a = b; -1 otherwise.
+   */
+
+		var _CMP_n = function _CMP_n(a, ai, aj, b, bi) {
+
+			for (; ai < aj; ++ai, ++bi) {
+				if (a[ai] > b[bi]) return 1;
+				if (a[ai] < b[bi]) return -1;
+			}
+
+			return 0;
+		};
+
+		exports._CMP_n = _CMP_n;
+
 		/* js/src/1-new/compare/_cmp.js */
 
 		var _cmp = function _cmp(a, ai, aj, b, bi, bj) {
@@ -1449,7 +1527,7 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 
 				_reset(q, qi, qj);
 
-				_div(f, a, ai, aj, d, di, dj, q, qi);
+				_div(f, a, ai, aj, d, di, dj, q, qi, qj);
 
 				--bj;
 				var x = 0;
@@ -1823,13 +1901,33 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 		exports.trim_natural = trim_natural;
 
 		/* js/src/1-new/thresholds */
-		/* js/src/1-new/thresholds/multiplication.js */
+		/* js/src/1-new/thresholds/0-multiplication.js */
 
-		var THRESHOLD_MUL_TOOM22 = 22;
+		var THRESHOLD_MUL_TOOM22 = 10;
+
+		/* js/src/1-new/thresholds/1-division.js */
+
+		var THRESHOLD_DIV_DC = THRESHOLD_MUL_TOOM22;
 
 		/* js/src/2-api */
 		/* js/src/2-api/_div.js */
-		var _div = schoolbook_div;
+
+		/**
+   * |A| = |C|
+   */
+		var _div = function _div(r, a, ai, aj, b, bi, bj, c, ci, cj) {
+
+			var n = bj - bi;
+
+			if (n === 1) {
+				return _div_limb(r, b[bi], a, ai, aj, c, ci);
+			} else if (n < THRESHOLD_DIV_DC) {
+				return schoolbook_div(r, a, ai, aj, b, bi, bj, c, ci);
+			} else {
+				return _dc_div(r, a, ai, aj, b, bi, bj, c, ci, cj);
+			}
+		};
+
 		exports._div = _div;
 
 		/* js/src/2-api/_mul.js */

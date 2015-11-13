@@ -4,6 +4,7 @@
  * Divides a big endian number by a single limb number.
  * Can only work with limbs of size at most sqrt( 2^53 ).
  *
+ * r <= x
  */
 
 const _div_limb = function ( r , z , a , ai , aj , q , qi ) {

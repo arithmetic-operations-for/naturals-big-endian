@@ -24,6 +24,9 @@
  */
 const _dc_div_21 = function ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
 
+	if ( bj - bi < THRESHOLD_DIV_DC ) {
+		return _schoolbook_div( r , a , ai , aj , b , bi , bj , c , ci ) ;
+	}
 
 	// 1. Let A = A_3 β^{3n/2} + A_2 β^n + A_1 β^{n/2} + A_0 and
 	//    B = B_1 β^{n/2} + B_0,
@@ -42,7 +45,7 @@ const _dc_div_21 = function ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
 	//    Q_0 = ( R_1 β^{n/2} + A_0 ) / B
 	//    with remainder R_0 using algorithm 3.4.
 
-	_dc_div_32( r , a , ai + k , aj , b , bi , bj , c , cj - k , cj ) ;
+	_dc_div_32( r , a , ai + k , aj , b , bi , bj , c , ci + k , cj ) ;
 
 	// 4. Return the quotient Q = Q_1 β^{n/2} + Q_0 and the remainder R = R_0 .
 

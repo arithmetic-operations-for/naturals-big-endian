@@ -28,10 +28,10 @@ const _dc_div_32 = function ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
 	//    B = B_1 β^{n} + B_0,
 	//    with 0 ≤ A_i < β^n and 0 ≤ B_i < β^n.
 
-	const n = bj - bi ;
-	const k = m >>> 1 ;
+	const k = bj - bi ;
+	const n = k >>> 1 ;
 
-	// 2. If A_2 < B_1, compute Q = floor( ( A_2 β^n + A_1 ) / B ) with
+	// 2. If A_2 < B_1, compute Q = floor( ( A_2 β^n + A_1 ) / B_1 ) with
 	//    remainder R_1 using algorithm 3.3;
 
 	if ( _lt( a , ai , ai + n , b , bi , bi + n ) ) {
