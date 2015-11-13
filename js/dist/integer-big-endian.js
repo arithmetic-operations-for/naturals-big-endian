@@ -427,26 +427,25 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 			if (r < s || r === s && _CMP_n(a, ai, aj, b, bi) < 0) return;
 
 			// shift to get n = 2^k for some k
-			var _m = 1;
-			var _k = 0;
+			var _n = 1;
 
-			while (_m < s) {
-				_m <<= 1;
-				++_k;
-			}
+			while (_n < s) _n <<= 1;
 
-			var m = _m;
-			var k = _k;
-			var n = m;
+			var n = _n;
 
 			var shift = n - s;
 
-			var w = r + shift + 1;
+			var x = b[bi];
+			var _X = X / 2;
+			var _normalize = x < _X;
+			var z = Math.ceil(_X / x);
+
+			var w = r + shift + (_normalize || a[ai] >= _X);
 			var t = Math.ceil(w / n);
 			var _ai = 0;
-			var _aj = t * n; // + 1 because of
+			var _aj = t * n; // + 1 if
 			var _a = _zeros(_aj); // potential normalization overflow
-			var _ak = _aj - shift - r;
+			var _ak = _aj - shift - r; // or if A potentially bigger than B
 			_copy(a, ai, aj, _a, _ak);
 
 			var _bi = 0;
@@ -454,18 +453,13 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 			var _b = _zeros(n);
 			_copy(b, bi, bj, _b, 0);
 
-			var x = _b[_bi];
-			var _X = X / 2;
-			var _normalize = x < _X;
-			var z = Math.ceil(_X / x);
-
 			if (_normalize) {
 
 				_imul_limb(X, z, _a, _ai, _aj);
 				_imul_limb(X, z, _b, _bi, _bj);
 			}
 
-			var _cj = t * n;
+			var _cj = _aj;
 			var _c = _zeros(_cj);
 
 			for (var i = 0; i < _aj - n; i += n) {
@@ -582,6 +576,7 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 			}
 
 			//    otherwise let Q = β^n - 1, and R_1 = ( A_2 - B_1 ) β^n + A_1 + B_1
+			//    (note in this case that A_2 = B_1)
 
 			else {
 					_fill(c, cj - n, cj, r - 1);
@@ -589,7 +584,7 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 					_isub(r, a, ai, ai + n, b, bi, bi + n);
 				}
 
-			// 3. R <- R_1 ^n + A_4 - Q*B_0
+			// 3. R <- R_1 β^n + A_0 - Q*B_0
 
 			var zi = 0;
 			var zj = n << 1;
@@ -599,17 +594,15 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 
 			// 4. if R < 0 , R <- R + B and Q <- Q - 1
 
-			if (!_jz(a, ai, ai + n)) {
-				_iadd(r, a, ai, aj, b, bi, bj);
-				_decrement(r, c, cj - n, cj);
+			if (a[ai] === 0) return;
+			_iadd(r, a, ai, aj, b, bi, bj);
+			_decrement(r, c, cj - n, cj);
 
-				// 5. if R < 0 , R <- R + B and Q <- Q - 1
+			// 5. if R < 0 , R <- R + B and Q <- Q - 1
 
-				if (!_jz(a, ai, ai + n)) {
-					_iadd(r, a, ai, aj, b, bi, bj);
-					_decrement(r, c, cj - n, cj);
-				}
-			}
+			if (a[ai] === 0) return;
+			_iadd(r, a, ai, aj, b, bi, bj);
+			_decrement(r, c, cj - n, cj);
 
 			// 6. Return Q and R
 		};

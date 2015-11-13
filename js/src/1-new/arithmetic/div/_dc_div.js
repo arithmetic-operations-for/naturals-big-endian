@@ -21,37 +21,31 @@ const _dc_div = function ( X , a , ai , aj , b , bi , bj , c , ci , cj ) {
 	if ( r < s || r === s && _CMP_n( a , ai , aj , b , bi ) < 0 ) return ;
 
 	// shift to get n = 2^k for some k
-	let _m = 1 ;
-	let _k = 0 ;
+	let _n = 1 ;
 
-	while ( _m  < s ) {
-		_m <<= 1 ;
-		++_k ;
-	}
+	while ( _n  < s ) _n <<= 1 ;
 
-	const m = _m ;
-	const k = _k ;
-	const n = m ;
+	const n = _n ;
 
 	const shift = n - s ;
 
-	const w = r + shift + 1 ;
+	const x = b[bi] ;
+	const _X = X / 2 ;
+	const _normalize = x < _X ;
+	const z = Math.ceil( _X / x ) ;
+
+	const w = r + shift + ( _normalize || a[ai] >= _X ) ;
 	const t = Math.ceil( w / n ) ;
 	const _ai = 0 ;
-	const _aj = t * n ;         // + 1 because of
-	const _a = _zeros( _aj ) ;  // potential normalization overflow
-	const _ak = _aj - shift - r ;
+	const _aj = t * n ;            // + 1 if
+	const _a = _zeros( _aj ) ;     // potential normalization overflow
+	const _ak = _aj - shift - r ;  // or if A potentially bigger than B
 	_copy( a , ai , aj , _a , _ak ) ;
 
 	const _bi = 0 ;
 	const _bj = n ;
 	const _b = _zeros( n ) ;
 	_copy( b , bi , bj , _b , 0 ) ;
-
-	const x = _b[_bi] ;
-	const _X = X / 2 ;
-	const _normalize = x < _X ;
-	const z = Math.ceil( _X / x ) ;
 
 	if ( _normalize ) {
 
@@ -60,7 +54,7 @@ const _dc_div = function ( X , a , ai , aj , b , bi , bj , c , ci , cj ) {
 
 	}
 
-	const _cj = t * n ;
+	const _cj = _aj ;
 	const _c = _zeros( _cj ) ;
 
 	for ( let i = 0 ; i < _aj - n ; i += n ) {
@@ -73,7 +67,7 @@ const _dc_div = function ( X , a , ai , aj , b , bi , bj , c , ci , cj ) {
 		const p = _mod_limb( X , z , _a , _ai , _ak ) ;
 		_div_limb_partial_fast( X , p , z , _a , _ak , _aj - shift , a , ai , aj ) ;
 	}
-	else{
+	else {
 		_copy( _a , _ak , _aj - shift , a , ai , aj ) ;
 	}
 

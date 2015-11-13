@@ -39,6 +39,7 @@ const _dc_div_32 = function ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
 	}
 
 	//    otherwise let Q = β^n - 1, and R_1 = ( A_2 - B_1 ) β^n + A_1 + B_1
+	//    (note in this case that A_2 = B_1)
 
 	else {
 		_fill( c , cj - n , cj , r - 1 ) ;
@@ -46,7 +47,7 @@ const _dc_div_32 = function ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
 		_isub( r , a , ai , ai + n , b , bi , bi + n  ) ;
 	}
 
-	// 3. R <- R_1 ^n + A_4 - Q*B_0
+	// 3. R <- R_1 β^n + A_0 - Q*B_0
 
 	const zi = 0 ;
 	const zj = n << 1 ;
@@ -56,18 +57,15 @@ const _dc_div_32 = function ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
 
 	// 4. if R < 0 , R <- R + B and Q <- Q - 1
 
-	if ( !_jz( a , ai , ai + n ) ) {
-		_iadd( r , a , ai , aj , b , bi , bj ) ;
-		_decrement( r , c , cj - n , cj ) ;
+	if ( a[ai] === 0 ) return ;
+	_iadd( r , a , ai , aj , b , bi , bj ) ;
+	_decrement( r , c , cj - n , cj ) ;
 
-		// 5. if R < 0 , R <- R + B and Q <- Q - 1
+	// 5. if R < 0 , R <- R + B and Q <- Q - 1
 
-		if ( !_jz( a , ai , ai + n ) ) {
-			_iadd( r , a , ai , aj , b , bi , bj ) ;
-			_decrement( r , c , cj - n , cj ) ;
-		}
-
-	}
+	if ( a[ai] === 0 ) return ;
+	_iadd( r , a , ai , aj , b , bi , bj ) ;
+	_decrement( r , c , cj - n , cj ) ;
 
 	// 6. Return Q and R
 

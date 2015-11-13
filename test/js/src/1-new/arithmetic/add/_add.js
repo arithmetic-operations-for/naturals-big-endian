@@ -21,4 +21,14 @@ test( 'integer._add' , function ( assert ) {
 	t( '999' , '1' , '1000' ) ;
 	t( '1234567890' , '9876543210' , '11111111100' ) ;
 
+	var a = [ 0 , 9 , 9 ] ;
+	integer._increment( 10 , a , 0 , 3 ) ;
+	assert.deepEqual( a , [ 1 , 0 , 0 ] , 'increment' ) ;
+
+	var b = [ 9 , 9 , 9 ] ;
+	integer._increment( 10 , b , 0 , 3 ) ;
+	assert.deepEqual( b , [ 0 , 0 , 0 ] , 'increment wraping' ) ;
+
+	assert.ok( b[-1] === undefined ) ;
+
 } ) ;
