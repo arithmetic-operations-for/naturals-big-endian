@@ -54,7 +54,7 @@ const _schoolbook_div_subroutine = function ( r , a , ai , aj , b , bi , bj , q 
 
 	}
 
-	q[qi + m - 1] = _q ;
+	q[qi + m - 1] += _q ;
 
 	_isub( r , a , ai , aj , T , 0 , m ) ;
 

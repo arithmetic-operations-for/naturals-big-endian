@@ -28,7 +28,7 @@ const _schoolbook_div = function ( r , a , ai , aj , b , bi , bj , q , qi ) {
 		if ( _lt( a , ai , aj , b , bi , bj ) ) return ;
 
 		// if A ≥ B, return the quotient 1 and the remainder A - B.
-		q[qi+m-1] = 1 ;
+		++q[qi+m-1] ;
 		_isub( r , a , ai , aj , b , bi , bj ) ;
 		return ;
 

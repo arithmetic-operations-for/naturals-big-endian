@@ -25,7 +25,7 @@ const _convert_slow = function ( f , t , a , ai , aj , b , bi , bj ) {
 
 		_reset( q , qi , qj ) ;
 
-		_div( f , a , ai , aj , d , di , dj , q , qi ) ;
+		_div( f , a , ai , aj , d , di , dj , q , qi , qj ) ;
 
 		--bj ;
 		let x = 0 ;
