@@ -426,8 +426,6 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 
 			if (r < s || r === s && _CMP_n(a, ai, aj, b, bi) < 0) return;
 
-			//console.log( '_dc_div' , X , a.length , ai , aj , b.length , bi , bj , c.length , ci , cj ) ;
-
 			// shift to get n = 2^k for some k
 			var _m = 1;
 			var _k = 0;
@@ -469,28 +467,19 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 
 			var _cj = t * n;
 			var _c = _zeros(_cj);
-			//const _C = _zeros( n << 1 ) ;
 
 			for (var i = 0; i < _aj - n; i += n) {
 
 				_dc_div_21(X, _a, i, i + (n << 1), _b, _bi, _bj, _c, i, i + (n << 1));
-				//_dc_div_21( X , _a , i , i + ( n << 1 ) , _b , _bi , _bj , _C , 0 , n << 1 ) ;
-				//_copy( _C , n , n << 1 , _c , i + n ) ;
-				//_reset( _C , 0 , n << 1 ) ;
 			}
 
-			//console.log( '_fast_div' , _a , _b , _c ) ;
-
 			if (_normalize) {
-				//console.log( '_normalize' , X , z , _a , _ak , _aj - shift , a , ai , aj ) ;
 				var p = _mod_limb(X, z, _a, _ai, _ak);
 				_div_limb_partial_fast(X, p, z, _a, _ak, _aj - shift, a, ai, aj);
 			} else {
-				//console.log( '_copy' , _a , _ak , _aj - shift , a , ai , aj ) ;
 				_copy(_a, _ak, _aj - shift, a, ai, aj);
 			}
 
-			//console.log( '_quotient' , _c , _cj - r , _cj , c , ci ) ;
 			_copy(_c, _cj - r, _cj, c, ci);
 		};
 
@@ -522,8 +511,6 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
    *
    */
 		var _dc_div_21 = function _dc_div_21(r, a, ai, aj, b, bi, bj, c, ci, cj) {
-
-			//console.log( '_dc_div_21' , r , a.length , ai , aj , b.length , bi , bj , c.length , ci , cj ) ;
 
 			if (bj - bi < THRESHOLD_DIV_DC) {
 				return _schoolbook_div(r, a, ai, aj, b, bi, bj, c, ci);
@@ -579,7 +566,6 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
    *
    */
 		var _dc_div_32 = function _dc_div_32(r, a, ai, aj, b, bi, bj, c, ci, cj) {
-			//console.log( '_dc_div_32' , r , a.length , ai , aj , b .length, bi , bj , c.length , ci , cj ) ;
 
 			// 1. Let A = A_2 β^{2n} + A_1 β^n + A_0 and
 			//    B = B_1 β^{n} + B_0,
