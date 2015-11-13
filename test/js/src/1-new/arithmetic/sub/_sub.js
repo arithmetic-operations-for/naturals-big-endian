@@ -21,4 +21,12 @@ test( 'integer._sub' , function ( assert ) {
 	t( '999' , '1' , '1000' ) ;
 	t( '1234567890' , '9876543210' , '11111111100' ) ;
 
+	var a = [ 0 ] ;
+	var b = [ 1 ] ;
+	var c = [ 0 , 0 , 0 ] ;
+
+	integer._sub( 10 , a , 0 , 1 , b , 0 , 1 , c , 0 , 3 ) ;
+
+	assert.deepEqual( c , [ 9 , 9 , 9 ] , 'wraping' ) ;
+
 } ) ;
