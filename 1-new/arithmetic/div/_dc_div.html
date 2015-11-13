@@ -1,0 +1,66 @@
+<!DOCTYPE html><html lang="en"><head><title>1-new/arithmetic/div/_dc_div</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../../"><meta name="groc-document-path" content="1-new/arithmetic/div/_dc_div"><meta name="groc-project-path" content="js/src/1-new/arithmetic/div/_dc_div.js"><meta name="groc-github-url" content="https://github.com/aureooms/js-integer-big-endian"><link rel="stylesheet" type="text/css" media="all" href="../../../assets/style.css"><script type="text/javascript" src="../../../assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/aureooms/js-integer-big-endian/blob/master/js/src/1-new/arithmetic/div/_dc_div.js">js/src/1-new/arithmetic/div/_dc_div.js</a></div></div><div id="document"><div class="segment"></div><div class="segment"><div class="comments "><div class="wrapper"><h2 id="input">Input</h2>
+<ul>
+<li>No leading zeros</li>
+<li>|A| = |C|</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://gmplib.org/manual/Divide-and-Conquer-Division.html">https://gmplib.org/manual/Divide-and-Conquer-Division.html</a></li>
+</ul></div></div><div class="code"><div class="wrapper"><span class="hljs-keyword">const</span> _dc_div = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"> X , a , ai , aj , b , bi , bj , c , ci , cj </span>) </span>{</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>[BZ98] Fast Recursive Division</p></div></div><div class="code"><div class="wrapper">	<span class="hljs-keyword">const</span> r = aj - ai ;
+	<span class="hljs-keyword">const</span> s = bj - bi ;
+
+	<span class="hljs-keyword">if</span> ( r &lt; s || r === s &amp;&amp; _CMP_n( a , ai , aj , b , bi ) &lt; <span class="hljs-number">0</span> ) <span class="hljs-keyword">return</span> ;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>shift to get n = 2^k for some k</p></div></div><div class="code"><div class="wrapper">	<span class="hljs-keyword">let</span> _n = <span class="hljs-number">1</span> ;
+
+	<span class="hljs-keyword">while</span> ( _n  &lt; s ) _n &lt;&lt;= <span class="hljs-number">1</span> ;
+
+	<span class="hljs-keyword">const</span> n = _n ;
+
+	<span class="hljs-keyword">const</span> shift = n - s ;
+
+	<span class="hljs-keyword">const</span> x = b[bi] ;
+	<span class="hljs-keyword">const</span> _X = X / <span class="hljs-number">2</span> ;
+	<span class="hljs-keyword">const</span> _normalize = x &lt; _X ;
+	<span class="hljs-keyword">const</span> z = <span class="hljs-built_in">Math</span>.ceil( _X / x ) ;
+
+	<span class="hljs-keyword">const</span> w = r + shift + ( _normalize || a[ai] &gt;= _X ) ;
+	<span class="hljs-keyword">const</span> t = <span class="hljs-built_in">Math</span>.ceil( w / n ) ;
+	<span class="hljs-keyword">const</span> _ai = <span class="hljs-number">0</span> ;
+	<span class="hljs-keyword">const</span> _aj = t * n ;            <span class="hljs-comment">// + 1 if</span>
+	<span class="hljs-keyword">const</span> _a = _zeros( _aj ) ;     <span class="hljs-comment">// potential normalization overflow</span>
+	<span class="hljs-keyword">const</span> _ak = _aj - shift - r ;  <span class="hljs-comment">// or if A potentially bigger than B</span>
+	_copy( a , ai , aj , _a , _ak ) ;
+
+	<span class="hljs-keyword">const</span> _bi = <span class="hljs-number">0</span> ;
+	<span class="hljs-keyword">const</span> _bj = n ;
+	<span class="hljs-keyword">const</span> _b = _zeros( n ) ;
+	_copy( b , bi , bj , _b , <span class="hljs-number">0</span> ) ;
+
+	<span class="hljs-keyword">if</span> ( _normalize ) {
+
+		_imul_limb( X , z , _a , _ai , _aj ) ;
+		_imul_limb( X , z , _b , _bi , _bj ) ;
+
+	}
+
+	<span class="hljs-keyword">const</span> _cj = _aj ;
+	<span class="hljs-keyword">const</span> _c = _zeros( _cj ) ;
+
+	<span class="hljs-keyword">for</span> ( <span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span> ; i &lt; _aj - n ; i += n ) {
+
+		_dc_div_21( X , _a , i , i + ( n &lt;&lt; <span class="hljs-number">1</span> ) , _b , _bi , _bj , _c , i , i + ( n &lt;&lt; <span class="hljs-number">1</span> ) ) ;
+
+	}
+
+	<span class="hljs-keyword">if</span> ( _normalize ) {
+		<span class="hljs-keyword">const</span> p = _mod_limb( X , z , _a , _ai , _ak ) ;
+		_div_limb_partial_fast( X , p , z , _a , _ak , _aj - shift , a , ai , aj ) ;
+	}
+	<span class="hljs-keyword">else</span> {
+		_copy( _a , _ak , _aj - shift , a , ai , aj ) ;
+	}
+
+	_copy( _c , _cj - r , _cj , c , ci ) ;
+
+} ;
+
+exports._dc_div = _dc_div ;</div></div></div></div></body></html>

@@ -20,7 +20,7 @@ this gives us &lt;= ( 1 + _r / x ) b &lt; r^(bj-bi)
 		<span class="hljs-keyword">const</span> _q = _zeros( m ) ;
 
 		_schoolbook_div( r , _a , <span class="hljs-number">0</span> , m , _b , <span class="hljs-number">0</span> , n , _q , <span class="hljs-number">0</span> ) ;
-		_div_limb_partial( r , _a[<span class="hljs-number">0</span>] , z , _a , <span class="hljs-number">1</span> , m , a , ai ) ;
+		_div_limb_partial_fast( r , _a[<span class="hljs-number">0</span>] , z , _a , <span class="hljs-number">1</span> , m , a , ai ) ;
 		_copy( _q , <span class="hljs-number">1</span> , m , q , qi ) ;
 		<span class="hljs-keyword">return</span> ;
 
