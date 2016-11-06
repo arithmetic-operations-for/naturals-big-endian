@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../../">
+  <title data-ice="title">src/1-new/arithmetic/mul/_karatsuba.js | aureooms/js-integer-big-endian API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+
+
+  <script src="script/manual.js"></script>
+<script data-ice="userScript" src="user/script/0-header.js"></script>
+<link data-ice="userStyle" rel="stylesheet" href="user/css/0-style.css">
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <a data-ice="repoURL" href="https://github.com/aureooms/js-integer-big-endian.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+
+  <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">0-legacy/arithmetic/mul</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-bmul53_t">bmul53_t</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">0-legacy/binary/and</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-and">and</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-band_t">band_t</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">0-legacy/others/pow</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-__ebs__">__ebs__</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-__pow__">__pow__</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">1-new/arithmetic/add</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_ADD">_ADD</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_IADD">_IADD</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_add">_add</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_iadd">_iadd</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_increment">_increment</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">1-new/arithmetic/div</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_dc_div">_dc_div</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_dc_div_21">_dc_div_21</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_dc_div_32">_dc_div_32</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_div_limb">_div_limb</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_div_limb_partial">_div_limb_partial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_div_limb_partial_fast">_div_limb_partial_fast</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_mod_limb">_mod_limb</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_schoolbook_div">_schoolbook_div</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_schoolbook_div_subroutine">_schoolbook_div_subroutine</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-schoolbook_div">schoolbook_div</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-slow_div">slow_div</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">1-new/arithmetic/mul</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_imul_limb">_imul_limb</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_karatsuba">_karatsuba</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_mul_limb">_mul_limb</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_schoolbook_mul">_schoolbook_mul</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-_toom22">_toom22</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">1-new/arithmetic/sub</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_decrement">_decrement</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_isub">_isub</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_sub">_sub</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">1-new/array</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_alloc">_alloc</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_build">_build</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_copy">_copy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_fill">_fill</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_reset">_reset</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_zeros">_zeros</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">1-new/compare</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_CMP">_CMP</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_CMP_n">_CMP_n</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_cmp">_cmp</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_jz">_jz</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-_eq">_eq</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-_ge">_ge</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-_gt">_gt</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-_le">_le</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-_lt">_lt</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-_ne">_ne</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">1-new/convert</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_chr">_chr</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_convert">_convert</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_convert_slow">_convert_slow</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_convert_to_larger">_convert_to_larger</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_convert_to_larger_fast">_convert_to_larger_fast</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_convert_to_smaller">_convert_to_smaller</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_convert_to_smaller_fast">_convert_to_smaller_fast</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_int">_int</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_log">_log</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_to_string">_to_string</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_trim_positive">_trim_positive</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-convert">convert</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-convert_keep_zeros">convert_keep_zeros</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-parse">parse</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-parse_keep_zeros">parse_keep_zeros</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-stringify">stringify</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-stringify_keep_zeros">stringify_keep_zeros</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-translate">translate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-trim_natural">trim_natural</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">1-new/thresholds</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-THRESHOLD_MUL_TOOM22">THRESHOLD_MUL_TOOM22</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-THRESHOLD_DIV_DC">THRESHOLD_DIV_DC</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">2-api</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_div">_div</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_mul">_mul</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/1-new/arithmetic/mul/_karatsuba.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { _mul } from &apos;../../../2-api&apos; ;
+import { _add , _iadd , _isub } from &apos;..&apos; ;
+import { _zeros , _copy } from &apos;../..&apos; ;
+
+/**
+ *
+ * Multiply two big endian arrays using karatsuba algorithm,
+ * |A| &gt;= |B| &gt; 0, |C| &gt;= 2 * |A|, |A| &gt; 1.
+ *
+ * /!\ BLOCK MULTIPLICATION RESULT MUST HOLD IN THE JAVASCRIPT NUMBER TYPE
+ *     (DOUBLE i.e. 53 bits)
+ *
+ * EXPLANATION
+ * ###########
+ *
+ * We consider the numbers a and b, both of size N = 2n.
+ *
+ * We divide a and b into their lower and upper parts.
+ *
+ * a = a1 r^{n} + a0 (1)
+ * b = b1 r^{n} + b0 (2)
+ *
+ * We express the product of a and b using their lower and upper parts.
+ *
+ * a b = (a1 r^{n} + a0) (b1 r^{n} + b0) (3)
+ *     = a1 b1 r^{2n} + (a1 b0 + a0 b1) r^{n} + a0 b0 (4)
+ *
+ * This gives us 4 multiplications with operands of size n.
+ * Using a simple trick, we can reduce this computation to 3 multiplications.
+ *
+ * We give the 3 terms of (4) the names z0, z1 and z2.
+ *
+ * z2 = a1 b1
+ * z1 = a1 b0 + a0 b1
+ * z0 = a0 b0
+ *
+ * a b  = z2 r^{2n} + z1 r^{n} + z0
+ *
+ * We then express z1 using z0, z2 and one additional multiplication.
+ *
+ * (a1 + a0)(b1 + b0) = a1 b1 + a0 b0 + (a1 b0 + a0 b1)
+ *                    = z2 + z0 + z1
+ *
+ * z1 = (a1 + a0)(b1 + b0) - z2 - z0
+ *
+ * AN ANOTHER WAY AROUND (not used here)
+ *
+ * (a1 - a0)(b1 - b0) = (a1 b1 + a0 b0) - (a1 b0 + a0 b1)
+ * (a0 - a1)(b1 - b0) = (a1 b0 + a0 b1) - (a1 b1 + a0 b0)
+ * a b = (r^{2n} + r^{n})a1 b1 + r^{n}(a0 - a1)(b1 - b0) + (r^{n} + 1)a0 b0
+ *
+ * This algorithm is a specific case of the Toom-Cook algorithm, when m = n =
+ * 2.
+ *
+ * For further reference, see
+ *  - http://en.wikipedia.org/wiki/Karatsuba_algorithm
+ *  - http://en.wikipedia.org/wiki/Toom&#x2013;Cook_multiplication
+ *
+ * @param {Number} r base (radix)
+ * @param {Array} a first operand
+ * @param {Number} ai a left
+ * @param {Number} aj a right
+ * @param {Array} b second operand
+ * @param {Number} bi b left
+ * @param {Number} bj b right
+ * @param {Array} c result, must be 0 initialized
+ * @param {Number} ci c left
+ * @param {Number} cj c right
+ */
+
+export function _karatsuba ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
+
+	const i = aj - ai ;
+	const j = bj - bi ;
+	const k = cj - ci ;
+
+	const n  = Math.ceil( i / 2 ) ;
+	const I  = i + j ;
+	const N  = 2 * n ;
+	const N_ = I - N ;
+	const i_ = aj - n ;
+	const j_ = Math.max( bi , bj - n ) ;
+
+	const t1 = _zeros( n + 1 ) ; // + 1 to handle addition overflows
+	const t2 = _zeros( n + 1 ) ; // and guarantee reducing k for the
+	const t3 = _zeros( N + 1 ) ; // recursive calls
+	const z2 = _zeros( N_ ) ;
+	const z0 = _zeros( N ) ;
+
+	// RECURSIVE CALLS
+	_mul( r , a , ai , i_ , b , bi , j_ , z2 , 0 , N_ ) ;            // z2 = a1.b1
+	_mul( r , a , i_ , aj , b , j_ , bj , z0 , 0 , N ) ;             // z0 = a0.b0
+	_add( r , a , ai , i_ , a , i_ , aj , t1 , 0 , n + 1 ) ;         // (a0 + a1)
+	_add( r , b , bi , j_ , b , j_ , bj , t2 , 0 , n + 1 ) ;         // (b1 + b0)
+	_mul( r , t1 , 1 , n + 1 , t2 , 1 , n + 1 , t3 , 1 , N + 1 ) ;   // (a0 + a1)(b1 + b0)
+
+	// BUILD OUTPUT
+	_copy( z2 , 0 , N_ , c , cj - I ) ; // + z2 . r^{2n}
+	_copy( z0 , 0 , N  , c , cj - N ) ; // + z0
+
+	// overflow on t1, add t2 . r^{n}
+	if ( t1[0] ) _iadd( r , t3 , 0 , n + 1 , t2 , 0 , n + 1 ) ;
+
+	// overflow on t2, add t1 . r^{n} (except t1[0])
+	if ( t2[0] ) _iadd( r , t3 , 0 , n + 1 , t1 , 1 , n + 1 ) ;
+
+	_iadd( r , c , ci , cj - n , t3 , 0 , N + 1 ) ; // + (a0 + a1)(b1 + b0) . r^{n}
+	_isub( r , c , ci , cj - n , z2 , 0 , N_ ) ;    // - z2 . r^{n}
+	_isub( r , c , ci , cj - n , z0 , 0 , N ) ;     // - z1 . r^{n}
+
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

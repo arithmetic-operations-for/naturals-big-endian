@@ -1,0 +1,594 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "_div_limb_partial",
+            "range": [
+              9,
+              26
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 9
+              },
+              "end": {
+                "line": 1,
+                "column": 26
+              }
+            }
+          },
+          "imported": {
+            "type": "Identifier",
+            "name": "_div_limb_partial",
+            "range": [
+              9,
+              26
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 9
+              },
+              "end": {
+                "line": 1,
+                "column": 26
+              }
+            }
+          },
+          "range": [
+            9,
+            26
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 9
+            },
+            "end": {
+              "line": 1,
+              "column": 26
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": ".",
+        "raw": "'.'",
+        "range": [
+          34,
+          37
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 34
+          },
+          "end": {
+            "line": 1,
+            "column": 37
+          }
+        }
+      },
+      "range": [
+        0,
+        39
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 39
+        }
+      },
+      "trailingComments": [
+        {
+          "type": "Block",
+          "value": "*\n *\n * Divides a big endian number by a single limb number.\n * Can only work with limbs of size at most sqrt( 2^53 ).\n *\n * r <= x\n ",
+          "range": [
+            41,
+            178
+          ],
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 0
+            },
+            "end": {
+              "line": 9,
+              "column": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "declaration": {
+        "type": "FunctionDeclaration",
+        "id": {
+          "type": "Identifier",
+          "name": "_div_limb",
+          "range": [
+            196,
+            205
+          ],
+          "loc": {
+            "start": {
+              "line": 11,
+              "column": 16
+            },
+            "end": {
+              "line": 11,
+              "column": 25
+            }
+          }
+        },
+        "params": [
+          {
+            "type": "Identifier",
+            "name": "r",
+            "range": [
+              208,
+              209
+            ],
+            "loc": {
+              "start": {
+                "line": 11,
+                "column": 28
+              },
+              "end": {
+                "line": 11,
+                "column": 29
+              }
+            }
+          },
+          {
+            "type": "Identifier",
+            "name": "z",
+            "range": [
+              212,
+              213
+            ],
+            "loc": {
+              "start": {
+                "line": 11,
+                "column": 32
+              },
+              "end": {
+                "line": 11,
+                "column": 33
+              }
+            }
+          },
+          {
+            "type": "Identifier",
+            "name": "a",
+            "range": [
+              216,
+              217
+            ],
+            "loc": {
+              "start": {
+                "line": 11,
+                "column": 36
+              },
+              "end": {
+                "line": 11,
+                "column": 37
+              }
+            }
+          },
+          {
+            "type": "Identifier",
+            "name": "ai",
+            "range": [
+              220,
+              222
+            ],
+            "loc": {
+              "start": {
+                "line": 11,
+                "column": 40
+              },
+              "end": {
+                "line": 11,
+                "column": 42
+              }
+            }
+          },
+          {
+            "type": "Identifier",
+            "name": "aj",
+            "range": [
+              225,
+              227
+            ],
+            "loc": {
+              "start": {
+                "line": 11,
+                "column": 45
+              },
+              "end": {
+                "line": 11,
+                "column": 47
+              }
+            }
+          },
+          {
+            "type": "Identifier",
+            "name": "q",
+            "range": [
+              230,
+              231
+            ],
+            "loc": {
+              "start": {
+                "line": 11,
+                "column": 50
+              },
+              "end": {
+                "line": 11,
+                "column": 51
+              }
+            }
+          },
+          {
+            "type": "Identifier",
+            "name": "qi",
+            "range": [
+              234,
+              236
+            ],
+            "loc": {
+              "start": {
+                "line": 11,
+                "column": 54
+              },
+              "end": {
+                "line": 11,
+                "column": 56
+              }
+            }
+          }
+        ],
+        "body": {
+          "type": "BlockStatement",
+          "body": [
+            {
+              "type": "ExpressionStatement",
+              "expression": {
+                "type": "CallExpression",
+                "callee": {
+                  "type": "Identifier",
+                  "name": "_div_limb_partial",
+                  "range": [
+                    243,
+                    260
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 13,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 13,
+                      "column": 18
+                    }
+                  }
+                },
+                "arguments": [
+                  {
+                    "type": "Identifier",
+                    "name": "r",
+                    "range": [
+                      262,
+                      263
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 13,
+                        "column": 20
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 21
+                      }
+                    }
+                  },
+                  {
+                    "type": "Literal",
+                    "value": 0,
+                    "raw": "0",
+                    "range": [
+                      266,
+                      267
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 13,
+                        "column": 24
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 25
+                      }
+                    }
+                  },
+                  {
+                    "type": "Identifier",
+                    "name": "z",
+                    "range": [
+                      270,
+                      271
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 13,
+                        "column": 28
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 29
+                      }
+                    }
+                  },
+                  {
+                    "type": "Identifier",
+                    "name": "a",
+                    "range": [
+                      274,
+                      275
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 13,
+                        "column": 32
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 33
+                      }
+                    }
+                  },
+                  {
+                    "type": "Identifier",
+                    "name": "ai",
+                    "range": [
+                      278,
+                      280
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 13,
+                        "column": 36
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 38
+                      }
+                    }
+                  },
+                  {
+                    "type": "Identifier",
+                    "name": "aj",
+                    "range": [
+                      283,
+                      285
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 13,
+                        "column": 41
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 43
+                      }
+                    }
+                  },
+                  {
+                    "type": "Identifier",
+                    "name": "q",
+                    "range": [
+                      288,
+                      289
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 13,
+                        "column": 46
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 47
+                      }
+                    }
+                  },
+                  {
+                    "type": "Identifier",
+                    "name": "qi",
+                    "range": [
+                      292,
+                      294
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 13,
+                        "column": 50
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 52
+                      }
+                    }
+                  }
+                ],
+                "range": [
+                  243,
+                  296
+                ],
+                "loc": {
+                  "start": {
+                    "line": 13,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 13,
+                    "column": 54
+                  }
+                }
+              },
+              "range": [
+                243,
+                298
+              ],
+              "loc": {
+                "start": {
+                  "line": 13,
+                  "column": 1
+                },
+                "end": {
+                  "line": 13,
+                  "column": 56
+                }
+              }
+            }
+          ],
+          "range": [
+            239,
+            301
+          ],
+          "loc": {
+            "start": {
+              "line": 11,
+              "column": 59
+            },
+            "end": {
+              "line": 15,
+              "column": 1
+            }
+          }
+        },
+        "generator": false,
+        "expression": false,
+        "range": [
+          187,
+          301
+        ],
+        "loc": {
+          "start": {
+            "line": 11,
+            "column": 7
+          },
+          "end": {
+            "line": 15,
+            "column": 1
+          }
+        },
+        "leadingComments": [
+          {
+            "type": "Block",
+            "value": "*\n *\n * Divides a big endian number by a single limb number.\n * Can only work with limbs of size at most sqrt( 2^53 ).\n *\n * r <= x\n ",
+            "range": [
+              41,
+              178
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 0
+              },
+              "end": {
+                "line": 9,
+                "column": 3
+              }
+            }
+          }
+        ],
+        "trailingComments": []
+      },
+      "specifiers": [],
+      "source": null,
+      "range": [
+        180,
+        301
+      ],
+      "loc": {
+        "start": {
+          "line": 11,
+          "column": 0
+        },
+        "end": {
+          "line": 15,
+          "column": 1
+        }
+      },
+      "leadingComments": [
+        {
+          "type": "Block",
+          "value": "*\n *\n * Divides a big endian number by a single limb number.\n * Can only work with limbs of size at most sqrt( 2^53 ).\n *\n * r <= x\n ",
+          "range": [
+            41,
+            178
+          ],
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 0
+            },
+            "end": {
+              "line": 9,
+              "column": 3
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "sourceType": "module",
+  "range": [
+    0,
+    301
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 15,
+      "column": 1
+    }
+  },
+  "comments": [
+    {
+      "type": "Block",
+      "value": "*\n *\n * Divides a big endian number by a single limb number.\n * Can only work with limbs of size at most sqrt( 2^53 ).\n *\n * r <= x\n ",
+      "range": [
+        41,
+        178
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 9,
+          "column": 3
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,423 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "ExportNamedDeclaration",
+      "declaration": {
+        "type": "FunctionDeclaration",
+        "id": {
+          "type": "Identifier",
+          "name": "_trim_positive",
+          "range": [
+            17,
+            31
+          ],
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 16
+            },
+            "end": {
+              "line": 2,
+              "column": 30
+            }
+          }
+        },
+        "params": [
+          {
+            "type": "Identifier",
+            "name": "a",
+            "range": [
+              34,
+              35
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 33
+              },
+              "end": {
+                "line": 2,
+                "column": 34
+              }
+            }
+          },
+          {
+            "type": "Identifier",
+            "name": "ai",
+            "range": [
+              38,
+              40
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 37
+              },
+              "end": {
+                "line": 2,
+                "column": 39
+              }
+            }
+          },
+          {
+            "type": "Identifier",
+            "name": "aj",
+            "range": [
+              43,
+              45
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 42
+              },
+              "end": {
+                "line": 2,
+                "column": 44
+              }
+            }
+          }
+        ],
+        "body": {
+          "type": "BlockStatement",
+          "body": [
+            {
+              "type": "WhileStatement",
+              "test": {
+                "type": "LogicalExpression",
+                "operator": "&&",
+                "left": {
+                  "type": "BinaryExpression",
+                  "operator": "===",
+                  "left": {
+                    "type": "MemberExpression",
+                    "computed": true,
+                    "object": {
+                      "type": "Identifier",
+                      "name": "a",
+                      "range": [
+                        60,
+                        61
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 4,
+                          "column": 9
+                        },
+                        "end": {
+                          "line": 4,
+                          "column": 10
+                        }
+                      }
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "ai",
+                      "range": [
+                        62,
+                        64
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 4,
+                          "column": 11
+                        },
+                        "end": {
+                          "line": 4,
+                          "column": 13
+                        }
+                      }
+                    },
+                    "range": [
+                      60,
+                      65
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 4,
+                        "column": 9
+                      },
+                      "end": {
+                        "line": 4,
+                        "column": 14
+                      }
+                    }
+                  },
+                  "right": {
+                    "type": "Literal",
+                    "value": 0,
+                    "raw": "0",
+                    "range": [
+                      70,
+                      71
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 4,
+                        "column": 19
+                      },
+                      "end": {
+                        "line": 4,
+                        "column": 20
+                      }
+                    }
+                  },
+                  "range": [
+                    60,
+                    71
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 4,
+                      "column": 9
+                    },
+                    "end": {
+                      "line": 4,
+                      "column": 20
+                    }
+                  }
+                },
+                "right": {
+                  "type": "BinaryExpression",
+                  "operator": "<",
+                  "left": {
+                    "type": "Identifier",
+                    "name": "ai",
+                    "range": [
+                      75,
+                      77
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 4,
+                        "column": 24
+                      },
+                      "end": {
+                        "line": 4,
+                        "column": 26
+                      }
+                    }
+                  },
+                  "right": {
+                    "type": "Identifier",
+                    "name": "aj",
+                    "range": [
+                      80,
+                      82
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 4,
+                        "column": 29
+                      },
+                      "end": {
+                        "line": 4,
+                        "column": 31
+                      }
+                    }
+                  },
+                  "range": [
+                    75,
+                    82
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 4,
+                      "column": 24
+                    },
+                    "end": {
+                      "line": 4,
+                      "column": 31
+                    }
+                  }
+                },
+                "range": [
+                  60,
+                  82
+                ],
+                "loc": {
+                  "start": {
+                    "line": 4,
+                    "column": 9
+                  },
+                  "end": {
+                    "line": 4,
+                    "column": 31
+                  }
+                }
+              },
+              "body": {
+                "type": "ExpressionStatement",
+                "expression": {
+                  "type": "UpdateExpression",
+                  "operator": "++",
+                  "argument": {
+                    "type": "Identifier",
+                    "name": "ai",
+                    "range": [
+                      87,
+                      89
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 4,
+                        "column": 36
+                      },
+                      "end": {
+                        "line": 4,
+                        "column": 38
+                      }
+                    }
+                  },
+                  "prefix": true,
+                  "range": [
+                    85,
+                    89
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 4,
+                      "column": 34
+                    },
+                    "end": {
+                      "line": 4,
+                      "column": 38
+                    }
+                  }
+                },
+                "range": [
+                  85,
+                  91
+                ],
+                "loc": {
+                  "start": {
+                    "line": 4,
+                    "column": 34
+                  },
+                  "end": {
+                    "line": 4,
+                    "column": 40
+                  }
+                }
+              },
+              "range": [
+                52,
+                91
+              ],
+              "loc": {
+                "start": {
+                  "line": 4,
+                  "column": 1
+                },
+                "end": {
+                  "line": 4,
+                  "column": 40
+                }
+              }
+            },
+            {
+              "type": "ReturnStatement",
+              "argument": {
+                "type": "Identifier",
+                "name": "ai",
+                "range": [
+                  101,
+                  103
+                ],
+                "loc": {
+                  "start": {
+                    "line": 6,
+                    "column": 8
+                  },
+                  "end": {
+                    "line": 6,
+                    "column": 10
+                  }
+                }
+              },
+              "range": [
+                94,
+                105
+              ],
+              "loc": {
+                "start": {
+                  "line": 6,
+                  "column": 1
+                },
+                "end": {
+                  "line": 6,
+                  "column": 12
+                }
+              }
+            }
+          ],
+          "range": [
+            48,
+            108
+          ],
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 47
+            },
+            "end": {
+              "line": 8,
+              "column": 1
+            }
+          }
+        },
+        "generator": false,
+        "expression": false,
+        "range": [
+          8,
+          108
+        ],
+        "loc": {
+          "start": {
+            "line": 2,
+            "column": 7
+          },
+          "end": {
+            "line": 8,
+            "column": 1
+          }
+        },
+        "leadingComments": [],
+        "trailingComments": []
+      },
+      "specifiers": [],
+      "source": null,
+      "range": [
+        1,
+        108
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "line": 8,
+          "column": 1
+        }
+      }
+    }
+  ],
+  "sourceType": "module",
+  "range": [
+    1,
+    108
+  ],
+  "loc": {
+    "start": {
+      "line": 2,
+      "column": 0
+    },
+    "end": {
+      "line": 8,
+      "column": 1
+    }
+  },
+  "comments": []
+}
