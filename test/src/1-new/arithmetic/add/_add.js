@@ -3,8 +3,6 @@ import * as integer from '../../../../src' ;
 
 test( 'integer._add' , function ( assert ) {
 
-	console.log( 'integer._add' ) ;
-
 	function t ( A , B , C ) {
 
 		var r = 10 ;

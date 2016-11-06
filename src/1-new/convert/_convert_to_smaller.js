@@ -1,4 +1,4 @@
-
+import { _log , _convert_to_smaller_fast , _convert_slow } from '.' ;
 
 /**
  *

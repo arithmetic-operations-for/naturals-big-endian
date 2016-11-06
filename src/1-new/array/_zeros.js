@@ -1,3 +1,4 @@
+import { _alloc , _reset } from '.' ;
 
 export function _zeros ( n ) {
 

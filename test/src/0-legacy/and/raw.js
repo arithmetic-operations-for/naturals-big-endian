@@ -32,7 +32,7 @@ var check = function(Ctor){
 			var di = 0;
 			var dj = d.length;
 
-			assert.deepEqual(c, d, fmt("and('%s','%s') === '%s'", as, bs, ds));
+			assert.deepEqual(c, d, `and('${as}','${bs}') === '${ds}'`);
 		}
 
 

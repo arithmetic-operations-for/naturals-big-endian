@@ -1,3 +1,4 @@
+import { _chr } from '.' ;
 
 export function _to_string ( b ) {
 

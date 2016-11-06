@@ -3,8 +3,6 @@ import * as integer from '../../../../../src' ;
 
 test( 'integer._mul' , function ( assert ) {
 
-	console.log( 'integer._mul' ) ;
-
 	function t ( A , B , C ) {
 
 		var r = 10 ;

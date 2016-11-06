@@ -1,12 +1,13 @@
+import test from 'ava' ;
 
 import { _calloc } from "aureooms-js-memory" ;
 import { randint } from "aureooms-js-random" ;
 
+import * as integer from '../../../src' ;
+
 var runtest = function(name, n, mul53_t, hb, lb, r, calloc){
 
-	console.log(fmt("%s %d", name, r));
-
-	test(name, function(){
+	test(`${name} ${r}`, function(assert){
 
 		var i, x, y, z, a, b, c, d, v, w;
 
@@ -28,17 +29,17 @@ var runtest = function(name, n, mul53_t, hb, lb, r, calloc){
 			c = calloc(2);
 			d = calloc(2);
 			mul53(a, 0, 1, b, 0, 1, c, 0, 0);
-			deepEqual(c, d, "c zero check 1");
+			assert.deepEqual(c, d, "c zero check 1");
 
 			c = calloc(2);
 			d = calloc(2);
 			mul53(a, 0, 0, b, 0, 1, c, 0, 2);
-			deepEqual(c, d, "c zero check 2");
+			assert.deepEqual(c, d, "c zero check 2");
 
 			c = calloc(2);
 			d = calloc(2);
 			mul53(a, 0, 1, b, 1, 1, c, 0, 2);
-			deepEqual(c, d, "c zero check 3");
+			assert.deepEqual(c, d, "c zero check 3");
 
 
 			// 1 BLOCK
@@ -54,8 +55,8 @@ var runtest = function(name, n, mul53_t, hb, lb, r, calloc){
 			mul53(a, 0, 1, b, 0, 1, c, 1, 2);
 			w = c[1];
 
-			deepEqual(v, w, "index independence check");
-			deepEqual(v, z % r, fmt("(%d * %d) %% %d = %d", x, y, r, z));
+			assert.deepEqual(v, w, "index independence check");
+			assert.deepEqual(v, z % r, `(${x} * ${y}) %% ${r} = ${z}`);
 
 
 			// 2 BLOCKS
@@ -69,7 +70,7 @@ var runtest = function(name, n, mul53_t, hb, lb, r, calloc){
 			mul53(a, 0, 1, b, 0, 1, c, 0, 2);
 			v = c[hb] * r + c[lb];
 
-			deepEqual(v, z, fmt("%d * %d = %d", x, y, z));
+			assert.deepEqual(v, z,`${x} * ${y} = ${z}`);
 
 		}
 

@@ -1,3 +1,5 @@
+import { _schoolbook_mul , _karatsuba } from '../1-new' ;
+import { THRESHOLD_MUL_TOOM22 } from '../1-new' ;
 
 /**
  * |A| >= |B|, |C| >= |A| + |B|.

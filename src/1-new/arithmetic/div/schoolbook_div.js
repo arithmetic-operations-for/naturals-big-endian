@@ -1,3 +1,6 @@
+import { _zeros , _copy } from '../../array' ;
+import { _mul_limb } from '../mul' ;
+import { _schoolbook_div , _div_limb_partial_fast } from '.' ;
 
 /**
  * Computes q <- a / b and a <- a % b.

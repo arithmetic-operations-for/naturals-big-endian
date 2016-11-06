@@ -1,3 +1,5 @@
+import { _ADD } from '.' ;
+
 /**
  * Adds two big endian arrays and puts result in a destination array.
  * Wraps on overflow.
@@ -12,7 +14,7 @@
  * @param {Array} c result, must be 0 initialized
  * @param {Number} ci c left
  * @param {Number} cj c right
-
+ *
  */
 
 export function _add ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {

@@ -4,8 +4,6 @@ import * as integer from '../../../../../src' ;
 
 test( 'integer._sub' , function ( assert ) {
 
-	console.log( 'integer._sub' ) ;
-
 	function t ( C , B , A ) {
 
 		var r = 10 ;

@@ -1,3 +1,4 @@
+import { parse , stringify } from '.' ;
 
 export function translate ( f , t , string ) {
 
