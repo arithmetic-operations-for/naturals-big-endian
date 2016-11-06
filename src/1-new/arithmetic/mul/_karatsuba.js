@@ -1,3 +1,7 @@
+import { _mul } from '../../../2-api' ;
+import { _add , _iadd , _isub } from '..' ;
+import { _zeros , _copy } from '../..' ;
+
 /**
  *
  * Multiply two big endian arrays using karatsuba algorithm,

@@ -9,7 +9,7 @@
  * @param {int} bi b left
  * @param {int} bj b right
  *
- * @return {int} 1 if a > b; 0 if a = b; -1 otherwise.
+ * @return {int} result 1 if a > b; 0 if a = b; -1 otherwise.
  */
 
 export function _CMP (a, ai, aj, b, bi, bj){

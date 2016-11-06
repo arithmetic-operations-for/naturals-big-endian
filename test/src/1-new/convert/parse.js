@@ -3,8 +3,6 @@ import * as integer from '../../../../src' ;
 
 test( 'parse' , function ( assert ) {
 
-	console.log( 'integer.parse' ) ;
-
 	assert.throws( integer.parse.bind( null , 16 , 16 , '!00b0C0def' ) , /invalid/ ) ;
 	assert.throws( integer.parse.bind( null , 37 , 37 , '!' ) , /not implemented/ ) ;
 

@@ -3,8 +3,6 @@ import * as integer from '../../../../src' ;
 
 test( 'stringify' , function ( assert ) {
 
-	console.log( 'integer.stringify' ) ;
-
 	assert.throws( integer.stringify.bind( null , 37 , 37 , [0] , 0 , 1 ) , /not implemented/ ) ;
 
 	assert.deepEqual( integer.stringify( 2 , 2 , [ 0 ] , 0 , 1 ) , '0' ) ;

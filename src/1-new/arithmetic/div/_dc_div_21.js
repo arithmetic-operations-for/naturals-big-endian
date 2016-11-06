@@ -1,3 +1,11 @@
+import { THRESHOLD_DIV_DC } from '../../thresholds' ;
+import { _zeros , _fill } from '../../array' ;
+import { _decrement , _isub } from '../sub' ;
+import { _lt } from '../../compare' ;
+import { _iadd } from '../add' ;
+import { _mul } from '../mul' ;
+import { _dc_div_32 , _schoolbook_div } from '.' ;
+
 
 /**
  * Algorithm 3.3 Divide-and-conquer division (2 by 1)

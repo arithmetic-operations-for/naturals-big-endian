@@ -3,8 +3,6 @@ import * as integer from '../../../../src' ;
 
 test( 'translate' , function ( assert ) {
 
-	console.log( 'integer.translate' ) ;
-
 	assert.throws( integer.translate.bind( null , 16 , 16 , '!00b0C0def' ) , /invalid/ ) ;
 	assert.throws( integer.translate.bind( null , 37 , 36 , '!' ) , /not implemented/ ) ;
 	assert.throws( integer.translate.bind( null , 36 , 37 , 'z' ) , /not implemented/ ) ;

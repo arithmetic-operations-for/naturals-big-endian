@@ -2,7 +2,7 @@ import test from 'ava' ;
 
 import operator from  'aureooms-js-operator' ;
 
-import * as integer from '../../../src' ;
+import * as integer from '../../../../src' ;
 
 var check = function(Ctor, cmp, transform){
 
@@ -13,7 +13,7 @@ var check = function(Ctor, cmp, transform){
 	var f = 16;
 	var r = Math.pow(2, Ctor.BYTES_PER_ELEMENT * 8);
 
-	test(name, function(){
+	test(name, function(assert){
 
 		for (var k = 0; k < TEST.length; ++k) {
 			var test = TEST[k];

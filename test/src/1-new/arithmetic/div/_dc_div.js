@@ -3,8 +3,6 @@ import * as integer from '../../../../src' ;
 
 test( 'integer._dc_div' , function ( assert ) {
 
-console.log( 'integer._dc_div' ) ;
-
 var t = function ( dividend , divisor , quotient , remainder ) {
 	var B = 10 ;
 
