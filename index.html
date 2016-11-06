@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <base data-ice="baseUrl" href="../../../../">
-  <title data-ice="title">src/1-new/array/index.js | aureooms/js-integer-big-endian API Document</title>
+  <base data-ice="baseUrl">
+  <title data-ice="title">aureooms/js-integer-big-endian API Document</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -106,15 +106,30 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/1-new/array/index.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">export * from &apos;./_alloc&apos; ;
-export * from &apos;./_build&apos; ;
-export * from &apos;./_copy&apos; ;
-export * from &apos;./_fill&apos; ;
-export * from &apos;./_reset&apos; ;
-export * from &apos;./_zeros&apos; ;
+<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="-js-integer-big-endian-http-aureooms-github-io-js-integer-big-endian-"><a href="http://aureooms.github.io/js-integer-big-endian">js-integer-big-endian</a></h1>
+<p>Arbitrary precision arithmetic for integers in big endian order.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">integer.parse( 16 , 100 , &apos;ff&apos; ) ; // [ 2 , 55 ]
+integer.stringify( 100 , 16 , [ 2 , 55 ] ) ; // &apos;ff&apos;
+integer.translate( 10 , 16 , &apos;255&apos; ) ; // &apos;ff&apos;</code>
 </code></pre>
-
+<p><a href="https://raw.githubusercontent.com/aureooms/js-integer-big-endian/master/LICENSE"><img src="http://img.shields.io/npm/l/aureooms-js-integer-big-endian.svg?style=flat" alt="NPM license"></a>
+<a href="https://www.npmjs.org/package/aureooms-js-integer-big-endian"><img src="http://img.shields.io/npm/v/aureooms-js-integer-big-endian.svg?style=flat" alt="NPM version"></a>
+<a href="https://travis-ci.org/aureooms/js-integer-big-endian"><img src="http://img.shields.io/travis/aureooms/js-integer-big-endian.svg?style=flat" alt="Build Status"></a>
+<a href="https://coveralls.io/r/aureooms/js-integer-big-endian"><img src="http://img.shields.io/coveralls/aureooms/js-integer-big-endian.svg?style=flat" alt="Coverage Status"></a>
+<a href="https://david-dm.org/aureooms/js-integer-big-endian#info=dependencies"><img src="http://img.shields.io/david/aureooms/js-integer-big-endian.svg?style=flat" alt="Dependencies Status"></a>
+<a href="https://david-dm.org/aureooms/js-integer-big-endian#info=devDependencies"><img src="http://img.shields.io/david/dev/aureooms/js-integer-big-endian.svg?style=flat" alt="devDependencies Status"></a>
+<a href="https://codeclimate.com/github/aureooms/js-integer-big-endian"><img src="http://img.shields.io/codeclimate/github/aureooms/js-integer-big-endian.svg?style=flat" alt="Code Climate"></a>
+<a href="https://www.npmjs.org/package/aureooms-js-integer-big-endian"><img src="http://img.shields.io/npm/dm/aureooms-js-integer-big-endian.svg?style=flat" alt="NPM downloads per month"></a>
+<a href="https://github.com/aureooms/js-integer-big-endian/issues"><img src="http://img.shields.io/github/issues/aureooms/js-integer-big-endian.svg?style=flat" alt="GitHub issues"></a>
+<a href="https://aureooms.github.io/js-integer-big-endian/source.html"><img src="https://aureooms.github.io/js-integer-big-endian/badge.svg" alt="Documentation"></a></p>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><a href="https://gmplib.org/">The GNU Multiple Precision Arithmetic Library</a></li>
+<li><a href="https://gmplib.org/gmp-man-6.0.0a.pdf">https://gmplib.org/gmp-man-6.0.0a.pdf</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Sch%C3%B6nhage%E2%80%93Strassen_algorithm">https://en.wikipedia.org/wiki/Sch%C3%B6nhage%E2%80%93Strassen_algorithm</a></li>
+<li><a href="http://bioinfo.ict.ac.cn/~dbu/AlgorithmCourses/Lectures/Hasselstrom2003.pdf">http://bioinfo.ict.ac.cn/~dbu/AlgorithmCourses/Lectures/Hasselstrom2003.pdf</a></li>
+</ul>
+</div>
 </div>
 
 <footer class="footer">
