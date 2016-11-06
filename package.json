@@ -1,45 +1,66 @@
 {
-	"name": "aureooms-js-integer-big-endian",
-	"description": "Arbitrary precision arithmetic for integers in big endian order code bricks for JavaScript",
-	"version": "2.0.0",
-	"main": "js/dist/integer-big-endian.js",
-	"dependencies": {},
-	"devDependencies": {
-		"aureooms-js-array": "^3.1.0",
-		"aureooms-js-itertools": "^3.0.0",
-		"aureooms-js-memory": "^3.0.1",
-		"aureooms-js-operator": "^1.0.2",
-		"aureooms-js-random": "^1.0.2",
-		"aureooms-node-package": "^6.0.1"
-	},
-	"scripts": {
-		"build": "./node_modules/.bin/aureooms-node-package-build",
-		"test": "./node_modules/.bin/aureooms-node-package-test",
-		"doc": "./node_modules/.bin/groc"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/aureooms/js-integer-big-endian.git"
-	},
-	"keywords": [
-		"arbitrary",
-		"arithmetic",
-		"big",
-		"bricks",
-		"ender",
-		"endian",
-		"integers",
-		"javascript",
-		"js",
-		"precision"
-	],
-	"author": "aureooms",
-	"license": "AGPL-3.0",
-	"bugs": {
-		"url": "https://github.com/aureooms/js-integer-big-endian/issues"
-	},
-	"homepage": "http://aureooms.github.io/js-integer-big-endian/",
-	"spm": {
-		"main": "js/dist/integer-big-endian.js"
-	}
+  "name": "aureooms-js-integer-big-endian",
+  "description": "Arbitrary precision arithmetic for integers in big endian order code bricks for JavaScript",
+  "version": "2.0.0",
+  "author": "Aurélien Ooms <aurelien.ooms@gmail.com>",
+  "ava": {
+    "require": [
+      "babel-polyfill",
+      "babel-register"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "latest"
+    ],
+    "env": {
+      "development": {
+        "sourceMaps": "inline"
+      }
+    }
+  },
+  "bugs": {
+    "url": "https://github.com/aureooms/js-integer-big-endian/issues"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "aureooms-js-array": "^3.1.0",
+    "aureooms-js-itertools": "^1.3.0",
+    "aureooms-js-memory": "^2.0.0",
+    "aureooms-js-operator": "^1.0.2",
+    "aureooms-js-random": "^1.0.2",
+    "ava": "^0.16.0",
+    "babel-cli": "^6.16.0",
+    "babel-polyfill": "^6.16.0",
+    "babel-preset-latest": "^6.16.0",
+    "codeclimate-test-reporter": "^0.4.0",
+    "coveralls": "^2.11.14",
+    "esdoc": "^0.4.8",
+    "nyc": "^8.3.1"
+  },
+  "homepage": "http://aureooms.github.io/js-integer-big-endian/",
+  "keywords": [
+    "arbitrary",
+    "arithmetic",
+    "big",
+    "bricks",
+    "ender",
+    "endian",
+    "integers",
+    "javascript",
+    "js",
+    "precision"
+  ],
+  "license": "AGPL-3.0",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aureooms/js-integer-big-endian.git"
+  },
+  "scripts": {
+    "build": "babel src -d lib",
+    "cover": "nyc --reporter=lcov npm test",
+    "prepublish": "npm run build",
+    "test": "ava ./test/src"
+  }
 }
