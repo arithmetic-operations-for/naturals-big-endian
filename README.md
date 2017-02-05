@@ -1,7 +1,10 @@
-[js-integer-big-endian](http://aureooms.github.io/js-integer-big-endian)
+[@aureooms/js-integer-big-endian](https://aureooms.github.io/js-integer-big-endian)
 ==
 
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/54/Big-Endian.svg" width="864">
+
 Arbitrary precision arithmetic for integers in big endian order.
+Twin project of [@aureooms/js-integer-little-endian](https://github.com/aureooms/js-integer-little-endian).
 
 ```js
 integer.parse( 16 , 100 , 'ff' ) ; // [ 2 , 55 ]
