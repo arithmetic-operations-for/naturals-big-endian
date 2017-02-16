@@ -8,7 +8,7 @@ import 'babel-polyfill' ;
 
 Then
 ```js
-const measure = require( 'aureooms-js-integer-big-endian' ) ;
+const measure = require( '@aureooms/js-integer-big-endian' ) ;
 // or
-import measure from 'aureooms-js-integer-big-endian' ;
+import measure from '@aureooms/js-integer-big-endian' ;
 ```
