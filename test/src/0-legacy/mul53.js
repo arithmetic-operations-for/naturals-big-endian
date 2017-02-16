@@ -1,7 +1,7 @@
 import test from 'ava' ;
 
-import { _calloc } from "aureooms-js-memory" ;
-import { randint } from "aureooms-js-random" ;
+import { _calloc } from "@aureooms/js-memory" ;
+import { randint } from "@aureooms/js-random" ;
 
 import * as integer from '../../../src' ;
 
