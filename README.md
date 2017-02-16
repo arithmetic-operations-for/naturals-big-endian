@@ -12,7 +12,7 @@ integer.stringify( 100 , 16 , [ 2 , 55 ] ) ; // 'ff'
 integer.translate( 10 , 16 , '255' ) ; // 'ff'
 ```
 
-[![NPM license](https://img.shields.io/npm/l/@aureooms/js-integer-big-endian.svg?style=flat)](https://raw.githubusercontent.com/aureooms/js-integer-big-endian/master/LICENSE)
+[![License](https://img.shields.io/github/license/aureooms/js-integer-big-endian.svg?style=flat)](https://raw.githubusercontent.com/aureooms/js-integer-big-endian/master/LICENSE)
 [![NPM version](https://img.shields.io/npm/v/@aureooms/js-integer-big-endian.svg?style=flat)](https://www.npmjs.org/package/@aureooms/js-integer-big-endian)
 [![Build Status](https://img.shields.io/travis/aureooms/js-integer-big-endian.svg?style=flat)](https://travis-ci.org/aureooms/js-integer-big-endian)
 [![Coverage Status](https://img.shields.io/coveralls/aureooms/js-integer-big-endian.svg?style=flat)](https://coveralls.io/r/aureooms/js-integer-big-endian)
