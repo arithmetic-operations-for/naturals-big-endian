@@ -1,3 +1,0 @@
-/**
- * LOGICAL SHIFT
- */
