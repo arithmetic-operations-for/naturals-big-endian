@@ -1,7 +1,7 @@
 import test from 'ava' ;
 import { parse , _zeros , _div , stringify } from '../../../src' ;
 
-function macro ( dividend , divisor , quotient , remainder ) {
+function macro ( t , dividend , divisor , quotient , remainder ) {
 
 	const B = 10 ;
 

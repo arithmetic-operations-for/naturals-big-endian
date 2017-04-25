@@ -1,5 +1,5 @@
 import test from 'ava' ;
-import * as integer from '../../../../src' ;
+import * as integer from '../../../../../src' ;
 
 test( 'integer._add' , function ( assert ) {
 
@@ -28,6 +28,6 @@ test( 'integer._add' , function ( assert ) {
 	integer._increment( 10 , b , 0 , 3 ) ;
 	assert.deepEqual( b , [ 0 , 0 , 0 ] , 'increment wraping' ) ;
 
-	assert.ok( b[-1] === undefined ) ;
+	assert.true( b[-1] === undefined ) ;
 
 } ) ;

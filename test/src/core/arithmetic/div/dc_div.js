@@ -1,5 +1,5 @@
 import test from 'ava' ;
-import * as integer from '../../../../src' ;
+import * as integer from '../../../../../src' ;
 
 test( 'integer._dc_div' , function ( assert ) {
 

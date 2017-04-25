@@ -1,7 +1,7 @@
 import test from 'ava' ;
 import { parse , _zeros , _mul , stringify } from '../../../src' ;
 
-function macro ( A , B , C ) {
+function macro ( t , A , B , C ) {
 
 	const r = 10 ;
 	const a = parse( 10 , r , A ) ;

@@ -1,4 +1,4 @@
-import { _mul_limb , schoolbook_mul , _karatsuba } from '../core' ;
+import { _mul_limb , _schoolbook_mul , _karatsuba } from '../core' ;
 import { THRESHOLD_MUL_TOOM22 } from '../core' ;
 
 /**
