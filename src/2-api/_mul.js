@@ -1,4 +1,4 @@
-import { _schoolbook_mul , _karatsuba } from '../1-new' ;
+import { _mul_limb , schoolbook_mul , _karatsuba } from '../1-new' ;
 import { THRESHOLD_MUL_TOOM22 } from '../1-new' ;
 
 /**
@@ -9,6 +9,10 @@ export function _mul ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
 
 	const m = aj - ai ;
 	const n = bj - bi ;
+
+	if ( m === 1 ) return _mul_limb( r , a[0] , b , bi , bj , c , ci , cj ) ;
+
+	if ( n === 1 ) return _mul_limb( r , b[0] , a , ai , aj , c , ci , cj ) ;
 
 	//if ( m === n ) {
 
