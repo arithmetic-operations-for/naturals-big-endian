@@ -1,6 +1,5 @@
 import test from 'ava' ;
-import { parse , _zeros , _mul , stringify } from '../../../../../src' ;
-
+import { parse , _zeros , _mul , stringify } from '../../../src' ;
 
 function macro ( A , B , C ) {
 
