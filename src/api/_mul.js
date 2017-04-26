@@ -3,6 +3,10 @@ import { THRESHOLD_MUL_TOOM22 } from '../core' ;
 
 /**
  * |A| >= |B|, |C| >= |A| + |B|.
+ * TODO check whether this condition is actually needed
+ *      if it is then fix @aureooms/js-integer
+ *      otherwise document properly and fix conditions
+ * TODO use schoolbook mul if n = O(log m)
  */
 
 export function _mul ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
