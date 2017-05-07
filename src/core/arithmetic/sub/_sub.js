@@ -1,6 +1,6 @@
 
 /**
- * Subtracts two big endian arrays, k >= i >= j
+ * Subtracts two big endian arrays, |c| >= |a| >= |b|
  * wraps
  *
  * @param {int} r base (radix)
