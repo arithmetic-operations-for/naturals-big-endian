@@ -1,5 +1,5 @@
 import { _build , _alloc , _reset , _copy } from '../array' ;
-import { _div } from '../../api' ;
+import { _idivmod } from '../../api' ;
 import { _jz } from '../compare' ;
 
 /**
@@ -27,7 +27,7 @@ export function _convert_slow ( f , t , a , ai , aj , b , bi , bj ) {
 
 		_reset( q , qi , qj ) ;
 
-		_div( f , a , ai , aj , d , di , dj , q , qi , qj ) ;
+		_idivmod( f , a , ai , aj , d , di , dj , q , qi , qj ) ;
 
 		--bj ;
 		let x = 0 ;

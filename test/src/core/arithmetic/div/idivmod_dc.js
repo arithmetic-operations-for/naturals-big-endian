@@ -1,5 +1,5 @@
 import test from 'ava' ;
-import { parse , _zeros , _dc_div , stringify } from '../../../../../src' ;
+import { parse , _zeros , _idivmod_dc , stringify } from '../../../../../src' ;
 
 function macro ( t , dividend , divisor , quotient , remainder ) {
 
@@ -9,7 +9,7 @@ function macro ( t , dividend , divisor , quotient , remainder ) {
 	const d = parse( 10 , B , divisor ) ;
 	const q = _zeros( D.length ) ;
 
-	_dc_div( B , D , 0 , D.length , d , 0 , d.length , q , 0 , q.length ) ;
+	_idivmod_dc( B , D , 0 , D.length , d , 0 , d.length , q , 0 , q.length ) ;
 
 	t.is(
 		stringify( B , 10 , q , 0 , q.length ) , quotient ,

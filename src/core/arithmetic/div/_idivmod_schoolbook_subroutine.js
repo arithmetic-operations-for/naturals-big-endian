@@ -5,30 +5,27 @@ import { _isub } from '..' ;
 import { _mul_limb } from '..' ;
 
 /**
- *
  * Input
  * -----
- *
- *  Two integers A and B such that 0 <= A < r^n+1 and (r^n)/2 <= B < r^(n).
+ *  - Two integers A and B such that 0 <= A < r^n+1 and (r^n)/2 <= B < r^(n).
+ *  - |a| = |b| + 1
+ *  - |q| = |a|
  *
  * Output
  * -----
- *
  *  The quotient floor( A/B ) and the remainder A mod B.
  *
- * @param {Number} r radix
- * @param {Array} a dividend
- * @param {Number} ai
- * @param {Number} aj
- * @param {Array} b divisor (aj - ai = bj - bi + 1)
- * @param {Number} bi
- * @param {Number} bj
- * @param {Array} q quotient (length is at least qi + aj - ai)
- * @param {Number} qi
- *
+ * @param {Number} r The radix.
+ * @param {Array} a Dividend.
+ * @param {Number} ai Left of dividend.
+ * @param {Number} aj Right of dividend.
+ * @param {Array} b Divisor.
+ * @param {Number} bi Left of divisor.
+ * @param {Number} bj Right of divisor.
+ * @param {Array} q Quotient.
+ * @param {Number} qi Left of quotient.
  */
-
-export function _schoolbook_div_subroutine ( r , a , ai , aj , b , bi , bj , q , qi ) {
+export function _idivmod_schoolbook_subroutine ( r , a , ai , aj , b , bi , bj , q , qi ) {
 
 	const m = aj - ai ;
 
@@ -36,7 +33,7 @@ export function _schoolbook_div_subroutine ( r , a , ai , aj , b , bi , bj , q ,
 	// recursively, and return β + q and r.
 	if ( _ge( a , ai , aj - 1 , b , bi , bj ) ) {
 		_isub( r , a , ai , aj - 1 , b , bi , bj ) ;
-		_schoolbook_div_subroutine( r , a , ai , aj , b , bi , bj , q , qi ) ;
+		_idivmod_schoolbook_subroutine( r , a , ai , aj , b , bi , bj , q , qi ) ;
 		_increment( r , q , qi , qi + m - 1 ) ;
 		return ;
 	}

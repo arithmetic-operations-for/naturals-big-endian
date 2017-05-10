@@ -1,6 +1,6 @@
 import { _zeros , _copy } from '../../array' ;
 import { _imul_limb } from '../mul' ;
-import { _dc_div_21 , _div_limb_partial_fast , _mod_limb } from '.' ;
+import { _idivmod_dc_21 , _div_limb_with_prefix , _mod_limb } from '.' ;
 import { _CMP_n } from '../../compare' ;
 
 
@@ -14,8 +14,18 @@ import { _CMP_n } from '../../compare' ;
  * ----------
  *   - https://gmplib.org/manual/Divide-and-Conquer-Division.html
  *
+ * @param {Number} X The radix.
+ * @param {Array} a Dividend / Remainder.
+ * @param {Number} ai
+ * @param {Number} aj
+ * @param {Array} b Divisor.
+ * @param {Number} bi
+ * @param {Number} bj
+ * @param {Array} c Quotient.
+ * @param {Number} ci
+ * @param {Number} cj
  */
-export function _dc_div ( X , a , ai , aj , b , bi , bj , c , ci , cj ) {
+export function _idivmod_dc ( X , a , ai , aj , b , bi , bj , c , ci , cj ) {
 
 	// [BZ98] Fast Recursive Division
 
@@ -63,13 +73,13 @@ export function _dc_div ( X , a , ai , aj , b , bi , bj , c , ci , cj ) {
 
 	for ( let i = 0 ; i < _aj - n ; i += n ) {
 
-		_dc_div_21( X , _a , i , i + ( n << 1 ) , _b , _bi , _bj , _c , i , i + ( n << 1 ) ) ;
+		_idivmod_dc_21( X , _a , i , i + ( n << 1 ) , _b , _bi , _bj , _c , i , i + ( n << 1 ) ) ;
 
 	}
 
 	if ( _normalize ) {
 		const p = _mod_limb( X , z , _a , _ai , _ak ) ;
-		_div_limb_partial_fast( X , p , z , _a , _ak , _aj - shift , a , ai , aj ) ;
+		_div_limb_with_prefix( X , p , z , _a , _ak , _aj - shift , a , ai , aj ) ;
 	}
 	else {
 		_copy( _a , _ak , _aj - shift , a , ai , aj ) ;

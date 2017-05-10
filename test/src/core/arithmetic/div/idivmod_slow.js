@@ -1,25 +1,25 @@
 import test from 'ava' ;
 import * as integer from '../../../../../src' ;
 
-test( 'integer.schoolbook_div' , function ( assert ) {
+test( 'integer._idivmod_slow' , function ( assert ) {
 
 var t = function ( dividend , divisor , quotient , remainder ) {
 
 	var B = 10 ;
 
-	var D = integer.parse( 10 , B , dividend ) ;
-	var d = integer.parse( 10 , B , divisor ) ;
+	var D = integer.parse( B , B , dividend ) ;
+	var d = integer.parse( B , B , divisor ) ;
 	var q = integer._zeros( D.length ) ;
 
-	integer.schoolbook_div( B , D , 0 , D.length , d , 0 , d.length , q , 0 ) ;
+	integer._idivmod_slow( B , D , 0 , D.length , d , 0 , d.length , q , 0 ) ;
 
 	assert.deepEqual(
-		integer.stringify( B , 10 , q , 0 , q.length ) , quotient ,
+		integer.stringify( B , B , q , 0 , q.length ) , quotient ,
 		dividend + ' / ' + divisor + ' = ' + quotient
 	) ;
 
 	assert.deepEqual(
-		integer.stringify( B , 10 , D , 0 , D.length ) , remainder ,
+		integer.stringify( B , B , D , 0 , D.length ) , remainder ,
 		dividend + ' % ' + divisor + ' = ' + remainder
 	) ;
 

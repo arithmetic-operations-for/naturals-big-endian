@@ -4,7 +4,7 @@ import { _decrement , _isub } from '../sub' ;
 import { _lt } from '../../compare' ;
 import { _iadd } from '../add' ;
 import { _mul } from '../mul' ;
-import { _dc_div_32 , _schoolbook_div } from '.' ;
+import { _idivmod_dc_32 , _idivmod_schoolbook_large_divisor } from '.' ;
 
 
 /**
@@ -30,10 +30,10 @@ import { _dc_div_32 , _schoolbook_div } from '.' ;
  *  T(n) = 2T'(n/2) + K
  *
  */
-export function _dc_div_21 ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
+export function _idivmod_dc_21 ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
 
 	if ( bj - bi < THRESHOLD_DIV_DC ) {
-		return _schoolbook_div( r , a , ai , aj , b , bi , bj , c , ci ) ;
+		return _idivmod_schoolbook_large_divisor( r , a , ai , aj , b , bi , bj , c , ci ) ;
 	}
 
 	// 1. Let A = A_3 β^{3n/2} + A_2 β^n + A_1 β^{n/2} + A_0 and
@@ -47,13 +47,13 @@ export function _dc_div_21 ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
 	//    Q_1 = ( A_3 β^n + A_2 β^{n/2} + A_1 ) / B
 	//    with remainder R_1 using algorithm 3.4.
 
-	_dc_div_32( r , a , ai , aj - k , b , bi , bj , c , ci , cj - k ) ;
+	_idivmod_dc_32( r , a , ai , aj - k , b , bi , bj , c , ci , cj - k ) ;
 
 	// 3. Compute the low half Q_0 of the quotient as
 	//    Q_0 = ( R_1 β^{n/2} + A_0 ) / B
 	//    with remainder R_0 using algorithm 3.4.
 
-	_dc_div_32( r , a , ai + k , aj , b , bi , bj , c , ci + k , cj ) ;
+	_idivmod_dc_32( r , a , ai + k , aj , b , bi , bj , c , ci + k , cj ) ;
 
 	// 4. Return the quotient Q = Q_1 β^{n/2} + Q_0 and the remainder R = R_0 .
 

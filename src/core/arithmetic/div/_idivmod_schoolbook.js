@@ -1,13 +1,23 @@
 import { _zeros , _copy } from '../../array' ;
 import { _mul_limb } from '../mul' ;
-import { _schoolbook_div , _div_limb_partial_fast } from '.' ;
+import { _idivmod_schoolbook_large_divisor , _div_limb_with_prefix } from '.' ;
 
 /**
  * Computes q <- a / b and a <- a % b.
  * No leading zeros allowed.
- * q has length at least qi + aj - ai
+ * q has length at least aj - ai
+ *
+ * @param {Number} r The radix.
+ * @param {Array} a Dividend / Remainder.
+ * @param {Number} ai
+ * @param {Number} aj
+ * @param {Array} b Divisor.
+ * @param {Number} bi
+ * @param {Number} bj
+ * @param {Array} q Quotient.
+ * @param {Number} qi
  */
-export function schoolbook_div ( r , a , ai , aj , b , bi , bj , q , qi ) {
+export function _idivmod_schoolbook ( r , a , ai , aj , b , bi , bj , q , qi ) {
 
 	const _r = Math.ceil( r / 2 ) ;
 	const x = b[bi] ;
@@ -28,14 +38,12 @@ export function schoolbook_div ( r , a , ai , aj , b , bi , bj , q , qi ) {
 		_mul_limb( r , z , b , bi , bj , _b , 0 , n ) ;
 
 		const _q = _zeros( m ) ;
-
-		_schoolbook_div( r , _a , 0 , m , _b , 0 , n , _q , 0 ) ;
-		_div_limb_partial_fast( r , _a[0] , z , _a , 1 , m , a , ai ) ;
+		_idivmod_schoolbook_large_divisor( r , _a , 0 , m , _b , 0 , n , _q , 0 ) ;
+		_div_limb_with_prefix( r , _a[0] , z , _a , 1 , m , a , ai ) ;
 		_copy( _q , 1 , m , q , qi ) ;
-		return ;
 
 	}
 
-	return _schoolbook_div( r , a , ai , aj , b , bi , bj , q , qi ) ;
+	else _idivmod_schoolbook_large_divisor( r , a , ai , aj , b , bi , bj , q , qi ) ;
 
 }

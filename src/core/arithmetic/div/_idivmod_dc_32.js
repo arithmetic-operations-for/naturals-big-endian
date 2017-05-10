@@ -3,7 +3,7 @@ import { _decrement , _isub } from '../sub' ;
 import { _lt } from '../../compare' ;
 import { _iadd } from '../add' ;
 import { _mul } from '../../../api' ;
-import { _dc_div_21 } from '.' ;
+import { _idivmod_dc_21 } from '.' ;
 
 /**
  * Algorithm 3.4 Divide-and-conquer division (3 by 2)
@@ -28,7 +28,7 @@ import { _dc_div_21 } from '.' ;
  *  T'(n) ≤ T(n) + M(n) + Ln
  *
  */
-export function _dc_div_32 ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
+export function _idivmod_dc_32 ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
 
 	// 1. Let A = A_2 β^{2n} + A_1 β^n + A_0 and
 	//    B = B_1 β^{n} + B_0,
@@ -41,7 +41,7 @@ export function _dc_div_32 ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
 	//    remainder R_1 using algorithm 3.3;
 
 	if ( _lt( a , ai , ai + n , b , bi , bi + n ) ) {
-		_dc_div_21( r , a , ai , aj - n , b , bi , bi + n , c , ci + n , cj ) ;
+		_idivmod_dc_21( r , a , ai , aj - n , b , bi , bi + n , c , ci + n , cj ) ;
 	}
 
 	//    otherwise let Q = β^n - 1, and R_1 = ( A_2 - B_1 ) β^n + A_1 + B_1

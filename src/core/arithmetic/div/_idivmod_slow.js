@@ -28,7 +28,7 @@ import { _lt } from '../..' ;
 //     made on the size of the operands.
 //     Should clarify.
 
-export function slow_div ( x , r , ri , rj , b , bi , bj , q , qi ) {
+export function _idivmod_slow ( x , r , ri , rj , b , bi , bj , q , qi ) {
 
 	var k, t = ri + 1;
 
