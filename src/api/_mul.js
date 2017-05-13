@@ -2,7 +2,7 @@ import { _mul_limb , _schoolbook_mul , _karatsuba } from '../core' ;
 import { THRESHOLD_MUL_TOOM22 } from '../core' ;
 
 /**
- * |A| >= |B|, |C| >= |A| + |B|.
+ * |A| >= |B| >= 1, |C| >= |A| + |B|.
  * TODO check whether this condition is actually needed
  *      if it is then fix @aureooms/js-integer
  *      otherwise document properly and fix conditions
@@ -14,6 +14,7 @@ export function _mul ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
 	const m = aj - ai ;
 	const n = bj - bi ;
 
+	// TODO then |B| = 1 and could be faster
 	if ( m === 1 ) return _mul_limb( r , a[0] , b , bi , bj , c , ci , cj ) ;
 
 	if ( n === 1 ) return _mul_limb( r , b[0] , a , ai , aj , c , ci , cj ) ;

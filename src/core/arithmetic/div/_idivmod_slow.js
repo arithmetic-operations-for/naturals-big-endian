@@ -35,15 +35,15 @@ export function _idivmod_slow ( x , r , ri , rj , b , bi , bj , q , qi ) {
 	do {
 
 		// trim leading zeros
-		//     - maybe could try to put this procedure inside the _sub loop
-		//     - or assume that the number is trimed at the begining
-		//       and put this statement at the end of the main loop
+		// TODO maybe could try to put this procedure inside the _sub loop
+		// TODO or assume that the number is trimed at the begining
+		//      and put this statement at the end of the main loop
 		while (ri < rj && r[ri] === 0) ++ri;
 
 		// search for a remainder block interval
 		// greater than the divisor
-		//     - maybe could try binary search on the _lt function
-		//     for another implementation
+		// TODO maybe could try binary search on the _lt function
+		//      for another implementation
 		k = ri + 1;
 		while (k <= rj && _lt(r, ri, k, b, bi, bj)) ++k;
 

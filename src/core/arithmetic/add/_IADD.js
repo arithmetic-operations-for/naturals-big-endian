@@ -16,15 +16,15 @@ export function _IADD ( r , a , ai , aj , b , bi , bj ) {
 	let C = 0 ;
 
 	while ( --bj >= bi ) {
-		const t = a[--aj] + b[bj] + C ;
-		a[aj] = t % r ;
-		C = t >= r ;
+		const T = a[--aj] + b[bj] + C ;
+		a[aj] = T % r ;
+		C = T >= r ;
 	}
 
 	while ( --aj >= ai ) {
-		const t = a[aj] + C ;
-		a[aj] = t % r ;
-		C = t >= r ;
+		const T = a[aj] + C ;
+		a[aj] = T % r ;
+		C = T >= r ;
 	}
 
 }
