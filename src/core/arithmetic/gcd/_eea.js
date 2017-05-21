@@ -1,7 +1,7 @@
 
 import { _idivmod } from '../../../api'
-import { _mul } from '../../../api'
-import { _IADD } from '../../../core/arithmetic/ADD'
+import { mul } from '../../../api'
+import { _IADD } from '../../../core/arithmetic/add'
 import { _alloc } from '../../../core/array'
 import { _zeros } from '../../../core/array'
 import { _jz } from '../../../core/compare'
@@ -197,7 +197,7 @@ export function _eaa(r, a, ai, aj, b, bi, bj) {
 	// since Q and T0 have no leading zeros then
 	// Q * T0 has |Q| + |T0| - 1 <= |Q*T0| <= |Q| + |T0| limbs with no leading zeros.
 	Xi = Xj - (Qj - Qi) - (T0j - T0i) ;
-	_mul(r, Q, Qi, Qj, T0, T0i, T0j, X, Xi, Xj);
+	mul(r, Q, Qi, Qj, T0, T0i, T0j, X, Xi, Xj);
 	// t_3 = t_1 - q_2 * t_2 = 1 - q_2 * t_2
 	// T1 is t_1 and becomes t_3
 	_increment(r, X, Xi, Xj);
@@ -241,7 +241,7 @@ export function _eaa(r, a, ai, aj, b, bi, bj) {
 		// since Q and S1 have no leading zeros then
 		// Q * S1 has |Q| + |S1| - 1 <= |Q*S1| <= |Q| + |S1| limbs with no leading zeros.
 		Xi = Xj - (Qj - Qi) - (S1j - S1i) ;
-		_mul(r, Q, Qi, Qj, S1, S1i, S1j, X, Xi, Xj);
+		mul(r, Q, Qi, Qj, S1, S1i, S1j, X, Xi, Xj);
 		if ( X[Xi] === 0 ) ++Xi; // remove leading zero if no carry
 		// s_{i+1} = s_{i-1} - q_i * s_i
 		// S0 is s_{i-1} and becomes s_{i+1}
@@ -253,7 +253,7 @@ export function _eaa(r, a, ai, aj, b, bi, bj) {
 		// since Q and T1 have no leading zeros then
 		// Q * T1 has |Q| + |T1| - 1 <= |Q*T1| <= |Q| + |T1| limbs with no leading zeros.
 		Xi = Xj - (Qj - Qi) - (T1j - T1i) ;
-		_mul(r, Q, Qi, Qj, T1, T1i, T1j, X, Xi, Xj);
+		mul(r, Q, Qi, Qj, T1, T1i, T1j, X, Xi, Xj);
 		if ( X[Xi] === 0 ) ++Xi; // remove leading zero if no carry
 		// t_{i+1} = t_{i-1} - q_i * t_i
 		// T0 is t_{i-1} and becomes t_{i+1}
@@ -295,7 +295,7 @@ export function _eaa(r, a, ai, aj, b, bi, bj) {
 		// since Q and S0 have no leading zeros then
 		// Q * S0 has |Q| + |S0| - 1 <= |Q*S0| <= |Q| + |S0| limbs with no leading zeros.
 		Xi = Xj - (Qj - Qi) - (S0j - S0i) ;
-		_mul(r, Q, Qi, Qj, S0, S0i, S0j, X, Xi, Xj);
+		mul(r, Q, Qi, Qj, S0, S0i, S0j, X, Xi, Xj);
 		if ( X[Xi] === 0 ) ++Xi; // remove leading zero if no carry
 		// s_{i+1} = s_{i-1} - q_i * s_i
 		// S1 is s_{i-1} and becomes s_{i+1}
@@ -307,7 +307,7 @@ export function _eaa(r, a, ai, aj, b, bi, bj) {
 		// since Q and T0 have no leading zeros then
 		// Q * T0 has |Q| + |T0| - 1 <= |Q*T0| <= |Q| + |T0| limbs with no leading zeros.
 		Xi = Xj - (Qj - Qi) - (T0j - T0i) ;
-		_mul(r, Q, Qi, Qj, T0, T0i, T0j, X, Xi, Xj);
+		mul(r, Q, Qi, Qj, T0, T0i, T0j, X, Xi, Xj);
 		if ( X[Xi] === 0 ) ++Xi; // remove leading zero if no carry
 		// t_{i+1} = t_{i-1} - q_i * t_i
 		// T1 is t_{i-1} and becomes t_{i+1}

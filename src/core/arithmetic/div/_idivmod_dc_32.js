@@ -1,8 +1,7 @@
 import { _zeros , _fill } from '../../array' ;
 import { _decrement , _isub } from '../sub' ;
 import { _lt } from '../../compare' ;
-import { _iadd } from '../add' ;
-import { _mul } from '../../../api' ;
+import { iadd , mul } from '../../../api' ;
 import { _idivmod_dc_21 } from '.' ;
 
 /**
@@ -49,7 +48,7 @@ export function _idivmod_dc_32 ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
 
 	else {
 		_fill( c , cj - n , cj , r - 1 ) ;
-		_iadd( r , a , ai , aj - n , b , bi , bi + n  ) ;
+		iadd( r , a , ai , aj - n , b , bi , bi + n  ) ;
 		_isub( r , a , ai , ai + n , b , bi , bi + n  ) ;
 	}
 
@@ -58,19 +57,19 @@ export function _idivmod_dc_32 ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
 	const zi = 0 ;
 	const zj = n << 1 ;
 	const z = _zeros( zj ) ;
-	_mul( r , c , cj - n , cj , b , bi + n , bj , z , zi , zj ) ;
+	mul( r , c , cj - n , cj , b , bi + n , bj , z , zi , zj ) ;
 	_isub( r , a , ai , aj , z , zi , zj ) ;
 
 	// 4. if R < 0 , R <- R + B and Q <- Q - 1
 
 	if ( a[ai] === 0 ) return ;
-	_iadd( r , a , ai , aj , b , bi , bj ) ;
+	iadd( r , a , ai , aj , b , bi , bj ) ;
 	_decrement( r , c , cj - n , cj ) ;
 
 	// 5. if R < 0 , R <- R + B and Q <- Q - 1
 
 	if ( a[ai] === 0 ) return ;
-	_iadd( r , a , ai , aj , b , bi , bj ) ;
+	iadd( r , a , ai , aj , b , bi , bj ) ;
 	_decrement( r , c , cj - n , cj ) ;
 
 	// 6. Return Q and R

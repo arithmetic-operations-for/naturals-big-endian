@@ -1,9 +1,4 @@
 import { THRESHOLD_DIV_DC } from '../../thresholds' ;
-import { _zeros , _fill } from '../../array' ;
-import { _decrement , _isub } from '../sub' ;
-import { _lt } from '../../compare' ;
-import { _iadd } from '../add' ;
-import { _mul } from '../mul' ;
 import { _idivmod_dc_32 , _idivmod_schoolbook_large_divisor } from '.' ;
 
 

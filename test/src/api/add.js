@@ -1,5 +1,5 @@
 import test from 'ava' ;
-import { parse , _zeros , _add , stringify } from '../../../../../src' ;
+import { parse , _zeros , add , stringify } from '../../../src' ;
 
 function macro ( t , A , B , C ) {
 
@@ -7,7 +7,7 @@ function macro ( t , A , B , C ) {
 	const a = parse( 10 , r , A ) ;
 	const b = parse( 10 , r , B ) ;
 	const c = _zeros( Math.max( a.length , b.length ) + 1 ) ;
-	_add( r , a , 0 , a.length , b , 0 , b.length , c , 0 , c.length ) ;
+	add( r , a , 0 , a.length , b , 0 , b.length , c , 0 , c.length ) ;
 
 	const result = stringify( r , 10 , c , 0 , c.length ) ;
 

@@ -1,2 +1,2 @@
-export * from './0-multiplication' ;
-export * from './1-division' ;
+export * from './division' ;
+export * from './multiplication' ;

@@ -1,5 +1,5 @@
 import { _zeros , _copy } from '../../array' ;
-import { _mul } from '../../../api' ;
+import { mul } from '../../../api' ;
 
 /**
  * Computes <code>pow(a,x) = a^x</code> using exponentiation by squaring.
@@ -33,7 +33,7 @@ export function _powd (r, x, a, ai, aj, c, ci, cj) {
 		const u = _zeros(n);
 
 		_powd(r, p, a, ai, aj, u, 0, n);
-		_mul(r, u, 0, n, a, ai, aj, c, ci, cj); // largest must be put first
+		mul(r, u, 0, n, a, ai, aj, c, ci, cj); // largest must be put first
 	}
 
 	else {
@@ -43,7 +43,7 @@ export function _powd (r, x, a, ai, aj, c, ci, cj) {
 		const u = _zeros(n);
 
 		_powd(r, p, a, ai, aj, u, 0, n);
-		_mul(r, u, 0, n, u, 0, n, c, ci, cj);
+		mul(r, u, 0, n, u, 0, n, c, ci, cj);
 
 	}
 

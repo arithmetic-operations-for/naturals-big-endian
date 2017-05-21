@@ -1,8 +1,8 @@
-import { _ADD } from '.' ;
+import { _ADD } from '../core/arithmetic' ;
 
 /**
  * Adds two big endian arrays and puts result in a destination array.
- * Wraps on overflow.
+ * Wraps on overflow. Works with any combination of array sizes.
  *
  * @param {Number} r base (radix)
  * @param {Array} a first operand
@@ -17,7 +17,7 @@ import { _ADD } from '.' ;
  *
  */
 
-export function _add ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
+export function add ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
 
 	ci = Math.max( 0 , ci );
 	const k = cj - ci;

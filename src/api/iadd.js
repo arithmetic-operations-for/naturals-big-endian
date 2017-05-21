@@ -1,8 +1,8 @@
-import { _IADD } from '.' ;
+import { _IADD } from '../core/arithmetic' ;
 
 /**
  * Adds a big endian array to another ___in-place___.
- * Wraps on overflow.
+ * Wraps on overflow. Works with any combination of array sizes.
  *
  * @param {Number} r base (radix)
  * @param {Array} a first operand (modified in-place)
@@ -12,7 +12,7 @@ import { _IADD } from '.' ;
  * @param {Number} bi b left
  * @param {Number} bj b right
  */
-export function _iadd ( r , a , ai , aj , b , bi , bj ) {
+export function iadd ( r , a , ai , aj , b , bi , bj ) {
 
 	const m = aj - ai ;
 

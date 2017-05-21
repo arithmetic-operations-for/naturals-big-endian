@@ -1,5 +1,5 @@
-import { _mul_limb , _schoolbook_mul , _karatsuba } from '../core' ;
-import { THRESHOLD_MUL_TOOM22 } from '../core' ;
+import { _mul_limb , _schoolbook_mul , _karatsuba } from '../core/arithmetic' ;
+import { THRESHOLD_MUL_TOOM22 } from '../core/thresholds' ;
 
 /**
  * |A| >= |B| >= 1, |C| >= |A| + |B|.
@@ -9,7 +9,7 @@ import { THRESHOLD_MUL_TOOM22 } from '../core' ;
  * TODO use schoolbook mul if n = O(log m)
  */
 
-export function _mul ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
+export function mul ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
 
 	const m = aj - ai ;
 	const n = bj - bi ;
