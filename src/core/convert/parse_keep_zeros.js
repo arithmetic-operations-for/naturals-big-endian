@@ -2,7 +2,7 @@ import { _int , convert_keep_zeros } from '.' ;
 
 export function parse_keep_zeros ( f , t , string ) {
 
-	if ( f > 36 ) throw 'f > 36 not implemented' ;
+	if ( f > 36 ) throw new Error('f > 36 not implemented') ;
 
 	const n = string.length ;
 
