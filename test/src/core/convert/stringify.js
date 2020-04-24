@@ -3,7 +3,7 @@ import * as integer from '../../../../src' ;
 
 test( 'stringify' , function ( assert ) {
 
-	assert.throws( integer.stringify.bind( null , 37 , 37 , [0] , 0 , 1 ) , /not implemented/ ) ;
+	assert.throws( integer.stringify.bind( null , 37 , 37 , [0] , 0 , 1 ) , { message: /not implemented/ } ) ;
 
 	assert.deepEqual( integer.stringify( 2 , 2 , [ 0 ] , 0 , 1 ) , '0' ) ;
 	assert.deepEqual( integer.stringify( 2 , 2 , [ 1 ] , 0 , 1 ) , '1' ) ;

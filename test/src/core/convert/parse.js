@@ -3,8 +3,8 @@ import * as integer from '../../../../src' ;
 
 test( 'parse' , function ( assert ) {
 
-	assert.throws( integer.parse.bind( null , 16 , 16 , '!00b0C0def' ) , /invalid/ ) ;
-	assert.throws( integer.parse.bind( null , 37 , 37 , '!' ) , /not implemented/ ) ;
+	assert.throws( integer.parse.bind( null , 16 , 16 , '!00b0C0def' ) , { message: /invalid/ } ) ;
+	assert.throws( integer.parse.bind( null , 37 , 37 , '!' ) , { message: /not implemented/ } ) ;
 
 	assert.deepEqual( integer.parse( 2 , 2 , '0' ) , [ 0 ] ) ;
 	assert.deepEqual( integer.parse( 2 , 2 , '1' ) , [ 1 ] ) ;

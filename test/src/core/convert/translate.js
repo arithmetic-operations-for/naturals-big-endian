@@ -3,9 +3,9 @@ import * as integer from '../../../../src' ;
 
 test( 'translate' , function ( assert ) {
 
-	assert.throws( integer.translate.bind( null , 16 , 16 , '!00b0C0def' ) , /invalid/ ) ;
-	assert.throws( integer.translate.bind( null , 37 , 36 , '!' ) , /not implemented/ ) ;
-	assert.throws( integer.translate.bind( null , 36 , 37 , 'z' ) , /not implemented/ ) ;
+	assert.throws( integer.translate.bind( null , 16 , 16 , '!00b0C0def' ) , { message: /invalid/ } ) ;
+	assert.throws( integer.translate.bind( null , 37 , 36 , '!' ) , { message: /not implemented/ } ) ;
+	assert.throws( integer.translate.bind( null , 36 , 37 , 'z' ) , { message: /not implemented/ } ) ;
 
 	assert.deepEqual( integer.translate( 2 , 2 , '0' ) , '0' ) ;
 	assert.deepEqual( integer.translate( 2 , 2 , '1' ) , '1' ) ;
