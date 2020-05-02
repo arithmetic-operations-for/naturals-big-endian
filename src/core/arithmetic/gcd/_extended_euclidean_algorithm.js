@@ -11,9 +11,6 @@ import { _jz } from '../../../core/compare' ;
 import { _trim_positive } from '../../../core/convert' ;
 import { stringify } from '../../../core/convert' ;
 
-const DEBUG = false;
-const TRACE = false;
-
 /**
  * Extended Euclidean algorithm.
  *
@@ -95,43 +92,8 @@ const TRACE = false;
  */
 export function _extended_euclidean_algorithm(r, a, ai, aj, b, bi, bj) {
 
-	const dbg = function ( v , a , i , j ) {
-		if (DEBUG) {
-			const s = stringify(r,r,a,i,j);
-			console.debug(v, '=', s) ;
-		}
-	}
-
-	const log = function ( ...args ) {
-		if (DEBUG) console.debug(...args) ;
-	}
-
-	const trc = function ( ...args ) {
-		if (TRACE) console.debug(...args) ;
-	}
-
-
-	const STATE = function (title) {
-
-		const _A = stringify(r,r,a,ai,aj);
-		const _B = stringify(r,r,b,bi,bj);
-		const _R0 = stringify(r,r,R0,R0i,R0j);
-		const _S0 = stringify(r,r,S0,S0i,S0j);
-		const _T0 = stringify(r,r,T0,T0i,T0j);
-		const _R1 = stringify(r,r,R1,R1i,R1j);
-		const _S1 = stringify(r,r,S1,S1i,S1j);
-		const _T1 = stringify(r,r,T1,T1i,T1j);
-
-		trc(title);
-		trc(_R0, _S0, _T0);
-		trc(_R1, _S1, _T1);
-
-	} ;
-
 	const m = aj - ai ;
 	const n = bj - bi ;
-
-	log(m, n);
 
 	// R_0 = a
 	const R0 = _alloc(m);
@@ -189,7 +151,6 @@ export function _extended_euclidean_algorithm(r, a, ai, aj, b, bi, bj) {
 	// 6. t_0 = T0 < 0
 	// 7. t_1 = T1 > 0
 
-	STATE('INIT 1') ;
 	if ( R1i === R1j ) {
 		return [ R0 , S0 , T0 , S1 , T1 , 1 ] ;
 	}
@@ -199,30 +160,23 @@ export function _extended_euclidean_algorithm(r, a, ai, aj, b, bi, bj) {
 	// R1 is r_1
 	// Q is q_1
 	_idivmod(r, R0, R0i, R0j, R1, R1i, R1j, Q, Qi, Qj);
-	dbg('R0', R0, R0i, R0j);
-	dbg('R1', R1, R1i, R1j);
-	dbg('Q', Q, Qi, Qj);
 
 	// remove leading zeros from Q
 	// since Q = R0 / R1 we have |R0| - |R1| <= |Q| <= |R0| - |R1| + 1
 	Qi = Qj - (R0j - R1j + 1) ; // R0i = R1i = 0
 	if ( Q[Qi] === 0 ) ++Qi;
-	dbg('Q', Q, Qi, Qj);
 
 	// remove leading zeros from R0
 	// since R0 = R0 % R1 we have |R0| <= |R1|
 	R0i = _trim_positive( R0 , R0j - (R1j - R1i) , R0j) ;
-	dbg('R0', R0, R0i, R0j);
 
 	// s_2 = s_0 - q_1 * s_1 = s_0
 	// S0 is s_0 and becomes s_2 i.e. NOTHING TO DO
-	dbg('S0', S0, S0i, S0j);
 
 	// t_2 = t_0 - q_1 * t_1 = q_1
 	// T0 is t_0 and becomes t_2
 	T0i = T0j - (Qj - Qi) ;
 	_copy(Q, Qi, Qj, T0, T0i);
-	dbg('T0', T0, T0i, T0j);
 
 	// Invariants
 	// ----------
@@ -235,7 +189,6 @@ export function _extended_euclidean_algorithm(r, a, ai, aj, b, bi, bj) {
 	// 6. t_1 = T1 > 0
 	// 7. t_2 = T0 < 0
 
-	STATE('INIT 2') ;
 	if ( R0i === R0j ) {
 		return [ R1 , S1 , T1 , S0 , T0 , 2 ] ;
 	}
@@ -247,44 +200,31 @@ export function _extended_euclidean_algorithm(r, a, ai, aj, b, bi, bj) {
 	Qi = Qj - (R1j - R1i);
 	_reset(Q, Qi, Qj);
 	_idivmod(r, R1, R1i, R1j, R0, R0i, R0j, Q, Qi, Qj);
-	dbg('R1', R1, R1i, R1j);
-	dbg('R0', R0, R0i, R0j);
-	dbg('Q', Q, Qi, Qj);
 
 	// remove leading zeros from Q
 	// since Q = R1 / R0 we have |R1| - |R0| <= |Q| <= |R1| - |R0| + 1
 	Qi = Qj - (R1j - R0j + R0i + 1) ; // R1i = 0
 	if ( Q[Qi] === 0 ) ++Qi;
-	dbg('Q', Q, Qi, Qj);
 
 	// remove leading zeros from R1
 	// since R1 = R1 % R0 we have |R1| <= |R0|
 	R1i = _trim_positive( R1 , R1j - (R0j - R0i) , R1j) ;
-	dbg('R1', R1, R1i, R1j);
 
 	// s_3 = s_1 - q_2 * s_2 = -q_2
 	S1i = S1j - (Qj - Qi) ;
 	_copy(Q, Qi, Qj, S1, S1i);
-	dbg('S1', S1, S1i, S1j);
 
 	// q_2 * t_2
 	// since Q and T0 have no leading zeros then
 	// Q * T0 has |Q| + |T0| - 1 <= |Q*T0| <= |Q| + |T0| limbs with no leading zeros.
 	Xi = Xj - (Qj - Qi) - (T0j - T0i) ;
-	dbg('Q', Q, Qi, Qj);
-	dbg('T0', T0, T0i, T0j);
-	//dbg('X', X, Xi, Xj);
 	mul(r, T0, T0i, T0j, Q, Qi, Qj, X, Xi, Xj);
-	//dbg('T0', T0, T0i, T0j);
-	//dbg('Q', Q, Qi, Qj);
-	dbg('X = Q * T0', X, Xi, Xj);
 	// t_3 = t_1 - q_2 * t_2 = 1 - q_2 * t_2
 	// T1 is t_1 and becomes t_3
 	_increment(r, X, Xi, Xj);
 	Xi = _trim_positive( X , Xi , Xj) ;
 	T1i = T1j - (Xj - Xi) ;
 	_copy(X, Xi, Xj, T1, T1i);
-	dbg('T1 = T1 + X = T1 + Q * T0', T1, T1i, T1j);
 
 	let steps = 3 ;
 	while (true) {
@@ -300,7 +240,6 @@ export function _extended_euclidean_algorithm(r, a, ai, aj, b, bi, bj) {
 		// 6. t_{i-1} = T0 < 0
 		// 7. t_i = T1 > 0
 
-		STATE('LOOP 1') ;
 		if ( R1i === R1j ) {
 			return [ R0 , S0 , T0 , S1 , T1 , steps ] ;
 		}
@@ -313,9 +252,6 @@ export function _extended_euclidean_algorithm(r, a, ai, aj, b, bi, bj) {
 		Qi = Qj - (R0j - R0i);
 		_reset(Q, Qi, Qj);
 		_idivmod(r, R0, R0i, R0j, R1, R1i, R1j, Q, Qi, Qj);
-		dbg('R0', R0, R0i, R0j);
-		dbg('R1', R1, R1i, R1j);
-		dbg('Q', Q, Qi, Qj);
 		// remove leading zeros from Q
 		// since Q = R0 / R1 we have |R0| - |R1| <= |Q| <= |R0| - |R1| + 1
 		Qi = Qj - (R0j - R0i - R1j + R1i + 1) ;
@@ -329,46 +265,28 @@ export function _extended_euclidean_algorithm(r, a, ai, aj, b, bi, bj) {
 		// Q * S1 has |Q| + |S1| - 1 <= |Q*S1| <= |Q| + |S1| limbs with no leading zeros.
 		Xi = Xj - (Qj - Qi) - (S1j - S1i) ;
 		_reset(X, Xi, Xj);
-		dbg('Q', Q, Qi, Qj);
-		dbg('S1', S1, S1i, S1j);
-		//dbg('X', X, Xi, Xj);
-		log('mul(r, Q, Qi, Qj, S1, S1i, S1j, X, Xi, Xj)');
 		mul(r, Q, Qi, Qj, S1, S1i, S1j, X, Xi, Xj);
-		//dbg('S1', S1, S1i, S1j);
-		//dbg('Q', Q, Qi, Qj);
 		if ( X[Xi] === 0 ) ++Xi; // remove leading zero if no carry
-		dbg('X = Q * S1', X, Xi, Xj);
 
 		// s_{i+1} = s_{i-1} - q_i * s_i
 		// S0 is s_{i-1} and becomes s_{i+1}
-		dbg('S0', S0, S0i, S0j);
 		S0i = S0j - (Xj - Xi + 1) ;
 		_IADD(r, S0, S0i, S0j, X, Xi, Xj);
 		if ( S0[S0i] === 0 ) ++S0i;
-		dbg('S0 = S0 + X = S0 + Q * S1', S0, S0i, S0j);
 
 		// q_i * t_i
 		// since Q and T1 have no leading zeros then
 		// Q * T1 has |Q| + |T1| - 1 <= |Q*T1| <= |Q| + |T1| limbs with no leading zeros.
 		Xi = Xj - (Qj - Qi) - (T1j - T1i) ;
 		_reset(X, Xi, Xj);
-		dbg('Q', Q, Qi, Qj);
-		dbg('T1', T1, T1i, T1j);
-		//dbg('X', X, Xi, Xj);
-		log('mul(r, Q, Qi, Qj, T1, T1i, T1j, X, Xi, Xj)');
 		mul(r, Q, Qi, Qj, T1, T1i, T1j, X, Xi, Xj);
-		//dbg('T1', T1, T1i, T1j);
-		//dbg('Q', Q, Qi, Qj);
 		if ( X[Xi] === 0 ) ++Xi; // remove leading zero if no carry
-		dbg('X = Q * T1', X, Xi, Xj);
 
 		// t_{i+1} = t_{i-1} - q_i * t_i
 		// T0 is t_{i-1} and becomes t_{i+1}
-		dbg('T0', T0, T0i, T0j);
 		T0i = T0j - (Xj - Xi + 1) ;
 		_IADD(r, T0, T0i, T0j, X, Xi, Xj);
 		if ( T0[T0i] === 0 ) ++T0i;
-		dbg('T0 = T0 + X = T0 + Q * T1', T0, T0i, T0j);
 
 		// Invariants
 		// ----------
@@ -381,7 +299,6 @@ export function _extended_euclidean_algorithm(r, a, ai, aj, b, bi, bj) {
 		// 6. t_{i-1} = T1 > 0
 		// 7. t_i = T0 < 0
 
-		STATE('LOOP 2') ;
 		if ( R0i === R0j ) {
 			return [ R1 , S1 , T1 , S0 , T0 , steps ] ;
 		}
@@ -394,9 +311,6 @@ export function _extended_euclidean_algorithm(r, a, ai, aj, b, bi, bj) {
 		Qi = Qj - (R1j - R1i);
 		_reset(Q, Qi, Qj);
 		_idivmod(r, R1, R1i, R1j, R0, R0i, R0j, Q, Qi, Qj);
-		dbg('R1', R1, R1i, R1j);
-		dbg('R0', R0, R0i, R0j);
-		dbg('Q', Q, Qi, Qj);
 		// remove leading zeros from Q
 		// since Q = R1 / R0 we have |R1| - |R0| <= |Q| <= |R1| - |R0| + 1
 		Qi = Qj - (R1j - R1i - R0j + R0i + 1) ;
@@ -410,49 +324,28 @@ export function _extended_euclidean_algorithm(r, a, ai, aj, b, bi, bj) {
 		// Q * S0 has |Q| + |S0| - 1 <= |Q*S0| <= |Q| + |S0| limbs with no leading zeros.
 		Xi = Xj - (Qj - Qi) - (S0j - S0i) ;
 		_reset(X, Xi, Xj);
-		dbg('Q', Q, Qi, Qj);
-		dbg('S0', S0, S0i, S0j);
-		log('mul(r, Q, Qi, Qj, S0, S0i, S0j, X, Xi, Xj)');
 		mul(r, Q, Qi, Qj, S0, S0i, S0j, X, Xi, Xj);
-		//dbg('S0', S0, S0i, S0j);
-		//dbg('Q', Q, Qi, Qj);
 		if ( X[Xi] === 0 ) ++Xi; // remove leading zero if no carry
-		dbg('X = Q * S0', X, Xi, Xj);
 
 		// s_{i+1} = s_{i-1} - q_i * s_i
 		// S1 is s_{i-1} and becomes s_{i+1}
-		dbg('S1', S1, S1i, S1j);
 		S1i = S1j - (Xj - Xi + 1) ;
 		_IADD(r, S1, S1i, S1j, X, Xi, Xj);
 		if ( S1[S1i] === 0 ) ++S1i;
-		dbg('S1 = S1 + X = S1 + Q * S0', S1, S1i, S1j);
 
 		// q_i * t_i
 		// since Q and T0 have no leading zeros then
 		// Q * T0 has |Q| + |T0| - 1 <= |Q*T0| <= |Q| + |T0| limbs with no leading zeros.
 		Xi = Xj - (Qj - Qi) - (T0j - T0i) ;
 		_reset(X, Xi, Xj);
-		dbg('Q', Q, Qi, Qj);
-		log('Q', Q.join(''), Qi, Qj);
-		dbg('T0', T0, T0i, T0j);
-		log('T0', T0.join(''), T0i, T0j);
-		dbg('X', X, Xi, Xj);
-		log('X', X.join(''), Xi, Xj);
-		log('mul(r, Q, Qi, Qj, T0, T0i, T0j, X, Xi, Xj)');
-		//mul(r, Q, Qi, Qj, T0, T0i, T0j, X, Xi, Xj);
-		mul(r, T0, T0i, T0j, Q, Qi, Qj, X, Xi, Xj);
-		//dbg('T0', T0, T0i, T0j);
-		//dbg('Q', Q, Qi, Qj);
+		mul(r, Q, Qi, Qj, T0, T0i, T0j, X, Xi, Xj);
 		if ( X[Xi] === 0 ) ++Xi; // remove leading zero if no carry
-		dbg('X = Q * T0', X, Xi, Xj);
 
 		// t_{i+1} = t_{i-1} - q_i * t_i
 		// T1 is t_{i-1} and becomes t_{i+1}
-		dbg('T1', T1, T1i, T1j);
 		T1i = T1j - (Xj - Xi + 1) ;
 		_IADD(r, T1, T1i, T1j, X, Xi, Xj);
 		if ( T1[T1i] === 0 ) ++T1i;
-		dbg('T1 = T1 + X = T1 + Q * T0', T1, T1i, T1j);
 
 	}
 
