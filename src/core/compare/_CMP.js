@@ -1,4 +1,4 @@
-
+import { _CMP_n } from '.' ;
 /**
  * Compares two big endian arrays, |a| >= |b|
  *
@@ -14,16 +14,11 @@
 
 export function _CMP (a, ai, aj, b, bi, bj){
 
-	var tmp = aj - bj + bi;
+	const tmp = aj - bj + bi ;
 
 	for (; ai < tmp; ++ai)
 		if (a[ai] > 0) return 1;
 
 	// same size aj - ai === bj - bi
-	for (; ai < aj; ++ai, ++bi) {
-		if (a[ai] > b[bi]) return  1;
-		if (a[ai] < b[bi]) return -1;
-	}
-
-	return 0;
+	return _CMP_n(a, ai, aj, b, bi) ;
 }
