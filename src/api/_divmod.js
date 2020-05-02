@@ -17,7 +17,7 @@ import { _idivmod } from './_idivmod' ;
  * @param {Number} Di Left of dividend.
  * @param {Number} Dj Right of dividend.
  * @param {Array} d Divisor array.
- * @param {Number} dj Left of divisor.
+ * @param {Number} di Left of divisor.
  * @param {Number} dj Right of divisor.
  * @param {Array} Q Quotient array.
  * @param {Number} Qi Left of quotient.

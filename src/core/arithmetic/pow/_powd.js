@@ -7,7 +7,7 @@ import { _mul } from '..' ;
  *
  * /!\ |C| >= |A| * x , |C| = 000...0
  *
- * @param {Number} radix The base to work with.
+ * @param {Number} r The base to work with.
  * @param {Number} x The power to raise <code>a</code> to.
  * @param {Array} a The base array.
  * @param {Number} ai <code>a</code> left.
