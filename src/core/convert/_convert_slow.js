@@ -17,31 +17,31 @@ import { _jz } from '../compare' ;
 export function _convert_slow ( f , t , a , ai , aj , b , bi , bj ) {
 
 	const d = _build( f , t ) ;
-	const di = 0 ;
-	const dj = d.length ;
-	const qi = 0 ;
-	const qj = aj - ai ;
-	const q = _alloc( qj - qi ) ;
+	const n = d.length ;
+	const m = aj - ai ;
+	const q = _alloc( m ) ;
+	const r = _alloc( m ) ;        // NOTE that this copy is unnecessary when
+	_copy( a , ai , aj , r , 0 ) ; // called from parse since we can discard it.
 
 	while ( true ) {
 
-		_reset( q , qi , qj ) ;
+		_reset( q , 0 , m ) ;
 
-		_idivmod( f , a , ai , aj , d , di , dj , q , qi , qj ) ;
+		_idivmod( f , r , 0 , m , d , 0 , n , q , 0 , m ) ;
 
 		--bj ;
 		let x = 0 ;
 
-		for ( let k = ai ; k < aj ; ++k ) {
+		for ( let k = 0 ; k < m ; ++k ) {
 			x *= f ;
-			x += a[k] ;
+			x += r[k] ;
 		}
 
 		b[bj] = x ;
 
-		if ( _jz( q , qi , qj ) ) return ;
+		if ( _jz( q , 0 , m ) ) return ;
 
-		_copy( q , qi , qj , a , ai ) ;
+		_copy( q , 0 , m , r , 0 ) ;
 
 	}
 
