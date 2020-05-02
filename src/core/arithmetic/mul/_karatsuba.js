@@ -89,11 +89,11 @@ export function _karatsuba ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
 	const z0 = _zeros( N ) ;
 
 	// RECURSIVE CALLS
-	_mul( r , a , ai , i_ , b , bi , j_ , z2 , 0 , N_ ) ;            // z2 = a1.b1
-	_mul( r , a , i_ , aj , b , j_ , bj , z0 , 0 , N ) ;             // z0 = a0.b0
+	_mul( r , a , ai , i_ , b , bi , j_ , z2 , 0 , N_ ) ;           // z2 = a1.b1
+	_mul( r , a , i_ , aj , b , j_ , bj , z0 , 0 , N ) ;            // z0 = a0.b0
 	add( r , a , ai , i_ , a , i_ , aj , t1 , 0 , n + 1 ) ;         // (a0 + a1)
 	add( r , b , bi , j_ , b , j_ , bj , t2 , 0 , n + 1 ) ;         // (b1 + b0)
-	_mul( r , t1 , 1 , n + 1 , t2 , 1 , n + 1 , t3 , 2 , N + 2 ) ;   // (a0 + a1)(b1 + b0)
+	_mul( r , t1 , 1 , n + 1 , t2 , 1 , n + 1 , t3 , 2 , N + 2 ) ;  // (a0 + a1)(b1 + b0)
 
 	// BUILD OUTPUT
 	_copy( z2 , 0 , N_ , c , cj - I ) ; // + z2 . r^{2n}
@@ -106,7 +106,7 @@ export function _karatsuba ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
 	if ( t2[0] ) iadd( r , t3 , 0 , n + 2 , t1 , 1 , n + 1 ) ;
 
 	iadd( r , c , ci , cj - n , t3 , 0 , N + 2 ) ; // + (a0 + a1)(b1 + b0) . r^{n}
-	_isub( r , c , ci , cj - n , z2 , 0 , N_ ) ;    // - z2 . r^{n}
-	_isub( r , c , ci , cj - n , z0 , 0 , N ) ;     // - z1 . r^{n}
+	_isub( r , c , ci , cj - n , z2 , 0 , N_ ) ;   // - z2 . r^{n}
+	_isub( r , c , ci , cj - n , z0 , 0 , N ) ;    // - z1 . r^{n}
 
 }
