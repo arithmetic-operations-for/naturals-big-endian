@@ -15,9 +15,9 @@ export function mul ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
 	const n = bj - bi ;
 
 	// TODO then |B| = 1 and could be faster
-	if ( m === 1 ) return _mul_limb( r , a[0] , b , bi , bj , c , ci , cj ) ;
+	if ( m === 1 ) return _mul_limb( r , a[ai] , b , bi , bj , c , ci , cj ) ;
 
-	if ( n === 1 ) return _mul_limb( r , b[0] , a , ai , aj , c , ci , cj ) ;
+	if ( n === 1 ) return _mul_limb( r , b[bi] , a , ai , aj , c , ci , cj ) ;
 
 	//if ( m === n ) {
 
