@@ -9,8 +9,9 @@ import { THRESHOLD_DIV_DC } from '../core' ;
  *
  * Input
  * -----
- *  - No leading zeros in D or Q.
+ *  - No leading zeros in D.
  *  - |D| = |Q|
+ *  - Q is zero initialized.
  *
  * @param {Number} r The base to work with.
  * @param {Array} D Dividend / Remainder array (remainder computed in-place).
