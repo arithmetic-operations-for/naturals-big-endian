@@ -1,6 +1,7 @@
 import test from 'ava' ;
 import { parse , _zeros , mul , stringify } from '../../../src' ;
 
+
 function macro ( t , A , B , C ) {
 
 	const r = 10 ;
@@ -12,11 +13,12 @@ function macro ( t , A , B , C ) {
 
 	const result = stringify( r , 10 , c , 0 , c.length ) ;
 
-	t.is( result , C ) ;
+	t.is( C, result ) ;
 
 }
 
-macro.title = (providedTitle, A , B , C) => `${providedTitle} ${A} * ${B} = ${C}`.trim();
+macro.title = (providedTitle, A , B , C) => providedTitle || `mul(${A},${B}) = ${C}`;
+
 
 test( macro , '0' , '9223239263' , '0' ) ;
 test( macro , '1' , '1' , '1' ) ;
