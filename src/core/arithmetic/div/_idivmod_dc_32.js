@@ -1,7 +1,8 @@
 import { _zeros , _fill } from '../../array' ;
 import { _decrement , _isub } from '../sub' ;
+import { _mul } from '../mul' ;
 import { _lt } from '../../compare' ;
-import { iadd , mul } from '../../../api' ;
+import { iadd } from '../../../api' ;
 import { _idivmod_dc_21 } from '.' ;
 
 /**
@@ -57,7 +58,7 @@ export function _idivmod_dc_32 ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
 	const zi = 0 ;
 	const zj = n << 1 ;
 	const z = _zeros( zj ) ;
-	mul( r , c , cj - n , cj , b , bi + n , bj , z , zi , zj ) ;
+	_mul( r , c , cj - n , cj , b , bi + n , bj , z , zi , zj ) ;
 	_isub( r , a , ai , aj , z , zi , zj ) ;
 
 	// 4. if R < 0 , R <- R + B and Q <- Q - 1
