@@ -16,7 +16,6 @@ function macro ( t , r , A , B ) {
 
 	mul( r , a , 0 , a.length , b , 0 , b.length , c , 0 , c.length ) ;
 
-	//t.is( C.toString(r), c.join(''));
 	const result = stringify( r , r , c , 0 , c.length ) ;
 
 	t.is( C.toString(r), result ) ;
