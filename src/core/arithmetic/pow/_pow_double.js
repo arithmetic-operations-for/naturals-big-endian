@@ -16,7 +16,7 @@ import { _mul } from '..' ;
  * @param {Number} ci <code>a</code> left.
  * @param {Number} cj <code>b</code> right.
  */
-export function _powd (r, x, a, ai, aj, c, ci, cj) {
+export function _pow_double (r, x, a, ai, aj, c, ci, cj) {
 
 	if ( x === 0 ) {
 		c[cj-1] = 1;
@@ -32,7 +32,7 @@ export function _powd (r, x, a, ai, aj, c, ci, cj) {
 		const n = (aj - ai) * p;
 		const u = _zeros(n);
 
-		_powd(r, p, a, ai, aj, u, 0, n);
+		_pow_double(r, p, a, ai, aj, u, 0, n);
 		_mul(r, u, 0, n, a, ai, aj, c, ci, cj); // largest must be put first
 	}
 
@@ -42,7 +42,7 @@ export function _powd (r, x, a, ai, aj, c, ci, cj) {
 		const n = (aj - ai) * p;
 		const u = _zeros(n);
 
-		_powd(r, p, a, ai, aj, u, 0, n);
+		_pow_double(r, p, a, ai, aj, u, 0, n);
 		_mul(r, u, 0, n, u, 0, n, c, ci, cj);
 
 	}

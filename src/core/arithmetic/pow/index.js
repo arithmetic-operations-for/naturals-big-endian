@@ -1,1 +1,1 @@
-export * from './_powd' ;
+export * from './_pow_double' ;
