@@ -1,6 +1,6 @@
 import test from 'ava' ;
 
-import { parse , stringify , _trim_positive , _euclidean_algorithm } from '../../../../../src' ;
+import { parse , stringify , _trim_positive , euclidean_algorithm } from '../../../../../src' ;
 
 function macro ( t , A , B , D ) {
 
@@ -14,14 +14,17 @@ function macro ( t , A , B , D ) {
 	const bj = b.length ;
 	const bi = _trim_positive( b , 0 , bj ) ;
 
-	const [ d , di , dj ] = _euclidean_algorithm( r , a , ai , aj , b , bi , bj ) ;
+	const [ d , di , dj ] = euclidean_algorithm( r , a , ai , aj , b , bi , bj ) ;
 
 	// only works with r = 10
-	t.is( dj - di , D.length , 'length' ) ;
+	t.is( D.length , dj - di , 'length' ) ;
 
 	const GCD = stringify( r , 10 , d , di , dj ) ;
 
 	t.is( GCD , D , 'value' ) ;
+
+	const [ d2 , d2i , d2j ] = euclidean_algorithm( r , b , bi , bj , a , ai , aj ) ;
+	t.deepEqual([d, di, dj], [d2, d2i, d2j], 'can reverse operands') ;
 
 }
 

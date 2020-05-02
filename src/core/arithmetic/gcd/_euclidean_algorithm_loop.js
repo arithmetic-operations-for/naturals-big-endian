@@ -23,12 +23,11 @@ import { _trim_positive } from '../../../core/convert'
  * Return as [ d , di , dj ], where d is the array and di and dj are its left
  * and right bounds.
  */
-export function _euclidean_algorithm ( r , a , ai , aj , b , bi , bj ) {
+export function _euclidean_algorithm_loop ( r , a , ai , aj , b , bi , bj  ) {
 
 	// TODO use _imod when implemented
-
 	const _j = aj - ai ;
-	const _ = _zeros( 0 , _j ) ;
+	const _ = _zeros(_j) ;
 
 	while ( true ) {
 

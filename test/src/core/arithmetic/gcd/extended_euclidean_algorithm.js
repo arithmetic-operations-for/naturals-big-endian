@@ -1,11 +1,8 @@
 import test from 'ava' ;
 
-import { parse , stringify , _trim_positive , _extended_euclidean_algorithm } from '../../../../../src' ;
+import { parse , stringify , _trim_positive , extended_euclidean_algorithm } from '../../../../../src' ;
 
 function macro ( t , A , B , D , X , Y , U , V , steps ) {
-
-	// NOTE _extended_euclidean_algorithm does NOT allow leading zeros and
-	// requires A > B.
 
 	const r = 10 ;
 
@@ -17,7 +14,7 @@ function macro ( t , A , B , D , X , Y , U , V , steps ) {
 	const bj = b.length ;
 	const bi = _trim_positive( b , 0 , bj ) ;
 
-	const [ d , x , y , u , v , s ] = _extended_euclidean_algorithm( r , a , ai , aj , b , bi , bj ) ;
+	const [ d , x , y , u , v , s ] = extended_euclidean_algorithm( r , a , ai , aj , b , bi , bj ) ;
 
 	const _d = stringify( r , 10 , d , 0 , d.length ) ;
 	const _x = stringify( r , 10 , x , 0 , x.length ) ;
@@ -25,15 +22,12 @@ function macro ( t , A , B , D , X , Y , U , V , steps ) {
 	const _u = stringify( r , 10 , u , 0 , u.length ) ;
 	const _v = stringify( r , 10 , v , 0 , v.length ) ;
 
-	//console.debug(d, u, v);
-	//console.debug(macro.title(null, A, B, _u, _v, _d));
-
+	t.is( steps , s , 'steps' ) ;
 	t.is( D , _d , 'd' ) ;
 	t.is( X , _x , 'x' ) ;
 	t.is( Y , _y , 'y' ) ;
 	t.is( U , _u , 'u' ) ;
 	t.is( V , _v , 'v' ) ;
-	t.is( steps , s , 'steps' ) ;
 
 }
 
@@ -45,6 +39,7 @@ macro.title = ( _ , A , B , D , X , Y , U , V , steps ) => `GCD(${A}, ${B}) = ${
 // vd = a <=> v = a / d
 // => ua - vb = ab/d - ba/d = 0
 test( macro ,   '1' ,  '0' , '1' , '1' ,   '0' ,  '0' ,   '1' , 1 ) ;
+test( macro ,   '0' ,  '1' , '1' , '0' ,   '1' ,  '1' ,   '0' , 2 ) ;
 test( macro , '240' , '46' , '2' , '9' ,  '47' , '23' , '120' , 6 ) ;
 test( macro , '999' ,  '1' , '1' , '0' ,   '1' ,  '1' , '999' , 2 ) ;
 test( macro , '999' ,  '2' , '1' , '1' , '499' ,  '2' , '999' , 3 ) ;
