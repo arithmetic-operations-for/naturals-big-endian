@@ -1,1424 +1,1178 @@
 window.esdocSearchIndex = [
   [
-    "aureooms-js-integer-big-endian/src/1-new/thresholds/1-division.js~threshold_div_dc",
+    "@aureooms/js-integer-big-endian/src/core/thresholds/division.js~threshold_div_dc",
     "variable/index.html#static-variable-THRESHOLD_DIV_DC",
-    "<span>THRESHOLD_DIV_DC</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/thresholds/1-division.js</span>",
+    "<span>THRESHOLD_DIV_DC</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/thresholds/division.js</span>",
     "variable"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/thresholds/0-multiplication.js~threshold_mul_toom22",
+    "@aureooms/js-integer-big-endian/src/core/thresholds/multiplication.js~threshold_mul_toom22",
     "variable/index.html#static-variable-THRESHOLD_MUL_TOOM22",
-    "<span>THRESHOLD_MUL_TOOM22</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/thresholds/0-multiplication.js</span>",
+    "<span>THRESHOLD_MUL_TOOM22</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/thresholds/multiplication.js</span>",
     "variable"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/arithmetic/add/_add.js~_add",
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/add/_add.js~_add",
     "function/index.html#static-function-_ADD",
-    "<span>_ADD</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/arithmetic/add/_ADD.js</span>",
+    "<span>_ADD</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/add/_ADD.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/compare/_cmp.js~_cmp",
+    "@aureooms/js-integer-big-endian/src/core/compare/_cmp.js~_cmp",
     "function/index.html#static-function-_CMP",
-    "<span>_CMP</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/compare/_CMP.js</span>",
+    "<span>_CMP</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/compare/_CMP.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/compare/_cmp_n.js~_cmp_n",
+    "@aureooms/js-integer-big-endian/src/core/compare/_cmp_n.js~_cmp_n",
     "function/index.html#static-function-_CMP_n",
-    "<span>_CMP_n</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/compare/_CMP_n.js</span>",
+    "<span>_CMP_n</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/compare/_CMP_n.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/arithmetic/add/_iadd.js~_iadd",
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/add/_iadd.js~_iadd",
     "function/index.html#static-function-_IADD",
-    "<span>_IADD</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/arithmetic/add/_IADD.js</span>",
+    "<span>_IADD</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/add/_IADD.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/0-legacy/others/pow/ebs.js~__ebs__",
-    "function/index.html#static-function-__ebs__",
-    "<span>__ebs__</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/0-legacy/others/pow/ebs.js</span>",
-    "function"
-  ],
-  [
-    "aureooms-js-integer-big-endian/src/0-legacy/others/pow/pow.js~__pow__",
-    "function/index.html#static-function-__pow__",
-    "<span>__pow__</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/0-legacy/others/pow/pow.js</span>",
-    "function"
-  ],
-  [
-    "aureooms-js-integer-big-endian/src/1-new/arithmetic/add/_add.js~_add",
-    "function/index.html#static-function-_add",
-    "<span>_add</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/arithmetic/add/_add.js</span>",
-    "function"
-  ],
-  [
-    "aureooms-js-integer-big-endian/src/1-new/array/_alloc.js~_alloc",
+    "@aureooms/js-integer-big-endian/src/core/array/_alloc.js~_alloc",
     "function/index.html#static-function-_alloc",
-    "<span>_alloc</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/array/_alloc.js</span>",
+    "<span>_alloc</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/array/_alloc.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/array/_build.js~_build",
+    "@aureooms/js-integer-big-endian/src/core/array/_build.js~_build",
     "function/index.html#static-function-_build",
-    "<span>_build</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/array/_build.js</span>",
+    "<span>_build</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/array/_build.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/convert/_chr.js~_chr",
+    "@aureooms/js-integer-big-endian/src/core/convert/_chr.js~_chr",
     "function/index.html#static-function-_chr",
-    "<span>_chr</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/convert/_chr.js</span>",
+    "<span>_chr</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/_chr.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/compare/_cmp.js~_cmp",
+    "@aureooms/js-integer-big-endian/src/core/compare/_cmp.js~_cmp",
     "function/index.html#static-function-_cmp",
-    "<span>_cmp</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/compare/_cmp.js</span>",
+    "<span>_cmp</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/compare/_cmp.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/convert/_convert.js~_convert",
+    "@aureooms/js-integer-big-endian/src/core/convert/_convert.js~_convert",
     "function/index.html#static-function-_convert",
-    "<span>_convert</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/convert/_convert.js</span>",
+    "<span>_convert</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/_convert.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/convert/_convert_slow.js~_convert_slow",
+    "@aureooms/js-integer-big-endian/src/core/convert/_convert_slow.js~_convert_slow",
     "function/index.html#static-function-_convert_slow",
-    "<span>_convert_slow</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/convert/_convert_slow.js</span>",
+    "<span>_convert_slow</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/_convert_slow.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/convert/_convert_to_larger.js~_convert_to_larger",
+    "@aureooms/js-integer-big-endian/src/core/convert/_convert_to_larger.js~_convert_to_larger",
     "function/index.html#static-function-_convert_to_larger",
-    "<span>_convert_to_larger</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/convert/_convert_to_larger.js</span>",
+    "<span>_convert_to_larger</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/_convert_to_larger.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/convert/_convert_to_larger_fast.js~_convert_to_larger_fast",
+    "@aureooms/js-integer-big-endian/src/core/convert/_convert_to_larger_fast.js~_convert_to_larger_fast",
     "function/index.html#static-function-_convert_to_larger_fast",
-    "<span>_convert_to_larger_fast</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/convert/_convert_to_larger_fast.js</span>",
+    "<span>_convert_to_larger_fast</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/_convert_to_larger_fast.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/convert/_convert_to_smaller.js~_convert_to_smaller",
+    "@aureooms/js-integer-big-endian/src/core/convert/_convert_to_smaller.js~_convert_to_smaller",
     "function/index.html#static-function-_convert_to_smaller",
-    "<span>_convert_to_smaller</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/convert/_convert_to_smaller.js</span>",
+    "<span>_convert_to_smaller</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/_convert_to_smaller.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/convert/_convert_to_smaller_fast.js~_convert_to_smaller_fast",
+    "@aureooms/js-integer-big-endian/src/core/convert/_convert_to_smaller_fast.js~_convert_to_smaller_fast",
     "function/index.html#static-function-_convert_to_smaller_fast",
-    "<span>_convert_to_smaller_fast</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/convert/_convert_to_smaller_fast.js</span>",
+    "<span>_convert_to_smaller_fast</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/_convert_to_smaller_fast.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/array/_copy.js~_copy",
+    "@aureooms/js-integer-big-endian/src/core/array/_copy.js~_copy",
     "function/index.html#static-function-_copy",
-    "<span>_copy</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/array/_copy.js</span>",
+    "<span>_copy</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/array/_copy.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/arithmetic/div/_dc_div.js~_dc_div",
-    "function/index.html#static-function-_dc_div",
-    "<span>_dc_div</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/arithmetic/div/_dc_div.js</span>",
-    "function"
-  ],
-  [
-    "aureooms-js-integer-big-endian/src/1-new/arithmetic/div/_dc_div_21.js~_dc_div_21",
-    "function/index.html#static-function-_dc_div_21",
-    "<span>_dc_div_21</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/arithmetic/div/_dc_div_21.js</span>",
-    "function"
-  ],
-  [
-    "aureooms-js-integer-big-endian/src/1-new/arithmetic/div/_dc_div_32.js~_dc_div_32",
-    "function/index.html#static-function-_dc_div_32",
-    "<span>_dc_div_32</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/arithmetic/div/_dc_div_32.js</span>",
-    "function"
-  ],
-  [
-    "aureooms-js-integer-big-endian/src/1-new/arithmetic/sub/_decrement.js~_decrement",
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/sub/_decrement.js~_decrement",
     "function/index.html#static-function-_decrement",
-    "<span>_decrement</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/arithmetic/sub/_decrement.js</span>",
+    "<span>_decrement</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/sub/_decrement.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/2-api/_div.js~_div",
-    "function/index.html#static-function-_div",
-    "<span>_div</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/2-api/_div.js</span>",
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_div_limb_with_prefix.js~_div_limb_with_prefix",
+    "function/index.html#static-function-_div_limb_with_prefix",
+    "<span>_div_limb_with_prefix</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/div/_div_limb_with_prefix.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/arithmetic/div/_div_limb.js~_div_limb",
-    "function/index.html#static-function-_div_limb",
-    "<span>_div_limb</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/arithmetic/div/_div_limb.js</span>",
+    "@aureooms/js-integer-big-endian/src/api/_divmod.js~_divmod",
+    "function/index.html#static-function-_divmod",
+    "<span>_divmod</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/_divmod.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/arithmetic/div/_div_limb_partial.js~_div_limb_partial",
-    "function/index.html#static-function-_div_limb_partial",
-    "<span>_div_limb_partial</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/arithmetic/div/_div_limb_partial.js</span>",
+    "@aureooms/js-integer-big-endian/src/core/compare/_eq.js~_eq",
+    "function/index.html#static-function-_eq",
+    "<span>_eq</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/compare/_eq.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/arithmetic/div/_div_limb_partial_fast.js~_div_limb_partial_fast",
-    "function/index.html#static-function-_div_limb_partial_fast",
-    "<span>_div_limb_partial_fast</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/arithmetic/div/_div_limb_partial_fast.js</span>",
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/gcd/_euclidean_algorithm.js~_euclidean_algorithm",
+    "function/index.html#static-function-_euclidean_algorithm",
+    "<span>_euclidean_algorithm</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/gcd/_euclidean_algorithm.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/compare/_eq.js~_eq",
-    "variable/index.html#static-variable-_eq",
-    "<span>_eq</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/compare/_eq.js</span>",
-    "variable"
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/gcd/_extended_euclidean_algorithm.js~_extended_euclidean_algorithm",
+    "function/index.html#static-function-_extended_euclidean_algorithm",
+    "<span>_extended_euclidean_algorithm</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/gcd/_extended_euclidean_algorithm.js</span>",
+    "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/array/_fill.js~_fill",
+    "@aureooms/js-integer-big-endian/src/core/array/_fill.js~_fill",
     "function/index.html#static-function-_fill",
-    "<span>_fill</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/array/_fill.js</span>",
+    "<span>_fill</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/array/_fill.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/compare/_ge.js~_ge",
-    "variable/index.html#static-variable-_ge",
-    "<span>_ge</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/compare/_ge.js</span>",
-    "variable"
-  ],
-  [
-    "aureooms-js-integer-big-endian/src/1-new/compare/_gt.js~_gt",
-    "variable/index.html#static-variable-_gt",
-    "<span>_gt</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/compare/_gt.js</span>",
-    "variable"
-  ],
-  [
-    "aureooms-js-integer-big-endian/src/1-new/arithmetic/add/_iadd.js~_iadd",
-    "function/index.html#static-function-_iadd",
-    "<span>_iadd</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/arithmetic/add/_iadd.js</span>",
+    "@aureooms/js-integer-big-endian/src/core/compare/_ge.js~_ge",
+    "function/index.html#static-function-_ge",
+    "<span>_ge</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/compare/_ge.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/arithmetic/mul/_imul_limb.js~_imul_limb",
+    "@aureooms/js-integer-big-endian/src/core/compare/_gt.js~_gt",
+    "function/index.html#static-function-_gt",
+    "<span>_gt</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/compare/_gt.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/api/_idivmod.js~_idivmod",
+    "function/index.html#static-function-_idivmod",
+    "<span>_idivmod</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/_idivmod.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_dc.js~_idivmod_dc",
+    "function/index.html#static-function-_idivmod_dc",
+    "<span>_idivmod_dc</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_dc.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_dc_21.js~_idivmod_dc_21",
+    "function/index.html#static-function-_idivmod_dc_21",
+    "<span>_idivmod_dc_21</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_dc_21.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_dc_32.js~_idivmod_dc_32",
+    "function/index.html#static-function-_idivmod_dc_32",
+    "<span>_idivmod_dc_32</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_dc_32.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_limb.js~_idivmod_limb",
+    "function/index.html#static-function-_idivmod_limb",
+    "<span>_idivmod_limb</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_limb.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_limb_with_prefix.js~_idivmod_limb_with_prefix",
+    "function/index.html#static-function-_idivmod_limb_with_prefix",
+    "<span>_idivmod_limb_with_prefix</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_limb_with_prefix.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_schoolbook.js~_idivmod_schoolbook",
+    "function/index.html#static-function-_idivmod_schoolbook",
+    "<span>_idivmod_schoolbook</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_schoolbook.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_schoolbook_large_divisor.js~_idivmod_schoolbook_large_divisor",
+    "function/index.html#static-function-_idivmod_schoolbook_large_divisor",
+    "<span>_idivmod_schoolbook_large_divisor</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_schoolbook_large_divisor.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_schoolbook_subroutine.js~_idivmod_schoolbook_subroutine",
+    "function/index.html#static-function-_idivmod_schoolbook_subroutine",
+    "<span>_idivmod_schoolbook_subroutine</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_schoolbook_subroutine.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_slow.js~_idivmod_slow",
+    "function/index.html#static-function-_idivmod_slow",
+    "<span>_idivmod_slow</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_slow.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_imul_limb.js~_imul_limb",
     "function/index.html#static-function-_imul_limb",
-    "<span>_imul_limb</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/arithmetic/mul/_imul_limb.js</span>",
+    "<span>_imul_limb</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_imul_limb.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/arithmetic/add/_increment.js~_increment",
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/add/_increment.js~_increment",
     "function/index.html#static-function-_increment",
-    "<span>_increment</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/arithmetic/add/_increment.js</span>",
+    "<span>_increment</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/add/_increment.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/convert/_int.js~_int",
+    "@aureooms/js-integer-big-endian/src/core/convert/_int.js~_int",
     "function/index.html#static-function-_int",
-    "<span>_int</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/convert/_int.js</span>",
+    "<span>_int</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/_int.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/arithmetic/sub/_isub.js~_isub",
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/sub/_isub.js~_isub",
     "function/index.html#static-function-_isub",
-    "<span>_isub</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/arithmetic/sub/_isub.js</span>",
+    "<span>_isub</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/sub/_isub.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/compare/_jz.js~_jz",
+    "@aureooms/js-integer-big-endian/src/core/compare/_jz.js~_jz",
     "function/index.html#static-function-_jz",
-    "<span>_jz</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/compare/_jz.js</span>",
+    "<span>_jz</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/compare/_jz.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/arithmetic/mul/_karatsuba.js~_karatsuba",
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_karatsuba.js~_karatsuba",
     "function/index.html#static-function-_karatsuba",
-    "<span>_karatsuba</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/arithmetic/mul/_karatsuba.js</span>",
+    "<span>_karatsuba</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_karatsuba.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/compare/_le.js~_le",
-    "variable/index.html#static-variable-_le",
-    "<span>_le</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/compare/_le.js</span>",
-    "variable"
+    "@aureooms/js-integer-big-endian/src/core/compare/_le.js~_le",
+    "function/index.html#static-function-_le",
+    "<span>_le</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/compare/_le.js</span>",
+    "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/convert/_log.js~_log",
+    "@aureooms/js-integer-big-endian/src/core/convert/_log.js~_log",
     "function/index.html#static-function-_log",
-    "<span>_log</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/convert/_log.js</span>",
+    "<span>_log</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/_log.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/compare/_lt.js~_lt",
-    "variable/index.html#static-variable-_lt",
-    "<span>_lt</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/compare/_lt.js</span>",
-    "variable"
+    "@aureooms/js-integer-big-endian/src/core/compare/_lt.js~_lt",
+    "function/index.html#static-function-_lt",
+    "<span>_lt</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/compare/_lt.js</span>",
+    "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/arithmetic/div/_mod_limb.js~_mod_limb",
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_mod_limb.js~_mod_limb",
     "function/index.html#static-function-_mod_limb",
-    "<span>_mod_limb</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/arithmetic/div/_mod_limb.js</span>",
+    "<span>_mod_limb</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/div/_mod_limb.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/2-api/_mul.js~_mul",
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_mul.js~_mul",
     "function/index.html#static-function-_mul",
-    "<span>_mul</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/2-api/_mul.js</span>",
+    "<span>_mul</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_mul.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/arithmetic/mul/_mul_limb.js~_mul_limb",
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_mul_limb.js~_mul_limb",
     "function/index.html#static-function-_mul_limb",
-    "<span>_mul_limb</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/arithmetic/mul/_mul_limb.js</span>",
+    "<span>_mul_limb</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_mul_limb.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/compare/_ne.js~_ne",
-    "variable/index.html#static-variable-_ne",
-    "<span>_ne</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/compare/_ne.js</span>",
-    "variable"
+    "@aureooms/js-integer-big-endian/src/core/compare/_ne.js~_ne",
+    "function/index.html#static-function-_ne",
+    "<span>_ne</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/compare/_ne.js</span>",
+    "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/array/_reset.js~_reset",
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/pow/_powd.js~_powd",
+    "function/index.html#static-function-_powd",
+    "<span>_powd</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/pow/_powd.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/core/array/_reset.js~_reset",
     "function/index.html#static-function-_reset",
-    "<span>_reset</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/array/_reset.js</span>",
+    "<span>_reset</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/array/_reset.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/arithmetic/div/_schoolbook_div.js~_schoolbook_div",
-    "function/index.html#static-function-_schoolbook_div",
-    "<span>_schoolbook_div</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/arithmetic/div/_schoolbook_div.js</span>",
-    "function"
-  ],
-  [
-    "aureooms-js-integer-big-endian/src/1-new/arithmetic/div/_schoolbook_div_subroutine.js~_schoolbook_div_subroutine",
-    "function/index.html#static-function-_schoolbook_div_subroutine",
-    "<span>_schoolbook_div_subroutine</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/arithmetic/div/_schoolbook_div_subroutine.js</span>",
-    "function"
-  ],
-  [
-    "aureooms-js-integer-big-endian/src/1-new/arithmetic/mul/_schoolbook_mul.js~_schoolbook_mul",
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_schoolbook_mul.js~_schoolbook_mul",
     "function/index.html#static-function-_schoolbook_mul",
-    "<span>_schoolbook_mul</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/arithmetic/mul/_schoolbook_mul.js</span>",
+    "<span>_schoolbook_mul</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_schoolbook_mul.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/arithmetic/sub/_sub.js~_sub",
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/sub/_sub.js~_sub",
     "function/index.html#static-function-_sub",
-    "<span>_sub</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/arithmetic/sub/_sub.js</span>",
+    "<span>_sub</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/sub/_sub.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/convert/_to_string.js~_to_string",
+    "@aureooms/js-integer-big-endian/src/core/convert/_to_string.js~_to_string",
     "function/index.html#static-function-_to_string",
-    "<span>_to_string</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/convert/_to_string.js</span>",
+    "<span>_to_string</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/_to_string.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/arithmetic/mul/_toom22.js~_toom22",
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_toom22.js~_toom22",
     "variable/index.html#static-variable-_toom22",
-    "<span>_toom22</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/arithmetic/mul/_toom22.js</span>",
+    "<span>_toom22</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_toom22.js</span>",
     "variable"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/convert/_trim_positive.js~_trim_positive",
+    "@aureooms/js-integer-big-endian/src/core/convert/_trim_positive.js~_trim_positive",
     "function/index.html#static-function-_trim_positive",
-    "<span>_trim_positive</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/convert/_trim_positive.js</span>",
+    "<span>_trim_positive</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/_trim_positive.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/array/_zeros.js~_zeros",
+    "@aureooms/js-integer-big-endian/src/core/array/_zeros.js~_zeros",
     "function/index.html#static-function-_zeros",
-    "<span>_zeros</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/array/_zeros.js</span>",
+    "<span>_zeros</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/array/_zeros.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/0-legacy/binary/and/and.js~and",
-    "function/index.html#static-function-and",
-    "<span>and</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/0-legacy/binary/and/and.js</span>",
+    "@aureooms/js-integer-big-endian/src/api/add.js~add",
+    "function/index.html#static-function-add",
+    "<span>add</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/add.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/0-legacy/binary/and/and.js~band_t",
-    "function/index.html#static-function-band_t",
-    "<span>band_t</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/0-legacy/binary/and/and.js</span>",
-    "function"
-  ],
-  [
-    "aureooms-js-integer-big-endian/src/0-legacy/arithmetic/mul/mul53.js~bmul53_t",
-    "function/index.html#static-function-bmul53_t",
-    "<span>bmul53_t</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/0-legacy/arithmetic/mul/mul53.js</span>",
-    "function"
-  ],
-  [
-    "aureooms-js-integer-big-endian/src/1-new/convert/convert.js~convert",
+    "@aureooms/js-integer-big-endian/src/core/convert/convert.js~convert",
     "function/index.html#static-function-convert",
-    "<span>convert</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/convert/convert.js</span>",
+    "<span>convert</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/convert.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/convert/convert_keep_zeros.js~convert_keep_zeros",
+    "@aureooms/js-integer-big-endian/src/core/convert/convert_keep_zeros.js~convert_keep_zeros",
     "function/index.html#static-function-convert_keep_zeros",
-    "<span>convert_keep_zeros</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/convert/convert_keep_zeros.js</span>",
+    "<span>convert_keep_zeros</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/convert_keep_zeros.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/convert/parse.js~parse",
+    "@aureooms/js-integer-big-endian/src/api/iadd.js~iadd",
+    "function/index.html#static-function-iadd",
+    "<span>iadd</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/iadd.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/api/mul.js~mul",
+    "function/index.html#static-function-mul",
+    "<span>mul</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/mul.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/core/convert/parse.js~parse",
     "function/index.html#static-function-parse",
-    "<span>parse</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/convert/parse.js</span>",
+    "<span>parse</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/parse.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/convert/parse_keep_zeros.js~parse_keep_zeros",
+    "@aureooms/js-integer-big-endian/src/core/convert/parse_keep_zeros.js~parse_keep_zeros",
     "function/index.html#static-function-parse_keep_zeros",
-    "<span>parse_keep_zeros</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/convert/parse_keep_zeros.js</span>",
+    "<span>parse_keep_zeros</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/parse_keep_zeros.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/arithmetic/div/schoolbook_div.js~schoolbook_div",
-    "function/index.html#static-function-schoolbook_div",
-    "<span>schoolbook_div</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/arithmetic/div/schoolbook_div.js</span>",
-    "function"
-  ],
-  [
-    "aureooms-js-integer-big-endian/src/1-new/arithmetic/div/slow_div.js~slow_div",
-    "function/index.html#static-function-slow_div",
-    "<span>slow_div</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/arithmetic/div/slow_div.js</span>",
-    "function"
-  ],
-  [
-    "aureooms-js-integer-big-endian/src/1-new/convert/stringify.js~stringify",
+    "@aureooms/js-integer-big-endian/src/core/convert/stringify.js~stringify",
     "function/index.html#static-function-stringify",
-    "<span>stringify</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/convert/stringify.js</span>",
+    "<span>stringify</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/stringify.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/convert/stringify_keep_zeros.js~stringify_keep_zeros",
+    "@aureooms/js-integer-big-endian/src/core/convert/stringify_keep_zeros.js~stringify_keep_zeros",
     "function/index.html#static-function-stringify_keep_zeros",
-    "<span>stringify_keep_zeros</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/convert/stringify_keep_zeros.js</span>",
+    "<span>stringify_keep_zeros</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/stringify_keep_zeros.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/convert/translate.js~translate",
+    "@aureooms/js-integer-big-endian/src/core/convert/translate.js~translate",
     "function/index.html#static-function-translate",
-    "<span>translate</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/convert/translate.js</span>",
+    "<span>translate</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/translate.js</span>",
     "function"
   ],
   [
-    "aureooms-js-integer-big-endian/src/1-new/convert/trim_natural.js~trim_natural",
+    "@aureooms/js-integer-big-endian/src/core/convert/trim_natural.js~trim_natural",
     "function/index.html#static-function-trim_natural",
-    "<span>trim_natural</span> <span class=\"search-result-import-path\">aureooms-js-integer-big-endian/src/1-new/convert/trim_natural.js</span>",
+    "<span>trim_natural</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/trim_natural.js</span>",
     "function"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~array",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Array",
+    "src/.external-ecmascript.js~array",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "src/.external-ecmascript.js~Array",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~arraybuffer",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~ArrayBuffer",
+    "src/.external-ecmascript.js~arraybuffer",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "src/.external-ecmascript.js~ArrayBuffer",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~boolean",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Boolean",
+    "src/.external-ecmascript.js~boolean",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "src/.external-ecmascript.js~Boolean",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~dataview",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~DataView",
+    "src/.external-ecmascript.js~dataview",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "src/.external-ecmascript.js~DataView",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~date",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Date",
+    "src/.external-ecmascript.js~date",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "src/.external-ecmascript.js~Date",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~error",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Error",
+    "src/.external-ecmascript.js~error",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "src/.external-ecmascript.js~Error",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~evalerror",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~EvalError",
+    "src/.external-ecmascript.js~evalerror",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "src/.external-ecmascript.js~EvalError",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~float32array",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Float32Array",
+    "src/.external-ecmascript.js~float32array",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "src/.external-ecmascript.js~Float32Array",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~float64array",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Float64Array",
+    "src/.external-ecmascript.js~float64array",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "src/.external-ecmascript.js~Float64Array",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~function",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Function",
+    "src/.external-ecmascript.js~function",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "src/.external-ecmascript.js~Function",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~generator",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Generator",
+    "src/.external-ecmascript.js~generator",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "src/.external-ecmascript.js~Generator",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~generatorfunction",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~GeneratorFunction",
+    "src/.external-ecmascript.js~generatorfunction",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "src/.external-ecmascript.js~GeneratorFunction",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~infinity",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Infinity",
+    "src/.external-ecmascript.js~infinity",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "src/.external-ecmascript.js~Infinity",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~int16array",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Int16Array",
+    "src/.external-ecmascript.js~int16array",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "src/.external-ecmascript.js~Int16Array",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~int32array",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Int32Array",
+    "src/.external-ecmascript.js~int32array",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "src/.external-ecmascript.js~Int32Array",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~int8array",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Int8Array",
+    "src/.external-ecmascript.js~int8array",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "src/.external-ecmascript.js~Int8Array",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~internalerror",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~InternalError",
+    "src/.external-ecmascript.js~internalerror",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "src/.external-ecmascript.js~InternalError",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~json",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~JSON",
+    "src/.external-ecmascript.js~json",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "src/.external-ecmascript.js~JSON",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~map",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Map",
+    "src/.external-ecmascript.js~map",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "src/.external-ecmascript.js~Map",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~nan",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~NaN",
+    "src/.external-ecmascript.js~nan",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "src/.external-ecmascript.js~NaN",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~number",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Number",
+    "src/.external-ecmascript.js~number",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "src/.external-ecmascript.js~Number",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~object",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Object",
+    "src/.external-ecmascript.js~object",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "src/.external-ecmascript.js~Object",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~promise",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Promise",
+    "src/.external-ecmascript.js~promise",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "src/.external-ecmascript.js~Promise",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~proxy",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Proxy",
+    "src/.external-ecmascript.js~proxy",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "src/.external-ecmascript.js~Proxy",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~rangeerror",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~RangeError",
+    "src/.external-ecmascript.js~rangeerror",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "src/.external-ecmascript.js~RangeError",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~referenceerror",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~ReferenceError",
+    "src/.external-ecmascript.js~referenceerror",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "src/.external-ecmascript.js~ReferenceError",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~reflect",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Reflect",
+    "src/.external-ecmascript.js~reflect",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "src/.external-ecmascript.js~Reflect",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~regexp",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~RegExp",
+    "src/.external-ecmascript.js~regexp",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "src/.external-ecmascript.js~RegExp",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~set",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Set",
+    "src/.external-ecmascript.js~set",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "src/.external-ecmascript.js~Set",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~string",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~String",
+    "src/.external-ecmascript.js~string",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "src/.external-ecmascript.js~String",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~symbol",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Symbol",
+    "src/.external-ecmascript.js~symbol",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "src/.external-ecmascript.js~Symbol",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~syntaxerror",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~SyntaxError",
+    "src/.external-ecmascript.js~syntaxerror",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "src/.external-ecmascript.js~SyntaxError",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~typeerror",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~TypeError",
+    "src/.external-ecmascript.js~typeerror",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "src/.external-ecmascript.js~TypeError",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~urierror",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~URIError",
+    "src/.external-ecmascript.js~urierror",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "src/.external-ecmascript.js~URIError",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~uint16array",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Uint16Array",
+    "src/.external-ecmascript.js~uint16array",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "src/.external-ecmascript.js~Uint16Array",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~uint32array",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Uint32Array",
+    "src/.external-ecmascript.js~uint32array",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "src/.external-ecmascript.js~Uint32Array",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~uint8array",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Uint8Array",
+    "src/.external-ecmascript.js~uint8array",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "src/.external-ecmascript.js~Uint8Array",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~uint8clampedarray",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Uint8ClampedArray",
+    "src/.external-ecmascript.js~uint8clampedarray",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "src/.external-ecmascript.js~Uint8ClampedArray",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~weakmap",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~WeakMap",
+    "src/.external-ecmascript.js~weakmap",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "src/.external-ecmascript.js~WeakMap",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~weakset",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~WeakSet",
+    "src/.external-ecmascript.js~weakset",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "src/.external-ecmascript.js~WeakSet",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~boolean",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~boolean",
+    "src/.external-ecmascript.js~boolean",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "src/.external-ecmascript.js~boolean",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~function",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~function",
+    "src/.external-ecmascript.js~function",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "src/.external-ecmascript.js~function",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~null",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~null",
+    "src/.external-ecmascript.js~null",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "src/.external-ecmascript.js~null",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~number",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~number",
+    "src/.external-ecmascript.js~number",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "src/.external-ecmascript.js~number",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~object",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~object",
+    "src/.external-ecmascript.js~object",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "src/.external-ecmascript.js~object",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~string",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~string",
+    "src/.external-ecmascript.js~string",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "src/.external-ecmascript.js~string",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~undefined",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~undefined",
+    "src/.external-ecmascript.js~undefined",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "src/.external-ecmascript.js~undefined",
     "external"
   ],
   [
-    "builtinexternal/webapiexternal.js~audiocontext",
-    "external/index.html",
-    "BuiltinExternal/WebAPIExternal.js~AudioContext",
-    "external"
-  ],
-  [
-    "builtinexternal/webapiexternal.js~canvasrenderingcontext2d",
-    "external/index.html",
-    "BuiltinExternal/WebAPIExternal.js~CanvasRenderingContext2D",
-    "external"
-  ],
-  [
-    "builtinexternal/webapiexternal.js~documentfragment",
-    "external/index.html",
-    "BuiltinExternal/WebAPIExternal.js~DocumentFragment",
-    "external"
-  ],
-  [
-    "builtinexternal/webapiexternal.js~element",
-    "external/index.html",
-    "BuiltinExternal/WebAPIExternal.js~Element",
-    "external"
-  ],
-  [
-    "builtinexternal/webapiexternal.js~event",
-    "external/index.html",
-    "BuiltinExternal/WebAPIExternal.js~Event",
-    "external"
-  ],
-  [
-    "builtinexternal/webapiexternal.js~node",
-    "external/index.html",
-    "BuiltinExternal/WebAPIExternal.js~Node",
-    "external"
-  ],
-  [
-    "builtinexternal/webapiexternal.js~nodelist",
-    "external/index.html",
-    "BuiltinExternal/WebAPIExternal.js~NodeList",
-    "external"
-  ],
-  [
-    "builtinexternal/webapiexternal.js~xmlhttprequest",
-    "external/index.html",
-    "BuiltinExternal/WebAPIExternal.js~XMLHttpRequest",
-    "external"
-  ],
-  [
-    "src/0-legacy/abs/abs.js",
-    "file/src/0-legacy/abs/abs.js.html",
-    "src/0-legacy/abs/abs.js",
-    "file"
-  ],
-  [
-    "src/0-legacy/abs/index.js",
-    "file/src/0-legacy/abs/index.js.html",
-    "src/0-legacy/abs/index.js",
-    "file"
-  ],
-  [
-    "src/0-legacy/arithmetic/div/fourierdiv.js",
-    "file/src/0-legacy/arithmetic/div/fourierdiv.js.html",
-    "src/0-legacy/arithmetic/div/fourierdiv.js",
-    "file"
-  ],
-  [
-    "src/0-legacy/arithmetic/div/index.js",
-    "file/src/0-legacy/arithmetic/div/index.js.html",
-    "src/0-legacy/arithmetic/div/index.js",
-    "file"
-  ],
-  [
-    "src/0-legacy/arithmetic/div/knuthd.js",
-    "file/src/0-legacy/arithmetic/div/knuthd.js.html",
-    "src/0-legacy/arithmetic/div/knuthd.js",
-    "file"
-  ],
-  [
-    "src/0-legacy/arithmetic/index.js",
-    "file/src/0-legacy/arithmetic/index.js.html",
-    "src/0-legacy/arithmetic/index.js",
-    "file"
-  ],
-  [
-    "src/0-legacy/arithmetic/mul/index.js",
-    "file/src/0-legacy/arithmetic/mul/index.js.html",
-    "src/0-legacy/arithmetic/mul/index.js",
-    "file"
-  ],
-  [
-    "src/0-legacy/arithmetic/mul/mul53.js",
-    "file/src/0-legacy/arithmetic/mul/mul53.js.html",
-    "src/0-legacy/arithmetic/mul/mul53.js",
-    "file"
-  ],
-  [
-    "src/0-legacy/arithmetic/mul/toomcook.js",
-    "file/src/0-legacy/arithmetic/mul/toomcook.js.html",
-    "src/0-legacy/arithmetic/mul/toomcook.js",
-    "file"
-  ],
-  [
-    "src/0-legacy/binary/and/and.js",
-    "file/src/0-legacy/binary/and/and.js.html",
-    "src/0-legacy/binary/and/and.js",
-    "file"
-  ],
-  [
-    "src/0-legacy/binary/and/index.js",
-    "file/src/0-legacy/binary/and/index.js.html",
-    "src/0-legacy/binary/and/index.js",
-    "file"
-  ],
-  [
-    "src/0-legacy/binary/index.js",
-    "file/src/0-legacy/binary/index.js.html",
-    "src/0-legacy/binary/index.js",
-    "file"
-  ],
-  [
-    "src/0-legacy/binary/not/index.js",
-    "file/src/0-legacy/binary/not/index.js.html",
-    "src/0-legacy/binary/not/index.js",
-    "file"
-  ],
-  [
-    "src/0-legacy/binary/not/not.js",
-    "file/src/0-legacy/binary/not/not.js.html",
-    "src/0-legacy/binary/not/not.js",
-    "file"
-  ],
-  [
-    "src/0-legacy/binary/or/index.js",
-    "file/src/0-legacy/binary/or/index.js.html",
-    "src/0-legacy/binary/or/index.js",
-    "file"
-  ],
-  [
-    "src/0-legacy/binary/or/or.js",
-    "file/src/0-legacy/binary/or/or.js.html",
-    "src/0-legacy/binary/or/or.js",
-    "file"
-  ],
-  [
-    "src/0-legacy/binary/xor/index.js",
-    "file/src/0-legacy/binary/xor/index.js.html",
-    "src/0-legacy/binary/xor/index.js",
-    "file"
-  ],
-  [
-    "src/0-legacy/binary/xor/xor.js",
-    "file/src/0-legacy/binary/xor/xor.js.html",
-    "src/0-legacy/binary/xor/xor.js",
-    "file"
-  ],
-  [
-    "src/0-legacy/index.js",
-    "file/src/0-legacy/index.js.html",
-    "src/0-legacy/index.js",
-    "file"
-  ],
-  [
-    "src/0-legacy/others/gcd/gcd.js",
-    "file/src/0-legacy/others/gcd/gcd.js.html",
-    "src/0-legacy/others/gcd/gcd.js",
-    "file"
-  ],
-  [
-    "src/0-legacy/others/gcd/index.js",
-    "file/src/0-legacy/others/gcd/index.js.html",
-    "src/0-legacy/others/gcd/index.js",
-    "file"
-  ],
-  [
-    "src/0-legacy/others/index.js",
-    "file/src/0-legacy/others/index.js.html",
-    "src/0-legacy/others/index.js",
-    "file"
-  ],
-  [
-    "src/0-legacy/others/lcm/index.js",
-    "file/src/0-legacy/others/lcm/index.js.html",
-    "src/0-legacy/others/lcm/index.js",
-    "file"
-  ],
-  [
-    "src/0-legacy/others/lcm/lcm.js",
-    "file/src/0-legacy/others/lcm/lcm.js.html",
-    "src/0-legacy/others/lcm/lcm.js",
-    "file"
-  ],
-  [
-    "src/0-legacy/others/log/index.js",
-    "file/src/0-legacy/others/log/index.js.html",
-    "src/0-legacy/others/log/index.js",
-    "file"
-  ],
-  [
-    "src/0-legacy/others/log/log.js",
-    "file/src/0-legacy/others/log/log.js.html",
-    "src/0-legacy/others/log/log.js",
-    "file"
-  ],
-  [
-    "src/0-legacy/others/mod/index.js",
-    "file/src/0-legacy/others/mod/index.js.html",
-    "src/0-legacy/others/mod/index.js",
-    "file"
-  ],
-  [
-    "src/0-legacy/others/mod/mod.js",
-    "file/src/0-legacy/others/mod/mod.js.html",
-    "src/0-legacy/others/mod/mod.js",
-    "file"
-  ],
-  [
-    "src/0-legacy/others/mod/montgomery.js",
-    "file/src/0-legacy/others/mod/montgomery.js.html",
-    "src/0-legacy/others/mod/montgomery.js",
-    "file"
-  ],
-  [
-    "src/0-legacy/others/mpow/index.js",
-    "file/src/0-legacy/others/mpow/index.js.html",
-    "src/0-legacy/others/mpow/index.js",
-    "file"
-  ],
-  [
-    "src/0-legacy/others/mpow/mpow.js",
-    "file/src/0-legacy/others/mpow/mpow.js.html",
-    "src/0-legacy/others/mpow/mpow.js",
-    "file"
-  ],
-  [
-    "src/0-legacy/others/neg/index.js",
-    "file/src/0-legacy/others/neg/index.js.html",
-    "src/0-legacy/others/neg/index.js",
-    "file"
-  ],
-  [
-    "src/0-legacy/others/neg/neg.js",
-    "file/src/0-legacy/others/neg/neg.js.html",
-    "src/0-legacy/others/neg/neg.js",
-    "file"
-  ],
-  [
-    "src/0-legacy/others/pow/ebs.js",
-    "file/src/0-legacy/others/pow/ebs.js.html",
-    "src/0-legacy/others/pow/ebs.js",
+    "src/api/_divmod.js",
+    "file/src/api/_divmod.js.html",
+    "src/api/_divmod.js",
     "file"
   ],
   [
-    "src/0-legacy/others/pow/index.js",
-    "file/src/0-legacy/others/pow/index.js.html",
-    "src/0-legacy/others/pow/index.js",
+    "src/api/_idivmod.js",
+    "file/src/api/_idivmod.js.html",
+    "src/api/_idivmod.js",
     "file"
   ],
   [
-    "src/0-legacy/others/pow/pow.js",
-    "file/src/0-legacy/others/pow/pow.js.html",
-    "src/0-legacy/others/pow/pow.js",
+    "src/api/add.js",
+    "file/src/api/add.js.html",
+    "src/api/add.js",
     "file"
   ],
   [
-    "src/0-legacy/others/sha/index.js",
-    "file/src/0-legacy/others/sha/index.js.html",
-    "src/0-legacy/others/sha/index.js",
+    "src/api/iadd.js",
+    "file/src/api/iadd.js.html",
+    "src/api/iadd.js",
     "file"
   ],
   [
-    "src/0-legacy/others/sha/sha.js",
-    "file/src/0-legacy/others/sha/sha.js.html",
-    "src/0-legacy/others/sha/sha.js",
+    "src/api/index.js",
+    "file/src/api/index.js.html",
+    "src/api/index.js",
     "file"
   ],
   [
-    "src/0-legacy/others/shl/index.js",
-    "file/src/0-legacy/others/shl/index.js.html",
-    "src/0-legacy/others/shl/index.js",
+    "src/api/mul.js",
+    "file/src/api/mul.js.html",
+    "src/api/mul.js",
     "file"
   ],
   [
-    "src/0-legacy/others/shl/shl.js",
-    "file/src/0-legacy/others/shl/shl.js.html",
-    "src/0-legacy/others/shl/shl.js",
+    "src/core/arithmetic/add/_add.js",
+    "file/src/core/arithmetic/add/_ADD.js.html",
+    "src/core/arithmetic/add/_ADD.js",
     "file"
   ],
   [
-    "src/1-new/arithmetic/add/_add.js",
-    "file/src/1-new/arithmetic/add/_ADD.js.html",
-    "src/1-new/arithmetic/add/_ADD.js",
+    "src/core/arithmetic/add/_iadd.js",
+    "file/src/core/arithmetic/add/_IADD.js.html",
+    "src/core/arithmetic/add/_IADD.js",
     "file"
   ],
   [
-    "src/1-new/arithmetic/add/_iadd.js",
-    "file/src/1-new/arithmetic/add/_IADD.js.html",
-    "src/1-new/arithmetic/add/_IADD.js",
+    "src/core/arithmetic/add/_increment.js",
+    "file/src/core/arithmetic/add/_increment.js.html",
+    "src/core/arithmetic/add/_increment.js",
     "file"
   ],
   [
-    "src/1-new/arithmetic/add/_add.js",
-    "file/src/1-new/arithmetic/add/_add.js.html",
-    "src/1-new/arithmetic/add/_add.js",
+    "src/core/arithmetic/add/index.js",
+    "file/src/core/arithmetic/add/index.js.html",
+    "src/core/arithmetic/add/index.js",
     "file"
   ],
   [
-    "src/1-new/arithmetic/add/_iadd.js",
-    "file/src/1-new/arithmetic/add/_iadd.js.html",
-    "src/1-new/arithmetic/add/_iadd.js",
+    "src/core/arithmetic/div/_div_limb_with_prefix.js",
+    "file/src/core/arithmetic/div/_div_limb_with_prefix.js.html",
+    "src/core/arithmetic/div/_div_limb_with_prefix.js",
     "file"
   ],
   [
-    "src/1-new/arithmetic/add/_increment.js",
-    "file/src/1-new/arithmetic/add/_increment.js.html",
-    "src/1-new/arithmetic/add/_increment.js",
+    "src/core/arithmetic/div/_idivmod_dc.js",
+    "file/src/core/arithmetic/div/_idivmod_dc.js.html",
+    "src/core/arithmetic/div/_idivmod_dc.js",
     "file"
   ],
   [
-    "src/1-new/arithmetic/add/index.js",
-    "file/src/1-new/arithmetic/add/index.js.html",
-    "src/1-new/arithmetic/add/index.js",
+    "src/core/arithmetic/div/_idivmod_dc_21.js",
+    "file/src/core/arithmetic/div/_idivmod_dc_21.js.html",
+    "src/core/arithmetic/div/_idivmod_dc_21.js",
     "file"
   ],
   [
-    "src/1-new/arithmetic/div/_dc_div.js",
-    "file/src/1-new/arithmetic/div/_dc_div.js.html",
-    "src/1-new/arithmetic/div/_dc_div.js",
+    "src/core/arithmetic/div/_idivmod_dc_32.js",
+    "file/src/core/arithmetic/div/_idivmod_dc_32.js.html",
+    "src/core/arithmetic/div/_idivmod_dc_32.js",
     "file"
   ],
   [
-    "src/1-new/arithmetic/div/_dc_div_21.js",
-    "file/src/1-new/arithmetic/div/_dc_div_21.js.html",
-    "src/1-new/arithmetic/div/_dc_div_21.js",
+    "src/core/arithmetic/div/_idivmod_limb.js",
+    "file/src/core/arithmetic/div/_idivmod_limb.js.html",
+    "src/core/arithmetic/div/_idivmod_limb.js",
     "file"
   ],
   [
-    "src/1-new/arithmetic/div/_dc_div_32.js",
-    "file/src/1-new/arithmetic/div/_dc_div_32.js.html",
-    "src/1-new/arithmetic/div/_dc_div_32.js",
+    "src/core/arithmetic/div/_idivmod_limb_with_prefix.js",
+    "file/src/core/arithmetic/div/_idivmod_limb_with_prefix.js.html",
+    "src/core/arithmetic/div/_idivmod_limb_with_prefix.js",
     "file"
   ],
   [
-    "src/1-new/arithmetic/div/_div_limb.js",
-    "file/src/1-new/arithmetic/div/_div_limb.js.html",
-    "src/1-new/arithmetic/div/_div_limb.js",
+    "src/core/arithmetic/div/_idivmod_schoolbook.js",
+    "file/src/core/arithmetic/div/_idivmod_schoolbook.js.html",
+    "src/core/arithmetic/div/_idivmod_schoolbook.js",
     "file"
   ],
   [
-    "src/1-new/arithmetic/div/_div_limb_partial.js",
-    "file/src/1-new/arithmetic/div/_div_limb_partial.js.html",
-    "src/1-new/arithmetic/div/_div_limb_partial.js",
+    "src/core/arithmetic/div/_idivmod_schoolbook_large_divisor.js",
+    "file/src/core/arithmetic/div/_idivmod_schoolbook_large_divisor.js.html",
+    "src/core/arithmetic/div/_idivmod_schoolbook_large_divisor.js",
     "file"
   ],
   [
-    "src/1-new/arithmetic/div/_div_limb_partial_fast.js",
-    "file/src/1-new/arithmetic/div/_div_limb_partial_fast.js.html",
-    "src/1-new/arithmetic/div/_div_limb_partial_fast.js",
+    "src/core/arithmetic/div/_idivmod_schoolbook_subroutine.js",
+    "file/src/core/arithmetic/div/_idivmod_schoolbook_subroutine.js.html",
+    "src/core/arithmetic/div/_idivmod_schoolbook_subroutine.js",
     "file"
   ],
   [
-    "src/1-new/arithmetic/div/_mod_limb.js",
-    "file/src/1-new/arithmetic/div/_mod_limb.js.html",
-    "src/1-new/arithmetic/div/_mod_limb.js",
+    "src/core/arithmetic/div/_idivmod_slow.js",
+    "file/src/core/arithmetic/div/_idivmod_slow.js.html",
+    "src/core/arithmetic/div/_idivmod_slow.js",
     "file"
   ],
   [
-    "src/1-new/arithmetic/div/_schoolbook_div.js",
-    "file/src/1-new/arithmetic/div/_schoolbook_div.js.html",
-    "src/1-new/arithmetic/div/_schoolbook_div.js",
+    "src/core/arithmetic/div/_mod_limb.js",
+    "file/src/core/arithmetic/div/_mod_limb.js.html",
+    "src/core/arithmetic/div/_mod_limb.js",
     "file"
   ],
   [
-    "src/1-new/arithmetic/div/_schoolbook_div_subroutine.js",
-    "file/src/1-new/arithmetic/div/_schoolbook_div_subroutine.js.html",
-    "src/1-new/arithmetic/div/_schoolbook_div_subroutine.js",
+    "src/core/arithmetic/div/index.js",
+    "file/src/core/arithmetic/div/index.js.html",
+    "src/core/arithmetic/div/index.js",
     "file"
   ],
   [
-    "src/1-new/arithmetic/div/index.js",
-    "file/src/1-new/arithmetic/div/index.js.html",
-    "src/1-new/arithmetic/div/index.js",
+    "src/core/arithmetic/gcd/_euclidean_algorithm.js",
+    "file/src/core/arithmetic/gcd/_euclidean_algorithm.js.html",
+    "src/core/arithmetic/gcd/_euclidean_algorithm.js",
     "file"
   ],
   [
-    "src/1-new/arithmetic/div/schoolbook_div.js",
-    "file/src/1-new/arithmetic/div/schoolbook_div.js.html",
-    "src/1-new/arithmetic/div/schoolbook_div.js",
+    "src/core/arithmetic/gcd/_extended_euclidean_algorithm.js",
+    "file/src/core/arithmetic/gcd/_extended_euclidean_algorithm.js.html",
+    "src/core/arithmetic/gcd/_extended_euclidean_algorithm.js",
     "file"
   ],
   [
-    "src/1-new/arithmetic/div/slow_div.js",
-    "file/src/1-new/arithmetic/div/slow_div.js.html",
-    "src/1-new/arithmetic/div/slow_div.js",
+    "src/core/arithmetic/gcd/index.js",
+    "file/src/core/arithmetic/gcd/index.js.html",
+    "src/core/arithmetic/gcd/index.js",
     "file"
   ],
   [
-    "src/1-new/arithmetic/index.js",
-    "file/src/1-new/arithmetic/index.js.html",
-    "src/1-new/arithmetic/index.js",
+    "src/core/arithmetic/index.js",
+    "file/src/core/arithmetic/index.js.html",
+    "src/core/arithmetic/index.js",
     "file"
   ],
   [
-    "src/1-new/arithmetic/mul/_imul_limb.js",
-    "file/src/1-new/arithmetic/mul/_imul_limb.js.html",
-    "src/1-new/arithmetic/mul/_imul_limb.js",
+    "src/core/arithmetic/mul/_imul_limb.js",
+    "file/src/core/arithmetic/mul/_imul_limb.js.html",
+    "src/core/arithmetic/mul/_imul_limb.js",
     "file"
   ],
   [
-    "src/1-new/arithmetic/mul/_karatsuba.js",
-    "file/src/1-new/arithmetic/mul/_karatsuba.js.html",
-    "src/1-new/arithmetic/mul/_karatsuba.js",
+    "src/core/arithmetic/mul/_karatsuba.js",
+    "file/src/core/arithmetic/mul/_karatsuba.js.html",
+    "src/core/arithmetic/mul/_karatsuba.js",
     "file"
   ],
   [
-    "src/1-new/arithmetic/mul/_mul_limb.js",
-    "file/src/1-new/arithmetic/mul/_mul_limb.js.html",
-    "src/1-new/arithmetic/mul/_mul_limb.js",
+    "src/core/arithmetic/mul/_mul.js",
+    "file/src/core/arithmetic/mul/_mul.js.html",
+    "src/core/arithmetic/mul/_mul.js",
     "file"
   ],
   [
-    "src/1-new/arithmetic/mul/_schoolbook_mul.js",
-    "file/src/1-new/arithmetic/mul/_schoolbook_mul.js.html",
-    "src/1-new/arithmetic/mul/_schoolbook_mul.js",
+    "src/core/arithmetic/mul/_mul_limb.js",
+    "file/src/core/arithmetic/mul/_mul_limb.js.html",
+    "src/core/arithmetic/mul/_mul_limb.js",
     "file"
   ],
   [
-    "src/1-new/arithmetic/mul/_toom22.js",
-    "file/src/1-new/arithmetic/mul/_toom22.js.html",
-    "src/1-new/arithmetic/mul/_toom22.js",
+    "src/core/arithmetic/mul/_schoolbook_mul.js",
+    "file/src/core/arithmetic/mul/_schoolbook_mul.js.html",
+    "src/core/arithmetic/mul/_schoolbook_mul.js",
     "file"
   ],
   [
-    "src/1-new/arithmetic/mul/index.js",
-    "file/src/1-new/arithmetic/mul/index.js.html",
-    "src/1-new/arithmetic/mul/index.js",
+    "src/core/arithmetic/mul/_toom22.js",
+    "file/src/core/arithmetic/mul/_toom22.js.html",
+    "src/core/arithmetic/mul/_toom22.js",
     "file"
   ],
   [
-    "src/1-new/arithmetic/sub/_decrement.js",
-    "file/src/1-new/arithmetic/sub/_decrement.js.html",
-    "src/1-new/arithmetic/sub/_decrement.js",
+    "src/core/arithmetic/mul/index.js",
+    "file/src/core/arithmetic/mul/index.js.html",
+    "src/core/arithmetic/mul/index.js",
     "file"
   ],
   [
-    "src/1-new/arithmetic/sub/_isub.js",
-    "file/src/1-new/arithmetic/sub/_isub.js.html",
-    "src/1-new/arithmetic/sub/_isub.js",
+    "src/core/arithmetic/pow/_powd.js",
+    "file/src/core/arithmetic/pow/_powd.js.html",
+    "src/core/arithmetic/pow/_powd.js",
     "file"
   ],
   [
-    "src/1-new/arithmetic/sub/_sub.js",
-    "file/src/1-new/arithmetic/sub/_sub.js.html",
-    "src/1-new/arithmetic/sub/_sub.js",
+    "src/core/arithmetic/pow/index.js",
+    "file/src/core/arithmetic/pow/index.js.html",
+    "src/core/arithmetic/pow/index.js",
     "file"
   ],
   [
-    "src/1-new/arithmetic/sub/index.js",
-    "file/src/1-new/arithmetic/sub/index.js.html",
-    "src/1-new/arithmetic/sub/index.js",
+    "src/core/arithmetic/sub/_decrement.js",
+    "file/src/core/arithmetic/sub/_decrement.js.html",
+    "src/core/arithmetic/sub/_decrement.js",
     "file"
   ],
   [
-    "src/1-new/array/_alloc.js",
-    "file/src/1-new/array/_alloc.js.html",
-    "src/1-new/array/_alloc.js",
+    "src/core/arithmetic/sub/_isub.js",
+    "file/src/core/arithmetic/sub/_isub.js.html",
+    "src/core/arithmetic/sub/_isub.js",
     "file"
   ],
   [
-    "src/1-new/array/_build.js",
-    "file/src/1-new/array/_build.js.html",
-    "src/1-new/array/_build.js",
+    "src/core/arithmetic/sub/_sub.js",
+    "file/src/core/arithmetic/sub/_sub.js.html",
+    "src/core/arithmetic/sub/_sub.js",
     "file"
   ],
   [
-    "src/1-new/array/_copy.js",
-    "file/src/1-new/array/_copy.js.html",
-    "src/1-new/array/_copy.js",
+    "src/core/arithmetic/sub/index.js",
+    "file/src/core/arithmetic/sub/index.js.html",
+    "src/core/arithmetic/sub/index.js",
     "file"
   ],
   [
-    "src/1-new/array/_fill.js",
-    "file/src/1-new/array/_fill.js.html",
-    "src/1-new/array/_fill.js",
+    "src/core/array/_alloc.js",
+    "file/src/core/array/_alloc.js.html",
+    "src/core/array/_alloc.js",
     "file"
   ],
   [
-    "src/1-new/array/_reset.js",
-    "file/src/1-new/array/_reset.js.html",
-    "src/1-new/array/_reset.js",
+    "src/core/array/_build.js",
+    "file/src/core/array/_build.js.html",
+    "src/core/array/_build.js",
     "file"
   ],
   [
-    "src/1-new/array/_zeros.js",
-    "file/src/1-new/array/_zeros.js.html",
-    "src/1-new/array/_zeros.js",
+    "src/core/array/_copy.js",
+    "file/src/core/array/_copy.js.html",
+    "src/core/array/_copy.js",
     "file"
   ],
   [
-    "src/1-new/array/index.js",
-    "file/src/1-new/array/index.js.html",
-    "src/1-new/array/index.js",
+    "src/core/array/_fill.js",
+    "file/src/core/array/_fill.js.html",
+    "src/core/array/_fill.js",
     "file"
   ],
   [
-    "src/1-new/compare/_cmp.js",
-    "file/src/1-new/compare/_CMP.js.html",
-    "src/1-new/compare/_CMP.js",
+    "src/core/array/_reset.js",
+    "file/src/core/array/_reset.js.html",
+    "src/core/array/_reset.js",
     "file"
   ],
   [
-    "src/1-new/compare/_cmp_n.js",
-    "file/src/1-new/compare/_CMP_n.js.html",
-    "src/1-new/compare/_CMP_n.js",
+    "src/core/array/_zeros.js",
+    "file/src/core/array/_zeros.js.html",
+    "src/core/array/_zeros.js",
     "file"
   ],
   [
-    "src/1-new/compare/_cmp.js",
-    "file/src/1-new/compare/_cmp.js.html",
-    "src/1-new/compare/_cmp.js",
+    "src/core/array/index.js",
+    "file/src/core/array/index.js.html",
+    "src/core/array/index.js",
     "file"
   ],
   [
-    "src/1-new/compare/_eq.js",
-    "file/src/1-new/compare/_eq.js.html",
-    "src/1-new/compare/_eq.js",
+    "src/core/compare/_cmp.js",
+    "file/src/core/compare/_CMP.js.html",
+    "src/core/compare/_CMP.js",
     "file"
   ],
   [
-    "src/1-new/compare/_ge.js",
-    "file/src/1-new/compare/_ge.js.html",
-    "src/1-new/compare/_ge.js",
+    "src/core/compare/_cmp_n.js",
+    "file/src/core/compare/_CMP_n.js.html",
+    "src/core/compare/_CMP_n.js",
     "file"
   ],
   [
-    "src/1-new/compare/_gt.js",
-    "file/src/1-new/compare/_gt.js.html",
-    "src/1-new/compare/_gt.js",
+    "src/core/compare/_cmp.js",
+    "file/src/core/compare/_cmp.js.html",
+    "src/core/compare/_cmp.js",
     "file"
   ],
   [
-    "src/1-new/compare/_jz.js",
-    "file/src/1-new/compare/_jz.js.html",
-    "src/1-new/compare/_jz.js",
+    "src/core/compare/_eq.js",
+    "file/src/core/compare/_eq.js.html",
+    "src/core/compare/_eq.js",
     "file"
   ],
   [
-    "src/1-new/compare/_le.js",
-    "file/src/1-new/compare/_le.js.html",
-    "src/1-new/compare/_le.js",
+    "src/core/compare/_ge.js",
+    "file/src/core/compare/_ge.js.html",
+    "src/core/compare/_ge.js",
     "file"
   ],
   [
-    "src/1-new/compare/_lt.js",
-    "file/src/1-new/compare/_lt.js.html",
-    "src/1-new/compare/_lt.js",
+    "src/core/compare/_gt.js",
+    "file/src/core/compare/_gt.js.html",
+    "src/core/compare/_gt.js",
     "file"
   ],
   [
-    "src/1-new/compare/_ne.js",
-    "file/src/1-new/compare/_ne.js.html",
-    "src/1-new/compare/_ne.js",
+    "src/core/compare/_jz.js",
+    "file/src/core/compare/_jz.js.html",
+    "src/core/compare/_jz.js",
     "file"
   ],
   [
-    "src/1-new/compare/index.js",
-    "file/src/1-new/compare/index.js.html",
-    "src/1-new/compare/index.js",
+    "src/core/compare/_le.js",
+    "file/src/core/compare/_le.js.html",
+    "src/core/compare/_le.js",
     "file"
   ],
   [
-    "src/1-new/convert/_chr.js",
-    "file/src/1-new/convert/_chr.js.html",
-    "src/1-new/convert/_chr.js",
+    "src/core/compare/_lt.js",
+    "file/src/core/compare/_lt.js.html",
+    "src/core/compare/_lt.js",
     "file"
   ],
   [
-    "src/1-new/convert/_convert.js",
-    "file/src/1-new/convert/_convert.js.html",
-    "src/1-new/convert/_convert.js",
+    "src/core/compare/_ne.js",
+    "file/src/core/compare/_ne.js.html",
+    "src/core/compare/_ne.js",
     "file"
   ],
   [
-    "src/1-new/convert/_convert_slow.js",
-    "file/src/1-new/convert/_convert_slow.js.html",
-    "src/1-new/convert/_convert_slow.js",
+    "src/core/compare/index.js",
+    "file/src/core/compare/index.js.html",
+    "src/core/compare/index.js",
     "file"
   ],
   [
-    "src/1-new/convert/_convert_to_larger.js",
-    "file/src/1-new/convert/_convert_to_larger.js.html",
-    "src/1-new/convert/_convert_to_larger.js",
+    "src/core/convert/_chr.js",
+    "file/src/core/convert/_chr.js.html",
+    "src/core/convert/_chr.js",
     "file"
   ],
   [
-    "src/1-new/convert/_convert_to_larger_fast.js",
-    "file/src/1-new/convert/_convert_to_larger_fast.js.html",
-    "src/1-new/convert/_convert_to_larger_fast.js",
+    "src/core/convert/_convert.js",
+    "file/src/core/convert/_convert.js.html",
+    "src/core/convert/_convert.js",
     "file"
   ],
   [
-    "src/1-new/convert/_convert_to_smaller.js",
-    "file/src/1-new/convert/_convert_to_smaller.js.html",
-    "src/1-new/convert/_convert_to_smaller.js",
+    "src/core/convert/_convert_slow.js",
+    "file/src/core/convert/_convert_slow.js.html",
+    "src/core/convert/_convert_slow.js",
     "file"
   ],
   [
-    "src/1-new/convert/_convert_to_smaller_fast.js",
-    "file/src/1-new/convert/_convert_to_smaller_fast.js.html",
-    "src/1-new/convert/_convert_to_smaller_fast.js",
+    "src/core/convert/_convert_to_larger.js",
+    "file/src/core/convert/_convert_to_larger.js.html",
+    "src/core/convert/_convert_to_larger.js",
     "file"
   ],
   [
-    "src/1-new/convert/_int.js",
-    "file/src/1-new/convert/_int.js.html",
-    "src/1-new/convert/_int.js",
+    "src/core/convert/_convert_to_larger_fast.js",
+    "file/src/core/convert/_convert_to_larger_fast.js.html",
+    "src/core/convert/_convert_to_larger_fast.js",
     "file"
   ],
   [
-    "src/1-new/convert/_log.js",
-    "file/src/1-new/convert/_log.js.html",
-    "src/1-new/convert/_log.js",
+    "src/core/convert/_convert_to_smaller.js",
+    "file/src/core/convert/_convert_to_smaller.js.html",
+    "src/core/convert/_convert_to_smaller.js",
     "file"
   ],
   [
-    "src/1-new/convert/_to_string.js",
-    "file/src/1-new/convert/_to_string.js.html",
-    "src/1-new/convert/_to_string.js",
+    "src/core/convert/_convert_to_smaller_fast.js",
+    "file/src/core/convert/_convert_to_smaller_fast.js.html",
+    "src/core/convert/_convert_to_smaller_fast.js",
     "file"
   ],
   [
-    "src/1-new/convert/_trim_positive.js",
-    "file/src/1-new/convert/_trim_positive.js.html",
-    "src/1-new/convert/_trim_positive.js",
+    "src/core/convert/_int.js",
+    "file/src/core/convert/_int.js.html",
+    "src/core/convert/_int.js",
     "file"
   ],
   [
-    "src/1-new/convert/convert.js",
-    "file/src/1-new/convert/convert.js.html",
-    "src/1-new/convert/convert.js",
+    "src/core/convert/_log.js",
+    "file/src/core/convert/_log.js.html",
+    "src/core/convert/_log.js",
     "file"
   ],
   [
-    "src/1-new/convert/convert_keep_zeros.js",
-    "file/src/1-new/convert/convert_keep_zeros.js.html",
-    "src/1-new/convert/convert_keep_zeros.js",
+    "src/core/convert/_to_string.js",
+    "file/src/core/convert/_to_string.js.html",
+    "src/core/convert/_to_string.js",
     "file"
   ],
   [
-    "src/1-new/convert/index.js",
-    "file/src/1-new/convert/index.js.html",
-    "src/1-new/convert/index.js",
+    "src/core/convert/_trim_positive.js",
+    "file/src/core/convert/_trim_positive.js.html",
+    "src/core/convert/_trim_positive.js",
     "file"
   ],
   [
-    "src/1-new/convert/parse.js",
-    "file/src/1-new/convert/parse.js.html",
-    "src/1-new/convert/parse.js",
+    "src/core/convert/convert.js",
+    "file/src/core/convert/convert.js.html",
+    "src/core/convert/convert.js",
     "file"
   ],
   [
-    "src/1-new/convert/parse_keep_zeros.js",
-    "file/src/1-new/convert/parse_keep_zeros.js.html",
-    "src/1-new/convert/parse_keep_zeros.js",
+    "src/core/convert/convert_keep_zeros.js",
+    "file/src/core/convert/convert_keep_zeros.js.html",
+    "src/core/convert/convert_keep_zeros.js",
     "file"
   ],
   [
-    "src/1-new/convert/stringify.js",
-    "file/src/1-new/convert/stringify.js.html",
-    "src/1-new/convert/stringify.js",
+    "src/core/convert/index.js",
+    "file/src/core/convert/index.js.html",
+    "src/core/convert/index.js",
     "file"
   ],
   [
-    "src/1-new/convert/stringify_keep_zeros.js",
-    "file/src/1-new/convert/stringify_keep_zeros.js.html",
-    "src/1-new/convert/stringify_keep_zeros.js",
+    "src/core/convert/parse.js",
+    "file/src/core/convert/parse.js.html",
+    "src/core/convert/parse.js",
     "file"
   ],
   [
-    "src/1-new/convert/translate.js",
-    "file/src/1-new/convert/translate.js.html",
-    "src/1-new/convert/translate.js",
+    "src/core/convert/parse_keep_zeros.js",
+    "file/src/core/convert/parse_keep_zeros.js.html",
+    "src/core/convert/parse_keep_zeros.js",
     "file"
   ],
   [
-    "src/1-new/convert/trim_natural.js",
-    "file/src/1-new/convert/trim_natural.js.html",
-    "src/1-new/convert/trim_natural.js",
+    "src/core/convert/stringify.js",
+    "file/src/core/convert/stringify.js.html",
+    "src/core/convert/stringify.js",
     "file"
   ],
   [
-    "src/1-new/index.js",
-    "file/src/1-new/index.js.html",
-    "src/1-new/index.js",
+    "src/core/convert/stringify_keep_zeros.js",
+    "file/src/core/convert/stringify_keep_zeros.js.html",
+    "src/core/convert/stringify_keep_zeros.js",
     "file"
   ],
   [
-    "src/1-new/thresholds/0-multiplication.js",
-    "file/src/1-new/thresholds/0-multiplication.js.html",
-    "src/1-new/thresholds/0-multiplication.js",
+    "src/core/convert/translate.js",
+    "file/src/core/convert/translate.js.html",
+    "src/core/convert/translate.js",
     "file"
   ],
   [
-    "src/1-new/thresholds/1-division.js",
-    "file/src/1-new/thresholds/1-division.js.html",
-    "src/1-new/thresholds/1-division.js",
+    "src/core/convert/trim_natural.js",
+    "file/src/core/convert/trim_natural.js.html",
+    "src/core/convert/trim_natural.js",
     "file"
   ],
   [
-    "src/1-new/thresholds/index.js",
-    "file/src/1-new/thresholds/index.js.html",
-    "src/1-new/thresholds/index.js",
+    "src/core/index.js",
+    "file/src/core/index.js.html",
+    "src/core/index.js",
     "file"
   ],
   [
-    "src/2-api/_div.js",
-    "file/src/2-api/_div.js.html",
-    "src/2-api/_div.js",
+    "src/core/thresholds/division.js",
+    "file/src/core/thresholds/division.js.html",
+    "src/core/thresholds/division.js",
     "file"
   ],
   [
-    "src/2-api/_mul.js",
-    "file/src/2-api/_mul.js.html",
-    "src/2-api/_mul.js",
+    "src/core/thresholds/index.js",
+    "file/src/core/thresholds/index.js.html",
+    "src/core/thresholds/index.js",
     "file"
   ],
   [
-    "src/2-api/index.js",
-    "file/src/2-api/index.js.html",
-    "src/2-api/index.js",
+    "src/core/thresholds/multiplication.js",
+    "file/src/core/thresholds/multiplication.js.html",
+    "src/core/thresholds/multiplication.js",
     "file"
   ],
   [
