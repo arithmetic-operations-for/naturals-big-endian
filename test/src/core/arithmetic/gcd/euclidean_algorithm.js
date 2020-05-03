@@ -8,11 +8,11 @@ function macro ( t , A , B , D ) {
 
 	const a = parse( 10 , r , A ) ;
 	const aj = a.length ;
-	const ai = _trim_positive( a , 0 , aj ) ;
+	const ai = 0 ;
 
 	const b = parse( 10 , r , B ) ;
 	const bj = b.length ;
-	const bi = _trim_positive( b , 0 , bj ) ;
+	const bi = 0 ;
 
 	const [ d , di , dj ] = euclidean_algorithm( r , a , ai , aj , b , bi , bj ) ;
 
