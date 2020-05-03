@@ -1,4 +1,4 @@
-import { _IADD } from '../core/arithmetic' ;
+import { _IADD } from '../../core/arithmetic' ;
 
 /**
  * Adds a big endian array to another ___in-place___.

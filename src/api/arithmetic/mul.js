@@ -1,4 +1,4 @@
-import { _mul } from '../core/arithmetic' ;
+import { _mul } from '../../core/arithmetic' ;
 
 /**
  *  - C is zero initialized,

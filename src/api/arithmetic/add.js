@@ -1,4 +1,4 @@
-import { _ADD } from '../core/arithmetic' ;
+import { _ADD } from '../../core/arithmetic' ;
 
 /**
  * Adds two big endian arrays and puts result in a destination array.
