@@ -109,7 +109,7 @@ export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , 
 	// 6. t_0 = T0 < 0
 	// 7. t_1 = T1 > 0
 
-	if ( R1i === R1j ) return 1 ;
+	if ( R1i === R1j ) return [ R0i , S0i , T0i , S1i , T1i , 1 ] ;
 
 	// Q_1 = (r_0 - r_2) / r_1
 	// R0 is r_0 and becomes r_2
@@ -145,7 +145,7 @@ export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , 
 	// 6. t_1 = T1 > 0
 	// 7. t_2 = T0 < 0
 
-	if ( R0i === R0j ) return 2 ;
+	if ( R0i === R0j ) return [ R1i , S0i , T0i , S1i , T1i , 2 ] ;
 
 	// Q_2 = (r_1 - r_{i+1}) / r_2
 	// R1 is r_1 and becomes r_3
@@ -194,7 +194,7 @@ export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , 
 		// 6. t_{i-1} = T0 < 0
 		// 7. t_i = T1 > 0
 
-		if ( R1i === R1j ) return steps ;
+		if ( R1i === R1j ) return [ R0i , S0i , T0i , S1i , T1i , steps ] ;
 		++steps;
 
 		// Q_i = (r_{i-1} - r_{i+1}) / r_i
@@ -251,7 +251,7 @@ export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , 
 		// 6. t_{i-1} = T1 > 0
 		// 7. t_i = T0 < 0
 
-		if ( R0i === R0j ) return steps ;
+		if ( R0i === R0j ) return [ R1i , S0i , T0i , S1i , T1i , steps ] ;
 		++steps;
 
 		// Q_i = (r_{i-1} - r_{i+1}) / r_i

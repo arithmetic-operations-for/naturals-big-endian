@@ -14,15 +14,16 @@ function macro ( t , A , B , D , X , Y , U , V , steps ) {
 	const bj = b.length ;
 	const bi = _trim_positive( b , 0 , bj ) ;
 
-	const [ d , x , y , u , v , s ] = extended_euclidean_algorithm( r , a , ai , aj , b , bi , bj ) ;
-
-	const _d = stringify( r , 10 , d , 0 , d.length ) ;
-	const _x = stringify( r , 10 , x , 0 , x.length ) ;
-	const _y = stringify( r , 10 , y , 0 , y.length ) ;
-	const _u = stringify( r , 10 , u , 0 , u.length ) ;
-	const _v = stringify( r , 10 , v , 0 , v.length ) ;
+	const [ d , di , x , xi , y , yi , u , ui , v , vi , s ] = extended_euclidean_algorithm( r , a , ai , aj , b , bi , bj ) ;
 
 	t.is( steps , s , 'steps' ) ;
+
+	const _d = stringify( r , 10 , d , di , d.length ) ;
+	const _x = stringify( r , 10 , x , xi , x.length ) ;
+	const _y = stringify( r , 10 , y , yi , y.length ) ;
+	const _u = stringify( r , 10 , u , ui , u.length ) ;
+	const _v = stringify( r , 10 , v , vi , v.length ) ;
+
 	t.is( D , _d , 'd' ) ;
 	t.is( X , _x , 'x' ) ;
 	t.is( Y , _y , 'y' ) ;
