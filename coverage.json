@@ -1,44 +1,141 @@
 {
-  "coverage": "57.35%",
-  "expectCount": 68,
-  "actualCount": 39,
+  "coverage": "58.9%",
+  "expectCount": 73,
+  "actualCount": 43,
   "files": {
-    "src/api/_divmod.js": {
+    "src/api/arithmetic/add/add.js": {
       "expectCount": 1,
       "actualCount": 1,
       "undocumentLines": []
     },
-    "src/api/_idivmod.js": {
+    "src/api/arithmetic/add/iadd.js": {
       "expectCount": 1,
       "actualCount": 1,
       "undocumentLines": []
     },
-    "src/api/add.js": {
+    "src/api/arithmetic/add/increment.js": {
       "expectCount": 1,
       "actualCount": 1,
       "undocumentLines": []
     },
-    "src/api/iadd.js": {
+    "src/api/arithmetic/div/_divmod.js": {
       "expectCount": 1,
       "actualCount": 1,
       "undocumentLines": []
     },
-    "src/api/mul.js": {
+    "src/api/arithmetic/div/_idivmod.js": {
       "expectCount": 1,
       "actualCount": 1,
       "undocumentLines": []
     },
-    "src/core/arithmetic/add/_ADD.js": {
+    "src/api/arithmetic/gcd/euclidean_algorithm.js": {
       "expectCount": 1,
       "actualCount": 1,
       "undocumentLines": []
     },
-    "src/core/arithmetic/add/_IADD.js": {
+    "src/api/arithmetic/gcd/extended_euclidean_algorithm.js": {
       "expectCount": 1,
       "actualCount": 1,
       "undocumentLines": []
     },
-    "src/core/arithmetic/add/_increment.js": {
+    "src/api/arithmetic/mul/mul.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/api/arithmetic/sub/decrement.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/api/compare/cmp.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "src/api/compare/eq.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "src/api/compare/ge.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "src/api/compare/gt.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "src/api/compare/jz.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/api/compare/le.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "src/api/compare/lt.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "src/api/compare/ne.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "src/api/convert/convert.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        4
+      ]
+    },
+    "src/api/convert/parse.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        4
+      ]
+    },
+    "src/api/convert/stringify.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        4
+      ]
+    },
+    "src/api/convert/translate.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        4
+      ]
+    },
+    "src/core/arithmetic/add/_add.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/core/arithmetic/add/_iadd.js": {
       "expectCount": 1,
       "actualCount": 1,
       "undocumentLines": []
@@ -98,12 +195,22 @@
       "actualCount": 1,
       "undocumentLines": []
     },
-    "src/core/arithmetic/gcd/_euclidean_algorithm.js": {
+    "src/core/arithmetic/gcd/_euclidean_algorithm_loop.js": {
       "expectCount": 1,
       "actualCount": 1,
       "undocumentLines": []
     },
     "src/core/arithmetic/gcd/_extended_euclidean_algorithm.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/core/arithmetic/gcd/_extended_euclidean_algorithm_allocate.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/core/arithmetic/gcd/_extended_euclidean_algorithm_loop.js": {
       "expectCount": 1,
       "actualCount": 1,
       "undocumentLines": []
@@ -140,12 +247,7 @@
         3
       ]
     },
-    "src/core/arithmetic/pow/_powd.js": {
-      "expectCount": 1,
-      "actualCount": 1,
-      "undocumentLines": []
-    },
-    "src/core/arithmetic/sub/_decrement.js": {
+    "src/core/arithmetic/pow/_pow_double.js": {
       "expectCount": 1,
       "actualCount": 1,
       "undocumentLines": []
@@ -199,72 +301,18 @@
       "expectCount": 1,
       "actualCount": 0,
       "undocumentLines": [
-        3
+        4
       ]
-    },
-    "src/core/compare/_CMP.js": {
-      "expectCount": 1,
-      "actualCount": 1,
-      "undocumentLines": []
-    },
-    "src/core/compare/_CMP_n.js": {
-      "expectCount": 1,
-      "actualCount": 1,
-      "undocumentLines": []
     },
     "src/core/compare/_cmp.js": {
       "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        3
-      ]
-    },
-    "src/core/compare/_eq.js": {
-      "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        3
-      ]
-    },
-    "src/core/compare/_ge.js": {
-      "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        3
-      ]
-    },
-    "src/core/compare/_gt.js": {
-      "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        3
-      ]
-    },
-    "src/core/compare/_jz.js": {
-      "expectCount": 1,
       "actualCount": 1,
       "undocumentLines": []
     },
-    "src/core/compare/_le.js": {
+    "src/core/compare/_cmp_n.js": {
       "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        3
-      ]
-    },
-    "src/core/compare/_lt.js": {
-      "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        3
-      ]
-    },
-    "src/core/compare/_ne.js": {
-      "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        3
-      ]
+      "actualCount": 1,
+      "undocumentLines": []
     },
     "src/core/convert/_chr.js": {
       "expectCount": 1,
@@ -331,13 +379,6 @@
         2
       ]
     },
-    "src/core/convert/convert.js": {
-      "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        3
-      ]
-    },
     "src/core/convert/convert_keep_zeros.js": {
       "expectCount": 1,
       "actualCount": 0,
@@ -345,39 +386,25 @@
         4
       ]
     },
-    "src/core/convert/parse.js": {
-      "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        3
-      ]
-    },
     "src/core/convert/parse_keep_zeros.js": {
       "expectCount": 1,
       "actualCount": 0,
       "undocumentLines": [
-        3
+        4
       ]
     },
     "src/core/convert/stringify.js": {
       "expectCount": 1,
       "actualCount": 0,
       "undocumentLines": [
-        3
+        4
       ]
     },
     "src/core/convert/stringify_keep_zeros.js": {
       "expectCount": 1,
       "actualCount": 0,
       "undocumentLines": [
-        3
-      ]
-    },
-    "src/core/convert/translate.js": {
-      "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        3
+        4
       ]
     },
     "src/core/convert/trim_natural.js": {

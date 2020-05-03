@@ -13,26 +13,8 @@ window.esdocSearchIndex = [
   ],
   [
     "@aureooms/js-integer-big-endian/src/core/arithmetic/add/_add.js~_add",
-    "function/index.html#static-function-_ADD",
-    "<span>_ADD</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/add/_ADD.js</span>",
-    "function"
-  ],
-  [
-    "@aureooms/js-integer-big-endian/src/core/compare/_cmp.js~_cmp",
-    "function/index.html#static-function-_CMP",
-    "<span>_CMP</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/compare/_CMP.js</span>",
-    "function"
-  ],
-  [
-    "@aureooms/js-integer-big-endian/src/core/compare/_cmp_n.js~_cmp_n",
-    "function/index.html#static-function-_CMP_n",
-    "<span>_CMP_n</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/compare/_CMP_n.js</span>",
-    "function"
-  ],
-  [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/add/_iadd.js~_iadd",
-    "function/index.html#static-function-_IADD",
-    "<span>_IADD</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/add/_IADD.js</span>",
+    "function/index.html#static-function-_add",
+    "<span>_add</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/add/_add.js</span>",
     "function"
   ],
   [
@@ -57,6 +39,12 @@ window.esdocSearchIndex = [
     "@aureooms/js-integer-big-endian/src/core/compare/_cmp.js~_cmp",
     "function/index.html#static-function-_cmp",
     "<span>_cmp</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/compare/_cmp.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/core/compare/_cmp_n.js~_cmp_n",
+    "function/index.html#static-function-_cmp_n",
+    "<span>_cmp_n</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/compare/_cmp_n.js</span>",
     "function"
   ],
   [
@@ -102,33 +90,21 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/sub/_decrement.js~_decrement",
-    "function/index.html#static-function-_decrement",
-    "<span>_decrement</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/sub/_decrement.js</span>",
-    "function"
-  ],
-  [
     "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_div_limb_with_prefix.js~_div_limb_with_prefix",
     "function/index.html#static-function-_div_limb_with_prefix",
     "<span>_div_limb_with_prefix</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/div/_div_limb_with_prefix.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/api/_divmod.js~_divmod",
+    "@aureooms/js-integer-big-endian/src/api/arithmetic/div/_divmod.js~_divmod",
     "function/index.html#static-function-_divmod",
-    "<span>_divmod</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/_divmod.js</span>",
+    "<span>_divmod</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/arithmetic/div/_divmod.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/compare/_eq.js~_eq",
-    "function/index.html#static-function-_eq",
-    "<span>_eq</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/compare/_eq.js</span>",
-    "function"
-  ],
-  [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/gcd/_euclidean_algorithm.js~_euclidean_algorithm",
-    "function/index.html#static-function-_euclidean_algorithm",
-    "<span>_euclidean_algorithm</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/gcd/_euclidean_algorithm.js</span>",
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/gcd/_euclidean_algorithm_loop.js~_euclidean_algorithm_loop",
+    "function/index.html#static-function-_euclidean_algorithm_loop",
+    "<span>_euclidean_algorithm_loop</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/gcd/_euclidean_algorithm_loop.js</span>",
     "function"
   ],
   [
@@ -138,27 +114,33 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/gcd/_extended_euclidean_algorithm_allocate.js~_extended_euclidean_algorithm_allocate",
+    "function/index.html#static-function-_extended_euclidean_algorithm_allocate",
+    "<span>_extended_euclidean_algorithm_allocate</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/gcd/_extended_euclidean_algorithm_allocate.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/gcd/_extended_euclidean_algorithm_loop.js~_extended_euclidean_algorithm_loop",
+    "function/index.html#static-function-_extended_euclidean_algorithm_loop",
+    "<span>_extended_euclidean_algorithm_loop</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/gcd/_extended_euclidean_algorithm_loop.js</span>",
+    "function"
+  ],
+  [
     "@aureooms/js-integer-big-endian/src/core/array/_fill.js~_fill",
     "function/index.html#static-function-_fill",
     "<span>_fill</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/array/_fill.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/compare/_ge.js~_ge",
-    "function/index.html#static-function-_ge",
-    "<span>_ge</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/compare/_ge.js</span>",
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/add/_iadd.js~_iadd",
+    "function/index.html#static-function-_iadd",
+    "<span>_iadd</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/add/_iadd.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/compare/_gt.js~_gt",
-    "function/index.html#static-function-_gt",
-    "<span>_gt</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/compare/_gt.js</span>",
-    "function"
-  ],
-  [
-    "@aureooms/js-integer-big-endian/src/api/_idivmod.js~_idivmod",
+    "@aureooms/js-integer-big-endian/src/api/arithmetic/div/_idivmod.js~_idivmod",
     "function/index.html#static-function-_idivmod",
-    "<span>_idivmod</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/_idivmod.js</span>",
+    "<span>_idivmod</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/arithmetic/div/_idivmod.js</span>",
     "function"
   ],
   [
@@ -222,12 +204,6 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/add/_increment.js~_increment",
-    "function/index.html#static-function-_increment",
-    "<span>_increment</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/add/_increment.js</span>",
-    "function"
-  ],
-  [
     "@aureooms/js-integer-big-endian/src/core/convert/_int.js~_int",
     "function/index.html#static-function-_int",
     "<span>_int</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/_int.js</span>",
@@ -240,33 +216,15 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/compare/_jz.js~_jz",
-    "function/index.html#static-function-_jz",
-    "<span>_jz</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/compare/_jz.js</span>",
-    "function"
-  ],
-  [
     "@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_karatsuba.js~_karatsuba",
     "function/index.html#static-function-_karatsuba",
     "<span>_karatsuba</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_karatsuba.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/compare/_le.js~_le",
-    "function/index.html#static-function-_le",
-    "<span>_le</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/compare/_le.js</span>",
-    "function"
-  ],
-  [
     "@aureooms/js-integer-big-endian/src/core/convert/_log.js~_log",
     "function/index.html#static-function-_log",
     "<span>_log</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/_log.js</span>",
-    "function"
-  ],
-  [
-    "@aureooms/js-integer-big-endian/src/core/compare/_lt.js~_lt",
-    "function/index.html#static-function-_lt",
-    "<span>_lt</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/compare/_lt.js</span>",
     "function"
   ],
   [
@@ -288,15 +246,9 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/compare/_ne.js~_ne",
-    "function/index.html#static-function-_ne",
-    "<span>_ne</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/compare/_ne.js</span>",
-    "function"
-  ],
-  [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/pow/_powd.js~_powd",
-    "function/index.html#static-function-_powd",
-    "<span>_powd</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/pow/_powd.js</span>",
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/pow/_pow_double.js~_pow_double",
+    "function/index.html#static-function-_pow_double",
+    "<span>_pow_double</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/pow/_pow_double.js</span>",
     "function"
   ],
   [
@@ -342,15 +294,21 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/api/add.js~add",
+    "@aureooms/js-integer-big-endian/src/api/arithmetic/add/add.js~add",
     "function/index.html#static-function-add",
-    "<span>add</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/add.js</span>",
+    "<span>add</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/arithmetic/add/add.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/convert/convert.js~convert",
+    "@aureooms/js-integer-big-endian/src/api/compare/cmp.js~cmp",
+    "function/index.html#static-function-cmp",
+    "<span>cmp</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/compare/cmp.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/api/convert/convert.js~convert",
     "function/index.html#static-function-convert",
-    "<span>convert</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/convert.js</span>",
+    "<span>convert</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/convert/convert.js</span>",
     "function"
   ],
   [
@@ -360,27 +318,99 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/api/iadd.js~iadd",
+    "@aureooms/js-integer-big-endian/src/api/arithmetic/sub/decrement.js~decrement",
+    "function/index.html#static-function-decrement",
+    "<span>decrement</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/arithmetic/sub/decrement.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/api/compare/eq.js~eq",
+    "function/index.html#static-function-eq",
+    "<span>eq</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/compare/eq.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/api/arithmetic/gcd/euclidean_algorithm.js~euclidean_algorithm",
+    "function/index.html#static-function-euclidean_algorithm",
+    "<span>euclidean_algorithm</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/arithmetic/gcd/euclidean_algorithm.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/api/arithmetic/gcd/extended_euclidean_algorithm.js~extended_euclidean_algorithm",
+    "function/index.html#static-function-extended_euclidean_algorithm",
+    "<span>extended_euclidean_algorithm</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/arithmetic/gcd/extended_euclidean_algorithm.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/api/compare/ge.js~ge",
+    "function/index.html#static-function-ge",
+    "<span>ge</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/compare/ge.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/api/compare/gt.js~gt",
+    "function/index.html#static-function-gt",
+    "<span>gt</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/compare/gt.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/api/arithmetic/add/iadd.js~iadd",
     "function/index.html#static-function-iadd",
-    "<span>iadd</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/iadd.js</span>",
+    "<span>iadd</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/arithmetic/add/iadd.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/api/mul.js~mul",
+    "@aureooms/js-integer-big-endian/src/api/arithmetic/add/increment.js~increment",
+    "function/index.html#static-function-increment",
+    "<span>increment</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/arithmetic/add/increment.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/api/compare/jz.js~jz",
+    "function/index.html#static-function-jz",
+    "<span>jz</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/compare/jz.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/api/compare/le.js~le",
+    "function/index.html#static-function-le",
+    "<span>le</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/compare/le.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/api/compare/lt.js~lt",
+    "function/index.html#static-function-lt",
+    "<span>lt</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/compare/lt.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/api/arithmetic/mul/mul.js~mul",
     "function/index.html#static-function-mul",
-    "<span>mul</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/mul.js</span>",
+    "<span>mul</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/arithmetic/mul/mul.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/convert/parse.js~parse",
+    "@aureooms/js-integer-big-endian/src/api/compare/ne.js~ne",
+    "function/index.html#static-function-ne",
+    "<span>ne</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/compare/ne.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/api/convert/parse.js~parse",
     "function/index.html#static-function-parse",
-    "<span>parse</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/parse.js</span>",
+    "<span>parse</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/convert/parse.js</span>",
     "function"
   ],
   [
     "@aureooms/js-integer-big-endian/src/core/convert/parse_keep_zeros.js~parse_keep_zeros",
     "function/index.html#static-function-parse_keep_zeros",
     "<span>parse_keep_zeros</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/parse_keep_zeros.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/api/convert/stringify.js~stringify",
+    "function/index.html#static-function-stringify",
+    "<span>stringify</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/convert/stringify.js</span>",
     "function"
   ],
   [
@@ -396,9 +426,9 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/convert/translate.js~translate",
+    "@aureooms/js-integer-big-endian/src/api/convert/translate.js~translate",
     "function/index.html#static-function-translate",
-    "<span>translate</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/translate.js</span>",
+    "<span>translate</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/convert/translate.js</span>",
     "function"
   ],
   [
@@ -690,27 +720,177 @@ window.esdocSearchIndex = [
     "external"
   ],
   [
-    "src/api/_divmod.js",
-    "file/src/api/_divmod.js.html",
-    "src/api/_divmod.js",
+    "src/api/arithmetic/add/add.js",
+    "file/src/api/arithmetic/add/add.js.html",
+    "src/api/arithmetic/add/add.js",
     "file"
   ],
   [
-    "src/api/_idivmod.js",
-    "file/src/api/_idivmod.js.html",
-    "src/api/_idivmod.js",
+    "src/api/arithmetic/add/iadd.js",
+    "file/src/api/arithmetic/add/iadd.js.html",
+    "src/api/arithmetic/add/iadd.js",
     "file"
   ],
   [
-    "src/api/add.js",
-    "file/src/api/add.js.html",
-    "src/api/add.js",
+    "src/api/arithmetic/add/increment.js",
+    "file/src/api/arithmetic/add/increment.js.html",
+    "src/api/arithmetic/add/increment.js",
     "file"
   ],
   [
-    "src/api/iadd.js",
-    "file/src/api/iadd.js.html",
-    "src/api/iadd.js",
+    "src/api/arithmetic/add/index.js",
+    "file/src/api/arithmetic/add/index.js.html",
+    "src/api/arithmetic/add/index.js",
+    "file"
+  ],
+  [
+    "src/api/arithmetic/div/_divmod.js",
+    "file/src/api/arithmetic/div/_divmod.js.html",
+    "src/api/arithmetic/div/_divmod.js",
+    "file"
+  ],
+  [
+    "src/api/arithmetic/div/_idivmod.js",
+    "file/src/api/arithmetic/div/_idivmod.js.html",
+    "src/api/arithmetic/div/_idivmod.js",
+    "file"
+  ],
+  [
+    "src/api/arithmetic/div/index.js",
+    "file/src/api/arithmetic/div/index.js.html",
+    "src/api/arithmetic/div/index.js",
+    "file"
+  ],
+  [
+    "src/api/arithmetic/gcd/euclidean_algorithm.js",
+    "file/src/api/arithmetic/gcd/euclidean_algorithm.js.html",
+    "src/api/arithmetic/gcd/euclidean_algorithm.js",
+    "file"
+  ],
+  [
+    "src/api/arithmetic/gcd/extended_euclidean_algorithm.js",
+    "file/src/api/arithmetic/gcd/extended_euclidean_algorithm.js.html",
+    "src/api/arithmetic/gcd/extended_euclidean_algorithm.js",
+    "file"
+  ],
+  [
+    "src/api/arithmetic/gcd/index.js",
+    "file/src/api/arithmetic/gcd/index.js.html",
+    "src/api/arithmetic/gcd/index.js",
+    "file"
+  ],
+  [
+    "src/api/arithmetic/index.js",
+    "file/src/api/arithmetic/index.js.html",
+    "src/api/arithmetic/index.js",
+    "file"
+  ],
+  [
+    "src/api/arithmetic/mul/index.js",
+    "file/src/api/arithmetic/mul/index.js.html",
+    "src/api/arithmetic/mul/index.js",
+    "file"
+  ],
+  [
+    "src/api/arithmetic/mul/mul.js",
+    "file/src/api/arithmetic/mul/mul.js.html",
+    "src/api/arithmetic/mul/mul.js",
+    "file"
+  ],
+  [
+    "src/api/arithmetic/sub/decrement.js",
+    "file/src/api/arithmetic/sub/decrement.js.html",
+    "src/api/arithmetic/sub/decrement.js",
+    "file"
+  ],
+  [
+    "src/api/arithmetic/sub/index.js",
+    "file/src/api/arithmetic/sub/index.js.html",
+    "src/api/arithmetic/sub/index.js",
+    "file"
+  ],
+  [
+    "src/api/compare/cmp.js",
+    "file/src/api/compare/cmp.js.html",
+    "src/api/compare/cmp.js",
+    "file"
+  ],
+  [
+    "src/api/compare/eq.js",
+    "file/src/api/compare/eq.js.html",
+    "src/api/compare/eq.js",
+    "file"
+  ],
+  [
+    "src/api/compare/ge.js",
+    "file/src/api/compare/ge.js.html",
+    "src/api/compare/ge.js",
+    "file"
+  ],
+  [
+    "src/api/compare/gt.js",
+    "file/src/api/compare/gt.js.html",
+    "src/api/compare/gt.js",
+    "file"
+  ],
+  [
+    "src/api/compare/index.js",
+    "file/src/api/compare/index.js.html",
+    "src/api/compare/index.js",
+    "file"
+  ],
+  [
+    "src/api/compare/jz.js",
+    "file/src/api/compare/jz.js.html",
+    "src/api/compare/jz.js",
+    "file"
+  ],
+  [
+    "src/api/compare/le.js",
+    "file/src/api/compare/le.js.html",
+    "src/api/compare/le.js",
+    "file"
+  ],
+  [
+    "src/api/compare/lt.js",
+    "file/src/api/compare/lt.js.html",
+    "src/api/compare/lt.js",
+    "file"
+  ],
+  [
+    "src/api/compare/ne.js",
+    "file/src/api/compare/ne.js.html",
+    "src/api/compare/ne.js",
+    "file"
+  ],
+  [
+    "src/api/convert/convert.js",
+    "file/src/api/convert/convert.js.html",
+    "src/api/convert/convert.js",
+    "file"
+  ],
+  [
+    "src/api/convert/index.js",
+    "file/src/api/convert/index.js.html",
+    "src/api/convert/index.js",
+    "file"
+  ],
+  [
+    "src/api/convert/parse.js",
+    "file/src/api/convert/parse.js.html",
+    "src/api/convert/parse.js",
+    "file"
+  ],
+  [
+    "src/api/convert/stringify.js",
+    "file/src/api/convert/stringify.js.html",
+    "src/api/convert/stringify.js",
+    "file"
+  ],
+  [
+    "src/api/convert/translate.js",
+    "file/src/api/convert/translate.js.html",
+    "src/api/convert/translate.js",
     "file"
   ],
   [
@@ -720,27 +900,15 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/api/mul.js",
-    "file/src/api/mul.js.html",
-    "src/api/mul.js",
-    "file"
-  ],
-  [
     "src/core/arithmetic/add/_add.js",
-    "file/src/core/arithmetic/add/_ADD.js.html",
-    "src/core/arithmetic/add/_ADD.js",
+    "file/src/core/arithmetic/add/_add.js.html",
+    "src/core/arithmetic/add/_add.js",
     "file"
   ],
   [
     "src/core/arithmetic/add/_iadd.js",
-    "file/src/core/arithmetic/add/_IADD.js.html",
-    "src/core/arithmetic/add/_IADD.js",
-    "file"
-  ],
-  [
-    "src/core/arithmetic/add/_increment.js",
-    "file/src/core/arithmetic/add/_increment.js.html",
-    "src/core/arithmetic/add/_increment.js",
+    "file/src/core/arithmetic/add/_iadd.js.html",
+    "src/core/arithmetic/add/_iadd.js",
     "file"
   ],
   [
@@ -822,15 +990,27 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/core/arithmetic/gcd/_euclidean_algorithm.js",
-    "file/src/core/arithmetic/gcd/_euclidean_algorithm.js.html",
-    "src/core/arithmetic/gcd/_euclidean_algorithm.js",
+    "src/core/arithmetic/gcd/_euclidean_algorithm_loop.js",
+    "file/src/core/arithmetic/gcd/_euclidean_algorithm_loop.js.html",
+    "src/core/arithmetic/gcd/_euclidean_algorithm_loop.js",
     "file"
   ],
   [
     "src/core/arithmetic/gcd/_extended_euclidean_algorithm.js",
     "file/src/core/arithmetic/gcd/_extended_euclidean_algorithm.js.html",
     "src/core/arithmetic/gcd/_extended_euclidean_algorithm.js",
+    "file"
+  ],
+  [
+    "src/core/arithmetic/gcd/_extended_euclidean_algorithm_allocate.js",
+    "file/src/core/arithmetic/gcd/_extended_euclidean_algorithm_allocate.js.html",
+    "src/core/arithmetic/gcd/_extended_euclidean_algorithm_allocate.js",
+    "file"
+  ],
+  [
+    "src/core/arithmetic/gcd/_extended_euclidean_algorithm_loop.js",
+    "file/src/core/arithmetic/gcd/_extended_euclidean_algorithm_loop.js.html",
+    "src/core/arithmetic/gcd/_extended_euclidean_algorithm_loop.js",
     "file"
   ],
   [
@@ -888,21 +1068,15 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/core/arithmetic/pow/_powd.js",
-    "file/src/core/arithmetic/pow/_powd.js.html",
-    "src/core/arithmetic/pow/_powd.js",
+    "src/core/arithmetic/pow/_pow_double.js",
+    "file/src/core/arithmetic/pow/_pow_double.js.html",
+    "src/core/arithmetic/pow/_pow_double.js",
     "file"
   ],
   [
     "src/core/arithmetic/pow/index.js",
     "file/src/core/arithmetic/pow/index.js.html",
     "src/core/arithmetic/pow/index.js",
-    "file"
-  ],
-  [
-    "src/core/arithmetic/sub/_decrement.js",
-    "file/src/core/arithmetic/sub/_decrement.js.html",
-    "src/core/arithmetic/sub/_decrement.js",
     "file"
   ],
   [
@@ -967,62 +1141,14 @@ window.esdocSearchIndex = [
   ],
   [
     "src/core/compare/_cmp.js",
-    "file/src/core/compare/_CMP.js.html",
-    "src/core/compare/_CMP.js",
-    "file"
-  ],
-  [
-    "src/core/compare/_cmp_n.js",
-    "file/src/core/compare/_CMP_n.js.html",
-    "src/core/compare/_CMP_n.js",
-    "file"
-  ],
-  [
-    "src/core/compare/_cmp.js",
     "file/src/core/compare/_cmp.js.html",
     "src/core/compare/_cmp.js",
     "file"
   ],
   [
-    "src/core/compare/_eq.js",
-    "file/src/core/compare/_eq.js.html",
-    "src/core/compare/_eq.js",
-    "file"
-  ],
-  [
-    "src/core/compare/_ge.js",
-    "file/src/core/compare/_ge.js.html",
-    "src/core/compare/_ge.js",
-    "file"
-  ],
-  [
-    "src/core/compare/_gt.js",
-    "file/src/core/compare/_gt.js.html",
-    "src/core/compare/_gt.js",
-    "file"
-  ],
-  [
-    "src/core/compare/_jz.js",
-    "file/src/core/compare/_jz.js.html",
-    "src/core/compare/_jz.js",
-    "file"
-  ],
-  [
-    "src/core/compare/_le.js",
-    "file/src/core/compare/_le.js.html",
-    "src/core/compare/_le.js",
-    "file"
-  ],
-  [
-    "src/core/compare/_lt.js",
-    "file/src/core/compare/_lt.js.html",
-    "src/core/compare/_lt.js",
-    "file"
-  ],
-  [
-    "src/core/compare/_ne.js",
-    "file/src/core/compare/_ne.js.html",
-    "src/core/compare/_ne.js",
+    "src/core/compare/_cmp_n.js",
+    "file/src/core/compare/_cmp_n.js.html",
+    "src/core/compare/_cmp_n.js",
     "file"
   ],
   [
@@ -1098,12 +1224,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/core/convert/convert.js",
-    "file/src/core/convert/convert.js.html",
-    "src/core/convert/convert.js",
-    "file"
-  ],
-  [
     "src/core/convert/convert_keep_zeros.js",
     "file/src/core/convert/convert_keep_zeros.js.html",
     "src/core/convert/convert_keep_zeros.js",
@@ -1113,12 +1233,6 @@ window.esdocSearchIndex = [
     "src/core/convert/index.js",
     "file/src/core/convert/index.js.html",
     "src/core/convert/index.js",
-    "file"
-  ],
-  [
-    "src/core/convert/parse.js",
-    "file/src/core/convert/parse.js.html",
-    "src/core/convert/parse.js",
     "file"
   ],
   [
@@ -1137,12 +1251,6 @@ window.esdocSearchIndex = [
     "src/core/convert/stringify_keep_zeros.js",
     "file/src/core/convert/stringify_keep_zeros.js.html",
     "src/core/convert/stringify_keep_zeros.js",
-    "file"
-  ],
-  [
-    "src/core/convert/translate.js",
-    "file/src/core/convert/translate.js.html",
-    "src/core/convert/translate.js",
     "file"
   ],
   [
