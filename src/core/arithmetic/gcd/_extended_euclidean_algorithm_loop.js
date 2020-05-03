@@ -6,6 +6,7 @@ import { increment } from '../../../api/arithmetic/add' ;
 import { _reset } from '../../../core/array' ;
 import { _copy } from '../../../core/array' ;
 import { _trim_positive } from '../../../core/convert' ;
+import { stringify } from '../../../api/convert' ;
 
 /**
  * Extended Euclidean algorithm.
@@ -95,6 +96,28 @@ export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , 
 	let Xi = 0;
 	const Xj = 2*m;
 
+	const DEBUG = true ;
+
+	const dbg = function (...args) {
+		if (DEBUG) console.debug(...args) ;
+	} ;
+
+	const STATE = function ( step ) {
+		if ( step % 2 === 0 ) {
+			const _R0 = stringify(r,r,R0,R0i,R0j);
+			const _S0 = stringify(r,r,S0,S0i,S0j);
+			const _T0 = stringify(r,r,T0,T0i,T0j);
+			dbg(step , _R0, R0i, _S0, S0i, _T0, T0i);
+		}
+		else {
+			const _R1 = stringify(r,r,R1,R1i,R1j);
+			const _S1 = stringify(r,r,S1,S1i,S1j);
+			const _T1 = stringify(r,r,T1,T1i,T1j);
+			dbg(step , _R1, R1i, _S1, S1i, _T1, T1i);
+		}
+	} ;
+	STATE(0);
+
 	// We handle the first two steps outside of loop because s_1 = t_0 = 0
 	// and s_1 = 0, s_2 = 1
 
@@ -109,6 +132,7 @@ export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , 
 	// 6. t_0 = T0 < 0
 	// 7. t_1 = T1 > 0
 
+	STATE(1);
 	if ( R1i === R1j ) return [ R0i , S0i , T0i , S1i , T1i , 1 ] ;
 
 	// Q_1 = (r_0 - r_2) / r_1
@@ -145,6 +169,7 @@ export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , 
 	// 6. t_1 = T1 > 0
 	// 7. t_2 = T0 < 0
 
+	STATE(2);
 	if ( R0i === R0j ) return [ R1i , S0i , T0i , S1i , T1i , 2 ] ;
 
 	// Q_2 = (r_1 - r_{i+1}) / r_2
@@ -194,6 +219,7 @@ export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , 
 		// 6. t_{i-1} = T0 < 0
 		// 7. t_i = T1 > 0
 
+		STATE(steps);
 		if ( R1i === R1j ) return [ R0i , S0i , T0i , S1i , T1i , steps ] ;
 		++steps;
 
@@ -251,6 +277,7 @@ export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , 
 		// 6. t_{i-1} = T1 > 0
 		// 7. t_i = T0 < 0
 
+		STATE(steps);
 		if ( R0i === R0j ) return [ R1i , S0i , T0i , S1i , T1i , steps ] ;
 		++steps;
 
