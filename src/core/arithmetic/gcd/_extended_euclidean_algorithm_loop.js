@@ -249,6 +249,7 @@ export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , 
 		// s_{i+1} = s_{i-1} - q_i * s_i
 		// S0 is s_{i-1} and becomes s_{i+1}
 		S0i = S0j - (Xj - Xi + 1) ;
+		S0i = Math.max(0, S0i) ; // next addition never overflows beyond bounds
 		_iadd(r, S0, S0i, S0j, X, Xi, Xj);
 		if ( S0[S0i] === 0 ) ++S0i;
 
@@ -263,6 +264,7 @@ export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , 
 		// t_{i+1} = t_{i-1} - q_i * t_i
 		// T0 is t_{i-1} and becomes t_{i+1}
 		T0i = T0j - (Xj - Xi + 1) ;
+		T0i = Math.max(0, T0i) ; // next addition never overflows beyond bounds
 		_iadd(r, T0, T0i, T0j, X, Xi, Xj);
 		if ( T0[T0i] === 0 ) ++T0i;
 
@@ -307,6 +309,7 @@ export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , 
 		// s_{i+1} = s_{i-1} - q_i * s_i
 		// S1 is s_{i-1} and becomes s_{i+1}
 		S1i = S1j - (Xj - Xi + 1) ;
+		S1i = Math.max(0, S1i) ; // next addition never overflows beyond bounds
 		_iadd(r, S1, S1i, S1j, X, Xi, Xj);
 		if ( S1[S1i] === 0 ) ++S1i;
 
@@ -321,6 +324,7 @@ export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , 
 		// t_{i+1} = t_{i-1} - q_i * t_i
 		// T1 is t_{i-1} and becomes t_{i+1}
 		T1i = T1j - (Xj - Xi + 1) ;
+		T1i = Math.max(0, T1i) ; // next addition never overflows beyond bounds
 		_iadd(r, T1, T1i, T1j, X, Xi, Xj);
 		if ( T1[T1i] === 0 ) ++T1i;
 
