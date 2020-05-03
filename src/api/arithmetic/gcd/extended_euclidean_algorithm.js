@@ -24,9 +24,9 @@ export function extended_euclidean_algorithm ( r, a, ai, aj, b, bi, bj ) {
 	if ( m > n || ( m === n && _cmp_n(a, _ai, aj, b, _bi) >= 0 ) )
 		return _extended_euclidean_algorithm( r , a , _ai , aj , b , _bi , bj ) ;
 
-	const [ R0 , T0 , S0 , T1 , S1 , steps ] =
+	const [ R0 , R0i , T0 , T0i , S0 , S0i , T1 , T1i , S1 , S1i , steps ] =
 		_extended_euclidean_algorithm( r , b , _bi , bj , a , _ai , aj ) ;
 
-	return [ R0 , S0 , T0 , S1 , T1 , steps + 1 ] ;
+	return [ R0 , R0i , S0 , S0i , T0 , T0i , S1 , S1i , T1 , T1i , steps + 1 ] ;
 
 }

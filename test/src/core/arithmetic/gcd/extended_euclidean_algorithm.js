@@ -2,27 +2,42 @@ import test from 'ava' ;
 
 import { parse , stringify , _trim_positive , extended_euclidean_algorithm } from '../../../../../src' ;
 
+const ge = ( t , a , b , v ) => t.true( a >= b , `${v} = ${a} >= ${b}` ) ;
+const le = ( t , a , b , v ) => t.true( a <= b , `${v} = ${a} <= ${b}` ) ;
+
 function macro ( t , A , B , D , X , Y , U , V , steps ) {
 
 	const r = 10 ;
 
 	const a = parse( 10 , r , A ) ;
 	const aj = a.length ;
-	const ai = _trim_positive( a , 0 , aj ) ;
+	const ai = 0 ;
 
 	const b = parse( 10 , r , B ) ;
 	const bj = b.length ;
-	const bi = _trim_positive( b , 0 , bj ) ;
+	const bi = 0 ;
 
-	const [ d , x , y , u , v , s ] = extended_euclidean_algorithm( r , a , ai , aj , b , bi , bj ) ;
+	const [ d , di , x , xi , y , yi , u , ui , v , vi , s ] = extended_euclidean_algorithm( r , a , ai , aj , b , bi , bj ) ;
 
-	const _d = stringify( r , 10 , d , 0 , d.length ) ;
-	const _x = stringify( r , 10 , x , 0 , x.length ) ;
-	const _y = stringify( r , 10 , y , 0 , y.length ) ;
-	const _u = stringify( r , 10 , u , 0 , u.length ) ;
-	const _v = stringify( r , 10 , v , 0 , v.length ) ;
+	ge(t,di,0,'di');
+	le(t,di,d.length,'di');
+	ge(t,xi,0,'xi');
+	le(t,xi,x.length,'xi');
+	ge(t,yi,0,'yi');
+	le(t,yi,y.length,'yi');
+	ge(t,ui,0,'ui');
+	le(t,ui,u.length,'ui');
+	ge(t,vi,0,'vi');
+	le(t,vi,v.length,'vi');
 
 	t.is( steps , s , 'steps' ) ;
+
+	const _d = stringify( r , 10 , d , di , d.length ) ;
+	const _x = stringify( r , 10 , x , xi , x.length ) ;
+	const _y = stringify( r , 10 , y , yi , y.length ) ;
+	const _u = stringify( r , 10 , u , ui , u.length ) ;
+	const _v = stringify( r , 10 , v , vi , v.length ) ;
+
 	t.is( D , _d , 'd' ) ;
 	t.is( X , _x , 'x' ) ;
 	t.is( Y , _y , 'y' ) ;

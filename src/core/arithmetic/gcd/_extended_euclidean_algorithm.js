@@ -26,10 +26,10 @@ export function _extended_euclidean_algorithm ( r , a , ai , aj , b , bi , bj ) 
 	_copy(a, ai, aj, R0, 0);
 	_copy(b, bi, bj, R1, 0);
 
-	const steps = _extended_euclidean_algorithm_loop ( r , R0 , R1 , S0 , T0 , S1 , T1 , Q , X ) ;
+	const [ Ri , S0i , T0i , S1i , T1i , steps ] = _extended_euclidean_algorithm_loop ( r , R0 , R1 , S0 , T0 , S1 , T1 , Q , X ) ;
 
 	return steps % 2 === 1 ?
-		[ R0 , S0 , T0 , S1 , T1 , steps ] :
-		[ R1 , S1 , T1 , S0 , T0 , steps ] ;
+		[ R0 , Ri , S0 , S0i , T0 , T0i , S1 , S1i , T1 , T1i , steps ] :
+		[ R1 , Ri , S1 , S1i , T1 , T1i , S0 , S0i , T0 , T0i , steps ] ;
 
 }

@@ -6,6 +6,7 @@ import { increment } from '../../../api/arithmetic/add' ;
 import { _reset } from '../../../core/array' ;
 import { _copy } from '../../../core/array' ;
 import { _trim_positive } from '../../../core/convert' ;
+import { stringify } from '../../../api/convert' ;
 
 /**
  * Extended Euclidean algorithm.
@@ -109,7 +110,7 @@ export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , 
 	// 6. t_0 = T0 < 0
 	// 7. t_1 = T1 > 0
 
-	if ( R1i === R1j ) return 1 ;
+	if ( R1i === R1j ) return [ R0i , S0i , T0i , S1i , T1i , 1 ] ;
 
 	// Q_1 = (r_0 - r_2) / r_1
 	// R0 is r_0 and becomes r_2
@@ -145,7 +146,7 @@ export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , 
 	// 6. t_1 = T1 > 0
 	// 7. t_2 = T0 < 0
 
-	if ( R0i === R0j ) return 2 ;
+	if ( R0i === R0j ) return [ R1i , S0i , T0i , S1i , T1i , 2 ] ;
 
 	// Q_2 = (r_1 - r_{i+1}) / r_2
 	// R1 is r_1 and becomes r_3
@@ -194,7 +195,7 @@ export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , 
 		// 6. t_{i-1} = T0 < 0
 		// 7. t_i = T1 > 0
 
-		if ( R1i === R1j ) return steps ;
+		if ( R1i === R1j ) return [ R0i , S0i , T0i , S1i , T1i , steps ] ;
 		++steps;
 
 		// Q_i = (r_{i-1} - r_{i+1}) / r_i
@@ -223,6 +224,7 @@ export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , 
 		// s_{i+1} = s_{i-1} - q_i * s_i
 		// S0 is s_{i-1} and becomes s_{i+1}
 		S0i = S0j - (Xj - Xi + 1) ;
+		S0i = Math.max(0, S0i) ; // next addition never overflows beyond bounds
 		_iadd(r, S0, S0i, S0j, X, Xi, Xj);
 		if ( S0[S0i] === 0 ) ++S0i;
 
@@ -237,6 +239,7 @@ export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , 
 		// t_{i+1} = t_{i-1} - q_i * t_i
 		// T0 is t_{i-1} and becomes t_{i+1}
 		T0i = T0j - (Xj - Xi + 1) ;
+		T0i = Math.max(0, T0i) ; // next addition never overflows beyond bounds
 		_iadd(r, T0, T0i, T0j, X, Xi, Xj);
 		if ( T0[T0i] === 0 ) ++T0i;
 
@@ -251,7 +254,7 @@ export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , 
 		// 6. t_{i-1} = T1 > 0
 		// 7. t_i = T0 < 0
 
-		if ( R0i === R0j ) return steps ;
+		if ( R0i === R0j ) return [ R1i , S0i , T0i , S1i , T1i , steps ] ;
 		++steps;
 
 		// Q_i = (r_{i-1} - r_{i+1}) / r_i
@@ -280,6 +283,7 @@ export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , 
 		// s_{i+1} = s_{i-1} - q_i * s_i
 		// S1 is s_{i-1} and becomes s_{i+1}
 		S1i = S1j - (Xj - Xi + 1) ;
+		S1i = Math.max(0, S1i) ; // next addition never overflows beyond bounds
 		_iadd(r, S1, S1i, S1j, X, Xi, Xj);
 		if ( S1[S1i] === 0 ) ++S1i;
 
@@ -294,6 +298,7 @@ export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , 
 		// t_{i+1} = t_{i-1} - q_i * t_i
 		// T1 is t_{i-1} and becomes t_{i+1}
 		T1i = T1j - (Xj - Xi + 1) ;
+		T1i = Math.max(0, T1i) ; // next addition never overflows beyond bounds
 		_iadd(r, T1, T1i, T1j, X, Xi, Xj);
 		if ( T1[T1i] === 0 ) ++T1i;
 
