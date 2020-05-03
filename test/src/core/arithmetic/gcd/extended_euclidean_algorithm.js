@@ -2,6 +2,9 @@ import test from 'ava' ;
 
 import { parse , stringify , _trim_positive , extended_euclidean_algorithm } from '../../../../../src' ;
 
+const ge = ( t , a , b , v ) => t.true( a >= b , `${v} = ${a} >= ${b}` ) ;
+const le = ( t , a , b , v ) => t.true( a <= b , `${v} = ${a} <= ${b}` ) ;
+
 function macro ( t , A , B , D , X , Y , U , V , steps ) {
 
 	const r = 10 ;
@@ -15,6 +18,17 @@ function macro ( t , A , B , D , X , Y , U , V , steps ) {
 	const bi = _trim_positive( b , 0 , bj ) ;
 
 	const [ d , di , x , xi , y , yi , u , ui , v , vi , s ] = extended_euclidean_algorithm( r , a , ai , aj , b , bi , bj ) ;
+
+	ge(t,di,0,'di');
+	le(t,di,d.length,'di');
+	ge(t,xi,0,'xi');
+	le(t,xi,x.length,'xi');
+	ge(t,yi,0,'yi');
+	le(t,yi,y.length,'yi');
+	ge(t,ui,0,'ui');
+	le(t,ui,u.length,'ui');
+	ge(t,vi,0,'vi');
+	le(t,vi,v.length,'vi');
 
 	t.is( steps , s , 'steps' ) ;
 
