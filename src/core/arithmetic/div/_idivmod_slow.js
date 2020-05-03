@@ -1,5 +1,5 @@
 import { _sub } from '..' ;
-import { _lt } from '../..' ;
+import { lt } from '../../../api/compare' ;
 
 /**
  * Computes quotient and remainder of two big endian arrays.
@@ -42,10 +42,10 @@ export function _idivmod_slow ( x , r , ri , rj , b , bi , bj , q , qi ) {
 
 		// search for a remainder block interval
 		// greater than the divisor
-		// TODO maybe could try binary search on the _lt function
+		// TODO maybe could try binary search on the lt function
 		//      for another implementation
 		k = ri + 1;
-		while (k <= rj && _lt(r, ri, k, b, bi, bj)) ++k;
+		while (k <= rj && lt(r, ri, k, b, bi, bj)) ++k;
 
 		// remainder smaller than divisor --> end
 		if (k > rj) break;
@@ -61,7 +61,7 @@ export function _idivmod_slow ( x , r , ri , rj , b , bi , bj , q , qi ) {
 			// block interval
 			_sub(x, r, ri, k, b, bi, bj, r, ri, k);
 
-		} while(!_lt(r, ri, k, b, bi, bj));
+		} while(!lt(r, ri, k, b, bi, bj));
 
 
 	} while(true);

@@ -1,7 +1,7 @@
 import { _zeros , _copy } from '../../array' ;
 import { _imul_limb } from '../mul' ;
 import { _idivmod_dc_21 , _div_limb_with_prefix , _mod_limb } from '.' ;
-import { _CMP_n } from '../../compare' ;
+import { _cmp_n } from '../../compare' ;
 
 
 /**
@@ -32,7 +32,7 @@ export function _idivmod_dc ( X , a , ai , aj , b , bi , bj , c , ci , cj ) {
 	const r = aj - ai ;
 	const s = bj - bi ;
 
-	if ( r < s || r === s && _CMP_n( a , ai , aj , b , bi ) < 0 ) return ;
+	if ( r < s || r === s && _cmp_n( a , ai , aj , b , bi ) < 0 ) return ;
 
 	// shift to get n = 2^k for some k
 	let _n = 1 ;

@@ -1,5 +1,5 @@
 import { _trim_positive } from '../../../core/convert' ;
-import { _CMP_n } from '../../../core/compare' ;
+import { _cmp_n } from '../../../core/compare' ;
 import { _extended_euclidean_algorithm } from '.' ;
 
 /**
@@ -21,7 +21,7 @@ export function extended_euclidean_algorithm ( r, a, ai, aj, b, bi, bj ) {
 	const m = aj - _ai ;
 	const n = bj - _bi ;
 
-	if ( m > n || ( m === n && _CMP_n(a, _ai, aj, b, _bi) >= 0 ) )
+	if ( m > n || ( m === n && _cmp_n(a, _ai, aj, b, _bi) >= 0 ) )
 		return _extended_euclidean_algorithm( r , a , _ai , aj , b , _bi , bj ) ;
 
 	const [ R0 , T0 , S0 , T1 , S1 , steps ] =

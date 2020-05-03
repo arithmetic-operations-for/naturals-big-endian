@@ -5,7 +5,6 @@ import { _IADD } from '../../../core/arithmetic/add' ;
 import { _increment } from '../../../core/arithmetic/add' ;
 import { _reset } from '../../../core/array' ;
 import { _copy } from '../../../core/array' ;
-import { _jz } from '../../../core/compare' ;
 import { _trim_positive } from '../../../core/convert' ;
 
 /**

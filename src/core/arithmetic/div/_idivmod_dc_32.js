@@ -1,7 +1,7 @@
 import { _zeros , _fill } from '../../array' ;
 import { _decrement , _isub } from '../sub' ;
 import { _mul } from '../mul' ;
-import { _lt } from '../../compare' ;
+import { lt } from '../../../api/compare' ;
 import { iadd } from '../../../api' ;
 import { _idivmod_dc_21 } from '.' ;
 
@@ -40,7 +40,7 @@ export function _idivmod_dc_32 ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
 	// 2. If A_2 < B_1, compute Q = floor( ( A_2 β^n + A_1 ) / B_1 ) with
 	//    remainder R_1 using algorithm 3.3;
 
-	if ( _lt( a , ai , ai + n , b , bi , bi + n ) ) {
+	if ( lt( a , ai , ai + n , b , bi , bi + n ) ) {
 		_idivmod_dc_21( r , a , ai , aj - n , b , bi , bi + n , c , ci + n , cj ) ;
 	}
 

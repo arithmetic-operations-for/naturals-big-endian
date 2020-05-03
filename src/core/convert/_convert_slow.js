@@ -1,6 +1,6 @@
 import { _build , _alloc , _reset , _copy } from '../array' ;
 import { _idivmod } from '../../api' ;
-import { _jz } from '../compare' ;
+import { jz } from '../../api/compare' ;
 
 /**
  *
@@ -39,7 +39,7 @@ export function _convert_slow ( f , t , a , ai , aj , b , bi , bj ) {
 
 		b[bj] = x ;
 
-		if ( _jz( q , 0 , m ) ) return ;
+		if ( jz( q , 0 , m ) ) return ;
 
 		_copy( q , 0 , m , r , 0 ) ;
 

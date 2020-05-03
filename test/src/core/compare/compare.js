@@ -139,13 +139,13 @@ var TRAITS = [
 ];
 
 var OPERATOR = [
-	[['integer._cmp', integer._cmp], operator.identity],
-	[['integer._eq', integer._eq], operator.eq],
-	[['integer._ge', integer._ge], operator.ge],
-	[['integer._gt', integer._gt], operator.gt],
-	[['integer._le', integer._le], operator.le],
-	[['integer._lt', integer._lt], operator.lt],
-	[['integer._ne', integer._ne], operator.ne],
+	[['integer.cmp', integer.cmp], operator.identity],
+	[['integer.eq', integer.eq], operator.eq],
+	[['integer.ge', integer.ge], operator.ge],
+	[['integer.gt', integer.gt], operator.gt],
+	[['integer.le', integer.le], operator.le],
+	[['integer.lt', integer.lt], operator.lt],
+	[['integer.ne', integer.ne], operator.ne],
 ];
 
 for (var j = 0; j < OPERATOR.length; ++j)

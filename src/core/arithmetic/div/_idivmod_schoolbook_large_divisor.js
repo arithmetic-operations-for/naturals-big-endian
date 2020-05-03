@@ -1,5 +1,5 @@
 import { _trim_positive } from '../../convert' ;
-import { _lt } from '../../compare' ;
+import { lt } from '../../../api/compare' ;
 import { _isub } from '..' ;
 import { _idivmod_schoolbook_subroutine } from '.' ;
 
@@ -34,7 +34,7 @@ export function _idivmod_schoolbook_large_divisor ( r , a , ai , aj , b , bi , b
 	if ( m === n ) {
 
 		// If m = n, then if A < B, return the quotient 0 and the remainder A;
-		if ( _lt( a , ai , aj , b , bi , bj ) ) return ;
+		if ( lt( a , ai , aj , b , bi , bj ) ) return ;
 
 		// if A ≥ B, return the quotient 1 and the remainder A - B.
 		++q[qi+m-1] ;

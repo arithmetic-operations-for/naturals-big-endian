@@ -2,7 +2,7 @@
 import { _trim_positive } from '../../../core/convert' ;
 import { _alloc } from '../../../core/array' ;
 import { _copy } from '../../../core/array' ;
-import { _CMP_n } from '../../../core/compare' ;
+import { _cmp_n } from '../../../core/compare' ;
 import { _euclidean_algorithm_loop } from '.' ;
 
 /**
@@ -32,7 +32,7 @@ export function euclidean_algorithm ( r , a , ai , aj , b , bi , bj ) {
 	const R1 = _alloc(n);
 	_copy(b, _bi, bj, R1, 0);
 
-	return m > n || ( m === n && _CMP_n(R0 , 0 , m , R1 , 0) >= 0 ) ?
+	return m > n || ( m === n && _cmp_n(R0 , 0 , m , R1 , 0) >= 0 ) ?
 		_euclidean_algorithm_loop( r , R0 , 0 , m , R1 , 0 , n ) :
 		_euclidean_algorithm_loop( r , R1 , 0 , n , R0 , 0 , m ) ;
 

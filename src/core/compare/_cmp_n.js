@@ -11,7 +11,7 @@
  * @return {Number} 1 if a > b; 0 if a = b; -1 otherwise.
  */
 
-export function _CMP_n ( a , ai , aj , b , bi ) {
+export function _cmp_n ( a , ai , aj , b , bi ) {
 
 	for (; ai < aj; ++ai, ++bi) {
 		if (a[ai] > b[bi]) return  1;

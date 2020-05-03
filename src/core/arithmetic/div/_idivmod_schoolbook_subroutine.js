@@ -1,5 +1,5 @@
 import { _zeros } from '../../array' ;
-import { _ge , _gt } from '../../compare' ;
+import { ge , gt } from '../../../api/compare' ;
 import { _increment } from '..' ;
 import { _isub } from '..' ;
 import { _mul_limb } from '..' ;
@@ -31,7 +31,7 @@ export function _idivmod_schoolbook_subroutine ( r , a , ai , aj , b , bi , bj ,
 
 	// If A ≥ B*β, compute the quotient q and remainder r of ( A − B*β ) / B
 	// recursively, and return β + q and r.
-	if ( _ge( a , ai , aj - 1 , b , bi , bj ) ) {
+	if ( ge( a , ai , aj - 1 , b , bi , bj ) ) {
 		_isub( r , a , ai , aj - 1 , b , bi , bj ) ;
 		_idivmod_schoolbook_subroutine( r , a , ai , aj , b , bi , bj , q , qi ) ;
 		_increment( r , q , qi , qi + m - 1 ) ;
@@ -46,11 +46,11 @@ export function _idivmod_schoolbook_subroutine ( r , a , ai , aj , b , bi , bj ,
 	const T = _zeros( m ) ;
 	_mul_limb( r , _q , b , bi , bj , T , 0 , m ) ;
 
-	if ( _gt( T , 0 , m , a , ai , aj ) ) {
+	if ( gt( T , 0 , m , a , ai , aj ) ) {
 		--_q ;
 		_isub( r , T , 0 , m , b , bi , bj ) ;
 
-		if ( _gt( T , 0 , m , a , ai , aj ) ) {
+		if ( gt( T , 0 , m , a , ai , aj ) ) {
 			--_q ;
 			_isub( r , T , 0 , m , b , bi , bj ) ;
 		}

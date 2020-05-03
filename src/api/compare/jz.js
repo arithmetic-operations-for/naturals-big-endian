@@ -7,7 +7,7 @@
  * @param {int} aj a right
  */
 
-export function _jz ( a , ai , aj ) {
+export function jz ( a , ai , aj ) {
 
 	for ( ; ai < aj ; ++ai ) if ( a[ai] !== 0 ) return false ;
 
