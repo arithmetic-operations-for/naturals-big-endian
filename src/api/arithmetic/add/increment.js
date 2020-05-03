@@ -7,7 +7,7 @@
  * @param {Number} ai a left
  * @param {Number} aj a right
  */
-export function _increment ( r , a , ai , aj ) {
+export function increment ( r , a , ai , aj ) {
 
 	const _r = r - 1 ;
 

@@ -1,8 +1,8 @@
 import { _zeros } from '../../array' ;
 import { ge , gt } from '../../../api/compare' ;
-import { _increment } from '..' ;
-import { _isub } from '..' ;
-import { _mul_limb } from '..' ;
+import { increment } from '../../../api/arithmetic/add/increment' ;
+import { _isub } from '../sub' ;
+import { _mul_limb } from '../mul' ;
 
 /**
  * Input
@@ -34,7 +34,7 @@ export function _idivmod_schoolbook_subroutine ( r , a , ai , aj , b , bi , bj ,
 	if ( ge( a , ai , aj - 1 , b , bi , bj ) ) {
 		_isub( r , a , ai , aj - 1 , b , bi , bj ) ;
 		_idivmod_schoolbook_subroutine( r , a , ai , aj , b , bi , bj , q , qi ) ;
-		_increment( r , q , qi , qi + m - 1 ) ;
+		increment( r , q , qi , qi + m - 1 ) ;
 		return ;
 	}
 

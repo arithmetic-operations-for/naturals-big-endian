@@ -1,4 +1,4 @@
-import { _sub } from '..' ;
+import { _sub } from '../sub' ;
 import { lt } from '../../../api/compare' ;
 
 /**

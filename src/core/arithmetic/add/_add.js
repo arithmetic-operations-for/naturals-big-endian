@@ -14,7 +14,7 @@
  * @param {Number} cj c right
  */
 
-export function _ADD ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
+export function _add ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
 
 	let C = 0 ;
 

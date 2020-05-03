@@ -1,4 +1,4 @@
-import { _trim_positive } from '.' ;
+import { _trim_positive } from './_trim_positive' ;
 import { _alloc , _copy } from '../array' ;
 
 export function trim_natural ( a , ai , aj ) {

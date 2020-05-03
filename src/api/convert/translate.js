@@ -1,4 +1,5 @@
-import { parse , stringify } from '.' ;
+import { parse } from './parse' ;
+import { stringify } from './stringify' ;
 
 export function translate ( f , t , string ) {
 

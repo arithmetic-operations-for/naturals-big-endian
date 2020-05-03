@@ -1,8 +1,8 @@
 
-import { _idivmod } from '../../../api' ;
-import { mul } from '../../../api' ;
-import { _IADD } from '../../../core/arithmetic/add' ;
-import { _increment } from '../../../core/arithmetic/add' ;
+import { _idivmod } from '../../../api/arithmetic/div' ;
+import { mul } from '../../../api/arithmetic/mul' ;
+import { _iadd } from '../../../core/arithmetic/add' ;
+import { increment } from '../../../api/arithmetic/add' ;
 import { _reset } from '../../../core/array' ;
 import { _copy } from '../../../core/array' ;
 import { _trim_positive } from '../../../core/convert' ;
@@ -175,7 +175,7 @@ export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , 
 	mul(r, T0, T0i, T0j, Q, Qi, Qj, X, Xi, Xj);
 	// t_3 = t_1 - q_2 * t_2 = 1 - q_2 * t_2
 	// T1 is t_1 and becomes t_3
-	_increment(r, X, Xi, Xj);
+	increment(r, X, Xi, Xj);
 	Xi = _trim_positive( X , Xi , Xj) ;
 	T1i = T1j - (Xj - Xi) ;
 	_copy(X, Xi, Xj, T1, T1i);
@@ -223,7 +223,7 @@ export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , 
 		// s_{i+1} = s_{i-1} - q_i * s_i
 		// S0 is s_{i-1} and becomes s_{i+1}
 		S0i = S0j - (Xj - Xi + 1) ;
-		_IADD(r, S0, S0i, S0j, X, Xi, Xj);
+		_iadd(r, S0, S0i, S0j, X, Xi, Xj);
 		if ( S0[S0i] === 0 ) ++S0i;
 
 		// q_i * t_i
@@ -237,7 +237,7 @@ export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , 
 		// t_{i+1} = t_{i-1} - q_i * t_i
 		// T0 is t_{i-1} and becomes t_{i+1}
 		T0i = T0j - (Xj - Xi + 1) ;
-		_IADD(r, T0, T0i, T0j, X, Xi, Xj);
+		_iadd(r, T0, T0i, T0j, X, Xi, Xj);
 		if ( T0[T0i] === 0 ) ++T0i;
 
 		// Invariants
@@ -280,7 +280,7 @@ export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , 
 		// s_{i+1} = s_{i-1} - q_i * s_i
 		// S1 is s_{i-1} and becomes s_{i+1}
 		S1i = S1j - (Xj - Xi + 1) ;
-		_IADD(r, S1, S1i, S1j, X, Xi, Xj);
+		_iadd(r, S1, S1i, S1j, X, Xi, Xj);
 		if ( S1[S1i] === 0 ) ++S1i;
 
 		// q_i * t_i
@@ -294,7 +294,7 @@ export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , 
 		// t_{i+1} = t_{i-1} - q_i * t_i
 		// T1 is t_{i-1} and becomes t_{i+1}
 		T1i = T1j - (Xj - Xi + 1) ;
-		_IADD(r, T1, T1i, T1j, X, Xi, Xj);
+		_iadd(r, T1, T1i, T1j, X, Xi, Xj);
 		if ( T1[T1i] === 0 ) ++T1i;
 
 	}

@@ -1,5 +1,5 @@
-import { _idivmod_limb , _idivmod_schoolbook , _idivmod_dc } from '../../core' ;
-import { THRESHOLD_DIV_DC } from '../../core' ;
+import { _idivmod_limb , _idivmod_schoolbook , _idivmod_dc } from '../../../core/arithmetic/div' ;
+import { THRESHOLD_DIV_DC } from '../../../core/thresholds' ;
 
 /**
  * Computes the quotient and remainder of two numbers. Uses the most

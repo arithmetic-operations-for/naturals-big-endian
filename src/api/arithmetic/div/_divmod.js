@@ -1,4 +1,4 @@
-import { _copy } from '../../core' ;
+import { _copy } from '../../../core/array/_copy' ;
 import { _idivmod } from './_idivmod' ;
 
 /**

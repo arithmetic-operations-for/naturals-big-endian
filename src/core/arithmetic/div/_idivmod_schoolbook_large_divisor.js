@@ -1,7 +1,7 @@
-import { _trim_positive } from '../../convert' ;
-import { lt } from '../../../api/compare' ;
-import { _isub } from '..' ;
-import { _idivmod_schoolbook_subroutine } from '.' ;
+import { _trim_positive } from '../../convert/_trim_positive' ;
+import { lt } from '../../../api/compare/lt' ;
+import { _isub } from '../sub' ;
+import { _idivmod_schoolbook_subroutine } from './_idivmod_schoolbook_subroutine' ;
 
 /**
  * Input

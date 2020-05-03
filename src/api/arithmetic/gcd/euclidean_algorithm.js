@@ -3,7 +3,7 @@ import { _trim_positive } from '../../../core/convert' ;
 import { _alloc } from '../../../core/array' ;
 import { _copy } from '../../../core/array' ;
 import { _cmp_n } from '../../../core/compare' ;
-import { _euclidean_algorithm_loop } from '.' ;
+import { _euclidean_algorithm_loop } from '../../../core/arithmetic/gcd' ;
 
 /**
  * No constraints on the input.

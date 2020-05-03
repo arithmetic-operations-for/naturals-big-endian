@@ -7,7 +7,7 @@
  * @param {Number} ai a left
  * @param {Number} aj a right
  */
-export function _decrement ( r , a , ai , aj ) {
+export function decrement ( r , a , ai , aj ) {
 
 	while ( --aj >= ai ) {
 

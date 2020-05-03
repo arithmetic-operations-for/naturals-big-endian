@@ -1,5 +1,5 @@
 import { _zeros } from '../array' ;
-import { _convert } from '.' ;
+import { _convert } from './_convert' ;
 
 export function convert_keep_zeros ( f , t , a , ai , aj ) {
 

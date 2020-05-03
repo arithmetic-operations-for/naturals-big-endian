@@ -1,9 +1,9 @@
 import { _zeros , _fill } from '../../array' ;
-import { _decrement , _isub } from '../sub' ;
+import { _isub } from '../sub' ;
 import { _mul } from '../mul' ;
 import { lt } from '../../../api/compare' ;
-import { iadd } from '../../../api' ;
-import { _idivmod_dc_21 } from '.' ;
+import { iadd , decrement } from '../../../api/arithmetic' ;
+import { _idivmod_dc_21 } from './_idivmod_dc_21' ;
 
 /**
  * Algorithm 3.4 Divide-and-conquer division (3 by 2)
@@ -65,13 +65,13 @@ export function _idivmod_dc_32 ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
 
 	if ( a[ai] === 0 ) return ;
 	iadd( r , a , ai , aj , b , bi , bj ) ;
-	_decrement( r , c , cj - n , cj ) ;
+	decrement( r , c , cj - n , cj ) ;
 
 	// 5. if R < 0 , R <- R + B and Q <- Q - 1
 
 	if ( a[ai] === 0 ) return ;
 	iadd( r , a , ai , aj , b , bi , bj ) ;
-	_decrement( r , c , cj - n , cj ) ;
+	decrement( r , c , cj - n , cj ) ;
 
 	// 6. Return Q and R
 

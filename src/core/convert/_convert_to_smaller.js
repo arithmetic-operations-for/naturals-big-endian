@@ -1,4 +1,6 @@
-import { _log , _convert_to_smaller_fast , _convert_slow } from '.' ;
+import { _log } from './_log' ;
+import { _convert_to_smaller_fast } from './_convert_to_smaller_fast' ;
+import { _convert_slow } from './_convert_slow' ;
 
 /**
  *

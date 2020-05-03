@@ -1,7 +1,7 @@
-import { add , iadd } from '../../../api' ;
-import { _mul } from '.' ;
-import { _isub } from '..' ;
-import { _zeros , _copy } from '../..' ;
+import { add , iadd } from '../../../api/arithmetic/add' ;
+import { _zeros , _copy } from '../../array' ;
+import { _isub } from '../sub' ;
+import { _mul } from './_mul' ;
 
 /**
  *

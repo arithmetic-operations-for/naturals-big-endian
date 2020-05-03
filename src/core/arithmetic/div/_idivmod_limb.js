@@ -1,4 +1,4 @@
-import { _idivmod_limb_with_prefix } from '.' ;
+import { _idivmod_limb_with_prefix } from './_idivmod_limb_with_prefix' ;
 
 /**
  * Divides a big endian number by a single limb number.

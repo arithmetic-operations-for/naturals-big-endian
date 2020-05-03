@@ -1,5 +1,5 @@
 import { _zeros , _copy } from '../../array' ;
-import { _mul } from '..' ;
+import { _mul } from '../mul' ;
 
 /**
  * Computes <code>pow(a,x) = a^x</code> using exponentiation by squaring.

@@ -1,7 +1,9 @@
 import { _zeros , _copy } from '../../array' ;
-import { _imul_limb } from '../mul' ;
-import { _idivmod_dc_21 , _div_limb_with_prefix , _mod_limb } from '.' ;
 import { _cmp_n } from '../../compare' ;
+import { _imul_limb } from '../mul' ;
+import { _idivmod_dc_21 } from './_idivmod_dc_21' ;
+import { _div_limb_with_prefix } from './_div_limb_with_prefix' ;
+import { _mod_limb } from './_mod_limb' ;
 
 
 /**

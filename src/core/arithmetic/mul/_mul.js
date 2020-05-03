@@ -1,4 +1,6 @@
-import { _mul_limb , _schoolbook_mul , _karatsuba } from '.' ;
+import { _mul_limb } from './_mul_limb' ;
+import { _schoolbook_mul } from './_schoolbook_mul' ;
+import { _karatsuba } from './_karatsuba' ;
 import { THRESHOLD_MUL_TOOM22 } from '../../thresholds' ;
 
 /**

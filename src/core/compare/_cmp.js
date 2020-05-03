@@ -1,4 +1,4 @@
-import { _cmp_n } from '.' ;
+import { _cmp_n } from './_cmp_n' ;
 /**
  * Compares two big endian arrays, |a| >= |b|
  *

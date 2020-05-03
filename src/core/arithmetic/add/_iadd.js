@@ -11,7 +11,7 @@
  * @param {Number} bj b right
  */
 
-export function _IADD ( r , a , ai , aj , b , bi , bj ) {
+export function _iadd ( r , a , ai , aj , b , bi , bj ) {
 
 	let C = 0 ;
 

@@ -1,4 +1,4 @@
-import { _ADD } from '../../core/arithmetic' ;
+import { _add } from '../../../core/arithmetic/add/_add' ;
 
 /**
  * Adds two big endian arrays and puts result in a destination array.
@@ -28,7 +28,7 @@ export function add ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
 	const n = bj - bi;
 
 	return m < n ?
-		_ADD( r , b , bi , bj , a , ai , aj , c , ci , cj ) :
-		_ADD( r , a , ai , aj , b , bi , bj , c , ci , cj ) ;
+		_add( r , b , bi , bj , a , ai , aj , c , ci , cj ) :
+		_add( r , a , ai , aj , b , bi , bj , c , ci , cj ) ;
 
 }

@@ -1,4 +1,4 @@
-import { _chr } from '.' ;
+import { _chr } from './_chr' ;
 
 export function _to_string ( b ) {
 

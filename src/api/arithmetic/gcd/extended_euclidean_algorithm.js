@@ -1,6 +1,6 @@
 import { _trim_positive } from '../../../core/convert' ;
 import { _cmp_n } from '../../../core/compare' ;
-import { _extended_euclidean_algorithm } from '.' ;
+import { _extended_euclidean_algorithm } from '../../../core/arithmetic/gcd' ;
 
 /**
  * No constraints on the input.

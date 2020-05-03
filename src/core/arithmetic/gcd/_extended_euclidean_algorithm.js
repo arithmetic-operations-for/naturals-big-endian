@@ -1,4 +1,4 @@
-import { _copy } from '../../../core/array' ;
+import { _copy } from '../../array' ;
 
 import {
 	_extended_euclidean_algorithm_allocate ,

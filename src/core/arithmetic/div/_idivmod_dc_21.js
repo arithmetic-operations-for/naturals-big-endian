@@ -1,5 +1,6 @@
 import { THRESHOLD_DIV_DC } from '../../thresholds' ;
-import { _idivmod_dc_32 , _idivmod_schoolbook_large_divisor } from '.' ;
+import { _idivmod_dc_32 } from './_idivmod_dc_32' ;
+import { _idivmod_schoolbook_large_divisor } from './_idivmod_schoolbook_large_divisor' ;
 
 
 /**

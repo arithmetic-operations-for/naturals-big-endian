@@ -1,6 +1,6 @@
 import { _build , _alloc , _reset , _copy } from '../array' ;
-import { _idivmod } from '../../api' ;
-import { jz } from '../../api/compare' ;
+import { _idivmod } from '../../api/arithmetic/div' ;
+import { jz } from '../../api/compare/jz' ;
 
 /**
  *

@@ -1,4 +1,4 @@
-import { _fill } from '.' ;
+import { _fill } from './_fill' ;
 
 export function _reset ( a , ai , aj ) {
 

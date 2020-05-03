@@ -1,6 +1,6 @@
 import { _idivmod } from '../../../api'
-import { _zeros } from '../../../core/array'
-import { _trim_positive } from '../../../core/convert'
+import { _zeros } from '../../array'
+import { _trim_positive } from '../../convert'
 
 /**
  * Euclidean algorithm. Computes the gcd of the two input numbers A and B,

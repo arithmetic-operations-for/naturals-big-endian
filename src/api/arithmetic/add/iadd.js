@@ -1,4 +1,4 @@
-import { _IADD } from '../../core/arithmetic' ;
+import { _iadd } from '../../../core/arithmetic/add' ;
 
 /**
  * Adds a big endian array to another ___in-place___.
@@ -16,6 +16,6 @@ export function iadd ( r , a , ai , aj , b , bi , bj ) {
 
 	const m = aj - ai ;
 
-	return _IADD( r , a , ai , aj , b , Math.max( bi , bj - m ) , bj ) ;
+	return _iadd( r , a , ai , aj , b , Math.max( bi , bj - m ) , bj ) ;
 
 }
