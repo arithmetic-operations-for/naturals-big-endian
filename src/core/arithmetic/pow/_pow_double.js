@@ -1,4 +1,4 @@
-import { _zeros , _copy } from '../../array' ;
+import { _reset , _alloc , _copy } from '../../array' ;
 import { _mul } from '../mul' ;
 
 /**
@@ -18,33 +18,72 @@ import { _mul } from '../mul' ;
  */
 export function _pow_double (r, x, a, ai, aj, c, ci, cj) {
 
-	if ( x === 0 ) {
-		c[cj-1] = 1;
-	}
+	c[cj-1] = 1 ;
 
-	else if ( x === 1 ) {
-		_copy( a , ai , aj , c , cj - ( aj - ai ) ) ;
-	}
+	if ( x === 0 ) return ;
 
-	else if ( x & 1 ) {
+	const n = aj - ai ;
 
-		const p = x - 1 ;
-		const n = (aj - ai) * p;
-		const u = _zeros(n);
+	_copy( a , ai , aj , c , cj - n ) ;
 
-		_pow_double(r, p, a, ai, aj, u, 0, n);
-		_mul(r, u, 0, n, a, ai, aj, c, ci, cj); // largest must be put first
-	}
+	if ( x === 1 ) return ;
 
-	else {
+	const xbits = [];
 
-		const p = x / 2 | 0 ;
-		const n = (aj - ai) * p;
-		const u = _zeros(n);
+	do {
+		xbits.push(x & 1) ;
+		x >>= 1;
+	} while ( x !== 1 ) ;
 
-		_pow_double(r, p, a, ai, aj, u, 0, n);
-		_mul(r, u, 0, n, u, 0, n, c, ci, cj);
+	const d = _alloc(cj-ci) ;
+	let _n = n;
 
-	}
+	do {
+		const _m = _n;
+		_n <<= 1;
+		_reset(d, 0, _n);
+		_mul(r, c, cj - _m, cj, c, cj - _m, cj, d, 0, _n);
+		if (xbits.pop() === 0) _copy(d, 0, _n, c, cj - _n);
+		else {
+			const _o = _n + n;
+			_reset(c, cj - _o, cj);
+			_mul(r, d, 0, _n, a, ai, aj, c, cj - _o, cj);  // largest must be put first
+			_n = _o;
+		}
+
+	} while ( xbits.length ) ;
 
 }
+
+//export function _pow_double (r, x, a, ai, aj, c, ci, cj) {
+
+	//if ( x === 0 ) {
+		//c[cj-1] = 1;
+	//}
+
+	//else if ( x === 1 ) {
+		//_copy( a , ai , aj , c , cj - ( aj - ai ) ) ;
+	//}
+
+	//else if ( x & 1 ) {
+
+		//const p = x - 1 ;
+		//const n = (aj - ai) * p;
+		//const u = _zeros(n);
+
+		//_pow_double(r, p, a, ai, aj, u, 0, n);
+		//_mul(r, u, 0, n, a, ai, aj, c, ci, cj); // largest must be put first
+	//}
+
+	//else {
+
+		//const p = x / 2 | 0 ;
+		//const n = (aj - ai) * p;
+		//const u = _zeros(n);
+
+		//_pow_double(r, p, a, ai, aj, u, 0, n);
+		//_mul(r, u, 0, n, u, 0, n, c, ci, cj);
+
+	//}
+
+//}
