@@ -7,7 +7,7 @@ import {
 
 /**
  * Precondition:
- *   - A > B
+ *   - A >= B
  *   - No leading zeroes.
  *
  * @param {Number} r The radix.
