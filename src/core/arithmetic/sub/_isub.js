@@ -19,13 +19,13 @@ export function _isub ( r , a , ai , aj , b , bi , bj ) {
 	while ( --bj >= bi ) {
 		--aj ;
 		const T = C ;
-		C = a[aj] < b[bj] + T ;
+		C = (a[aj] < b[bj] + T) | 0 ;
 		a[aj] = a[aj] - b[bj] + (C*r - T) ;
 	}
 
 	while ( C && --aj >= ai ) {
 		const T = C ;
-		C = a[aj] < T ;
+		C = (a[aj] < T) | 0 ;
 		a[aj] += ( C*r - T ) ;
 	}
 

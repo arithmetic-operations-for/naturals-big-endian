@@ -18,13 +18,13 @@ export function _iadd ( r , a , ai , aj , b , bi , bj ) {
 	while ( --bj >= bi ) {
 		const T = a[--aj] + b[bj] + C ;
 		a[aj] = T % r ;
-		C = T >= r ;
+		C = (T >= r) | 0 ;
 	}
 
 	while ( --aj >= ai ) {
 		const T = a[aj] + C ;
 		a[aj] = T % r ;
-		C = T >= r ;
+		C = (T >= r) | 0 ;
 	}
 
 }

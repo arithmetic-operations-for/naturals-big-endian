@@ -21,14 +21,14 @@ export function _sub ( r , a, ai, aj, b, bi, bj, c, ci, cj){
 	while(--bj >= bi){
 		--aj; --cj;
 		T = C;
-		C = a[aj] < b[bj] + T;
+		C = (a[aj] < b[bj] + T) | 0;
 		c[cj] = a[aj] - b[bj] + (C*r - T);
 	}
 
 	while(--aj >= ai){
 		--cj;
 		T = C;
-		C = a[aj] < T;
+		C = (a[aj] < T) | 0;
 		c[cj] = a[aj] + (C*r - T);
 	}
 

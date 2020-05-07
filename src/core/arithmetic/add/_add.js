@@ -21,15 +21,15 @@ export function _add ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
 	while ( --bj >= bi ) {
 		const t = a[--aj] + b[bj] + C ;
 		c[--cj] = t % r ;
-		C = t >= r ;
+		C = (t >= r) | 0 ;
 	}
 
 	while ( --aj >= ai ) {
 		const t = a[aj] + C ;
 		c[--cj] = t % r ;
-		C = t >= r ;
+		C = (t >= r) | 0 ;
 	}
 
-	if ( --cj >= ci ) c[cj] = +C ;
+	if ( --cj >= ci ) c[cj] = C ;
 
 }
