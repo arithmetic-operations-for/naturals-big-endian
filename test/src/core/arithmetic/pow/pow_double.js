@@ -1,17 +1,21 @@
 import test from 'ava' ;
-import { parse , _zeros , _pow_double , stringify } from '../../../../../src' ;
+import { parse , _zeros , _pow_double , _pow_double_recursive , stringify } from '../../../../../src' ;
 
 function macro ( t , A , x , C ) {
 
 	const r = 10 ;
 	const a = parse( 10 , r , A ) ;
-	const c = _zeros( Math.max( 1 , a.length * x ) ) ;
+	const c1 = _zeros( Math.max( 1 , a.length * x ) ) ;
+	const c2 = _zeros( Math.max( 1 , a.length * x ) ) ;
 
-	_pow_double( r , x , a , 0 , a.length , c , 0 , c.length ) ;
+	_pow_double( r , x , a , 0 , a.length , c1 , 0 , c1.length ) ;
+	_pow_double_recursive( r , x , a , 0 , a.length , c2 , 0 , c2.length ) ;
 
-	const result = stringify( r , 10 , c , 0 , c.length ) ;
+	const result1 = stringify( r , 10 , c1 , 0 , c1.length ) ;
+	const result2 = stringify( r , 10 , c2 , 0 , c2.length ) ;
 
-	t.is( result , C ) ;
+	t.is( C , result1 ) ;
+	t.is( C , result2 ) ;
 
 }
 

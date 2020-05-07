@@ -54,36 +54,3 @@ export function _pow_double (r, x, a, ai, aj, c, ci, cj) {
 	} while ( xbits.length ) ;
 
 }
-
-//export function _pow_double (r, x, a, ai, aj, c, ci, cj) {
-
-	//if ( x === 0 ) {
-		//c[cj-1] = 1;
-	//}
-
-	//else if ( x === 1 ) {
-		//_copy( a , ai , aj , c , cj - ( aj - ai ) ) ;
-	//}
-
-	//else if ( x & 1 ) {
-
-		//const p = x - 1 ;
-		//const n = (aj - ai) * p;
-		//const u = _zeros(n);
-
-		//_pow_double(r, p, a, ai, aj, u, 0, n);
-		//_mul(r, u, 0, n, a, ai, aj, c, ci, cj); // largest must be put first
-	//}
-
-	//else {
-
-		//const p = x / 2 | 0 ;
-		//const n = (aj - ai) * p;
-		//const u = _zeros(n);
-
-		//_pow_double(r, p, a, ai, aj, u, 0, n);
-		//_mul(r, u, 0, n, u, 0, n, c, ci, cj);
-
-	//}
-
-//}
