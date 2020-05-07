@@ -25,6 +25,8 @@ import { _idivmod_schoolbook_subroutine } from './_idivmod_schoolbook_subroutine
  */
 export function _idivmod_schoolbook_large_divisor ( r , a , ai , aj , b , bi , bj , q , qi ) {
 
+	while ( true ) { // non-recursive
+
 	const m = aj - ai ;
 	const n = bj - bi ;
 
@@ -56,8 +58,11 @@ export function _idivmod_schoolbook_large_divisor ( r , a , ai , aj , b , bi , b
 
 	// 6. Compute the quotient q and remainder r of( β^{m-n-1} r' + s ) / B recursively.
 	const ak = _trim_positive( a , ai , _aj ) ;
-	_idivmod_schoolbook_large_divisor( r , a , ak , aj , b , bi , bj , q , qi + ak - ai ) ;
+	//_idivmod_schoolbook_large_divisor( r , a , ak , aj , b , bi , bj , q , qi + ak - ai ) ;
+	qi += ak - ai; // non recursive because some implementation
+	ai = ak;       // do not have tail-call optimization ?
 
 	// 7. Return the quotient Q = β^{m-n-1} q' + q and remainder R = r
+	}
 
 }
