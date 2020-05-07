@@ -12,7 +12,7 @@ test( '_sub' , function ( assert ) {
 		var c = _zeros( Math.max( a.length , b.length ) + 1 ) ;
 		_sub( r , a , 0 , a.length , b , 0 , b.length , c , 0 , c.length ) ;
 
-		assert.deepEqual( stringify( r , 10 , c , 0 , c.length ) , C , A + ' + ' + B + ' = ' + C ) ;
+		assert.deepEqual( stringify( r , 10 , c , 0 , c.length ) , C , A + ' - ' + B + ' = ' + C ) ;
 
 	}
 
