@@ -1,6 +1,6 @@
 import { _log } from './_log' ;
 import { _convert_to_larger_fast } from './_convert_to_larger_fast' ;
-import { _convert_slow } from './_convert_slow' ;
+import { _convert_to_larger_slow } from './_convert_to_larger_slow' ;
 
 /**
  *
@@ -20,6 +20,6 @@ export function _convert_to_larger ( f , t , a , ai , aj , b , bi , bj ) {
 
 	if ( x === 1 ) return _convert_to_larger_fast( f , z , a , ai , aj , b , bi , bj ) ;
 
-	return _convert_slow( f , t , a , ai , aj , b , bi , bj ) ;
+	return _convert_to_larger_slow( f , t , a , ai , aj , b , bi , bj ) ;
 
 }

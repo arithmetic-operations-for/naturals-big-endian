@@ -3,6 +3,7 @@ export * from './_convert' ;
 export * from './_convert_slow' ;
 export * from './_convert_to_larger' ;
 export * from './_convert_to_larger_fast' ;
+export * from './_convert_to_larger_slow' ;
 export * from './_convert_to_smaller' ;
 export * from './_convert_to_smaller_fast' ;
 export * from './_int' ;
