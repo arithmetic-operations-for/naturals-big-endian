@@ -4,6 +4,10 @@ import { jz } from '../../api/compare/jz' ;
 
 /**
  *
+ * O(N^2). However the constants are very large and depend on t/f when t > f.
+ * See _convert_to_smaller_slow and _convert_to_larger_slow for implementations
+ * with better constants.
+ *
  * @param {Number} f the base to convert from
  * @param {Number} t the base to convert to
  * @param {Array} a the origin array
