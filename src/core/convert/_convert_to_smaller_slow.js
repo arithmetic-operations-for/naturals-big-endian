@@ -18,6 +18,10 @@ import { _trim_positive } from './_trim_positive' ;
 
 export function _convert_to_smaller_slow ( f , t , a , ai , aj , b , bi , bj ) {
 
+	let batch = 1;
+	let shift = t;
+	for (; shift * t <= f; shift *= t, ++batch) ;
+
 	const m = aj - ai ;
 	const q = _alloc( m ) ;
 	const r = _alloc( m ) ;        // NOTE that this copy is unnecessary when
@@ -29,11 +33,15 @@ export function _convert_to_smaller_slow ( f , t , a , ai , aj , b , bi , bj ) {
 
 		_reset( q , i , m ) ;
 
-		_idivmod_limb ( f , t , r , i , m , q , i ) ;
+		_idivmod_limb ( f , shift , r , i , m , q , i ) ;
 
-		--bj ;
+		const end = bj - batch ;
+		let block = r[m-1];
 
-		b[bj] = r[m-1] ;
+		do {
+			b[--bj] = block % t ;
+			block = (block / t) | 0 ;
+		} while ( bj > end ) ;
 
 		i = _trim_positive(q, i, m);
 		if ( i === m ) return ;
