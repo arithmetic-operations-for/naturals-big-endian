@@ -23,7 +23,7 @@ integer.translate( 10 , 16 , '255' ) ; // 'ff'
 
 [![Code issues](https://img.shields.io/codeclimate/issues/aureooms/js-integer-big-endian.svg)](https://codeclimate.com/github/aureooms/js-integer-big-endian/issues)
 [![Code maintainability](https://img.shields.io/codeclimate/maintainability/aureooms/js-integer-big-endian.svg)](https://codeclimate.com/github/aureooms/js-integer-big-endian/trends/churn)
-[![Code coverage (cov)](https://img.shields.io/codecov/c/gh/aureooms/js-integer-big-endian/master.svg)](https://codecov.io/gh/aureooms/js-integer-big-endian)
+[![Code coverage (alls)](https://img.shields.io/coveralls/github/aureooms/js-integer-big-endian/master.svg)](https://coveralls.io/github/aureooms/js-integer-big-endian)
 [![Code technical debt](https://img.shields.io/codeclimate/tech-debt/aureooms/js-integer-big-endian.svg)](https://codeclimate.com/github/aureooms/js-integer-big-endian/trends/technical_debt)
 [![Documentation](https://aureooms.github.io/js-integer-big-endian/badge.svg)](https://aureooms.github.io/js-integer-big-endian/source.html)
 [![Package size](https://img.shields.io/bundlephobia/minzip/@aureooms/js-integer-big-endian)](https://bundlephobia.com/result?p=@aureooms/js-integer-big-endian)
