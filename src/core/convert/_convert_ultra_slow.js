@@ -14,7 +14,7 @@ import { jz } from '../../api/compare/jz' ;
  * @param {Number} bj end offset in the destination array
  */
 
-export function _convert_slow ( f , t , a , ai , aj , b , bi , bj ) {
+export function _convert_ultra_slow ( f , t , a , ai , aj , b , bi , bj ) {
 
 	const d = _build( f , t ) ;
 	const n = d.length ;
