@@ -1,6 +1,6 @@
 import { _log } from './_log' ;
 import { _convert_to_smaller_fast } from './_convert_to_smaller_fast' ;
-import { _convert_ultra_slow } from './_convert_ultra_slow' ;
+import { _convert_to_smaller_slow } from './_convert_to_smaller_slow' ;
 
 /**
  *
@@ -20,6 +20,6 @@ export function _convert_to_smaller ( f , t , a , ai , aj , b , bi , bj ) {
 
 	if ( x === 1 ) return _convert_to_smaller_fast( t , z , a , ai , aj , b , bi , bj ) ;
 
-	return _convert_ultra_slow( f , t , a , ai , aj , b , bi , bj ) ;
+	return _convert_to_smaller_slow( f , t , a , ai , aj , b , bi , bj ) ;
 
 }

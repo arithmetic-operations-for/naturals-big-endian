@@ -6,6 +6,7 @@ export * from './_convert_to_larger_fast' ;
 export * from './_convert_to_larger_slow' ;
 export * from './_convert_to_smaller' ;
 export * from './_convert_to_smaller_fast' ;
+export * from './_convert_to_smaller_slow' ;
 export * from './_int' ;
 export * from './_log' ;
 export * from './_to_string' ;
