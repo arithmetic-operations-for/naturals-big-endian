@@ -1,3 +1,4 @@
+import { _copy } from '../../array' ;
 /**
  * Adds two big endian arrays and puts result in a destination array.
  * Wraps on overflow. |C| >= |A| >= |B|.
@@ -24,12 +25,16 @@ export function _add ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
 		C = (t >= r) | 0 ;
 	}
 
-	while ( --aj >= ai ) {
-		const t = a[aj] + C ;
-		c[--cj] = t % r ;
-		C = (t >= r) | 0 ;
+	if (C !== 0) {
+		while ( --aj >= ai && a[aj] === r-1 ) c[--cj] = 0 ;
+		if ( --cj >= ci ) {
+			if ( aj >= ai ) {
+				c[cj] = a[aj] + 1 ;
+			}
+			else c[cj] = 1;
+		}
 	}
 
-	if ( --cj >= ci ) c[cj] = C ;
+	_copy(a, ai, aj, c, cj - aj + ai);
 
 }
