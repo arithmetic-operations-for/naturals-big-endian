@@ -1,4 +1,4 @@
-import { _alloc , _reset , _copy } from '../array' ;
+import { _alloc , _copy } from '../array' ;
 import { _idivmod_limb } from '../arithmetic/div' ;
 import { _trim_positive } from './_trim_positive' ;
 
