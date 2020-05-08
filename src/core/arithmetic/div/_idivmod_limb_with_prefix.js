@@ -6,6 +6,7 @@
  * Input
  * -----
  *  - |Q| = |D|
+ *  - NO NEED to reset Q. The loop will set every member of Q.
  *
  * @param {Number} r The radix.
  * @param {Number} tmp Intermediate remainder (MUST be <code>< d</code>).

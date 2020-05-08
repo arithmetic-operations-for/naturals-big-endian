@@ -31,8 +31,6 @@ export function _convert_to_smaller_slow ( f , t , a , ai , aj , b , bi , bj ) {
 
 	while ( true ) {
 
-		_reset( q , i , m ) ;
-
 		_idivmod_limb ( f , shift , r , i , m , q , i ) ;
 
 		const end = bj - batch ;
