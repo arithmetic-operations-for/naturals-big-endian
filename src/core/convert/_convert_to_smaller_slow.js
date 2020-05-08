@@ -23,8 +23,8 @@ export function _convert_to_smaller_slow ( f , t , a , ai , aj , b , bi , bj ) {
 	for (; shift * t <= f; shift *= t, ++batch) ;
 
 	const m = aj - ai ;
-	const q = _alloc( m ) ;
-	const r = _alloc( m ) ;        // NOTE that this copy is unnecessary when
+	let q = _alloc( m ) ;
+	let r = _alloc( m ) ;          // NOTE that this copy is unnecessary when
 	_copy( a , ai , aj , r , 0 ) ; // called from parse since we can discard it.
 
 	let i = 0 ;
@@ -44,7 +44,10 @@ export function _convert_to_smaller_slow ( f , t , a , ai , aj , b , bi , bj ) {
 		i = _trim_positive(q, i, m);
 		if ( i === m ) return ;
 
-		_copy( q , i , m , r , i ) ;
+		//_copy( q , i , m , r , i ) ;
+		const tmp = q;
+		q = r;
+		r = tmp;
 
 	}
 
