@@ -21,10 +21,9 @@ export function _iadd ( r , a , ai , aj , b , bi , bj ) {
 		C = (T >= r) | 0 ;
 	}
 
-	while ( --aj >= ai ) {
-		const T = a[aj] + C ;
-		a[aj] = T % r ;
-		C = (T >= r) | 0 ;
+	if (C !== 0) {
+		while ( --aj >= ai && a[aj] === r-1 ) a[aj] = 0 ;
+		if ( aj >= ai ) ++a[aj] ;
 	}
 
 }
