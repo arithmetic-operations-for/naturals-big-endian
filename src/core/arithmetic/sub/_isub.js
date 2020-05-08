@@ -23,10 +23,9 @@ export function _isub ( r , a , ai , aj , b , bi , bj ) {
 		a[aj] = a[aj] - b[bj] + (C*r - T) ;
 	}
 
-	while ( C && --aj >= ai ) {
-		const T = C ;
-		C = (a[aj] < T) | 0 ;
-		a[aj] += ( C*r - T ) ;
+	if (C !== 0) {
+		while ( --aj >= ai && a[aj] === 0 ) a[aj] = r - 1 ;
+		if ( aj >= ai ) --a[aj];
 	}
 
 }
