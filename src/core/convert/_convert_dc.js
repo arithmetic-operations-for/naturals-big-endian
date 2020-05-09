@@ -121,13 +121,12 @@ export function _convert_dc ( f , t , a , ai , aj , b , bi , bj ) {
 	// k holds the current number of blocks
 	let k = full_small_blocks + ( size_first_small_block > 0 ? 1 : 0 ) ;
 
-	let l = size_small_block ;
-	// x holds f^l
+	// x holds f^size_small_block
 	let x2 = _zeros(m) ;
 	let xi = _build( t , f , x2 , m ) ;
-	const _m = l*(m-xi) ;
+	const _m = size_small_block*(m-xi) ;
 	let _x = _zeros(_m) ;
-	_pow_double (t, l, x2, xi, m, _x, 0, _m) ; // Compute f^l
+	_pow_double (t, size_small_block, x2, xi, m, _x, 0, _m) ; // Compute f^size_small_block
 	const _xi = _trim_positive(_x, 0, _m) ;
 	let x1 = _zeros(m) ;
 	xi = m - (_m - _xi) ;
