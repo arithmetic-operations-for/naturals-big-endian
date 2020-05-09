@@ -36,7 +36,7 @@ export function _convert_to_smaller_slow ( f , t , a , ai , aj , b , bi , bj ) {
 
 		_idivmod_limb ( f , shift , r , i , m , q , i ) ;
 
-		const end = bj - batch ;
+		const end = Math.max(bi, bj - batch) ;
 		let block = r[m-1];
 
 		do {
