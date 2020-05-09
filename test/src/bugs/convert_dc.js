@@ -1,4 +1,5 @@
 import test from 'ava' ;
+import { XorShift128Plus } from 'xorshift.js' ;
 import {
 	_convert_dc ,
 	trim_natural ,
@@ -154,3 +155,9 @@ test( 'convert_dc bug 9 8 translate' , t => {
 	const out = translate(9, 8, s9);
 	t.is( s9 , translate(8, 9, out) ) ;
 }) ;
+
+
+const seed = '1';
+const prng = new XorShift128Plus(seed);
+const _b8192 = prng.randomBytes(8192).toString('hex').replace(/^0*/, '');
+test( macro_convert , 16 , 94906266 , _b8192 ) ;
