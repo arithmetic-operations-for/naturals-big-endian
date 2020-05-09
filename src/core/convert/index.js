@@ -14,5 +14,4 @@ export * from './_from_string' ;
 export * from './_trim_positive' ;
 export * from './convert_keep_zeros' ;
 export * from './parse_keep_zeros' ;
-export * from './stringify_keep_zeros' ;
 export * from './trim_natural' ;
