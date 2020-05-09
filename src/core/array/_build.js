@@ -1,19 +1,17 @@
 
-export function _build ( base , number ) {
-
-	const data = [ ] ;
+export function _build ( base , number , data , n ) {
 
 	let q = number ;
 	const d = base ;
 
 	while ( q >= d ) {
 		const r = q % d ;
-		data.push( r ) ;
+		data[--n] = r ;
 		q = ( q - r ) / d ;
 	}
 
-	data.push( q ) ;
+	data[--n] = q ;
 
-	return data.reverse( ) ;
+	return n ;
 
 }

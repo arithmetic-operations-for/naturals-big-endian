@@ -42,7 +42,7 @@ export function _pow_double (r, x, a, ai, aj, c, ci, cj) {
 		const _m = _n;
 		_n <<= 1;
 		_reset(d, 0, _n);
-		_mul(r, c, cj - _m, cj, c, cj - _m, cj, d, 0, _n);
+		_mul(r, c, cj - _m, cj, c, cj - _m, cj, d, 0, _n); // TODO use squaring function here
 		if (xbits.pop() === 0) _copy(d, 0, _n, c, cj - _n);
 		else {
 			const _o = _n + n;
