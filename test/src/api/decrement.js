@@ -4,10 +4,11 @@ import { decrement } from '../../../src' ;
 function macro ( t , r , x , e ) {
 
 	const _x = [ 'x' , ...x.slice() , 'x' ] ;
+	const _e = [ 'x' , ...e.slice() , 'x' ] ;
 
 	decrement(r, _x, 1, _x.length - 1) ;
 
-	t.deepEqual( e , _x.slice(1, _x.length - 1) ) ;
+	t.deepEqual( _e , _x ) ;
 
 }
 
