@@ -1,7 +1,7 @@
 import test from 'ava' ;
-import { parse , _zeros , _idivmod , stringify } from '../../../src' ;
+import { parse , _zeros , _idivmod , _divmod , stringify } from '../../../src' ;
 
-function macro ( t , dividend , divisor , quotient , remainder ) {
+function test_idivmod ( t , dividend , divisor , quotient , remainder ) {
 
 	const B = 10 ;
 
@@ -11,16 +11,49 @@ function macro ( t , dividend , divisor , quotient , remainder ) {
 
 	_idivmod( B , D , 0 , D.length , d , 0 , d.length , q , 0 , q.length ) ;
 
+	t.is( divisor , stringify( B , 10 , d , 0 , d.length ) ) ;
+
 	t.is(
-		stringify( B , 10 , q , 0 , q.length ) , quotient ,
+		quotient , stringify( B , 10 , q , 0 , q.length ) ,
 		dividend + ' / ' + divisor + ' = ' + quotient
 	) ;
 
 	t.is(
-		stringify( B , 10 , D , 0 , D.length ) , remainder ,
+		remainder , stringify( B , 10 , D , 0 , D.length ) ,
 		dividend + ' % ' + divisor + ' = ' + remainder
 	) ;
 
+}
+
+function test_divmod ( t , dividend , divisor , quotient , remainder ) {
+
+	const B = 10 ;
+
+	const D = parse( 10 , B , dividend ) ;
+	const d = parse( 10 , B , divisor ) ;
+	const q = _zeros( D.length ) ;
+	const R = _zeros( D.length ) ;
+
+	_divmod( B , D , 0 , D.length , d , 0 , d.length , q , 0 , q.length , R , 0 , R.length ) ;
+
+	t.is( dividend , stringify( B , 10 , D , 0 , D.length ) ) ;
+	t.is( divisor , stringify( B , 10 , d , 0 , d.length ) ) ;
+
+	t.is(
+		quotient , stringify( B , 10 , q , 0 , q.length ) ,
+		dividend + ' / ' + divisor + ' = ' + quotient
+	) ;
+
+	t.is(
+		remainder , stringify( B , 10 , R , 0 , R.length ) ,
+		dividend + ' % ' + divisor + ' = ' + remainder
+	) ;
+
+}
+
+function macro ( ...args ) {
+	test_idivmod( ...args ) ;
+	test_divmod( ...args ) ;
 }
 
 macro.title = ( title , D , d , q , r ) => `${title} ${D} / ${d} = ${q} % ${r}`.trim()
