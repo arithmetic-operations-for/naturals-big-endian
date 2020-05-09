@@ -10,6 +10,7 @@ export * from './_convert_to_smaller_slow' ;
 export * from './_int' ;
 export * from './_log' ;
 export * from './_to_string' ;
+export * from './_from_string' ;
 export * from './_trim_positive' ;
 export * from './convert_keep_zeros' ;
 export * from './parse_keep_zeros' ;
