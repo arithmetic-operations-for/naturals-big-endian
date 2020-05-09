@@ -13,7 +13,9 @@ export function convert_keep_zeros ( f , t , a , ai , aj ) {
 		_copy( a , ai , aj , b , bi ) ;
 	}
 	else if ( aj - ai >= THRESHOLD_CONVERT_DC ) {
-		_convert_dc( f , t , a , ai , aj , b , bi , bj ) ;
+		// TODO use better size_small_block to avoid degenerated small blocks
+		// that slow down the execution
+		_convert_dc( THRESHOLD_CONVERT_DC >> 1 , f , t , a , ai , aj , b , bi , bj ) ;
 	}
 	else {
 		_convert( f , t , a , ai , aj , b , bi , bj ) ;

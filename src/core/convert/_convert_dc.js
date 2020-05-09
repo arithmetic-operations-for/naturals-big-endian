@@ -3,7 +3,6 @@ import { _iadd } from '../arithmetic/add' ;
 import { _mul } from '../arithmetic/mul' ;
 import { _pow_double } from '../arithmetic/pow' ;
 import { mul } from '../../api/arithmetic/mul'
-import { THRESHOLD_CONVERT_DC } from '../thresholds/conversion' ;
 import { _convert } from './_convert' ;
 import { _trim_positive } from './_trim_positive' ;
 
@@ -29,7 +28,7 @@ import { _trim_positive } from './_trim_positive' ;
  * @param {Number} bj end offset in the destination array
  */
 
-export function _convert_dc ( f , t , a , ai , aj , b , bi , bj ) {
+export function _convert_dc ( size_small_block , f , t , a , ai , aj , b , bi , bj ) {
 
 	const n = aj - ai ;
 	const m = bj - bi ;
@@ -38,7 +37,6 @@ export function _convert_dc ( f , t , a , ai , aj , b , bi , bj ) {
 	const logratio = Math.log( f ) / Math.log( t ) ;
 
 	// Compute block sizes.
-	const size_small_block = THRESHOLD_CONVERT_DC >> 1 ;
 	const size_small_block_converted = Math.ceil(logratio * size_small_block) | 0 ;
 	const full_small_blocks = n / size_small_block | 0 ;
 	// assert full_small_blocks >= 2.
