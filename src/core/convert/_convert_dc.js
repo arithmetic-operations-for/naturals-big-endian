@@ -29,23 +29,7 @@ import { _trim_positive } from './_trim_positive' ;
  * @param {Number} bj end offset in the destination array
  */
 
-//const dbg = (...args) => console.debug(...args) ;
-//const str = x => x.join('').replace(/0/g, '_') ;
-//import { _chr } from './_chr' ;
-//const str16 = x => x.map(_chr).join('').replace(/0/g, '_') ;
-const str = x => '...' ;
-const str16 = x => '...' ;
-const dbg = () => undefined ;
-
 export function _convert_dc ( f , t , a , ai , aj , b , bi , bj ) {
-
-	dbg({
-		fn: '_convert_dc',
-		f,
-		t,
-		a: str(a.slice(ai,aj)),
-		b: str16(b.slice(bi,bj)),
-	}) ;
 
 	const n = aj - ai ;
 	const m = bj - bi ;
@@ -77,44 +61,17 @@ export function _convert_dc ( f , t , a , ai , aj , b , bi , bj ) {
 
 	let _ai = ai + size_first_small_block ;
 
-	dbg({
-		where: 'before converting',
-		size_memory,
-	})
-
 	// Convert first small block
 	if ( size_first_small_block > 0 ) {
 		_convert( f , t , a , ai , _ai , tmp1 , 1 , _ti ) ;
-			dbg({
-				where: 'convert first small block',
-				tmp1: str16(tmp1),
-				_ti,
-			}) ;
 	}
 
 	// Convert full small blocks
 	while ( _ai < aj ) {
 		_convert( f , t , a , _ai , _ai + size_small_block , tmp1 , _ti + 1 , _ti + 1 + size_small_block_converted) ;
-			dbg({
-				where: `convert block`,
-				_ai,
-				aj,
-				_ti,
-				size_small_block_converted,
-				tmp1: str16(tmp1),
-			}) ;
 		_ai += size_small_block ;
 		_ti += 1 + size_small_block_converted ;
 	}
-
-	dbg({
-		full_small_blocks,
-		size_first_small_block,
-		size_small_block,
-		size_first_small_block_converted,
-		size_small_block_converted,
-		tmp1: str16(tmp1),
-	}) ;
 
 	// NOW ALL SMALL BLOCKS ARE CONVERTED, LET US ADD THEM UP
 
@@ -131,15 +88,7 @@ export function _convert_dc ( f , t , a , ai , aj , b , bi , bj ) {
 	let x1 = _zeros(m) ;
 	xi = m - (_m - _xi) ;
 	_copy(_x, _xi, _m, x1, xi);
-	dbg({
-		tmp1: str16(tmp1),
-		x1: str16(x1),
-		x1,
-		x2,
-	})
-	dbg({xi});
 	xi = _trim_positive(x1, 0, m) ;
-	dbg({xi});
 
 	// size_block_converted
 	let sbc = size_small_block_converted ;
@@ -154,58 +103,18 @@ export function _convert_dc ( f , t , a , ai , aj , b , bi , bj ) {
 		let extra = k & 1 ;
 		let pairs = k >> 1 ;
 
-		dbg({k, extra, pairs, size_memory, sfbc, sbc, xi}) ;
-		dbg({
-			tmp1: str16(tmp1),
-			x1: str16(x1),
-		})
-
 		// Merge first two pairs.
 		// NB: the first block is the only one that can be partially empty.
 		if ( extra === 0 ) {
 			const _tj = 1 + sfbc ;
 			const _tk = 1 + _tj + sbc ;
-		dbg({
-			i: 'extra',
-			tmp2: str16(tmp2),
-		})
 			mul( t , x1 , xi , m , tmp1 , 1 , _tj , tmp2 , 0 , _tk - 1 ) ;
-		if (tmp1[-1] !== undefined) {
-			dbg({
-				where: `mul`,
-				tmp2,
-			}) ;
-		}
-		dbg({
-			i: 'extra',
-			mul: str16(tmp1.slice(1, _tj)),
-			x1: str16(x1),
-			tmp2: str16(tmp2),
-		})
 			_iadd( t , tmp2 , 1 , _tk - 1 , tmp1 , 1 + _tj , _tk ) ; // TODO cannot overflow ?
-		if (tmp1[-1] !== undefined) {
-			dbg({
-				where: `add`,
-				tmp2,
-			}) ;
-		}
-		dbg({
-			i: 'extra',
-			add: str16(tmp1.slice(1+_tj, _tk)),
-			tmp2: str16(tmp2),
-		})
 			sfbc += sbc ;
 		}
 		else {
 			_copy(tmp1, 1, sfbc + 1, tmp2, 1);
 		}
-
-		dbg({
-			i: 'between',
-			tmp1: str16(tmp1),
-			tmp2: str16(tmp2),
-			x1: str16(x1),
-		})
 
 		let _ti = sfbc + 2 - extra;
 
@@ -213,43 +122,8 @@ export function _convert_dc ( f , t , a , ai , aj , b , bi , bj ) {
 			// C = A f^l + B
 			const _tj = _ti + 1 + sbc ;
 			const _tk = _tj + 1 + sbc ;
-			dbg({
-				i,
-				pairs,
-				extra,
-				sfbc,
-				sbc,
-				_ti,
-				_tj,
-				_tk,
-				size_memory,
-				tmp2: str16(tmp2),
-			})
 			mul( t , x1 , xi , m , tmp1 , 1 + _ti , _tj , tmp2 , _ti - i + 1 , _tk - i ) ;
-		if (tmp1[-1] !== undefined) {
-			dbg({
-				where: `mul`,
-				tmp2,
-			}) ;
-		}
-			dbg({
-				i,
-				mul: str16(tmp1.slice(1 + _ti, _tj)),
-				x1: str16(x1),
-				tmp2: str16(tmp2),
-			})
 			_iadd( t , tmp2 , _ti - i + 2 , _tk - i , tmp1 , 1 + _tj , _tk ) ;
-		if (tmp1[-1] !== undefined) {
-			dbg({
-				where: `add`,
-				tmp2,
-			}) ;
-		}
-			dbg({
-				i,
-				add: str16(tmp1.slice(1+_tj, _tk)),
-				tmp2: str16(tmp2),
-			})
 			_ti = _tk;
 		}
 
@@ -276,33 +150,10 @@ export function _convert_dc ( f , t , a , ai , aj , b , bi , bj ) {
 
 	}
 
-	dbg({
-		i: 'end',
-		k,
-		sfbc,
-		sbc,
-		size_memory,
-		tmp1: str16(tmp1),
-		tmp1,
-		x1: str16(x1),
-		b: str16(b.slice(bi,bj)),
-	})
 	// Only one pair left to merge. Merge directly into output.
 	_reset(tmp2, 0, m+1);
 	mul( t , x1 , xi , m , tmp1 , 1 , 1 + sfbc , tmp2 , 0 , m+1 ) ;
 	_iadd( t , tmp2 , 1 , m+1 , tmp1 , 2 + sfbc , 2 + sfbc + sbc ) ;
 	_copy(tmp2, 1, m+1, b, 0);
-	dbg({
-		_a: str(a.slice(ai,aj)),
-		a,
-		_tmp1: str16(tmp1),
-		tmp1,
-		_x1: str16(x1),
-		x1,
-		_x2: str16(x2),
-		x2,
-		_b: str16(b.slice(bi,bj)),
-		b,
-	})
 
 }
