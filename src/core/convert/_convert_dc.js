@@ -3,7 +3,7 @@ import { _iadd } from '../arithmetic/add' ;
 import { _mul } from '../arithmetic/mul' ;
 import { _pow_double } from '../arithmetic/pow' ;
 import { mul } from '../../api/arithmetic/mul'
-import { _convert } from './_convert' ;
+import { _convert_slow } from './_convert_slow' ;
 import { _trim_positive } from './_trim_positive' ;
 
 /**
@@ -61,12 +61,12 @@ export function _convert_dc ( size_small_block , f , t , a , ai , aj , b , bi , 
 
 	// Convert first small block
 	if ( size_first_small_block > 0 ) {
-		_convert( f , t , a , ai , _ai , tmp1 , 1 , _ti ) ;
+		_convert_slow( f , t , a , ai , _ai , tmp1 , 1 , _ti ) ;
 	}
 
 	// Convert full small blocks
 	while ( _ai < aj ) {
-		_convert( f , t , a , _ai , _ai + size_small_block , tmp1 , _ti + 1 , _ti + 1 + size_small_block_converted) ;
+		_convert_slow( f , t , a , _ai , _ai + size_small_block , tmp1 , _ti + 1 , _ti + 1 + size_small_block_converted) ;
 		_ai += size_small_block ;
 		_ti += 1 + size_small_block_converted ;
 	}

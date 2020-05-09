@@ -1,6 +1,5 @@
-import { _copy } from '../array' ;
-import { _convert_to_smaller } from './_convert_to_smaller' ;
-import { _convert_to_larger } from './_convert_to_larger' ;
+import { _convert_to_smaller_slow } from './_convert_to_smaller_slow' ;
+import { _convert_to_larger_slow } from './_convert_to_larger_slow' ;
 
 /**
  *
@@ -16,10 +15,9 @@ import { _convert_to_larger } from './_convert_to_larger' ;
  * @param {Number} bj end offset in the destination array
  */
 
-export function _convert ( f , t , a , ai , aj , b , bi , bj ) {
+export function _convert_slow ( f , t , a , ai , aj , b , bi , bj ) {
 
-	if ( f > t ) return _convert_to_smaller( f , t , a , ai , aj , b , bi , bj ) ;
-	if ( f < t ) return _convert_to_larger( f , t , a , ai , aj , b , bi , bj ) ;
-	return _copy( a , ai , aj , b , bi ) ;
+	if ( f > t ) return _convert_to_smaller_slow( f , t , a , ai , aj , b , bi , bj ) ;
+	else return _convert_to_larger_slow( f , t , a , ai , aj , b , bi , bj ) ;
 
 }

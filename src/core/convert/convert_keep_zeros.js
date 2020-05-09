@@ -1,7 +1,5 @@
-import { _zeros, _copy } from '../array' ;
+import { _zeros } from '../array' ;
 import { _convert } from './_convert' ;
-import { _convert_dc } from './_convert_dc' ;
-import { THRESHOLD_CONVERT_DC } from '../thresholds/conversion' ;
 
 export function convert_keep_zeros ( f , t , a , ai , aj ) {
 
@@ -9,17 +7,7 @@ export function convert_keep_zeros ( f , t , a , ai , aj ) {
 	const bj = Math.ceil( Math.log( f ) / Math.log( t ) * ( aj - ai ) ) ;
 	const b = _zeros( bj - bi ) ;
 
-	if ( f === t ) {
-		_copy( a , ai , aj , b , bi ) ;
-	}
-	else if ( aj - ai >= THRESHOLD_CONVERT_DC ) {
-		// TODO use better size_small_block to avoid degenerated small blocks
-		// that slow down the execution
-		_convert_dc( THRESHOLD_CONVERT_DC >> 1 , f , t , a , ai , aj , b , bi , bj ) ;
-	}
-	else {
-		_convert( f , t , a , ai , aj , b , bi , bj ) ;
-	}
+	_convert( f , t , a , ai , aj , b , bi , bj ) ;
 
 	return b ;
 

@@ -1,6 +1,8 @@
 import { _log } from './_log' ;
 import { _convert_to_smaller_fast } from './_convert_to_smaller_fast' ;
 import { _convert_to_smaller_slow } from './_convert_to_smaller_slow' ;
+import { _convert_dc } from './_convert_dc' ;
+import { THRESHOLD_CONVERT_DC } from '../thresholds/conversion' ;
 
 /**
  *
@@ -19,6 +21,12 @@ export function _convert_to_smaller ( f , t , a , ai , aj , b , bi , bj ) {
 	const [ z , x ] = _log( f , t ) ;
 
 	if ( x === 1 ) return _convert_to_smaller_fast( t , z , a , ai , aj , b , bi , bj ) ;
+
+	if ( aj - ai >= THRESHOLD_CONVERT_DC ) {
+		// TODO use better size_small_block to avoid degenerated small blocks
+		// that slow down the execution
+		return _convert_dc( THRESHOLD_CONVERT_DC >> 1 , f , t , a , ai , aj , b , bi , bj ) ;
+	}
 
 	return _convert_to_smaller_slow( f , t , a , ai , aj , b , bi , bj ) ;
 
