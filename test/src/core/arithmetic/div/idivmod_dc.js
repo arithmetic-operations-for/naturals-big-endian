@@ -12,12 +12,14 @@ function macro ( t , dividend , divisor , quotient , remainder ) {
 	_idivmod_dc( B , D , 0 , D.length , d , 0 , d.length , q , 0 , q.length ) ;
 
 	t.is(
-		stringify( B , 10 , q , 0 , q.length ) , quotient ,
+		quotient ,
+		stringify( B , 10 , q , 0 , q.length ) ,
 		dividend + ' / ' + divisor + ' = ' + quotient
 	) ;
 
 	t.is(
-		stringify( B , 10 , D , 0 , D.length ) , remainder ,
+		remainder ,
+		stringify( B , 10 , D , 0 , D.length ) ,
 		dividend + ' % ' + divisor + ' = ' + remainder
 	) ;
 

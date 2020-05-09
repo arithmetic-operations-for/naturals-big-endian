@@ -43,7 +43,7 @@ export function _pow_double_recursive (r, x, a, ai, aj, c, ci, cj) {
 		const u = _zeros(n);
 
 		_pow_double_recursive(r, p, a, ai, aj, u, 0, n);
-		_mul(r, u, 0, n, u, 0, n, c, ci, cj);
+		_mul(r, u, 0, n, u, 0, n, c, ci, cj); // TODO use squaring function here
 
 	}
 

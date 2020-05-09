@@ -6,6 +6,9 @@ import { _trim_positive } from './_trim_positive' ;
  *
  * O(N^2). f > t.
  *
+ * |A| >= 1
+ * |B| is large enough to hold the result
+ *
  * @param {Number} f the base to convert from
  * @param {Number} t the base to convert to
  * @param {Array} a the origin array
