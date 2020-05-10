@@ -18,6 +18,7 @@ import { _trim_positive } from './_trim_positive' ;
  * This implementation is not recursive. It is iterative, and will call a
  * simpler subroutine for the base case.
  *
+ * @param {Number} size_small_block the size of a small block
  * @param {Number} f the base to convert from
  * @param {Number} t the base to convert to
  * @param {Array} a the origin array
