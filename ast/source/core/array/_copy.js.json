@@ -1,28 +1,28 @@
 {
   "type": "File",
   "start": 0,
-  "end": 102,
+  "end": 143,
   "loc": {
     "start": {
       "line": 1,
       "column": 0
     },
     "end": {
-      "line": 7,
+      "line": 8,
       "column": 0
     }
   },
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 102,
+    "end": 143,
     "loc": {
       "start": {
         "line": 1,
         "column": 0
       },
       "end": {
-        "line": 7,
+        "line": 8,
         "column": 0
       }
     },
@@ -31,14 +31,14 @@
       {
         "type": "ExportNamedDeclaration",
         "start": 1,
-        "end": 101,
+        "end": 142,
         "loc": {
           "start": {
             "line": 2,
             "column": 0
           },
           "end": {
-            "line": 6,
+            "line": 7,
             "column": 1
           }
         },
@@ -47,14 +47,14 @@
         "declaration": {
           "type": "FunctionDeclaration",
           "start": 8,
-          "end": 101,
+          "end": 142,
           "loc": {
             "start": {
               "line": 2,
               "column": 7
             },
             "end": {
-              "line": 6,
+              "line": 7,
               "column": 1
             }
           },
@@ -168,14 +168,14 @@
           "body": {
             "type": "BlockStatement",
             "start": 48,
-            "end": 101,
+            "end": 142,
             "loc": {
               "start": {
                 "line": 2,
                 "column": 47
               },
               "end": {
-                "line": 6,
+                "line": 7,
                 "column": 1
               }
             },
@@ -465,8 +465,27 @@
                       },
                       "computed": true
                     }
+                  },
+                  "trailingComments": null
+                },
+                "trailingComments": [
+                  {
+                    "type": "CommentLine",
+                    "value": "while ( ai < aj ) b[++bi] = a[++ai] ;",
+                    "start": 100,
+                    "end": 139,
+                    "loc": {
+                      "start": {
+                        "line": 5,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 5,
+                        "column": 40
+                      }
+                    }
                   }
-                }
+                ]
               }
             ],
             "directives": []
@@ -478,7 +497,24 @@
     ],
     "directives": []
   },
-  "comments": [],
+  "comments": [
+    {
+      "type": "CommentLine",
+      "value": "while ( ai < aj ) b[++bi] = a[++ai] ;",
+      "start": 100,
+      "end": 139,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 1
+        },
+        "end": {
+          "line": 5,
+          "column": 40
+        }
+      }
+    }
+  ],
   "tokens": [
     {
       "type": {
@@ -1471,6 +1507,22 @@
       }
     },
     {
+      "type": "CommentLine",
+      "value": "while ( ai < aj ) b[++bi] = a[++ai] ;",
+      "start": 100,
+      "end": 139,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 1
+        },
+        "end": {
+          "line": 5,
+          "column": 40
+        }
+      }
+    },
+    {
       "type": {
         "label": "}",
         "beforeExpr": false,
@@ -1482,15 +1534,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 100,
-      "end": 101,
+      "start": 141,
+      "end": 142,
       "loc": {
         "start": {
-          "line": 6,
+          "line": 7,
           "column": 0
         },
         "end": {
-          "line": 6,
+          "line": 7,
           "column": 1
         }
       }
@@ -1508,15 +1560,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 102,
-      "end": 102,
+      "start": 143,
+      "end": 143,
       "loc": {
         "start": {
-          "line": 7,
+          "line": 8,
           "column": 0
         },
         "end": {
-          "line": 7,
+          "line": 8,
           "column": 0
         }
       }

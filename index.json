@@ -2422,7 +2422,7 @@
     "__docId__": 99,
     "kind": "file",
     "name": "src/core/arithmetic/add/_add.js",
-    "content": "/**\n * Adds two big endian arrays and puts result in a destination array.\n * Wraps on overflow. |C| >= |A| >= |B|.\n *\n * @param {Number} r base (radix)\n * @param {Array} a first operand\n * @param {Number} ai a left\n * @param {Number} aj a right\n * @param {Array} b second operand\n * @param {Number} bi b left\n * @param {Number} bj b right\n * @param {Array} c result, must be 0 initialized\n * @param {Number} ci c left\n * @param {Number} cj c right\n */\n\nexport function _add ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {\n\n\tlet C = 0 ;\n\n\twhile ( --bj >= bi ) {\n\t\tconst t = a[--aj] + b[bj] + C ;\n\t\tc[--cj] = t % r ;\n\t\tC = t >= r ;\n\t}\n\n\twhile ( --aj >= ai ) {\n\t\tconst t = a[aj] + C ;\n\t\tc[--cj] = t % r ;\n\t\tC = t >= r ;\n\t}\n\n\tif ( --cj >= ci ) c[cj] = +C ;\n\n}\n",
+    "content": "import { _copy } from '../../array' ;\n/**\n * Adds two big endian arrays and puts result in a destination array.\n * Wraps on overflow. |C| >= |A| >= |B|.\n *\n * @param {Number} r base (radix)\n * @param {Array} a first operand\n * @param {Number} ai a left\n * @param {Number} aj a right\n * @param {Array} b second operand\n * @param {Number} bi b left\n * @param {Number} bj b right\n * @param {Array} c result, must be 0 initialized\n * @param {Number} ci c left\n * @param {Number} cj c right\n */\n\nexport function _add ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {\n\n\tlet C = 0 ;\n\n\twhile ( --bj >= bi ) {\n\t\tconst t = a[--aj] + b[bj] + C ;\n\t\tc[--cj] = t % r ;\n\t\tC = (t >= r) | 0 ;\n\t}\n\n\tif (C !== 0) {\n\t\twhile ( --aj >= ai && a[aj] === r-1 ) c[--cj] = 0 ;\n\t\tif ( --cj >= ci ) {\n\t\t\tif ( aj >= ai ) {\n\t\t\t\tc[cj] = a[aj] + 1 ;\n\t\t\t}\n\t\t\telse c[cj] = 1;\n\t\t}\n\t}\n\n\t_copy(a, ai, aj, c, cj - aj + ai);\n\n}\n",
     "static": true,
     "longname": "/home/aureooms/dev/js/js-integer-big-endian/src/core/arithmetic/add/_add.js",
     "access": "public",
@@ -2443,7 +2443,7 @@
     "importPath": "@aureooms/js-integer-big-endian/src/core/arithmetic/add/_add.js",
     "importStyle": "{_add}",
     "description": "Adds two big endian arrays and puts result in a destination array.\nWraps on overflow. |C| >= |A| >= |B|.",
-    "lineNumber": 17,
+    "lineNumber": 18,
     "params": [
       {
         "nullable": null,
@@ -2552,7 +2552,7 @@
     "__docId__": 101,
     "kind": "file",
     "name": "src/core/arithmetic/add/_iadd.js",
-    "content": "/**\n * Adds a big endian array to another.\n * Wraps on overflow. |A| >= |B|.\n *\n * @param {Number} r base (radix)\n * @param {Array} a first operand\n * @param {Number} ai a left\n * @param {Number} aj a right\n * @param {Array} b second operand\n * @param {Number} bi b left\n * @param {Number} bj b right\n */\n\nexport function _iadd ( r , a , ai , aj , b , bi , bj ) {\n\n\tlet C = 0 ;\n\n\twhile ( --bj >= bi ) {\n\t\tconst T = a[--aj] + b[bj] + C ;\n\t\ta[aj] = T % r ;\n\t\tC = T >= r ;\n\t}\n\n\twhile ( --aj >= ai ) {\n\t\tconst T = a[aj] + C ;\n\t\ta[aj] = T % r ;\n\t\tC = T >= r ;\n\t}\n\n}\n",
+    "content": "/**\n * Adds a big endian array to another.\n * Wraps on overflow. |A| >= |B|.\n *\n * @param {Number} r base (radix)\n * @param {Array} a first operand\n * @param {Number} ai a left\n * @param {Number} aj a right\n * @param {Array} b second operand\n * @param {Number} bi b left\n * @param {Number} bj b right\n */\n\nexport function _iadd ( r , a , ai , aj , b , bi , bj ) {\n\n\tlet C = 0 ;\n\n\twhile ( --bj >= bi ) {\n\t\tconst T = a[--aj] + b[bj] + C ;\n\t\ta[aj] = T % r ;\n\t\tC = (T >= r) | 0 ;\n\t}\n\n\tif (C !== 0) {\n\t\twhile ( --aj >= ai && a[aj] === r-1 ) a[aj] = 0 ;\n\t\tif ( aj >= ai ) ++a[aj] ;\n\t}\n\n}\n",
     "static": true,
     "longname": "/home/aureooms/dev/js/js-integer-big-endian/src/core/arithmetic/add/_iadd.js",
     "access": "public",
@@ -2651,8 +2651,88 @@
   {
     "__docId__": 103,
     "kind": "file",
+    "name": "src/core/arithmetic/add/_iadd_limb.js",
+    "content": "/**\n * Adds single limb to a big endian array.\n * Wraps on overflow. |A| >= 1.\n *\n * @param {Number} r base (radix)\n * @param {Number} x limb to add\n * @param {Array} a first operand\n * @param {Number} ai a left\n * @param {Number} aj a right\n */\n\nexport function _iadd_limb ( r , x , a , ai , aj ) {\n\n\tlet T = a[--aj] + x ;\n\ta[aj] = T % r ;\n\n\twhile ( T >= r && --aj >= ai ) {\n\t\tT = a[aj] + 1 ;\n\t\ta[aj] = T % r ;\n\t}\n\n}\n",
+    "static": true,
+    "longname": "/home/aureooms/dev/js/js-integer-big-endian/src/core/arithmetic/add/_iadd_limb.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 104,
+    "kind": "function",
+    "name": "_iadd_limb",
+    "memberof": "src/core/arithmetic/add/_iadd_limb.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/core/arithmetic/add/_iadd_limb.js~_iadd_limb",
+    "access": "private",
+    "export": true,
+    "importPath": "@aureooms/js-integer-big-endian/src/core/arithmetic/add/_iadd_limb.js",
+    "importStyle": "{_iadd_limb}",
+    "description": "Adds single limb to a big endian array.\nWraps on overflow. |A| >= 1.",
+    "lineNumber": 12,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "r",
+        "description": "base (radix)"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "x",
+        "description": "limb to add"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "a",
+        "description": "first operand"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "ai",
+        "description": "a left"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "aj",
+        "description": "a right"
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 105,
+    "kind": "file",
     "name": "src/core/arithmetic/add/index.js",
-    "content": "export * from './_add' ;\nexport * from './_iadd' ;\n",
+    "content": "export * from './_add' ;\nexport * from './_iadd' ;\nexport * from './_iadd_limb' ;\n",
     "static": true,
     "longname": "/home/aureooms/dev/js/js-integer-big-endian/src/core/arithmetic/add/index.js",
     "access": "public",
@@ -2660,7 +2740,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 104,
+    "__docId__": 106,
     "kind": "file",
     "name": "src/core/arithmetic/div/_div_limb_with_prefix.js",
     "content": "/**\n * Divides a big endian number by a single limb number.\n * Can only work with limbs of size at most sqrt( 2^53 ).\n * Allows to prefix the dividend with an intermediate remainder.\n *\n * Does not update the remainder.\n *\n * Input\n * -----\n *  - |Q| = |D|\n *\n * @param {Number} r The radix.\n * @param {Number} tmp Intermediate remainder (MUST be <code>< d</code>).\n * @param {Number} d The divisor.\n * @param {Array} D The dividend (NOT modified).\n * @param {Number} Di Left of dividend.\n * @param {Number} Dj Right of dividend.\n * @param {Array} Q The quotient.\n * @param {Number} Qi Left of quotient.\n */\nexport function _div_limb_with_prefix ( r , tmp , d , D , Di , Dj , Q , Qi ) {\n\n\twhile ( Di < Dj ) {\n\n\t\ttmp *= r ; tmp += D[Di] ;\n\n\t\tQ[Qi] = tmp / d | 0 ;\n\t\ttmp %= d ;\n\n\t\t++Qi ; ++Di ;\n\n\t}\n\n}\n",
@@ -2671,7 +2751,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 105,
+    "__docId__": 107,
     "kind": "function",
     "name": "_div_limb_with_prefix",
     "memberof": "src/core/arithmetic/div/_div_limb_with_prefix.js",
@@ -2770,7 +2850,7 @@
     "return": null
   },
   {
-    "__docId__": 106,
+    "__docId__": 108,
     "kind": "file",
     "name": "src/core/arithmetic/div/_idivmod_dc.js",
     "content": "import { _zeros , _copy } from '../../array' ;\nimport { _cmp_n } from '../../compare' ;\nimport { _imul_limb } from '../mul' ;\nimport { _idivmod_dc_21 } from './_idivmod_dc_21' ;\nimport { _div_limb_with_prefix } from './_div_limb_with_prefix' ;\nimport { _mod_limb } from './_mod_limb' ;\n\n\n/**\n * Input\n * -----\n *  - No leading zeros\n *  - |A| = |C|\n *\n * References\n * ----------\n *   - https://gmplib.org/manual/Divide-and-Conquer-Division.html\n *\n * @param {Number} X The radix.\n * @param {Array} a Dividend / Remainder.\n * @param {Number} ai\n * @param {Number} aj\n * @param {Array} b Divisor.\n * @param {Number} bi\n * @param {Number} bj\n * @param {Array} c Quotient.\n * @param {Number} ci\n * @param {Number} cj\n */\nexport function _idivmod_dc ( X , a , ai , aj , b , bi , bj , c , ci , cj ) {\n\n\t// [BZ98] Fast Recursive Division\n\n\tconst r = aj - ai ;\n\tconst s = bj - bi ;\n\n\tif ( r < s || r === s && _cmp_n( a , ai , aj , b , bi ) < 0 ) return ;\n\n\t// shift to get n = 2^k for some k\n\tlet _n = 1 ;\n\n\twhile ( _n  < s ) _n <<= 1 ;\n\n\tconst n = _n ;\n\n\tconst shift = n - s ;\n\n\tconst x = b[bi] ;\n\tconst _X = X / 2 ;\n\tconst _normalize = x < _X ;\n\tconst z = Math.ceil( _X / x ) ;\n\n\tconst w = r + shift + ( _normalize || a[ai] >= _X ) ;\n\tconst t = Math.ceil( w / n ) ;\n\tconst _ai = 0 ;\n\tconst _aj = t * n ;            // + 1 if\n\tconst _a = _zeros( _aj ) ;     // potential normalization overflow\n\tconst _ak = _aj - shift - r ;  // or if A potentially bigger than B\n\t_copy( a , ai , aj , _a , _ak ) ;\n\n\tconst _bi = 0 ;\n\tconst _bj = n ;\n\tconst _b = _zeros( n ) ;\n\t_copy( b , bi , bj , _b , 0 ) ;\n\n\tif ( _normalize ) {\n\n\t\t_imul_limb( X , z , _a , _ai , _aj ) ;\n\t\t_imul_limb( X , z , _b , _bi , _bj ) ;\n\n\t}\n\n\tconst _cj = _aj ;\n\tconst _c = _zeros( _cj ) ;\n\n\tfor ( let i = 0 ; i < _aj - n ; i += n ) {\n\n\t\t_idivmod_dc_21( X , _a , i , i + ( n << 1 ) , _b , _bi , _bj , _c , i , i + ( n << 1 ) ) ;\n\n\t}\n\n\tif ( _normalize ) {\n\t\tconst p = _mod_limb( X , z , _a , _ai , _ak ) ;\n\t\t_div_limb_with_prefix( X , p , z , _a , _ak , _aj - shift , a , ai , aj ) ;\n\t}\n\telse {\n\t\t_copy( _a , _ak , _aj - shift , a , ai , aj ) ;\n\t}\n\n\t_copy( _c , _cj - r , _cj , c , ci ) ;\n\n}\n",
@@ -2781,7 +2861,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 107,
+    "__docId__": 109,
     "kind": "function",
     "name": "_idivmod_dc",
     "memberof": "src/core/arithmetic/div/_idivmod_dc.js",
@@ -2900,7 +2980,7 @@
     "return": null
   },
   {
-    "__docId__": 108,
+    "__docId__": 110,
     "kind": "file",
     "name": "src/core/arithmetic/div/_idivmod_dc_21.js",
     "content": "import { THRESHOLD_DIV_DC } from '../../thresholds' ;\nimport { _idivmod_dc_32 } from './_idivmod_dc_32' ;\nimport { _idivmod_schoolbook_large_divisor } from './_idivmod_schoolbook_large_divisor' ;\n\n\n/**\n * Algorithm 3.3 Divide-and-conquer division (2 by 1)\n * ==================================================\n *\n * Input\n * -----\n *  Two nonnegative integers A and B,\n *  such that A < β^n B and β^n / 2 ≤ B < β^n.\n *  n must be even.\n *\n *                    -----------                 -----\n *                   |  :  |  :  |               |  :  |\n *                    -----------                 -----\n *\n * Output\n * ------\n *  The quotient floor( A/B ) and the remainder A mod B.\n *\n * Complexity\n * ----------\n *  T(n) = 2T'(n/2) + K\n *\n */\nexport function _idivmod_dc_21 ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {\n\n\tif ( bj - bi < THRESHOLD_DIV_DC ) {\n\t\treturn _idivmod_schoolbook_large_divisor( r , a , ai , aj , b , bi , bj , c , ci ) ;\n\t}\n\n\t// 1. Let A = A_3 β^{3n/2} + A_2 β^n + A_1 β^{n/2} + A_0 and\n\t//    B = B_1 β^{n/2} + B_0,\n\t//    with 0 ≤ A_i < β^{n/2} and 0 ≤ B_i < β^{n/2}.\n\n\tconst m = aj - ai ;\n\tconst k = m >>> 2 ;\n\n\t// 2. Compute the high half Q_1 of the quotient as\n\t//    Q_1 = ( A_3 β^n + A_2 β^{n/2} + A_1 ) / B\n\t//    with remainder R_1 using algorithm 3.4.\n\n\t_idivmod_dc_32( r , a , ai , aj - k , b , bi , bj , c , ci , cj - k ) ;\n\n\t// 3. Compute the low half Q_0 of the quotient as\n\t//    Q_0 = ( R_1 β^{n/2} + A_0 ) / B\n\t//    with remainder R_0 using algorithm 3.4.\n\n\t_idivmod_dc_32( r , a , ai + k , aj , b , bi , bj , c , ci + k , cj ) ;\n\n\t// 4. Return the quotient Q = Q_1 β^{n/2} + Q_0 and the remainder R = R_0 .\n\n}\n",
@@ -2911,7 +2991,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 109,
+    "__docId__": 111,
     "kind": "function",
     "name": "_idivmod_dc_21",
     "memberof": "src/core/arithmetic/div/_idivmod_dc_21.js",
@@ -2994,7 +3074,7 @@
     }
   },
   {
-    "__docId__": 110,
+    "__docId__": 112,
     "kind": "file",
     "name": "src/core/arithmetic/div/_idivmod_dc_32.js",
     "content": "import { _zeros , _fill } from '../../array' ;\nimport { _isub } from '../sub' ;\nimport { _mul } from '../mul' ;\nimport { lt } from '../../../api/compare' ;\nimport { iadd , decrement } from '../../../api/arithmetic' ;\nimport { _idivmod_dc_21 } from './_idivmod_dc_21' ;\n\n/**\n * Algorithm 3.4 Divide-and-conquer division (3 by 2)\n * ==================================================\n *\n * Input\n * -----\n *  Two nonnegative integers A and B,\n *  such that A < β^n B and β^{2n} / 2 ≤ B < β^{2n}.\n *  n must be even.\n *\n *                    --------                 -----\n *                   |  |  |  |               |  |  |\n *                    --------                 -----\n *\n * Output\n * ------\n *  The quotient floor( A/B ) and the remainder A mod B.\n *\n * Complexity\n * ----------\n *  T'(n) ≤ T(n) + M(n) + Ln\n *\n */\nexport function _idivmod_dc_32 ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {\n\n\t// 1. Let A = A_2 β^{2n} + A_1 β^n + A_0 and\n\t//    B = B_1 β^{n} + B_0,\n\t//    with 0 ≤ A_i < β^n and 0 ≤ B_i < β^n.\n\n\tconst k = bj - bi ;\n\tconst n = k >>> 1 ;\n\n\t// 2. If A_2 < B_1, compute Q = floor( ( A_2 β^n + A_1 ) / B_1 ) with\n\t//    remainder R_1 using algorithm 3.3;\n\n\tif ( lt( a , ai , ai + n , b , bi , bi + n ) ) {\n\t\t_idivmod_dc_21( r , a , ai , aj - n , b , bi , bi + n , c , ci + n , cj ) ;\n\t}\n\n\t//    otherwise let Q = β^n - 1, and R_1 = ( A_2 - B_1 ) β^n + A_1 + B_1\n\t//    (note in this case that A_2 = B_1)\n\n\telse {\n\t\t_fill( c , cj - n , cj , r - 1 ) ;\n\t\tiadd( r , a , ai , aj - n , b , bi , bi + n  ) ;\n\t\t_isub( r , a , ai , ai + n , b , bi , bi + n  ) ;\n\t}\n\n\t// 3. R <- R_1 β^n + A_0 - Q*B_0\n\n\tconst zi = 0 ;\n\tconst zj = n << 1 ;\n\tconst z = _zeros( zj ) ;\n\t_mul( r , c , cj - n , cj , b , bi + n , bj , z , zi , zj ) ;\n\t_isub( r , a , ai , aj , z , zi , zj ) ;\n\n\t// 4. if R < 0 , R <- R + B and Q <- Q - 1\n\n\tif ( a[ai] === 0 ) return ;\n\tiadd( r , a , ai , aj , b , bi , bj ) ;\n\tdecrement( r , c , cj - n , cj ) ;\n\n\t// 5. if R < 0 , R <- R + B and Q <- Q - 1\n\n\tif ( a[ai] === 0 ) return ;\n\tiadd( r , a , ai , aj , b , bi , bj ) ;\n\tdecrement( r , c , cj - n , cj ) ;\n\n\t// 6. Return Q and R\n\n}\n",
@@ -3005,7 +3085,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 111,
+    "__docId__": 113,
     "kind": "function",
     "name": "_idivmod_dc_32",
     "memberof": "src/core/arithmetic/div/_idivmod_dc_32.js",
@@ -3084,7 +3164,7 @@
     "return": null
   },
   {
-    "__docId__": 112,
+    "__docId__": 114,
     "kind": "file",
     "name": "src/core/arithmetic/div/_idivmod_limb.js",
     "content": "import { _idivmod_limb_with_prefix } from './_idivmod_limb_with_prefix' ;\n\n/**\n * Divides a big endian number by a single limb number.\n * Can only work with limbs of size at most sqrt( 2^53 ).\n *\n * @param {Number} r The radix.\n * @param {Number} d The divisor.\n * @param {Array} D The dividend.\n * @param {Number} Di Left of dividend.\n * @param {Number} Dj Right of dividend.\n * @param {Array} Q The quotient.\n * @param {Number} Qi Left of quotient.\n */\nexport function _idivmod_limb ( r , d , D , Di , Dj , Q , Qi ) {\n\n\t// simply prefix the dividend with 0\n\t_idivmod_limb_with_prefix( r , 0 , d , D , Di , Dj , Q , Qi ) ;\n\n}\n",
@@ -3095,7 +3175,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 113,
+    "__docId__": 115,
     "kind": "function",
     "name": "_idivmod_limb",
     "memberof": "src/core/arithmetic/div/_idivmod_limb.js",
@@ -3184,10 +3264,10 @@
     "return": null
   },
   {
-    "__docId__": 114,
+    "__docId__": 116,
     "kind": "file",
     "name": "src/core/arithmetic/div/_idivmod_limb_with_prefix.js",
-    "content": "/**\n * Divides a big endian number by a single limb number.\n * Can only work with limbs of size at most sqrt( 2^53 ).\n * Allows to prefix the dividend with an intermediate remainder.\n *\n * Input\n * -----\n *  - |Q| = |D|\n *\n * @param {Number} r The radix.\n * @param {Number} tmp Intermediate remainder (MUST be <code>< d</code>).\n * @param {Number} d The divisor.\n * @param {Array} D The dividend.\n * @param {Number} Di Left of dividend.\n * @param {Number} Dj Right of dividend.\n * @param {Array} Q The quotient.\n * @param {Number} Qi Left of quotient.\n */\nexport function _idivmod_limb_with_prefix ( r , tmp , d , D , Di , Dj , Q , Qi ) {\n\n\twhile ( Di < Dj ) {\n\n\t\ttmp *= r ; tmp += D[Di] ;\n\n\t\tQ[Qi] = tmp / d | 0 ;\n\t\ttmp %= d ;\n\t\tD[Di] = 0 ;\n\n\t\t++Qi ; ++Di ;\n\n\t}\n\n\tD[Dj-1] = tmp ;\n\n}\n",
+    "content": "/**\n * Divides a big endian number by a single limb number.\n * Can only work with limbs of size at most sqrt( 2^53 ).\n * Allows to prefix the dividend with an intermediate remainder.\n *\n * Input\n * -----\n *  - |Q| = |D|\n *  - NO NEED to reset Q. The loop will set every member of Q.\n *\n * @param {Number} r The radix.\n * @param {Number} tmp Intermediate remainder (MUST be <code>< d</code>).\n * @param {Number} d The divisor.\n * @param {Array} D The dividend.\n * @param {Number} Di Left of dividend.\n * @param {Number} Dj Right of dividend.\n * @param {Array} Q The quotient.\n * @param {Number} Qi Left of quotient.\n */\nexport function _idivmod_limb_with_prefix ( r , tmp , d , D , Di , Dj , Q , Qi ) {\n\n\twhile ( Di < Dj ) {\n\n\t\ttmp *= r ; tmp += D[Di] ;\n\n\t\tQ[Qi] = tmp / d | 0 ;\n\t\ttmp %= d ;\n\t\tD[Di] = 0 ;\n\n\t\t++Qi ; ++Di ;\n\n\t}\n\n\tD[Dj-1] = tmp ;\n\n}\n",
     "static": true,
     "longname": "/home/aureooms/dev/js/js-integer-big-endian/src/core/arithmetic/div/_idivmod_limb_with_prefix.js",
     "access": "public",
@@ -3195,7 +3275,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 115,
+    "__docId__": 117,
     "kind": "function",
     "name": "_idivmod_limb_with_prefix",
     "memberof": "src/core/arithmetic/div/_idivmod_limb_with_prefix.js",
@@ -3207,8 +3287,8 @@
     "export": true,
     "importPath": "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_limb_with_prefix.js",
     "importStyle": "{_idivmod_limb_with_prefix}",
-    "description": "Divides a big endian number by a single limb number.\nCan only work with limbs of size at most sqrt( 2^53 ).\nAllows to prefix the dividend with an intermediate remainder.\n\nInput\n-----\n - |Q| = |D|",
-    "lineNumber": 19,
+    "description": "Divides a big endian number by a single limb number.\nCan only work with limbs of size at most sqrt( 2^53 ).\nAllows to prefix the dividend with an intermediate remainder.\n\nInput\n-----\n - |Q| = |D|\n - NO NEED to reset Q. The loop will set every member of Q.",
+    "lineNumber": 20,
     "params": [
       {
         "nullable": null,
@@ -3294,7 +3374,7 @@
     "return": null
   },
   {
-    "__docId__": 116,
+    "__docId__": 118,
     "kind": "file",
     "name": "src/core/arithmetic/div/_idivmod_schoolbook.js",
     "content": "import { _zeros , _copy } from '../../array' ;\nimport { _mul_limb } from '../mul' ;\nimport { _idivmod_schoolbook_large_divisor } from './_idivmod_schoolbook_large_divisor' ;\nimport { _div_limb_with_prefix } from './_div_limb_with_prefix' ;\n\n/**\n * Computes q <- a / b and a <- a % b.\n * No leading zeros allowed.\n * q has length at least aj - ai\n *\n * @param {Number} r The radix.\n * @param {Array} a Dividend / Remainder.\n * @param {Number} ai\n * @param {Number} aj\n * @param {Array} b Divisor.\n * @param {Number} bi\n * @param {Number} bj\n * @param {Array} q Quotient.\n * @param {Number} qi\n */\nexport function _idivmod_schoolbook ( r , a , ai , aj , b , bi , bj , q , qi ) {\n\n\tconst _r = Math.ceil( r / 2 ) ;\n\tconst x = b[bi] ;\n\n\tif ( x < _r ) {\n\n\t\t// we need x to be >= _r so we multiply b by ceil( _r / x )\n\t\t// this gives us <= ( 1 + _r / x ) b < r^(bj-bi)\n\t\t// (this can be implemented faster using bit shifts if r = 2^k )\n\t\tconst z = Math.ceil( _r / x ) ;\n\t\tconst m = aj - ai + 1 ;\n\t\tconst n = bj - bi ;\n\n\t\tconst _a = _zeros( m ) ;\n\t\t_mul_limb( r , z , a , ai , aj , _a , 0 , m ) ;\n\n\t\tconst _b = _zeros( n ) ;\n\t\t_mul_limb( r , z , b , bi , bj , _b , 0 , n ) ;\n\n\t\tconst _q = _zeros( m ) ;\n\t\t_idivmod_schoolbook_large_divisor( r , _a , 0 , m , _b , 0 , n , _q , 0 ) ;\n\t\t_div_limb_with_prefix( r , _a[0] , z , _a , 1 , m , a , ai ) ;\n\t\t_copy( _q , 1 , m , q , qi ) ;\n\n\t}\n\n\telse _idivmod_schoolbook_large_divisor( r , a , ai , aj , b , bi , bj , q , qi ) ;\n\n}\n",
@@ -3305,7 +3385,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 117,
+    "__docId__": 119,
     "kind": "function",
     "name": "_idivmod_schoolbook",
     "memberof": "src/core/arithmetic/div/_idivmod_schoolbook.js",
@@ -3414,10 +3494,10 @@
     "return": null
   },
   {
-    "__docId__": 118,
+    "__docId__": 120,
     "kind": "file",
     "name": "src/core/arithmetic/div/_idivmod_schoolbook_large_divisor.js",
-    "content": "import { _trim_positive } from '../../convert/_trim_positive' ;\nimport { lt } from '../../../api/compare/lt' ;\nimport { _isub } from '../sub' ;\nimport { _idivmod_schoolbook_subroutine } from './_idivmod_schoolbook_subroutine' ;\n\n/**\n * Input\n * -----\n *  - Two integers A and B such that r^(m-1) <= A < r^m and (r^n)/2 <= B < r^(n).\n *  - No leading zeros\n *\n * Output\n * -----\n *  The quotient floor( A/B ) and the remainder A mod B.\n *\n * @param {Number} r The radix.\n * @param {Array} a Dividend.\n * @param {Number} ai Left of dividend.\n * @param {Number} aj Right of dividend.\n * @param {Array} b Divisor.\n * @param {Number} bi Left of divisor.\n * @param {Number} bj Right of divisor.\n * @param {Array} q Quotient.\n * @param {Number} qi Left of quotient.\n */\nexport function _idivmod_schoolbook_large_divisor ( r , a , ai , aj , b , bi , bj , q , qi ) {\n\n\tconst m = aj - ai ;\n\tconst n = bj - bi ;\n\n\t// If m < n, return the quotient 0 and the remainder A.\n\tif ( m < n ) return ;\n\n\tif ( m === n ) {\n\n\t\t// If m = n, then if A < B, return the quotient 0 and the remainder A;\n\t\tif ( lt( a , ai , aj , b , bi , bj ) ) return ;\n\n\t\t// if A ≥ B, return the quotient 1 and the remainder A - B.\n\t\t++q[qi+m-1] ;\n\t\t_isub( r , a , ai , aj , b , bi , bj ) ;\n\t\treturn ;\n\n\t}\n\n\t// If m = n + 1, compute the quotient and remainder of A/B\n\t// using algorithm 3.1 and return them.\n\tif ( m === n + 1 ) return _idivmod_schoolbook_subroutine( r , a , ai , aj , b , bi , bj , q , qi ) ;\n\n\n\t// 4. A' <- A/β^{m-n-1} and s <- A mod β^{m-n-1}\n\tconst _aj = ai + n + 1 ;\n\n\t// 5. Compute the quotient q' and the remainder r' of A'/B using algorithm 3.1.\n\t_idivmod_schoolbook_subroutine( r , a , ai , _aj , b , bi , bj , q , qi ) ;\n\n\t// 6. Compute the quotient q and remainder r of( β^{m-n-1} r' + s ) / B recursively.\n\tconst ak = _trim_positive( a , ai , _aj ) ;\n\t_idivmod_schoolbook_large_divisor( r , a , ak , aj , b , bi , bj , q , qi + ak - ai ) ;\n\n\t// 7. Return the quotient Q = β^{m-n-1} q' + q and remainder R = r\n\n}\n",
+    "content": "import { _trim_positive } from '../../convert/_trim_positive' ;\nimport { lt } from '../../../api/compare/lt' ;\nimport { _isub } from '../sub' ;\nimport { _idivmod_schoolbook_subroutine } from './_idivmod_schoolbook_subroutine' ;\n\n/**\n * Input\n * -----\n *  - Two integers A and B such that r^(m-1) <= A < r^m and (r^n)/2 <= B < r^(n).\n *  - No leading zeros\n *\n * Output\n * -----\n *  The quotient floor( A/B ) and the remainder A mod B.\n *\n * @param {Number} r The radix.\n * @param {Array} a Dividend.\n * @param {Number} ai Left of dividend.\n * @param {Number} aj Right of dividend.\n * @param {Array} b Divisor.\n * @param {Number} bi Left of divisor.\n * @param {Number} bj Right of divisor.\n * @param {Array} q Quotient.\n * @param {Number} qi Left of quotient.\n */\nexport function _idivmod_schoolbook_large_divisor ( r , a , ai , aj , b , bi , bj , q , qi ) {\n\n\twhile ( true ) { // non-recursive\n\n\tconst m = aj - ai ;\n\tconst n = bj - bi ;\n\n\t// If m < n, return the quotient 0 and the remainder A.\n\tif ( m < n ) return ;\n\n\tif ( m === n ) {\n\n\t\t// If m = n, then if A < B, return the quotient 0 and the remainder A;\n\t\tif ( lt( a , ai , aj , b , bi , bj ) ) return ;\n\n\t\t// if A ≥ B, return the quotient 1 and the remainder A - B.\n\t\t++q[qi+m-1] ;\n\t\t_isub( r , a , ai , aj , b , bi , bj ) ;\n\t\treturn ;\n\n\t}\n\n\t// If m = n + 1, compute the quotient and remainder of A/B\n\t// using algorithm 3.1 and return them.\n\tif ( m === n + 1 ) return _idivmod_schoolbook_subroutine( r , a , ai , aj , b , bi , bj , q , qi ) ;\n\n\n\t// 4. A' <- A/β^{m-n-1} and s <- A mod β^{m-n-1}\n\tconst _aj = ai + n + 1 ;\n\n\t// 5. Compute the quotient q' and the remainder r' of A'/B using algorithm 3.1.\n\t_idivmod_schoolbook_subroutine( r , a , ai , _aj , b , bi , bj , q , qi ) ;\n\n\t// 6. Compute the quotient q and remainder r of( β^{m-n-1} r' + s ) / B recursively.\n\tconst ak = _trim_positive( a , ai , _aj ) ;\n\t//_idivmod_schoolbook_large_divisor( r , a , ak , aj , b , bi , bj , q , qi + ak - ai ) ;\n\tqi += ak - ai; // non recursive because some implementation\n\tai = ak;       // do not have tail-call optimization ?\n\n\t// 7. Return the quotient Q = β^{m-n-1} q' + q and remainder R = r\n\t}\n\n}\n",
     "static": true,
     "longname": "/home/aureooms/dev/js/js-integer-big-endian/src/core/arithmetic/div/_idivmod_schoolbook_large_divisor.js",
     "access": "public",
@@ -3425,7 +3505,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 119,
+    "__docId__": 121,
     "kind": "function",
     "name": "_idivmod_schoolbook_large_divisor",
     "memberof": "src/core/arithmetic/div/_idivmod_schoolbook_large_divisor.js",
@@ -3538,10 +3618,10 @@
     }
   },
   {
-    "__docId__": 120,
+    "__docId__": 122,
     "kind": "file",
     "name": "src/core/arithmetic/div/_idivmod_schoolbook_subroutine.js",
-    "content": "import { _zeros } from '../../array' ;\nimport { ge , gt } from '../../../api/compare' ;\nimport { increment } from '../../../api/arithmetic/add/increment' ;\nimport { _isub } from '../sub' ;\nimport { _mul_limb } from '../mul' ;\n\n/**\n * Input\n * -----\n *  - Two integers A and B such that 0 <= A < r^n+1 and (r^n)/2 <= B < r^(n).\n *  - |a| = |b| + 1\n *  - |q| = |a|\n *\n * Output\n * -----\n *  The quotient floor( A/B ) and the remainder A mod B.\n *\n * @param {Number} r The radix.\n * @param {Array} a Dividend.\n * @param {Number} ai Left of dividend.\n * @param {Number} aj Right of dividend.\n * @param {Array} b Divisor.\n * @param {Number} bi Left of divisor.\n * @param {Number} bj Right of divisor.\n * @param {Array} q Quotient.\n * @param {Number} qi Left of quotient.\n */\nexport function _idivmod_schoolbook_subroutine ( r , a , ai , aj , b , bi , bj , q , qi ) {\n\n\tconst m = aj - ai ;\n\n\t// If A ≥ B*β, compute the quotient q and remainder r of ( A − B*β ) / B\n\t// recursively, and return β + q and r.\n\tif ( ge( a , ai , aj - 1 , b , bi , bj ) ) {\n\t\t_isub( r , a , ai , aj - 1 , b , bi , bj ) ;\n\t\t_idivmod_schoolbook_subroutine( r , a , ai , aj , b , bi , bj , q , qi ) ;\n\t\tincrement( r , q , qi , qi + m - 1 ) ;\n\t\treturn ;\n\t}\n\n\t// If A < B*β, then A/B < β\n\t// q <- min [ ( β a_0 + a_1 ) / b_0 , β - 1 ]\n\tlet _q = Math.min( r - 1 , Math.floor( ( a[ai] * r + a[ai+1] ) / b[bi] ) ) ;\n\n\t// fix _q\n\tconst T = _zeros( m ) ;\n\t_mul_limb( r , _q , b , bi , bj , T , 0 , m ) ;\n\n\tif ( gt( T , 0 , m , a , ai , aj ) ) {\n\t\t--_q ;\n\t\t_isub( r , T , 0 , m , b , bi , bj ) ;\n\n\t\tif ( gt( T , 0 , m , a , ai , aj ) ) {\n\t\t\t--_q ;\n\t\t\t_isub( r , T , 0 , m , b , bi , bj ) ;\n\t\t}\n\n\t}\n\n\tq[qi + m - 1] += _q ;\n\n\t_isub( r , a , ai , aj , T , 0 , m ) ;\n\n}\n",
+    "content": "import { _cmp_n } from '../../compare' ;\nimport { increment } from '../../../api/arithmetic/add/increment' ;\nimport { _isub } from '../sub' ;\nimport { _idivmod_schoolbook_subroutine_do } from './_idivmod_schoolbook_subroutine_do' ;\n\n/**\n * Input\n * -----\n *  - Two integers A and B such that 0 <= A < r^(n+1) and (r^n)/2 <= B < r^n.\n *  - |a| = |b| + 1\n *  - |q| = |a|\n *\n * Output\n * -----\n *  The quotient floor( A/B ) and the remainder A mod B.\n *\n * @param {Number} r The radix.\n * @param {Array} a Dividend.\n * @param {Number} ai Left of dividend.\n * @param {Number} aj Right of dividend.\n * @param {Array} b Divisor.\n * @param {Number} bi Left of divisor.\n * @param {Number} bj Right of divisor.\n * @param {Array} q Quotient.\n * @param {Number} qi Left of quotient.\n */\nexport function _idivmod_schoolbook_subroutine ( r , a , ai , aj , b , bi , bj , q , qi ) {\n\n\t// If A ≥ B*β, compute the quotient q and remainder r of ( A − B*β ) / B\n\t// and return β + q and r.\n\t// Note that then A − B*β < B*β since A < 2 B*β because of the\n\t// preconditions above. Hence the preconditions hold for\n\t// _idivmod_schoolbook_subroutine_do.\n\tif ( _cmp_n( a , ai , aj - 1 , b , bi ) >= 0 ) {\n\t\t_isub( r , a , ai , aj - 1 , b , bi , bj ) ;\n\t\t_idivmod_schoolbook_subroutine_do( r , a , ai , aj , b , bi , bj , q , qi ) ;\n\t\tincrement( r , q , qi , qi + aj - ai - 1 ) ;\n\t}\n\telse {\n\t\t_idivmod_schoolbook_subroutine_do( r , a , ai , aj , b , bi , bj , q , qi ) ;\n\t}\n\n}\n",
     "static": true,
     "longname": "/home/aureooms/dev/js/js-integer-big-endian/src/core/arithmetic/div/_idivmod_schoolbook_subroutine.js",
     "access": "public",
@@ -3549,7 +3629,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 121,
+    "__docId__": 123,
     "kind": "function",
     "name": "_idivmod_schoolbook_subroutine",
     "memberof": "src/core/arithmetic/div/_idivmod_schoolbook_subroutine.js",
@@ -3561,7 +3641,127 @@
     "export": true,
     "importPath": "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_schoolbook_subroutine.js",
     "importStyle": "{_idivmod_schoolbook_subroutine}",
-    "description": "Input\n-----\n - Two integers A and B such that 0 <= A < r^n+1 and (r^n)/2 <= B < r^(n).\n - |a| = |b| + 1\n - |q| = |a|\n\nOutput\n-----\n The quotient floor( A/B ) and the remainder A mod B.",
+    "description": "Input\n-----\n - Two integers A and B such that 0 <= A < r^(n+1) and (r^n)/2 <= B < r^n.\n - |a| = |b| + 1\n - |q| = |a|\n\nOutput\n-----\n The quotient floor( A/B ) and the remainder A mod B.",
+    "lineNumber": 27,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "r",
+        "description": "The radix."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "a",
+        "description": "Dividend."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "ai",
+        "description": "Left of dividend."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "aj",
+        "description": "Right of dividend."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "b",
+        "description": "Divisor."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "bi",
+        "description": "Left of divisor."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "bj",
+        "description": "Right of divisor."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "q",
+        "description": "Quotient."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "qi",
+        "description": "Left of quotient."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 124,
+    "kind": "file",
+    "name": "src/core/arithmetic/div/_idivmod_schoolbook_subroutine_do.js",
+    "content": "import { _zeros } from '../../array' ;\nimport { gt } from '../../../api/compare' ;\nimport { _isub } from '../sub' ;\nimport { _mul_limb } from '../mul' ;\n\n/**\n * Input\n * -----\n *  - Two integers A and B such that 0 <= A < (r^(n+1))/2 and (r^n)/2 <= B < r^n.\n *    (Hence A < B * β)\n *  - |a| = |b| + 1\n *  - |q| = |a|\n *\n * Output\n * -----\n *  The quotient floor( A/B ) and the remainder A mod B.\n *\n * @param {Number} r The radix.\n * @param {Array} a Dividend.\n * @param {Number} ai Left of dividend.\n * @param {Number} aj Right of dividend.\n * @param {Array} b Divisor.\n * @param {Number} bi Left of divisor.\n * @param {Number} bj Right of divisor.\n * @param {Array} q Quotient.\n * @param {Number} qi Left of quotient.\n */\nexport function _idivmod_schoolbook_subroutine_do ( r , a , ai , aj , b , bi , bj , q , qi ) {\n\n\tconst m = aj - ai ;\n\n\t// Since A < B*β, then A/B < β\n\t// q <- min [ ( β a_0 + a_1 ) / b_0 , β - 1 ]\n\tlet _q = Math.min( r - 1 , Math.floor( ( a[ai] * r + a[ai+1] ) / b[bi] ) ) ;\n\n\t// fix _q\n\tconst T = _zeros( m ) ;\n\t_mul_limb( r , _q , b , bi , bj , T , 0 , m ) ;\n\n\tif ( gt( T , 0 , m , a , ai , aj ) ) {\n\t\t--_q ;\n\t\t_isub( r , T , 0 , m , b , bi , bj ) ;\n\n\t\tif ( gt( T , 0 , m , a , ai , aj ) ) {\n\t\t\t--_q ;\n\t\t\t_isub( r , T , 0 , m , b , bi , bj ) ;\n\t\t}\n\n\t}\n\n\tq[qi + m - 1] += _q ;\n\n\t_isub( r , a , ai , aj , T , 0 , m ) ;\n\n}\n",
+    "static": true,
+    "longname": "/home/aureooms/dev/js/js-integer-big-endian/src/core/arithmetic/div/_idivmod_schoolbook_subroutine_do.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 125,
+    "kind": "function",
+    "name": "_idivmod_schoolbook_subroutine_do",
+    "memberof": "src/core/arithmetic/div/_idivmod_schoolbook_subroutine_do.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/core/arithmetic/div/_idivmod_schoolbook_subroutine_do.js~_idivmod_schoolbook_subroutine_do",
+    "access": "private",
+    "export": true,
+    "importPath": "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_schoolbook_subroutine_do.js",
+    "importStyle": "{_idivmod_schoolbook_subroutine_do}",
+    "description": "Input\n-----\n - Two integers A and B such that 0 <= A < (r^(n+1))/2 and (r^n)/2 <= B < r^n.\n   (Hence A < B * β)\n - |a| = |b| + 1\n - |q| = |a|\n\nOutput\n-----\n The quotient floor( A/B ) and the remainder A mod B.",
     "lineNumber": 28,
     "params": [
       {
@@ -3658,7 +3858,7 @@
     "return": null
   },
   {
-    "__docId__": 122,
+    "__docId__": 126,
     "kind": "file",
     "name": "src/core/arithmetic/div/_idivmod_slow.js",
     "content": "import { _sub } from '../sub' ;\nimport { lt } from '../../../api/compare' ;\n\n/**\n * Computes quotient and remainder of two big endian arrays.\n * <p>\n * Computes quotient and remainder of two big endian arrays\n * using long division algorithm (the one teached in\n * european primary schools).\n *\n * /!\\ This algorithm modifies its first operand.\n *\n * HYP : q is at least as large as r\n *       b is not zero\n *\n * @param {int} x the radix\n * @param {array} r dividend and remainder\n * @param {int} ri r left\n * @param {int} rj r right\n * @param {array} b divisor\n * @param {int} bi b left\n * @param {int} bj b right\n * @param {array} q quotient, must be 0 initialized\n * @param {int} qi q left\n */\n\n// /!\\ There are implicit hypotheses\n//     made on the size of the operands.\n//     Should clarify.\n\nexport function _idivmod_slow ( x , r , ri , rj , b , bi , bj , q , qi ) {\n\n\tvar k, t = ri + 1;\n\n\tdo {\n\n\t\t// trim leading zeros\n\t\t// TODO maybe could try to put this procedure inside the _sub loop\n\t\t// TODO or assume that the number is trimed at the begining\n\t\t//      and put this statement at the end of the main loop\n\t\twhile (ri < rj && r[ri] === 0) ++ri;\n\n\t\t// search for a remainder block interval\n\t\t// greater than the divisor\n\t\t// TODO maybe could try binary search on the lt function\n\t\t//      for another implementation\n\t\tk = ri + 1;\n\t\twhile (k <= rj && lt(r, ri, k, b, bi, bj)) ++k;\n\n\t\t// remainder smaller than divisor --> end\n\t\tif (k > rj) break;\n\n\t\t// divide current block interval by quotient\n\t\tdo{\n\n\t\t\t// increment quotient block corresponding\n\t\t\t// to current ls block of remainder interval\n\t\t\t++q[qi + k - t];\n\n\t\t\t// subtract divisor from current remainder\n\t\t\t// block interval\n\t\t\t_sub(x, r, ri, k, b, bi, bj, r, ri, k);\n\n\t\t} while(!lt(r, ri, k, b, bi, bj));\n\n\n\t} while(true);\n\n}\n",
@@ -3669,7 +3869,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 123,
+    "__docId__": 127,
     "kind": "function",
     "name": "_idivmod_slow",
     "memberof": "src/core/arithmetic/div/_idivmod_slow.js",
@@ -3778,7 +3978,7 @@
     "return": null
   },
   {
-    "__docId__": 124,
+    "__docId__": 128,
     "kind": "file",
     "name": "src/core/arithmetic/div/_mod_limb.js",
     "content": "\n/**\n * Divides a big endian number by a single limb number and returns only the\n * remainder. Can only work with limbs of size at most sqrt( 2^53 ).\n *\n * @param {Number} r The radix of D.\n * @param {Number} d The divisor.\n * @param {Array} D The dividend (NOT modified).\n * @param {Number} Di Left of D.\n * @param {Number} Dj Right of D.\n * @returns {Number} The remainder D % d.\n */\nexport function _mod_limb ( r , d , D , Di , Dj ) {\n\n\tlet R = 0 ;\n\n\twhile ( Di < Dj ) {\n\n\t\tR *= r ;\n\t\tR += D[Di] ;\n\t\tR %= d ;\n\t\t++Di ;\n\n\t}\n\n\treturn R ;\n\n}\n",
@@ -3789,7 +3989,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 125,
+    "__docId__": 129,
     "kind": "function",
     "name": "_mod_limb",
     "memberof": "src/core/arithmetic/div/_mod_limb.js",
@@ -3871,7 +4071,7 @@
     }
   },
   {
-    "__docId__": 126,
+    "__docId__": 130,
     "kind": "file",
     "name": "src/core/arithmetic/div/index.js",
     "content": "export * from './_div_limb_with_prefix' ;\nexport * from './_idivmod_dc' ;\nexport * from './_idivmod_dc_21' ;\nexport * from './_idivmod_dc_32' ;\nexport * from './_idivmod_limb' ;\nexport * from './_idivmod_limb_with_prefix' ;\nexport * from './_idivmod_schoolbook' ;\nexport * from './_idivmod_schoolbook_large_divisor' ;\nexport * from './_idivmod_schoolbook_subroutine' ;\nexport * from './_idivmod_slow' ;\nexport * from './_mod_limb' ;\n",
@@ -3882,7 +4082,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 127,
+    "__docId__": 131,
     "kind": "file",
     "name": "src/core/arithmetic/gcd/_euclidean_algorithm_loop.js",
     "content": "import { _idivmod } from '../../../api'\nimport { _zeros } from '../../array'\nimport { _trim_positive } from '../../convert'\n\n/**\n * Euclidean algorithm. Computes the gcd of the two input numbers A and B,\n * A >= B. Input arrays are modified ___in-place___.\n *\n * Input\n * -----\n *\n *   - A >= B\n *   - No leading zeros\n *\n * @param {Number} r The radix.\n * @param {Array} a The first input number A.\n * @param {Number} ai Left of A.\n * @param {Number} aj Right of A.\n * @param {Array} b The second input number B.\n * @param {Number} bi Left of B.\n * @param {Number} bj Right of B.\n * @returns {Array} The array containing the gcd of A and B (one of A and B).\n * Return as [ d , di , dj ], where d is the array and di and dj are its left\n * and right bounds.\n */\nexport function _euclidean_algorithm_loop ( r , a , ai , aj , b , bi , bj  ) {\n\n\t// TODO use _imod when implemented\n\tconst _j = aj - ai ;\n\tconst _ = _zeros(_j) ;\n\n\twhile ( true ) {\n\n\t\tif ( bi === bj ) return [ a , ai , aj ] ;\n\n\t\t_idivmod( r , a , ai , aj , b , bi , bj , _ , _j - (aj - ai) , _j ) ;\n\n\t\tai = _trim_positive( a , aj - (bj - bi) , aj ) ;\n\n\t\tif ( ai === aj ) return [ b , bi , bj ] ;\n\n\t\t_idivmod( r , b , bi , bj , a , ai , aj , _ , _j - (bj - bi) , _j ) ;\n\n\t\tbi = _trim_positive( b , bj - (aj - ai) , bj ) ;\n\n\t}\n\n}\n",
@@ -3893,7 +4093,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 128,
+    "__docId__": 132,
     "kind": "function",
     "name": "_euclidean_algorithm_loop",
     "memberof": "src/core/arithmetic/gcd/_euclidean_algorithm_loop.js",
@@ -3995,10 +4195,10 @@
     }
   },
   {
-    "__docId__": 129,
+    "__docId__": 133,
     "kind": "file",
     "name": "src/core/arithmetic/gcd/_extended_euclidean_algorithm.js",
-    "content": "import { _copy } from '../../array' ;\n\nimport {\n\t_extended_euclidean_algorithm_allocate ,\n\t_extended_euclidean_algorithm_loop ,\n} from '.' ;\n\n/**\n * Precondition:\n *   - A > B\n *   - No leading zeroes.\n *\n * @param {Number} r The radix.\n * @param {Array} a First input number <code>a>b</code>.\n * @param {Number} ai <code>a</code> left bound.\n * @param {Number} aj <code>a</code> right bound.\n * @param {Array} b Second input number <code>b<a</code>.\n * @param {Number} bi <code>b</code> left bound.\n * @param {Number} bj <code>b</code> right bound.\n */\n\nexport function _extended_euclidean_algorithm ( r , a , ai , aj , b , bi , bj ) {\n\n\tconst [ R0 , R1 , S0 , T0 , S1 , T1 , Q , X ]  = _extended_euclidean_algorithm_allocate(aj-ai,bj-bi) ;\n\n\t_copy(a, ai, aj, R0, 0);\n\t_copy(b, bi, bj, R1, 0);\n\n\tconst [ Ri , S0i , T0i , S1i , T1i , steps ] = _extended_euclidean_algorithm_loop ( r , R0 , R1 , S0 , T0 , S1 , T1 , Q , X ) ;\n\n\treturn steps % 2 === 1 ?\n\t\t[ R0 , Ri , S0 , S0i , T0 , T0i , S1 , S1i , T1 , T1i , steps ] :\n\t\t[ R1 , Ri , S1 , S1i , T1 , T1i , S0 , S0i , T0 , T0i , steps ] ;\n\n}\n",
+    "content": "import { _copy } from '../../array' ;\n\nimport {\n\t_extended_euclidean_algorithm_allocate ,\n\t_extended_euclidean_algorithm_loop ,\n} from '.' ;\n\n/**\n * Precondition:\n *   - A >= B\n *   - No leading zeroes.\n *\n * @param {Number} r The radix.\n * @param {Array} a First input number <code>a>b</code>.\n * @param {Number} ai <code>a</code> left bound.\n * @param {Number} aj <code>a</code> right bound.\n * @param {Array} b Second input number <code>b<a</code>.\n * @param {Number} bi <code>b</code> left bound.\n * @param {Number} bj <code>b</code> right bound.\n */\n\nexport function _extended_euclidean_algorithm ( r , a , ai , aj , b , bi , bj ) {\n\n\tconst [ R0 , R1 , S0 , T0 , S1 , T1 , Q , X ]  = _extended_euclidean_algorithm_allocate(aj-ai,bj-bi) ;\n\n\t_copy(a, ai, aj, R0, 0);\n\t_copy(b, bi, bj, R1, 0);\n\n\tconst [ Ri , S0i , T0i , S1i , T1i , steps ] = _extended_euclidean_algorithm_loop ( r , R0 , R1 , S0 , T0 , S1 , T1 , Q , X ) ;\n\n\treturn steps % 2 === 1 ?\n\t\t[ R0 , Ri , S0 , S0i , T0 , T0i , S1 , S1i , T1 , T1i , steps ] :\n\t\t[ R1 , Ri , S1 , S1i , T1 , T1i , S0 , S0i , T0 , T0i , steps ] ;\n\n}\n",
     "static": true,
     "longname": "/home/aureooms/dev/js/js-integer-big-endian/src/core/arithmetic/gcd/_extended_euclidean_algorithm.js",
     "access": "public",
@@ -4006,7 +4206,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 130,
+    "__docId__": 134,
     "kind": "function",
     "name": "_extended_euclidean_algorithm",
     "memberof": "src/core/arithmetic/gcd/_extended_euclidean_algorithm.js",
@@ -4018,7 +4218,7 @@
     "export": true,
     "importPath": "@aureooms/js-integer-big-endian/src/core/arithmetic/gcd/_extended_euclidean_algorithm.js",
     "importStyle": "{_extended_euclidean_algorithm}",
-    "description": "Precondition:\n  - A > B\n  - No leading zeroes.",
+    "description": "Precondition:\n  - A >= B\n  - No leading zeroes.",
     "lineNumber": 22,
     "params": [
       {
@@ -4099,7 +4299,7 @@
     }
   },
   {
-    "__docId__": 131,
+    "__docId__": 135,
     "kind": "file",
     "name": "src/core/arithmetic/gcd/_extended_euclidean_algorithm_allocate.js",
     "content": "import { _alloc } from '../../../core/array' ;\nimport { _zeros } from '../../../core/array' ;\n\n/**\n * m >= n >= 0\n * m >= 1\n */\nexport function _extended_euclidean_algorithm_allocate ( m , n ) {\n\n\tconst R0 = _alloc(m);\n\tconst R1 = _alloc(n);\n\n\t// S_0 = 1\n\tconst S0 = _zeros(Math.max(1,n));\n\tS0[S0.length - 1] = 1;\n\n\t// T_0 = 0\n\tconst T0 = _zeros(m);\n\n\t// S_1 = 0\n\tconst S1 = _zeros(n);\n\n\t// T_1 = 1\n\tconst T1 = _zeros(m);\n\tT1[T1.length - 1] = 1;\n\n\tconst Q = _zeros(m);\n\tconst X = _zeros(2*m);\n\n\treturn [ R0 , R1 , S0 , T0 , S1 , T1 , Q , X ] ;\n\n}\n",
@@ -4110,7 +4310,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 132,
+    "__docId__": 136,
     "kind": "function",
     "name": "_extended_euclidean_algorithm_allocate",
     "memberof": "src/core/arithmetic/gcd/_extended_euclidean_algorithm_allocate.js",
@@ -4145,7 +4345,7 @@
     }
   },
   {
-    "__docId__": 133,
+    "__docId__": 137,
     "kind": "file",
     "name": "src/core/arithmetic/gcd/_extended_euclidean_algorithm_loop.js",
     "content": "\nimport { _idivmod } from '../../../api/arithmetic/div' ;\nimport { mul } from '../../../api/arithmetic/mul' ;\nimport { _iadd } from '../../../core/arithmetic/add' ;\nimport { increment } from '../../../api/arithmetic/add' ;\nimport { _reset } from '../../../core/array' ;\nimport { _copy } from '../../../core/array' ;\nimport { _trim_positive } from '../../../core/convert' ;\nimport { stringify } from '../../../api/convert' ;\n\n/**\n * Extended Euclidean algorithm.\n *\n * @see https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm\n *\n * Given two input integers a and b, a > b.\n * Let r_0 = a, r_1 = b,\n *     s_0 = 1, s_1 = 0,\n *     t_0 = 0, t_1 = 1 (Fibonacci :winkemoji:).\n *\n * Let r_{i+1} = r_{i-1} % r_i             (division remainder)\n * Let q_i = (r_{i-1} - r_{i+1}) / r_i > 0 (division quotient)\n *\n * An alternative definition is\n * r_{i+1} = r_{i-1} - q_i r_i       (with 0 <= r_{i+1} < r_i)\n *\n * Then define\n * s_{i+1} = s_{i-1} - q_i s_i\n * t_{i+1} = t_{i-1} - q_i t_i\n *\n * Let k be such that r_i > 0 for all i <= k and r_{k+1} = 0.\n *\n * Since q_i > 0, if t_{i-1} > 0 and t_i < 0 then t_{i+1} > 0. On the other\n * hand, if t_{i-1} < 0 and t_i > 0 then t_{i+1} < 0. Note that t_2 < 0, so the\n * signs of the t_i alternate: t_0 = 0, t_1 = 1, t_2 < 0, t_3 > 0, t_4 < 0, t_5\n * > 0, etc. The pattern for t is 0, 1, -, +, -, +, -, etc.\n *\n * The same holds for the s_i with flipped signs: note that s_2 = 1, then\n * s_0 = 1, s_1 = 0, s_2 = 1, s_3 < 0, s_4 > 0, s_5 < 0, etc.\n * The pattern for s is 1, 0, 1, -, +, -, +, etc.\n *\n *   | 0  1  2  3  4  5  6\n * ------------------------\n * s | 1  0  1  -  +  -  +\n * t | 0  1  -  +  -  +  -\n *\n * With i >= 1, |t_{i+1}| >= |t_i| + |t_{i-1}| > |t_i| because q_i >= 1 and\n * |t_i| > 0 and, since the signs are alternating, we have |t_{i-1} - q_i t_i|\n * = |t_{i-1}| + |q_i t_i|. Same goes for s_{i+1} w.r.t s_i and s_{i-1}.\n *\n *\n * Input\n * -----\n *  - No leading zeroes\n *  - R0 > R1\n *  - (two bullets above imply |R1| >= |R0|)\n *  - More at _extended_euclidean_algorithm_allocate.\n *\n *\n * Implementation details\n * ----------------------\n *\n * Here the implementation avoids computing with negative numbers and will only\n * output the absolute value of s_{i} and t_{i}. The signs can be recovered\n * from the number of steps of the algorithm.\n *\n * Note that s_i <= b and t_i <= a (proof?). Equality holds\n * when i = k+1 and a and b are coprime. Thus s_i can sit in an array as large\n * as b and same for t_i and a.\n *\n * Output\n * ------\n *\n *  Calling this function returns the number of steps that were executed.\n *\n */\nexport function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , T1 , Q , X) {\n\n\tconst m = R0.length ;\n\tconst n = R1.length ;\n\n\tlet R0i = 0;\n\tconst R0j = m;\n\tlet R1i = 0;\n\tconst R1j = n;\n\tlet S0i = S0.length - 1;\n\tconst S0j = S0.length;\n\tlet T0i = m;\n\tconst T0j = m;\n\tlet S1i = n;\n\tconst S1j = n;\n\tlet T1i = m - 1;\n\tconst T1j = m;\n\tlet   Qi = 0;\n\tconst Qj = m;\n\tlet Xi = 0;\n\tconst Xj = 2*m;\n\n\t// We handle the first two steps outside of loop because s_1 = t_0 = 0\n\t// and s_1 = 0, s_2 = 1\n\n\t// Invariants\n\t// ----------\n\t//\n\t// 1. No leading zeros in R0\n\t// 2. No leading zeros in R1\n\t// 3. |Q| = |R0| (why ???)\n\t// 4. s_0 = S0 > 0\n\t// 5. s_1 = S1 < 0\n\t// 6. t_0 = T0 < 0\n\t// 7. t_1 = T1 > 0\n\n\tif ( R1i === R1j ) return [ R0i , S0i , T0i , S1i , T1i , 1 ] ;\n\n\t// Q_1 = (r_0 - r_2) / r_1\n\t// R0 is r_0 and becomes r_2\n\t// R1 is r_1\n\t// Q is q_1\n\t_idivmod(r, R0, R0i, R0j, R1, R1i, R1j, Q, Qi, Qj);\n\n\t// remove leading zeros from Q\n\t// since Q = R0 / R1 we have |R0| - |R1| <= |Q| <= |R0| - |R1| + 1\n\tQi = Qj - (R0j - R1j + 1) ; // R0i = R1i = 0\n\tif ( Q[Qi] === 0 ) ++Qi;\n\n\t// remove leading zeros from R0\n\t// since R0 = R0 % R1 we have |R0| <= |R1|\n\tR0i = _trim_positive( R0 , R0j - (R1j - R1i) , R0j) ;\n\n\t// s_2 = s_0 - q_1 * s_1 = s_0\n\t// S0 is s_0 and becomes s_2 i.e. NOTHING TO DO\n\n\t// t_2 = t_0 - q_1 * t_1 = q_1\n\t// T0 is t_0 and becomes t_2\n\tT0i = T0j - (Qj - Qi) ;\n\t_copy(Q, Qi, Qj, T0, T0i);\n\n\t// Invariants\n\t// ----------\n\t//\n\t// 1. No leading zeros in R0\n\t// 2. No leading zeros in R1\n\t// 3. |Q| = |R1| (why ???)\n\t// 4. s_1 = S1 < 0\n\t// 5. s_2 = S0 > 0\n\t// 6. t_1 = T1 > 0\n\t// 7. t_2 = T0 < 0\n\n\tif ( R0i === R0j ) return [ R1i , S0i , T0i , S1i , T1i , 2 ] ;\n\n\t// Q_2 = (r_1 - r_{i+1}) / r_2\n\t// R1 is r_1 and becomes r_3\n\t// R0 is r_2\n\t// Q is q_2\n\tQi = Qj - (R1j - R1i);\n\t_reset(Q, Qi, Qj);\n\t_idivmod(r, R1, R1i, R1j, R0, R0i, R0j, Q, Qi, Qj);\n\n\t// remove leading zeros from Q\n\t// since Q = R1 / R0 we have |R1| - |R0| <= |Q| <= |R1| - |R0| + 1\n\tQi = Qj - (R1j - R0j + R0i + 1) ; // R1i = 0\n\tif ( Q[Qi] === 0 ) ++Qi;\n\n\t// remove leading zeros from R1\n\t// since R1 = R1 % R0 we have |R1| <= |R0|\n\tR1i = _trim_positive( R1 , R1j - (R0j - R0i) , R1j) ;\n\n\t// s_3 = s_1 - q_2 * s_2 = -q_2\n\tS1i = S1j - (Qj - Qi) ;\n\t_copy(Q, Qi, Qj, S1, S1i);\n\n\t// q_2 * t_2\n\t// since Q and T0 have no leading zeros then\n\t// Q * T0 has |Q| + |T0| - 1 <= |Q*T0| <= |Q| + |T0| limbs with no leading zeros.\n\tXi = Xj - (Qj - Qi) - (T0j - T0i) ;\n\tmul(r, T0, T0i, T0j, Q, Qi, Qj, X, Xi, Xj);\n\t// t_3 = t_1 - q_2 * t_2 = 1 - q_2 * t_2\n\t// T1 is t_1 and becomes t_3\n\tincrement(r, X, Xi, Xj);\n\tXi = _trim_positive( X , Xi , Xj) ;\n\tT1i = T1j - (Xj - Xi) ;\n\t_copy(X, Xi, Xj, T1, T1i);\n\n\tlet steps = 3 ;\n\twhile (true) {\n\n\t\t// Invariants\n\t\t// ----------\n\t\t//\n\t\t// 1. No leading zeros in R0\n\t\t// 2. No leading zeros in R1\n\t\t// 3. |Q| = |R0| (why ???)\n\t\t// 4. s_{i-1} = S0 > 0\n\t\t// 5. s_i = S1 < 0\n\t\t// 6. t_{i-1} = T0 < 0\n\t\t// 7. t_i = T1 > 0\n\n\t\tif ( R1i === R1j ) return [ R0i , S0i , T0i , S1i , T1i , steps ] ;\n\t\t++steps;\n\n\t\t// Q_i = (r_{i-1} - r_{i+1}) / r_i\n\t\t// R0 is r_{i-1} and becomes r_{i+1}\n\t\t// R1 is r_i\n\t\t// Q is q_i\n\t\tQi = Qj - (R0j - R0i);\n\t\t_reset(Q, Qi, Qj);\n\t\t_idivmod(r, R0, R0i, R0j, R1, R1i, R1j, Q, Qi, Qj);\n\t\t// remove leading zeros from Q\n\t\t// since Q = R0 / R1 we have |R0| - |R1| <= |Q| <= |R0| - |R1| + 1\n\t\tQi = Qj - (R0j - R0i - R1j + R1i + 1) ;\n\t\tif ( Q[Qi] === 0 ) ++Qi;\n\t\t// remove leading zeros from R0\n\t\t// since R0 = R0 % R1 we have |R0| <= |R1|\n\t\tR0i = _trim_positive( R0 , R0j - (R1j - R1i) , R0j) ;\n\n\t\t// q_i * s_i\n\t\t// since Q and S1 have no leading zeros then\n\t\t// Q * S1 has |Q| + |S1| - 1 <= |Q*S1| <= |Q| + |S1| limbs with no leading zeros.\n\t\tXi = Xj - (Qj - Qi) - (S1j - S1i) ;\n\t\t_reset(X, Xi, Xj);\n\t\tmul(r, Q, Qi, Qj, S1, S1i, S1j, X, Xi, Xj);\n\t\tif ( X[Xi] === 0 ) ++Xi; // remove leading zero if no carry\n\n\t\t// s_{i+1} = s_{i-1} - q_i * s_i\n\t\t// S0 is s_{i-1} and becomes s_{i+1}\n\t\tS0i = S0j - (Xj - Xi + 1) ;\n\t\tS0i = Math.max(0, S0i) ; // next addition never overflows beyond bounds\n\t\t_iadd(r, S0, S0i, S0j, X, Xi, Xj);\n\t\tif ( S0[S0i] === 0 ) ++S0i;\n\n\t\t// q_i * t_i\n\t\t// since Q and T1 have no leading zeros then\n\t\t// Q * T1 has |Q| + |T1| - 1 <= |Q*T1| <= |Q| + |T1| limbs with no leading zeros.\n\t\tXi = Xj - (Qj - Qi) - (T1j - T1i) ;\n\t\t_reset(X, Xi, Xj);\n\t\tmul(r, Q, Qi, Qj, T1, T1i, T1j, X, Xi, Xj);\n\t\tif ( X[Xi] === 0 ) ++Xi; // remove leading zero if no carry\n\n\t\t// t_{i+1} = t_{i-1} - q_i * t_i\n\t\t// T0 is t_{i-1} and becomes t_{i+1}\n\t\tT0i = T0j - (Xj - Xi + 1) ;\n\t\tT0i = Math.max(0, T0i) ; // next addition never overflows beyond bounds\n\t\t_iadd(r, T0, T0i, T0j, X, Xi, Xj);\n\t\tif ( T0[T0i] === 0 ) ++T0i;\n\n\t\t// Invariants\n\t\t// ----------\n\t\t//\n\t\t// 1. No leading zeros in R0\n\t\t// 2. No leading zeros in R1\n\t\t// 3. |Q| = |R1| (why ???)\n\t\t// 4. s_{i-1} = S1 < 0\n\t\t// 5. s_i = S0 > 0\n\t\t// 6. t_{i-1} = T1 > 0\n\t\t// 7. t_i = T0 < 0\n\n\t\tif ( R0i === R0j ) return [ R1i , S0i , T0i , S1i , T1i , steps ] ;\n\t\t++steps;\n\n\t\t// Q_i = (r_{i-1} - r_{i+1}) / r_i\n\t\t// R1 is r_{i-1} and becomes r_{i+1}\n\t\t// R0 is r_i\n\t\t// Q is q_i\n\t\tQi = Qj - (R1j - R1i);\n\t\t_reset(Q, Qi, Qj);\n\t\t_idivmod(r, R1, R1i, R1j, R0, R0i, R0j, Q, Qi, Qj);\n\t\t// remove leading zeros from Q\n\t\t// since Q = R1 / R0 we have |R1| - |R0| <= |Q| <= |R1| - |R0| + 1\n\t\tQi = Qj - (R1j - R1i - R0j + R0i + 1) ;\n\t\tif ( Q[Qi] === 0 ) ++Qi;\n\t\t// remove leading zeros from R1\n\t\t// since R1 = R1 % R0 we have |R1| <= |R0|\n\t\tR1i = _trim_positive( R1 , R1j - (R0j - R0i) , R1j) ;\n\n\t\t// q_i * s_i\n\t\t// since Q and S0 have no leading zeros then\n\t\t// Q * S0 has |Q| + |S0| - 1 <= |Q*S0| <= |Q| + |S0| limbs with no leading zeros.\n\t\tXi = Xj - (Qj - Qi) - (S0j - S0i) ;\n\t\t_reset(X, Xi, Xj);\n\t\tmul(r, Q, Qi, Qj, S0, S0i, S0j, X, Xi, Xj);\n\t\tif ( X[Xi] === 0 ) ++Xi; // remove leading zero if no carry\n\n\t\t// s_{i+1} = s_{i-1} - q_i * s_i\n\t\t// S1 is s_{i-1} and becomes s_{i+1}\n\t\tS1i = S1j - (Xj - Xi + 1) ;\n\t\tS1i = Math.max(0, S1i) ; // next addition never overflows beyond bounds\n\t\t_iadd(r, S1, S1i, S1j, X, Xi, Xj);\n\t\tif ( S1[S1i] === 0 ) ++S1i;\n\n\t\t// q_i * t_i\n\t\t// since Q and T0 have no leading zeros then\n\t\t// Q * T0 has |Q| + |T0| - 1 <= |Q*T0| <= |Q| + |T0| limbs with no leading zeros.\n\t\tXi = Xj - (Qj - Qi) - (T0j - T0i) ;\n\t\t_reset(X, Xi, Xj);\n\t\tmul(r, Q, Qi, Qj, T0, T0i, T0j, X, Xi, Xj);\n\t\tif ( X[Xi] === 0 ) ++Xi; // remove leading zero if no carry\n\n\t\t// t_{i+1} = t_{i-1} - q_i * t_i\n\t\t// T1 is t_{i-1} and becomes t_{i+1}\n\t\tT1i = T1j - (Xj - Xi + 1) ;\n\t\tT1i = Math.max(0, T1i) ; // next addition never overflows beyond bounds\n\t\t_iadd(r, T1, T1i, T1j, X, Xi, Xj);\n\t\tif ( T1[T1i] === 0 ) ++T1i;\n\n\t}\n\n}\n",
@@ -4156,7 +4356,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 134,
+    "__docId__": 138,
     "kind": "function",
     "name": "_extended_euclidean_algorithm_loop",
     "memberof": "src/core/arithmetic/gcd/_extended_euclidean_algorithm_loop.js",
@@ -4236,7 +4436,7 @@
     }
   },
   {
-    "__docId__": 135,
+    "__docId__": 139,
     "kind": "file",
     "name": "src/core/arithmetic/gcd/index.js",
     "content": "export * from './_euclidean_algorithm_loop' ;\n\nexport * from './_extended_euclidean_algorithm' ;\nexport * from './_extended_euclidean_algorithm_allocate' ;\nexport * from './_extended_euclidean_algorithm_loop' ;\n",
@@ -4247,7 +4447,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 136,
+    "__docId__": 140,
     "kind": "file",
     "name": "src/core/arithmetic/index.js",
     "content": "export * from './add' ;\nexport * from './div' ;\nexport * from './gcd' ;\nexport * from './mul' ;\nexport * from './pow' ;\nexport * from './sub' ;\n",
@@ -4258,7 +4458,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 137,
+    "__docId__": 141,
     "kind": "file",
     "name": "src/core/arithmetic/mul/_imul_limb.js",
     "content": "/**\n * Multiply b by x where x is a single limb.\n */\n\nexport function _imul_limb ( r , x , b , bi , bj ) {\n\n\tlet C = 0 ;\n\n\twhile ( --bj >= bi ) {\n\n\t\tconst t = b[bj] * x + C ;\n\t\tconst u = t % r ;\n\n\t\tb[bj] = u ;\n\n\t\tC = (t - u) / r ;\n\n\t}\n\n}\n",
@@ -4269,7 +4469,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 138,
+    "__docId__": 142,
     "kind": "function",
     "name": "_imul_limb",
     "memberof": "src/core/arithmetic/mul/_imul_limb.js",
@@ -4318,7 +4518,7 @@
     "return": null
   },
   {
-    "__docId__": 139,
+    "__docId__": 143,
     "kind": "file",
     "name": "src/core/arithmetic/mul/_karatsuba.js",
     "content": "import { add , iadd } from '../../../api/arithmetic/add' ;\nimport { _zeros , _copy } from '../../array' ;\nimport { _isub } from '../sub' ;\nimport { _mul } from './_mul' ;\n\n/**\n *\n * Multiply two big endian arrays using karatsuba algorithm,\n * |A| >= |B| > 0, |C| >= 2 * |A|, |A| > 1.\n *\n * /!\\ BLOCK MULTIPLICATION RESULT MUST HOLD IN THE JAVASCRIPT NUMBER TYPE\n *     (DOUBLE i.e. 53 bits)\n *\n * EXPLANATION\n * ###########\n *\n * We consider the numbers a and b, both of size N = 2n.\n *\n * We divide a and b into their lower and upper parts.\n *\n * a = a1 r^{n} + a0 (1)\n * b = b1 r^{n} + b0 (2)\n *\n * We express the product of a and b using their lower and upper parts.\n *\n * a b = (a1 r^{n} + a0) (b1 r^{n} + b0) (3)\n *     = a1 b1 r^{2n} + (a1 b0 + a0 b1) r^{n} + a0 b0 (4)\n *\n * This gives us 4 multiplications with operands of size n.\n * Using a simple trick, we can reduce this computation to 3 multiplications.\n *\n * We give the 3 terms of (4) the names z0, z1 and z2.\n *\n * z2 = a1 b1\n * z1 = a1 b0 + a0 b1\n * z0 = a0 b0\n *\n * a b  = z2 r^{2n} + z1 r^{n} + z0\n *\n * We then express z1 using z0, z2 and one additional multiplication.\n *\n * (a1 + a0)(b1 + b0) = a1 b1 + a0 b0 + (a1 b0 + a0 b1)\n *                    = z2 + z0 + z1\n *\n * z1 = (a1 + a0)(b1 + b0) - z2 - z0\n *\n * AN ANOTHER WAY AROUND (not used here)\n *\n * (a1 - a0)(b1 - b0) = (a1 b1 + a0 b0) - (a1 b0 + a0 b1)\n * (a0 - a1)(b1 - b0) = (a1 b0 + a0 b1) - (a1 b1 + a0 b0)\n * a b = (r^{2n} + r^{n})a1 b1 + r^{n}(a0 - a1)(b1 - b0) + (r^{n} + 1)a0 b0\n *\n * This algorithm is a specific case of the Toom-Cook algorithm, when m = n =\n * 2.\n *\n * For further reference, see\n *  - http://en.wikipedia.org/wiki/Karatsuba_algorithm\n *  - http://en.wikipedia.org/wiki/Toom–Cook_multiplication\n *\n * @param {Number} r base (radix)\n * @param {Array} a first operand\n * @param {Number} ai a left\n * @param {Number} aj a right\n * @param {Array} b second operand\n * @param {Number} bi b left\n * @param {Number} bj b right\n * @param {Array} c result, must be 0 initialized\n * @param {Number} ci c left\n * @param {Number} cj c right\n */\n\nexport function _karatsuba ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {\n\n\tconst i = aj - ai ;\n\tconst j = bj - bi ;\n\tconst k = cj - ci ;\n\n\tconst n  = Math.ceil( i / 2 ) ;\n\tconst I  = i + j ;\n\tconst N  = 2 * n ;\n\tconst N_ = I - N ;\n\tconst i_ = aj - n ;\n\tconst j_ = Math.max( bi , bj - n ) ;\n\n\tconst t1 = _zeros( n + 1 ) ; // + 1 to handle addition overflows\n\tconst t2 = _zeros( n + 1 ) ; // and guarantee reducing k for the\n\tconst t3 = _zeros( N + 2 ) ; // recursive calls\n\tconst z2 = _zeros( N_ ) ;\n\tconst z0 = _zeros( N ) ;\n\n\t// RECURSIVE CALLS\n\t_mul( r , a , ai , i_ , b , bi , j_ , z2 , 0 , N_ ) ;           // z2 = a1.b1\n\t_mul( r , a , i_ , aj , b , j_ , bj , z0 , 0 , N ) ;            // z0 = a0.b0\n\tadd( r , a , ai , i_ , a , i_ , aj , t1 , 0 , n + 1 ) ;         // (a0 + a1)\n\tadd( r , b , bi , j_ , b , j_ , bj , t2 , 0 , n + 1 ) ;         // (b1 + b0)\n\t_mul( r , t1 , 1 , n + 1 , t2 , 1 , n + 1 , t3 , 2 , N + 2 ) ;  // (a0 + a1)(b1 + b0)\n\n\t// BUILD OUTPUT\n\t_copy( z2 , 0 , N_ , c , cj - I ) ; // + z2 . r^{2n}\n\t_copy( z0 , 0 , N  , c , cj - N ) ; // + z0\n\n\t// overflow on t1, add t2 . r^{n}\n\tif ( t1[0] ) iadd( r , t3 , 0 , n + 2 , t2 , 0 , n + 1 ) ;\n\n\t// overflow on t2, add t1 . r^{n} (except t1[0])\n\tif ( t2[0] ) iadd( r , t3 , 0 , n + 2 , t1 , 1 , n + 1 ) ;\n\n\tiadd( r , c , ci , cj - n , t3 , 0 , N + 2 ) ; // + (a0 + a1)(b1 + b0) . r^{n}\n\t_isub( r , c , ci , cj - n , z2 , 0 , N_ ) ;   // - z2 . r^{n}\n\t_isub( r , c , ci , cj - n , z0 , 0 , N ) ;    // - z1 . r^{n}\n\n}\n",
@@ -4329,7 +4529,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 140,
+    "__docId__": 144,
     "kind": "function",
     "name": "_karatsuba",
     "memberof": "src/core/arithmetic/mul/_karatsuba.js",
@@ -4448,7 +4648,7 @@
     "return": null
   },
   {
-    "__docId__": 141,
+    "__docId__": 145,
     "kind": "file",
     "name": "src/core/arithmetic/mul/_mul.js",
     "content": "import { _mul_limb } from './_mul_limb' ;\nimport { _schoolbook_mul } from './_schoolbook_mul' ;\nimport { _karatsuba } from './_karatsuba' ;\nimport { THRESHOLD_MUL_TOOM22 } from '../../thresholds' ;\n\n/**\n * C is zero initialized\n * |A| >= |B| >= 1, |C| >= |A| + |B|.\n * TODO use schoolbook mul if n = O(log m)\n */\n\nexport function _mul ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {\n\n\t//const m = aj - ai ;\n\tconst n = bj - bi ;\n\n\t// TODO then |B| = 1 and could be faster\n\t//if ( m === 1 ) return _mul_limb( r , a[ai] , b , bi , bj , c , ci , cj ) ;\n\n\tif ( n === 1 ) return _mul_limb( r , b[bi] , a , ai , aj , c , ci , cj ) ;\n\n\t//if ( m === n ) {\n\n\t\t//if ( a === b && ai === bi ) return _sqr( r , a , ai , aj , c , ci , cj ) ;\n\n\t\t//return _mul_n( r , a , ai , aj , b , bi , bj , c , ci , cj ) ;\n\n\t//}\n\n\tif ( n < THRESHOLD_MUL_TOOM22 ) {\n\t\treturn _schoolbook_mul( r , a , ai , aj , b , bi , bj , c , ci , cj ) ;\n\t}\n\n\treturn _karatsuba( r , a , ai , aj , b , bi , bj , c , ci , cj ) ;\n\n\n}\n",
@@ -4459,7 +4659,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 142,
+    "__docId__": 146,
     "kind": "function",
     "name": "_mul",
     "memberof": "src/core/arithmetic/mul/_mul.js",
@@ -4542,7 +4742,7 @@
     }
   },
   {
-    "__docId__": 143,
+    "__docId__": 147,
     "kind": "file",
     "name": "src/core/arithmetic/mul/_mul_limb.js",
     "content": "/**\n * Compute x * b where x is a single limb.\n */\n\nexport function _mul_limb ( r , x , b , bi , bj , c , ci , cj ) {\n\n\tlet C = 0 ;\n\n\twhile ( true ) {\n\n\t\t--bj ;\n\t\t--cj ;\n\n\t\tif ( bj < bi ) {\n\t\t\tif ( cj >= ci ) c[cj] = C ;\n\t\t\treturn ;\n\t\t}\n\n\t\tif ( cj < ci ) return ;\n\n\t\tconst t = b[bj] * x + C ;\n\t\tconst u = t % r ;\n\n\t\tc[cj] = u ;\n\n\t\tC = (t - u) / r ;\n\n\t}\n\n}\n",
@@ -4553,7 +4753,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 144,
+    "__docId__": 148,
     "kind": "function",
     "name": "_mul_limb",
     "memberof": "src/core/arithmetic/mul/_mul_limb.js",
@@ -4620,7 +4820,7 @@
     "return": null
   },
   {
-    "__docId__": 145,
+    "__docId__": 149,
     "kind": "file",
     "name": "src/core/arithmetic/mul/_schoolbook_mul.js",
     "content": "\n/**\n * Computes the product of two big endian arrays using schoolbook\n * multiplication. |C| >= |A|+|B|.\n *\n * TODO Can this be optimized if we know that |A| >= |B|?\n * Probably better to do many small passes rather than few large passes ?!\n * This is what this implementation achieves, although it returns correct\n * results even when |A| < |B|.\n */\n\nexport function _schoolbook_mul ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {\n\n\tconst m = aj - ai ;\n\tconst n = bj - bi ;\n\t--aj ;\n\t--bj ;\n\t--cj ;\n\n\tfor ( let i = 0 ; i < m ; ++i ) {\n\n\t\tlet q = 0 ;\n\n\t\tfor ( let j = 0 ; j < n ; ++j ) {\n\n\t\t\tconst t = c[cj-i-j] + q + a[aj-i] * b[bj-j] ;\n\t\t\tconst s = t % r ;\n\t\t\tc[cj-i-j] = s ;\n\t\t\tq = ( t - s ) / r ;\n\n\t\t}\n\n\t\tc[cj-i-n] = q ;\n\n\t}\n\n}\n",
@@ -4631,7 +4831,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 146,
+    "__docId__": 150,
     "kind": "function",
     "name": "_schoolbook_mul",
     "memberof": "src/core/arithmetic/mul/_schoolbook_mul.js",
@@ -4710,7 +4910,7 @@
     "return": null
   },
   {
-    "__docId__": 147,
+    "__docId__": 151,
     "kind": "file",
     "name": "src/core/arithmetic/mul/_toom22.js",
     "content": "import { _karatsuba } from './_karatsuba' ;\n\nexport const _toom22 = _karatsuba ;\n",
@@ -4721,7 +4921,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 148,
+    "__docId__": 152,
     "kind": "variable",
     "name": "_toom22",
     "memberof": "src/core/arithmetic/mul/_toom22.js",
@@ -4741,7 +4941,7 @@
     }
   },
   {
-    "__docId__": 149,
+    "__docId__": 153,
     "kind": "file",
     "name": "src/core/arithmetic/mul/index.js",
     "content": "export * from './_imul_limb' ;\nexport * from './_karatsuba' ;\nexport * from './_mul' ;\nexport * from './_mul_limb' ;\nexport * from './_schoolbook_mul' ;\nexport * from './_toom22' ;\n",
@@ -4752,10 +4952,10 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 150,
+    "__docId__": 154,
     "kind": "file",
     "name": "src/core/arithmetic/pow/_pow_double.js",
-    "content": "import { _zeros , _copy } from '../../array' ;\nimport { _mul } from '../mul' ;\n\n/**\n * Computes <code>pow(a,x) = a^x</code> using exponentiation by squaring.\n * Writes result to output array.\n *\n * /!\\ |C| >= |A| * x , |C| = 000...0\n *\n * @param {Number} r The base to work with.\n * @param {Number} x The power to raise <code>a</code> to.\n * @param {Array} a The base array.\n * @param {Number} ai <code>a</code> left.\n * @param {Number} aj <code>b</code> right.\n * @param {Array} c The output array.\n * @param {Number} ci <code>a</code> left.\n * @param {Number} cj <code>b</code> right.\n */\nexport function _pow_double (r, x, a, ai, aj, c, ci, cj) {\n\n\tif ( x === 0 ) {\n\t\tc[cj-1] = 1;\n\t}\n\n\telse if ( x === 1 ) {\n\t\t_copy( a , ai , aj , c , cj - ( aj - ai ) ) ;\n\t}\n\n\telse if ( x & 1 ) {\n\n\t\tconst p = x - 1 ;\n\t\tconst n = (aj - ai) * p;\n\t\tconst u = _zeros(n);\n\n\t\t_pow_double(r, p, a, ai, aj, u, 0, n);\n\t\t_mul(r, u, 0, n, a, ai, aj, c, ci, cj); // largest must be put first\n\t}\n\n\telse {\n\n\t\tconst p = x / 2 | 0 ;\n\t\tconst n = (aj - ai) * p;\n\t\tconst u = _zeros(n);\n\n\t\t_pow_double(r, p, a, ai, aj, u, 0, n);\n\t\t_mul(r, u, 0, n, u, 0, n, c, ci, cj);\n\n\t}\n\n}\n",
+    "content": "import { _reset , _alloc , _copy } from '../../array' ;\nimport { _mul } from '../mul' ;\n\n/**\n * Computes <code>pow(a,x) = a^x</code> using exponentiation by squaring.\n * Writes result to output array.\n *\n * /!\\ |C| >= |A| * x , |C| = 000...0\n *\n * @param {Number} r The base to work with.\n * @param {Number} x The power to raise <code>a</code> to.\n * @param {Array} a The base array.\n * @param {Number} ai <code>a</code> left.\n * @param {Number} aj <code>b</code> right.\n * @param {Array} c The output array.\n * @param {Number} ci <code>a</code> left.\n * @param {Number} cj <code>b</code> right.\n */\nexport function _pow_double (r, x, a, ai, aj, c, ci, cj) {\n\n\tc[cj-1] = 1 ;\n\n\tif ( x === 0 ) return ;\n\n\tconst n = aj - ai ;\n\n\t_copy( a , ai , aj , c , cj - n ) ;\n\n\tif ( x === 1 ) return ;\n\n\tconst xbits = [];\n\n\tdo {\n\t\txbits.push(x & 1) ;\n\t\tx >>= 1;\n\t} while ( x !== 1 ) ;\n\n\tconst d = _alloc(cj-ci) ;\n\tlet _n = n;\n\n\tdo {\n\t\tconst _m = _n;\n\t\t_n <<= 1;\n\t\t_reset(d, 0, _n);\n\t\t_mul(r, c, cj - _m, cj, c, cj - _m, cj, d, 0, _n); // TODO use squaring function here\n\t\tif (xbits.pop() === 0) _copy(d, 0, _n, c, cj - _n);\n\t\telse {\n\t\t\tconst _o = _n + n;\n\t\t\t_reset(c, cj - _o, cj);\n\t\t\t_mul(r, d, 0, _n, a, ai, aj, c, cj - _o, cj);  // largest must be put first\n\t\t\t_n = _o;\n\t\t}\n\n\t} while ( xbits.length ) ;\n\n}\n",
     "static": true,
     "longname": "/home/aureooms/dev/js/js-integer-big-endian/src/core/arithmetic/pow/_pow_double.js",
     "access": "public",
@@ -4763,7 +4963,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 151,
+    "__docId__": 155,
     "kind": "function",
     "name": "_pow_double",
     "memberof": "src/core/arithmetic/pow/_pow_double.js",
@@ -4862,10 +5062,120 @@
     "return": null
   },
   {
-    "__docId__": 152,
+    "__docId__": 156,
+    "kind": "file",
+    "name": "src/core/arithmetic/pow/_pow_double_recursive.js",
+    "content": "import { _zeros , _copy } from '../../array' ;\nimport { _mul } from '../mul' ;\n\n/**\n * Computes <code>pow(a,x) = a^x</code> using exponentiation by squaring.\n * Writes result to output array.\n *\n * /!\\ |C| >= |A| * x , |C| = 000...0\n *\n * @param {Number} r The base to work with.\n * @param {Number} x The power to raise <code>a</code> to.\n * @param {Array} a The base array.\n * @param {Number} ai <code>a</code> left.\n * @param {Number} aj <code>b</code> right.\n * @param {Array} c The output array.\n * @param {Number} ci <code>a</code> left.\n * @param {Number} cj <code>b</code> right.\n */\nexport function _pow_double_recursive (r, x, a, ai, aj, c, ci, cj) {\n\n\tif ( x === 0 ) {\n\t\tc[cj-1] = 1;\n\t}\n\n\telse if ( x === 1 ) {\n\t\t_copy( a , ai , aj , c , cj - ( aj - ai ) ) ;\n\t}\n\n\telse if ( x & 1 ) {\n\n\t\tconst p = x - 1 ;\n\t\tconst n = (aj - ai) * p;\n\t\tconst u = _zeros(n);\n\n\t\t_pow_double_recursive(r, p, a, ai, aj, u, 0, n);\n\t\t_mul(r, u, 0, n, a, ai, aj, c, ci, cj); // largest must be put first\n\t}\n\n\telse {\n\n\t\tconst p = x / 2 | 0 ;\n\t\tconst n = (aj - ai) * p;\n\t\tconst u = _zeros(n);\n\n\t\t_pow_double_recursive(r, p, a, ai, aj, u, 0, n);\n\t\t_mul(r, u, 0, n, u, 0, n, c, ci, cj); // TODO use squaring function here\n\n\t}\n\n}\n",
+    "static": true,
+    "longname": "/home/aureooms/dev/js/js-integer-big-endian/src/core/arithmetic/pow/_pow_double_recursive.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 157,
+    "kind": "function",
+    "name": "_pow_double_recursive",
+    "memberof": "src/core/arithmetic/pow/_pow_double_recursive.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/core/arithmetic/pow/_pow_double_recursive.js~_pow_double_recursive",
+    "access": "private",
+    "export": true,
+    "importPath": "@aureooms/js-integer-big-endian/src/core/arithmetic/pow/_pow_double_recursive.js",
+    "importStyle": "{_pow_double_recursive}",
+    "description": "Computes <code>pow(a,x) = a^x</code> using exponentiation by squaring.\nWrites result to output array.\n\n/!\\ |C| >= |A| * x , |C| = 000...0",
+    "lineNumber": 19,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "r",
+        "description": "The base to work with."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "x",
+        "description": "The power to raise <code>a</code> to."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "a",
+        "description": "The base array."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "ai",
+        "description": "<code>a</code> left."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "aj",
+        "description": "<code>b</code> right."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "c",
+        "description": "The output array."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "ci",
+        "description": "<code>a</code> left."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "cj",
+        "description": "<code>b</code> right."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 158,
     "kind": "file",
     "name": "src/core/arithmetic/pow/index.js",
-    "content": "export * from './_pow_double' ;\n",
+    "content": "export * from './_pow_double' ;\nexport * from './_pow_double_recursive' ;\n",
     "static": true,
     "longname": "/home/aureooms/dev/js/js-integer-big-endian/src/core/arithmetic/pow/index.js",
     "access": "public",
@@ -4873,10 +5183,10 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 153,
+    "__docId__": 159,
     "kind": "file",
     "name": "src/core/arithmetic/sub/_isub.js",
-    "content": "\n/**\n * Subtracts B from A, |A| >= |B|.\n * Wraps.\n *\n * @param {int} r base (radix)\n * @param {array} a first operand\n * @param {int} ai a left\n * @param {int} aj a right\n * @param {array} b second operand\n * @param {int} bi b left\n * @param {int} bj b right\n */\n\nexport function _isub ( r , a , ai , aj , b , bi , bj ) {\n\n\tlet C = 0 ;\n\n\twhile ( --bj >= bi ) {\n\t\t--aj ;\n\t\tconst T = C ;\n\t\tC = a[aj] < b[bj] + T ;\n\t\ta[aj] = a[aj] - b[bj] + (C*r - T) ;\n\t}\n\n\twhile ( C && --aj >= ai ) {\n\t\tconst T = C ;\n\t\tC = a[aj] < T ;\n\t\ta[aj] += ( C*r - T ) ;\n\t}\n\n}\n",
+    "content": "\n/**\n * Subtracts B from A, |A| >= |B|.\n * Wraps.\n *\n * @param {int} r base (radix)\n * @param {array} a first operand\n * @param {int} ai a left\n * @param {int} aj a right\n * @param {array} b second operand\n * @param {int} bi b left\n * @param {int} bj b right\n */\n\nexport function _isub ( r , a , ai , aj , b , bi , bj ) {\n\n\tlet C = 0 ;\n\n\twhile ( --bj >= bi ) {\n\t\t--aj ;\n\t\tconst T = C ;\n\t\tC = (a[aj] < b[bj] + T) | 0 ;\n\t\ta[aj] = a[aj] - b[bj] + (C*r - T) ;\n\t}\n\n\tif (C !== 0) {\n\t\twhile ( --aj >= ai && a[aj] === 0 ) a[aj] = r - 1 ;\n\t\tif ( aj >= ai ) --a[aj];\n\t}\n\n}\n",
     "static": true,
     "longname": "/home/aureooms/dev/js/js-integer-big-endian/src/core/arithmetic/sub/_isub.js",
     "access": "public",
@@ -4884,7 +5194,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 154,
+    "__docId__": 160,
     "kind": "function",
     "name": "_isub",
     "memberof": "src/core/arithmetic/sub/_isub.js",
@@ -4973,10 +5283,10 @@
     "return": null
   },
   {
-    "__docId__": 155,
+    "__docId__": 161,
     "kind": "file",
     "name": "src/core/arithmetic/sub/_sub.js",
-    "content": "\n/**\n * Subtracts two big endian arrays, |c| >= |a| >= |b|\n * wraps\n *\n * @param {int} r base (radix)\n * @param {array} a first operand\n * @param {int} ai a left\n * @param {int} aj a right\n * @param {array} b second operand\n * @param {int} bi b left\n * @param {int} bj b right\n * @param {array} c result, must be 0 initialized\n * @param {int} ci c left\n * @param {int} cj c right\n */\n\nexport function _sub ( r , a, ai, aj, b, bi, bj, c, ci, cj){\n\tvar T, C = 0;\n\n\twhile(--bj >= bi){\n\t\t--aj; --cj;\n\t\tT = C;\n\t\tC = a[aj] < b[bj] + T;\n\t\tc[cj] = a[aj] - b[bj] + (C*r - T);\n\t}\n\n\twhile(--aj >= ai){\n\t\t--cj;\n\t\tT = C;\n\t\tC = a[aj] < T;\n\t\tc[cj] = a[aj] + (C*r - T);\n\t}\n\n\tif(C){\n\t\twhile(--cj >= ci){\n\t\t\tc[cj] = r - 1;\n\t\t}\n\t}\n\n}\n",
+    "content": "\n/**\n * Subtracts two big endian arrays, |c| >= |a| >= |b|\n * wraps\n *\n * @param {int} r base (radix)\n * @param {array} a first operand\n * @param {int} ai a left\n * @param {int} aj a right\n * @param {array} b second operand\n * @param {int} bi b left\n * @param {int} bj b right\n * @param {array} c result, must be 0 initialized\n * @param {int} ci c left\n * @param {int} cj c right\n */\n\nexport function _sub ( r , a, ai, aj, b, bi, bj, c, ci, cj){\n\tvar T, C = 0;\n\n\twhile(--bj >= bi){\n\t\t--aj; --cj;\n\t\tT = C;\n\t\tC = (a[aj] < b[bj] + T) | 0;\n\t\tc[cj] = a[aj] - b[bj] + (C*r - T);\n\t}\n\n\twhile(--aj >= ai){\n\t\t--cj;\n\t\tT = C;\n\t\tC = (a[aj] < T) | 0;\n\t\tc[cj] = a[aj] + (C*r - T);\n\t}\n\n\tif(C){\n\t\twhile(--cj >= ci){\n\t\t\tc[cj] = r - 1;\n\t\t}\n\t}\n\n}\n",
     "static": true,
     "longname": "/home/aureooms/dev/js/js-integer-big-endian/src/core/arithmetic/sub/_sub.js",
     "access": "public",
@@ -4984,7 +5294,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 156,
+    "__docId__": 162,
     "kind": "function",
     "name": "_sub",
     "memberof": "src/core/arithmetic/sub/_sub.js",
@@ -5103,7 +5413,7 @@
     "return": null
   },
   {
-    "__docId__": 157,
+    "__docId__": 163,
     "kind": "file",
     "name": "src/core/arithmetic/sub/index.js",
     "content": "export * from './_isub' ;\nexport * from './_sub' ;\n",
@@ -5114,7 +5424,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 158,
+    "__docId__": 164,
     "kind": "file",
     "name": "src/core/array/_alloc.js",
     "content": "\nexport function _alloc ( n ) {\n\n\treturn new Array( n ) ;\n\n}\n",
@@ -5125,7 +5435,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 159,
+    "__docId__": 165,
     "kind": "function",
     "name": "_alloc",
     "memberof": "src/core/array/_alloc.js",
@@ -5155,10 +5465,10 @@
     }
   },
   {
-    "__docId__": 160,
+    "__docId__": 166,
     "kind": "file",
     "name": "src/core/array/_build.js",
-    "content": "\nexport function _build ( base , number ) {\n\n\tconst data = [ ] ;\n\n\tlet q = number ;\n\tconst d = base ;\n\n\twhile ( q >= d ) {\n\t\tconst r = q % d ;\n\t\tdata.push( r ) ;\n\t\tq = ( q - r ) / d ;\n\t}\n\n\tdata.push( q ) ;\n\n\treturn data.reverse( ) ;\n\n}\n",
+    "content": "\nexport function _build ( base , number , data , n ) {\n\n\tlet q = number ;\n\tconst d = base ;\n\n\twhile ( q >= d ) {\n\t\tconst r = q % d ;\n\t\tdata[--n] = r ;\n\t\tq = ( q - r ) / d ;\n\t}\n\n\tdata[--n] = q ;\n\n\treturn n ;\n\n}\n",
     "static": true,
     "longname": "/home/aureooms/dev/js/js-integer-big-endian/src/core/array/_build.js",
     "access": "public",
@@ -5166,7 +5476,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 161,
+    "__docId__": 167,
     "kind": "function",
     "name": "_build",
     "memberof": "src/core/array/_build.js",
@@ -5193,6 +5503,18 @@
         "types": [
           "*"
         ]
+      },
+      {
+        "name": "data",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "n",
+        "types": [
+          "*"
+        ]
       }
     ],
     "return": {
@@ -5202,10 +5524,10 @@
     }
   },
   {
-    "__docId__": 162,
+    "__docId__": 168,
     "kind": "file",
     "name": "src/core/array/_copy.js",
-    "content": "\nexport function _copy ( a , ai , aj , b , bi ) {\n\n\tfor ( ; ai < aj ; ++ai, ++bi ) b[bi] = a[ai] ;\n\n}\n",
+    "content": "\nexport function _copy ( a , ai , aj , b , bi ) {\n\n\tfor ( ; ai < aj ; ++ai, ++bi ) b[bi] = a[ai] ;\n\t//while ( ai < aj ) b[++bi] = a[++ai] ;\n\n}\n",
     "static": true,
     "longname": "/home/aureooms/dev/js/js-integer-big-endian/src/core/array/_copy.js",
     "access": "public",
@@ -5213,7 +5535,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 163,
+    "__docId__": 169,
     "kind": "function",
     "name": "_copy",
     "memberof": "src/core/array/_copy.js",
@@ -5263,7 +5585,7 @@
     "return": null
   },
   {
-    "__docId__": 164,
+    "__docId__": 170,
     "kind": "file",
     "name": "src/core/array/_fill.js",
     "content": "\nexport function _fill ( a , ai , aj , v ) {\n\n\tfor ( let i = ai ; i < aj ; ++i ) a[i] = v ;\n\n}\n",
@@ -5274,7 +5596,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 165,
+    "__docId__": 171,
     "kind": "function",
     "name": "_fill",
     "memberof": "src/core/array/_fill.js",
@@ -5318,7 +5640,7 @@
     "return": null
   },
   {
-    "__docId__": 166,
+    "__docId__": 172,
     "kind": "file",
     "name": "src/core/array/_reset.js",
     "content": "import { _fill } from './_fill' ;\n\nexport function _reset ( a , ai , aj ) {\n\n\t_fill( a , ai , aj , 0 ) ;\n\n}\n",
@@ -5329,7 +5651,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 167,
+    "__docId__": 173,
     "kind": "function",
     "name": "_reset",
     "memberof": "src/core/array/_reset.js",
@@ -5367,7 +5689,7 @@
     "return": null
   },
   {
-    "__docId__": 168,
+    "__docId__": 174,
     "kind": "file",
     "name": "src/core/array/_zeros.js",
     "content": "import { _alloc } from './_alloc' ;\nimport { _reset } from './_reset' ;\n\nexport function _zeros ( n ) {\n\n\tconst a = _alloc( n ) ;\n\n\t_reset( a , 0 , n ) ;\n\n\treturn a ;\n\n}\n",
@@ -5378,7 +5700,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 169,
+    "__docId__": 175,
     "kind": "function",
     "name": "_zeros",
     "memberof": "src/core/array/_zeros.js",
@@ -5408,7 +5730,7 @@
     }
   },
   {
-    "__docId__": 170,
+    "__docId__": 176,
     "kind": "file",
     "name": "src/core/array/index.js",
     "content": "export * from './_alloc' ;\nexport * from './_build' ;\nexport * from './_copy' ;\nexport * from './_fill' ;\nexport * from './_reset' ;\nexport * from './_zeros' ;\n",
@@ -5419,7 +5741,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 171,
+    "__docId__": 177,
     "kind": "file",
     "name": "src/core/compare/_cmp.js",
     "content": "import { _cmp_n } from './_cmp_n' ;\n/**\n * Compares two big endian arrays, |a| >= |b|\n *\n * @param {array} a first operand\n * @param {int} ai a left\n * @param {int} aj a right\n * @param {array} b second operand\n * @param {int} bi b left\n * @param {int} bj b right\n *\n * @return {int} result 1 if a > b; 0 if a = b; -1 otherwise.\n */\n\nexport function _cmp (a, ai, aj, b, bi, bj){\n\n\tconst tmp = aj - bj + bi ;\n\n\tfor (; ai < tmp; ++ai)\n\t\tif (a[ai] > 0) return 1;\n\n\t// same size aj - ai === bj - bi\n\treturn _cmp_n(a, ai, aj, b, bi) ;\n}\n",
@@ -5430,7 +5752,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 172,
+    "__docId__": 178,
     "kind": "function",
     "name": "_cmp",
     "memberof": "src/core/compare/_cmp.js",
@@ -5516,7 +5838,7 @@
     }
   },
   {
-    "__docId__": 173,
+    "__docId__": 179,
     "kind": "file",
     "name": "src/core/compare/_cmp_n.js",
     "content": "\n/**\n * Compares two big endian arrays, |a| = |b|\n *\n * @param {Array} a first operand\n * @param {Number} ai a left\n * @param {Number} aj a right\n * @param {Array} b second operand\n * @param {Number} bi b left\n *\n * @return {Number} 1 if a > b; 0 if a = b; -1 otherwise.\n */\n\nexport function _cmp_n ( a , ai , aj , b , bi ) {\n\n\tfor (; ai < aj; ++ai, ++bi) {\n\t\tif (a[ai] > b[bi]) return  1;\n\t\tif (a[ai] < b[bi]) return -1;\n\t}\n\n\treturn 0;\n}\n",
@@ -5527,7 +5849,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 174,
+    "__docId__": 180,
     "kind": "function",
     "name": "_cmp_n",
     "memberof": "src/core/compare/_cmp_n.js",
@@ -5603,7 +5925,7 @@
     }
   },
   {
-    "__docId__": 175,
+    "__docId__": 181,
     "kind": "file",
     "name": "src/core/compare/index.js",
     "content": "export * from './_cmp' ;\nexport * from './_cmp_n' ;\n",
@@ -5614,7 +5936,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 176,
+    "__docId__": 182,
     "kind": "file",
     "name": "src/core/convert/_chr.js",
     "content": "\nexport function _chr ( x ) {\n\n\tif ( x < 10 ) return String.fromCharCode( 48 + x ) ;\n\treturn String.fromCharCode( 87 + x ) ;\n\n}\n",
@@ -5625,7 +5947,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 177,
+    "__docId__": 183,
     "kind": "function",
     "name": "_chr",
     "memberof": "src/core/convert/_chr.js",
@@ -5655,10 +5977,10 @@
     }
   },
   {
-    "__docId__": 178,
+    "__docId__": 184,
     "kind": "file",
     "name": "src/core/convert/_convert.js",
-    "content": "import { _convert_to_smaller } from './_convert_to_smaller' ;\nimport { _convert_to_larger } from './_convert_to_larger' ;\nimport { _copy } from '../array' ;\n\n/**\n *\n * @param {Number} f the base to convert from\n * @param {Number} t the base to convert to\n * @param {Array} a the origin array\n * @param {Number} ai start offset in the origin array\n * @param {Number} aj end offset in the origin array\n * @param {Array} b the destination array\n * @param {Number} bi start offset in the destination array\n * @param {Number} bj end offset in the destination array\n */\n\nexport function _convert ( f , t , a , ai , aj , b , bi , bj ) {\n\n\tif ( f > t ) return _convert_to_smaller( f , t , a , ai , aj , b , bi , bj ) ;\n\tif ( f < t ) return _convert_to_larger( f , t , a , ai , aj , b , bi , bj ) ;\n\treturn _copy( a , ai , aj , b , bi ) ;\n\n}\n",
+    "content": "import { _copy } from '../array' ;\nimport { _convert_to_smaller } from './_convert_to_smaller' ;\nimport { _convert_to_larger } from './_convert_to_larger' ;\n\n/**\n *\n * f != t\n *\n * @param {Number} f the base to convert from\n * @param {Number} t the base to convert to\n * @param {Array} a the origin array\n * @param {Number} ai start offset in the origin array\n * @param {Number} aj end offset in the origin array\n * @param {Array} b the destination array\n * @param {Number} bi start offset in the destination array\n * @param {Number} bj end offset in the destination array\n */\n\nexport function _convert ( f , t , a , ai , aj , b , bi , bj ) {\n\n\tif ( f > t ) return _convert_to_smaller( f , t , a , ai , aj , b , bi , bj ) ;\n\tif ( f < t ) return _convert_to_larger( f , t , a , ai , aj , b , bi , bj ) ;\n\treturn _copy( a , ai , aj , b , bi ) ;\n\n}\n",
     "static": true,
     "longname": "/home/aureooms/dev/js/js-integer-big-endian/src/core/convert/_convert.js",
     "access": "public",
@@ -5666,7 +5988,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 179,
+    "__docId__": 185,
     "kind": "function",
     "name": "_convert",
     "memberof": "src/core/convert/_convert.js",
@@ -5678,8 +6000,8 @@
     "export": true,
     "importPath": "@aureooms/js-integer-big-endian/src/core/convert/_convert.js",
     "importStyle": "{_convert}",
-    "description": "",
-    "lineNumber": 17,
+    "description": "\nf != t",
+    "lineNumber": 19,
     "params": [
       {
         "nullable": null,
@@ -5769,32 +6091,42 @@
     }
   },
   {
-    "__docId__": 180,
+    "__docId__": 186,
     "kind": "file",
-    "name": "src/core/convert/_convert_slow.js",
-    "content": "import { _build , _alloc , _reset , _copy } from '../array' ;\nimport { _idivmod } from '../../api/arithmetic/div' ;\nimport { jz } from '../../api/compare/jz' ;\n\n/**\n *\n * @param {Number} f the base to convert from\n * @param {Number} t the base to convert to\n * @param {Array} a the origin array\n * @param {Number} ai start offset in the origin array\n * @param {Number} aj end offset in the origin array\n * @param {Array} b the destination array\n * @param {Number} bi start offset in the destination array\n * @param {Number} bj end offset in the destination array\n */\n\nexport function _convert_slow ( f , t , a , ai , aj , b , bi , bj ) {\n\n\tconst d = _build( f , t ) ;\n\tconst n = d.length ;\n\tconst m = aj - ai ;\n\tconst q = _alloc( m ) ;\n\tconst r = _alloc( m ) ;        // NOTE that this copy is unnecessary when\n\t_copy( a , ai , aj , r , 0 ) ; // called from parse since we can discard it.\n\n\twhile ( true ) {\n\n\t\t_reset( q , 0 , m ) ;\n\n\t\t_idivmod( f , r , 0 , m , d , 0 , n , q , 0 , m ) ;\n\n\t\t--bj ;\n\t\tlet x = 0 ;\n\n\t\tfor ( let k = 0 ; k < m ; ++k ) {\n\t\t\tx *= f ;\n\t\t\tx += r[k] ;\n\t\t}\n\n\t\tb[bj] = x ;\n\n\t\tif ( jz( q , 0 , m ) ) return ;\n\n\t\t_copy( q , 0 , m , r , 0 ) ;\n\n\t}\n\n}\n",
+    "name": "src/core/convert/_convert_dc.js",
+    "content": "import { _build , _alloc , _zeros ,_reset , _copy } from '../array' ;\nimport { _iadd } from '../arithmetic/add' ;\nimport { _mul } from '../arithmetic/mul' ;\nimport { _pow_double } from '../arithmetic/pow' ;\nimport { mul } from '../../api/arithmetic/mul'\nimport { _convert_slow } from './_convert_slow' ;\nimport { _trim_positive } from './_trim_positive' ;\n\n/**\n *\n * O(M(N) log N) where M(N) is multiplication time complexity.\n *\n *   - bj - bi >= log_t(f) * ( aj - ai ) ;\n *\n * Roughly, split number A into two halves A0 * f^l + A1. Convert A0 to B0 and\n * A1 to B1 recursively. Then multiply B0 by f^l in base t and finally add B1.\n *\n * This implementation is not recursive. It is iterative, and will call a\n * simpler subroutine for the base case.\n *\n * @param {Number} size_small_block the size of a small block\n * @param {Number} f the base to convert from\n * @param {Number} t the base to convert to\n * @param {Array} a the origin array\n * @param {Number} ai start offset in the origin array\n * @param {Number} aj end offset in the origin array\n * @param {Array} b the destination array\n * @param {Number} bi start offset in the destination array\n * @param {Number} bj end offset in the destination array\n */\n\nexport function _convert_dc ( size_small_block , f , t , a , ai , aj , b , bi , bj ) {\n\n\tconst n = aj - ai ;\n\tconst m = bj - bi ;\n\n\t// How many limbs of output needed per limb of input.\n\tconst logratio = Math.log( f ) / Math.log( t ) ;\n\n\t// Compute block sizes.\n\tconst size_small_block_converted = Math.ceil(logratio * size_small_block) | 0 ;\n\tconst full_small_blocks = n / size_small_block | 0 ;\n\t// assert full_small_blocks >= 2.\n\tconst size_first_small_block = n % size_small_block ;\n\tconst size_first_small_block_converted = Math.ceil(logratio * size_first_small_block) | 0 ;\n\n\t// Memory can never exceed this since we rounded up and merging rounds\n\t// created less and less of these lost fractional limbs.\n\t// Need to add + 1 everywhere because when f and t have some common power,\n\t// that representation will need one extra bit. Since multiplication\n\t// algorithms cannot handle bounds gracefully in that case (they will\n\t// overwrite the left most block with a zero) we need to add some padding.\n\t// If you look at the mul/_mul calls, they will have 0-based indexing\n\t// whereas _iadd calls are 1-based.\n\t// Actually could exploit that to replace multiplication by shifting.\n\tlet _ti = size_first_small_block_converted ? 1 + size_first_small_block_converted : 0 ;\n\tconst size_memory = _ti + full_small_blocks * (1 + size_small_block_converted) ;\n\tlet tmp1 = _zeros(size_memory) ;\n\tlet tmp2 = _alloc(size_memory) ;\n\n\tlet _ai = ai + size_first_small_block ;\n\n\t// Convert first small block\n\tif ( size_first_small_block > 0 ) {\n\t\t_convert_slow( f , t , a , ai , _ai , tmp1 , 1 , _ti ) ;\n\t}\n\n\t// Convert full small blocks\n\twhile ( _ai < aj ) {\n\t\t_convert_slow( f , t , a , _ai , _ai + size_small_block , tmp1 , _ti + 1 , _ti + 1 + size_small_block_converted) ;\n\t\t_ai += size_small_block ;\n\t\t_ti += 1 + size_small_block_converted ;\n\t}\n\n\t// NOW ALL SMALL BLOCKS ARE CONVERTED, LET US ADD THEM UP\n\n\t// k holds the current number of blocks\n\tlet k = full_small_blocks + ( size_first_small_block > 0 ? 1 : 0 ) ;\n\n\t// x holds f^size_small_block\n\tlet x2 = _zeros(m) ;\n\tlet xi = _build( t , f , x2 , m ) ;\n\tconst _m = size_small_block*(m-xi) ;\n\tlet _x = _zeros(_m) ;\n\t_pow_double (t, size_small_block, x2, xi, m, _x, 0, _m) ; // Compute f^size_small_block\n\tconst _xi = _trim_positive(_x, 0, _m) ;\n\tlet x1 = _zeros(m) ;\n\txi = m - (_m - _xi) ;\n\t_copy(_x, _xi, _m, x1, xi);\n\txi = _trim_positive(x1, 0, m) ;\n\n\t// size_block_converted\n\tlet sbc = size_small_block_converted ;\n\n\t//size_first_block_converted\n\tlet sfbc = size_first_small_block_converted > 0 ? size_first_small_block_converted : size_small_block_converted ;\n\n\twhile ( k !== 2 ) {\n\n\t\t_reset(tmp2, 0, size_memory);\n\n\t\tlet extra = k & 1 ;\n\t\tlet pairs = k >> 1 ;\n\n\t\t// Merge first two pairs.\n\t\t// NB: the first block is the only one that can be partially empty.\n\t\tif ( extra === 0 ) {\n\t\t\tconst _tj = 1 + sfbc ;\n\t\t\tconst _tk = 1 + _tj + sbc ;\n\t\t\tmul( t , x1 , xi , m , tmp1 , 1 , _tj , tmp2 , 0 , _tk - 1 ) ;\n\t\t\t_iadd( t , tmp2 , 1 , _tk - 1 , tmp1 , 1 + _tj , _tk ) ; // TODO cannot overflow ?\n\t\t\tsfbc += sbc ;\n\t\t}\n\t\telse {\n\t\t\t_copy(tmp1, 1, sfbc + 1, tmp2, 1);\n\t\t}\n\n\t\tlet _ti = sfbc + 2 - extra;\n\n\t\tfor ( let i = 2 - extra ; i < pairs + 1 ; ++i ) {\n\t\t\t// C = A f^l + B\n\t\t\tconst _tj = _ti + 1 + sbc ;\n\t\t\tconst _tk = _tj + 1 + sbc ;\n\t\t\tmul( t , x1 , xi , m , tmp1 , 1 + _ti , _tj , tmp2 , _ti - i + 1 , _tk - i ) ;\n\t\t\t_iadd( t , tmp2 , _ti - i + 2 , _tk - i , tmp1 , 1 + _tj , _tk ) ;\n\t\t\t_ti = _tk;\n\t\t}\n\n\t\t// Update f^l to f^2l\n\t\tlet _xi = m - 2 * (m - xi) ;\n\t\t_reset(x2, _xi, m);\n\t\t_mul( t , x1 , xi , m , x1 , xi , m , x2 , _xi , m ) ; // TODO use squaring function here\n\t\txi = _trim_positive(x2, _xi, m) ;\n\n\n\t\t// Swap variables\n\t\tconst x3 = x1 ;\n\t\tx1 = x2 ;\n\t\tx2 = x3 ;\n\n\t\t// Swap variables\n\t\tconst tmp3 = tmp1 ;\n\t\ttmp1 = tmp2 ;\n\t\ttmp2 = tmp3 ;\n\n\t\tk = pairs + extra ;\n\n\t\tsbc <<= 1 ;\n\n\t}\n\n\t// Only one pair left to merge. Merge directly into output.\n\t_reset(tmp2, 0, m+1);\n\tmul( t , x1 , xi , m , tmp1 , 1 , 1 + sfbc , tmp2 , 0 , m+1 ) ;\n\t_iadd( t , tmp2 , 1 , m+1 , tmp1 , 2 + sfbc , 2 + sfbc + sbc ) ;\n\t_copy(tmp2, 1, m+1, b, 0);\n\n}\n",
     "static": true,
-    "longname": "/home/aureooms/dev/js/js-integer-big-endian/src/core/convert/_convert_slow.js",
+    "longname": "/home/aureooms/dev/js/js-integer-big-endian/src/core/convert/_convert_dc.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
   },
   {
-    "__docId__": 181,
+    "__docId__": 187,
     "kind": "function",
-    "name": "_convert_slow",
-    "memberof": "src/core/convert/_convert_slow.js",
+    "name": "_convert_dc",
+    "memberof": "src/core/convert/_convert_dc.js",
     "generator": false,
     "async": false,
     "static": true,
-    "longname": "src/core/convert/_convert_slow.js~_convert_slow",
+    "longname": "src/core/convert/_convert_dc.js~_convert_dc",
     "access": "private",
     "export": true,
-    "importPath": "@aureooms/js-integer-big-endian/src/core/convert/_convert_slow.js",
-    "importStyle": "{_convert_slow}",
-    "description": "",
-    "lineNumber": 17,
+    "importPath": "@aureooms/js-integer-big-endian/src/core/convert/_convert_dc.js",
+    "importStyle": "{_convert_dc}",
+    "description": "\nO(M(N) log N) where M(N) is multiplication time complexity.\n\n  - bj - bi >= log_t(f) * ( aj - ai ) ;\n\nRoughly, split number A into two halves A0 * f^l + A1. Convert A0 to B0 and\nA1 to B1 recursively. Then multiply B0 by f^l in base t and finally add B1.\n\nThis implementation is not recursive. It is iterative, and will call a\nsimpler subroutine for the base case.",
+    "lineNumber": 32,
     "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "size_small_block",
+        "description": "the size of a small block"
+      },
       {
         "nullable": null,
         "types": [
@@ -5879,31 +6211,31 @@
     "return": null
   },
   {
-    "__docId__": 182,
+    "__docId__": 188,
     "kind": "file",
-    "name": "src/core/convert/_convert_to_larger.js",
-    "content": "import { _log } from './_log' ;\nimport { _convert_to_larger_fast } from './_convert_to_larger_fast' ;\nimport { _convert_slow } from './_convert_slow' ;\n\n/**\n *\n * @param {Number} f the base to convert from\n * @param {Number} t the base to convert to\n * @param {Array} a the origin array\n * @param {Number} ai start offset in the origin array\n * @param {Number} aj end offset in the origin array\n * @param {Array} b the destination array\n * @param {Number} bi start offset in the destination array\n * @param {Number} bj end offset in the destination array\n */\n\nexport function _convert_to_larger ( f , t , a , ai , aj , b , bi , bj ) {\n\n\tconst [ z , x ] = _log( t , f ) ;\n\n\tif ( x === 1 ) return _convert_to_larger_fast( f , z , a , ai , aj , b , bi , bj ) ;\n\n\treturn _convert_slow( f , t , a , ai , aj , b , bi , bj ) ;\n\n}\n",
+    "name": "src/core/convert/_convert_slow.js",
+    "content": "import { _convert_to_smaller_slow } from './_convert_to_smaller_slow' ;\nimport { _convert_to_larger_slow } from './_convert_to_larger_slow' ;\n\n/**\n *\n * f != t\n *\n * @param {Number} f the base to convert from\n * @param {Number} t the base to convert to\n * @param {Array} a the origin array\n * @param {Number} ai start offset in the origin array\n * @param {Number} aj end offset in the origin array\n * @param {Array} b the destination array\n * @param {Number} bi start offset in the destination array\n * @param {Number} bj end offset in the destination array\n */\n\nexport function _convert_slow ( f , t , a , ai , aj , b , bi , bj ) {\n\n\tif ( f > t ) return _convert_to_smaller_slow( f , t , a , ai , aj , b , bi , bj ) ;\n\telse return _convert_to_larger_slow( f , t , a , ai , aj , b , bi , bj ) ;\n\n}\n",
     "static": true,
-    "longname": "/home/aureooms/dev/js/js-integer-big-endian/src/core/convert/_convert_to_larger.js",
+    "longname": "/home/aureooms/dev/js/js-integer-big-endian/src/core/convert/_convert_slow.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
   },
   {
-    "__docId__": 183,
+    "__docId__": 189,
     "kind": "function",
-    "name": "_convert_to_larger",
-    "memberof": "src/core/convert/_convert_to_larger.js",
+    "name": "_convert_slow",
+    "memberof": "src/core/convert/_convert_slow.js",
     "generator": false,
     "async": false,
     "static": true,
-    "longname": "src/core/convert/_convert_to_larger.js~_convert_to_larger",
+    "longname": "src/core/convert/_convert_slow.js~_convert_slow",
     "access": "private",
     "export": true,
-    "importPath": "@aureooms/js-integer-big-endian/src/core/convert/_convert_to_larger.js",
-    "importStyle": "{_convert_to_larger}",
-    "description": "",
-    "lineNumber": 17,
+    "importPath": "@aureooms/js-integer-big-endian/src/core/convert/_convert_slow.js",
+    "importStyle": "{_convert_slow}",
+    "description": "\nf != t",
+    "lineNumber": 18,
     "params": [
       {
         "nullable": null,
@@ -5993,7 +6325,121 @@
     }
   },
   {
-    "__docId__": 184,
+    "__docId__": 190,
+    "kind": "file",
+    "name": "src/core/convert/_convert_to_larger.js",
+    "content": "import { _log } from './_log' ;\nimport { _convert_to_larger_fast } from './_convert_to_larger_fast' ;\nimport { _convert_to_larger_slow } from './_convert_to_larger_slow' ;\nimport { _convert_dc } from './_convert_dc' ;\nimport { THRESHOLD_CONVERT_DC } from '../thresholds/conversion' ;\n\n/**\n *\n * @param {Number} f the base to convert from\n * @param {Number} t the base to convert to\n * @param {Array} a the origin array\n * @param {Number} ai start offset in the origin array\n * @param {Number} aj end offset in the origin array\n * @param {Array} b the destination array\n * @param {Number} bi start offset in the destination array\n * @param {Number} bj end offset in the destination array\n */\n\nexport function _convert_to_larger ( f , t , a , ai , aj , b , bi , bj ) {\n\n\tconst [ z , x ] = _log( t , f ) ;\n\n\tif ( x === 1 ) return _convert_to_larger_fast( f , z , a , ai , aj , b , bi , bj ) ;\n\n\tif ( aj - ai >= THRESHOLD_CONVERT_DC ) {\n\t\t// TODO use better size_small_block to avoid degenerated small blocks\n\t\t// that slow down the execution\n\t\treturn _convert_dc( THRESHOLD_CONVERT_DC >> 1 , f , t , a , ai , aj , b , bi , bj ) ;\n\t}\n\n\treturn _convert_to_larger_slow( f , t , a , ai , aj , b , bi , bj ) ;\n\n}\n",
+    "static": true,
+    "longname": "/home/aureooms/dev/js/js-integer-big-endian/src/core/convert/_convert_to_larger.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 191,
+    "kind": "function",
+    "name": "_convert_to_larger",
+    "memberof": "src/core/convert/_convert_to_larger.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/core/convert/_convert_to_larger.js~_convert_to_larger",
+    "access": "private",
+    "export": true,
+    "importPath": "@aureooms/js-integer-big-endian/src/core/convert/_convert_to_larger.js",
+    "importStyle": "{_convert_to_larger}",
+    "description": "",
+    "lineNumber": 19,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "f",
+        "description": "the base to convert from"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "t",
+        "description": "the base to convert to"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "a",
+        "description": "the origin array"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "ai",
+        "description": "start offset in the origin array"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "aj",
+        "description": "end offset in the origin array"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "b",
+        "description": "the destination array"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "bi",
+        "description": "start offset in the destination array"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "bj",
+        "description": "end offset in the destination array"
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 192,
     "kind": "file",
     "name": "src/core/convert/_convert_to_larger_fast.js",
     "content": "\n\n/**\n *\n * @param {Number} ar the base to convert from\n * @param {Number} z if br is the base to convert to then log(br) = z log(ar)\n * @param {Array} a the origin array\n * @param {Number} ai start offset in the origin array\n * @param {Number} aj end offset in the origin array\n * @param {Array} b the destination array\n * @param {Number} bi start offset in the destination array\n * @param {Number} bj end offset in the destination array\n */\n\nexport function _convert_to_larger_fast ( ar , z , a , ai , aj , b , bi , bj ) {\n\n\tvar m, n, q, r, i, w, t;\n\n\tm = aj - ai;\n\tn = bj - bi;\n\n\t// number of parts of first\n\t// destination block if incomplete\n\tr = m % z;\n\n\t// number of complete blocks in destination\n\tq = (m - r) / z;\n\n\t// total number of blocks in destination\n\t// (complete ones + first if incomplete)\n\tw = q + !!r;\n\n\n\tif (n >= w) {\n\t\t// if destination can contain more than\n\t\t// what is available in source then\n\t\t// compute the effective write start\n\t\t// in destination and set i to the correct\n\t\t// offset according to the size\n\t\t// (in source blocks) of the\n\t\t// first destination block if incomplete\n\t\tbi = bj - w;\n\t\ti = (z - r) % z;\n\t}\n\telse {\n\t\t// if source contains more than what\n\t\t// destination can handle set the effective\n\t\t// read start in source and set i to 0 because\n\t\t// all blocks will be complete\n\t\tai = aj - n * z;\n\t\ti = 0;\n\t}\n\n\tfor (; ai < aj && bi < bj; ++bi) {\n\t\tt = 0;\n\t\tfor (; i < z; ++i) {\n\t\t\tt *= ar;     // aggregate source blocks\n\t\t\tt += a[ai];  // using simple\n\t\t\t++ai;        // multiply + add\n\t\t}\n\t\tb[bi] = t;  // set block in destination\n\t\ti = 0;\n\t}\n\n}\n",
@@ -6004,7 +6450,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 185,
+    "__docId__": 193,
     "kind": "function",
     "name": "_convert_to_larger_fast",
     "memberof": "src/core/convert/_convert_to_larger_fast.js",
@@ -6103,10 +6549,120 @@
     "return": null
   },
   {
-    "__docId__": 186,
+    "__docId__": 194,
+    "kind": "file",
+    "name": "src/core/convert/_convert_to_larger_slow.js",
+    "content": "import { _iadd_limb , _imul_limb } from '../arithmetic' ;\n\n/**\n *\n * O(N^2). f < t.\n *\n * @param {Number} f the base to convert from\n * @param {Number} t the base to convert to\n * @param {Array} a the origin array\n * @param {Number} ai start offset in the origin array\n * @param {Number} aj end offset in the origin array\n * @param {Array} b the destination array\n * @param {Number} bi start offset in the destination array\n * @param {Number} bj end offset in the destination array\n */\n\nexport function _convert_to_larger_slow ( f , t , a , ai , aj , b , bi , bj ) {\n\n\tlet batch = 1;\n\tlet shift = f;\n\tfor (; shift * f <= t; shift *= f, ++batch) ;\n\n\tconst rounds = ((aj - ai) / batch) | 0 ;\n\tconst first = (aj - ai) % batch ;\n\n\tif (first > 0) {\n\t\tlet w1 = a[ai];\n\t\tfor (let j = 1; j < first; ++j) {\n\t\t\tw1 *= f;\n\t\t\tw1 += a[ai+j];\n\t\t}\n\t\tb[bj-1] = w1;\n\t}\n\n\tconst _ai = ai + first;\n\tlet _bi = bj - 1 ;\n\n\tfor (let i = 0; i < rounds; ++i) {\n\t\tif (b[_bi] !== 0 && _bi > bi) --_bi;\n\t\t_imul_limb(t, shift, b, _bi, bj);\n\t\tif (b[_bi] !== 0 && _bi > bi) --_bi;\n\t\tlet w = 0;\n\t\tlet j = _ai+i*batch;\n\t\tconst _end = j + batch  ;\n\t\tdo {\n\t\t\tw *= f;\n\t\t\tw += a[j];\n\t\t} while ( ++j < _end ) ;\n\t\t_iadd_limb(t, w, b, _bi, bj);\n\t}\n\n}\n",
+    "static": true,
+    "longname": "/home/aureooms/dev/js/js-integer-big-endian/src/core/convert/_convert_to_larger_slow.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 195,
+    "kind": "function",
+    "name": "_convert_to_larger_slow",
+    "memberof": "src/core/convert/_convert_to_larger_slow.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/core/convert/_convert_to_larger_slow.js~_convert_to_larger_slow",
+    "access": "private",
+    "export": true,
+    "importPath": "@aureooms/js-integer-big-endian/src/core/convert/_convert_to_larger_slow.js",
+    "importStyle": "{_convert_to_larger_slow}",
+    "description": "\nO(N^2). f < t.",
+    "lineNumber": 17,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "f",
+        "description": "the base to convert from"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "t",
+        "description": "the base to convert to"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "a",
+        "description": "the origin array"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "ai",
+        "description": "start offset in the origin array"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "aj",
+        "description": "end offset in the origin array"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "b",
+        "description": "the destination array"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "bi",
+        "description": "start offset in the destination array"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "bj",
+        "description": "end offset in the destination array"
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 196,
     "kind": "file",
     "name": "src/core/convert/_convert_to_smaller.js",
-    "content": "import { _log } from './_log' ;\nimport { _convert_to_smaller_fast } from './_convert_to_smaller_fast' ;\nimport { _convert_slow } from './_convert_slow' ;\n\n/**\n *\n * @param {Number} f the base to convert from\n * @param {Number} t the base to convert to\n * @param {Array} a the origin array\n * @param {Number} ai start offset in the origin array\n * @param {Number} aj end offset in the origin array\n * @param {Array} b the destination array\n * @param {Number} bi start offset in the destination array\n * @param {Number} bj end offset in the destination array\n */\n\nexport function _convert_to_smaller ( f , t , a , ai , aj , b , bi , bj ) {\n\n\tconst [ z , x ] = _log( f , t ) ;\n\n\tif ( x === 1 ) return _convert_to_smaller_fast( t , z , a , ai , aj , b , bi , bj ) ;\n\n\treturn _convert_slow( f , t , a , ai , aj , b , bi , bj ) ;\n\n}\n",
+    "content": "import { _log } from './_log' ;\nimport { _convert_to_smaller_fast } from './_convert_to_smaller_fast' ;\nimport { _convert_to_smaller_slow } from './_convert_to_smaller_slow' ;\nimport { _convert_dc } from './_convert_dc' ;\nimport { THRESHOLD_CONVERT_DC } from '../thresholds/conversion' ;\n\n/**\n *\n * @param {Number} f the base to convert from\n * @param {Number} t the base to convert to\n * @param {Array} a the origin array\n * @param {Number} ai start offset in the origin array\n * @param {Number} aj end offset in the origin array\n * @param {Array} b the destination array\n * @param {Number} bi start offset in the destination array\n * @param {Number} bj end offset in the destination array\n */\n\nexport function _convert_to_smaller ( f , t , a , ai , aj , b , bi , bj ) {\n\n\tconst [ z , x ] = _log( f , t ) ;\n\n\tif ( x === 1 ) return _convert_to_smaller_fast( t , z , a , ai , aj , b , bi , bj ) ;\n\n\tif ( aj - ai >= THRESHOLD_CONVERT_DC ) {\n\t\t// TODO use better size_small_block to avoid degenerated small blocks\n\t\t// that slow down the execution\n\t\treturn _convert_dc( THRESHOLD_CONVERT_DC >> 1 , f , t , a , ai , aj , b , bi , bj ) ;\n\t}\n\n\treturn _convert_to_smaller_slow( f , t , a , ai , aj , b , bi , bj ) ;\n\n}\n",
     "static": true,
     "longname": "/home/aureooms/dev/js/js-integer-big-endian/src/core/convert/_convert_to_smaller.js",
     "access": "public",
@@ -6114,7 +6670,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 187,
+    "__docId__": 197,
     "kind": "function",
     "name": "_convert_to_smaller",
     "memberof": "src/core/convert/_convert_to_smaller.js",
@@ -6127,7 +6683,7 @@
     "importPath": "@aureooms/js-integer-big-endian/src/core/convert/_convert_to_smaller.js",
     "importStyle": "{_convert_to_smaller}",
     "description": "",
-    "lineNumber": 17,
+    "lineNumber": 19,
     "params": [
       {
         "nullable": null,
@@ -6217,7 +6773,7 @@
     }
   },
   {
-    "__docId__": 188,
+    "__docId__": 198,
     "kind": "file",
     "name": "src/core/convert/_convert_to_smaller_fast.js",
     "content": "\n/**\n *\n * @param {Number} br the base to convert to\n * @param {Number} z if ar is the base to convert to then log(ar) = z log(br)\n * @param {Array} a the origin array\n * @param {Number} ai start offset in the origin array\n * @param {Number} aj end offset in the origin array\n * @param {Array} b the destination array\n * @param {Number} bi start offset in the destination array\n * @param {Number} bj end offset in the destination array\n */\n\nexport function _convert_to_smaller_fast ( br , z , a , ai , aj , b , bi , bj ) {\n\n\tvar m, n, q, r, i, w, t;\n\n\tm = bj - bi;\n\tn = aj - ai;\n\n\t// number of parts of first\n\t// destination block if incomplete\n\tr = m % z;\n\n\t// number of complete blocks in destination\n\tq = (m - r) / z;\n\n\t// total number of blocks in destination\n\t// (complete ones + first if incomplete)\n\tw = q + !!r;\n\n\n\tif (n >= w) {\n\t\t// if source contains more than what\n\t\t// destination can handle set the effective\n\t\t// read start in source and set i to the correct\n\t\t// offset according to the size\n\t\t// (in destination blocks) of the\n\t\t// first source block if incomplete\n\t\tai = aj - w;\n\t\ti = (z - r) % z;\n\t}\n\telse {\n\t\t// if destination can contain more than\n\t\t// what is available in source then\n\t\t// compute the effective write start\n\t\t// in destination and set i to 0 because\n\t\t// all blocks will be complete\n\t\tbi = bj - n * z;\n\t\ti = 0;\n\t}\n\n\tfor (; ai < aj && bi < bj; ++ai) {\n\t\tq = a[ai];\n\t\tt = bi + z - 1 - i;\n\t\tbi += z - i;\n\t\tfor (; i < z; ++i) {\n\t\t\tr = q % br;        // unpack source blocks\n\t\t\tq = (q - r) / br;  // using simple\n\t\t\tb[t] = r;          // modulo + quotient\n\t\t\t--t;\n\t\t}\n\t\ti = 0;\n\t}\n\n}\n",
@@ -6228,7 +6784,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 189,
+    "__docId__": 199,
     "kind": "function",
     "name": "_convert_to_smaller_fast",
     "memberof": "src/core/convert/_convert_to_smaller_fast.js",
@@ -6327,7 +6883,158 @@
     "return": null
   },
   {
-    "__docId__": 190,
+    "__docId__": 200,
+    "kind": "file",
+    "name": "src/core/convert/_convert_to_smaller_slow.js",
+    "content": "import { _alloc , _copy } from '../array' ;\nimport { _idivmod_limb } from '../arithmetic/div' ;\nimport { _trim_positive } from './_trim_positive' ;\n\n/**\n *\n * O(N^2). f > t.\n *\n * |A| >= 1\n * |B| is large enough to hold the result\n *\n * @param {Number} f the base to convert from\n * @param {Number} t the base to convert to\n * @param {Array} a the origin array\n * @param {Number} ai start offset in the origin array\n * @param {Number} aj end offset in the origin array\n * @param {Array} b the destination array\n * @param {Number} bi start offset in the destination array\n * @param {Number} bj end offset in the destination array\n */\n\nexport function _convert_to_smaller_slow ( f , t , a , ai , aj , b , bi , bj ) {\n\n\tlet batch = 1;\n\tlet shift = t;\n\tfor (; shift * t <= f; shift *= t, ++batch) ;\n\n\tconst m = aj - ai ;\n\tlet q = _alloc( m ) ;\n\tlet r = _alloc( m ) ;          // NOTE that this copy is unnecessary when\n\t_copy( a , ai , aj , r , 0 ) ; // called from parse since we can discard it.\n\n\tlet i = 0 ;\n\n\twhile ( true ) {\n\n\t\t_idivmod_limb ( f , shift , r , i , m , q , i ) ;\n\n\t\tconst end = Math.max(bi, bj - batch) ;\n\t\tlet block = r[m-1];\n\n\t\tdo {\n\t\t\tb[--bj] = block % t ;\n\t\t\tblock = (block / t) | 0 ;\n\t\t} while ( bj > end ) ;\n\n\t\ti = _trim_positive(q, i, m);\n\t\tif ( i === m ) return ;\n\n\t\t//_copy( q , i , m , r , i ) ;\n\t\tconst tmp = q;\n\t\tq = r;\n\t\tr = tmp;\n\n\t}\n\n}\n",
+    "static": true,
+    "longname": "/home/aureooms/dev/js/js-integer-big-endian/src/core/convert/_convert_to_smaller_slow.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 201,
+    "kind": "function",
+    "name": "_convert_to_smaller_slow",
+    "memberof": "src/core/convert/_convert_to_smaller_slow.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/core/convert/_convert_to_smaller_slow.js~_convert_to_smaller_slow",
+    "access": "private",
+    "export": true,
+    "importPath": "@aureooms/js-integer-big-endian/src/core/convert/_convert_to_smaller_slow.js",
+    "importStyle": "{_convert_to_smaller_slow}",
+    "description": "\nO(N^2). f > t.\n\n|A| >= 1\n|B| is large enough to hold the result",
+    "lineNumber": 22,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "f",
+        "description": "the base to convert from"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "t",
+        "description": "the base to convert to"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "a",
+        "description": "the origin array"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "ai",
+        "description": "start offset in the origin array"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "aj",
+        "description": "end offset in the origin array"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "b",
+        "description": "the destination array"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "bi",
+        "description": "start offset in the destination array"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "bj",
+        "description": "end offset in the destination array"
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 202,
+    "kind": "file",
+    "name": "src/core/convert/_from_string.js",
+    "content": "import { _int } from './_int' ;\n\nexport function _from_string ( string ) {\n\n\tconst n = string.length ;\n\n\tconst a = [ ] ;\n\n\tfor ( let k = 0 ; k < n ; ++k ) a.push( _int( string[k] ) ) ;\n\n\treturn a ;\n\n}\n",
+    "static": true,
+    "longname": "/home/aureooms/dev/js/js-integer-big-endian/src/core/convert/_from_string.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 203,
+    "kind": "function",
+    "name": "_from_string",
+    "memberof": "src/core/convert/_from_string.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/core/convert/_from_string.js~_from_string",
+    "access": "private",
+    "export": true,
+    "importPath": "@aureooms/js-integer-big-endian/src/core/convert/_from_string.js",
+    "importStyle": "{_from_string}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "string",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 204,
     "kind": "file",
     "name": "src/core/convert/_int.js",
     "content": "\nexport function _int ( x ) {\n\n\tif ( x >= '0' && x <= '9' ) return x.charCodeAt( 0 ) - 48 ;\n\tif ( x >= 'A' && x <= 'Z' ) return x.charCodeAt( 0 ) - 55 ;\n\tif ( x >= 'a' && x <= 'z' ) return x.charCodeAt( 0 ) - 87 ;\n\n\tthrow new Error('invalid literal for _int: ' + x) ;\n\n}\n",
@@ -6338,7 +7045,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 191,
+    "__docId__": 205,
     "kind": "function",
     "name": "_int",
     "memberof": "src/core/convert/_int.js",
@@ -6368,7 +7075,7 @@
     }
   },
   {
-    "__docId__": 192,
+    "__docId__": 206,
     "kind": "file",
     "name": "src/core/convert/_log.js",
     "content": "\nexport function _log ( x , y ) {\n\n\tlet z = 0 ;\n\n\twhile ( x >= y ) {\n\t\tif ( x % y ) break ;\n\t\tx /= y ;\n\t\t++z ;\n\t}\n\n\treturn [ z , x ] ;\n\n}\n",
@@ -6379,7 +7086,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 193,
+    "__docId__": 207,
     "kind": "function",
     "name": "_log",
     "memberof": "src/core/convert/_log.js",
@@ -6415,7 +7122,7 @@
     }
   },
   {
-    "__docId__": 194,
+    "__docId__": 208,
     "kind": "file",
     "name": "src/core/convert/_to_string.js",
     "content": "import { _chr } from './_chr' ;\n\nexport function _to_string ( b ) {\n\n\tconst n = b.length ;\n\n\tconst data = [ ] ;\n\n\tfor ( let k = 0 ; k < n ; ++k ) data.push( _chr( b[k] ) ) ;\n\n\treturn data.join( '' ) ;\n\n}\n",
@@ -6426,7 +7133,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 195,
+    "__docId__": 209,
     "kind": "function",
     "name": "_to_string",
     "memberof": "src/core/convert/_to_string.js",
@@ -6456,7 +7163,7 @@
     }
   },
   {
-    "__docId__": 196,
+    "__docId__": 210,
     "kind": "file",
     "name": "src/core/convert/_trim_positive.js",
     "content": "\nexport function _trim_positive ( a , ai , aj ) {\n\n\twhile ( a[ai] === 0 && ai < aj ) ++ai ;\n\n\treturn ai ;\n\n}\n",
@@ -6467,7 +7174,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 197,
+    "__docId__": 211,
     "kind": "function",
     "name": "_trim_positive",
     "memberof": "src/core/convert/_trim_positive.js",
@@ -6509,7 +7216,7 @@
     }
   },
   {
-    "__docId__": 198,
+    "__docId__": 212,
     "kind": "file",
     "name": "src/core/convert/convert_keep_zeros.js",
     "content": "import { _zeros } from '../array' ;\nimport { _convert } from './_convert' ;\n\nexport function convert_keep_zeros ( f , t , a , ai , aj ) {\n\n\tconst bi = 0 ;\n\tconst bj = Math.ceil( Math.log( f ) / Math.log( t ) * ( aj - ai ) ) ;\n\tconst b = _zeros( bj - bi ) ;\n\n\t_convert( f , t , a , ai , aj , b , bi , bj ) ;\n\n\treturn b ;\n\n}\n",
@@ -6520,7 +7227,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 199,
+    "__docId__": 213,
     "kind": "function",
     "name": "convert_keep_zeros",
     "memberof": "src/core/convert/convert_keep_zeros.js",
@@ -6574,10 +7281,10 @@
     }
   },
   {
-    "__docId__": 200,
+    "__docId__": 214,
     "kind": "file",
     "name": "src/core/convert/index.js",
-    "content": "export * from './_chr' ;\nexport * from './_convert' ;\nexport * from './_convert_slow' ;\nexport * from './_convert_to_larger' ;\nexport * from './_convert_to_larger_fast' ;\nexport * from './_convert_to_smaller' ;\nexport * from './_convert_to_smaller_fast' ;\nexport * from './_int' ;\nexport * from './_log' ;\nexport * from './_to_string' ;\nexport * from './_trim_positive' ;\nexport * from './convert_keep_zeros' ;\nexport * from './parse_keep_zeros' ;\nexport * from './stringify_keep_zeros' ;\nexport * from './trim_natural' ;\n",
+    "content": "export * from './_chr' ;\nexport * from './_convert' ;\nexport * from './_convert_dc' ;\nexport * from './_convert_slow' ;\nexport * from './_convert_to_larger' ;\nexport * from './_convert_to_larger_fast' ;\nexport * from './_convert_to_larger_slow' ;\nexport * from './_convert_to_smaller' ;\nexport * from './_convert_to_smaller_fast' ;\nexport * from './_convert_to_smaller_slow' ;\nexport * from './_int' ;\nexport * from './_log' ;\nexport * from './_to_string' ;\nexport * from './_from_string' ;\nexport * from './_trim_positive' ;\nexport * from './convert_keep_zeros' ;\nexport * from './parse_keep_zeros' ;\nexport * from './trim_natural' ;\n",
     "static": true,
     "longname": "/home/aureooms/dev/js/js-integer-big-endian/src/core/convert/index.js",
     "access": "public",
@@ -6585,10 +7292,10 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 201,
+    "__docId__": 215,
     "kind": "file",
     "name": "src/core/convert/parse_keep_zeros.js",
-    "content": "import { _int } from './_int' ;\nimport { convert_keep_zeros } from './convert_keep_zeros' ;\n\nexport function parse_keep_zeros ( f , t , string ) {\n\n\tif ( f > 36 ) throw new Error('f > 36 not implemented') ;\n\n\tconst n = string.length ;\n\n\tconst a = [ ] ;\n\n\tfor ( let k = 0 ; k < n ; ++k ) a.push( _int( string[k] ) ) ;\n\n\treturn convert_keep_zeros( f , t , a , 0 , n ) ;\n\n}\n",
+    "content": "import { _int } from './_int' ;\nimport { _from_string } from './_from_string' ;\nimport { convert_keep_zeros } from './convert_keep_zeros' ;\n\nexport function parse_keep_zeros ( f , t , string ) {\n\n\tif ( f > 36 ) throw new Error('f > 36 not implemented') ;\n\n\tconst a = _from_string(string) ;\n\n\treturn convert_keep_zeros( f , t , a , 0 , a.length ) ;\n\n}\n",
     "static": true,
     "longname": "/home/aureooms/dev/js/js-integer-big-endian/src/core/convert/parse_keep_zeros.js",
     "access": "public",
@@ -6596,7 +7303,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 202,
+    "__docId__": 216,
     "kind": "function",
     "name": "parse_keep_zeros",
     "memberof": "src/core/convert/parse_keep_zeros.js",
@@ -6609,7 +7316,7 @@
     "importPath": "@aureooms/js-integer-big-endian/src/core/convert/parse_keep_zeros.js",
     "importStyle": "{parse_keep_zeros}",
     "description": null,
-    "lineNumber": 4,
+    "lineNumber": 5,
     "undocument": true,
     "params": [
       {
@@ -6638,7 +7345,7 @@
     }
   },
   {
-    "__docId__": 203,
+    "__docId__": 217,
     "kind": "file",
     "name": "src/core/convert/stringify.js",
     "content": "import { convert } from './convert' ;\nimport { _to_string } from '../../core/convert/_to_string' ;\n\nexport function stringify ( f , t , a , ai , aj ) {\n\n\tif ( t > 36 ) throw new Error('t > 36 not implemented') ;\n\n\tconst b = convert( f , t , a , ai , aj ) ;\n\n\treturn _to_string( b ) ;\n\n}\n",
@@ -6649,7 +7356,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 204,
+    "__docId__": 218,
     "kind": "function",
     "name": "stringify",
     "memberof": "src/core/convert/stringify.js",
@@ -6703,72 +7410,7 @@
     }
   },
   {
-    "__docId__": 205,
-    "kind": "file",
-    "name": "src/core/convert/stringify_keep_zeros.js",
-    "content": "import { convert_keep_zeros } from './convert_keep_zeros' ;\nimport { _to_string } from './_to_string' ;\n\nexport function stringify_keep_zeros ( f , t , a , ai , aj ) {\n\n\tif ( t > 36 ) throw new Error('t > 36 not implemented') ;\n\n\tconst b = convert_keep_zeros( f , t , a , ai , aj ) ;\n\n\treturn _to_string( b ) ;\n\n}\n",
-    "static": true,
-    "longname": "/home/aureooms/dev/js/js-integer-big-endian/src/core/convert/stringify_keep_zeros.js",
-    "access": "public",
-    "description": null,
-    "lineNumber": 1
-  },
-  {
-    "__docId__": 206,
-    "kind": "function",
-    "name": "stringify_keep_zeros",
-    "memberof": "src/core/convert/stringify_keep_zeros.js",
-    "generator": false,
-    "async": false,
-    "static": true,
-    "longname": "src/core/convert/stringify_keep_zeros.js~stringify_keep_zeros",
-    "access": "public",
-    "export": true,
-    "importPath": "@aureooms/js-integer-big-endian/src/core/convert/stringify_keep_zeros.js",
-    "importStyle": "{stringify_keep_zeros}",
-    "description": null,
-    "lineNumber": 4,
-    "undocument": true,
-    "params": [
-      {
-        "name": "f",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "t",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "a",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "ai",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "aj",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 207,
+    "__docId__": 219,
     "kind": "file",
     "name": "src/core/convert/trim_natural.js",
     "content": "import { _trim_positive } from './_trim_positive' ;\nimport { _alloc , _copy } from '../array' ;\n\nexport function trim_natural ( a , ai , aj ) {\n\n\tconst x = _trim_positive( a , ai , aj ) ;\n\n\tif ( x >= aj ) return [ 0 ] ;\n\n\tconst b = _alloc( aj - x ) ;\n\n\t_copy( a , x , aj , b , 0 ) ;\n\n\treturn b ;\n\n}\n",
@@ -6779,7 +7421,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 208,
+    "__docId__": 220,
     "kind": "function",
     "name": "trim_natural",
     "memberof": "src/core/convert/trim_natural.js",
@@ -6821,7 +7463,7 @@
     }
   },
   {
-    "__docId__": 209,
+    "__docId__": 221,
     "kind": "file",
     "name": "src/core/index.js",
     "content": "export * from './arithmetic' ;\nexport * from './array' ;\nexport * from './compare' ;\nexport * from './convert' ;\nexport * from './thresholds' ;\n",
@@ -6832,10 +7474,41 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 210,
+    "__docId__": 222,
+    "kind": "file",
+    "name": "src/core/thresholds/conversion.js",
+    "content": "import { THRESHOLD_MUL_TOOM22 } from './multiplication' ;\n\nexport const THRESHOLD_CONVERT_DC = 256 * THRESHOLD_MUL_TOOM22 ;\n",
+    "static": true,
+    "longname": "/home/aureooms/dev/js/js-integer-big-endian/src/core/thresholds/conversion.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 223,
+    "kind": "variable",
+    "name": "THRESHOLD_CONVERT_DC",
+    "memberof": "src/core/thresholds/conversion.js",
+    "static": true,
+    "longname": "src/core/thresholds/conversion.js~THRESHOLD_CONVERT_DC",
+    "access": "public",
+    "export": true,
+    "importPath": "@aureooms/js-integer-big-endian/src/core/thresholds/conversion.js",
+    "importStyle": "{THRESHOLD_CONVERT_DC}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 224,
     "kind": "file",
     "name": "src/core/thresholds/division.js",
-    "content": "import { THRESHOLD_MUL_TOOM22 } from './multiplication' ;\n\nexport const THRESHOLD_DIV_DC = THRESHOLD_MUL_TOOM22 ;\n",
+    "content": "import { THRESHOLD_MUL_TOOM22 } from './multiplication' ;\n\nexport const THRESHOLD_DIV_DC = 8 * THRESHOLD_MUL_TOOM22 ;\n",
     "static": true,
     "longname": "/home/aureooms/dev/js/js-integer-big-endian/src/core/thresholds/division.js",
     "access": "public",
@@ -6843,7 +7516,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 211,
+    "__docId__": 225,
     "kind": "variable",
     "name": "THRESHOLD_DIV_DC",
     "memberof": "src/core/thresholds/division.js",
@@ -6863,10 +7536,10 @@
     }
   },
   {
-    "__docId__": 212,
+    "__docId__": 226,
     "kind": "file",
     "name": "src/core/thresholds/index.js",
-    "content": "export * from './division' ;\nexport * from './multiplication' ;\n",
+    "content": "export * from './conversion' ;\nexport * from './division' ;\nexport * from './multiplication' ;\n",
     "static": true,
     "longname": "/home/aureooms/dev/js/js-integer-big-endian/src/core/thresholds/index.js",
     "access": "public",
@@ -6874,10 +7547,10 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 213,
+    "__docId__": 227,
     "kind": "file",
     "name": "src/core/thresholds/multiplication.js",
-    "content": "export const THRESHOLD_MUL_TOOM22 = 10 ;\n",
+    "content": "export const THRESHOLD_MUL_TOOM22 = 16 ;\n",
     "static": true,
     "longname": "/home/aureooms/dev/js/js-integer-big-endian/src/core/thresholds/multiplication.js",
     "access": "public",
@@ -6885,7 +7558,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 214,
+    "__docId__": 228,
     "kind": "variable",
     "name": "THRESHOLD_MUL_TOOM22",
     "memberof": "src/core/thresholds/multiplication.js",
@@ -6905,7 +7578,7 @@
     }
   },
   {
-    "__docId__": 215,
+    "__docId__": 229,
     "kind": "file",
     "name": "src/index.js",
     "content": "export * from './api' ;\nexport * from './core' ;\n",
@@ -6917,7 +7590,7 @@
   },
   {
     "kind": "index",
-    "content": "[@aureooms/js-integer-big-endian](https://aureooms.github.io/js-integer-big-endian)\n==\n\n<img src=\"https://upload.wikimedia.org/wikipedia/commons/5/54/Big-Endian.svg\" width=\"864\">\n\nArbitrary precision arithmetic for integers in big endian order.\nSee [docs](https://aureooms.github.io/js-integer-big-endian).\nTwin project of [@aureooms/js-integer-little-endian](https://github.com/aureooms/js-integer-little-endian).\n\n```js\ninteger.parse( 16 , 100 , 'ff' ) ; // [ 2 , 55 ]\ninteger.stringify( 100 , 16 , [ 2 , 55 ] ) ; // 'ff'\ninteger.translate( 10 , 16 , '255' ) ; // 'ff'\n```\n\n[![License](https://img.shields.io/github/license/aureooms/js-integer-big-endian.svg)](https://raw.githubusercontent.com/aureooms/js-integer-big-endian/master/LICENSE)\n[![Version](https://img.shields.io/npm/v/@aureooms/js-integer-big-endian.svg)](https://www.npmjs.org/package/@aureooms/js-integer-big-endian)\n[![Build](https://img.shields.io/travis/aureooms/js-integer-big-endian/master.svg)](https://travis-ci.org/aureooms/js-integer-big-endian/branches)\n[![Dependencies](https://img.shields.io/david/aureooms/js-integer-big-endian.svg)](https://david-dm.org/aureooms/js-integer-big-endian)\n[![Dev dependencies](https://img.shields.io/david/dev/aureooms/js-integer-big-endian.svg)](https://david-dm.org/aureooms/js-integer-big-endian?type=dev)\n[![GitHub issues](https://img.shields.io/github/issues/aureooms/js-integer-big-endian.svg)](https://github.com/aureooms/js-integer-big-endian/issues)\n[![Downloads](https://img.shields.io/npm/dm/@aureooms/js-integer-big-endian.svg)](https://www.npmjs.org/package/@aureooms/js-integer-big-endian)\n\n[![Code issues](https://img.shields.io/codeclimate/issues/aureooms/js-integer-big-endian.svg)](https://codeclimate.com/github/aureooms/js-integer-big-endian/issues)\n[![Code maintainability](https://img.shields.io/codeclimate/maintainability/aureooms/js-integer-big-endian.svg)](https://codeclimate.com/github/aureooms/js-integer-big-endian/trends/churn)\n[![Code coverage (cov)](https://img.shields.io/codecov/c/gh/aureooms/js-integer-big-endian/master.svg)](https://codecov.io/gh/aureooms/js-integer-big-endian)\n[![Code technical debt](https://img.shields.io/codeclimate/tech-debt/aureooms/js-integer-big-endian.svg)](https://codeclimate.com/github/aureooms/js-integer-big-endian/trends/technical_debt)\n[![Documentation](https://aureooms.github.io/js-integer-big-endian/badge.svg)](https://aureooms.github.io/js-integer-big-endian/source.html)\n[![Package size](https://img.shields.io/bundlephobia/minzip/@aureooms/js-integer-big-endian)](https://bundlephobia.com/result?p=@aureooms/js-integer-big-endian)\n\n## Reference\n\n - [The GNU Multiple Precision Arithmetic Library](https://gmplib.org/)\n - https://gmplib.org/gmp-man-6.0.0a.pdf\n - https://en.wikipedia.org/wiki/Sch%C3%B6nhage%E2%80%93Strassen_algorithm\n - http://bioinfo.ict.ac.cn/~dbu/AlgorithmCourses/Lectures/Hasselstrom2003.pdf\n",
+    "content": "[@aureooms/js-integer-big-endian](https://aureooms.github.io/js-integer-big-endian)\n==\n\n<img src=\"https://upload.wikimedia.org/wikipedia/commons/5/54/Big-Endian.svg\" width=\"864\">\n\nArbitrary precision arithmetic for integers in big endian order.\nSee [docs](https://aureooms.github.io/js-integer-big-endian).\nTwin project of [@aureooms/js-integer-little-endian](https://github.com/aureooms/js-integer-little-endian).\n\n```js\ninteger.parse( 16 , 100 , 'ff' ) ; // [ 2 , 55 ]\ninteger.stringify( 100 , 16 , [ 2 , 55 ] ) ; // 'ff'\ninteger.translate( 10 , 16 , '255' ) ; // 'ff'\n```\n\n[![License](https://img.shields.io/github/license/aureooms/js-integer-big-endian.svg)](https://raw.githubusercontent.com/aureooms/js-integer-big-endian/master/LICENSE)\n[![Version](https://img.shields.io/npm/v/@aureooms/js-integer-big-endian.svg)](https://www.npmjs.org/package/@aureooms/js-integer-big-endian)\n[![Build](https://img.shields.io/travis/aureooms/js-integer-big-endian/master.svg)](https://travis-ci.org/aureooms/js-integer-big-endian/branches)\n[![Dependencies](https://img.shields.io/david/aureooms/js-integer-big-endian.svg)](https://david-dm.org/aureooms/js-integer-big-endian)\n[![Dev dependencies](https://img.shields.io/david/dev/aureooms/js-integer-big-endian.svg)](https://david-dm.org/aureooms/js-integer-big-endian?type=dev)\n[![GitHub issues](https://img.shields.io/github/issues/aureooms/js-integer-big-endian.svg)](https://github.com/aureooms/js-integer-big-endian/issues)\n[![Downloads](https://img.shields.io/npm/dm/@aureooms/js-integer-big-endian.svg)](https://www.npmjs.org/package/@aureooms/js-integer-big-endian)\n\n[![Code issues](https://img.shields.io/codeclimate/issues/aureooms/js-integer-big-endian.svg)](https://codeclimate.com/github/aureooms/js-integer-big-endian/issues)\n[![Code maintainability](https://img.shields.io/codeclimate/maintainability/aureooms/js-integer-big-endian.svg)](https://codeclimate.com/github/aureooms/js-integer-big-endian/trends/churn)\n[![Code coverage (alls)](https://img.shields.io/coveralls/github/aureooms/js-integer-big-endian/master.svg)](https://coveralls.io/github/aureooms/js-integer-big-endian)\n[![Code technical debt](https://img.shields.io/codeclimate/tech-debt/aureooms/js-integer-big-endian.svg)](https://codeclimate.com/github/aureooms/js-integer-big-endian/trends/technical_debt)\n[![Documentation](https://aureooms.github.io/js-integer-big-endian/badge.svg)](https://aureooms.github.io/js-integer-big-endian/source.html)\n[![Package size](https://img.shields.io/bundlephobia/minzip/@aureooms/js-integer-big-endian)](https://bundlephobia.com/result?p=@aureooms/js-integer-big-endian)\n\n## Reference\n\n - [The GNU Multiple Precision Arithmetic Library](https://gmplib.org/)\n - https://gmplib.org/gmp-man-6.0.0a.pdf\n - https://en.wikipedia.org/wiki/Sch%C3%B6nhage%E2%80%93Strassen_algorithm\n - http://bioinfo.ict.ac.cn/~dbu/AlgorithmCourses/Lectures/Hasselstrom2003.pdf\n",
     "longname": "/home/aureooms/dev/js/js-integer-big-endian/README.md",
     "name": "./README.md",
     "static": true,
@@ -6925,7 +7598,7 @@
   },
   {
     "kind": "packageJSON",
-    "content": "{\n  \"name\": \"@aureooms/js-integer-big-endian\",\n  \"description\": \"Arbitrary precision arithmetic for integers in big endian order for JavaScript\",\n  \"version\": \"8.0.0\",\n  \"author\": \"Aurélien Ooms <aurelien.ooms@gmail.com>\",\n  \"ava\": {\n    \"require\": [\n      \"@babel/polyfill\",\n      \"@babel/register\"\n    ],\n    \"files\": [\n      \"test/src/**/*\"\n    ],\n    \"timeout\": \"3m\",\n    \"concurrency\": 8\n  },\n  \"babel\": {\n    \"presets\": [\n      \"@babel/preset-env\"\n    ],\n    \"env\": {\n      \"development\": {\n        \"sourceMaps\": \"inline\"\n      }\n    }\n  },\n  \"bugs\": {\n    \"url\": \"https://github.com/aureooms/js-integer-big-endian/issues\"\n  },\n  \"dependencies\": {},\n  \"devDependencies\": {\n    \"@aureooms/js-array\": \"4.0.0\",\n    \"@aureooms/js-itertools\": \"4.0.0\",\n    \"@aureooms/js-memory\": \"4.0.0\",\n    \"@aureooms/js-operator\": \"1.0.2\",\n    \"@aureooms/js-random\": \"2.0.0\",\n    \"@babel/cli\": \"7.8.4\",\n    \"@babel/core\": \"7.9.6\",\n    \"@babel/polyfill\": \"7.8.7\",\n    \"@babel/preset-env\": \"7.9.6\",\n    \"@babel/register\": \"7.9.0\",\n    \"ava\": \"3.8.1\",\n    \"coveralls\": \"3.1.0\",\n    \"esdoc\": \"1.1.0\",\n    \"esdoc-inject-script-plugin\": \"1.0.0\",\n    \"esdoc-inject-style-plugin\": \"1.0.0\",\n    \"esdoc-standard-plugin\": \"1.0.0\",\n    \"np\": \"6.2.3\",\n    \"nyc\": \"15.0.1\"\n  },\n  \"files\": [\n    \"lib\"\n  ],\n  \"homepage\": \"https://aureooms.github.io/js-integer-big-endian\",\n  \"keywords\": [\n    \"arbitrary\",\n    \"arithmetic\",\n    \"big\",\n    \"endian\",\n    \"integers\",\n    \"javascript\",\n    \"js\",\n    \"numbers\",\n    \"precision\"\n  ],\n  \"license\": \"AGPL-3.0\",\n  \"main\": \"lib/index.js\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/aureooms/js-integer-big-endian.git\"\n  },\n  \"scripts\": {\n    \"build\": \"rm -rf lib && babel src -d lib\",\n    \"cover\": \"nyc --reporter=lcov npm test\",\n    \"esdoc\": \"esdoc\",\n    \"prepare\": \"npm run build\",\n    \"release\": \"np\",\n    \"test\": \"ava\"\n  }\n}\n",
+    "content": "{\n  \"name\": \"@aureooms/js-integer-big-endian\",\n  \"description\": \"Arbitrary precision arithmetic for integers in big endian order for JavaScript\",\n  \"version\": \"9.0.1\",\n  \"author\": \"Aurélien Ooms <aurelien.ooms@gmail.com>\",\n  \"ava\": {\n    \"require\": [\n      \"@babel/polyfill\",\n      \"@babel/register\"\n    ],\n    \"files\": [\n      \"test/src/**/*\"\n    ],\n    \"timeout\": \"3m\",\n    \"concurrency\": 8\n  },\n  \"babel\": {\n    \"presets\": [\n      \"@babel/preset-env\"\n    ],\n    \"env\": {\n      \"development\": {\n        \"sourceMaps\": \"inline\"\n      }\n    }\n  },\n  \"bugs\": {\n    \"url\": \"https://github.com/aureooms/js-integer-big-endian/issues\"\n  },\n  \"dependencies\": {},\n  \"devDependencies\": {\n    \"@aureooms/js-array\": \"4.0.0\",\n    \"@aureooms/js-itertools\": \"4.0.0\",\n    \"@aureooms/js-memory\": \"4.0.0\",\n    \"@aureooms/js-operator\": \"1.0.2\",\n    \"@aureooms/js-random\": \"2.0.0\",\n    \"@babel/cli\": \"7.8.4\",\n    \"@babel/core\": \"7.9.6\",\n    \"@babel/polyfill\": \"7.8.7\",\n    \"@babel/preset-env\": \"7.9.6\",\n    \"@babel/register\": \"7.9.0\",\n    \"ava\": \"3.8.2\",\n    \"coveralls\": \"3.1.0\",\n    \"esdoc\": \"1.1.0\",\n    \"esdoc-inject-script-plugin\": \"1.0.0\",\n    \"esdoc-inject-style-plugin\": \"1.0.0\",\n    \"esdoc-standard-plugin\": \"1.0.0\",\n    \"np\": \"6.2.3\",\n    \"nyc\": \"15.0.1\",\n    \"xorshift.js\": \"1.0.5\"\n  },\n  \"files\": [\n    \"lib\"\n  ],\n  \"homepage\": \"https://aureooms.github.io/js-integer-big-endian\",\n  \"keywords\": [\n    \"arbitrary\",\n    \"arithmetic\",\n    \"big\",\n    \"endian\",\n    \"integers\",\n    \"javascript\",\n    \"js\",\n    \"numbers\",\n    \"precision\"\n  ],\n  \"license\": \"AGPL-3.0\",\n  \"main\": \"lib/index.js\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/aureooms/js-integer-big-endian.git\"\n  },\n  \"scripts\": {\n    \"build\": \"rm -rf lib && babel src -d lib\",\n    \"cover\": \"nyc --reporter=lcov npm test\",\n    \"esdoc\": \"esdoc\",\n    \"prepare\": \"npm run build\",\n    \"release\": \"np\",\n    \"test\": \"ava\"\n  }\n}\n",
     "longname": "/home/aureooms/dev/js/js-integer-big-endian/package.json",
     "name": "package.json",
     "static": true,

@@ -1,7 +1,7 @@
 {
   "type": "File",
   "start": 0,
-  "end": 114,
+  "end": 118,
   "loc": {
     "start": {
       "line": 1,
@@ -15,7 +15,7 @@
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 114,
+    "end": 118,
     "loc": {
       "start": {
         "line": 1,
@@ -117,7 +117,7 @@
       {
         "type": "ExportNamedDeclaration",
         "start": 59,
-        "end": 113,
+        "end": 117,
         "loc": {
           "start": {
             "line": 3,
@@ -125,7 +125,7 @@
           },
           "end": {
             "line": 3,
-            "column": 54
+            "column": 58
           }
         },
         "specifiers": [],
@@ -133,7 +133,7 @@
         "declaration": {
           "type": "VariableDeclaration",
           "start": 66,
-          "end": 113,
+          "end": 117,
           "loc": {
             "start": {
               "line": 3,
@@ -141,14 +141,14 @@
             },
             "end": {
               "line": 3,
-              "column": 54
+              "column": 58
             }
           },
           "declarations": [
             {
               "type": "VariableDeclarator",
               "start": 72,
-              "end": 111,
+              "end": 115,
               "loc": {
                 "start": {
                   "line": 3,
@@ -156,7 +156,7 @@
                 },
                 "end": {
                   "line": 3,
-                  "column": 52
+                  "column": 56
                 }
               },
               "id": {
@@ -177,9 +177,9 @@
                 "name": "THRESHOLD_DIV_DC"
               },
               "init": {
-                "type": "Identifier",
+                "type": "BinaryExpression",
                 "start": 91,
-                "end": 111,
+                "end": 115,
                 "loc": {
                   "start": {
                     "line": 3,
@@ -187,11 +187,47 @@
                   },
                   "end": {
                     "line": 3,
-                    "column": 52
-                  },
-                  "identifierName": "THRESHOLD_MUL_TOOM22"
+                    "column": 56
+                  }
                 },
-                "name": "THRESHOLD_MUL_TOOM22"
+                "left": {
+                  "type": "NumericLiteral",
+                  "start": 91,
+                  "end": 92,
+                  "loc": {
+                    "start": {
+                      "line": 3,
+                      "column": 32
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 33
+                    }
+                  },
+                  "extra": {
+                    "rawValue": 8,
+                    "raw": "8"
+                  },
+                  "value": 8
+                },
+                "operator": "*",
+                "right": {
+                  "type": "Identifier",
+                  "start": 95,
+                  "end": 115,
+                  "loc": {
+                    "start": {
+                      "line": 3,
+                      "column": 36
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 56
+                    },
+                    "identifierName": "THRESHOLD_MUL_TOOM22"
+                  },
+                  "name": "THRESHOLD_MUL_TOOM22"
+                }
               }
             }
           ],
@@ -499,6 +535,60 @@
     },
     {
       "type": {
+        "label": "num",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": 8,
+      "start": 91,
+      "end": 92,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 32
+        },
+        "end": {
+          "line": 3,
+          "column": 33
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "*",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": 10,
+        "updateContext": null
+      },
+      "value": "*",
+      "start": 93,
+      "end": 94,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 34
+        },
+        "end": {
+          "line": 3,
+          "column": 35
+        }
+      }
+    },
+    {
+      "type": {
         "label": "name",
         "beforeExpr": false,
         "startsExpr": true,
@@ -510,16 +600,16 @@
         "binop": null
       },
       "value": "THRESHOLD_MUL_TOOM22",
-      "start": 91,
-      "end": 111,
+      "start": 95,
+      "end": 115,
       "loc": {
         "start": {
           "line": 3,
-          "column": 32
+          "column": 36
         },
         "end": {
           "line": 3,
-          "column": 52
+          "column": 56
         }
       }
     },
@@ -536,16 +626,16 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 112,
-      "end": 113,
+      "start": 116,
+      "end": 117,
       "loc": {
         "start": {
           "line": 3,
-          "column": 53
+          "column": 57
         },
         "end": {
           "line": 3,
-          "column": 54
+          "column": 58
         }
       }
     },
@@ -562,8 +652,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 114,
-      "end": 114,
+      "start": 118,
+      "end": 118,
       "loc": {
         "start": {
           "line": 4,
