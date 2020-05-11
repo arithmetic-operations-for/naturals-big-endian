@@ -24,9 +24,8 @@ export function _schoolbook_mul ( r , a , ai , aj , b , bi , bj , c , ci , cj ) 
 		for ( let j = 0 ; j < n ; ++j ) {
 
 			const t = c[cj-i-j] + q + a[aj-i] * b[bj-j] ;
-			const s = t % r ;
-			c[cj-i-j] = s ;
-			q = ( t - s ) / r ;
+			c[cj-i-j] = t % r ;
+			q = ( t / r ) | 0 ;
 
 		}
 
