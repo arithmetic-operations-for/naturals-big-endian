@@ -19,11 +19,10 @@ export function _mul_limb ( r , x , b , bi , bj , c , ci , cj ) {
 		if ( cj < ci ) return ;
 
 		const t = b[bj] * x + C ;
-		const u = t % r ;
 
-		c[cj] = u ;
+		c[cj] = t % r ;
 
-		C = (t - u) / r ;
+		C = (t / r) | 0 ;
 
 	}
 

@@ -24,7 +24,7 @@ export function _convert_to_larger_fast ( ar , z , a , ai , aj , b , bi , bj ) {
 	r = m % z;
 
 	// number of complete blocks in destination
-	q = (m - r) / z;
+	q = (m / z) | 0;
 
 	// total number of blocks in destination
 	// (complete ones + first if incomplete)

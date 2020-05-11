@@ -9,11 +9,10 @@ export function _imul_limb ( r , x , b , bi , bj ) {
 	while ( --bj >= bi ) {
 
 		const t = b[bj] * x + C ;
-		const u = t % r ;
 
-		b[bj] = u ;
+		b[bj] = t % r ;
 
-		C = (t - u) / r ;
+		C = (t / r) | 0 ;
 
 	}
 

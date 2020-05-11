@@ -23,7 +23,7 @@ export function _convert_to_smaller_fast ( br , z , a , ai , aj , b , bi , bj ) 
 	r = m % z;
 
 	// number of complete blocks in destination
-	q = (m - r) / z;
+	q = (m / z) | 0;
 
 	// total number of blocks in destination
 	// (complete ones + first if incomplete)
@@ -55,9 +55,8 @@ export function _convert_to_smaller_fast ( br , z , a , ai , aj , b , bi , bj ) 
 		t = bi + z - 1 - i;
 		bi += z - i;
 		for (; i < z; ++i) {
-			r = q % br;        // unpack source blocks
-			q = (q - r) / br;  // using simple
-			b[t] = r;          // modulo + quotient
+			b[t] = q % br;     // unpack source blocks
+			q = (q / br) | 0;  // using modulo + quotient
 			--t;
 		}
 		i = 0;

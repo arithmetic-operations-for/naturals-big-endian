@@ -5,9 +5,8 @@ export function _build ( base , number , data , n ) {
 	const d = base ;
 
 	while ( q >= d ) {
-		const r = q % d ;
-		data[--n] = r ;
-		q = ( q - r ) / d ;
+		data[--n] = q % d ;
+		q = ( q / d ) | 0 ;
 	}
 
 	data[--n] = q ;
