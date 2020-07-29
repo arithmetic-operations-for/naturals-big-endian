@@ -2,6 +2,7 @@ import { add , iadd } from '../../../api/arithmetic/add' ;
 import { _zeros , _copy } from '../../array' ;
 import { _isub } from '../sub' ;
 import { _mul } from './_mul' ;
+import { _karatsuba_right_op_is_small } from './_karatsuba_right_op_is_small' ;
 
 import assert from 'assert';
 
@@ -84,14 +85,16 @@ export function _karatsuba ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
 
 	const i = aj - ai ;
 	const j = bj - bi ;
-	const k = cj - ci ;
 
 	const n  = Math.ceil( i / 2 ) ;
+
+	if (j <= n) return _karatsuba_right_op_is_small(r, a, ai, aj, b, bi, bj, c, ci, cj);
+
 	const I  = i + j ;
 	const N  = 2 * n ;
 	const N_ = I - N ;
 	const i_ = aj - n ;
-	const j_ = Math.max( bi , bj - n ) ;
+	const j_ = bj - n ;
 
 	const t1 = _zeros( n + 1 ) ; // + 1 to handle addition overflows
 	const t2 = _zeros( n + 1 ) ; // and guarantee reducing k for the
