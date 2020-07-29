@@ -1,3 +1,4 @@
+import assert from 'assert' ;
 
 /**
  * Subtracts B from A, |A| >= |B|.
@@ -13,6 +14,11 @@
  */
 
 export function _isub ( r , a , ai , aj , b , bi , bj ) {
+
+	assert(r >= 2);
+	assert(ai >= 0 && aj <= a.length);
+	assert(bi >= 0 && bj <= b.length);
+	assert(aj - ai >= bj - bi);
 
 	let C = 0 ;
 

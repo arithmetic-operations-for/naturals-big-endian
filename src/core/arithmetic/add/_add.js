@@ -1,4 +1,7 @@
 import { _copy } from '../../array' ;
+
+import assert from 'assert' ;
+
 /**
  * Adds two big endian arrays and puts result in a destination array.
  * Wraps on overflow. |C| >= |A| >= |B|.
@@ -16,6 +19,13 @@ import { _copy } from '../../array' ;
  */
 
 export function _add ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
+
+	assert(r >= 2);
+	assert(ai >= 0 && aj <= a.length);
+	assert(bi >= 0 && bj <= b.length);
+	assert(ci >= 0 && cj <= c.length);
+	assert(cj - ci >= aj - ai);
+	assert(aj - ai >= bj - bi);
 
 	let C = 0 ;
 

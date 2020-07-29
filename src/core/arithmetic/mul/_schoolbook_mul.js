@@ -1,3 +1,4 @@
+import assert from 'assert' ;
 
 /**
  * Computes the product of two big endian arrays using schoolbook
@@ -10,6 +11,12 @@
  */
 
 export function _schoolbook_mul ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
+
+	assert(r >= 2);
+	assert(ai >= 0 && aj <= a.length);
+	assert(bi >= 0 && bj <= b.length);
+	assert(ci >= 0 && cj <= c.length);
+	assert(cj - ci >= (aj - ai) + (bj - bi));
 
 	const m = aj - ai ;
 	const n = bj - bi ;

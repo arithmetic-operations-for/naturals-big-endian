@@ -3,10 +3,12 @@ import { _zeros , _copy } from '../../array' ;
 import { _isub } from '../sub' ;
 import { _mul } from './_mul' ;
 
+import assert from 'assert';
+
 /**
  *
  * Multiply two big endian arrays using karatsuba algorithm,
- * |A| >= |B| > 0, |C| >= 2 * |A|, |A| > 1.
+ * |A| >= |B| >= 1, |C| >= |A| + |B|, |A| >= 2.
  *
  * /!\ BLOCK MULTIPLICATION RESULT MUST HOLD IN THE JAVASCRIPT NUMBER TYPE
  *     (DOUBLE i.e. 53 bits)
@@ -70,6 +72,15 @@ import { _mul } from './_mul' ;
  */
 
 export function _karatsuba ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
+
+	assert(r >= 2);
+	assert(ai >= 0 && aj <= a.length);
+	assert(bi >= 0 && bj <= b.length);
+	assert(ci >= 0 && cj <= c.length);
+	assert(aj - ai >= 2);
+	assert(bj - bi >= 1);
+	assert(aj - ai >= bj - bi);
+	assert(cj - ci >= (aj - ai) + (bj - bi));
 
 	const i = aj - ai ;
 	const j = bj - bi ;
