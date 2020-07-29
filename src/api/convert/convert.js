@@ -1,7 +1,15 @@
 import { convert_keep_zeros } from '../../core/convert/convert_keep_zeros' ;
 import { trim_natural } from '../../core/convert/trim_natural' ;
 
+import assert from 'assert' ;
+
 export function convert ( f , t , a , ai , aj ) {
+
+	assert(f >= 2);
+	assert(t >= 2);
+	assert(ai >= 0);
+	assert(aj <= a.length);
+	assert(aj - ai >= 0);
 
 	const b = convert_keep_zeros( f , t , a , ai , aj ) ;
 

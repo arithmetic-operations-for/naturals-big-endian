@@ -4,7 +4,8 @@ import { _convert_to_larger } from './_convert_to_larger' ;
 
 /**
  *
- * f != t
+ * Dispatcher for the various base conversion implementations.
+ * The decision is based on the relation f <= t.
  *
  * @param {Number} f the base to convert from
  * @param {Number} t the base to convert to

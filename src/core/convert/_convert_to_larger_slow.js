@@ -1,5 +1,7 @@
 import { _iadd_limb , _imul_limb } from '../arithmetic' ;
 
+import assert from 'assert' ;
+
 /**
  *
  * O(N^2). f < t.
@@ -15,6 +17,13 @@ import { _iadd_limb , _imul_limb } from '../arithmetic' ;
  */
 
 export function _convert_to_larger_slow ( f , t , a , ai , aj , b , bi , bj ) {
+
+	assert(f >= 2);
+	assert(f <= t);
+	assert(ai >= 0 && aj <= a.length);
+	assert(bi >= 0 && bj <= b.length);
+	assert(aj - ai >= 0);
+	assert(bj - bi >= 0);
 
 	let batch = 1;
 	let shift = f;

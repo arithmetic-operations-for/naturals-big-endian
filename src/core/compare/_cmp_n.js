@@ -1,3 +1,4 @@
+import assert from 'assert' ;
 
 /**
  * Compares two big endian arrays, |a| = |b|
@@ -12,6 +13,12 @@
  */
 
 export function _cmp_n ( a , ai , aj , b , bi ) {
+
+	assert(ai >= 0);
+	assert(bi >= 0);
+	assert(aj <= a.length);
+	assert(aj - ai >= 0);
+	assert(b.length - bi >= aj - ai);
 
 	for (; ai < aj; ++ai, ++bi) {
 		if (a[ai] > b[bi]) return  1;

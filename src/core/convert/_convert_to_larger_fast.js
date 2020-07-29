@@ -1,4 +1,4 @@
-
+import assert from 'assert' ;
 
 /**
  *
@@ -13,6 +13,12 @@
  */
 
 export function _convert_to_larger_fast ( ar , z , a , ai , aj , b , bi , bj ) {
+
+	assert(ar >= 2);
+	assert(ai >= 0 && aj <= a.length);
+	assert(bi >= 0 && bj <= b.length);
+	assert(aj - ai >= 0);
+	assert(bj - bi >= 0);
 
 	var m, n, q, r, i, w, t;
 

@@ -2,6 +2,8 @@ import { _alloc , _copy } from '../array' ;
 import { _idivmod_limb } from '../arithmetic/div' ;
 import { _trim_positive } from './_trim_positive' ;
 
+import assert from 'assert' ;
+
 /**
  *
  * O(N^2). f > t.
@@ -20,6 +22,12 @@ import { _trim_positive } from './_trim_positive' ;
  */
 
 export function _convert_to_smaller_slow ( f , t , a , ai , aj , b , bi , bj ) {
+
+	assert(f >= t);
+	assert(ai >= 0 && aj <= a.length);
+	assert(bi >= 0 && bj <= b.length);
+	assert(aj - ai >= 1);
+	assert(bj - bi >= aj - ai);
 
 	let batch = 1;
 	let shift = t;

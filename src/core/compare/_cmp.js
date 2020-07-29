@@ -1,4 +1,7 @@
 import { _cmp_n } from './_cmp_n' ;
+
+import assert from 'assert' ;
+
 /**
  * Compares two big endian arrays, |a| >= |b|
  *
@@ -13,6 +16,13 @@ import { _cmp_n } from './_cmp_n' ;
  */
 
 export function _cmp (a, ai, aj, b, bi, bj){
+
+	assert(ai >= 0);
+	assert(aj <= a.length);
+	assert(bi >= 0);
+	assert(bj <= b.length);
+	assert(bj - bi >= 0);
+	assert(aj - ai >= bj - bi);
 
 	const tmp = aj - bj + bi ;
 
