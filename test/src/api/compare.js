@@ -7,6 +7,7 @@ function macro_jz ( t , a , ai , aj , e) {
 }
 
 macro_jz.title = ( _ , a, ai, aj, e ) => `jz(${JSON.stringify(a)}, ${ai}, ${aj}) = ${e}` ;
+
 test( macro_jz , [ ] , 0 , 0 , true ) ;
 test( macro_jz , [ 1 , 3 , 2 ] , 1 , 1 , true ) ;
 test( macro_jz , [ 1 , 3 , 2 ] , 1 , 2 , false ) ;

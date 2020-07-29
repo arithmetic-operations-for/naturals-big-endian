@@ -4,42 +4,37 @@ import operator from  '@aureooms/js-operator' ;
 
 import * as integer from '../../../../src' ;
 
-var check = function(Ctor, cmp, transform){
-
-	var name = `integer.cmp<${Ctor.name}, ${cmp[0]}>` ;
+function check (t, Ctor, cmp, transform) {
 
 	cmp = cmp[1];
 
-	var f = 16;
-	var r = Math.pow(2, Ctor.BYTES_PER_ELEMENT * 8);
+	const f = 16;
+	const r = Math.pow(2, Ctor.BYTES_PER_ELEMENT * 8);
 
-	test(name, function(assert){
+	for (let k = 0; k < TEST.length; ++k) {
+		const test = TEST[k];
 
-		for (var k = 0; k < TEST.length; ++k) {
-			var test = TEST[k];
+		const as = test[0] ;
+		const a = new Ctor( integer.parse( f , r , as ) ) ;
+		const ai = 0 ;
+		const aj = a.length ;
 
-			var as = test[0] ;
-			var a = new Ctor( integer.parse( f , r , as ) ) ;
-			var ai = 0 ;
-			var aj = a.length ;
+		const bs = test[1] ;
+		const b = new Ctor( integer.parse( f , r , bs ) ) ;
+		const bi = 0 ;
+		const bj = b.length ;
 
-			var bs = test[1] ;
-			var b = new Ctor( integer.parse( f , r , bs ) ) ;
-			var bi = 0 ;
-			var bj = b.length ;
+		const actual = cmp(a, ai, aj, b, bi, bj);
+		const expected = transform(test[2], 0);
 
-			var actual = cmp(a, ai, aj, b, bi, bj);
-			var expected = transform(test[2], 0);
+		t.deepEqual(actual, expected, `cmp('${as}','${bs}') === ${expected}`);
+	}
 
-			assert.deepEqual(actual, expected, `cmp('${as}','${bs}') === ${expected}`);
-		}
+}
 
-	});
-};
+check.title = (_, Ctor, cmp, transform) => `integer.cmp<${Ctor.name}, ${cmp[0]}>` ;
 
-
-
-var TEST = [
+const TEST = [
 	['0123456789', '9876543210', -1],
 	['0000000000', '9876543210', -1],
 	['9876543209', '9876543210', -1],
@@ -132,13 +127,13 @@ var TEST = [
 ];
 
 
-var TRAITS = [
+const TRAITS = [
 	Uint8Array,
 	Uint16Array,
 	Uint32Array,
 ];
 
-var OPERATOR = [
+const OPERATOR = [
 	[['integer.cmp', integer.cmp], operator.identity],
 	[['integer.eq', integer.eq], operator.eq],
 	[['integer.ge', integer.ge], operator.ge],
@@ -148,6 +143,6 @@ var OPERATOR = [
 	[['integer.ne', integer.ne], operator.ne],
 ];
 
-for (var j = 0; j < OPERATOR.length; ++j)
-for (var i = 0; i < TRAITS.length; ++i)
-	check(TRAITS[i], OPERATOR[j][0], OPERATOR[j][1]);
+for (let j = 0; j < OPERATOR.length; ++j)
+for (let i = 0; i < TRAITS.length; ++i)
+	test(check, TRAITS[i], OPERATOR[j][0], OPERATOR[j][1]);
