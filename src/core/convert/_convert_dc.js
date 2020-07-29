@@ -6,6 +6,8 @@ import { mul } from '../../api/arithmetic/mul'
 import { _convert_slow } from './_convert_slow' ;
 import { _trim_positive } from './_trim_positive' ;
 
+import assert from 'assert' ;
+
 /**
  *
  * O(M(N) log N) where M(N) is multiplication time complexity.
@@ -31,16 +33,22 @@ import { _trim_positive } from './_trim_positive' ;
 
 export function _convert_dc ( size_small_block , f , t , a , ai , aj , b , bi , bj ) {
 
+	assert(f >= 2);
+	assert(t >= 2);
+	assert(ai >= 0 && aj <= a.length);
+	assert(bi >= 0 && bj <= b.length);
+
 	const n = aj - ai ;
 	const m = bj - bi ;
 
 	// How many limbs of output needed per limb of input.
 	const logratio = Math.log( f ) / Math.log( t ) ;
+	assert(m >= logratio * n);
 
 	// Compute block sizes.
 	const size_small_block_converted = Math.ceil(logratio * size_small_block) | 0 ;
 	const full_small_blocks = n / size_small_block | 0 ;
-	// assert full_small_blocks >= 2.
+	assert(full_small_blocks >= 2) ;
 	const size_first_small_block = n % size_small_block ;
 	const size_first_small_block_converted = Math.ceil(logratio * size_first_small_block) | 0 ;
 
@@ -96,6 +104,7 @@ export function _convert_dc ( size_small_block , f , t , a , ai , aj , b , bi , 
 	let sfbc = size_first_small_block_converted > 0 ? size_first_small_block_converted : size_small_block_converted ;
 
 	while ( k !== 2 ) {
+		assert(k > 2);
 
 		_reset(tmp2, 0, size_memory);
 
@@ -151,7 +160,9 @@ export function _convert_dc ( size_small_block , f , t , a , ai , aj , b , bi , 
 
 	// Only one pair left to merge. Merge directly into output.
 	_reset(tmp2, 0, m+1);
-	mul( t , x1 , xi , m , tmp1 , 1 , 1 + sfbc , tmp2 , 0 , m+1 ) ;
+	// Needed to correct overestimated value for sfbc
+	const offset = _trim_positive(tmp1, 1, 1 + sfbc);
+	mul( t , x1 , xi , m , tmp1 , offset , 1 + sfbc , tmp2 , 0 , m+1 ) ;
 	_iadd( t , tmp2 , 1 , m+1 , tmp1 , 2 + sfbc , 2 + sfbc + sbc ) ;
 	_copy(tmp2, 1, m+1, b, 0);
 
