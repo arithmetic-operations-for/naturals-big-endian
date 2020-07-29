@@ -4,6 +4,8 @@ import { _convert_to_smaller_slow } from './_convert_to_smaller_slow' ;
 import { _convert_dc } from './_convert_dc' ;
 import { THRESHOLD_CONVERT_DC } from '../thresholds/conversion' ;
 
+import assert from 'assert' ;
+
 /**
  *
  * @param {Number} f the base to convert from
@@ -17,6 +19,14 @@ import { THRESHOLD_CONVERT_DC } from '../thresholds/conversion' ;
  */
 
 export function _convert_to_smaller ( f , t , a , ai , aj , b , bi , bj ) {
+
+	assert(f >= 2);
+	assert(t >= 2);
+	assert(f > t);
+	assert(ai >= 0 && aj <= a.length);
+	assert(bi >= 0 && bj <= b.length);
+	assert(aj - ai >= 0);
+	assert(bj - bi >= 0);
 
 	const [ z , x ] = _log( f , t ) ;
 
