@@ -56,7 +56,7 @@ function macro ( ...args ) {
 	test_divmod( ...args ) ;
 }
 
-macro.title = ( title , D , d , q , r ) => `${title} ${D} / ${d} = ${q} % ${r}`.trim()
+macro.title = ( title , D , d , q , r ) => `${title || ''} ${D} / ${d} = ${q} % ${r}`.trim()
 
 
 test( macro , '7' , '10' , '0' , '7' ) ;
