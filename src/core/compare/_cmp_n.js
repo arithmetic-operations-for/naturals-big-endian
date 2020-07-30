@@ -1,7 +1,10 @@
 import assert from 'assert' ;
 
 /**
- * Compares two big endian arrays, |a| = |b|
+ * Compares two big endian arrays.
+ *
+ * Input:
+ *   - |A| = |B|
  *
  * @param {Array} a first operand
  * @param {Number} ai a left
@@ -14,10 +17,8 @@ import assert from 'assert' ;
 
 export function _cmp_n ( a , ai , aj , b , bi ) {
 
-	assert(ai >= 0);
-	assert(bi >= 0);
-	assert(aj <= a.length);
-	assert(aj - ai >= 0);
+	assert(0 <= ai && aj <= a.length);
+	assert(0 <= bi);
 	assert(b.length - bi >= aj - ai);
 
 	for (; ai < aj; ++ai, ++bi) {

@@ -1,6 +1,11 @@
+import assert from 'assert' ;
 
 /**
- * Returns true if number is 0.
+ * Returns true if input number A is 0.
+ *
+ * Returns true if aj <= ai.
+ * O(|A|) time in the worst case.
+ * O(1) time if A has no leading zero.
  *
  * @param {array} a first operand
  * @param {int} ai a left
@@ -8,6 +13,8 @@
  */
 
 export function jz ( a , ai , aj ) {
+
+	assert(0 <= ai && aj <= a.length);
 
 	for ( ; ai < aj ; ++ai ) if ( a[ai] !== 0 ) return false ;
 
