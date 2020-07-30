@@ -1,4 +1,6 @@
-import { _idivmod } from '../../../api'
+import assert from 'assert' ;
+
+import { _imod, ge } from '../../../api'
 import { _zeros } from '../../array'
 import { _trim_positive } from '../../convert'
 
@@ -25,7 +27,16 @@ import { _trim_positive } from '../../convert'
  */
 export function _euclidean_algorithm_loop ( r , a , ai , aj , b , bi , bj  ) {
 
-	// TODO use _imod when implemented
+	assert(r >= 2);
+
+	assert(0 <= ai && aj <= a.length);
+	assert(0 <= bi && bj <= b.length);
+
+	assert(aj - ai <= 0 || a[ai] !== 0);
+	assert(bj - bi <= 0 || b[bi] !== 0);
+
+	assert(ge(a, ai, aj, b, bi, bj));
+
 	const _j = aj - ai ;
 	const _ = _zeros(_j) ;
 
@@ -33,13 +44,13 @@ export function _euclidean_algorithm_loop ( r , a , ai , aj , b , bi , bj  ) {
 
 		if ( bi === bj ) return [ a , ai , aj ] ;
 
-		_idivmod( r , a , ai , aj , b , bi , bj , _ , _j - (aj - ai) , _j ) ;
+		_imod( r , a , ai , aj , b , bi , bj , _ , _j - (aj - ai) , _j ) ;
 
 		ai = _trim_positive( a , aj - (bj - bi) , aj ) ;
 
 		if ( ai === aj ) return [ b , bi , bj ] ;
 
-		_idivmod( r , b , bi , bj , a , ai , aj , _ , _j - (bj - bi) , _j ) ;
+		_imod( r , b , bi , bj , a , ai , aj , _ , _j - (bj - bi) , _j ) ;
 
 		bi = _trim_positive( b , bj - (aj - ai) , bj ) ;
 

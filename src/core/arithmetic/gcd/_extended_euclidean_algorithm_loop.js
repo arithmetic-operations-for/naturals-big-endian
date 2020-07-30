@@ -1,3 +1,4 @@
+import assert from 'assert' ;
 
 import { _idivmod } from '../../../api/arithmetic/div' ;
 import { mul } from '../../../api/arithmetic/mul' ;
@@ -7,6 +8,8 @@ import { _reset } from '../../../core/array' ;
 import { _copy } from '../../../core/array' ;
 import { _trim_positive } from '../../../core/convert' ;
 import { stringify } from '../../../api/convert' ;
+
+import { ge } from '../../../api/compare/ge' ;
 
 /**
  * Extended Euclidean algorithm.
@@ -52,7 +55,7 @@ import { stringify } from '../../../api/convert' ;
  * Input
  * -----
  *  - No leading zeroes
- *  - R0 > R1
+ *  - R0 >= R1
  *  - (two bullets above imply |R1| >= |R0|)
  *  - More at _extended_euclidean_algorithm_allocate.
  *
@@ -76,6 +79,8 @@ import { stringify } from '../../../api/convert' ;
  */
 export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , T1 , Q , X) {
 
+	assert(r >= 2);
+
 	const m = R0.length ;
 	const n = R1.length ;
 
@@ -96,6 +101,13 @@ export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , 
 	let Xi = 0;
 	const Xj = 2*m;
 
+	assert(0 <= R0i && R0j <= R0.length);
+	assert(R0j - R0i <= 0 || R0[R0i] !== 0);
+	assert(0 <= R1i && R1j <= R1.length);
+	assert(R1j - R1i <= 0 || R1[R1i] !== 0);
+
+	assert(ge(R0, R0i, R0j, R1, R1i, R1j));
+
 	// We handle the first two steps outside of loop because s_1 = t_0 = 0
 	// and s_1 = 0, s_2 = 1
 
@@ -105,6 +117,7 @@ export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , 
 	// 1. No leading zeros in R0
 	// 2. No leading zeros in R1
 	// 3. |Q| = |R0| (why ???)
+	assert(Qj - Qi === R0j - R0i);
 	// 4. s_0 = S0 > 0
 	// 5. s_1 = S1 < 0
 	// 6. t_0 = T0 < 0
@@ -122,6 +135,7 @@ export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , 
 	// since Q = R0 / R1 we have |R0| - |R1| <= |Q| <= |R0| - |R1| + 1
 	Qi = Qj - (R0j - R1j + 1) ; // R0i = R1i = 0
 	if ( Q[Qi] === 0 ) ++Qi;
+	assert(Qi < Qj && Q[Qi] !== 0);
 
 	// remove leading zeros from R0
 	// since R0 = R0 % R1 we have |R0| <= |R1|
@@ -139,8 +153,13 @@ export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , 
 	// ----------
 	//
 	// 1. No leading zeros in R0
+	assert(0 <= R0i && R0j <= R0.length);
+	assert(R0j - R0i <= 0 || R0[R0i] !== 0);
 	// 2. No leading zeros in R1
+	assert(0 <= R1i && R1j <= R1.length);
+	assert(R1j - R1i <= 0 || R1[R1i] !== 0);
 	// 3. |Q| = |R1| (why ???)
+	// assert(Qj - Qi === R1j - R1i); // NOT TRUE !
 	// 4. s_1 = S1 < 0
 	// 5. s_2 = S0 > 0
 	// 6. t_1 = T1 > 0
@@ -160,6 +179,7 @@ export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , 
 	// since Q = R1 / R0 we have |R1| - |R0| <= |Q| <= |R1| - |R0| + 1
 	Qi = Qj - (R1j - R0j + R0i + 1) ; // R1i = 0
 	if ( Q[Qi] === 0 ) ++Qi;
+	assert(Qi < Qj && Q[Qi] !== 0);
 
 	// remove leading zeros from R1
 	// since R1 = R1 % R0 we have |R1| <= |R0|
@@ -188,7 +208,11 @@ export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , 
 		// ----------
 		//
 		// 1. No leading zeros in R0
+		assert(0 <= R0i && R0j <= R0.length);
+		assert(R0j - R0i <= 0 || R0[R0i] !== 0);
 		// 2. No leading zeros in R1
+		assert(0 <= R1i && R1j <= R1.length);
+		assert(R1j - R1i <= 0 || R1[R1i] !== 0);
 		// 3. |Q| = |R0| (why ???)
 		// 4. s_{i-1} = S0 > 0
 		// 5. s_i = S1 < 0
@@ -209,6 +233,7 @@ export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , 
 		// since Q = R0 / R1 we have |R0| - |R1| <= |Q| <= |R0| - |R1| + 1
 		Qi = Qj - (R0j - R0i - R1j + R1i + 1) ;
 		if ( Q[Qi] === 0 ) ++Qi;
+		assert(Qi < Qj && Q[Qi] !== 0);
 		// remove leading zeros from R0
 		// since R0 = R0 % R1 we have |R0| <= |R1|
 		R0i = _trim_positive( R0 , R0j - (R1j - R1i) , R0j) ;
@@ -247,7 +272,11 @@ export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , 
 		// ----------
 		//
 		// 1. No leading zeros in R0
+		assert(0 <= R0i && R0j <= R0.length);
+		assert(R0j - R0i <= 0 || R0[R0i] !== 0);
 		// 2. No leading zeros in R1
+		assert(0 <= R1i && R1j <= R1.length);
+		assert(R1j - R1i <= 0 || R1[R1i] !== 0);
 		// 3. |Q| = |R1| (why ???)
 		// 4. s_{i-1} = S1 < 0
 		// 5. s_i = S0 > 0
@@ -268,6 +297,7 @@ export function _extended_euclidean_algorithm_loop(r , R0 , R1 , S0 , T0 , S1 , 
 		// since Q = R1 / R0 we have |R1| - |R0| <= |Q| <= |R1| - |R0| + 1
 		Qi = Qj - (R1j - R1i - R0j + R0i + 1) ;
 		if ( Q[Qi] === 0 ) ++Qi;
+		assert(Qi < Qj && Q[Qi] !== 0);
 		// remove leading zeros from R1
 		// since R1 = R1 % R0 we have |R1| <= |R0|
 		R1i = _trim_positive( R1 , R1j - (R0j - R0i) , R1j) ;

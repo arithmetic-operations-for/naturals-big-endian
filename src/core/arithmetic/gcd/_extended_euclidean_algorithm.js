@@ -1,4 +1,7 @@
+import assert from 'assert' ;
+
 import { _copy } from '../../array' ;
+import { ge } from '../../../api/compare' ;
 
 import {
 	_extended_euclidean_algorithm_allocate ,
@@ -20,6 +23,13 @@ import {
  */
 
 export function _extended_euclidean_algorithm ( r , a , ai , aj , b , bi , bj ) {
+
+	assert(r >= 2);
+	assert(0 <= ai && aj <= a.length);
+	assert(0 <= bi && bj <= b.length);
+	assert(aj - ai <= 0 || a[ai] !== 0);
+	assert(bj - bi <= 0 || b[bi] !== 0);
+	assert(ge(a, ai, aj, b, bi, bj));
 
 	const [ R0 , R1 , S0 , T0 , S1 , T1 , Q , X ]  = _extended_euclidean_algorithm_allocate(aj-ai,bj-bi) ;
 

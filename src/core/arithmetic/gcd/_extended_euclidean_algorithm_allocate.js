@@ -1,3 +1,5 @@
+import assert from 'assert' ;
+
 import { _alloc } from '../../../core/array' ;
 import { _zeros } from '../../../core/array' ;
 
@@ -6,6 +8,10 @@ import { _zeros } from '../../../core/array' ;
  * m >= 1
  */
 export function _extended_euclidean_algorithm_allocate ( m , n ) {
+
+	assert(n >= 0);
+	assert(m >= 1);
+	assert(m >= n);
 
 	const R0 = _alloc(m);
 	const R1 = _alloc(n);
