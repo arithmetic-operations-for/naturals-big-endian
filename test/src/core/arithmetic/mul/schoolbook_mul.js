@@ -16,7 +16,7 @@ function macro ( t , A , B , C ) {
 
 }
 
-macro.title = ( title , A , B , C ) => `${title} ${A} * ${B} = ${C}`.trim();
+macro.title = ( title , A , B , C ) => `${title || ''} ${A} * ${B} = ${C}`.trim();
 
 test( macro , '0' , '9223239263' , '0' ) ;
 test( macro , '1' , '1' , '1' ) ;

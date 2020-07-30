@@ -12,7 +12,7 @@ function macro ( t , r , x , e ) {
 
 }
 
-macro.title = ( title , r , x , e ) => `${title} ${JSON.stringify(x)}_${r} - 1 = ${JSON.stringify(e)}`.trim() ;
+macro.title = ( title , r , x , e ) => `${title || ''} ${JSON.stringify(x)}_${r} - 1 = ${JSON.stringify(e)}`.trim() ;
 
 test( macro , 10 , [ ] , [ ] ) ;
 test( macro , 10 , [ 0 ] , [ 9 ]) ;

@@ -15,7 +15,7 @@ function macro ( t , A , B , C ) {
 
 }
 
-macro.title = ( title , A , B , C ) => `${title} ${A} + ${B} = ${C}`.trim() ;
+macro.title = ( title , A , B , C ) => `${title || ''} ${A} + ${B} = ${C}`.trim() ;
 
 test( macro , '1' , '1' , '2' ) ;
 test( macro , '47' , '124' , '171' ) ;

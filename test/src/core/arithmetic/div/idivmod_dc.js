@@ -26,7 +26,7 @@ function macro ( t , dividend , divisor , quotient , remainder ) {
 } ;
 
 const s = x => x.slice(0,15)+'...' ;
-macro.title = ( title , D , d , q , r ) => `${title} ${s(D)} / ${s(d)} = ${s(q)} % ${s(r)}`.trim()
+macro.title = ( title , D , d , q , r ) => `${title || ''} ${s(D)} / ${s(d)} = ${s(q)} % ${s(r)}`.trim()
 
 
 test( macro , '7' , '10' , '0' , '7' ) ;
