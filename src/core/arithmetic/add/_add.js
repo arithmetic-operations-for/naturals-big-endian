@@ -21,9 +21,9 @@ import assert from 'assert' ;
 export function _add ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
 
 	assert(r >= 2);
-	assert(ai >= 0 && aj <= a.length);
-	assert(bi >= 0 && bj <= b.length);
-	assert(ci >= 0 && cj <= c.length);
+	assert(0 <= ai && aj <= a.length);
+	assert(0 <= bi && bj <= b.length);
+	assert(0 <= ci && cj <= c.length);
 	assert(cj - ci >= aj - ai);
 	assert(aj - ai >= bj - bi);
 

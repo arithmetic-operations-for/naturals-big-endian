@@ -16,8 +16,8 @@ import assert from 'assert' ;
 export function _iadd ( r , a , ai , aj , b , bi , bj ) {
 
 	assert(r >= 2);
-	assert(ai >= 0 && aj <= a.length);
-	assert(bi >= 0 && bj <= b.length);
+	assert(0 <= ai && aj <= a.length);
+	assert(0 <= bi && bj <= b.length);
 	assert(aj - ai >= bj - bi);
 
 	let C = 0 ;
