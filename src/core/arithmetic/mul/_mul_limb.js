@@ -9,10 +9,9 @@ import assert from 'assert' ;
 export function _mul_limb ( r , x , b , bi , bj , c , ci , cj ) {
 
 	assert(r >= 2);
-	assert(x >= 0);
-	assert(x <= r-1);
-	assert(bi >= 0 && bj <= b.length);
-	assert(ci >= 0 && cj <= c.length);
+	assert(0 <= x && x <= r-1);
+	assert(0 <= bi && bj <= b.length);
+	assert(0 <= ci && cj <= c.length);
 
 	let C = 0 ;
 
