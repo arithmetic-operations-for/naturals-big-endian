@@ -48,6 +48,24 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "@aureooms/js-integer-big-endian/src/core/compare/_cmp_half.js~_cmp_half",
+    "function/index.html#static-function-_cmp_half",
+    "<span>_cmp_half</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/compare/_cmp_half.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/core/compare/_cmp_half.js~_cmp_half_even_radix",
+    "function/index.html#static-function-_cmp_half_even_radix",
+    "<span>_cmp_half_even_radix</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/compare/_cmp_half.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/core/compare/_cmp_half.js~_cmp_half_odd_radix",
+    "function/index.html#static-function-_cmp_half_odd_radix",
+    "<span>_cmp_half_odd_radix</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/compare/_cmp_half.js</span>",
+    "function"
+  ],
+  [
     "@aureooms/js-integer-big-endian/src/core/compare/_cmp_n.js~_cmp_n",
     "function/index.html#static-function-_cmp_n",
     "<span>_cmp_n</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/compare/_cmp_n.js</span>",
@@ -240,6 +258,18 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "@aureooms/js-integer-big-endian/src/api/arithmetic/div/_imod.js~_imod",
+    "function/index.html#static-function-_imod",
+    "<span>_imod</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/arithmetic/div/_imod.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_imod_limb.js~_imod_limb",
+    "function/index.html#static-function-_imod_limb",
+    "<span>_imod_limb</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/div/_imod_limb.js</span>",
+    "function"
+  ],
+  [
     "@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_imul_limb.js~_imul_limb",
     "function/index.html#static-function-_imul_limb",
     "<span>_imul_limb</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_imul_limb.js</span>",
@@ -261,6 +291,12 @@ window.esdocSearchIndex = [
     "@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_karatsuba.js~_karatsuba",
     "function/index.html#static-function-_karatsuba",
     "<span>_karatsuba</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_karatsuba.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_karatsuba_right_op_is_small.js~_karatsuba_right_op_is_small",
+    "function/index.html#static-function-_karatsuba_right_op_is_small",
+    "<span>_karatsuba_right_op_is_small</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_karatsuba_right_op_is_small.js</span>",
     "function"
   ],
   [
@@ -798,6 +834,12 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "src/api/arithmetic/div/_imod.js",
+    "file/src/api/arithmetic/div/_imod.js.html",
+    "src/api/arithmetic/div/_imod.js",
+    "file"
+  ],
+  [
     "src/api/arithmetic/div/index.js",
     "file/src/api/arithmetic/div/index.js.html",
     "src/api/arithmetic/div/index.js",
@@ -1032,6 +1074,12 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "src/core/arithmetic/div/_imod_limb.js",
+    "file/src/core/arithmetic/div/_imod_limb.js.html",
+    "src/core/arithmetic/div/_imod_limb.js",
+    "file"
+  ],
+  [
     "src/core/arithmetic/div/_mod_limb.js",
     "file/src/core/arithmetic/div/_mod_limb.js.html",
     "src/core/arithmetic/div/_mod_limb.js",
@@ -1089,6 +1137,12 @@ window.esdocSearchIndex = [
     "src/core/arithmetic/mul/_karatsuba.js",
     "file/src/core/arithmetic/mul/_karatsuba.js.html",
     "src/core/arithmetic/mul/_karatsuba.js",
+    "file"
+  ],
+  [
+    "src/core/arithmetic/mul/_karatsuba_right_op_is_small.js",
+    "file/src/core/arithmetic/mul/_karatsuba_right_op_is_small.js.html",
+    "src/core/arithmetic/mul/_karatsuba_right_op_is_small.js",
     "file"
   ],
   [
@@ -1203,6 +1257,12 @@ window.esdocSearchIndex = [
     "src/core/compare/_cmp.js",
     "file/src/core/compare/_cmp.js.html",
     "src/core/compare/_cmp.js",
+    "file"
+  ],
+  [
+    "src/core/compare/_cmp_half.js",
+    "file/src/core/compare/_cmp_half.js.html",
+    "src/core/compare/_cmp_half.js",
     "file"
   ],
   [

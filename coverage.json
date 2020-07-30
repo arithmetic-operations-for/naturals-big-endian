@@ -1,7 +1,7 @@
 {
-  "coverage": "61.25%",
-  "expectCount": 80,
-  "actualCount": 49,
+  "coverage": "61.62%",
+  "expectCount": 86,
+  "actualCount": 53,
   "files": {
     "src/api/arithmetic/add/add.js": {
       "expectCount": 1,
@@ -24,6 +24,11 @@
       "undocumentLines": []
     },
     "src/api/arithmetic/div/_idivmod.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/api/arithmetic/div/_imod.js": {
       "expectCount": 1,
       "actualCount": 1,
       "undocumentLines": []
@@ -106,7 +111,7 @@
       "expectCount": 1,
       "actualCount": 0,
       "undocumentLines": [
-        4
+        6
       ]
     },
     "src/api/convert/parse.js": {
@@ -200,6 +205,11 @@
       "actualCount": 1,
       "undocumentLines": []
     },
+    "src/core/arithmetic/div/_imod_limb.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
     "src/core/arithmetic/div/_mod_limb.js": {
       "expectCount": 1,
       "actualCount": 1,
@@ -231,6 +241,11 @@
       "undocumentLines": []
     },
     "src/core/arithmetic/mul/_karatsuba.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/core/arithmetic/mul/_karatsuba_right_op_is_small.js": {
       "expectCount": 1,
       "actualCount": 1,
       "undocumentLines": []
@@ -281,48 +296,56 @@
       "expectCount": 1,
       "actualCount": 0,
       "undocumentLines": [
-        2
+        3
       ]
     },
     "src/core/array/_build.js": {
       "expectCount": 1,
       "actualCount": 0,
       "undocumentLines": [
-        2
+        3
       ]
     },
     "src/core/array/_copy.js": {
       "expectCount": 1,
       "actualCount": 0,
       "undocumentLines": [
-        2
+        3
       ]
     },
     "src/core/array/_fill.js": {
       "expectCount": 1,
       "actualCount": 0,
       "undocumentLines": [
-        2
+        3
       ]
     },
     "src/core/array/_reset.js": {
       "expectCount": 1,
       "actualCount": 0,
       "undocumentLines": [
-        3
+        5
       ]
     },
     "src/core/array/_zeros.js": {
       "expectCount": 1,
       "actualCount": 0,
       "undocumentLines": [
-        4
+        6
       ]
     },
     "src/core/compare/_cmp.js": {
       "expectCount": 1,
       "actualCount": 1,
       "undocumentLines": []
+    },
+    "src/core/compare/_cmp_half.js": {
+      "expectCount": 3,
+      "actualCount": 1,
+      "undocumentLines": [
+        28,
+        39
+      ]
     },
     "src/core/compare/_cmp_n.js": {
       "expectCount": 1,
@@ -399,7 +422,7 @@
       "expectCount": 1,
       "actualCount": 0,
       "undocumentLines": [
-        2
+        3
       ]
     },
     "src/core/convert/_to_string.js": {
@@ -413,7 +436,7 @@
       "expectCount": 1,
       "actualCount": 0,
       "undocumentLines": [
-        2
+        3
       ]
     },
     "src/core/convert/convert_keep_zeros.js": {
