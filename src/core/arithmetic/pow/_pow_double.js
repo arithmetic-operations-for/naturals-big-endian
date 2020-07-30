@@ -1,3 +1,6 @@
+import assert from 'assert' ;
+
+import { jz } from '../../../api/compare' ;
 import { _reset , _alloc , _copy } from '../../array' ;
 import { _mul } from '../mul' ;
 
@@ -5,7 +8,7 @@ import { _mul } from '../mul' ;
  * Computes <code>pow(a,x) = a^x</code> using exponentiation by squaring.
  * Writes result to output array.
  *
- * /!\ |C| >= |A| * x , |C| = 000...0
+ * /!\ |A| >= 1, |C| >= 1, |C| >= |A| * x, |C| = 000...0
  *
  * @param {Number} r The base to work with.
  * @param {Number} x The power to raise <code>a</code> to.
@@ -17,6 +20,15 @@ import { _mul } from '../mul' ;
  * @param {Number} cj <code>b</code> right.
  */
 export function _pow_double (r, x, a, ai, aj, c, ci, cj) {
+
+	assert(r >= 2);
+	assert(x >= 0);
+	assert(0 <= ai && aj <= a.length);
+	assert(0 <= ci && cj <= c.length);
+	assert(aj - ai >= 1);
+	assert(cj - ci >= 1);
+	assert(cj - ci >= (aj - ai) * x);
+	assert(jz(c, ci, cj));
 
 	c[cj-1] = 1 ;
 
