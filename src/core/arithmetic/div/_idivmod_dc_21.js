@@ -1,7 +1,10 @@
+import assert from 'assert' ;
+
 import { THRESHOLD_DIV_DC } from '../../thresholds' ;
 import { _idivmod_dc_32 } from './_idivmod_dc_32' ;
 import { _idivmod_schoolbook_large_divisor } from './_idivmod_schoolbook_large_divisor' ;
 
+import { _cmp_half } from '../../compare' ;
 
 /**
  * Algorithm 3.3 Divide-and-conquer division (2 by 1)
@@ -27,6 +30,14 @@ import { _idivmod_schoolbook_large_divisor } from './_idivmod_schoolbook_large_d
  *
  */
 export function _idivmod_dc_21 ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
+
+	assert(THRESHOLD_DIV_DC >= 2);
+	assert(r >= 2);
+	assert(0 <= ai && aj <= a.length);
+	assert(0 <= bi && bj <= b.length);
+	assert(0 <= ci && cj <= c.length);
+	assert(_cmp_half(r, b, bi, bj) >= 0);
+	assert(aj - ai === 2 * (bj - bi));
 
 	if ( bj - bi < THRESHOLD_DIV_DC ) {
 		return _idivmod_schoolbook_large_divisor( r , a , ai , aj , b , bi , bj , c , ci ) ;

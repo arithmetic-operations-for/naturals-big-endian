@@ -1,9 +1,13 @@
+import assert from 'assert' ;
+
 import { _zeros , _fill } from '../../array' ;
 import { _isub } from '../sub' ;
 import { _mul } from '../mul' ;
 import { lt } from '../../../api/compare' ;
 import { iadd , decrement } from '../../../api/arithmetic' ;
 import { _idivmod_dc_21 } from './_idivmod_dc_21' ;
+
+import { _cmp_half } from '../../compare' ;
 
 /**
  * Algorithm 3.4 Divide-and-conquer division (3 by 2)
@@ -29,6 +33,13 @@ import { _idivmod_dc_21 } from './_idivmod_dc_21' ;
  *
  */
 export function _idivmod_dc_32 ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
+
+	assert(r >= 2);
+	assert(0 <= ai && aj <= a.length);
+	assert(0 <= bi && bj <= b.length);
+	assert(0 <= ci && cj <= c.length);
+	assert(_cmp_half(r, b, bi, bj) >= 0);
+	assert(2 * (aj - ai) === 3 * (bj - bi));
 
 	// 1. Let A = A_2 β^{2n} + A_1 β^n + A_0 and
 	//    B = B_1 β^{n} + B_0,

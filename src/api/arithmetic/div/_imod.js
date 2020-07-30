@@ -1,11 +1,10 @@
 import assert from 'assert' ;
 
-import { _idivmod_limb , _idivmod_schoolbook , _idivmod_dc } from '../../../core/arithmetic/div' ;
+import { _imod_limb , _idivmod_schoolbook , _idivmod_dc } from '../../../core/arithmetic/div' ;
 import { THRESHOLD_DIV_DC } from '../../../core/thresholds' ;
-import { jz } from '../../compare' ;
 
 /**
- * Computes the quotient and remainder of two numbers. Uses the most
+ * Computes the remainder of two numbers. Uses the most
  * appropriate algorithm depending on the size of the operands. The remainder
  * is written to the dividend array. There are a few assumptions made on the
  * input.
@@ -13,9 +12,8 @@ import { jz } from '../../compare' ;
  * Input
  * -----
  *  - |d| >= 1
- *  - |D| = |Q| >= 1
+ *  - |D| = |_| >= 1
  *  - No leading zeros in D or d.
- *  - Q is zero initialized.
  *
  * @param {Number} r The base to work with.
  * @param {Array} D Dividend / Remainder array (remainder computed in-place).
@@ -24,38 +22,37 @@ import { jz } from '../../compare' ;
  * @param {Array} d Divisor array.
  * @param {Number} di Left of divisor.
  * @param {Number} dj Right of divisor.
- * @param {Array} Q Quotient array (zero initialized).
- * @param {Number} Qi Left of quotient.
- * @param {Number} Qj Right of quotient.
+ * @param {Array} _ Additional memory array.
+ * @param {Number} _i Left of memory.
+ * @param {Number} _j Right of memory.
  */
-export function _idivmod ( r , D , Di , Dj , d , di , dj , Q , Qi , Qj ) {
+export function _imod ( r , D , Di , Dj , d , di , dj , _ , _i , _j ) {
 
 	assert(r >= 2);
 
 	assert(0 <= Di && Dj <= D.length);
 	assert(0 <= di && dj <= d.length);
-	assert(0 <= Qi && Qj <= Q.length);
+	assert(0 <= _i && _j <= _.length);
 
 	assert(dj - di >= 1);
-	assert(Dj - Di === Qj - Qi);
-	assert(Qj - Qi >= 1);
+	assert(Dj - Di === _j - _i);
+	assert(_j - _i >= 1);
 
 	assert(D[Di] !== 0);
 	assert(d[di] !== 0);
-	assert(jz(Q, Qi, Qj));
 
 	const dn = dj - di ;
 
 	if ( dn === 1 ) {
-		return _idivmod_limb( r , d[di] , D , Di , Dj , Q , Qi ) ;
+		return _imod_limb( r , d[di] , D , Di , Dj ) ;
 	}
 
 	else if ( dn < THRESHOLD_DIV_DC ) {
-		return _idivmod_schoolbook( r , D , Di , Dj , d , di , dj , Q , Qi ) ;
+		return _idivmod_schoolbook( r , D , Di , Dj , d , di , dj , _ , _i ) ;
 	}
 
 	else {
-		return _idivmod_dc( r , D , Di , Dj , d , di , dj , Q , Qi , Qj ) ;
+		return _idivmod_dc( r , D , Di , Dj , d , di , dj , _ , _i , _j ) ;
 	}
 
 }

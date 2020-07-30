@@ -1,15 +1,19 @@
+import assert from 'assert' ;
+
 import { _zeros } from '../../array' ;
 import { gt } from '../../../api/compare' ;
 import { _isub } from '../sub' ;
 import { _mul_limb } from '../mul' ;
 
+import { _cmp_half } from '../../compare' ;
+
 /**
  * Input
  * -----
- *  - Two integers A and B such that 0 <= A < (r^(n+1))/2 and (r^n)/2 <= B < r^n.
- *    (Hence A < B * β)
- *  - |a| = |b| + 1
- *  - |q| = |a|
+ *  - Two integers A and B such that 0 <= A < B * β and (β^n)/2 <= B < β^n.
+ *    (Hence B >= 1).
+ *  - |A| = |B| + 1
+ *  - |Q| = |A|
  *
  * Output
  * -----
@@ -26,6 +30,15 @@ import { _mul_limb } from '../mul' ;
  * @param {Number} qi Left of quotient.
  */
 export function _idivmod_schoolbook_subroutine_do ( r , a , ai , aj , b , bi , bj , q , qi ) {
+
+	assert(r >= 2);
+	assert(0 <= ai && aj <= a.length);
+	assert(0 <= bi && bj <= b.length);
+	assert(0 <= qi);
+	assert(aj - ai === bj - bi + 1); // |a| = |b| + 1
+	assert(q.length - qi >= aj - ai); // |q| >= |a|
+	assert(_cmp_half(r, b, bi, bj) >= 0); // (r^n)/2 <= B < r^n
+	assert(gt(b, bi, bj, a, ai, aj - 1)); // A < B * β
 
 	const m = aj - ai ;
 

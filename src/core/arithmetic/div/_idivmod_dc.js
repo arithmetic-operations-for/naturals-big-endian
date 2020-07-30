@@ -1,3 +1,5 @@
+import assert from 'assert' ;
+
 import { _zeros , _copy } from '../../array' ;
 import { _cmp_n } from '../../compare' ;
 import { _imul_limb } from '../mul' ;
@@ -5,12 +7,14 @@ import { _idivmod_dc_21 } from './_idivmod_dc_21' ;
 import { _div_limb_with_prefix } from './_div_limb_with_prefix' ;
 import { _mod_limb } from './_mod_limb' ;
 
+import { jz } from '../../../api/compare' ;
 
 /**
  * Input
  * -----
  *  - No leading zeros
  *  - |A| = |C|
+ *  - C must be zero-initialized.
  *
  * References
  * ----------
@@ -29,11 +33,23 @@ import { _mod_limb } from './_mod_limb' ;
  */
 export function _idivmod_dc ( X , a , ai , aj , b , bi , bj , c , ci , cj ) {
 
+	assert(X >= 2);
+	assert(0 <= ai && aj <= a.length);
+	assert(0 <= bi && bj <= b.length);
+	assert(0 <= ci && cj <= c.length);
+	assert(aj - ai <= 0 || a[ai] !== 0);
+	assert(bj - bi >= 1);
+	assert(b[bi] !== 0);
+	assert(cj - ci === aj - ai);
+
+	assert(jz(c, ci, cj));
+
 	// [BZ98] Fast Recursive Division
 
 	const r = aj - ai ;
 	const s = bj - bi ;
 
+	// NB: this is the only case where c needs to be zero-initialized.
 	if ( r < s || r === s && _cmp_n( a , ai , aj , b , bi ) < 0 ) return ;
 
 	// shift to get n = 2^k for some k
@@ -87,6 +103,7 @@ export function _idivmod_dc ( X , a , ai , aj , b , bi , bj , c , ci , cj ) {
 		_copy( _a , _ak , _aj - shift , a , ai , aj ) ;
 	}
 
+	// c is completely overwritten here
 	_copy( _c , _cj - r , _cj , c , ci ) ;
 
 }

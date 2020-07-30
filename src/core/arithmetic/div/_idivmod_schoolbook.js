@@ -1,7 +1,11 @@
+import assert from 'assert' ;
+
 import { _zeros , _copy } from '../../array' ;
 import { _mul_limb } from '../mul' ;
 import { _idivmod_schoolbook_large_divisor } from './_idivmod_schoolbook_large_divisor' ;
 import { _div_limb_with_prefix } from './_div_limb_with_prefix' ;
+
+import { jz } from '../../../api/compare/jz' ;
 
 /**
  * Computes q <- a / b and a <- a % b.
@@ -19,6 +23,15 @@ import { _div_limb_with_prefix } from './_div_limb_with_prefix' ;
  * @param {Number} qi
  */
 export function _idivmod_schoolbook ( r , a , ai , aj , b , bi , bj , q , qi ) {
+
+	assert(r >= 2);
+	assert(0 <= ai && aj <= a.length);
+	assert(0 <= bi && bj <= b.length);
+	assert(0 <= qi);
+	assert(q.length - qi >= aj - ai);
+	assert(aj - ai <= 0 || a[ai] !== 0); // no leading zero
+	assert(bj - bi >= 1 && b[bi] !== 0); // no leading zero
+	//assert(jz(q, qi, qi + aj - ai)); // NOT TRUE BECAUSE OF PATH: euclidean_algorithm > _imod
 
 	const _r = Math.ceil( r / 2 ) ;
 	const x = b[bi] ;

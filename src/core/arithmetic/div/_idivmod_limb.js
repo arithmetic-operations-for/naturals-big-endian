@@ -15,6 +15,6 @@ import { _idivmod_limb_with_prefix } from './_idivmod_limb_with_prefix' ;
 export function _idivmod_limb ( r , d , D , Di , Dj , Q , Qi ) {
 
 	// simply prefix the dividend with 0
-	_idivmod_limb_with_prefix( r , 0 , d , D , Di , Dj , Q , Qi ) ;
+	return _idivmod_limb_with_prefix( r , 0 , d , D , Di , Dj , Q , Qi ) ;
 
 }

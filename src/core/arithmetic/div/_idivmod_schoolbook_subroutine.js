@@ -1,14 +1,18 @@
+import assert from 'assert' ;
+
 import { _cmp_n } from '../../compare' ;
 import { increment } from '../../../api/arithmetic/add/increment' ;
 import { _isub } from '../sub' ;
 import { _idivmod_schoolbook_subroutine_do } from './_idivmod_schoolbook_subroutine_do' ;
 
+import { _cmp_half } from '../../compare' ;
+
 /**
  * Input
  * -----
- *  - Two integers A and B such that 0 <= A < r^(n+1) and (r^n)/2 <= B < r^n.
- *  - |a| = |b| + 1
- *  - |q| = |a|
+ *  - Two integers A and B such that 0 <= A < β^(n+1) and (β^n)/2 <= B < β^n.
+ *  - |A| = |B| + 1
+ *  - |Q| = |A|
  *
  * Output
  * -----
@@ -25,6 +29,15 @@ import { _idivmod_schoolbook_subroutine_do } from './_idivmod_schoolbook_subrout
  * @param {Number} qi Left of quotient.
  */
 export function _idivmod_schoolbook_subroutine ( r , a , ai , aj , b , bi , bj , q , qi ) {
+
+	assert(r >= 2);
+	assert(0 <= ai && aj <= a.length);
+	assert(0 <= bi && bj <= b.length);
+	assert(0 <= qi);
+	assert(q.length - qi >= aj - ai);
+	assert(aj - ai === bj - bi + 1); // |A| = |B| + 1
+	assert(q.length - qi >= aj - ai); // |Q| >= |A|
+	assert(_cmp_half(r, b, bi, bj) >= 0); // (β^n)/2 <= B < β^n
 
 	// If A ≥ B*β, compute the quotient q and remainder r of ( A − B*β ) / B
 	// and return β + q and r.

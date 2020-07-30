@@ -8,4 +8,5 @@ export * from './_idivmod_schoolbook' ;
 export * from './_idivmod_schoolbook_large_divisor' ;
 export * from './_idivmod_schoolbook_subroutine' ;
 export * from './_idivmod_slow' ;
+export * from './_imod_limb' ;
 export * from './_mod_limb' ;

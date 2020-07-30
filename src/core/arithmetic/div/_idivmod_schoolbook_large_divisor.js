@@ -1,13 +1,18 @@
+import assert from 'assert' ;
+
 import { _trim_positive } from '../../convert/_trim_positive' ;
 import { lt } from '../../../api/compare/lt' ;
+//import { jz } from '../../../api/compare/jz' ;
 import { _isub } from '../sub' ;
 import { _idivmod_schoolbook_subroutine } from './_idivmod_schoolbook_subroutine' ;
+
+import { _cmp_half } from '../../compare' ;
 
 /**
  * Input
  * -----
  *  - Two integers A and B such that r^(m-1) <= A < r^m and (r^n)/2 <= B < r^(n).
- *  - No leading zeros
+ *  - No leading zeros (ONLY IN B?)
  *
  * Output
  * -----
@@ -24,6 +29,15 @@ import { _idivmod_schoolbook_subroutine } from './_idivmod_schoolbook_subroutine
  * @param {Number} qi Left of quotient.
  */
 export function _idivmod_schoolbook_large_divisor ( r , a , ai , aj , b , bi , bj , q , qi ) {
+
+	assert(r >= 2);
+	assert(0 <= ai && aj <= a.length);
+	assert(0 <= bi && bj <= b.length);
+	assert(0 <= qi);
+	assert(q.length - qi >= aj - ai);
+	//assert(aj - ai <= 0 || a[ai] !== 0); // no leading zero NOT TRUE ?
+	assert(_cmp_half(r, b, bi, bj) >= 0); // (r^n)/2 <= B < r^n (+ no leading zero)
+	//assert(jz(q, qi, qi + aj - ai)); // NOT TRUE ?
 
 	while ( true ) { // non-recursive
 
