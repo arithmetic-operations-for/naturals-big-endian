@@ -1,7 +1,7 @@
 import assert from 'assert' ;
 
 import { _imod, ge } from '../../../api'
-import { _zeros } from '../../array'
+import { _alloc } from '../../array'
 import { _trim_positive } from '../../convert'
 
 /**
@@ -38,7 +38,7 @@ export function _euclidean_algorithm_loop ( r , a , ai , aj , b , bi , bj  ) {
 	assert(ge(a, ai, aj, b, bi, bj));
 
 	const _j = aj - ai ;
-	const _ = _zeros(_j) ;
+	const _ = _alloc(_j) ;
 
 	while ( true ) {
 

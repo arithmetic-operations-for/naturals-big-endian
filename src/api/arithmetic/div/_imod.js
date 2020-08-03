@@ -1,6 +1,7 @@
 import assert from 'assert' ;
 
-import { _imod_limb , _idivmod_schoolbook , _idivmod_dc } from '../../../core/arithmetic/div' ;
+import { _reset } from '../../../core/array' ;
+import { _imod_limb , _imod_schoolbook , _idivmod_dc } from '../../../core/arithmetic/div' ;
 import { THRESHOLD_DIV_DC } from '../../../core/thresholds' ;
 
 /**
@@ -48,10 +49,11 @@ export function _imod ( r , D , Di , Dj , d , di , dj , _ , _i , _j ) {
 	}
 
 	else if ( dn < THRESHOLD_DIV_DC ) {
-		return _idivmod_schoolbook( r , D , Di , Dj , d , di , dj , _ , _i ) ;
+		return _imod_schoolbook( r , D , Di , Dj , d , di , dj ) ;
 	}
 
 	else {
+		_reset(_, _i, _j);
 		return _idivmod_dc( r , D , Di , Dj , d , di , dj , _ , _i , _j ) ;
 	}
 

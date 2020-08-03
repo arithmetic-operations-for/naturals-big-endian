@@ -38,8 +38,9 @@ export function _idivmod_dc_32 ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
 	assert(0 <= ai && aj <= a.length);
 	assert(0 <= bi && bj <= b.length);
 	assert(0 <= ci && cj <= c.length);
+	assert(cj - ci === aj - ai);
+	assert(2 * (aj - ai) === 3 * (bj - bi)); // implies bj - bi even
 	assert(_cmp_half(r, b, bi, bj) >= 0);
-	assert(2 * (aj - ai) === 3 * (bj - bi));
 
 	// 1. Let A = A_2 β^{2n} + A_1 β^n + A_0 and
 	//    B = B_1 β^{n} + B_0,
@@ -70,7 +71,7 @@ export function _idivmod_dc_32 ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
 	const zj = n << 1 ;
 	const z = _zeros( zj ) ;
 	_mul( r , c , cj - n , cj , b , bi + n , bj , z , zi , zj ) ;
-	_isub( r , a , ai , aj , z , zi , zj ) ;
+	_isub( r , a , ai , aj , z , zi , zj ) ; // TODO optimize when A_2 = B_1
 
 	// 4. if R < 0 , R <- R + B and Q <- Q - 1
 

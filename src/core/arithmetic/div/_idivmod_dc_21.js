@@ -14,7 +14,7 @@ import { _cmp_half } from '../../compare' ;
  * -----
  *  Two nonnegative integers A and B,
  *  such that A < β^n B and β^n / 2 ≤ B < β^n.
- *  n must be even.
+ *  n must be even if n >= THRESHOLD_DIV_DC.
  *
  *                    -----------                 -----
  *                   |  :  |  :  |               |  :  |
@@ -36,12 +36,15 @@ export function _idivmod_dc_21 ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
 	assert(0 <= ai && aj <= a.length);
 	assert(0 <= bi && bj <= b.length);
 	assert(0 <= ci && cj <= c.length);
-	assert(_cmp_half(r, b, bi, bj) >= 0);
+	assert(cj - ci === aj - ai);
 	assert(aj - ai === 2 * (bj - bi));
+	assert(_cmp_half(r, b, bi, bj) >= 0);
 
 	if ( bj - bi < THRESHOLD_DIV_DC ) {
 		return _idivmod_schoolbook_large_divisor( r , a , ai , aj , b , bi , bj , c , ci ) ;
 	}
+
+	assert((bj - bi) % 2 === 0);
 
 	// 1. Let A = A_3 β^{3n/2} + A_2 β^n + A_1 β^{n/2} + A_0 and
 	//    B = B_1 β^{n/2} + B_0,

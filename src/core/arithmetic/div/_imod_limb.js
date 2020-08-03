@@ -3,6 +3,8 @@ import assert from 'assert' ;
 /**
  * Divides a big endian number by a single limb number and writes the
  * remainder to the dividend array.
+ *
+ * Computes a <- a % b.
  * Only works with limbs of size at most sqrt( 2^53 ).
  *
  * @param {Number} r The radix of D.
