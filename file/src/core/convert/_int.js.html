@@ -124,7 +124,14 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/core/convert/_int.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">export default function _int(x) {
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+ * Converts an input character representation to a limb.
+ *
+ * @param {string} x input character
+ *
+ * @return {number} output limb
+ */
+export default function _int(x) {
 	if (x &gt;= &apos;0&apos; &amp;&amp; x &lt;= &apos;9&apos;) return x.charCodeAt(0) - 48;
 	if (x &gt;= &apos;A&apos; &amp;&amp; x &lt;= &apos;Z&apos;) return x.charCodeAt(0) - 55;
 	if (x &gt;= &apos;a&apos; &amp;&amp; x &lt;= &apos;z&apos;) return x.charCodeAt(0) - 87;

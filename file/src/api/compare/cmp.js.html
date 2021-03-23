@@ -126,6 +126,23 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/api/compare/cmp.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import _cmp from &apos;../../core/compare/_cmp.js&apos;;
 
+/**
+ * Compares two big endian arrays with little constraints on the operands.
+ *
+ * Input:
+ *   - |A| &gt;= 0
+ *   - |B| &gt;= 0
+ *
+ * @param {number[]} a first operand
+ * @param {number} ai a left
+ * @param {number} aj a right
+ * @param {number[]} b second operand
+ * @param {number} bi b left
+ * @param {number} bj b right
+ *
+ * @return {number} result 1 if a &gt; b; 0 if a = b; -1 otherwise.
+ */
+
 export default function cmp(a, ai, aj, b, bi, bj) {
 	if (aj - ai &lt; bj - bi) return -_cmp(b, bi, bj, a, ai, aj);
 	return _cmp(a, ai, aj, b, bi, bj);

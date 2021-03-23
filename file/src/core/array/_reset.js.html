@@ -128,6 +128,13 @@
 
 import assert from &apos;assert&apos;;
 
+/**
+ * Fill the input limb array with zeros.
+ *
+ * @param {number[]} a input limb array
+ * @param {number} ai
+ * @param {number} aj
+ */
 export default function _reset(a, ai, aj) {
 	assert(ai &gt;= 0);
 	assert(aj &lt;= a.length);

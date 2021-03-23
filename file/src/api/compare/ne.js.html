@@ -126,6 +126,22 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/api/compare/ne.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import cmp from &apos;./cmp.js&apos;;
 
+/**
+ * Tests whether two big endian arrays are not equal.
+ *
+ * Input:
+ *   - |A| &gt;= 0
+ *   - |B| &gt;= 0
+ *
+ * @param {number[]} a first operand
+ * @param {number} ai a left
+ * @param {number} aj a right
+ * @param {number[]} b second operand
+ * @param {number} bi b left
+ * @param {number} bj b right
+ *
+ * @return {boolean} true iff A != B.
+ */
 const ne = (a, ai, aj, b, bi, bj) =&gt; cmp(a, ai, aj, b, bi, bj) !== 0;
 export default ne;
 </code></pre>

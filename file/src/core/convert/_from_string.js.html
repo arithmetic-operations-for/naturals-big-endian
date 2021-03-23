@@ -126,6 +126,14 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/core/convert/_from_string.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import _int from &apos;./_int.js&apos;;
 
+/**
+ * Converts a string representation to a limb array representation without
+ * radix conversion.
+ *
+ * @param {string} string input string
+ *
+ * @return {number[]} output limb array
+ */
 export default function _from_string(string) {
 	const n = string.length;
 

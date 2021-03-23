@@ -126,6 +126,16 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/core/convert/_trim_positive.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import assert from &apos;assert&apos;;
 
+/**
+ * Compute the new inclusive left bound of a limb array by skipping all
+ * leading zeros.
+ *
+ * @param {number[]} a The input limb array.
+ * @param {number} ai
+ * @param {number} aj
+ *
+ * @return {number} The new inclusive left bound of the input.
+ */
 export default function _trim_positive(a, ai, aj) {
 	assert(ai &gt;= 0 &amp;&amp; aj &lt;= a.length);
 

@@ -126,6 +126,15 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/core/array/_copy.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import assert from &apos;assert&apos;;
 
+/**
+ * Copy a limb array into another limb array.
+ *
+ * @param {number[]} a The copied limb array.
+ * @param {number} ai
+ * @param {number} aj
+ * @param {number[]} b The destination limb array.
+ * @param {number} bi
+ */
 export default function _copy(a, ai, aj, b, bi) {
 	assert(ai &gt;= 0 &amp;&amp; aj &lt;= a.length);
 	assert(bi &gt;= 0);

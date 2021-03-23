@@ -1724,7 +1724,7 @@
     "__docId__": 68,
     "kind": "file",
     "name": "src/api/compare/cmp.js",
-    "content": "import _cmp from '../../core/compare/_cmp.js';\n\nexport default function cmp(a, ai, aj, b, bi, bj) {\n\tif (aj - ai < bj - bi) return -_cmp(b, bi, bj, a, ai, aj);\n\treturn _cmp(a, ai, aj, b, bi, bj);\n}\n",
+    "content": "import _cmp from '../../core/compare/_cmp.js';\n\n/**\n * Compares two big endian arrays with little constraints on the operands.\n *\n * Input:\n *   - |A| >= 0\n *   - |B| >= 0\n *\n * @param {number[]} a first operand\n * @param {number} ai a left\n * @param {number} aj a right\n * @param {number[]} b second operand\n * @param {number} bi b left\n * @param {number} bj b right\n *\n * @return {number} result 1 if a > b; 0 if a = b; -1 otherwise.\n */\n\nexport default function cmp(a, ai, aj, b, bi, bj) {\n\tif (aj - ai < bj - bi) return -_cmp(b, bi, bj, a, ai, aj);\n\treturn _cmp(a, ai, aj, b, bi, bj);\n}\n",
     "static": true,
     "longname": "/home/runner/work/js-integer-big-endian/js-integer-big-endian/src/api/compare/cmp.js",
     "access": "public",
@@ -1744,58 +1744,84 @@
     "export": true,
     "importPath": "@aureooms/js-integer-big-endian/src/api/compare/cmp.js",
     "importStyle": "cmp",
-    "description": null,
-    "lineNumber": 3,
-    "undocument": true,
+    "description": "Compares two big endian arrays with little constraints on the operands.\n\nInput:\n  - |A| >= 0\n  - |B| >= 0",
+    "lineNumber": 20,
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "number[]"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "a",
-        "types": [
-          "*"
-        ]
+        "description": "first operand"
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "ai",
-        "types": [
-          "*"
-        ]
+        "description": "a left"
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "aj",
-        "types": [
-          "*"
-        ]
+        "description": "a right"
       },
       {
+        "nullable": null,
+        "types": [
+          "number[]"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "b",
-        "types": [
-          "*"
-        ]
+        "description": "second operand"
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "bi",
-        "types": [
-          "*"
-        ]
+        "description": "b left"
       },
       {
-        "name": "bj",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "bj",
+        "description": "b right"
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "number"
+      ],
+      "spread": false,
+      "description": "result 1 if a > b; 0 if a = b; -1 otherwise."
     }
   },
   {
     "__docId__": 70,
     "kind": "file",
     "name": "src/api/compare/eq.js",
-    "content": "import cmp from './cmp.js';\n\nconst eq = (a, ai, aj, b, bi, bj) => cmp(a, ai, aj, b, bi, bj) === 0;\nexport default eq;\n",
+    "content": "import cmp from './cmp.js';\n\n/**\n * Tests whether two big endian arrays are equal.\n *\n * Input:\n *   - |A| >= 0\n *   - |B| >= 0\n *\n * @param {number[]} a first operand\n * @param {number} ai a left\n * @param {number} aj a right\n * @param {number[]} b second operand\n * @param {number} bi b left\n * @param {number} bj b right\n *\n * @return {boolean} true iff A = B.\n */\nconst eq = (a, ai, aj, b, bi, bj) => cmp(a, ai, aj, b, bi, bj) === 0;\nexport default eq;\n",
     "static": true,
     "longname": "/home/runner/work/js-integer-big-endian/js-integer-big-endian/src/api/compare/eq.js",
     "access": "public",
@@ -1815,54 +1841,84 @@
     "export": true,
     "importPath": "@aureooms/js-integer-big-endian/src/api/compare/eq.js",
     "importStyle": "eq",
-    "description": null,
-    "lineNumber": 3,
-    "undocument": true,
+    "description": "Tests whether two big endian arrays are equal.\n\nInput:\n  - |A| >= 0\n  - |B| >= 0",
+    "lineNumber": 19,
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "number[]"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "a",
-        "types": [
-          "*"
-        ]
+        "description": "first operand"
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "ai",
-        "types": [
-          "*"
-        ]
+        "description": "a left"
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "aj",
-        "types": [
-          "*"
-        ]
+        "description": "a right"
       },
       {
+        "nullable": null,
+        "types": [
+          "number[]"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "b",
-        "types": [
-          "*"
-        ]
+        "description": "second operand"
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "bi",
-        "types": [
-          "*"
-        ]
+        "description": "b left"
       },
       {
-        "name": "bj",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "bj",
+        "description": "b right"
       }
     ],
-    "return": null
+    "return": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": "true iff A = B."
+    }
   },
   {
     "__docId__": 72,
     "kind": "file",
     "name": "src/api/compare/ge.js",
-    "content": "import cmp from './cmp.js';\n\nconst ge = (a, ai, aj, b, bi, bj) => cmp(a, ai, aj, b, bi, bj) >= 0;\nexport default ge;\n",
+    "content": "import cmp from './cmp.js';\n\n/**\n * Compares two big endian arrays: returns true if the first is greater or\n * equal to the second.\n *\n * Input:\n *   - |A| >= 0\n *   - |B| >= 0\n *\n * @param {number[]} a first operand\n * @param {number} ai a left\n * @param {number} aj a right\n * @param {number[]} b second operand\n * @param {number} bi b left\n * @param {number} bj b right\n *\n * @return {boolean} true iff A >= B.\n */\nconst ge = (a, ai, aj, b, bi, bj) => cmp(a, ai, aj, b, bi, bj) >= 0;\nexport default ge;\n",
     "static": true,
     "longname": "/home/runner/work/js-integer-big-endian/js-integer-big-endian/src/api/compare/ge.js",
     "access": "public",
@@ -1882,54 +1938,84 @@
     "export": true,
     "importPath": "@aureooms/js-integer-big-endian/src/api/compare/ge.js",
     "importStyle": "ge",
-    "description": null,
-    "lineNumber": 3,
-    "undocument": true,
+    "description": "Compares two big endian arrays: returns true if the first is greater or\nequal to the second.\n\nInput:\n  - |A| >= 0\n  - |B| >= 0",
+    "lineNumber": 20,
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "number[]"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "a",
-        "types": [
-          "*"
-        ]
+        "description": "first operand"
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "ai",
-        "types": [
-          "*"
-        ]
+        "description": "a left"
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "aj",
-        "types": [
-          "*"
-        ]
+        "description": "a right"
       },
       {
+        "nullable": null,
+        "types": [
+          "number[]"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "b",
-        "types": [
-          "*"
-        ]
+        "description": "second operand"
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "bi",
-        "types": [
-          "*"
-        ]
+        "description": "b left"
       },
       {
-        "name": "bj",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "bj",
+        "description": "b right"
       }
     ],
-    "return": null
+    "return": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": "true iff A >= B."
+    }
   },
   {
     "__docId__": 74,
     "kind": "file",
     "name": "src/api/compare/gt.js",
-    "content": "import cmp from './cmp.js';\n\nconst gt = (a, ai, aj, b, bi, bj) => cmp(a, ai, aj, b, bi, bj) > 0;\nexport default gt;\n",
+    "content": "import cmp from './cmp.js';\n\n/**\n * Compares two big endian arrays: returns true if the first is greater than\n * the second.\n *\n * Input:\n *   - |A| >= 0\n *   - |B| >= 0\n *\n * @param {number[]} a first operand\n * @param {number} ai a left\n * @param {number} aj a right\n * @param {number[]} b second operand\n * @param {number} bi b left\n * @param {number} bj b right\n *\n * @return {boolean} true iff A > B.\n */\nconst gt = (a, ai, aj, b, bi, bj) => cmp(a, ai, aj, b, bi, bj) > 0;\nexport default gt;\n",
     "static": true,
     "longname": "/home/runner/work/js-integer-big-endian/js-integer-big-endian/src/api/compare/gt.js",
     "access": "public",
@@ -1949,54 +2035,84 @@
     "export": true,
     "importPath": "@aureooms/js-integer-big-endian/src/api/compare/gt.js",
     "importStyle": "gt",
-    "description": null,
-    "lineNumber": 3,
-    "undocument": true,
+    "description": "Compares two big endian arrays: returns true if the first is greater than\nthe second.\n\nInput:\n  - |A| >= 0\n  - |B| >= 0",
+    "lineNumber": 20,
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "number[]"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "a",
-        "types": [
-          "*"
-        ]
+        "description": "first operand"
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "ai",
-        "types": [
-          "*"
-        ]
+        "description": "a left"
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "aj",
-        "types": [
-          "*"
-        ]
+        "description": "a right"
       },
       {
+        "nullable": null,
+        "types": [
+          "number[]"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "b",
-        "types": [
-          "*"
-        ]
+        "description": "second operand"
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "bi",
-        "types": [
-          "*"
-        ]
+        "description": "b left"
       },
       {
-        "name": "bj",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "bj",
+        "description": "b right"
       }
     ],
-    "return": null
+    "return": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": "true iff A > B."
+    }
   },
   {
     "__docId__": 76,
     "kind": "file",
     "name": "src/api/compare/jz.js",
-    "content": "import assert from 'assert';\n\n/**\n * Returns true if input number A is 0.\n *\n * Returns true if aj <= ai.\n * O(|A|) time in the worst case.\n * O(1) time if A has no leading zero.\n *\n * @param {array} a first operand\n * @param {Number} ai a left\n * @param {Number} aj a right\n */\n\nexport default function jz(a, ai, aj) {\n\tassert(ai >= 0 && aj <= a.length);\n\n\tfor (; ai < aj; ++ai) if (a[ai] !== 0) return false;\n\n\treturn true;\n}\n",
+    "content": "import assert from 'assert';\n\n/**\n * Returns true if and only if input number A is 0.\n *\n * Returns true if aj <= ai.\n * O(|A|) time in the worst case.\n * O(1) time if A has no leading zero.\n *\n * @param {number[]} a first operand\n * @param {number} ai a left\n * @param {number} aj a right\n * @return {boolean} true if and only if input number is 0.\n */\n\nexport default function jz(a, ai, aj) {\n\tassert(ai >= 0 && aj <= a.length);\n\n\tfor (; ai < aj; ++ai) if (a[ai] !== 0) return false;\n\n\treturn true;\n}\n",
     "static": true,
     "longname": "/home/runner/work/js-integer-big-endian/js-integer-big-endian/src/api/compare/jz.js",
     "access": "public",
@@ -2016,13 +2132,13 @@
     "export": true,
     "importPath": "@aureooms/js-integer-big-endian/src/api/compare/jz.js",
     "importStyle": "jz",
-    "description": "Returns true if input number A is 0.\n\nReturns true if aj <= ai.\nO(|A|) time in the worst case.\nO(1) time if A has no leading zero.",
-    "lineNumber": 15,
+    "description": "Returns true if and only if input number A is 0.\n\nReturns true if aj <= ai.\nO(|A|) time in the worst case.\nO(1) time if A has no leading zero.",
+    "lineNumber": 16,
     "params": [
       {
         "nullable": null,
         "types": [
-          "array"
+          "number[]"
         ],
         "spread": false,
         "optional": false,
@@ -2032,7 +2148,7 @@
       {
         "nullable": null,
         "types": [
-          "Number"
+          "number"
         ],
         "spread": false,
         "optional": false,
@@ -2042,7 +2158,7 @@
       {
         "nullable": null,
         "types": [
-          "Number"
+          "number"
         ],
         "spread": false,
         "optional": false,
@@ -2051,16 +2167,19 @@
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
         "boolean"
-      ]
+      ],
+      "spread": false,
+      "description": "true if and only if input number is 0."
     }
   },
   {
     "__docId__": 78,
     "kind": "file",
     "name": "src/api/compare/le.js",
-    "content": "import cmp from './cmp.js';\n\nconst le = (a, ai, aj, b, bi, bj) => cmp(a, ai, aj, b, bi, bj) <= 0;\nexport default le;\n",
+    "content": "import cmp from './cmp.js';\n\n/**\n * Compares two big endian arrays: returns true if the first is less or equal\n * to the second.\n *\n * Input:\n *   - |A| >= 0\n *   - |B| >= 0\n *\n * @param {number[]} a first operand\n * @param {number} ai a left\n * @param {number} aj a right\n * @param {number[]} b second operand\n * @param {number} bi b left\n * @param {number} bj b right\n *\n * @return {boolean} true iff A <= B.\n */\nconst le = (a, ai, aj, b, bi, bj) => cmp(a, ai, aj, b, bi, bj) <= 0;\nexport default le;\n",
     "static": true,
     "longname": "/home/runner/work/js-integer-big-endian/js-integer-big-endian/src/api/compare/le.js",
     "access": "public",
@@ -2080,54 +2199,84 @@
     "export": true,
     "importPath": "@aureooms/js-integer-big-endian/src/api/compare/le.js",
     "importStyle": "le",
-    "description": null,
-    "lineNumber": 3,
-    "undocument": true,
+    "description": "Compares two big endian arrays: returns true if the first is less or equal\nto the second.\n\nInput:\n  - |A| >= 0\n  - |B| >= 0",
+    "lineNumber": 20,
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "number[]"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "a",
-        "types": [
-          "*"
-        ]
+        "description": "first operand"
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "ai",
-        "types": [
-          "*"
-        ]
+        "description": "a left"
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "aj",
-        "types": [
-          "*"
-        ]
+        "description": "a right"
       },
       {
+        "nullable": null,
+        "types": [
+          "number[]"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "b",
-        "types": [
-          "*"
-        ]
+        "description": "second operand"
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "bi",
-        "types": [
-          "*"
-        ]
+        "description": "b left"
       },
       {
-        "name": "bj",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "bj",
+        "description": "b right"
       }
     ],
-    "return": null
+    "return": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": "true iff A <= B."
+    }
   },
   {
     "__docId__": 80,
     "kind": "file",
     "name": "src/api/compare/lt.js",
-    "content": "import cmp from './cmp.js';\n\nconst lt = (a, ai, aj, b, bi, bj) => cmp(a, ai, aj, b, bi, bj) < 0;\nexport default lt;\n",
+    "content": "import cmp from './cmp.js';\n\n/**\n * Compares two big endian arrays: returns true if the first is less than\n * the second.\n *\n * Input:\n *   - |A| >= 0\n *   - |B| >= 0\n *\n * @param {number[]} a first operand\n * @param {number} ai a left\n * @param {number} aj a right\n * @param {number[]} b second operand\n * @param {number} bi b left\n * @param {number} bj b right\n *\n * @return {boolean} true iff A < B.\n */\nconst lt = (a, ai, aj, b, bi, bj) => cmp(a, ai, aj, b, bi, bj) < 0;\nexport default lt;\n",
     "static": true,
     "longname": "/home/runner/work/js-integer-big-endian/js-integer-big-endian/src/api/compare/lt.js",
     "access": "public",
@@ -2147,54 +2296,84 @@
     "export": true,
     "importPath": "@aureooms/js-integer-big-endian/src/api/compare/lt.js",
     "importStyle": "lt",
-    "description": null,
-    "lineNumber": 3,
-    "undocument": true,
+    "description": "Compares two big endian arrays: returns true if the first is less than\nthe second.\n\nInput:\n  - |A| >= 0\n  - |B| >= 0",
+    "lineNumber": 20,
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "number[]"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "a",
-        "types": [
-          "*"
-        ]
+        "description": "first operand"
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "ai",
-        "types": [
-          "*"
-        ]
+        "description": "a left"
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "aj",
-        "types": [
-          "*"
-        ]
+        "description": "a right"
       },
       {
+        "nullable": null,
+        "types": [
+          "number[]"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "b",
-        "types": [
-          "*"
-        ]
+        "description": "second operand"
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "bi",
-        "types": [
-          "*"
-        ]
+        "description": "b left"
       },
       {
-        "name": "bj",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "bj",
+        "description": "b right"
       }
     ],
-    "return": null
+    "return": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": "true iff A < B."
+    }
   },
   {
     "__docId__": 82,
     "kind": "file",
     "name": "src/api/compare/ne.js",
-    "content": "import cmp from './cmp.js';\n\nconst ne = (a, ai, aj, b, bi, bj) => cmp(a, ai, aj, b, bi, bj) !== 0;\nexport default ne;\n",
+    "content": "import cmp from './cmp.js';\n\n/**\n * Tests whether two big endian arrays are not equal.\n *\n * Input:\n *   - |A| >= 0\n *   - |B| >= 0\n *\n * @param {number[]} a first operand\n * @param {number} ai a left\n * @param {number} aj a right\n * @param {number[]} b second operand\n * @param {number} bi b left\n * @param {number} bj b right\n *\n * @return {boolean} true iff A != B.\n */\nconst ne = (a, ai, aj, b, bi, bj) => cmp(a, ai, aj, b, bi, bj) !== 0;\nexport default ne;\n",
     "static": true,
     "longname": "/home/runner/work/js-integer-big-endian/js-integer-big-endian/src/api/compare/ne.js",
     "access": "public",
@@ -2214,54 +2393,84 @@
     "export": true,
     "importPath": "@aureooms/js-integer-big-endian/src/api/compare/ne.js",
     "importStyle": "ne",
-    "description": null,
-    "lineNumber": 3,
-    "undocument": true,
+    "description": "Tests whether two big endian arrays are not equal.\n\nInput:\n  - |A| >= 0\n  - |B| >= 0",
+    "lineNumber": 19,
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "number[]"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "a",
-        "types": [
-          "*"
-        ]
+        "description": "first operand"
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "ai",
-        "types": [
-          "*"
-        ]
+        "description": "a left"
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "aj",
-        "types": [
-          "*"
-        ]
+        "description": "a right"
       },
       {
+        "nullable": null,
+        "types": [
+          "number[]"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "b",
-        "types": [
-          "*"
-        ]
+        "description": "second operand"
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "bi",
-        "types": [
-          "*"
-        ]
+        "description": "b left"
       },
       {
-        "name": "bj",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "bj",
+        "description": "b right"
       }
     ],
-    "return": null
+    "return": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": "true iff A != B."
+    }
   },
   {
     "__docId__": 84,
     "kind": "file",
     "name": "src/api/convert/convert.js",
-    "content": "import convert_keep_zeros from '../../core/convert/convert_keep_zeros.js';\nimport trim_natural from '../../core/convert/trim_natural.js';\n\nimport assert from 'assert';\n\nexport default function convert(f, t, a, ai, aj) {\n\tassert(f >= 2);\n\tassert(t >= 2);\n\tassert(ai >= 0);\n\tassert(aj <= a.length);\n\tassert(aj - ai >= 0);\n\n\tconst b = convert_keep_zeros(f, t, a, ai, aj);\n\n\treturn trim_natural(b, 0, b.length);\n}\n",
+    "content": "import convert_keep_zeros from '../../core/convert/convert_keep_zeros.js';\nimport trim_natural from '../../core/convert/trim_natural.js';\n\nimport assert from 'assert';\n\n/**\n * Converts the input number A represented in base f to a number B represented\n * in base t. If A is 0 the output is B = [0], otherwise all leading zeros are\n * trimmed.\n *\n * @param {number} f the base to convert from\n * @param {number} t the base to convert to\n * @param {number[]} a the origin array\n * @param {number} ai start offset in the origin array\n * @param {number} aj end offset in the origin array\n *\n * @return {number[]} The result of the conversion.\n */\nexport default function convert(f, t, a, ai, aj) {\n\tassert(f >= 2);\n\tassert(t >= 2);\n\tassert(ai >= 0);\n\tassert(aj <= a.length);\n\tassert(aj - ai >= 0);\n\n\tconst b = convert_keep_zeros(f, t, a, ai, aj);\n\n\treturn trim_natural(b, 0, b.length);\n}\n",
     "static": true,
     "longname": "/home/runner/work/js-integer-big-endian/js-integer-big-endian/src/api/convert/convert.js",
     "access": "public",
@@ -2281,52 +2490,74 @@
     "export": true,
     "importPath": "@aureooms/js-integer-big-endian/src/api/convert/convert.js",
     "importStyle": "convert",
-    "description": null,
-    "lineNumber": 6,
-    "undocument": true,
+    "description": "Converts the input number A represented in base f to a number B represented\nin base t. If A is 0 the output is B = [0], otherwise all leading zeros are\ntrimmed.",
+    "lineNumber": 19,
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "f",
-        "types": [
-          "*"
-        ]
+        "description": "the base to convert from"
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "t",
-        "types": [
-          "*"
-        ]
+        "description": "the base to convert to"
       },
       {
+        "nullable": null,
+        "types": [
+          "number[]"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "a",
-        "types": [
-          "*"
-        ]
+        "description": "the origin array"
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "ai",
-        "types": [
-          "*"
-        ]
+        "description": "start offset in the origin array"
       },
       {
-        "name": "aj",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "aj",
+        "description": "end offset in the origin array"
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "number[]"
+      ],
+      "spread": false,
+      "description": "The result of the conversion."
     }
   },
   {
     "__docId__": 86,
     "kind": "file",
     "name": "src/api/convert/parse.js",
-    "content": "import parse_keep_zeros from '../../core/convert/parse_keep_zeros.js';\nimport trim_natural from '../../core/convert/trim_natural.js';\n\nexport default function parse(f, t, string) {\n\tconst b = parse_keep_zeros(f, t, string);\n\n\treturn trim_natural(b, 0, b.length);\n}\n",
+    "content": "import parse_keep_zeros from '../../core/convert/parse_keep_zeros.js';\nimport trim_natural from '../../core/convert/trim_natural.js';\n\n/**\n * Converts a string representation in base f to a limb array in base t.\n *\n * @param {number} f radix of the representation\n * @param {number} t radix of the limb array\n * @param {string} string the input representation\n *\n * @return {number[]} the resulting limb array\n */\nexport default function parse(f, t, string) {\n\tconst b = parse_keep_zeros(f, t, string);\n\n\treturn trim_natural(b, 0, b.length);\n}\n",
     "static": true,
     "longname": "/home/runner/work/js-integer-big-endian/js-integer-big-endian/src/api/convert/parse.js",
     "access": "public",
@@ -2346,40 +2577,54 @@
     "export": true,
     "importPath": "@aureooms/js-integer-big-endian/src/api/convert/parse.js",
     "importStyle": "parse",
-    "description": null,
-    "lineNumber": 4,
-    "undocument": true,
+    "description": "Converts a string representation in base f to a limb array in base t.",
+    "lineNumber": 13,
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "f",
-        "types": [
-          "*"
-        ]
+        "description": "radix of the representation"
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "t",
-        "types": [
-          "*"
-        ]
+        "description": "radix of the limb array"
       },
       {
-        "name": "string",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "string",
+        "description": "the input representation"
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "number[]"
+      ],
+      "spread": false,
+      "description": "the resulting limb array"
     }
   },
   {
     "__docId__": 88,
     "kind": "file",
     "name": "src/api/convert/stringify.js",
-    "content": "import convert from './convert.js';\nimport _to_string from '../../core/convert/_to_string.js';\n\nexport default function stringify(f, t, a, ai, aj) {\n\tif (t > 36) throw new Error('t > 36 not implemented');\n\n\tconst b = convert(f, t, a, ai, aj);\n\n\treturn _to_string(b);\n}\n",
+    "content": "import convert from './convert.js';\nimport _to_string from '../../core/convert/_to_string.js';\n\n/**\n * Converts a limb array in base f to a string representation in base t.\n *\n * @param {number} f radix of the limb array\n * @param {number} t radix of the representation\n * @param {number[]} a the input limb array\n * @param {number} ai left bound of the input\n * @param {number} aj non-inclusive right bound of the input\n *\n * @return {string} the resulting representation\n */\nexport default function stringify(f, t, a, ai, aj) {\n\tif (t > 36) throw new Error('t > 36 not implemented');\n\n\tconst b = convert(f, t, a, ai, aj);\n\n\treturn _to_string(b);\n}\n",
     "static": true,
     "longname": "/home/runner/work/js-integer-big-endian/js-integer-big-endian/src/api/convert/stringify.js",
     "access": "public",
@@ -2399,52 +2644,74 @@
     "export": true,
     "importPath": "@aureooms/js-integer-big-endian/src/api/convert/stringify.js",
     "importStyle": "stringify",
-    "description": null,
-    "lineNumber": 4,
-    "undocument": true,
+    "description": "Converts a limb array in base f to a string representation in base t.",
+    "lineNumber": 15,
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "f",
-        "types": [
-          "*"
-        ]
+        "description": "radix of the limb array"
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "t",
-        "types": [
-          "*"
-        ]
+        "description": "radix of the representation"
       },
       {
+        "nullable": null,
+        "types": [
+          "number[]"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "a",
-        "types": [
-          "*"
-        ]
+        "description": "the input limb array"
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "ai",
-        "types": [
-          "*"
-        ]
+        "description": "left bound of the input"
       },
       {
-        "name": "aj",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "aj",
+        "description": "non-inclusive right bound of the input"
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "string"
+      ],
+      "spread": false,
+      "description": "the resulting representation"
     }
   },
   {
     "__docId__": 90,
     "kind": "file",
     "name": "src/api/convert/translate.js",
-    "content": "import parse from './parse.js';\nimport stringify from './stringify.js';\n\nexport default function translate(f, t, string) {\n\tconst a = parse(f, t, string);\n\treturn stringify(t, t, a, 0, a.length);\n}\n",
+    "content": "import parse from './parse.js';\nimport stringify from './stringify.js';\n\n/**\n * Converts a string representation in base f to a string representation in\n * base t.\n *\n * @param {number} f radix of the input\n * @param {number} t radix of the output\n * @param {string} string the input representation\n *\n * @return {string} the output representation\n */\nexport default function translate(f, t, string) {\n\tconst a = parse(f, t, string);\n\treturn stringify(t, t, a, 0, a.length);\n}\n",
     "static": true,
     "longname": "/home/runner/work/js-integer-big-endian/js-integer-big-endian/src/api/convert/translate.js",
     "access": "public",
@@ -2464,33 +2731,47 @@
     "export": true,
     "importPath": "@aureooms/js-integer-big-endian/src/api/convert/translate.js",
     "importStyle": "translate",
-    "description": null,
-    "lineNumber": 4,
-    "undocument": true,
+    "description": "Converts a string representation in base f to a string representation in\nbase t.",
+    "lineNumber": 14,
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "f",
-        "types": [
-          "*"
-        ]
+        "description": "radix of the input"
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "t",
-        "types": [
-          "*"
-        ]
+        "description": "radix of the output"
       },
       {
-        "name": "string",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "string",
+        "description": "the input representation"
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "string"
+      ],
+      "spread": false,
+      "description": "the output representation"
     }
   },
   {
@@ -6087,7 +6368,7 @@
     "__docId__": 162,
     "kind": "file",
     "name": "src/core/array/_alloc.js",
-    "content": "import assert from 'assert';\n\nexport default function _alloc(n) {\n\tassert(n >= 0);\n\n\treturn new Array(n);\n}\n",
+    "content": "import assert from 'assert';\n\n/**\n * Allocate a new limb array.\n *\n * @param {number} n The size of the array to allocate.\n *\n * @return {number[]} The new limb array.\n */\nexport default function _alloc(n) {\n\tassert(n >= 0);\n\n\treturn new Array(n);\n}\n",
     "static": true,
     "longname": "/home/runner/work/js-integer-big-endian/js-integer-big-endian/src/core/array/_alloc.js",
     "access": "public",
@@ -6107,21 +6388,27 @@
     "export": true,
     "importPath": "@aureooms/js-integer-big-endian/src/core/array/_alloc.js",
     "importStyle": "_alloc",
-    "description": null,
-    "lineNumber": 3,
-    "undocument": true,
+    "description": "Allocate a new limb array.",
+    "lineNumber": 10,
     "params": [
       {
-        "name": "n",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "n",
+        "description": "The size of the array to allocate."
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "number[]"
+      ],
+      "spread": false,
+      "description": "The new limb array."
     }
   },
   {
@@ -6187,7 +6474,7 @@
     "__docId__": 166,
     "kind": "file",
     "name": "src/core/array/_copy.js",
-    "content": "import assert from 'assert';\n\nexport default function _copy(a, ai, aj, b, bi) {\n\tassert(ai >= 0 && aj <= a.length);\n\tassert(bi >= 0);\n\tassert(b.length - bi >= aj - ai);\n\n\tfor (; ai < aj; ++ai, ++bi) b[bi] = a[ai];\n\t// While ( ai < aj ) b[++bi] = a[++ai] ;\n}\n",
+    "content": "import assert from 'assert';\n\n/**\n * Copy a limb array into another limb array.\n *\n * @param {number[]} a The copied limb array.\n * @param {number} ai\n * @param {number} aj\n * @param {number[]} b The destination limb array.\n * @param {number} bi\n */\nexport default function _copy(a, ai, aj, b, bi) {\n\tassert(ai >= 0 && aj <= a.length);\n\tassert(bi >= 0);\n\tassert(b.length - bi >= aj - ai);\n\n\tfor (; ai < aj; ++ai, ++bi) b[bi] = a[ai];\n\t// While ( ai < aj ) b[++bi] = a[++ai] ;\n}\n",
     "static": true,
     "longname": "/home/runner/work/js-integer-big-endian/js-integer-big-endian/src/core/array/_copy.js",
     "access": "public",
@@ -6207,39 +6494,58 @@
     "export": true,
     "importPath": "@aureooms/js-integer-big-endian/src/core/array/_copy.js",
     "importStyle": "_copy",
-    "description": null,
-    "lineNumber": 3,
-    "undocument": true,
+    "description": "Copy a limb array into another limb array.",
+    "lineNumber": 12,
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "number[]"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "a",
-        "types": [
-          "*"
-        ]
+        "description": "The copied limb array."
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "ai",
-        "types": [
-          "*"
-        ]
+        "description": ""
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "aj",
-        "types": [
-          "*"
-        ]
+        "description": ""
       },
       {
+        "nullable": null,
+        "types": [
+          "number[]"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "b",
-        "types": [
-          "*"
-        ]
+        "description": "The destination limb array."
       },
       {
-        "name": "bi",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "bi",
+        "description": ""
       }
     ],
     "return": null
@@ -6248,7 +6554,7 @@
     "__docId__": 168,
     "kind": "file",
     "name": "src/core/array/_fill.js",
-    "content": "import assert from 'assert';\n\nexport default function _fill(a, ai, aj, v) {\n\tassert(ai >= 0);\n\tassert(aj <= a.length);\n\tassert(aj - ai >= 0);\n\tassert(typeof v === 'number');\n\n\tfor (let i = ai; i < aj; ++i) a[i] = v;\n}\n",
+    "content": "import assert from 'assert';\n\n/**\n * Fill the input limb array with a fixed value.\n *\n * @param {number[]} a input limb array\n * @param {number} ai\n * @param {number} aj\n * @param {number} v the value used to fill the input array\n */\nexport default function _fill(a, ai, aj, v) {\n\tassert(ai >= 0);\n\tassert(aj <= a.length);\n\tassert(aj - ai >= 0);\n\tassert(typeof v === 'number');\n\n\tfor (let i = ai; i < aj; ++i) a[i] = v;\n}\n",
     "static": true,
     "longname": "/home/runner/work/js-integer-big-endian/js-integer-big-endian/src/core/array/_fill.js",
     "access": "public",
@@ -6268,33 +6574,48 @@
     "export": true,
     "importPath": "@aureooms/js-integer-big-endian/src/core/array/_fill.js",
     "importStyle": "_fill",
-    "description": null,
-    "lineNumber": 3,
-    "undocument": true,
+    "description": "Fill the input limb array with a fixed value.",
+    "lineNumber": 11,
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "number[]"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "a",
-        "types": [
-          "*"
-        ]
+        "description": "input limb array"
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "ai",
-        "types": [
-          "*"
-        ]
+        "description": ""
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "aj",
-        "types": [
-          "*"
-        ]
+        "description": ""
       },
       {
-        "name": "v",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "v",
+        "description": "the value used to fill the input array"
       }
     ],
     "return": null
@@ -6303,7 +6624,7 @@
     "__docId__": 170,
     "kind": "file",
     "name": "src/core/array/_reset.js",
-    "content": "import _fill from './_fill.js';\n\nimport assert from 'assert';\n\nexport default function _reset(a, ai, aj) {\n\tassert(ai >= 0);\n\tassert(aj <= a.length);\n\tassert(aj - ai >= 0);\n\n\t_fill(a, ai, aj, 0);\n}\n",
+    "content": "import _fill from './_fill.js';\n\nimport assert from 'assert';\n\n/**\n * Fill the input limb array with zeros.\n *\n * @param {number[]} a input limb array\n * @param {number} ai\n * @param {number} aj\n */\nexport default function _reset(a, ai, aj) {\n\tassert(ai >= 0);\n\tassert(aj <= a.length);\n\tassert(aj - ai >= 0);\n\n\t_fill(a, ai, aj, 0);\n}\n",
     "static": true,
     "longname": "/home/runner/work/js-integer-big-endian/js-integer-big-endian/src/core/array/_reset.js",
     "access": "public",
@@ -6323,27 +6644,38 @@
     "export": true,
     "importPath": "@aureooms/js-integer-big-endian/src/core/array/_reset.js",
     "importStyle": "_reset",
-    "description": null,
-    "lineNumber": 5,
-    "undocument": true,
+    "description": "Fill the input limb array with zeros.",
+    "lineNumber": 12,
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "number[]"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "a",
-        "types": [
-          "*"
-        ]
+        "description": "input limb array"
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "ai",
-        "types": [
-          "*"
-        ]
+        "description": ""
       },
       {
-        "name": "aj",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "aj",
+        "description": ""
       }
     ],
     "return": null
@@ -6411,7 +6743,7 @@
     "__docId__": 174,
     "kind": "file",
     "name": "src/core/array/_zeros.js",
-    "content": "import _alloc from './_alloc.js';\nimport _reset from './_reset.js';\n\nimport assert from 'assert';\n\nexport default function _zeros(n) {\n\tassert(n >= 0);\n\n\tconst a = _alloc(n);\n\n\t_reset(a, 0, n);\n\n\treturn a;\n}\n",
+    "content": "import _alloc from './_alloc.js';\nimport _reset from './_reset.js';\n\nimport assert from 'assert';\n\n/**\n * Allocate a new limb array filled with zeros.\n *\n * @param {number} n The size of the allocated array.\n *\n * @return {number[]} The newly allocated array.\n */\nexport default function _zeros(n) {\n\tassert(n >= 0);\n\n\tconst a = _alloc(n);\n\n\t_reset(a, 0, n);\n\n\treturn a;\n}\n",
     "static": true,
     "longname": "/home/runner/work/js-integer-big-endian/js-integer-big-endian/src/core/array/_zeros.js",
     "access": "public",
@@ -6431,28 +6763,34 @@
     "export": true,
     "importPath": "@aureooms/js-integer-big-endian/src/core/array/_zeros.js",
     "importStyle": "_zeros",
-    "description": null,
-    "lineNumber": 6,
-    "undocument": true,
+    "description": "Allocate a new limb array filled with zeros.",
+    "lineNumber": 13,
     "params": [
       {
-        "name": "n",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "n",
+        "description": "The size of the allocated array."
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "number[]"
+      ],
+      "spread": false,
+      "description": "The newly allocated array."
     }
   },
   {
     "__docId__": 176,
     "kind": "file",
     "name": "src/core/compare/_cmp.js",
-    "content": "import assert from 'assert';\n\nimport _cmp_n from './_cmp_n.js';\n\n/**\n * Compares two big endian arrays.\n *\n * Input:\n *   - |A| >= |B| >= 0\n *\n * @param {array} a first operand\n * @param {Number} ai a left\n * @param {Number} aj a right\n * @param {array} b second operand\n * @param {Number} bi b left\n * @param {Number} bj b right\n *\n * @return {Number} result 1 if a > b; 0 if a = b; -1 otherwise.\n */\n\nexport default function _cmp(a, ai, aj, b, bi, bj) {\n\tassert(ai >= 0 && aj <= a.length);\n\tassert(bi >= 0 && bj <= b.length);\n\tassert(aj - ai >= bj - bi);\n\tassert(bj - bi >= 0);\n\n\tconst tmp = aj - bj + bi;\n\n\tfor (; ai < tmp; ++ai) if (a[ai] > 0) return 1;\n\n\tassert(aj - ai === bj - bi);\n\treturn _cmp_n(a, ai, aj, b, bi);\n}\n",
+    "content": "import assert from 'assert';\n\nimport _cmp_n from './_cmp_n.js';\n\n/**\n * Compares two big endian arrays. The second operand cannot have more limbs\n * than the first.\n *\n * Input:\n *   - |A| >= |B| >= 0\n *\n * @param {number[]} a first operand\n * @param {number} ai a left\n * @param {number} aj a right\n * @param {number[]} b second operand\n * @param {number} bi b left\n * @param {number} bj b right\n *\n * @return {number} result 1 if a > b; 0 if a = b; -1 otherwise.\n */\n\nexport default function _cmp(a, ai, aj, b, bi, bj) {\n\tassert(ai >= 0 && aj <= a.length);\n\tassert(bi >= 0 && bj <= b.length);\n\tassert(aj - ai >= bj - bi);\n\tassert(bj - bi >= 0);\n\n\tconst tmp = aj - bj + bi;\n\n\tfor (; ai < tmp; ++ai) if (a[ai] > 0) return 1;\n\n\tassert(aj - ai === bj - bi);\n\treturn _cmp_n(a, ai, aj, b, bi);\n}\n",
     "static": true,
     "longname": "/home/runner/work/js-integer-big-endian/js-integer-big-endian/src/core/compare/_cmp.js",
     "access": "public",
@@ -6472,13 +6810,13 @@
     "export": true,
     "importPath": "@aureooms/js-integer-big-endian/src/core/compare/_cmp.js",
     "importStyle": "_cmp",
-    "description": "Compares two big endian arrays.\n\nInput:\n  - |A| >= |B| >= 0",
-    "lineNumber": 21,
+    "description": "Compares two big endian arrays. The second operand cannot have more limbs\nthan the first.\n\nInput:\n  - |A| >= |B| >= 0",
+    "lineNumber": 22,
     "params": [
       {
         "nullable": null,
         "types": [
-          "array"
+          "number[]"
         ],
         "spread": false,
         "optional": false,
@@ -6488,7 +6826,7 @@
       {
         "nullable": null,
         "types": [
-          "Number"
+          "number"
         ],
         "spread": false,
         "optional": false,
@@ -6498,7 +6836,7 @@
       {
         "nullable": null,
         "types": [
-          "Number"
+          "number"
         ],
         "spread": false,
         "optional": false,
@@ -6508,7 +6846,7 @@
       {
         "nullable": null,
         "types": [
-          "array"
+          "number[]"
         ],
         "spread": false,
         "optional": false,
@@ -6518,7 +6856,7 @@
       {
         "nullable": null,
         "types": [
-          "Number"
+          "number"
         ],
         "spread": false,
         "optional": false,
@@ -6528,7 +6866,7 @@
       {
         "nullable": null,
         "types": [
-          "Number"
+          "number"
         ],
         "spread": false,
         "optional": false,
@@ -6539,7 +6877,7 @@
     "return": {
       "nullable": null,
       "types": [
-        "Number"
+        "number"
       ],
       "spread": false,
       "description": "result 1 if a > b; 0 if a = b; -1 otherwise."
@@ -6744,7 +7082,7 @@
     "__docId__": 184,
     "kind": "file",
     "name": "src/core/compare/_cmp_n.js",
-    "content": "import assert from 'assert';\n\n/**\n * Compares two big endian arrays.\n *\n * Input:\n *   - |A| = |B|\n *\n * @param {Array} a first operand\n * @param {Number} ai a left\n * @param {Number} aj a right\n * @param {Array} b second operand\n * @param {Number} bi b left\n *\n * @return {Number} 1 if a > b; 0 if a = b; -1 otherwise.\n */\n\nexport default function _cmp_n(a, ai, aj, b, bi) {\n\tassert(ai >= 0 && aj <= a.length);\n\tassert(bi >= 0);\n\tassert(b.length - bi >= aj - ai);\n\n\tfor (; ai < aj; ++ai, ++bi) {\n\t\tif (a[ai] > b[bi]) return 1;\n\t\tif (a[ai] < b[bi]) return -1;\n\t}\n\n\treturn 0;\n}\n",
+    "content": "import assert from 'assert';\n\n/**\n * Compares two big endian arrays.\n *\n * Input:\n *   - |A| = |B|\n *\n * @param {number[]} a first operand\n * @param {number} ai a left\n * @param {number} aj a right\n * @param {number[]} b second operand\n * @param {number} bi b left\n *\n * @return {number} 1 if a > b; 0 if a = b; -1 otherwise.\n */\n\nexport default function _cmp_n(a, ai, aj, b, bi) {\n\tassert(ai >= 0 && aj <= a.length);\n\tassert(bi >= 0);\n\tassert(b.length - bi >= aj - ai);\n\n\tfor (; ai < aj; ++ai, ++bi) {\n\t\tif (a[ai] > b[bi]) return 1;\n\t\tif (a[ai] < b[bi]) return -1;\n\t}\n\n\treturn 0;\n}\n",
     "static": true,
     "longname": "/home/runner/work/js-integer-big-endian/js-integer-big-endian/src/core/compare/_cmp_n.js",
     "access": "public",
@@ -6770,7 +7108,7 @@
       {
         "nullable": null,
         "types": [
-          "Array"
+          "number[]"
         ],
         "spread": false,
         "optional": false,
@@ -6780,7 +7118,7 @@
       {
         "nullable": null,
         "types": [
-          "Number"
+          "number"
         ],
         "spread": false,
         "optional": false,
@@ -6790,7 +7128,7 @@
       {
         "nullable": null,
         "types": [
-          "Number"
+          "number"
         ],
         "spread": false,
         "optional": false,
@@ -6800,7 +7138,7 @@
       {
         "nullable": null,
         "types": [
-          "Array"
+          "number[]"
         ],
         "spread": false,
         "optional": false,
@@ -6810,7 +7148,7 @@
       {
         "nullable": null,
         "types": [
-          "Number"
+          "number"
         ],
         "spread": false,
         "optional": false,
@@ -6821,7 +7159,7 @@
     "return": {
       "nullable": null,
       "types": [
-        "Number"
+        "number"
       ],
       "spread": false,
       "description": "1 if a > b; 0 if a = b; -1 otherwise."
@@ -6831,7 +7169,7 @@
     "__docId__": 186,
     "kind": "file",
     "name": "src/core/convert/_chr.js",
-    "content": "export default function _chr(x) {\n\tif (x < 10) return String.fromCharCode(48 + x);\n\treturn String.fromCharCode(87 + x);\n}\n",
+    "content": "/**\n * Converts a limb to a character representation. This only works if the limb\n * is at most 35.\n *\n * @param {number} x The input limb.\n *\n * @return {string} The corresponding character representation.\n */\nexport default function _chr(x) {\n\tif (x < 10) return String.fromCharCode(48 + x);\n\treturn String.fromCharCode(87 + x);\n}\n",
     "static": true,
     "longname": "/home/runner/work/js-integer-big-endian/js-integer-big-endian/src/core/convert/_chr.js",
     "access": "public",
@@ -6851,28 +7189,34 @@
     "export": true,
     "importPath": "@aureooms/js-integer-big-endian/src/core/convert/_chr.js",
     "importStyle": "_chr",
-    "description": null,
-    "lineNumber": 1,
-    "undocument": true,
+    "description": "Converts a limb to a character representation. This only works if the limb\nis at most 35.",
+    "lineNumber": 9,
     "params": [
       {
-        "name": "x",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "x",
+        "description": "The input limb."
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "string"
+      ],
+      "spread": false,
+      "description": "The corresponding character representation."
     }
   },
   {
     "__docId__": 188,
     "kind": "file",
     "name": "src/core/convert/_convert.js",
-    "content": "import _copy from '../array/_copy.js';\nimport _convert_to_smaller from './_convert_to_smaller.js';\nimport _convert_to_larger from './_convert_to_larger.js';\n\n/**\n *\n * Dispatcher for the various base conversion implementations.\n * The decision is based on the relation f <= t.\n *\n * @param {Number} f the base to convert from\n * @param {Number} t the base to convert to\n * @param {Array} a the origin array\n * @param {Number} ai start offset in the origin array\n * @param {Number} aj end offset in the origin array\n * @param {Array} b the destination array\n * @param {Number} bi start offset in the destination array\n * @param {Number} bj end offset in the destination array\n */\n\nexport default function _convert(f, t, a, ai, aj, b, bi, bj) {\n\tif (f > t) return _convert_to_smaller(f, t, a, ai, aj, b, bi, bj);\n\tif (f < t) return _convert_to_larger(f, t, a, ai, aj, b, bi, bj);\n\treturn _copy(a, ai, aj, b, bi);\n}\n",
+    "content": "import _copy from '../array/_copy.js';\nimport _convert_to_smaller from './_convert_to_smaller.js';\nimport _convert_to_larger from './_convert_to_larger.js';\n\n/**\n *\n * Dispatcher for the various base conversion implementations.\n * The decision is based on the relation f <= t.\n *\n * @param {number} f the base to convert from\n * @param {number} t the base to convert to\n * @param {number[]} a the origin array\n * @param {number} ai start offset in the origin array\n * @param {number} aj end offset in the origin array\n * @param {number[]} b the destination array\n * @param {number} bi start offset in the destination array\n * @param {number} bj end offset in the destination array\n */\n\nexport default function _convert(f, t, a, ai, aj, b, bi, bj) {\n\tif (f > t) return _convert_to_smaller(f, t, a, ai, aj, b, bi, bj);\n\tif (f < t) return _convert_to_larger(f, t, a, ai, aj, b, bi, bj);\n\treturn _copy(a, ai, aj, b, bi);\n}\n",
     "static": true,
     "longname": "/home/runner/work/js-integer-big-endian/js-integer-big-endian/src/core/convert/_convert.js",
     "access": "public",
@@ -6898,7 +7242,7 @@
       {
         "nullable": null,
         "types": [
-          "Number"
+          "number"
         ],
         "spread": false,
         "optional": false,
@@ -6908,7 +7252,7 @@
       {
         "nullable": null,
         "types": [
-          "Number"
+          "number"
         ],
         "spread": false,
         "optional": false,
@@ -6918,7 +7262,7 @@
       {
         "nullable": null,
         "types": [
-          "Array"
+          "number[]"
         ],
         "spread": false,
         "optional": false,
@@ -6928,7 +7272,7 @@
       {
         "nullable": null,
         "types": [
-          "Number"
+          "number"
         ],
         "spread": false,
         "optional": false,
@@ -6938,7 +7282,7 @@
       {
         "nullable": null,
         "types": [
-          "Number"
+          "number"
         ],
         "spread": false,
         "optional": false,
@@ -6948,7 +7292,7 @@
       {
         "nullable": null,
         "types": [
-          "Array"
+          "number[]"
         ],
         "spread": false,
         "optional": false,
@@ -6958,7 +7302,7 @@
       {
         "nullable": null,
         "types": [
-          "Number"
+          "number"
         ],
         "spread": false,
         "optional": false,
@@ -6968,7 +7312,7 @@
       {
         "nullable": null,
         "types": [
-          "Number"
+          "number"
         ],
         "spread": false,
         "optional": false,
@@ -7888,7 +8232,7 @@
     "__docId__": 206,
     "kind": "file",
     "name": "src/core/convert/_from_string.js",
-    "content": "import _int from './_int.js';\n\nexport default function _from_string(string) {\n\tconst n = string.length;\n\n\tconst a = [];\n\n\tfor (let k = 0; k < n; ++k) a.push(_int(string[k]));\n\n\treturn a;\n}\n",
+    "content": "import _int from './_int.js';\n\n/**\n * Converts a string representation to a limb array representation without\n * radix conversion.\n *\n * @param {string} string input string\n *\n * @return {number[]} output limb array\n */\nexport default function _from_string(string) {\n\tconst n = string.length;\n\n\tconst a = [];\n\n\tfor (let k = 0; k < n; ++k) a.push(_int(string[k]));\n\n\treturn a;\n}\n",
     "static": true,
     "longname": "/home/runner/work/js-integer-big-endian/js-integer-big-endian/src/core/convert/_from_string.js",
     "access": "public",
@@ -7908,28 +8252,34 @@
     "export": true,
     "importPath": "@aureooms/js-integer-big-endian/src/core/convert/_from_string.js",
     "importStyle": "_from_string",
-    "description": null,
-    "lineNumber": 3,
-    "undocument": true,
+    "description": "Converts a string representation to a limb array representation without\nradix conversion.",
+    "lineNumber": 11,
     "params": [
       {
-        "name": "string",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "string",
+        "description": "input string"
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "number[]"
+      ],
+      "spread": false,
+      "description": "output limb array"
     }
   },
   {
     "__docId__": 208,
     "kind": "file",
     "name": "src/core/convert/_int.js",
-    "content": "export default function _int(x) {\n\tif (x >= '0' && x <= '9') return x.charCodeAt(0) - 48;\n\tif (x >= 'A' && x <= 'Z') return x.charCodeAt(0) - 55;\n\tif (x >= 'a' && x <= 'z') return x.charCodeAt(0) - 87;\n\n\tthrow new Error('invalid literal for _int: ' + x);\n}\n",
+    "content": "/**\n * Converts an input character representation to a limb.\n *\n * @param {string} x input character\n *\n * @return {number} output limb\n */\nexport default function _int(x) {\n\tif (x >= '0' && x <= '9') return x.charCodeAt(0) - 48;\n\tif (x >= 'A' && x <= 'Z') return x.charCodeAt(0) - 55;\n\tif (x >= 'a' && x <= 'z') return x.charCodeAt(0) - 87;\n\n\tthrow new Error('invalid literal for _int: ' + x);\n}\n",
     "static": true,
     "longname": "/home/runner/work/js-integer-big-endian/js-integer-big-endian/src/core/convert/_int.js",
     "access": "public",
@@ -7949,21 +8299,27 @@
     "export": true,
     "importPath": "@aureooms/js-integer-big-endian/src/core/convert/_int.js",
     "importStyle": "_int",
-    "description": null,
-    "lineNumber": 1,
-    "undocument": true,
+    "description": "Converts an input character representation to a limb.",
+    "lineNumber": 8,
     "params": [
       {
-        "name": "x",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "x",
+        "description": "input character"
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "number"
+      ],
+      "spread": false,
+      "description": "output limb"
     }
   },
   {
@@ -8017,7 +8373,7 @@
     "__docId__": 212,
     "kind": "file",
     "name": "src/core/convert/_to_string.js",
-    "content": "import _chr from './_chr.js';\n\nexport default function _to_string(b) {\n\tconst n = b.length;\n\n\tconst data = [];\n\n\tfor (let k = 0; k < n; ++k) data.push(_chr(b[k]));\n\n\treturn data.join('');\n}\n",
+    "content": "import _chr from './_chr.js';\n\n/**\n * Convert an entire limb array to a string representation (without changing\n * the radix).\n *\n * @param {number[]} b The inpurt limb array.\n *\n * @return {string} The string representation.\n */\nexport default function _to_string(b) {\n\tconst n = b.length;\n\n\tconst data = [];\n\n\tfor (let k = 0; k < n; ++k) data.push(_chr(b[k]));\n\n\treturn data.join('');\n}\n",
     "static": true,
     "longname": "/home/runner/work/js-integer-big-endian/js-integer-big-endian/src/core/convert/_to_string.js",
     "access": "public",
@@ -8037,28 +8393,34 @@
     "export": true,
     "importPath": "@aureooms/js-integer-big-endian/src/core/convert/_to_string.js",
     "importStyle": "_to_string",
-    "description": null,
-    "lineNumber": 3,
-    "undocument": true,
+    "description": "Convert an entire limb array to a string representation (without changing\nthe radix).",
+    "lineNumber": 11,
     "params": [
       {
-        "name": "b",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number[]"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "b",
+        "description": "The inpurt limb array."
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "string"
+      ],
+      "spread": false,
+      "description": "The string representation."
     }
   },
   {
     "__docId__": 214,
     "kind": "file",
     "name": "src/core/convert/_trim_positive.js",
-    "content": "import assert from 'assert';\n\nexport default function _trim_positive(a, ai, aj) {\n\tassert(ai >= 0 && aj <= a.length);\n\n\twhile (ai < aj && a[ai] === 0) ++ai;\n\n\treturn ai;\n}\n",
+    "content": "import assert from 'assert';\n\n/**\n * Compute the new inclusive left bound of a limb array by skipping all\n * leading zeros.\n *\n * @param {number[]} a The input limb array.\n * @param {number} ai\n * @param {number} aj\n *\n * @return {number} The new inclusive left bound of the input.\n */\nexport default function _trim_positive(a, ai, aj) {\n\tassert(ai >= 0 && aj <= a.length);\n\n\twhile (ai < aj && a[ai] === 0) ++ai;\n\n\treturn ai;\n}\n",
     "static": true,
     "longname": "/home/runner/work/js-integer-big-endian/js-integer-big-endian/src/core/convert/_trim_positive.js",
     "access": "public",
@@ -8078,40 +8440,54 @@
     "export": true,
     "importPath": "@aureooms/js-integer-big-endian/src/core/convert/_trim_positive.js",
     "importStyle": "_trim_positive",
-    "description": null,
-    "lineNumber": 3,
-    "undocument": true,
+    "description": "Compute the new inclusive left bound of a limb array by skipping all\nleading zeros.",
+    "lineNumber": 13,
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "number[]"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "a",
-        "types": [
-          "*"
-        ]
+        "description": "The input limb array."
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "ai",
-        "types": [
-          "*"
-        ]
+        "description": ""
       },
       {
-        "name": "aj",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "aj",
+        "description": ""
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "number"
+      ],
+      "spread": false,
+      "description": "The new inclusive left bound of the input."
     }
   },
   {
     "__docId__": 216,
     "kind": "file",
     "name": "src/core/convert/convert_keep_zeros.js",
-    "content": "import _zeros from '../array/_zeros.js';\nimport _convert from './_convert.js';\n\nexport default function convert_keep_zeros(f, t, a, ai, aj) {\n\tconst bi = 0;\n\tconst bj = Math.ceil((Math.log(f) / Math.log(t)) * (aj - ai));\n\tconst b = _zeros(bj - bi);\n\n\t_convert(f, t, a, ai, aj, b, bi, bj);\n\n\treturn b;\n}\n",
+    "content": "import _zeros from '../array/_zeros.js';\nimport _convert from './_convert.js';\n\n/**\n * Converts the input number A represented in base f to a number B represented\n * in base t. All leading zeros resulting from the conversion are kept.\n *\n * @param {number} f the base to convert from\n * @param {number} t the base to convert to\n * @param {number[]} a the origin array\n * @param {number} ai start offset in the origin array\n * @param {number} aj end offset in the origin array\n *\n * @return {number[]} The resulting limb array.\n */\nexport default function convert_keep_zeros(f, t, a, ai, aj) {\n\tconst bi = 0;\n\tconst bj = Math.ceil((Math.log(f) / Math.log(t)) * (aj - ai));\n\tconst b = _zeros(bj - bi);\n\n\t_convert(f, t, a, ai, aj, b, bi, bj);\n\n\treturn b;\n}\n",
     "static": true,
     "longname": "/home/runner/work/js-integer-big-endian/js-integer-big-endian/src/core/convert/convert_keep_zeros.js",
     "access": "public",
@@ -8131,52 +8507,74 @@
     "export": true,
     "importPath": "@aureooms/js-integer-big-endian/src/core/convert/convert_keep_zeros.js",
     "importStyle": "convert_keep_zeros",
-    "description": null,
-    "lineNumber": 4,
-    "undocument": true,
+    "description": "Converts the input number A represented in base f to a number B represented\nin base t. All leading zeros resulting from the conversion are kept.",
+    "lineNumber": 16,
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "f",
-        "types": [
-          "*"
-        ]
+        "description": "the base to convert from"
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "t",
-        "types": [
-          "*"
-        ]
+        "description": "the base to convert to"
       },
       {
+        "nullable": null,
+        "types": [
+          "number[]"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "a",
-        "types": [
-          "*"
-        ]
+        "description": "the origin array"
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "ai",
-        "types": [
-          "*"
-        ]
+        "description": "start offset in the origin array"
       },
       {
-        "name": "aj",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "aj",
+        "description": "end offset in the origin array"
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "number[]"
+      ],
+      "spread": false,
+      "description": "The resulting limb array."
     }
   },
   {
     "__docId__": 218,
     "kind": "file",
     "name": "src/core/convert/parse_keep_zeros.js",
-    "content": "import _from_string from './_from_string.js';\nimport convert_keep_zeros from './convert_keep_zeros.js';\n\nexport default function parse_keep_zeros(f, t, string) {\n\tif (f > 36) throw new Error('f > 36 not implemented');\n\n\tconst a = _from_string(string);\n\n\treturn convert_keep_zeros(f, t, a, 0, a.length);\n}\n",
+    "content": "import _from_string from './_from_string.js';\nimport convert_keep_zeros from './convert_keep_zeros.js';\n\n/**\n * Converts a string representation in base f to a limb array in base t keeping\n * all leading zeros resulting from the conversion process.\n *\n * @param {number} f radix of the representation\n * @param {number} t radix of the limb array\n * @param {string} string the input representation\n *\n * @return {number[]} the resulting limb array\n */\nexport default function parse_keep_zeros(f, t, string) {\n\tif (f > 36) throw new Error('f > 36 not implemented');\n\n\tconst a = _from_string(string);\n\n\treturn convert_keep_zeros(f, t, a, 0, a.length);\n}\n",
     "static": true,
     "longname": "/home/runner/work/js-integer-big-endian/js-integer-big-endian/src/core/convert/parse_keep_zeros.js",
     "access": "public",
@@ -8196,40 +8594,54 @@
     "export": true,
     "importPath": "@aureooms/js-integer-big-endian/src/core/convert/parse_keep_zeros.js",
     "importStyle": "parse_keep_zeros",
-    "description": null,
-    "lineNumber": 4,
-    "undocument": true,
+    "description": "Converts a string representation in base f to a limb array in base t keeping\nall leading zeros resulting from the conversion process.",
+    "lineNumber": 14,
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "f",
-        "types": [
-          "*"
-        ]
+        "description": "radix of the representation"
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "t",
-        "types": [
-          "*"
-        ]
+        "description": "radix of the limb array"
       },
       {
-        "name": "string",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "string",
+        "description": "the input representation"
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "number[]"
+      ],
+      "spread": false,
+      "description": "the resulting limb array"
     }
   },
   {
     "__docId__": 220,
     "kind": "file",
     "name": "src/core/convert/trim_natural.js",
-    "content": "import _trim_positive from './_trim_positive.js';\nimport _alloc from '../array/_alloc.js';\nimport _copy from '../array/_copy.js';\n\nexport default function trim_natural(a, ai, aj) {\n\tconst x = _trim_positive(a, ai, aj);\n\n\tif (x >= aj) return [0];\n\n\tconst b = _alloc(aj - x);\n\n\t_copy(a, x, aj, b, 0);\n\n\treturn b;\n}\n",
+    "content": "import _trim_positive from './_trim_positive.js';\nimport _alloc from '../array/_alloc.js';\nimport _copy from '../array/_copy.js';\n\n/**\n * Trim a limb array so that it is either [0] or does not start with any\n * leading zeros. Return a newly allocated array and does not modify the input.\n *\n * @param {number[]} a The input limb array.\n * @param {number} ai\n * @param {number} aj\n *\n * @return {number[]} The input but trimmed.\n */\nexport default function trim_natural(a, ai, aj) {\n\tconst x = _trim_positive(a, ai, aj);\n\n\tif (x >= aj) return [0];\n\n\tconst b = _alloc(aj - x);\n\n\t_copy(a, x, aj, b, 0);\n\n\treturn b;\n}\n",
     "static": true,
     "longname": "/home/runner/work/js-integer-big-endian/js-integer-big-endian/src/core/convert/trim_natural.js",
     "access": "public",
@@ -8249,33 +8661,47 @@
     "export": true,
     "importPath": "@aureooms/js-integer-big-endian/src/core/convert/trim_natural.js",
     "importStyle": "trim_natural",
-    "description": null,
-    "lineNumber": 5,
-    "undocument": true,
+    "description": "Trim a limb array so that it is either [0] or does not start with any\nleading zeros. Return a newly allocated array and does not modify the input.",
+    "lineNumber": 15,
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "number[]"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "a",
-        "types": [
-          "*"
-        ]
+        "description": "The input limb array."
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "ai",
-        "types": [
-          "*"
-        ]
+        "description": ""
       },
       {
-        "name": "aj",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "aj",
+        "description": ""
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "number[]"
+      ],
+      "spread": false,
+      "description": "The input but trimmed."
     }
   },
   {
@@ -8392,7 +8818,7 @@
   },
   {
     "kind": "packageJSON",
-    "content": "{\n  \"name\": \"@aureooms/js-integer-big-endian\",\n  \"description\": \"Arbitrary precision arithmetic for integers in big endian order for JavaScript\",\n  \"version\": \"11.0.0\",\n  \"license\": \"AGPL-3.0\",\n  \"author\": \"Aurélien Ooms <aurelien.ooms@gmail.com>\",\n  \"homepage\": \"https://aureooms.github.io/js-integer-big-endian\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/aureooms/js-integer-big-endian\"\n  },\n  \"bugs\": {\n    \"url\": \"https://github.com/aureooms/js-integer-big-endian/issues\"\n  },\n  \"keywords\": [\n    \"arbitrary\",\n    \"arithmetic\",\n    \"big\",\n    \"endian\",\n    \"integers\",\n    \"javascript\",\n    \"js\",\n    \"numbers\",\n    \"precision\"\n  ],\n  \"sideEffects\": false,\n  \"source\": \"src/index.js\",\n  \"main\": \"dist/index.js\",\n  \"module\": \"dist/index.module.js\",\n  \"umd:main\": \"dist/index.umd.js\",\n  \"unpkg\": \"dist/index.umd.js\",\n  \"exports\": {\n    \".\": {\n      \"browser\": \"./dist/index.module.js\",\n      \"umd\": \"./dist/index.umd.js\",\n      \"require\": \"./dist/index.js\",\n      \"default\": \"./dist/index.modern.js\"\n    }\n  },\n  \"files\": [\n    \"dist\"\n  ],\n  \"scripts\": {\n    \"build\": \"NODE_ENV=production microbundle\",\n    \"build-docs\": \"esdoc\",\n    \"build-gh-pages\": \"npm run build-docs\",\n    \"commit-msg\": \"commitlint --edit\",\n    \"cover\": \"c8 --all --src src --reporter=lcov npm test\",\n    \"debug\": \"NODE_ENV=debug npm run test -- -st --fail-fast\",\n    \"dev\": \"npm run lint-config-and-fix && npm run lint-and-fix && npm run cover -- -- -st --fail-fast\",\n    \"install-hooks\": \"husky install\",\n    \"lint\": \"xo\",\n    \"lint-and-fix\": \"npm run lint -- --fix\",\n    \"lint-config\": \"fixpack --dryRun\",\n    \"lint-config-and-fix\": \"fixpack || fixpack\",\n    \"postinstall\": \"npm run install-hooks\",\n    \"postpublish\": \"pinst --enable\",\n    \"precommit\": \"lint-staged\",\n    \"prepare\": \"npm run build\",\n    \"prepublishOnly\": \"pinst --disable\",\n    \"release\": \"np --message ':hatching_chick: release: Bumping to v%s.'\",\n    \"test\": \"ava\",\n    \"travis\": \"npm run lint-config && npm run lint && npm run cover\"\n  },\n  \"dependencies\": {},\n  \"devDependencies\": {\n    \"@aureooms/js-array\": \"4.0.0\",\n    \"@aureooms/js-itertools\": \"5.0.2\",\n    \"@aureooms/js-memory\": \"4.0.0\",\n    \"@aureooms/js-operator\": \"1.0.2\",\n    \"@aureooms/js-random\": \"2.0.0\",\n    \"@babel/core\": \"7.13.10\",\n    \"@babel/preset-env\": \"7.13.12\",\n    \"@babel/register\": \"7.13.8\",\n    \"@commitlint/cli\": \"12.0.1\",\n    \"@js-library/commitlint-config\": \"0.0.4\",\n    \"ava\": \"3.15.0\",\n    \"babel-plugin-transform-remove-console\": \"6.9.4\",\n    \"babel-plugin-unassert\": \"3.0.1\",\n    \"babel-preset-power-assert\": \"3.0.0\",\n    \"c8\": \"7.6.0\",\n    \"coveralls\": \"3.1.0\",\n    \"esdoc\": \"1.1.0\",\n    \"esdoc-inject-script-plugin\": \"1.0.0\",\n    \"esdoc-inject-style-plugin\": \"1.0.0\",\n    \"esdoc-standard-plugin\": \"1.0.0\",\n    \"fixpack\": \"4.0.0\",\n    \"husky\": \"5.2.0\",\n    \"lint-staged\": \"10.5.4\",\n    \"microbundle\": \"0.13.0\",\n    \"np\": \"7.4.0\",\n    \"pinst\": \"2.1.6\",\n    \"power-assert\": \"1.6.1\",\n    \"regenerator-runtime\": \"0.13.7\",\n    \"xo\": \"0.38.2\",\n    \"xorshift.js\": \"1.0.5\"\n  },\n  \"ava\": {\n    \"files\": [\n      \"test/src/**/*\"\n    ],\n    \"require\": [\n      \"regenerator-runtime/runtime\",\n      \"@babel/register\"\n    ],\n    \"timeout\": \"3m\",\n    \"concurrency\": 8\n  },\n  \"babel\": {\n    \"sourceMaps\": true,\n    \"presets\": [\n      [\n        \"@babel/preset-env\",\n        {\n          \"targets\": [\n            \"defaults\",\n            \"maintained node versions\"\n          ]\n        }\n      ]\n    ],\n    \"env\": {\n      \"debug\": {\n        \"presets\": [\n          [\n            \"@babel/preset-env\",\n            {\n              \"targets\": \"current node\"\n            }\n          ],\n          \"babel-preset-power-assert\"\n        ]\n      },\n      \"test\": {\n        \"presets\": [\n          [\n            \"@babel/preset-env\",\n            {\n              \"targets\": \"current node\"\n            }\n          ],\n          \"babel-preset-power-assert\"\n        ],\n        \"plugins\": [\n          [\n            \"transform-remove-console\",\n            {\n              \"exclude\": [\n                \"log\",\n                \"error\",\n                \"warn\"\n              ]\n            }\n          ]\n        ]\n      },\n      \"development\": {\n        \"presets\": [\n          \"babel-preset-power-assert\"\n        ],\n        \"plugins\": [\n          [\n            \"transform-remove-console\",\n            {\n              \"exclude\": [\n                \"log\",\n                \"error\",\n                \"warn\"\n              ]\n            }\n          ]\n        ]\n      },\n      \"production\": {\n        \"plugins\": [\n          \"babel-plugin-unassert\",\n          [\n            \"transform-remove-console\",\n            {\n              \"exclude\": [\n                \"log\",\n                \"error\",\n                \"warn\"\n              ]\n            }\n          ]\n        ]\n      }\n    }\n  },\n  \"lint-staged\": {\n    \"*.js\": [\n      \"npm run lint-and-fix\"\n    ],\n    \"package.json\": [\n      \"npm run lint-config-and-fix\"\n    ]\n  },\n  \"prettier\": {\n    \"trailingComma\": \"all\"\n  },\n  \"xo\": {\n    \"prettier\": true,\n    \"plugins\": [\n      \"unicorn\"\n    ],\n    \"rules\": {\n      \"unicorn/filename-case\": \"off\",\n      \"camelcase\": \"off\",\n      \"unicorn/prevent-abbreviations\": \"off\",\n      \"no-constant-condition\": \"off\",\n      \"max-params\": \"off\",\n      \"unicorn/prefer-math-trunc\": \"off\",\n      \"no-implicit-coercion\": \"off\",\n      \"unicorn/no-new-array\": \"off\"\n    },\n    \"overrides\": [\n      {\n        \"files\": [\n          \"doc/**\"\n        ],\n        \"env\": \"browser\"\n      }\n    ]\n  }\n}\n",
+    "content": "{\n  \"name\": \"@aureooms/js-integer-big-endian\",\n  \"description\": \"Arbitrary precision arithmetic for integers in big endian order for JavaScript\",\n  \"version\": \"11.0.1\",\n  \"license\": \"AGPL-3.0\",\n  \"author\": \"Aurélien Ooms <aurelien.ooms@gmail.com>\",\n  \"homepage\": \"https://aureooms.github.io/js-integer-big-endian\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/aureooms/js-integer-big-endian\"\n  },\n  \"bugs\": {\n    \"url\": \"https://github.com/aureooms/js-integer-big-endian/issues\"\n  },\n  \"keywords\": [\n    \"arbitrary\",\n    \"arithmetic\",\n    \"big\",\n    \"endian\",\n    \"integers\",\n    \"javascript\",\n    \"js\",\n    \"numbers\",\n    \"precision\"\n  ],\n  \"sideEffects\": false,\n  \"source\": \"src/index.js\",\n  \"main\": \"dist/index.js\",\n  \"module\": \"dist/index.module.js\",\n  \"umd:main\": \"dist/index.umd.js\",\n  \"unpkg\": \"dist/index.umd.js\",\n  \"exports\": {\n    \".\": {\n      \"browser\": \"./dist/index.module.js\",\n      \"umd\": \"./dist/index.umd.js\",\n      \"require\": \"./dist/index.js\",\n      \"default\": \"./dist/index.modern.js\"\n    }\n  },\n  \"files\": [\n    \"dist\"\n  ],\n  \"scripts\": {\n    \"build\": \"NODE_ENV=production microbundle\",\n    \"build-docs\": \"esdoc\",\n    \"build-gh-pages\": \"npm run build-docs\",\n    \"commit-msg\": \"commitlint --edit\",\n    \"cover\": \"c8 --all --src src --reporter=lcov npm test\",\n    \"debug\": \"NODE_ENV=debug npm run test -- -st --fail-fast\",\n    \"dev\": \"npm run lint-config-and-fix && npm run lint-and-fix && npm run cover -- -- -st --fail-fast\",\n    \"install-hooks\": \"husky install\",\n    \"lint\": \"xo\",\n    \"lint-and-fix\": \"npm run lint -- --fix\",\n    \"lint-config\": \"fixpack --dryRun\",\n    \"lint-config-and-fix\": \"fixpack || fixpack\",\n    \"postinstall\": \"npm run install-hooks\",\n    \"postpublish\": \"pinst --enable\",\n    \"precommit\": \"lint-staged\",\n    \"prepare\": \"npm run build\",\n    \"prepublishOnly\": \"pinst --disable\",\n    \"release\": \"np --message ':hatching_chick: release: Bumping to v%s.'\",\n    \"test\": \"ava\",\n    \"travis\": \"npm run lint-config && npm run lint && npm run cover\"\n  },\n  \"dependencies\": {},\n  \"devDependencies\": {\n    \"@aureooms/js-array\": \"4.0.0\",\n    \"@aureooms/js-itertools\": \"5.0.2\",\n    \"@aureooms/js-memory\": \"4.0.0\",\n    \"@aureooms/js-operator\": \"1.0.2\",\n    \"@aureooms/js-random\": \"2.0.0\",\n    \"@babel/core\": \"7.13.10\",\n    \"@babel/preset-env\": \"7.13.12\",\n    \"@babel/register\": \"7.13.8\",\n    \"@commitlint/cli\": \"12.0.1\",\n    \"@js-library/commitlint-config\": \"0.0.4\",\n    \"ava\": \"3.15.0\",\n    \"babel-plugin-transform-remove-console\": \"6.9.4\",\n    \"babel-plugin-unassert\": \"3.0.1\",\n    \"babel-preset-power-assert\": \"3.0.0\",\n    \"c8\": \"7.6.0\",\n    \"coveralls\": \"3.1.0\",\n    \"esdoc\": \"1.1.0\",\n    \"esdoc-inject-script-plugin\": \"1.0.0\",\n    \"esdoc-inject-style-plugin\": \"1.0.0\",\n    \"esdoc-standard-plugin\": \"1.0.0\",\n    \"fixpack\": \"4.0.0\",\n    \"husky\": \"5.2.0\",\n    \"lint-staged\": \"10.5.4\",\n    \"microbundle\": \"0.13.0\",\n    \"np\": \"7.4.0\",\n    \"pinst\": \"2.1.6\",\n    \"power-assert\": \"1.6.1\",\n    \"regenerator-runtime\": \"0.13.7\",\n    \"xo\": \"0.38.2\",\n    \"xorshift.js\": \"1.0.5\"\n  },\n  \"ava\": {\n    \"files\": [\n      \"test/src/**/*\"\n    ],\n    \"require\": [\n      \"regenerator-runtime/runtime\",\n      \"@babel/register\"\n    ],\n    \"timeout\": \"3m\",\n    \"concurrency\": 8\n  },\n  \"babel\": {\n    \"sourceMaps\": true,\n    \"presets\": [\n      [\n        \"@babel/preset-env\",\n        {\n          \"targets\": [\n            \"defaults\",\n            \"maintained node versions\"\n          ]\n        }\n      ]\n    ],\n    \"env\": {\n      \"debug\": {\n        \"presets\": [\n          [\n            \"@babel/preset-env\",\n            {\n              \"targets\": \"current node\"\n            }\n          ],\n          \"babel-preset-power-assert\"\n        ]\n      },\n      \"test\": {\n        \"presets\": [\n          [\n            \"@babel/preset-env\",\n            {\n              \"targets\": \"current node\"\n            }\n          ],\n          \"babel-preset-power-assert\"\n        ],\n        \"plugins\": [\n          [\n            \"transform-remove-console\",\n            {\n              \"exclude\": [\n                \"log\",\n                \"error\",\n                \"warn\"\n              ]\n            }\n          ]\n        ]\n      },\n      \"development\": {\n        \"presets\": [\n          \"babel-preset-power-assert\"\n        ],\n        \"plugins\": [\n          [\n            \"transform-remove-console\",\n            {\n              \"exclude\": [\n                \"log\",\n                \"error\",\n                \"warn\"\n              ]\n            }\n          ]\n        ]\n      },\n      \"production\": {\n        \"plugins\": [\n          \"babel-plugin-unassert\",\n          [\n            \"transform-remove-console\",\n            {\n              \"exclude\": [\n                \"log\",\n                \"error\",\n                \"warn\"\n              ]\n            }\n          ]\n        ]\n      }\n    }\n  },\n  \"lint-staged\": {\n    \"*.js\": [\n      \"npm run lint-and-fix\"\n    ],\n    \"package.json\": [\n      \"npm run lint-config-and-fix\"\n    ]\n  },\n  \"prettier\": {\n    \"trailingComma\": \"all\"\n  },\n  \"xo\": {\n    \"prettier\": true,\n    \"plugins\": [\n      \"unicorn\"\n    ],\n    \"rules\": {\n      \"unicorn/filename-case\": \"off\",\n      \"camelcase\": \"off\",\n      \"unicorn/prevent-abbreviations\": \"off\",\n      \"no-constant-condition\": \"off\",\n      \"max-params\": \"off\",\n      \"unicorn/prefer-math-trunc\": \"off\",\n      \"no-implicit-coercion\": \"off\",\n      \"unicorn/no-new-array\": \"off\"\n    },\n    \"overrides\": [\n      {\n        \"files\": [\n          \"doc/**\"\n        ],\n        \"env\": \"browser\"\n      }\n    ]\n  }\n}\n",
     "longname": "/home/runner/work/js-integer-big-endian/js-integer-big-endian/package.json",
     "name": "package.json",
     "static": true,

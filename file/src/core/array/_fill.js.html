@@ -126,6 +126,14 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/core/array/_fill.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import assert from &apos;assert&apos;;
 
+/**
+ * Fill the input limb array with a fixed value.
+ *
+ * @param {number[]} a input limb array
+ * @param {number} ai
+ * @param {number} aj
+ * @param {number} v the value used to fill the input array
+ */
 export default function _fill(a, ai, aj, v) {
 	assert(ai &gt;= 0);
 	assert(aj &lt;= a.length);

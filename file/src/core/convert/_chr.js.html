@@ -124,7 +124,15 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/core/convert/_chr.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">export default function _chr(x) {
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+ * Converts a limb to a character representation. This only works if the limb
+ * is at most 35.
+ *
+ * @param {number} x The input limb.
+ *
+ * @return {string} The corresponding character representation.
+ */
+export default function _chr(x) {
 	if (x &lt; 10) return String.fromCharCode(48 + x);
 	return String.fromCharCode(87 + x);
 }

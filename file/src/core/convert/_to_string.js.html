@@ -126,6 +126,14 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/core/convert/_to_string.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import _chr from &apos;./_chr.js&apos;;
 
+/**
+ * Convert an entire limb array to a string representation (without changing
+ * the radix).
+ *
+ * @param {number[]} b The inpurt limb array.
+ *
+ * @return {string} The string representation.
+ */
 export default function _to_string(b) {
 	const n = b.length;
 

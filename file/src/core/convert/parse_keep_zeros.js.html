@@ -127,6 +127,16 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import _from_string from &apos;./_from_string.js&apos;;
 import convert_keep_zeros from &apos;./convert_keep_zeros.js&apos;;
 
+/**
+ * Converts a string representation in base f to a limb array in base t keeping
+ * all leading zeros resulting from the conversion process.
+ *
+ * @param {number} f radix of the representation
+ * @param {number} t radix of the limb array
+ * @param {string} string the input representation
+ *
+ * @return {number[]} the resulting limb array
+ */
 export default function parse_keep_zeros(f, t, string) {
 	if (f &gt; 36) throw new Error(&apos;f &gt; 36 not implemented&apos;);
 
