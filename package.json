@@ -66,12 +66,12 @@
     "xorshift.js": "1.0.5"
   },
   "ava": {
+    "files": [
+      "test/src/**/*"
+    ],
     "require": [
       "regenerator-runtime/runtime",
       "@babel/register"
-    ],
-    "files": [
-      "test/src/**/*"
     ],
     "timeout": "3m",
     "concurrency": 8
