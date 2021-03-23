@@ -1,6 +1,6 @@
 import test from 'ava' ;
 
-import { parse , stringify , _trim_positive , euclidean_algorithm } from '../../../../../src' ;
+import { parse , stringify , euclidean_algorithm } from '../../../../../src' ;
 
 function macro ( t , A , B , D ) {
 

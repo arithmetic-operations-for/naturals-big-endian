@@ -7,7 +7,6 @@ import { increment } from '../../../api/arithmetic/add' ;
 import { _reset } from '../../../core/array' ;
 import { _copy } from '../../../core/array' ;
 import { _trim_positive } from '../../../core/convert' ;
-import { stringify } from '../../../api/convert' ;
 
 import { ge } from '../../../api/compare/ge' ;
 
