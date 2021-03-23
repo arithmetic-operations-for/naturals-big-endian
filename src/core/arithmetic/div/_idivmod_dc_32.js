@@ -1,13 +1,13 @@
 import assert from 'assert' ;
 
-import { _zeros , _fill } from '../../array' ;
-import { _isub } from '../sub' ;
-import { _mul } from '../mul' ;
-import { lt } from '../../../api/compare' ;
-import { iadd , decrement } from '../../../api/arithmetic' ;
-import { _idivmod_dc_21 } from './_idivmod_dc_21' ;
+import { _zeros , _fill } from "../../array/index.js" ;
+import { _isub } from "../sub/index.js" ;
+import { _mul } from "../mul/index.js" ;
+import { lt } from "../../../api/compare/index.js" ;
+import { iadd , decrement } from "../../../api/arithmetic/index.js" ;
+import { _idivmod_dc_21 } from "./_idivmod_dc_21.js" ;
 
-import { _cmp_half } from '../../compare' ;
+import { _cmp_half } from "../../compare/index.js" ;
 
 /**
  * Algorithm 3.4 Divide-and-conquer division (3 by 2)

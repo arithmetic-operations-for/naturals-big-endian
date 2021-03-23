@@ -1,5 +1,5 @@
 import test from 'ava' ;
-import { decrement } from '../../../src' ;
+import { decrement } from "../../../src/index.js" ;
 
 function macro ( t , r , x , e ) {
 

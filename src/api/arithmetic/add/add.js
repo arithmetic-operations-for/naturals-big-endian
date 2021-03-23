@@ -1,4 +1,4 @@
-import { _add } from '../../../core/arithmetic/add/_add' ;
+import { _add } from "../../../core/arithmetic/add/_add.js" ;
 
 /**
  * Adds two big endian arrays and puts result in a destination array.

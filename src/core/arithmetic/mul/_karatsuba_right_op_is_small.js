@@ -1,6 +1,6 @@
-import { _zeros } from '../../array' ;
-import { _iadd } from '../add' ;
-import { _mul } from './_mul' ;
+import { _zeros } from "../../array/index.js" ;
+import { _iadd } from "../add/index.js" ;
+import { _mul } from "./_mul.js" ;
 
 import assert from 'assert';
 

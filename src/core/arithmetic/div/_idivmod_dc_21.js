@@ -1,10 +1,10 @@
 import assert from 'assert' ;
 
-import { THRESHOLD_DIV_DC } from '../../thresholds' ;
-import { _idivmod_dc_32 } from './_idivmod_dc_32' ;
-import { _idivmod_schoolbook_large_divisor } from './_idivmod_schoolbook_large_divisor' ;
+import { THRESHOLD_DIV_DC } from "../../thresholds/index.js" ;
+import { _idivmod_dc_32 } from "./_idivmod_dc_32.js" ;
+import { _idivmod_schoolbook_large_divisor } from "./_idivmod_schoolbook_large_divisor.js" ;
 
-import { _cmp_half } from '../../compare' ;
+import { _cmp_half } from "../../compare/index.js" ;
 
 /**
  * Algorithm 3.3 Divide-and-conquer division (2 by 1)

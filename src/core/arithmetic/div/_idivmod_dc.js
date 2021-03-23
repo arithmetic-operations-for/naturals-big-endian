@@ -1,13 +1,13 @@
 import assert from 'assert' ;
 
-import { _zeros , _copy } from '../../array' ;
-import { _cmp_n } from '../../compare' ;
-import { _imul_limb } from '../mul' ;
-import { _idivmod_dc_21 } from './_idivmod_dc_21' ;
-import { _div_limb_with_prefix } from './_div_limb_with_prefix' ;
-import { _mod_limb } from './_mod_limb' ;
+import { _zeros , _copy } from "../../array/index.js" ;
+import { _cmp_n } from "../../compare/index.js" ;
+import { _imul_limb } from "../mul/index.js" ;
+import { _idivmod_dc_21 } from "./_idivmod_dc_21.js" ;
+import { _div_limb_with_prefix } from "./_div_limb_with_prefix.js" ;
+import { _mod_limb } from "./_mod_limb.js" ;
 
-import { jz } from '../../../api/compare' ;
+import { jz } from "../../../api/compare/index.js" ;
 
 /**
  * Input

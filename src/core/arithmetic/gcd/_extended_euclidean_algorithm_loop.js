@@ -1,14 +1,14 @@
 import assert from 'assert' ;
 
-import { _idivmod } from '../../../api/arithmetic/div' ;
-import { mul } from '../../../api/arithmetic/mul' ;
-import { _iadd } from '../../../core/arithmetic/add' ;
-import { increment } from '../../../api/arithmetic/add' ;
-import { _reset } from '../../../core/array' ;
-import { _copy } from '../../../core/array' ;
-import { _trim_positive } from '../../../core/convert' ;
+import { _idivmod } from "../../../api/arithmetic/div/index.js" ;
+import { mul } from "../../../api/arithmetic/mul/index.js" ;
+import { _iadd } from "../add/index.js" ;
+import { increment } from "../../../api/arithmetic/add/index.js" ;
+import { _reset } from "../../array/index.js" ;
+import { _copy } from "../../array/index.js" ;
+import { _trim_positive } from "../../convert/index.js" ;
 
-import { ge } from '../../../api/compare/ge' ;
+import { ge } from "../../../api/compare/ge.js" ;
 
 /**
  * Extended Euclidean algorithm.

@@ -1,6 +1,6 @@
-import { _alloc , _copy } from '../array' ;
-import { _idivmod_limb } from '../arithmetic/div' ;
-import { _trim_positive } from './_trim_positive' ;
+import { _alloc , _copy } from "../array/index.js" ;
+import { _idivmod_limb } from "../arithmetic/div/index.js" ;
+import { _trim_positive } from "./_trim_positive.js" ;
 
 import assert from 'assert' ;
 

@@ -1,5 +1,5 @@
 import test from 'ava' ;
-import { parse , _zeros , add , stringify } from '../../../src' ;
+import { parse , _zeros , add , stringify } from "../../../src/index.js" ;
 
 function macro ( t , A , B , C ) {
 

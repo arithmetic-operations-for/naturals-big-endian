@@ -1,6 +1,6 @@
 import test from 'ava' ;
 
-import { parse , stringify , _zeros , _sub } from '../../../../../src' ;
+import { parse , stringify , _zeros , _sub } from "../../../../../src/index.js" ;
 
 test( '_sub: wraps' , t => {
 

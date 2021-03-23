@@ -3,7 +3,7 @@ import test from 'ava' ;
 import {
 	_zeros ,
 	_schoolbook_mul ,
-} from '../../../src' ;
+} from "../../../src/index.js" ;
 
 test( '_schoolbook_mul handles overflows' , t => {
 

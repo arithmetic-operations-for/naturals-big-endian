@@ -1,5 +1,5 @@
-import { _alloc } from './_alloc' ;
-import { _reset } from './_reset' ;
+import { _alloc } from "./_alloc.js" ;
+import { _reset } from "./_reset.js" ;
 
 import assert from 'assert' ;
 

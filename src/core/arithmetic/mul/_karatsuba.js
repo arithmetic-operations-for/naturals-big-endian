@@ -1,8 +1,8 @@
-import { add , iadd } from '../../../api/arithmetic/add' ;
-import { _zeros , _copy } from '../../array' ;
-import { _isub } from '../sub' ;
-import { _mul } from './_mul' ;
-import { _karatsuba_right_op_is_small } from './_karatsuba_right_op_is_small' ;
+import { add , iadd } from "../../../api/arithmetic/add/index.js" ;
+import { _zeros , _copy } from "../../array/index.js" ;
+import { _isub } from "../sub/index.js" ;
+import { _mul } from "./_mul.js" ;
+import { _karatsuba_right_op_is_small } from "./_karatsuba_right_op_is_small.js" ;
 
 import assert from 'assert';
 

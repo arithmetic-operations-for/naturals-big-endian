@@ -1,5 +1,5 @@
-export * from './arithmetic' ;
-export * from './array' ;
-export * from './compare' ;
-export * from './convert' ;
-export * from './thresholds' ;
+export * from "./arithmetic/index.js" ;
+export * from "./array/index.js" ;
+export * from "./compare/index.js" ;
+export * from "./convert/index.js" ;
+export * from "./thresholds/index.js" ;

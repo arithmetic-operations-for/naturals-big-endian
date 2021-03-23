@@ -1,5 +1,5 @@
 import test from 'ava' ;
-import { parse , _zeros , _idivmod , _divmod , stringify } from '../../../src' ;
+import { parse , _zeros , _idivmod , _divmod , stringify } from "../../../src/index.js" ;
 
 function test_idivmod ( t , dividend , divisor , quotient , remainder ) {
 

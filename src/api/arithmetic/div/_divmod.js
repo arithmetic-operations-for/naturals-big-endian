@@ -1,5 +1,5 @@
-import { _copy } from '../../../core/array/_copy' ;
-import { _idivmod } from './_idivmod' ;
+import { _copy } from "../../../core/array/_copy.js" ;
+import { _idivmod } from "./_idivmod.js" ;
 
 /**
  * Computes the quotient and remainder of two numbers. Uses the most

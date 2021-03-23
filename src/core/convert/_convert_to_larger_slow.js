@@ -1,4 +1,4 @@
-import { _iadd_limb , _imul_limb } from '../arithmetic' ;
+import { _iadd_limb , _imul_limb } from "../arithmetic/index.js" ;
 
 import assert from 'assert' ;
 

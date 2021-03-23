@@ -1,10 +1,10 @@
 import assert from 'assert' ;
 
-import { _copy } from '../../array' ;
-import { ge } from '../../../api/compare' ;
+import { _copy } from "../../array/index.js" ;
+import { ge } from "../../../api/compare/index.js" ;
 
-import { _extended_euclidean_algorithm_allocate } from './_extended_euclidean_algorithm_allocate';
-import { _extended_euclidean_algorithm_loop } from './_extended_euclidean_algorithm_loop';
+import { _extended_euclidean_algorithm_allocate } from "./_extended_euclidean_algorithm_allocate.js";
+import { _extended_euclidean_algorithm_loop } from "./_extended_euclidean_algorithm_loop.js";
 
 /**
  * Precondition:

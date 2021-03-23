@@ -1,6 +1,6 @@
 import test from 'ava' ;
 
-import { _zeros , _pow_double , _pow_double_recursive } from '../../../src' ;
+import { _zeros , _pow_double , _pow_double_recursive } from "../../../src/index.js" ;
 
 function macro ( t , x ) {
 

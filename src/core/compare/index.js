@@ -1,3 +1,3 @@
-export * from './_cmp' ;
-export * from './_cmp_half' ;
-export * from './_cmp_n' ;
+export * from "./_cmp.js" ;
+export * from "./_cmp_half.js" ;
+export * from "./_cmp_n.js" ;

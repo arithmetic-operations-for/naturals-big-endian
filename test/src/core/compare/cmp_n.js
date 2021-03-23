@@ -1,5 +1,5 @@
 import test from 'ava' ;
-import { _cmp_n } from '../../../../src' ;
+import { _cmp_n } from "../../../../src/index.js" ;
 
 test( '_cmp_n' , t => {
 	t.true( _cmp_n( [ 1 , 2 ] , 0 , 2 , [ 1 , 2 ] , 0 ) === 0 ) ;

@@ -1,3 +1,3 @@
-export * from './arithmetic' ;
-export * from './compare' ;
-export * from './convert' ;
+export * from "./arithmetic/index.js" ;
+export * from "./compare/index.js" ;
+export * from "./convert/index.js" ;

@@ -1,5 +1,5 @@
 import test from 'ava' ;
-import { _zeros , mul , stringify } from '../../../src' ;
+import { _zeros , mul , stringify } from "../../../src/index.js" ;
 
 function boundaries ( t , a , ai , aj , b , bi , bj , C ) {
 

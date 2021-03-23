@@ -1,5 +1,5 @@
-import { convert_keep_zeros } from '../../core/convert/convert_keep_zeros' ;
-import { trim_natural } from '../../core/convert/trim_natural' ;
+import { convert_keep_zeros } from "../../core/convert/convert_keep_zeros.js" ;
+import { trim_natural } from "../../core/convert/trim_natural.js" ;
 
 import assert from 'assert' ;
 

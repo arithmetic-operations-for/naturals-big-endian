@@ -1,5 +1,5 @@
 import test from 'ava' ;
-import { increment } from '../../../../../src' ;
+import { increment } from "../../../../../src/index.js" ;
 
 test( 'increment' , t => {
 

@@ -1,10 +1,10 @@
-import { _build , _alloc , _zeros ,_reset , _copy } from '../array' ;
-import { _iadd } from '../arithmetic/add' ;
-import { _mul } from '../arithmetic/mul' ;
-import { _pow_double } from '../arithmetic/pow' ;
-import { mul } from '../../api/arithmetic/mul'
-import { _convert_slow } from './_convert_slow' ;
-import { _trim_positive } from './_trim_positive' ;
+import { _build , _alloc , _zeros ,_reset , _copy } from "../array/index.js" ;
+import { _iadd } from "../arithmetic/add/index.js" ;
+import { _mul } from "../arithmetic/mul/index.js" ;
+import { _pow_double } from "../arithmetic/pow/index.js" ;
+import { mul } from "../../api/arithmetic/mul/index.js"
+import { _convert_slow } from "./_convert_slow.js" ;
+import { _trim_positive } from "./_trim_positive.js" ;
 
 import assert from 'assert' ;
 

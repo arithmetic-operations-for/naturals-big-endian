@@ -1,6 +1,6 @@
 import assert from 'assert' ;
 
-import { _cmp_n } from './_cmp_n' ;
+import { _cmp_n } from "./_cmp_n.js" ;
 
 /**
  * Compares two big endian arrays.

@@ -1,8 +1,8 @@
-export * from './cmp' ;
-export * from './eq' ;
-export * from './ge' ;
-export * from './gt' ;
-export * from './jz' ;
-export * from './le' ;
-export * from './lt' ;
-export * from './ne' ;
+export * from "./cmp.js" ;
+export * from "./eq.js" ;
+export * from "./ge.js" ;
+export * from "./gt.js" ;
+export * from "./jz.js" ;
+export * from "./le.js" ;
+export * from "./lt.js" ;
+export * from "./ne.js" ;

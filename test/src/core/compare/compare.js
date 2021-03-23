@@ -2,7 +2,7 @@ import test from 'ava' ;
 
 import operator from  '@aureooms/js-operator' ;
 
-import * as integer from '../../../../src' ;
+import * as integer from "../../../../src/index.js" ;
 
 function check (t, Ctor, cmp, transform) {
 

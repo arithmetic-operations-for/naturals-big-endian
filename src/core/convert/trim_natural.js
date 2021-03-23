@@ -1,5 +1,5 @@
-import { _trim_positive } from './_trim_positive' ;
-import { _alloc , _copy } from '../array' ;
+import { _trim_positive } from "./_trim_positive.js" ;
+import { _alloc , _copy } from "../array/index.js" ;
 
 export function trim_natural ( a , ai , aj ) {
 

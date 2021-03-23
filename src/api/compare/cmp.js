@@ -1,4 +1,4 @@
-import { _cmp } from '../../core/compare/_cmp' ;
+import { _cmp } from "../../core/compare/_cmp.js" ;
 
 export function cmp ( a , ai , aj , b , bi , bj ) {
 

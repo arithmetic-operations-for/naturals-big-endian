@@ -1,5 +1,5 @@
-import { _convert_to_smaller_slow } from './_convert_to_smaller_slow' ;
-import { _convert_to_larger_slow } from './_convert_to_larger_slow' ;
+import { _convert_to_smaller_slow } from "./_convert_to_smaller_slow.js" ;
+import { _convert_to_larger_slow } from "./_convert_to_larger_slow.js" ;
 
 /**
  *

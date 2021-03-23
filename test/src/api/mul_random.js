@@ -2,7 +2,7 @@ import test from 'ava' ;
 import { range } from '@aureooms/js-itertools' ;
 import { randint } from '@aureooms/js-random' ;
 
-import { parse , _zeros , mul , stringify } from '../../../src' ;
+import { parse , _zeros , mul , stringify } from "../../../src/index.js" ;
 
 function macro ( t , r , A , B ) {
 

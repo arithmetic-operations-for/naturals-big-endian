@@ -1,12 +1,12 @@
 import assert from 'assert' ;
 
-import { _trim_positive } from '../../convert/_trim_positive' ;
-import { lt } from '../../../api/compare/lt' ;
-import { _validate } from '../../array/_validate' ;
-import { _isub } from '../sub' ;
-import { _idivmod_schoolbook_subroutine } from './_idivmod_schoolbook_subroutine' ;
+import { _trim_positive } from "../../convert/_trim_positive.js" ;
+import { lt } from "../../../api/compare/lt.js" ;
+import { _validate } from "../../array/_validate.js" ;
+import { _isub } from "../sub/index.js" ;
+import { _idivmod_schoolbook_subroutine } from "./_idivmod_schoolbook_subroutine.js" ;
 
-import { _cmp_half } from '../../compare' ;
+import { _cmp_half } from "../../compare/index.js" ;
 
 /**
  * Input

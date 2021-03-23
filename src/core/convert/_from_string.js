@@ -1,4 +1,4 @@
-import { _int } from './_int' ;
+import { _int } from "./_int.js" ;
 
 export function _from_string ( string ) {
 

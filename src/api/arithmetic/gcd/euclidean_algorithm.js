@@ -1,9 +1,9 @@
 
-import { _trim_positive } from '../../../core/convert' ;
-import { _alloc } from '../../../core/array' ;
-import { _copy } from '../../../core/array' ;
-import { _cmp_n } from '../../../core/compare' ;
-import { _euclidean_algorithm_loop } from '../../../core/arithmetic/gcd' ;
+import { _trim_positive } from "../../../core/convert/index.js" ;
+import { _alloc } from "../../../core/array/index.js" ;
+import { _copy } from "../../../core/array/index.js" ;
+import { _cmp_n } from "../../../core/compare/index.js" ;
+import { _euclidean_algorithm_loop } from "../../../core/arithmetic/gcd/index.js" ;
 
 /**
  * No constraints on the input.

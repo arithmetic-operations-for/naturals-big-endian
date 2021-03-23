@@ -1,5 +1,5 @@
 import test from 'ava' ;
-import * as integer from '../../../src' ;
+import * as integer from "../../../src/index.js" ;
 
 test( '_convert_to_smaller_slow out of bound' , t => {
 

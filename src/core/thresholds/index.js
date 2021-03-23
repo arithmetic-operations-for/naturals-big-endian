@@ -1,3 +1,3 @@
-export * from './conversion' ;
-export * from './division' ;
-export * from './multiplication' ;
+export * from "./conversion.js" ;
+export * from "./division.js" ;
+export * from "./multiplication.js" ;

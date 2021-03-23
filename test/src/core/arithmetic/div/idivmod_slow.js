@@ -1,5 +1,5 @@
 import test from 'ava' ;
-import * as integer from '../../../../../src' ;
+import * as integer from "../../../../../src/index.js" ;
 
 function macro ( t , dividend , divisor , quotient , remainder ) {
 

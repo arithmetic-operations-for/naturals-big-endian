@@ -1,8 +1,8 @@
 import assert from 'assert' ;
 
-import { _reset } from '../../../core/array' ;
-import { _imod_limb , _imod_schoolbook , _idivmod_dc } from '../../../core/arithmetic/div' ;
-import { THRESHOLD_DIV_DC } from '../../../core/thresholds' ;
+import { _reset } from "../../../core/array/index.js" ;
+import { _imod_limb , _imod_schoolbook , _idivmod_dc } from "../../../core/arithmetic/div/index.js" ;
+import { THRESHOLD_DIV_DC } from "../../../core/thresholds/index.js" ;
 
 /**
  * Computes the remainder of two numbers. Uses the most

@@ -1,5 +1,5 @@
 import test from 'ava' ;
-import { XorShift128Plus } from 'xorshift.js' ;
+import { XorShift128Plus } from "xorshift.js/index.js" ;
 
 import {
 	parse,
@@ -8,7 +8,7 @@ import {
 	_convert_to_smaller_fast,
 	_log,
 	_zeros,
-} from '../../../../src' ;
+} from "../../../../src/index.js" ;
 
 function macro_larger ( t , f , _t , a , e ) {
 

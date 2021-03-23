@@ -1,8 +1,8 @@
 import assert from 'assert' ;
 
-import { _imod, ge } from '../../../api'
-import { _alloc } from '../../array'
-import { _trim_positive } from '../../convert'
+import { _imod, ge } from "../../../api/index.js"
+import { _alloc } from "../../array/index.js"
+import { _trim_positive } from "../../convert/index.js"
 
 /**
  * Euclidean algorithm. Computes the gcd of the two input numbers A and B,

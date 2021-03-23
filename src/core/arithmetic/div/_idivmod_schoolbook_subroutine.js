@@ -1,11 +1,11 @@
 import assert from 'assert' ;
 
-import { _cmp_n } from '../../compare' ;
-import { increment } from '../../../api/arithmetic/add/increment' ;
-import { _isub } from '../sub' ;
-import { _idivmod_schoolbook_subroutine_do } from './_idivmod_schoolbook_subroutine_do' ;
+import { _cmp_n } from "../../compare/index.js" ;
+import { increment } from "../../../api/arithmetic/add/increment.js" ;
+import { _isub } from "../sub/index.js" ;
+import { _idivmod_schoolbook_subroutine_do } from "./_idivmod_schoolbook_subroutine_do.js" ;
 
-import { _cmp_half } from '../../compare' ;
+import { _cmp_half } from "../../compare/index.js" ;
 
 /**
  * Input

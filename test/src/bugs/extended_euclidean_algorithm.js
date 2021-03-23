@@ -1,6 +1,6 @@
 import test from 'ava' ;
 
-import { parse , stringify , extended_euclidean_algorithm } from '../../../src' ;
+import { parse , stringify , extended_euclidean_algorithm } from "../../../src/index.js" ;
 
 const ge = ( t , a , b , v ) => t.true( a >= b , `${v} = ${a} >= ${b}` ) ;
 const le = ( t , a , b , v ) => t.true( a <= b , `${v} = ${a} <= ${b}` ) ;

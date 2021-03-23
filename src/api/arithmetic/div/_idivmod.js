@@ -1,8 +1,8 @@
 import assert from 'assert' ;
 
-import { _idivmod_limb , _idivmod_schoolbook , _idivmod_dc } from '../../../core/arithmetic/div' ;
-import { THRESHOLD_DIV_DC } from '../../../core/thresholds' ;
-import { jz } from '../../compare' ;
+import { _idivmod_limb , _idivmod_schoolbook , _idivmod_dc } from "../../../core/arithmetic/div/index.js" ;
+import { THRESHOLD_DIV_DC } from "../../../core/thresholds/index.js" ;
+import { jz } from "../../compare/index.js" ;
 
 /**
  * Computes the quotient and remainder of two numbers. Uses the most

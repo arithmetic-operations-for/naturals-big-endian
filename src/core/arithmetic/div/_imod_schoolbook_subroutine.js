@@ -1,10 +1,10 @@
 import assert from 'assert' ;
 
-import { _cmp_n } from '../../compare' ;
-import { _isub } from '../sub' ;
-import { _imod_schoolbook_subroutine_do } from './_imod_schoolbook_subroutine_do' ;
+import { _cmp_n } from "../../compare/index.js" ;
+import { _isub } from "../sub/index.js" ;
+import { _imod_schoolbook_subroutine_do } from "./_imod_schoolbook_subroutine_do.js" ;
 
-import { _cmp_half } from '../../compare' ;
+import { _cmp_half } from "../../compare/index.js" ;
 
 /**
  * Input

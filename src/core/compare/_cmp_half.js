@@ -1,6 +1,6 @@
 import assert from 'assert' ;
 
-import { jz } from '../../api/compare' ;
+import { jz } from "../../api/compare/index.js" ;
 
 /**
  * Compares a number A with size n = |A| to R = (r^n)/2.

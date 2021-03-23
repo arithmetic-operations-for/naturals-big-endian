@@ -1,5 +1,5 @@
-import { _from_string } from './_from_string' ;
-import { convert_keep_zeros } from './convert_keep_zeros' ;
+import { _from_string } from "./_from_string.js" ;
+import { convert_keep_zeros } from "./convert_keep_zeros.js" ;
 
 export function parse_keep_zeros ( f , t , string ) {
 

@@ -1,5 +1,5 @@
 import test from 'ava' ;
-import { stringify } from '../../../../src' ;
+import { stringify } from "../../../../src/index.js" ;
 
 function macro ( t , from , to , array , i , j , expected ) {
 	const got = stringify( from , to , array , i , j ) ;

@@ -1,5 +1,5 @@
-import { convert } from './convert' ;
-import { _to_string } from '../../core/convert/_to_string' ;
+import { convert } from "./convert.js" ;
+import { _to_string } from "../../core/convert/_to_string.js" ;
 
 export function stringify ( f , t , a , ai , aj ) {
 

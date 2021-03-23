@@ -1,7 +1,7 @@
-export * from './_alloc' ;
-export * from './_build' ;
-export * from './_copy' ;
-export * from './_fill' ;
-export * from './_reset' ;
-export * from './_validate' ;
-export * from './_zeros' ;
+export * from "./_alloc.js" ;
+export * from "./_build.js" ;
+export * from "./_copy.js" ;
+export * from "./_fill.js" ;
+export * from "./_reset.js" ;
+export * from "./_validate.js" ;
+export * from "./_zeros.js" ;

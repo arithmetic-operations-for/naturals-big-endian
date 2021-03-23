@@ -1,8 +1,8 @@
-import { _log } from './_log' ;
-import { _convert_to_larger_fast } from './_convert_to_larger_fast' ;
-import { _convert_to_larger_slow } from './_convert_to_larger_slow' ;
-import { _convert_dc } from './_convert_dc' ;
-import { THRESHOLD_CONVERT_DC } from '../thresholds/conversion' ;
+import { _log } from "./_log.js" ;
+import { _convert_to_larger_fast } from "./_convert_to_larger_fast.js" ;
+import { _convert_to_larger_slow } from "./_convert_to_larger_slow.js" ;
+import { _convert_dc } from "./_convert_dc.js" ;
+import { THRESHOLD_CONVERT_DC } from "../thresholds/conversion.js" ;
 
 import assert from 'assert' ;
 

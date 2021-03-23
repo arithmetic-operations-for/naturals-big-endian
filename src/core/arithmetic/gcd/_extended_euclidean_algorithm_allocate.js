@@ -1,7 +1,7 @@
 import assert from 'assert' ;
 
-import { _alloc } from '../../../core/array' ;
-import { _zeros } from '../../../core/array' ;
+import { _alloc } from "../../array/index.js" ;
+import { _zeros } from "../../array/index.js" ;
 
 /**
  * m >= n >= 0

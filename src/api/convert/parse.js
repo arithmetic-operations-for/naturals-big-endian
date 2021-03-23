@@ -1,5 +1,5 @@
-import { parse_keep_zeros } from '../../core/convert/parse_keep_zeros' ;
-import { trim_natural } from '../../core/convert/trim_natural' ;
+import { parse_keep_zeros } from "../../core/convert/parse_keep_zeros.js" ;
+import { trim_natural } from "../../core/convert/trim_natural.js" ;
 
 export function parse ( f , t , string ) {
 

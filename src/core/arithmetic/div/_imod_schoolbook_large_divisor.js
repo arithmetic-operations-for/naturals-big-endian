@@ -1,11 +1,11 @@
 import assert from 'assert' ;
 
-import { _trim_positive } from '../../convert/_trim_positive' ;
-import { lt } from '../../../api/compare/lt' ;
-import { _isub } from '../sub' ;
-import { _imod_schoolbook_subroutine } from './_imod_schoolbook_subroutine' ;
+import { _trim_positive } from "../../convert/_trim_positive.js" ;
+import { lt } from "../../../api/compare/lt.js" ;
+import { _isub } from "../sub/index.js" ;
+import { _imod_schoolbook_subroutine } from "./_imod_schoolbook_subroutine.js" ;
 
-import { _cmp_half } from '../../compare' ;
+import { _cmp_half } from "../../compare/index.js" ;
 
 /**
  * Input

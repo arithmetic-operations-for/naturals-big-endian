@@ -1,4 +1,4 @@
-import { _copy } from '../../array' ;
+import { _copy } from "../../array/index.js" ;
 
 import assert from 'assert' ;
 

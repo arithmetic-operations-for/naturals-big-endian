@@ -1,5 +1,5 @@
 import test from 'ava' ;
-import { XorShift128Plus } from 'xorshift.js' ;
+import { XorShift128Plus } from "xorshift.js/index.js" ;
 import {
 	_convert_dc ,
 	trim_natural ,
@@ -8,7 +8,7 @@ import {
 	_from_string,
 	_convert ,
 	_zeros ,
-} from '../../../src' ;
+} from "../../../src/index.js" ;
 
 function translate ( f , t , string ) {
 

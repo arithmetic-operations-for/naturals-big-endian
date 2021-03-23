@@ -1,4 +1,4 @@
-import { _iadd } from '../../../core/arithmetic/add' ;
+import { _iadd } from "../../../core/arithmetic/add/index.js" ;
 
 /**
  * Adds a big endian array to another ___in-place___.

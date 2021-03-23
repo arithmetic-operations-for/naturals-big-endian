@@ -1,11 +1,11 @@
 import assert from 'assert' ;
 
-import { _zeros , _copy } from '../../array' ;
-import { _mul_limb } from '../mul' ;
-import { _idivmod_schoolbook_large_divisor } from './_idivmod_schoolbook_large_divisor' ;
-import { _div_limb_with_prefix } from './_div_limb_with_prefix' ;
+import { _zeros , _copy } from "../../array/index.js" ;
+import { _mul_limb } from "../mul/index.js" ;
+import { _idivmod_schoolbook_large_divisor } from "./_idivmod_schoolbook_large_divisor.js" ;
+import { _div_limb_with_prefix } from "./_div_limb_with_prefix.js" ;
 
-import { jz } from '../../../api/compare/jz' ;
+import { jz } from "../../../api/compare/jz.js" ;
 
 /**
  * Computes q <- a / b and a <- a % b.

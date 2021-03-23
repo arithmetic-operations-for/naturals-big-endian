@@ -1,8 +1,8 @@
 import assert from 'assert' ;
 
-import { jz } from '../../../api/compare' ;
-import { _zeros , _copy } from '../../array' ;
-import { _mul } from '../mul' ;
+import { jz } from "../../../api/compare/index.js" ;
+import { _zeros , _copy } from "../../array/index.js" ;
+import { _mul } from "../mul/index.js" ;
 
 /**
  * Computes <code>pow(a,x) = a^x</code> using exponentiation by squaring.

@@ -1,6 +1,6 @@
 import test from 'ava' ;
 
-import { parse , stringify , euclidean_algorithm } from '../../../../../src' ;
+import { parse , stringify , euclidean_algorithm } from "../../../../../src/index.js" ;
 
 function macro ( t , A , B , D ) {
 

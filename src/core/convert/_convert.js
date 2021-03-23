@@ -1,6 +1,6 @@
-import { _copy } from '../array' ;
-import { _convert_to_smaller } from './_convert_to_smaller' ;
-import { _convert_to_larger } from './_convert_to_larger' ;
+import { _copy } from "../array/index.js" ;
+import { _convert_to_smaller } from "./_convert_to_smaller.js" ;
+import { _convert_to_larger } from "./_convert_to_larger.js" ;
 
 /**
  *

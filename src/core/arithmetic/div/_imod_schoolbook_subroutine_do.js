@@ -1,11 +1,11 @@
 import assert from 'assert' ;
 
-import { _zeros } from '../../array' ;
-import { gt } from '../../../api/compare' ;
-import { _isub } from '../sub' ;
-import { _mul_limb } from '../mul' ;
+import { _zeros } from "../../array/index.js" ;
+import { gt } from "../../../api/compare/index.js" ;
+import { _isub } from "../sub/index.js" ;
+import { _mul_limb } from "../mul/index.js" ;
 
-import { _cmp_half } from '../../compare' ;
+import { _cmp_half } from "../../compare/index.js" ;
 
 /**
  * Input
