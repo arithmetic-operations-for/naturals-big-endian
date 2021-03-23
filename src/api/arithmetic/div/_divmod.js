@@ -1,5 +1,5 @@
-import {_copy} from '../../../core/array/_copy.js';
-import {_idivmod} from './_idivmod.js';
+import _copy from '../../../core/array/_copy.js';
+import _idivmod from './_idivmod.js';
 
 /**
  * Computes the quotient and remainder of two numbers. Uses the most
@@ -26,7 +26,7 @@ import {_idivmod} from './_idivmod.js';
  * @param {Number} Ri Left of remainder.
  * @param {Number} Rj Right of remainder.
  */
-export function _divmod(r, D, Di, Dj, d, di, dj, Q, Qi, Qj, R, Ri, Rj) {
+export default function _divmod(r, D, Di, Dj, d, di, dj, Q, Qi, Qj, R, Ri, Rj) {
 	_copy(D, Di, Dj, R, Rj - (Dj - Di));
 
 	_idivmod(r, R, Ri, Rj, d, di, dj, Q, Qi, Qj);

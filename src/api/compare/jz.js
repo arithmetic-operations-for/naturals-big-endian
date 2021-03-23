@@ -12,7 +12,7 @@ import assert from 'assert';
  * @param {int} aj a right
  */
 
-export function jz(a, ai, aj) {
+export default function jz(a, ai, aj) {
 	assert(ai >= 0 && aj <= a.length);
 
 	for (; ai < aj; ++ai) if (a[ai] !== 0) return false;

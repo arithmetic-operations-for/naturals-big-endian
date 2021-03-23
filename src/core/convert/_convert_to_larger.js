@@ -1,8 +1,8 @@
-import {_log} from './_log.js';
-import {_convert_to_larger_fast} from './_convert_to_larger_fast.js';
-import {_convert_to_larger_slow} from './_convert_to_larger_slow.js';
-import {_convert_dc} from './_convert_dc.js';
-import {THRESHOLD_CONVERT_DC} from '../thresholds/conversion.js';
+import _log from './_log.js';
+import _convert_to_larger_fast from './_convert_to_larger_fast.js';
+import _convert_to_larger_slow from './_convert_to_larger_slow.js';
+import _convert_dc from './_convert_dc.js';
+import THRESHOLD_CONVERT_DC from '../thresholds/THRESHOLD_CONVERT_DC.js';
 
 import assert from 'assert';
 
@@ -18,7 +18,7 @@ import assert from 'assert';
  * @param {Number} bj end offset in the destination array
  */
 
-export function _convert_to_larger(f, t, a, ai, aj, b, bi, bj) {
+export default function _convert_to_larger(f, t, a, ai, aj, b, bi, bj) {
 	assert(f >= 2);
 	assert(t >= 2);
 	assert(f < t);

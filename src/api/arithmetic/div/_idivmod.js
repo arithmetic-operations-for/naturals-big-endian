@@ -1,12 +1,10 @@
 import assert from 'assert';
 
-import {
-	_idivmod_limb,
-	_idivmod_schoolbook,
-	_idivmod_dc,
-} from '../../../core/arithmetic/div/index.js';
-import {THRESHOLD_DIV_DC} from '../../../core/thresholds/index.js';
-import {jz} from '../../compare/index.js';
+import _idivmod_limb from '../../../core/arithmetic/div/_idivmod_limb.js';
+import _idivmod_schoolbook from '../../../core/arithmetic/div/_idivmod_schoolbook.js';
+import _idivmod_dc from '../../../core/arithmetic/div/_idivmod_dc.js';
+import THRESHOLD_DIV_DC from '../../../core/thresholds/THRESHOLD_DIV_DC.js';
+import jz from '../../compare/jz.js';
 
 /**
  * Computes the quotient and remainder of two numbers. Uses the most
@@ -32,7 +30,7 @@ import {jz} from '../../compare/index.js';
  * @param {Number} Qi Left of quotient.
  * @param {Number} Qj Right of quotient.
  */
-export function _idivmod(r, D, Di, Dj, d, di, dj, Q, Qi, Qj) {
+export default function _idivmod(r, D, Di, Dj, d, di, dj, Q, Qi, Qj) {
 	assert(r >= 2);
 
 	assert(Di >= 0 && Dj <= D.length);

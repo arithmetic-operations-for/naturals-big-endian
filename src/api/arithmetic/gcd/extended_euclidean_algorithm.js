@@ -1,6 +1,6 @@
-import {_trim_positive} from '../../../core/convert/index.js';
-import {_cmp_n} from '../../../core/compare/index.js';
-import {_extended_euclidean_algorithm} from '../../../core/arithmetic/gcd/index.js';
+import _trim_positive from '../../../core/convert/_trim_positive.js';
+import _cmp_n from '../../../core/compare/_cmp_n.js';
+import _extended_euclidean_algorithm from '../../../core/arithmetic/gcd/_extended_euclidean_algorithm.js';
 
 /**
  * No constraints on the input.
@@ -14,7 +14,7 @@ import {_extended_euclidean_algorithm} from '../../../core/arithmetic/gcd/index.
  * @param {Number} bj <code>b</code> right bound.
  */
 
-export function extended_euclidean_algorithm(r, a, ai, aj, b, bi, bj) {
+export default function extended_euclidean_algorithm(r, a, ai, aj, b, bi, bj) {
 	const _ai = _trim_positive(a, ai, aj);
 	const _bi = _trim_positive(b, bi, bj);
 	const m = aj - _ai;

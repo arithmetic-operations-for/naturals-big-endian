@@ -1,14 +1,15 @@
 import assert from 'assert';
 
-import {_idivmod} from '../../../api/arithmetic/div/index.js';
-import {mul} from '../../../api/arithmetic/mul/index.js';
-import {_iadd} from '../add/index.js';
-import {increment} from '../../../api/arithmetic/add/index.js';
-import {_reset, _copy} from '../../array/index.js';
+import _idivmod from '../../../api/arithmetic/div/_idivmod.js';
+import mul from '../../../api/arithmetic/mul/mul.js';
+import _iadd from '../add/_iadd.js';
+import increment from '../../../api/arithmetic/add/increment.js';
+import _reset from '../../array/_reset.js';
+import _copy from '../../array/_copy.js';
 
-import {_trim_positive} from '../../convert/index.js';
+import _trim_positive from '../../convert/_trim_positive.js';
 
-import {ge} from '../../../api/compare/ge.js';
+import ge from '../../../api/compare/ge.js';
 
 /**
  * Extended Euclidean algorithm.
@@ -76,7 +77,7 @@ import {ge} from '../../../api/compare/ge.js';
  *  Calling this function returns the number of steps that were executed.
  *
  */
-export function _extended_euclidean_algorithm_loop(
+export default function _extended_euclidean_algorithm_loop(
 	r,
 	R0,
 	R1,

@@ -1,11 +1,12 @@
 import assert from 'assert';
 
-import {_zeros, _validate} from '../../array/index.js';
-import {gt} from '../../../api/compare/index.js';
-import {_isub} from '../sub/index.js';
-import {_mul_limb} from '../mul/index.js';
+import _zeros from '../../array/_zeros.js';
+import _validate from '../../array/_validate.js';
+import gt from '../../../api/compare/gt.js';
+import _isub from '../sub/_isub.js';
+import _mul_limb from '../mul/_mul_limb.js';
 
-import {_cmp_half} from '../../compare/index.js';
+import _cmp_half from '../../compare/_cmp_half.js';
 
 /**
  * Input
@@ -29,7 +30,7 @@ import {_cmp_half} from '../../compare/index.js';
  * @param {Array} q Quotient.
  * @param {Number} qi Left of quotient.
  */
-export function _idivmod_schoolbook_subroutine_do(
+export default function _idivmod_schoolbook_subroutine_do(
 	r,
 	a,
 	ai,

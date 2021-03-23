@@ -1,11 +1,11 @@
 import assert from 'assert';
 
-import {_trim_positive} from '../../convert/_trim_positive.js';
-import {lt} from '../../../api/compare/lt.js';
-import {_isub} from '../sub/index.js';
-import {_imod_schoolbook_subroutine} from './_imod_schoolbook_subroutine.js';
+import _trim_positive from '../../convert/_trim_positive.js';
+import lt from '../../../api/compare/lt.js';
+import _isub from '../sub/_isub.js';
+import _imod_schoolbook_subroutine from './_imod_schoolbook_subroutine.js';
 
-import {_cmp_half} from '../../compare/index.js';
+import _cmp_half from '../../compare/_cmp_half.js';
 
 /**
  * Input
@@ -25,7 +25,15 @@ import {_cmp_half} from '../../compare/index.js';
  * @param {Number} bi Left of divisor.
  * @param {Number} bj Right of divisor.
  */
-export function _imod_schoolbook_large_divisor(r, a, ai, aj, b, bi, bj) {
+export default function _imod_schoolbook_large_divisor(
+	r,
+	a,
+	ai,
+	aj,
+	b,
+	bi,
+	bj,
+) {
 	assert(r >= 2);
 	assert(ai >= 0 && aj <= a.length);
 	assert(bi >= 0 && bj <= b.length);

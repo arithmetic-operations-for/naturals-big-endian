@@ -1,10 +1,10 @@
 import assert from 'assert';
 
-import {THRESHOLD_DIV_DC} from '../../thresholds/index.js';
-import {_idivmod_dc_32} from './_idivmod_dc_32.js';
-import {_idivmod_schoolbook_large_divisor} from './_idivmod_schoolbook_large_divisor.js';
+import THRESHOLD_DIV_DC from '../../thresholds/THRESHOLD_DIV_DC.js';
+import _idivmod_dc_32 from './_idivmod_dc_32.js';
+import _idivmod_schoolbook_large_divisor from './_idivmod_schoolbook_large_divisor.js';
 
-import {_cmp_half} from '../../compare/index.js';
+import _cmp_half from '../../compare/_cmp_half.js';
 
 /**
  * Algorithm 3.3 Divide-and-conquer division (2 by 1)
@@ -29,7 +29,7 @@ import {_cmp_half} from '../../compare/index.js';
  *  T(n) = 2T'(n/2) + K
  *
  */
-export function _idivmod_dc_21(r, a, ai, aj, b, bi, bj, c, ci, cj) {
+export default function _idivmod_dc_21(r, a, ai, aj, b, bi, bj, c, ci, cj) {
 	assert(THRESHOLD_DIV_DC >= 2);
 	assert(r >= 2);
 	assert(ai >= 0 && aj <= a.length);

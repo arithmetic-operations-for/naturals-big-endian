@@ -1,8 +1,9 @@
 import assert from 'assert';
 
-import {jz} from '../../../api/compare/index.js';
-import {_zeros, _copy} from '../../array/index.js';
-import {_mul} from '../mul/index.js';
+import jz from '../../../api/compare/jz.js';
+import _zeros from '../../array/_zeros.js';
+import _copy from '../../array/_copy.js';
+import _mul from '../mul/_mul.js';
 
 /**
  * Computes <code>pow(a,x) = a^x</code> using exponentiation by squaring.
@@ -19,7 +20,7 @@ import {_mul} from '../mul/index.js';
  * @param {Number} ci <code>a</code> left.
  * @param {Number} cj <code>b</code> right.
  */
-export function _pow_double_recursive(r, x, a, ai, aj, c, ci, cj) {
+export default function _pow_double_recursive(r, x, a, ai, aj, c, ci, cj) {
 	assert(r >= 2);
 	assert(x >= 0);
 	assert(ai >= 0 && aj <= a.length);

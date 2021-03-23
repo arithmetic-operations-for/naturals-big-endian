@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import {_cmp_n} from './_cmp_n.js';
+import _cmp_n from './_cmp_n.js';
 
 /**
  * Compares two big endian arrays.
@@ -18,7 +18,7 @@ import {_cmp_n} from './_cmp_n.js';
  * @return {int} result 1 if a > b; 0 if a = b; -1 otherwise.
  */
 
-export function _cmp(a, ai, aj, b, bi, bj) {
+export default function _cmp(a, ai, aj, b, bi, bj) {
 	assert(ai >= 0 && aj <= a.length);
 	assert(bi >= 0 && bj <= b.length);
 	assert(aj - ai >= bj - bi);

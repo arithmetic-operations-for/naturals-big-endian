@@ -13,7 +13,7 @@ import assert from 'assert';
  * @param {Number} Dj Right of D.
  * @returns {Number} The remainder D % d.
  */
-export function _mod_limb(r, d, D, Di, Dj) {
+export default function _mod_limb(r, d, D, Di, Dj) {
 	assert(r >= 2);
 	assert(d >= 1 && d <= r - 1);
 	assert(Di >= 0 && Dj <= D.length);

@@ -1,0 +1,2 @@
+const THRESHOLD_MUL_TOOM22 = 16;
+export default THRESHOLD_MUL_TOOM22;

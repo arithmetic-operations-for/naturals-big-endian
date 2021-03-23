@@ -1,4 +1,5 @@
-import {_iadd_limb, _imul_limb} from '../arithmetic/index.js';
+import _iadd_limb from '../arithmetic/add/_iadd_limb.js';
+import _imul_limb from '../arithmetic/mul/_imul_limb.js';
 
 import assert from 'assert';
 
@@ -16,7 +17,7 @@ import assert from 'assert';
  * @param {Number} bj end offset in the destination array
  */
 
-export function _convert_to_larger_slow(f, t, a, ai, aj, b, bi, bj) {
+export default function _convert_to_larger_slow(f, t, a, ai, aj, b, bi, bj) {
 	assert(f >= 2);
 	assert(f <= t);
 	assert(ai >= 0 && aj <= a.length);

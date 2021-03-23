@@ -13,7 +13,7 @@ import assert from 'assert';
  * @param {Number} Di Left of D.
  * @param {Number} Dj Right of D.
  */
-export function _imod_limb(r, d, D, Di, Dj) {
+export default function _imod_limb(r, d, D, Di, Dj) {
 	assert(r >= 2);
 	assert(d >= 1 && d <= r - 1);
 	assert(Di >= 0 && Dj <= D.length);

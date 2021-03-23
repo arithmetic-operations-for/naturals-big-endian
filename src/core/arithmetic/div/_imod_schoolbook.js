@@ -1,9 +1,9 @@
 import assert from 'assert';
 
-import {_zeros} from '../../array/index.js';
-import {_mul_limb} from '../mul/index.js';
-import {_imod_schoolbook_large_divisor} from './_imod_schoolbook_large_divisor.js';
-import {_div_limb_with_prefix} from './_div_limb_with_prefix.js';
+import _zeros from '../../array/_zeros.js';
+import _mul_limb from '../mul/_mul_limb.js';
+import _imod_schoolbook_large_divisor from './_imod_schoolbook_large_divisor.js';
+import _div_limb_with_prefix from './_div_limb_with_prefix.js';
 
 /**
  * Divides a big endian number by another big endian number and writes the
@@ -20,7 +20,7 @@ import {_div_limb_with_prefix} from './_div_limb_with_prefix.js';
  * @param {Number} bi
  * @param {Number} bj
  */
-export function _imod_schoolbook(r, a, ai, aj, b, bi, bj) {
+export default function _imod_schoolbook(r, a, ai, aj, b, bi, bj) {
 	assert(r >= 2);
 	assert(ai >= 0 && aj <= a.length);
 	assert(bi >= 0 && bj <= b.length);

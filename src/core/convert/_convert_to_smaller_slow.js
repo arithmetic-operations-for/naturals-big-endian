@@ -1,6 +1,7 @@
-import {_alloc, _copy} from '../array/index.js';
-import {_idivmod_limb} from '../arithmetic/div/index.js';
-import {_trim_positive} from './_trim_positive.js';
+import _alloc from '../array/_alloc.js';
+import _copy from '../array/_copy.js';
+import _idivmod_limb from '../arithmetic/div/_idivmod_limb.js';
+import _trim_positive from './_trim_positive.js';
 
 import assert from 'assert';
 
@@ -21,7 +22,7 @@ import assert from 'assert';
  * @param {Number} bj end offset in the destination array
  */
 
-export function _convert_to_smaller_slow(f, t, a, ai, aj, b, bi, bj) {
+export default function _convert_to_smaller_slow(f, t, a, ai, aj, b, bi, bj) {
 	assert(f >= t);
 	assert(ai >= 0 && aj <= a.length);
 	assert(bi >= 0 && bj <= b.length);

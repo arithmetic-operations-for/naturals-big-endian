@@ -22,7 +22,7 @@ import assert from 'assert';
  * @param {Array} Q The quotient.
  * @param {Number} Qi Left of quotient.
  */
-export function _div_limb_with_prefix(r, tmp, d, D, Di, Dj, Q, Qi) {
+export default function _div_limb_with_prefix(r, tmp, d, D, Di, Dj, Q, Qi) {
 	assert(r >= 2);
 	assert(d >= 1 && d <= r - 1);
 	assert(tmp >= 0 && tmp <= d - 1);

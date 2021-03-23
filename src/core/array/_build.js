@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-export function _build(base, number, data, n) {
+export default function _build(base, number, data, n) {
 	assert(typeof base === 'number');
 	assert(typeof number === 'number');
 	assert(n <= data.length);

@@ -16,7 +16,7 @@ import assert from 'assert';
  * @param {int} cj c right
  */
 
-export function _sub(r, a, ai, aj, b, bi, bj, c, ci, cj) {
+export default function _sub(r, a, ai, aj, b, bi, bj, c, ci, cj) {
 	assert(r >= 2);
 	assert(ai >= 0 && aj <= a.length);
 	assert(bi >= 0 && bj <= b.length);

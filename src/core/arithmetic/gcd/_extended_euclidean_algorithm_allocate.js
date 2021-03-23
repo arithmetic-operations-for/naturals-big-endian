@@ -1,12 +1,13 @@
 import assert from 'assert';
 
-import {_alloc, _zeros} from '../../array/index.js';
+import _alloc from '../../array/_alloc.js';
+import _zeros from '../../array/_zeros.js';
 
 /**
  * M >= n >= 0
  * m >= 1
  */
-export function _extended_euclidean_algorithm_allocate(m, n) {
+export default function _extended_euclidean_algorithm_allocate(m, n) {
 	assert(n >= 0);
 	assert(m >= 1);
 	assert(m >= n);

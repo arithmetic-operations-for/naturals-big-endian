@@ -1,8 +1,9 @@
-import {_trim_positive} from '../../../core/convert/index.js';
-import {_alloc, _copy} from '../../../core/array/index.js';
+import _trim_positive from '../../../core/convert/_trim_positive.js';
+import _alloc from '../../../core/array/_alloc.js';
+import _copy from '../../../core/array/_copy.js';
 
-import {_cmp_n} from '../../../core/compare/index.js';
-import {_euclidean_algorithm_loop} from '../../../core/arithmetic/gcd/index.js';
+import _cmp_n from '../../../core/compare/_cmp_n.js';
+import _euclidean_algorithm_loop from '../../../core/arithmetic/gcd/_euclidean_algorithm_loop.js';
 
 /**
  * No constraints on the input.
@@ -18,7 +19,7 @@ import {_euclidean_algorithm_loop} from '../../../core/arithmetic/gcd/index.js';
  * Return as [ d , di , dj ], where d is the array and di and dj are its left
  * and right bounds.
  */
-export function euclidean_algorithm(r, a, ai, aj, b, bi, bj) {
+export default function euclidean_algorithm(r, a, ai, aj, b, bi, bj) {
 	const _ai = _trim_positive(a, ai, aj);
 	const _bi = _trim_positive(b, bi, bj);
 	const m = aj - _ai;

@@ -1,7 +1,7 @@
-import {_zeros} from '../array/index.js';
-import {_convert} from './_convert.js';
+import _zeros from '../array/_zeros.js';
+import _convert from './_convert.js';
 
-export function convert_keep_zeros(f, t, a, ai, aj) {
+export default function convert_keep_zeros(f, t, a, ai, aj) {
 	const bi = 0;
 	const bj = Math.ceil((Math.log(f) / Math.log(t)) * (aj - ai));
 	const b = _zeros(bj - bi);

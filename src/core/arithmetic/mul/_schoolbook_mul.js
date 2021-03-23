@@ -10,7 +10,7 @@ import assert from 'assert';
  * results even when |A| < |B|.
  */
 
-export function _schoolbook_mul(r, a, ai, aj, b, bi, bj, c, ci, cj) {
+export default function _schoolbook_mul(r, a, ai, aj, b, bi, bj, c, ci, cj) {
 	assert(r >= 2);
 	assert(ai >= 0 && aj <= a.length);
 	assert(bi >= 0 && bj <= b.length);

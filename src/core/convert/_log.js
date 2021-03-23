@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-export function _log(x, y) {
+export default function _log(x, y) {
 	assert(y > 1);
 
 	let z = 0;

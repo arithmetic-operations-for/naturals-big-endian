@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-export function _validate(base, a, ai, aj) {
+export default function _validate(base, a, ai, aj) {
 	assert(Number.isInteger(base));
 	assert(base >= 2);
 	assert(ai >= 0 && aj <= a.length);

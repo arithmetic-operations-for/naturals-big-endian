@@ -13,7 +13,7 @@ import assert from 'assert';
  * @param {int} bj b right
  */
 
-export function _isub(r, a, ai, aj, b, bi, bj) {
+export default function _isub(r, a, ai, aj, b, bi, bj) {
 	assert(r >= 2);
 	assert(ai >= 0 && aj <= a.length);
 	assert(bi >= 0 && bj <= b.length);

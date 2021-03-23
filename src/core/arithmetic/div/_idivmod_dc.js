@@ -1,13 +1,14 @@
 import assert from 'assert';
 
-import {_zeros, _copy} from '../../array/index.js';
-import {_cmp_n} from '../../compare/index.js';
-import {_imul_limb} from '../mul/index.js';
-import {_idivmod_dc_21} from './_idivmod_dc_21.js';
-import {_div_limb_with_prefix} from './_div_limb_with_prefix.js';
-import {_mod_limb} from './_mod_limb.js';
+import _zeros from '../../array/_zeros.js';
+import _copy from '../../array/_copy.js';
+import _cmp_n from '../../compare/_cmp_n.js';
+import _imul_limb from '../mul/_imul_limb.js';
+import _idivmod_dc_21 from './_idivmod_dc_21.js';
+import _div_limb_with_prefix from './_div_limb_with_prefix.js';
+import _mod_limb from './_mod_limb.js';
 
-import {jz} from '../../../api/compare/index.js';
+import jz from '../../../api/compare/jz.js';
 
 /**
  * Input
@@ -31,7 +32,7 @@ import {jz} from '../../../api/compare/index.js';
  * @param {Number} ci
  * @param {Number} cj
  */
-export function _idivmod_dc(X, a, ai, aj, b, bi, bj, c, ci, cj) {
+export default function _idivmod_dc(X, a, ai, aj, b, bi, bj, c, ci, cj) {
 	assert(X >= 2);
 	assert(ai >= 0 && aj <= a.length);
 	assert(bi >= 0 && bj <= b.length);

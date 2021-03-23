@@ -1,4 +1,4 @@
-import {_mul} from '../../../core/arithmetic/mul/_mul.js';
+import _mul from '../../../core/arithmetic/mul/_mul.js';
 
 import assert from 'assert';
 
@@ -9,7 +9,7 @@ import assert from 'assert';
  *  - |C| >= |A| + |B|.
  */
 
-export function mul(r, a, ai, aj, b, bi, bj, c, ci, cj) {
+export default function mul(r, a, ai, aj, b, bi, bj, c, ci, cj) {
 	assert(r >= 2);
 	assert(ai >= 0 && aj <= a.length);
 	assert(bi >= 0 && bj <= b.length);

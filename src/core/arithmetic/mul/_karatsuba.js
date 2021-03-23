@@ -1,8 +1,10 @@
-import {add, iadd} from '../../../api/arithmetic/add/index.js';
-import {_zeros, _copy} from '../../array/index.js';
-import {_isub} from '../sub/index.js';
-import {_mul} from './_mul.js';
-import {_karatsuba_right_op_is_small} from './_karatsuba_right_op_is_small.js';
+import add from '../../../api/arithmetic/add/add.js';
+import iadd from '../../../api/arithmetic/add/iadd.js';
+import _zeros from '../../array/_zeros.js';
+import _copy from '../../array/_copy.js';
+import _isub from '../sub/_isub.js';
+import _mul from './_mul.js';
+import _karatsuba_right_op_is_small from './_karatsuba_right_op_is_small.js';
 
 import assert from 'assert';
 
@@ -72,7 +74,7 @@ import assert from 'assert';
  * @param {Number} cj c right
  */
 
-export function _karatsuba(r, a, ai, aj, b, bi, bj, c, ci, cj) {
+export default function _karatsuba(r, a, ai, aj, b, bi, bj, c, ci, cj) {
 	assert(r >= 2);
 	assert(ai >= 0 && aj <= a.length);
 	assert(bi >= 0 && bj <= b.length);

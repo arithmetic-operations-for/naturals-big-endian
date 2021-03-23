@@ -6,7 +6,7 @@ import assert from 'assert';
  * No restriction on operand sizes.
  */
 
-export function _mul_limb(r, x, b, bi, bj, c, ci, cj) {
+export default function _mul_limb(r, x, b, bi, bj, c, ci, cj) {
 	assert(r >= 2);
 	assert(x >= 0 && x <= r - 1);
 	assert(bi >= 0 && bj <= b.length);

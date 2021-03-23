@@ -1,6 +1,6 @@
-import {_chr} from './_chr.js';
+import _chr from './_chr.js';
 
-export function _to_string(b) {
+export default function _to_string(b) {
 	const n = b.length;
 
 	const data = [];

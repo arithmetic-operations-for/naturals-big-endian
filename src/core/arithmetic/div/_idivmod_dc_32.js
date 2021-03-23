@@ -1,13 +1,15 @@
 import assert from 'assert';
 
-import {_zeros, _fill} from '../../array/index.js';
-import {_isub} from '../sub/index.js';
-import {_mul} from '../mul/index.js';
-import {lt} from '../../../api/compare/index.js';
-import {iadd, decrement} from '../../../api/arithmetic/index.js';
-import {_idivmod_dc_21} from './_idivmod_dc_21.js';
+import _zeros from '../../array/_zeros.js';
+import _fill from '../../array/_fill.js';
+import _isub from '../sub/_isub.js';
+import _mul from '../mul/_mul.js';
+import lt from '../../../api/compare/lt.js';
+import iadd from '../../../api/arithmetic/add/iadd.js';
+import decrement from '../../../api/arithmetic/sub/decrement.js';
+import _idivmod_dc_21 from './_idivmod_dc_21.js';
 
-import {_cmp_half} from '../../compare/index.js';
+import _cmp_half from '../../compare/_cmp_half.js';
 
 /**
  * Algorithm 3.4 Divide-and-conquer division (3 by 2)
@@ -32,7 +34,7 @@ import {_cmp_half} from '../../compare/index.js';
  *  T'(n) ≤ T(n) + M(n) + Ln
  *
  */
-export function _idivmod_dc_32(r, a, ai, aj, b, bi, bj, c, ci, cj) {
+export default function _idivmod_dc_32(r, a, ai, aj, b, bi, bj, c, ci, cj) {
 	assert(r >= 2);
 	assert(ai >= 0 && aj <= a.length);
 	assert(bi >= 0 && bj <= b.length);

@@ -1,7 +1,7 @@
-import {_mul_limb} from './_mul_limb.js';
-import {_schoolbook_mul} from './_schoolbook_mul.js';
-import {_karatsuba} from './_karatsuba.js';
-import {THRESHOLD_MUL_TOOM22} from '../../thresholds/index.js';
+import _mul_limb from './_mul_limb.js';
+import _schoolbook_mul from './_schoolbook_mul.js';
+import _karatsuba from './_karatsuba.js';
+import THRESHOLD_MUL_TOOM22 from '../../thresholds/THRESHOLD_MUL_TOOM22.js';
 
 import assert from 'assert';
 
@@ -11,7 +11,7 @@ import assert from 'assert';
  * TODO use schoolbook mul if n = O(log m)
  */
 
-export function _mul(r, a, ai, aj, b, bi, bj, c, ci, cj) {
+export default function _mul(r, a, ai, aj, b, bi, bj, c, ci, cj) {
 	assert(r >= 2);
 	assert(ai >= 0 && aj <= a.length);
 	assert(bi >= 0 && bj <= b.length);

@@ -1,10 +1,14 @@
-import {_build, _alloc, _zeros, _reset, _copy} from '../array/index.js';
-import {_iadd} from '../arithmetic/add/index.js';
-import {_mul} from '../arithmetic/mul/index.js';
-import {_pow_double} from '../arithmetic/pow/index.js';
-import {mul} from '../../api/arithmetic/mul/index.js';
-import {_convert_slow} from './_convert_slow.js';
-import {_trim_positive} from './_trim_positive.js';
+import _build from '../array/_build.js';
+import _alloc from '../array/_alloc.js';
+import _zeros from '../array/_zeros.js';
+import _reset from '../array/_reset.js';
+import _copy from '../array/_copy.js';
+import _iadd from '../arithmetic/add/_iadd.js';
+import _mul from '../arithmetic/mul/_mul.js';
+import _pow_double from '../arithmetic/pow/_pow_double.js';
+import mul from '../../api/arithmetic/mul/mul.js';
+import _convert_slow from './_convert_slow.js';
+import _trim_positive from './_trim_positive.js';
 
 import assert from 'assert';
 
@@ -31,7 +35,17 @@ import assert from 'assert';
  * @param {Number} bj end offset in the destination array
  */
 
-export function _convert_dc(size_small_block, f, t, a, ai, aj, b, bi, bj) {
+export default function _convert_dc(
+	size_small_block,
+	f,
+	t,
+	a,
+	ai,
+	aj,
+	b,
+	bi,
+	bj,
+) {
 	assert(f >= 2);
 	assert(t >= 2);
 	assert(ai >= 0 && aj <= a.length);

@@ -1,12 +1,12 @@
 import assert from 'assert';
 
-import {_trim_positive} from '../../convert/_trim_positive.js';
-import {lt} from '../../../api/compare/lt.js';
-import {_validate} from '../../array/_validate.js';
-import {_isub} from '../sub/index.js';
-import {_idivmod_schoolbook_subroutine} from './_idivmod_schoolbook_subroutine.js';
+import _trim_positive from '../../convert/_trim_positive.js';
+import lt from '../../../api/compare/lt.js';
+import _validate from '../../array/_validate.js';
+import _isub from '../sub/_isub.js';
+import _idivmod_schoolbook_subroutine from './_idivmod_schoolbook_subroutine.js';
 
-import {_cmp_half} from '../../compare/index.js';
+import _cmp_half from '../../compare/_cmp_half.js';
 
 /**
  * Input
@@ -29,7 +29,7 @@ import {_cmp_half} from '../../compare/index.js';
  * @param {Array} q Quotient.
  * @param {Number} qi Left of quotient.
  */
-export function _idivmod_schoolbook_large_divisor(
+export default function _idivmod_schoolbook_large_divisor(
 	r,
 	a,
 	ai,

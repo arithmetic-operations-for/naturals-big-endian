@@ -1,6 +1,6 @@
-import {_zeros} from '../../array/index.js';
-import {_iadd} from '../add/index.js';
-import {_mul} from './_mul.js';
+import _zeros from '../../array/_zeros.js';
+import _iadd from '../add/_iadd.js';
+import _mul from './_mul.js';
 
 import assert from 'assert';
 
@@ -41,7 +41,7 @@ import assert from 'assert';
  * @param {Number} cj c right
  */
 
-export function _karatsuba_right_op_is_small(
+export default function _karatsuba_right_op_is_small(
 	r,
 	a,
 	ai,

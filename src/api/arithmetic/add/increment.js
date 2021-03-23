@@ -14,7 +14,7 @@ import assert from 'assert';
  * @param {Number} ai a left
  * @param {Number} aj a right
  */
-export function increment(r, a, ai, aj) {
+export default function increment(r, a, ai, aj) {
 	assert(r >= 2);
 	assert(ai >= 0 && aj <= a.length);
 

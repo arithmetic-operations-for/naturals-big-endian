@@ -12,7 +12,7 @@ import assert from 'assert';
  * @param {Number} bj end offset in the destination array
  */
 
-export function _convert_to_smaller_fast(br, z, a, ai, aj, b, bi, bj) {
+export default function _convert_to_smaller_fast(br, z, a, ai, aj, b, bi, bj) {
 	assert(br >= 2);
 	assert(ai >= 0 && aj <= a.length);
 	assert(bi >= 0 && bj <= b.length);

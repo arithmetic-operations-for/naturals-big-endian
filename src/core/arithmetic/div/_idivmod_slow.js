@@ -1,7 +1,8 @@
 import assert from 'assert';
 
-import {_sub} from '../sub/index.js';
-import {lt, jz} from '../../../api/compare/index.js';
+import _sub from '../sub/_sub.js';
+import lt from '../../../api/compare/lt.js';
+import jz from '../../../api/compare/jz.js';
 
 /**
  * Computes quotient and remainder of two big endian arrays.
@@ -30,7 +31,7 @@ import {lt, jz} from '../../../api/compare/index.js';
 //     made on the size of the operands.
 //     Should clarify.
 
-export function _idivmod_slow(x, r, ri, rj, b, bi, bj, q, qi) {
+export default function _idivmod_slow(x, r, ri, rj, b, bi, bj, q, qi) {
 	assert(x >= 2);
 	assert(ri >= 0 && rj <= r.length);
 	assert(bi >= 0 && bj <= b.length);

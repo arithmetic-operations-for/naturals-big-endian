@@ -1,11 +1,12 @@
 import assert from 'assert';
 
-import {_zeros, _copy} from '../../array/index.js';
-import {_mul_limb} from '../mul/index.js';
-import {_idivmod_schoolbook_large_divisor} from './_idivmod_schoolbook_large_divisor.js';
-import {_div_limb_with_prefix} from './_div_limb_with_prefix.js';
+import _zeros from '../../array/_zeros.js';
+import _copy from '../../array/_copy.js';
+import _mul_limb from '../mul/_mul_limb.js';
+import _idivmod_schoolbook_large_divisor from './_idivmod_schoolbook_large_divisor.js';
+import _div_limb_with_prefix from './_div_limb_with_prefix.js';
 
-import {jz} from '../../../api/compare/jz.js';
+import jz from '../../../api/compare/jz.js';
 
 /**
  * Computes q <- a / b and a <- a % b.
@@ -22,7 +23,7 @@ import {jz} from '../../../api/compare/jz.js';
  * @param {Array} q Quotient.
  * @param {Number} qi
  */
-export function _idivmod_schoolbook(r, a, ai, aj, b, bi, bj, q, qi) {
+export default function _idivmod_schoolbook(r, a, ai, aj, b, bi, bj, q, qi) {
 	assert(r >= 2);
 	assert(ai >= 0 && aj <= a.length);
 	assert(bi >= 0 && bj <= b.length);

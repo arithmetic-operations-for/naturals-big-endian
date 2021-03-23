@@ -15,7 +15,7 @@ import assert from 'assert';
  * @return {Number} 1 if a > b; 0 if a = b; -1 otherwise.
  */
 
-export function _cmp_n(a, ai, aj, b, bi) {
+export default function _cmp_n(a, ai, aj, b, bi) {
 	assert(ai >= 0 && aj <= a.length);
 	assert(bi >= 0);
 	assert(b.length - bi >= aj - ai);

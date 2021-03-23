@@ -1,3 +1,4 @@
-import {cmp} from './cmp.js';
+import cmp from './cmp.js';
 
-export const lt = (a, ai, aj, b, bi, bj) => cmp(a, ai, aj, b, bi, bj) < 0;
+const lt = (a, ai, aj, b, bi, bj) => cmp(a, ai, aj, b, bi, bj) < 0;
+export default lt;

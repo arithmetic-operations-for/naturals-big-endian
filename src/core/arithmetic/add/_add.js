@@ -1,4 +1,4 @@
-import {_copy} from '../../array/index.js';
+import _copy from '../../array/_copy.js';
 
 import assert from 'assert';
 
@@ -18,7 +18,7 @@ import assert from 'assert';
  * @param {Number} cj c right
  */
 
-export function _add(r, a, ai, aj, b, bi, bj, c, ci, cj) {
+export default function _add(r, a, ai, aj, b, bi, bj, c, ci, cj) {
 	assert(r >= 2);
 	assert(ai >= 0 && aj <= a.length);
 	assert(bi >= 0 && bj <= b.length);

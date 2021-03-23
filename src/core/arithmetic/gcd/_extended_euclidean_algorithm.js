@@ -1,10 +1,10 @@
 import assert from 'assert';
 
-import {_copy} from '../../array/index.js';
-import {ge} from '../../../api/compare/index.js';
+import _copy from '../../array/_copy.js';
+import ge from '../../../api/compare/ge.js';
 
-import {_extended_euclidean_algorithm_allocate} from './_extended_euclidean_algorithm_allocate.js';
-import {_extended_euclidean_algorithm_loop} from './_extended_euclidean_algorithm_loop.js';
+import _extended_euclidean_algorithm_allocate from './_extended_euclidean_algorithm_allocate.js';
+import _extended_euclidean_algorithm_loop from './_extended_euclidean_algorithm_loop.js';
 
 /**
  * Precondition:
@@ -20,7 +20,7 @@ import {_extended_euclidean_algorithm_loop} from './_extended_euclidean_algorith
  * @param {Number} bj <code>b</code> right bound.
  */
 
-export function _extended_euclidean_algorithm(r, a, ai, aj, b, bi, bj) {
+export default function _extended_euclidean_algorithm(r, a, ai, aj, b, bi, bj) {
 	assert(r >= 2);
 	assert(ai >= 0 && aj <= a.length);
 	assert(bi >= 0 && bj <= b.length);

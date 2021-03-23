@@ -1,6 +1,6 @@
-import {_int} from './_int.js';
+import _int from './_int.js';
 
-export function _from_string(string) {
+export default function _from_string(string) {
 	const n = string.length;
 
 	const a = [];

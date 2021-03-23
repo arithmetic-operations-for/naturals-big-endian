@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-export function _fill(a, ai, aj, v) {
+export default function _fill(a, ai, aj, v) {
 	assert(ai >= 0);
 	assert(aj <= a.length);
 	assert(aj - ai >= 0);

@@ -9,7 +9,7 @@ import assert from 'assert';
  *
  * TODO define constant. Reuse elsewhere?
  */
-export function _imul_limb(r, x, b, bi, bj) {
+export default function _imul_limb(r, x, b, bi, bj) {
 	assert(r >= 2);
 	assert(r <= 94906266);
 	assert(x >= 0 && x <= r);

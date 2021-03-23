@@ -1,3 +1,4 @@
-import {_karatsuba} from './_karatsuba.js';
+import _karatsuba from './_karatsuba.js';
 
-export const _toom22 = _karatsuba;
+const _toom22 = _karatsuba;
+export default _toom22;

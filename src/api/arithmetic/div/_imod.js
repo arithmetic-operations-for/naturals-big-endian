@@ -1,12 +1,10 @@
 import assert from 'assert';
 
-import {_reset} from '../../../core/array/index.js';
-import {
-	_imod_limb,
-	_imod_schoolbook,
-	_idivmod_dc,
-} from '../../../core/arithmetic/div/index.js';
-import {THRESHOLD_DIV_DC} from '../../../core/thresholds/index.js';
+import _reset from '../../../core/array/_reset.js';
+import _imod_limb from '../../../core/arithmetic/div/_imod_limb.js';
+import _imod_schoolbook from '../../../core/arithmetic/div/_imod_schoolbook.js';
+import _idivmod_dc from '../../../core/arithmetic/div/_idivmod_dc.js';
+import THRESHOLD_DIV_DC from '../../../core/thresholds/THRESHOLD_DIV_DC.js';
 
 /**
  * Computes the remainder of two numbers. Uses the most
@@ -31,7 +29,7 @@ import {THRESHOLD_DIV_DC} from '../../../core/thresholds/index.js';
  * @param {Number} _i Left of memory.
  * @param {Number} _j Right of memory.
  */
-export function _imod(r, D, Di, Dj, d, di, dj, _, _i, _j) {
+export default function _imod(r, D, Di, Dj, d, di, dj, _, _i, _j) {
 	assert(r >= 2);
 
 	assert(Di >= 0 && Dj <= D.length);

@@ -1,9 +1,10 @@
 import assert from 'assert';
 
-import {_cmp_n, _cmp_half} from '../../compare/index.js';
-import {increment} from '../../../api/arithmetic/add/increment.js';
-import {_isub} from '../sub/index.js';
-import {_idivmod_schoolbook_subroutine_do} from './_idivmod_schoolbook_subroutine_do.js';
+import _cmp_half from '../../compare/_cmp_half.js';
+import _cmp_n from '../../compare/_cmp_n.js';
+import increment from '../../../api/arithmetic/add/increment.js';
+import _isub from '../sub/_isub.js';
+import _idivmod_schoolbook_subroutine_do from './_idivmod_schoolbook_subroutine_do.js';
 
 /**
  * Input
@@ -26,7 +27,17 @@ import {_idivmod_schoolbook_subroutine_do} from './_idivmod_schoolbook_subroutin
  * @param {Array} q Quotient.
  * @param {Number} qi Left of quotient.
  */
-export function _idivmod_schoolbook_subroutine(r, a, ai, aj, b, bi, bj, q, qi) {
+export default function _idivmod_schoolbook_subroutine(
+	r,
+	a,
+	ai,
+	aj,
+	b,
+	bi,
+	bj,
+	q,
+	qi,
+) {
 	assert(r >= 2);
 	assert(ai >= 0 && aj <= a.length);
 	assert(bi >= 0 && bj <= b.length);

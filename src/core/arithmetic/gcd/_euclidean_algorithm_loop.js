@@ -1,8 +1,9 @@
 import assert from 'assert';
 
-import {_imod, ge} from '../../../api/index.js';
-import {_alloc} from '../../array/index.js';
-import {_trim_positive} from '../../convert/index.js';
+import _imod from '../../../api/arithmetic/div/_imod.js';
+import ge from '../../../api/compare/ge.js';
+import _alloc from '../../array/_alloc.js';
+import _trim_positive from '../../convert/_trim_positive.js';
 
 /**
  * Euclidean algorithm. Computes the gcd of the two input numbers A and B,
@@ -25,7 +26,7 @@ import {_trim_positive} from '../../convert/index.js';
  * Return as [ d , di , dj ], where d is the array and di and dj are its left
  * and right bounds.
  */
-export function _euclidean_algorithm_loop(r, a, ai, aj, b, bi, bj) {
+export default function _euclidean_algorithm_loop(r, a, ai, aj, b, bi, bj) {
 	assert(r >= 2);
 
 	assert(ai >= 0 && aj <= a.length);

@@ -14,7 +14,7 @@ import assert from 'assert';
  * @param {Number} aj a right
  */
 
-export function _iadd_limb(r, x, a, ai, aj) {
+export default function _iadd_limb(r, x, a, ai, aj) {
 	assert(r >= 2);
 	assert(x >= 0 && x <= r - 1);
 	assert(ai >= 0 && aj <= a.length);
