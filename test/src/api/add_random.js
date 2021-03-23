@@ -6,8 +6,6 @@ import { parse , _zeros , add , stringify } from '../../../src' ;
 
 function macro ( t , r , A , B ) {
 
-	DONE.add(macro.title(null, r, A, B)) ;
-
 	const C = A + B ;
 
 	const a = parse( r , r , A.toString(r) ) ;
@@ -37,7 +35,9 @@ for ( const _i of range(N) ) {
 		let A = randint(MIN, MAX + 1);
 		let B = randint(MIN, MAX - A + 1);
 		if (randint(0,2)) [A,B] = [B,A] ;
-		if (!DONE.has(macro.title(null, r, A, B))) {
+		const key = macro.title(null, r, A, B);
+		if (!DONE.has(key)) {
+			DONE.add(key) ;
 			test( macro , r , A , B ) ;
 			break ;
 		}
