@@ -38,7 +38,8 @@ test( macro , 2 , 240042 , 191854 ) ;
 test( macro , 3 ,  58072 ,  38617 ) ;
 test( macro , 3 ,  51224 ,  54163 ) ;
 
-for ( const _i of range(N) ) {
+// eslint-disable-next-line no-unused-vars
+for ( const _ of range(N) ) {
 	while ( true ) {
 		const r = randint(MIN_RADIX, MAX_RADIX + 1);
 		const A = randint(MIN, MAX + 1);
