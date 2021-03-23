@@ -3,10 +3,8 @@ import assert from 'assert' ;
 import { _copy } from '../../array' ;
 import { ge } from '../../../api/compare' ;
 
-import {
-	_extended_euclidean_algorithm_allocate ,
-	_extended_euclidean_algorithm_loop ,
-} from '.' ;
+import { _extended_euclidean_algorithm_allocate } from './_extended_euclidean_algorithm_allocate';
+import { _extended_euclidean_algorithm_loop } from './_extended_euclidean_algorithm_loop';
 
 /**
  * Precondition:
