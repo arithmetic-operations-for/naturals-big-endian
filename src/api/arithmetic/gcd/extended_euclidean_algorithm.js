@@ -13,7 +13,6 @@ import _extended_euclidean_algorithm from '../../../core/arithmetic/gcd/_extende
  * @param {Number} bi <code>b</code> left bound.
  * @param {Number} bj <code>b</code> right bound.
  */
-
 export default function extended_euclidean_algorithm(r, a, ai, aj, b, bi, bj) {
 	const _ai = _trim_positive(a, ai, aj);
 	const _bi = _trim_positive(b, bi, bj);

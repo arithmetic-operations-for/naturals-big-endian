@@ -16,7 +16,6 @@ import _add from '../../../core/arithmetic/add/_add.js';
  * @param {Number} cj c right
  *
  */
-
 export default function add(r, a, ai, aj, b, bi, bj, c, ci, cj) {
 	ci = Math.max(0, ci);
 	const k = cj - ci;
