@@ -32,7 +32,7 @@ function check (t, Ctor, cmp, transform) {
 
 }
 
-check.title = (_, Ctor, cmp, transform) => `integer.cmp<${Ctor.name}, ${cmp[0]}>` ;
+check.title = (_, Ctor, cmp, _transform) => `integer.cmp<${Ctor.name}, ${cmp[0]}>` ;
 
 const TEST = [
 	['0123456789', '9876543210', -1],
