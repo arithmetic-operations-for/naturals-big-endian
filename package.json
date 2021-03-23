@@ -100,7 +100,8 @@
     "nyc": "15.1.0",
     "power-assert": "1.6.1",
     "regenerator-runtime": "0.13.7",
-    "xorshift.js": "1.0.5"
+    "xorshift.js": "1.0.5",
+    "fixpack": "4.0.0"
   },
   "files": [
     "lib"
@@ -129,7 +130,9 @@
     "esdoc": "esdoc",
     "prepare": "npm run build",
     "release": "np",
-    "test": "ava"
+    "test": "ava",
+    "lint-config": "fixpack --dryRun",
+    "lint-config-and-fix": "fixpack || fixpack"
   },
   "sideEffects": false
 }
