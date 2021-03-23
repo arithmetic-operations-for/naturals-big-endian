@@ -1,4 +1,4 @@
-[@aureooms/js-integer-big-endian](https://aureooms.github.io/js-integer-big-endian)
+:elephant: [@aureooms/js-integer-big-endian](https://aureooms.github.io/js-integer-big-endian)
 ==
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/Big-Endian.svg" width="864">
@@ -28,7 +28,7 @@ integer.translate( 10 , 16 , '255' ) ; // 'ff'
 [![Documentation](https://aureooms.github.io/js-integer-big-endian/badge.svg)](https://aureooms.github.io/js-integer-big-endian/source.html)
 [![Package size](https://img.shields.io/bundlephobia/minzip/@aureooms/js-integer-big-endian)](https://bundlephobia.com/result?p=@aureooms/js-integer-big-endian)
 
-## Reference
+## :scroll: Reference
 
  - [The GNU Multiple Precision Arithmetic Library](https://gmplib.org/)
  - https://gmplib.org/gmp-man-6.0.0a.pdf
