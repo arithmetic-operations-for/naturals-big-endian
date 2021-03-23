@@ -8,7 +8,6 @@ import {
 	_from_string,
 	_convert ,
 	_zeros ,
-	_copy ,
 } from '../../../src' ;
 
 function translate ( f , t , string ) {
