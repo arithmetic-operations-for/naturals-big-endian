@@ -5,8 +5,6 @@ import { _mul_limb } from '../mul' ;
 import { _imod_schoolbook_large_divisor } from './_imod_schoolbook_large_divisor' ;
 import { _div_limb_with_prefix } from './_div_limb_with_prefix' ;
 
-import { jz } from '../../../api/compare/jz' ;
-
 /**
  * Divides a big endian number by another big endian number and writes the
  * remainder to the dividend array.

@@ -1,7 +1,6 @@
 import assert from 'assert' ;
 
 import { _cmp_n } from '../../compare' ;
-import { increment } from '../../../api/arithmetic/add/increment' ;
 import { _isub } from '../sub' ;
 import { _imod_schoolbook_subroutine_do } from './_imod_schoolbook_subroutine_do' ;
 

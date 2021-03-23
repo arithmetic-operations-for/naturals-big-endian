@@ -3,7 +3,6 @@ import { XorShift128Plus } from 'xorshift.js' ;
 import {
 	_convert_dc ,
 	trim_natural ,
-	_int ,
 	THRESHOLD_MUL_TOOM22 ,
 	_to_string,
 	_from_string,
