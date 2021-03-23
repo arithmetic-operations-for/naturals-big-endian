@@ -4,13 +4,13 @@ import assert from 'assert';
  * Subtracts B from A, |A| >= |B|.
  * Wraps.
  *
- * @param {int} r base (radix)
+ * @param {Number} r base (radix)
  * @param {array} a first operand
- * @param {int} ai a left
- * @param {int} aj a right
+ * @param {Number} ai a left
+ * @param {Number} aj a right
  * @param {array} b second operand
- * @param {int} bi b left
- * @param {int} bj b right
+ * @param {Number} bi b left
+ * @param {Number} bj b right
  */
 
 export default function _isub(r, a, ai, aj, b, bi, bj) {

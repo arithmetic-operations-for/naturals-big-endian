@@ -9,13 +9,13 @@ import _cmp_n from './_cmp_n.js';
  *   - |A| >= |B| >= 0
  *
  * @param {array} a first operand
- * @param {int} ai a left
- * @param {int} aj a right
+ * @param {Number} ai a left
+ * @param {Number} aj a right
  * @param {array} b second operand
- * @param {int} bi b left
- * @param {int} bj b right
+ * @param {Number} bi b left
+ * @param {Number} bj b right
  *
- * @return {int} result 1 if a > b; 0 if a = b; -1 otherwise.
+ * @return {Number} result 1 if a > b; 0 if a = b; -1 otherwise.
  */
 
 export default function _cmp(a, ai, aj, b, bi, bj) {

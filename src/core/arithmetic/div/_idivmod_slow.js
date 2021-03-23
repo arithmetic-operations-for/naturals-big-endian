@@ -16,15 +16,15 @@ import jz from '../../../api/compare/jz.js';
  * HYP : q is at least as large as r
  *       b is not zero
  *
- * @param {int} x the radix
+ * @param {Number} x the radix
  * @param {array} r dividend and remainder
- * @param {int} ri r left
- * @param {int} rj r right
+ * @param {Number} ri r left
+ * @param {Number} rj r right
  * @param {array} b divisor
- * @param {int} bi b left
- * @param {int} bj b right
+ * @param {Number} bi b left
+ * @param {Number} bj b right
  * @param {array} q quotient, must be 0 initialized
- * @param {int} qi q left
+ * @param {Number} qi q left
  */
 
 // /!\ There are implicit hypotheses

@@ -4,16 +4,16 @@ import assert from 'assert';
  * Subtracts two big endian arrays, |C| >= |A| >= |B|.
  * Wraps.
  *
- * @param {int} r base (radix)
+ * @param {Number} r base (radix)
  * @param {array} a first operand
- * @param {int} ai a left
- * @param {int} aj a right
+ * @param {Number} ai a left
+ * @param {Number} aj a right
  * @param {array} b second operand
- * @param {int} bi b left
- * @param {int} bj b right
+ * @param {Number} bi b left
+ * @param {Number} bj b right
  * @param {array} c result, must be 0 initialized
- * @param {int} ci c left
- * @param {int} cj c right
+ * @param {Number} ci c left
+ * @param {Number} cj c right
  */
 
 export default function _sub(r, a, ai, aj, b, bi, bj, c, ci, cj) {

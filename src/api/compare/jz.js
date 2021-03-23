@@ -8,8 +8,8 @@ import assert from 'assert';
  * O(1) time if A has no leading zero.
  *
  * @param {array} a first operand
- * @param {int} ai a left
- * @param {int} aj a right
+ * @param {Number} ai a left
+ * @param {Number} aj a right
  */
 
 export default function jz(a, ai, aj) {
