@@ -1,15 +1,16 @@
 import assert from 'assert';
 
 /**
- * Returns true if input number A is 0.
+ * Returns true if and only if input number A is 0.
  *
  * Returns true if aj <= ai.
  * O(|A|) time in the worst case.
  * O(1) time if A has no leading zero.
  *
- * @param {array} a first operand
- * @param {Number} ai a left
- * @param {Number} aj a right
+ * @param {number[]} a first operand
+ * @param {number} ai a left
+ * @param {number} aj a right
+ * @return {boolean} true if and only if input number is 0.
  */
 
 export default function jz(a, ai, aj) {

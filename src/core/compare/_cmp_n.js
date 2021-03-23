@@ -6,13 +6,13 @@ import assert from 'assert';
  * Input:
  *   - |A| = |B|
  *
- * @param {Array} a first operand
- * @param {Number} ai a left
- * @param {Number} aj a right
- * @param {Array} b second operand
- * @param {Number} bi b left
+ * @param {number[]} a first operand
+ * @param {number} ai a left
+ * @param {number} aj a right
+ * @param {number[]} b second operand
+ * @param {number} bi b left
  *
- * @return {Number} 1 if a > b; 0 if a = b; -1 otherwise.
+ * @return {number} 1 if a > b; 0 if a = b; -1 otherwise.
  */
 
 export default function _cmp_n(a, ai, aj, b, bi) {
