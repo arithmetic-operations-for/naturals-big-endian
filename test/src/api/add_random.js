@@ -31,7 +31,7 @@ const MIN = 0 ;
 const MAX = Math.pow(2,53) - 1 ;
 const DONE = new Set();
 
-for ( const i of range(N) ) {
+for ( const _i of range(N) ) {
 	while ( true ) {
 		const r = randint(MIN_RADIX, MAX_RADIX + 1);
 		let A = randint(MIN, MAX + 1);

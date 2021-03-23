@@ -15,7 +15,7 @@ function throws ( t , from , to , array , i , j , expected ) {
 	t.throws( fn , expected ) ;
 }
 
-throws.title = ( providedTitle , from , to , array , i , j , expected ) => providedTitle || `stringify ${JSON.stringify(array)}[${i}:${j}]_${from} -> ${to} throws` ;
+throws.title = ( providedTitle , from , to , array , i , j , _expected ) => providedTitle || `stringify ${JSON.stringify(array)}[${i}:${j}]_${from} -> ${to} throws` ;
 
 test( throws , 37 , 37 , [0] , 0 , 1 , { message: /not implemented/ } ) ;
 
