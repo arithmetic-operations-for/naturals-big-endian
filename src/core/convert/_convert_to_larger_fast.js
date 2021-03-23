@@ -34,7 +34,7 @@ export function _convert_to_larger_fast(ar, z, a, ai, aj, b, bi, bj) {
 
 	// Total number of blocks in destination
 	// (complete ones + first if incomplete)
-	const w = q + Boolean(r);
+	const w = q + !!r;
 
 	if (n >= w) {
 		// If destination can contain more than
