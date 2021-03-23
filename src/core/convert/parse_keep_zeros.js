@@ -1,12 +1,10 @@
-import { _from_string } from "./_from_string.js" ;
-import { convert_keep_zeros } from "./convert_keep_zeros.js" ;
+import {_from_string} from './_from_string.js';
+import {convert_keep_zeros} from './convert_keep_zeros.js';
 
-export function parse_keep_zeros ( f , t , string ) {
+export function parse_keep_zeros(f, t, string) {
+	if (f > 36) throw new Error('f > 36 not implemented');
 
-	if ( f > 36 ) throw new Error('f > 36 not implemented') ;
+	const a = _from_string(string);
 
-	const a = _from_string(string) ;
-
-	return convert_keep_zeros( f , t , a , 0 , a.length ) ;
-
+	return convert_keep_zeros(f, t, a, 0, a.length);
 }

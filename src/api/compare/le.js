@@ -1,3 +1,3 @@
-import { cmp } from "./cmp.js" ;
+import {cmp} from './cmp.js';
 
-export const le = ( a , ai , aj , b , bi , bj ) => cmp( a , ai , aj , b , bi , bj ) <= 0 ;
+export const le = (a, ai, aj, b, bi, bj) => cmp(a, ai, aj, b, bi, bj) <= 0;

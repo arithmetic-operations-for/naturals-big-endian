@@ -1,38 +1,35 @@
-import test from 'ava' ;
+import test from 'ava';
 
-import operator from  '@aureooms/js-operator' ;
+import operator from '@aureooms/js-operator';
 
-import * as integer from "../../../../src/index.js" ;
+import * as integer from '../../../../src/index.js';
 
-function check (t, Ctor, cmp, transform) {
-
+function check(t, Ctor, cmp, transform) {
 	cmp = cmp[1];
 
 	const f = 16;
-	const r = Math.pow(2, Ctor.BYTES_PER_ELEMENT * 8);
+	const r = 2 ** (Ctor.BYTES_PER_ELEMENT * 8);
 
-	for (let k = 0; k < TEST.length; ++k) {
-		const test = TEST[k];
+	for (const test of TEST) {
+		const as = test[0];
+		const a = new Ctor(integer.parse(f, r, as));
+		const ai = 0;
+		const aj = a.length;
 
-		const as = test[0] ;
-		const a = new Ctor( integer.parse( f , r , as ) ) ;
-		const ai = 0 ;
-		const aj = a.length ;
-
-		const bs = test[1] ;
-		const b = new Ctor( integer.parse( f , r , bs ) ) ;
-		const bi = 0 ;
-		const bj = b.length ;
+		const bs = test[1];
+		const b = new Ctor(integer.parse(f, r, bs));
+		const bi = 0;
+		const bj = b.length;
 
 		const actual = cmp(a, ai, aj, b, bi, bj);
 		const expected = transform(test[2], 0);
 
 		t.deepEqual(actual, expected, `cmp('${as}','${bs}') === ${expected}`);
 	}
-
 }
 
-check.title = (_, Ctor, cmp, _transform) => `integer.cmp<${Ctor.name}, ${cmp[0]}>` ;
+check.title = (_, Ctor, cmp, _transform) =>
+	`integer.cmp<${Ctor.name}, ${cmp[0]}>`;
 
 const TEST = [
 	['0123456789', '9876543210', -1],
@@ -126,12 +123,7 @@ const TEST = [
 	['11541548549', '1541548548', 1],
 ];
 
-
-const TRAITS = [
-	Uint8Array,
-	Uint16Array,
-	Uint32Array,
-];
+const TRAITS = [Uint8Array, Uint16Array, Uint32Array];
 
 const OPERATOR = [
 	[['integer.cmp', integer.cmp], operator.identity],
@@ -144,5 +136,5 @@ const OPERATOR = [
 ];
 
 for (let j = 0; j < OPERATOR.length; ++j)
-for (let i = 0; i < TRAITS.length; ++i)
-	test(check, TRAITS[i], OPERATOR[j][0], OPERATOR[j][1]);
+	for (let i = 0; i < TRAITS.length; ++i)
+		test(check, TRAITS[i], OPERATOR[j][0], OPERATOR[j][1]);

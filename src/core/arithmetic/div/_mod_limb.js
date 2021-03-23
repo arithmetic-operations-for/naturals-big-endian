@@ -1,4 +1,4 @@
-import assert from 'assert' ;
+import assert from 'assert';
 
 /**
  * Divides a big endian number by a single limb number and returns only the
@@ -13,23 +13,19 @@ import assert from 'assert' ;
  * @param {Number} Dj Right of D.
  * @returns {Number} The remainder D % d.
  */
-export function _mod_limb ( r , d , D , Di , Dj ) {
-
+export function _mod_limb(r, d, D, Di, Dj) {
 	assert(r >= 2);
-	assert(1 <= d && d <= r - 1);
-	assert(0 <= Di && Dj <= D.length);
+	assert(d >= 1 && d <= r - 1);
+	assert(Di >= 0 && Dj <= D.length);
 
-	let R = 0 ;
+	let R = 0;
 
-	while ( Di < Dj ) {
-
-		R *= r ;
-		R += D[Di] ;
-		R %= d ;
-		++Di ;
-
+	while (Di < Dj) {
+		R *= r;
+		R += D[Di];
+		R %= d;
+		++Di;
 	}
 
-	return R ;
-
+	return R;
 }

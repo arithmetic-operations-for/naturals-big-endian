@@ -1,10 +1,10 @@
-import { _log } from "./_log.js" ;
-import { _convert_to_larger_fast } from "./_convert_to_larger_fast.js" ;
-import { _convert_to_larger_slow } from "./_convert_to_larger_slow.js" ;
-import { _convert_dc } from "./_convert_dc.js" ;
-import { THRESHOLD_CONVERT_DC } from "../thresholds/conversion.js" ;
+import {_log} from './_log.js';
+import {_convert_to_larger_fast} from './_convert_to_larger_fast.js';
+import {_convert_to_larger_slow} from './_convert_to_larger_slow.js';
+import {_convert_dc} from './_convert_dc.js';
+import {THRESHOLD_CONVERT_DC} from '../thresholds/conversion.js';
 
-import assert from 'assert' ;
+import assert from 'assert';
 
 /**
  *
@@ -18,8 +18,7 @@ import assert from 'assert' ;
  * @param {Number} bj end offset in the destination array
  */
 
-export function _convert_to_larger ( f , t , a , ai , aj , b , bi , bj ) {
-
+export function _convert_to_larger(f, t, a, ai, aj, b, bi, bj) {
 	assert(f >= 2);
 	assert(t >= 2);
 	assert(f < t);
@@ -28,16 +27,15 @@ export function _convert_to_larger ( f , t , a , ai , aj , b , bi , bj ) {
 	assert(aj - ai >= 0);
 	assert(bj - bi >= 0);
 
-	const [ z , x ] = _log( t , f ) ;
+	const [z, x] = _log(t, f);
 
-	if ( x === 1 ) return _convert_to_larger_fast( f , z , a , ai , aj , b , bi , bj ) ;
+	if (x === 1) return _convert_to_larger_fast(f, z, a, ai, aj, b, bi, bj);
 
-	if ( aj - ai >= THRESHOLD_CONVERT_DC ) {
+	if (aj - ai >= THRESHOLD_CONVERT_DC) {
 		// TODO use better size_small_block to avoid degenerated small blocks
 		// that slow down the execution
-		return _convert_dc( THRESHOLD_CONVERT_DC >> 1 , f , t , a , ai , aj , b , bi , bj ) ;
+		return _convert_dc(THRESHOLD_CONVERT_DC >> 1, f, t, a, ai, aj, b, bi, bj);
 	}
 
-	return _convert_to_larger_slow( f , t , a , ai , aj , b , bi , bj ) ;
-
+	return _convert_to_larger_slow(f, t, a, ai, aj, b, bi, bj);
 }

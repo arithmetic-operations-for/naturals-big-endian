@@ -1,1 +1,1 @@
-export * from "./decrement.js" ;
+export * from './decrement.js';

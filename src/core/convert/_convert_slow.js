@@ -1,9 +1,9 @@
-import { _convert_to_smaller_slow } from "./_convert_to_smaller_slow.js" ;
-import { _convert_to_larger_slow } from "./_convert_to_larger_slow.js" ;
+import {_convert_to_smaller_slow} from './_convert_to_smaller_slow.js';
+import {_convert_to_larger_slow} from './_convert_to_larger_slow.js';
 
 /**
  *
- * f != t
+ * F != t
  *
  * @param {Number} f the base to convert from
  * @param {Number} t the base to convert to
@@ -15,9 +15,7 @@ import { _convert_to_larger_slow } from "./_convert_to_larger_slow.js" ;
  * @param {Number} bj end offset in the destination array
  */
 
-export function _convert_slow ( f , t , a , ai , aj , b , bi , bj ) {
-
-	if ( f > t ) return _convert_to_smaller_slow( f , t , a , ai , aj , b , bi , bj ) ;
-	else return _convert_to_larger_slow( f , t , a , ai , aj , b , bi , bj ) ;
-
+export function _convert_slow(f, t, a, ai, aj, b, bi, bj) {
+	if (f > t) return _convert_to_smaller_slow(f, t, a, ai, aj, b, bi, bj);
+	return _convert_to_larger_slow(f, t, a, ai, aj, b, bi, bj);
 }

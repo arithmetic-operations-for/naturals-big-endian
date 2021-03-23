@@ -1,4 +1,4 @@
-import assert from 'assert' ;
+import assert from 'assert';
 
 /**
  *
@@ -12,33 +12,32 @@ import assert from 'assert' ;
  * @param {Number} bj end offset in the destination array
  */
 
-export function _convert_to_larger_fast ( ar , z , a , ai , aj , b , bi , bj ) {
-
+export function _convert_to_larger_fast(ar, z, a, ai, aj, b, bi, bj) {
 	assert(ar >= 2);
 	assert(ai >= 0 && aj <= a.length);
 	assert(bi >= 0 && bj <= b.length);
 	assert(aj - ai >= 0);
 	assert(bj - bi >= 0);
 
-	var i, t;
+	let i;
+	let t;
 
 	const m = aj - ai;
 	const n = bj - bi;
 
-	// number of parts of first
+	// Number of parts of first
 	// destination block if incomplete
 	const r = m % z;
 
-	// number of complete blocks in destination
+	// Number of complete blocks in destination
 	const q = (m / z) | 0;
 
-	// total number of blocks in destination
+	// Total number of blocks in destination
 	// (complete ones + first if incomplete)
-	const w = q + !!r;
-
+	const w = q + Boolean(r);
 
 	if (n >= w) {
-		// if destination can contain more than
+		// If destination can contain more than
 		// what is available in source then
 		// compute the effective write start
 		// in destination and set i to the correct
@@ -47,9 +46,8 @@ export function _convert_to_larger_fast ( ar , z , a , ai , aj , b , bi , bj ) {
 		// first destination block if incomplete
 		bi = bj - w;
 		i = (z - r) % z;
-	}
-	else {
-		// if source contains more than what
+	} else {
+		// If source contains more than what
 		// destination can handle set the effective
 		// read start in source and set i to 0 because
 		// all blocks will be complete
@@ -60,12 +58,12 @@ export function _convert_to_larger_fast ( ar , z , a , ai , aj , b , bi , bj ) {
 	for (; ai < aj && bi < bj; ++bi) {
 		t = 0;
 		for (; i < z; ++i) {
-			t *= ar;     // aggregate source blocks
-			t += a[ai];  // using simple
-			++ai;        // multiply + add
+			t *= ar; // Aggregate source blocks
+			t += a[ai]; // Using simple
+			++ai; // Multiply + add
 		}
-		b[bi] = t;  // set block in destination
+
+		b[bi] = t; // Set block in destination
 		i = 0;
 	}
-
 }

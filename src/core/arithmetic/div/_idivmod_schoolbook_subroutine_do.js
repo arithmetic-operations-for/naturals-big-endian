@@ -1,11 +1,11 @@
-import assert from 'assert' ;
+import assert from 'assert';
 
-import { _zeros, _validate } from "../../array/index.js" ;
-import { gt } from "../../../api/compare/index.js" ;
-import { _isub } from "../sub/index.js" ;
-import { _mul_limb } from "../mul/index.js" ;
+import {_zeros, _validate} from '../../array/index.js';
+import {gt} from '../../../api/compare/index.js';
+import {_isub} from '../sub/index.js';
+import {_mul_limb} from '../mul/index.js';
 
-import { _cmp_half } from "../../compare/index.js" ;
+import {_cmp_half} from '../../compare/index.js';
 
 /**
  * Input
@@ -29,41 +29,48 @@ import { _cmp_half } from "../../compare/index.js" ;
  * @param {Array} q Quotient.
  * @param {Number} qi Left of quotient.
  */
-export function _idivmod_schoolbook_subroutine_do ( r , a , ai , aj , b , bi , bj , q , qi ) {
-
+export function _idivmod_schoolbook_subroutine_do(
+	r,
+	a,
+	ai,
+	aj,
+	b,
+	bi,
+	bj,
+	q,
+	qi,
+) {
 	assert(r >= 2);
-	assert(0 <= ai && aj <= a.length);
-	assert(0 <= bi && bj <= b.length);
-	assert(0 <= qi);
+	assert(ai >= 0 && aj <= a.length);
+	assert(bi >= 0 && bj <= b.length);
+	assert(qi >= 0);
 	assert(aj - ai === bj - bi + 1); // |a| = |b| + 1
 	assert(q.length - qi >= aj - ai); // |q| >= |a|
 	assert(_cmp_half(r, b, bi, bj) >= 0); // (r^n)/2 <= B < r^n
 	assert(gt(b, bi, bj, a, ai, aj - 1)); // A < B * β
 	assert(_validate(r, q, qi, qi + aj - ai));
 
-	const m = aj - ai ;
+	const m = aj - ai;
 
 	// Since A < B*β, then A/B < β
 	// q <- min [ ( β a_0 + a_1 ) / b_0 , β - 1 ]
-	let _q = Math.min( r - 1 , Math.floor( ( a[ai] * r + a[ai+1] ) / b[bi] ) ) ;
+	let _q = Math.min(r - 1, Math.floor((a[ai] * r + a[ai + 1]) / b[bi]));
 
-	// fix _q
-	const T = _zeros( m ) ;
-	_mul_limb( r , _q , b , bi , bj , T , 0 , m ) ;
+	// Fix _q
+	const T = _zeros(m);
+	_mul_limb(r, _q, b, bi, bj, T, 0, m);
 
-	if ( gt( T , 0 , m , a , ai , aj ) ) {
-		--_q ;
-		_isub( r , T , 0 , m , b , bi , bj ) ;
+	if (gt(T, 0, m, a, ai, aj)) {
+		--_q;
+		_isub(r, T, 0, m, b, bi, bj);
 
-		if ( gt( T , 0 , m , a , ai , aj ) ) {
-			--_q ;
-			_isub( r , T , 0 , m , b , bi , bj ) ;
+		if (gt(T, 0, m, a, ai, aj)) {
+			--_q;
+			_isub(r, T, 0, m, b, bi, bj);
 		}
-
 	}
 
-	q[qi + m - 1] += _q ;
+	q[qi + m - 1] += _q;
 
-	_isub( r , a , ai , aj , T , 0 , m ) ;
-
+	_isub(r, a, ai, aj, T, 0, m);
 }

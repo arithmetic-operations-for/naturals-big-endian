@@ -1,4 +1,4 @@
-import assert from 'assert' ;
+import assert from 'assert';
 
 /**
  * Adds a big endian array to another.
@@ -13,24 +13,22 @@ import assert from 'assert' ;
  * @param {Number} bj b right
  */
 
-export function _iadd ( r , a , ai , aj , b , bi , bj ) {
-
+export function _iadd(r, a, ai, aj, b, bi, bj) {
 	assert(r >= 2);
-	assert(0 <= ai && aj <= a.length);
-	assert(0 <= bi && bj <= b.length);
+	assert(ai >= 0 && aj <= a.length);
+	assert(bi >= 0 && bj <= b.length);
 	assert(aj - ai >= bj - bi);
 
-	let C = 0 ;
+	let C = 0;
 
-	while ( --bj >= bi ) {
-		const T = a[--aj] + b[bj] + C ;
-		a[aj] = T % r ;
-		C = (T >= r) | 0 ;
+	while (--bj >= bi) {
+		const T = a[--aj] + b[bj] + C;
+		a[aj] = T % r;
+		C = (T >= r) | 0;
 	}
 
 	if (C !== 0) {
-		while ( --aj >= ai && a[aj] === r-1 ) a[aj] = 0 ;
-		if ( aj >= ai ) ++a[aj] ;
+		while (--aj >= ai && a[aj] === r - 1) a[aj] = 0;
+		if (aj >= ai) ++a[aj];
 	}
-
 }

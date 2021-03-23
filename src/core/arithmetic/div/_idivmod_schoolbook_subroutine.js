@@ -1,11 +1,9 @@
-import assert from 'assert' ;
+import assert from 'assert';
 
-import { _cmp_n } from "../../compare/index.js" ;
-import { increment } from "../../../api/arithmetic/add/increment.js" ;
-import { _isub } from "../sub/index.js" ;
-import { _idivmod_schoolbook_subroutine_do } from "./_idivmod_schoolbook_subroutine_do.js" ;
-
-import { _cmp_half } from "../../compare/index.js" ;
+import {_cmp_n, _cmp_half} from '../../compare/index.js';
+import {increment} from '../../../api/arithmetic/add/increment.js';
+import {_isub} from '../sub/index.js';
+import {_idivmod_schoolbook_subroutine_do} from './_idivmod_schoolbook_subroutine_do.js';
 
 /**
  * Input
@@ -28,12 +26,11 @@ import { _cmp_half } from "../../compare/index.js" ;
  * @param {Array} q Quotient.
  * @param {Number} qi Left of quotient.
  */
-export function _idivmod_schoolbook_subroutine ( r , a , ai , aj , b , bi , bj , q , qi ) {
-
+export function _idivmod_schoolbook_subroutine(r, a, ai, aj, b, bi, bj, q, qi) {
 	assert(r >= 2);
-	assert(0 <= ai && aj <= a.length);
-	assert(0 <= bi && bj <= b.length);
-	assert(0 <= qi);
+	assert(ai >= 0 && aj <= a.length);
+	assert(bi >= 0 && bj <= b.length);
+	assert(qi >= 0);
 	assert(q.length - qi >= aj - ai);
 	assert(aj - ai === bj - bi + 1); // |A| = |B| + 1
 	assert(q.length - qi >= aj - ai); // |Q| >= |A|
@@ -44,13 +41,11 @@ export function _idivmod_schoolbook_subroutine ( r , a , ai , aj , b , bi , bj ,
 	// Note that then A − B*β < B*β since A < 2 B*β because of the
 	// preconditions above. Hence the preconditions hold for
 	// _idivmod_schoolbook_subroutine_do.
-	if ( _cmp_n( a , ai , aj - 1 , b , bi ) >= 0 ) {
-		_isub( r , a , ai , aj - 1 , b , bi , bj ) ;
-		_idivmod_schoolbook_subroutine_do( r , a , ai , aj , b , bi , bj , q , qi ) ;
-		increment( r , q , qi , qi + aj - ai - 1 ) ;
+	if (_cmp_n(a, ai, aj - 1, b, bi) >= 0) {
+		_isub(r, a, ai, aj - 1, b, bi, bj);
+		_idivmod_schoolbook_subroutine_do(r, a, ai, aj, b, bi, bj, q, qi);
+		increment(r, q, qi, qi + aj - ai - 1);
+	} else {
+		_idivmod_schoolbook_subroutine_do(r, a, ai, aj, b, bi, bj, q, qi);
 	}
-	else {
-		_idivmod_schoolbook_subroutine_do( r , a , ai , aj , b , bi , bj , q , qi ) ;
-	}
-
 }

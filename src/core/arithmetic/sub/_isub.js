@@ -1,4 +1,4 @@
-import assert from 'assert' ;
+import assert from 'assert';
 
 /**
  * Subtracts B from A, |A| >= |B|.
@@ -13,25 +13,23 @@ import assert from 'assert' ;
  * @param {int} bj b right
  */
 
-export function _isub ( r , a , ai , aj , b , bi , bj ) {
-
+export function _isub(r, a, ai, aj, b, bi, bj) {
 	assert(r >= 2);
-	assert(0 <= ai && aj <= a.length);
-	assert(0 <= bi && bj <= b.length);
+	assert(ai >= 0 && aj <= a.length);
+	assert(bi >= 0 && bj <= b.length);
 	assert(aj - ai >= bj - bi);
 
-	let C = 0 ;
+	let C = 0;
 
-	while ( --bj >= bi ) {
-		--aj ;
-		const T = C ;
-		C = (a[aj] < b[bj] + T) | 0 ;
-		a[aj] = a[aj] - b[bj] + (C*r - T) ;
+	while (--bj >= bi) {
+		--aj;
+		const T = C;
+		C = (a[aj] < b[bj] + T) | 0;
+		a[aj] = a[aj] - b[bj] + (C * r - T);
 	}
 
 	if (C !== 0) {
-		while ( --aj >= ai && a[aj] === 0 ) a[aj] = r - 1 ;
-		if ( aj >= ai ) --a[aj];
+		while (--aj >= ai && a[aj] === 0) a[aj] = r - 1;
+		if (aj >= ai) --a[aj];
 	}
-
 }

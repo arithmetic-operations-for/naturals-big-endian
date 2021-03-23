@@ -1,8 +1,8 @@
-import assert from 'assert' ;
+import assert from 'assert';
 
-import { jz } from "../../../api/compare/index.js" ;
-import { _reset , _alloc , _copy } from "../../array/index.js" ;
-import { _mul } from "../mul/index.js" ;
+import {jz} from '../../../api/compare/index.js';
+import {_reset, _alloc, _copy} from '../../array/index.js';
+import {_mul} from '../mul/index.js';
 
 /**
  * Computes <code>pow(a,x) = a^x</code> using exponentiation by squaring.
@@ -19,35 +19,34 @@ import { _mul } from "../mul/index.js" ;
  * @param {Number} ci <code>a</code> left.
  * @param {Number} cj <code>b</code> right.
  */
-export function _pow_double (r, x, a, ai, aj, c, ci, cj) {
-
+export function _pow_double(r, x, a, ai, aj, c, ci, cj) {
 	assert(r >= 2);
 	assert(x >= 0);
-	assert(0 <= ai && aj <= a.length);
-	assert(0 <= ci && cj <= c.length);
+	assert(ai >= 0 && aj <= a.length);
+	assert(ci >= 0 && cj <= c.length);
 	assert(aj - ai >= 1);
 	assert(cj - ci >= 1);
 	assert(cj - ci >= (aj - ai) * x);
 	assert(jz(c, ci, cj));
 
-	c[cj-1] = 1 ;
+	c[cj - 1] = 1;
 
-	if ( x === 0 ) return ;
+	if (x === 0) return;
 
-	const n = aj - ai ;
+	const n = aj - ai;
 
-	_copy( a , ai , aj , c , cj - n ) ;
+	_copy(a, ai, aj, c, cj - n);
 
-	if ( x === 1 ) return ;
+	if (x === 1) return;
 
 	const xbits = [];
 
 	do {
-		xbits.push(x & 1) ;
+		xbits.push(x & 1);
 		x >>= 1;
-	} while ( x !== 1 ) ;
+	} while (x !== 1);
 
-	const d = _alloc(cj-ci) ;
+	const d = _alloc(cj - ci);
 	let _n = n;
 
 	do {
@@ -59,10 +58,8 @@ export function _pow_double (r, x, a, ai, aj, c, ci, cj) {
 		else {
 			const _o = _n + n;
 			_reset(c, cj - _o, cj);
-			_mul(r, d, 0, _n, a, ai, aj, c, cj - _o, cj);  // largest must be put first
+			_mul(r, d, 0, _n, a, ai, aj, c, cj - _o, cj); // Largest must be put first
 			_n = _o;
 		}
-
-	} while ( xbits.length ) ;
-
+	} while (xbits.length > 0);
 }

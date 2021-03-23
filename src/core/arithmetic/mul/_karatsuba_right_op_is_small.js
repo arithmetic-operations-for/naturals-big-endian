@@ -1,6 +1,6 @@
-import { _zeros } from "../../array/index.js" ;
-import { _iadd } from "../add/index.js" ;
-import { _mul } from "./_mul.js" ;
+import {_zeros} from '../../array/index.js';
+import {_iadd} from '../add/index.js';
+import {_mul} from './_mul.js';
 
 import assert from 'assert';
 
@@ -41,8 +41,18 @@ import assert from 'assert';
  * @param {Number} cj c right
  */
 
-export function _karatsuba_right_op_is_small ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
-
+export function _karatsuba_right_op_is_small(
+	r,
+	a,
+	ai,
+	aj,
+	b,
+	bi,
+	bj,
+	c,
+	ci,
+	cj,
+) {
 	assert(r >= 2);
 	assert(ai >= 0 && aj <= a.length);
 	assert(bi >= 0 && bj <= b.length);
@@ -50,25 +60,24 @@ export function _karatsuba_right_op_is_small ( r , a , ai , aj , b , bi , bj , c
 	assert(aj - ai >= 2);
 	assert(bj - bi >= 1);
 	assert(aj - ai >= bj - bi);
-	assert(cj - ci >= (aj - ai) + (bj - bi));
+	assert(cj - ci >= aj - ai + (bj - bi));
 
-	const i = aj - ai ;
-	const j = bj - bi ;
+	const i = aj - ai;
+	const j = bj - bi;
 
-	const n  = Math.ceil( i / 2 ) ;
+	const n = Math.ceil(i / 2);
 
 	assert(j <= n);
 
-	const N  = n + j ;
-	const N_ = i - n + j ;
-	const i_ = aj - n ;
+	const N = n + j;
+	const N_ = i - n + j;
+	const i_ = aj - n;
 
-	const z = _zeros( N_ ) ; // need tmp variable since _mul overwrites
+	const z = _zeros(N_); // Need tmp variable since _mul overwrites
 
 	// RECURSIVE CALLS
-	_mul( r , a , i_ , aj , b , bi , bj , c , cj - N , cj ) ; // c += a0.b0
-	_mul( r , a , ai , i_ , b , bi , bj , z , 0 , N_ ) ;      // z = a1.b0
+	_mul(r, a, i_, aj, b, bi, bj, c, cj - N, cj); // C += a0.b0
+	_mul(r, a, ai, i_, b, bi, bj, z, 0, N_); // Z = a1.b0
 
-	_iadd( r , c , ci , cj - n , z , 0 , N_ ) ; // c += a1.b0 . r^{n}
-
+	_iadd(r, c, ci, cj - n, z, 0, N_); // C += a1.b0 . r^{n}
 }

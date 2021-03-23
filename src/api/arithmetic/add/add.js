@@ -1,4 +1,4 @@
-import { _add } from "../../../core/arithmetic/add/_add.js" ;
+import {_add} from '../../../core/arithmetic/add/_add.js';
 
 /**
  * Adds two big endian arrays and puts result in a destination array.
@@ -17,18 +17,16 @@ import { _add } from "../../../core/arithmetic/add/_add.js" ;
  *
  */
 
-export function add ( r , a , ai , aj , b , bi , bj , c , ci , cj ) {
-
-	ci = Math.max( 0 , ci );
+export function add(r, a, ai, aj, b, bi, bj, c, ci, cj) {
+	ci = Math.max(0, ci);
 	const k = cj - ci;
 
-	ai = Math.max( 0 , ai , aj - k ) ;
-	bi = Math.max( 0 , bi , bj - k ) ;
+	ai = Math.max(0, ai, aj - k);
+	bi = Math.max(0, bi, bj - k);
 	const m = aj - ai;
 	const n = bj - bi;
 
-	return m < n ?
-		_add( r , b , bi , bj , a , ai , aj , c , ci , cj ) :
-		_add( r , a , ai , aj , b , bi , bj , c , ci , cj ) ;
-
+	return m < n
+		? _add(r, b, bi, bj, a, ai, aj, c, ci, cj)
+		: _add(r, a, ai, aj, b, bi, bj, c, ci, cj);
 }

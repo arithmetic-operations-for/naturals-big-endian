@@ -1,4 +1,4 @@
-import assert from 'assert' ;
+import assert from 'assert';
 
 /**
  * Compute x * b where x is a single limb.
@@ -6,33 +6,29 @@ import assert from 'assert' ;
  * No restriction on operand sizes.
  */
 
-export function _mul_limb ( r , x , b , bi , bj , c , ci , cj ) {
-
+export function _mul_limb(r, x, b, bi, bj, c, ci, cj) {
 	assert(r >= 2);
-	assert(0 <= x && x <= r-1);
-	assert(0 <= bi && bj <= b.length);
-	assert(0 <= ci && cj <= c.length);
+	assert(x >= 0 && x <= r - 1);
+	assert(bi >= 0 && bj <= b.length);
+	assert(ci >= 0 && cj <= c.length);
 
-	let C = 0 ;
+	let C = 0;
 
-	while ( true ) {
+	while (true) {
+		--bj;
+		--cj;
 
-		--bj ;
-		--cj ;
-
-		if ( bj < bi ) {
-			if ( cj >= ci ) c[cj] = C ;
-			return ;
+		if (bj < bi) {
+			if (cj >= ci) c[cj] = C;
+			return;
 		}
 
-		if ( cj < ci ) return ;
+		if (cj < ci) return;
 
-		const t = b[bj] * x + C ;
+		const t = b[bj] * x + C;
 
-		c[cj] = t % r ;
+		c[cj] = t % r;
 
-		C = (t / r) | 0 ;
-
+		C = (t / r) | 0;
 	}
-
 }

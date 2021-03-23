@@ -1,13 +1,11 @@
-import { _chr } from "./_chr.js" ;
+import {_chr} from './_chr.js';
 
-export function _to_string ( b ) {
+export function _to_string(b) {
+	const n = b.length;
 
-	const n = b.length ;
+	const data = [];
 
-	const data = [ ] ;
+	for (let k = 0; k < n; ++k) data.push(_chr(b[k]));
 
-	for ( let k = 0 ; k < n ; ++k ) data.push( _chr( b[k] ) ) ;
-
-	return data.join( '' ) ;
-
+	return data.join('');
 }

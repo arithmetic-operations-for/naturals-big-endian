@@ -1,4 +1,4 @@
-import { _idivmod_limb_with_prefix } from "./_idivmod_limb_with_prefix.js" ;
+import {_idivmod_limb_with_prefix} from './_idivmod_limb_with_prefix.js';
 
 /**
  * Divides a big endian number by a single limb number.
@@ -12,9 +12,7 @@ import { _idivmod_limb_with_prefix } from "./_idivmod_limb_with_prefix.js" ;
  * @param {Array} Q The quotient.
  * @param {Number} Qi Left of quotient.
  */
-export function _idivmod_limb ( r , d , D , Di , Dj , Q , Qi ) {
-
-	// simply prefix the dividend with 0
-	return _idivmod_limb_with_prefix( r , 0 , d , D , Di , Dj , Q , Qi ) ;
-
+export function _idivmod_limb(r, d, D, Di, Dj, Q, Qi) {
+	// Simply prefix the dividend with 0
+	return _idivmod_limb_with_prefix(r, 0, d, D, Di, Dj, Q, Qi);
 }

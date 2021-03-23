@@ -1,4 +1,4 @@
-import assert from 'assert' ;
+import assert from 'assert';
 
 /**
  *
@@ -12,33 +12,33 @@ import assert from 'assert' ;
  * @param {Number} bj end offset in the destination array
  */
 
-export function _convert_to_smaller_fast ( br , z , a , ai , aj , b , bi , bj ) {
-
+export function _convert_to_smaller_fast(br, z, a, ai, aj, b, bi, bj) {
 	assert(br >= 2);
 	assert(ai >= 0 && aj <= a.length);
 	assert(bi >= 0 && bj <= b.length);
 	assert(aj - ai >= 0);
 	assert(bj - bi >= 0);
 
-	var q, i, t;
+	let q;
+	let i;
+	let t;
 
 	const m = bj - bi;
 	const n = aj - ai;
 
-	// number of parts of first
+	// Number of parts of first
 	// destination block if incomplete
 	const r = m % z;
 
-	// number of complete blocks in destination
+	// Number of complete blocks in destination
 	q = (m / z) | 0;
 
-	// total number of blocks in destination
+	// Total number of blocks in destination
 	// (complete ones + first if incomplete)
-	const w = q + !!r;
-
+	const w = q + Boolean(r);
 
 	if (n >= w) {
-		// if source contains more than what
+		// If source contains more than what
 		// destination can handle set the effective
 		// read start in source and set i to the correct
 		// offset according to the size
@@ -46,9 +46,8 @@ export function _convert_to_smaller_fast ( br , z , a , ai , aj , b , bi , bj ) 
 		// first source block if incomplete
 		ai = aj - w;
 		i = (z - r) % z;
-	}
-	else {
-		// if destination can contain more than
+	} else {
+		// If destination can contain more than
 		// what is available in source then
 		// compute the effective write start
 		// in destination and set i to 0 because
@@ -62,11 +61,11 @@ export function _convert_to_smaller_fast ( br , z , a , ai , aj , b , bi , bj ) 
 		t = bi + z - 1 - i;
 		bi += z - i;
 		for (; i < z; ++i) {
-			b[t] = q % br;     // unpack source blocks
-			q = (q / br) | 0;  // using modulo + quotient
+			b[t] = q % br; // Unpack source blocks
+			q = (q / br) | 0; // Using modulo + quotient
 			--t;
 		}
+
 		i = 0;
 	}
-
 }

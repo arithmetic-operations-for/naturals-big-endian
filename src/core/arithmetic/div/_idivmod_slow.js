@@ -1,7 +1,7 @@
-import assert from 'assert' ;
+import assert from 'assert';
 
-import { _sub } from "../sub/index.js" ;
-import { lt , jz } from "../../../api/compare/index.js" ;
+import {_sub} from '../sub/index.js';
+import {lt, jz} from '../../../api/compare/index.js';
 
 /**
  * Computes quotient and remainder of two big endian arrays.
@@ -30,50 +30,44 @@ import { lt , jz } from "../../../api/compare/index.js" ;
 //     made on the size of the operands.
 //     Should clarify.
 
-export function _idivmod_slow ( x , r , ri , rj , b , bi , bj , q , qi ) {
-
+export function _idivmod_slow(x, r, ri, rj, b, bi, bj, q, qi) {
 	assert(x >= 2);
-	assert(0 <= ri && rj <= r.length);
-	assert(0 <= bi && bj <= b.length);
-	assert(0 <= qi);
+	assert(ri >= 0 && rj <= r.length);
+	assert(bi >= 0 && bj <= b.length);
+	assert(qi >= 0);
 	assert(q.length - qi >= rj - ri);
-	assert(!jz(b, bi, bj))
+	assert(!jz(b, bi, bj));
 	assert(jz(q, qi, qi + rj - ri));
 
-	var k, t = ri + 1;
+	let k;
+	const t = ri + 1;
 
 	do {
-
-		// trim leading zeros
+		// Trim leading zeros
 		// TODO maybe could try to put this procedure inside the _sub loop
 		// TODO or assume that the number is trimed at the begining
 		//      and put this statement at the end of the main loop
 		while (ri < rj && r[ri] === 0) ++ri;
 
-		// search for a remainder block interval
+		// Search for a remainder block interval
 		// greater than the divisor
 		// TODO maybe could try binary search on the lt function
 		//      for another implementation
 		k = ri + 1;
 		while (k <= rj && lt(r, ri, k, b, bi, bj)) ++k;
 
-		// remainder smaller than divisor --> end
+		// Remainder smaller than divisor --> end
 		if (k > rj) break;
 
-		// divide current block interval by quotient
-		do{
-
-			// increment quotient block corresponding
+		// Divide current block interval by quotient
+		do {
+			// Increment quotient block corresponding
 			// to current ls block of remainder interval
 			++q[qi + k - t];
 
-			// subtract divisor from current remainder
+			// Subtract divisor from current remainder
 			// block interval
 			_sub(x, r, ri, k, b, bi, bj, r, ri, k);
-
-		} while(!lt(r, ri, k, b, bi, bj));
-
-
-	} while(true);
-
+		} while (!lt(r, ri, k, b, bi, bj));
+	} while (true);
 }

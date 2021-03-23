@@ -1,4 +1,4 @@
-import assert from 'assert' ;
+import assert from 'assert';
 
 /**
  * Subtracts two big endian arrays, |C| >= |A| >= |B|.
@@ -16,35 +16,35 @@ import assert from 'assert' ;
  * @param {int} cj c right
  */
 
-export function _sub ( r , a, ai, aj, b, bi, bj, c, ci, cj){
-
+export function _sub(r, a, ai, aj, b, bi, bj, c, ci, cj) {
 	assert(r >= 2);
-	assert(0 <= ai && aj <= a.length);
-	assert(0 <= bi && bj <= b.length);
-	assert(0 <= ci && cj <= c.length);
+	assert(ai >= 0 && aj <= a.length);
+	assert(bi >= 0 && bj <= b.length);
+	assert(ci >= 0 && cj <= c.length);
 	assert(cj - ci >= aj - ai);
 	assert(aj - ai >= bj - bi);
 
-	var T, C = 0;
+	let T;
+	let C = 0;
 
-	while(--bj >= bi){
-		--aj; --cj;
+	while (--bj >= bi) {
+		--aj;
+		--cj;
 		T = C;
 		C = (a[aj] < b[bj] + T) | 0;
-		c[cj] = a[aj] - b[bj] + (C*r - T);
+		c[cj] = a[aj] - b[bj] + (C * r - T);
 	}
 
-	while(--aj >= ai){
+	while (--aj >= ai) {
 		--cj;
 		T = C;
 		C = (a[aj] < T) | 0;
-		c[cj] = a[aj] + (C*r - T);
+		c[cj] = a[aj] + (C * r - T);
 	}
 
-	if(C){
-		while(--cj >= ci){
+	if (C) {
+		while (--cj >= ci) {
 			c[cj] = r - 1;
 		}
 	}
-
 }

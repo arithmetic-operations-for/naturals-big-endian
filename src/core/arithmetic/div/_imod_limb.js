@@ -1,4 +1,4 @@
-import assert from 'assert' ;
+import assert from 'assert';
 
 /**
  * Divides a big endian number by a single limb number and writes the
@@ -13,25 +13,21 @@ import assert from 'assert' ;
  * @param {Number} Di Left of D.
  * @param {Number} Dj Right of D.
  */
-export function _imod_limb ( r , d , D , Di , Dj ) {
-
+export function _imod_limb(r, d, D, Di, Dj) {
 	assert(r >= 2);
-	assert(1 <= d && d <= r - 1);
+	assert(d >= 1 && d <= r - 1);
 	assert(Di >= 0 && Dj <= D.length);
 	assert(Dj - Di >= 1);
 
-	let R = 0 ;
+	let R = 0;
 
-	while ( Di < Dj ) {
-
-		R *= r ;
-		R += D[Di] ;
-		R %= d ;
+	while (Di < Dj) {
+		R *= r;
+		R += D[Di];
+		R %= d;
 		D[Di] = 0;
-		++Di ;
-
+		++Di;
 	}
 
-	D[Dj-1] = R ;
-
+	D[Dj - 1] = R;
 }

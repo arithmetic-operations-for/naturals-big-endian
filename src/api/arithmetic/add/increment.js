@@ -1,4 +1,4 @@
-import assert from 'assert' ;
+import assert from 'assert';
 
 /**
  * Adds 1 to a big endian array.
@@ -14,22 +14,18 @@ import assert from 'assert' ;
  * @param {Number} ai a left
  * @param {Number} aj a right
  */
-export function increment ( r , a , ai , aj ) {
-
+export function increment(r, a, ai, aj) {
 	assert(r >= 2);
-	assert(0 <= ai && aj <= a.length);
+	assert(ai >= 0 && aj <= a.length);
 
-	const _r = r - 1 ;
+	const _r = r - 1;
 
-	while ( --aj >= ai ) {
-
-		if ( a[aj] < _r ) {
-			++a[aj] ;
-			return ;
+	while (--aj >= ai) {
+		if (a[aj] < _r) {
+			++a[aj];
+			return;
 		}
 
-		a[aj] = 0 ;
-
+		a[aj] = 0;
 	}
-
 }

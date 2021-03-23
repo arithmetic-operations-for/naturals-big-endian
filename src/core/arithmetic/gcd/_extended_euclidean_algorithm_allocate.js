@@ -1,14 +1,12 @@
-import assert from 'assert' ;
+import assert from 'assert';
 
-import { _alloc } from "../../array/index.js" ;
-import { _zeros } from "../../array/index.js" ;
+import {_alloc, _zeros} from '../../array/index.js';
 
 /**
- * m >= n >= 0
+ * M >= n >= 0
  * m >= 1
  */
-export function _extended_euclidean_algorithm_allocate ( m , n ) {
-
+export function _extended_euclidean_algorithm_allocate(m, n) {
 	assert(n >= 0);
 	assert(m >= 1);
 	assert(m >= n);
@@ -17,7 +15,7 @@ export function _extended_euclidean_algorithm_allocate ( m , n ) {
 	const R1 = _alloc(n);
 
 	// S_0 = 1
-	const S0 = _zeros(Math.max(1,n));
+	const S0 = _zeros(Math.max(1, n));
 	S0[S0.length - 1] = 1;
 
 	// T_0 = 0
@@ -31,8 +29,7 @@ export function _extended_euclidean_algorithm_allocate ( m , n ) {
 	T1[T1.length - 1] = 1;
 
 	const Q = _zeros(m);
-	const X = _zeros(2*m);
+	const X = _zeros(2 * m);
 
-	return [ R0 , R1 , S0 , T0 , S1 , T1 , Q , X ] ;
-
+	return [R0, R1, S0, T0, S1, T1, Q, X];
 }

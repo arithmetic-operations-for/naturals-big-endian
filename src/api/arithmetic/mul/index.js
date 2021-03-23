@@ -1,1 +1,1 @@
-export * from "./mul.js" ;
+export * from './mul.js';

@@ -1,17 +1,15 @@
-import assert from 'assert' ;
+import assert from 'assert';
 
-export function _log ( x , y ) {
+export function _log(x, y) {
+	assert(y > 1);
 
-	assert( y > 1 ) ;
+	let z = 0;
 
-	let z = 0 ;
-
-	while ( x >= y ) {
-		if ( x % y ) break ;
-		x /= y ;
-		++z ;
+	while (x >= y) {
+		if (x % y) break;
+		x /= y;
+		++z;
 	}
 
-	return [ z , x ] ;
-
+	return [z, x];
 }

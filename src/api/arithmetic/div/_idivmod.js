@@ -1,8 +1,12 @@
-import assert from 'assert' ;
+import assert from 'assert';
 
-import { _idivmod_limb , _idivmod_schoolbook , _idivmod_dc } from "../../../core/arithmetic/div/index.js" ;
-import { THRESHOLD_DIV_DC } from "../../../core/thresholds/index.js" ;
-import { jz } from "../../compare/index.js" ;
+import {
+	_idivmod_limb,
+	_idivmod_schoolbook,
+	_idivmod_dc,
+} from '../../../core/arithmetic/div/index.js';
+import {THRESHOLD_DIV_DC} from '../../../core/thresholds/index.js';
+import {jz} from '../../compare/index.js';
 
 /**
  * Computes the quotient and remainder of two numbers. Uses the most
@@ -28,13 +32,12 @@ import { jz } from "../../compare/index.js" ;
  * @param {Number} Qi Left of quotient.
  * @param {Number} Qj Right of quotient.
  */
-export function _idivmod ( r , D , Di , Dj , d , di , dj , Q , Qi , Qj ) {
-
+export function _idivmod(r, D, Di, Dj, d, di, dj, Q, Qi, Qj) {
 	assert(r >= 2);
 
-	assert(0 <= Di && Dj <= D.length);
-	assert(0 <= di && dj <= d.length);
-	assert(0 <= Qi && Qj <= Q.length);
+	assert(Di >= 0 && Dj <= D.length);
+	assert(di >= 0 && dj <= d.length);
+	assert(Qi >= 0 && Qj <= Q.length);
 
 	assert(dj - di >= 1);
 	assert(Dj - Di === Qj - Qi);
@@ -44,18 +47,15 @@ export function _idivmod ( r , D , Di , Dj , d , di , dj , Q , Qi , Qj ) {
 	assert(d[di] !== 0);
 	assert(jz(Q, Qi, Qj));
 
-	const dn = dj - di ;
+	const dn = dj - di;
 
-	if ( dn === 1 ) {
-		return _idivmod_limb( r , d[di] , D , Di , Dj , Q , Qi ) ;
+	if (dn === 1) {
+		return _idivmod_limb(r, d[di], D, Di, Dj, Q, Qi);
 	}
 
-	else if ( dn < THRESHOLD_DIV_DC ) {
-		return _idivmod_schoolbook( r , D , Di , Dj , d , di , dj , Q , Qi ) ;
+	if (dn < THRESHOLD_DIV_DC) {
+		return _idivmod_schoolbook(r, D, Di, Dj, d, di, dj, Q, Qi);
 	}
 
-	else {
-		return _idivmod_dc( r , D , Di , Dj , d , di , dj , Q , Qi , Qj ) ;
-	}
-
+	return _idivmod_dc(r, D, Di, Dj, d, di, dj, Q, Qi, Qj);
 }

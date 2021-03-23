@@ -1,11 +1,9 @@
-import assert from 'assert' ;
+import assert from 'assert';
 
-export function _trim_positive ( a , ai , aj ) {
+export function _trim_positive(a, ai, aj) {
+	assert(ai >= 0 && aj <= a.length);
 
-	assert(0 <= ai && aj <= a.length);
+	while (ai < aj && a[ai] === 0) ++ai;
 
-	while ( ai < aj && a[ai] === 0 ) ++ai ;
-
-	return ai ;
-
+	return ai;
 }

@@ -1,8 +1,8 @@
-import assert from 'assert' ;
+import assert from 'assert';
 
-import { _imod, ge } from "../../../api/index.js"
-import { _alloc } from "../../array/index.js"
-import { _trim_positive } from "../../convert/index.js"
+import {_imod, ge} from '../../../api/index.js';
+import {_alloc} from '../../array/index.js';
+import {_trim_positive} from '../../convert/index.js';
 
 /**
  * Euclidean algorithm. Computes the gcd of the two input numbers A and B,
@@ -25,35 +25,31 @@ import { _trim_positive } from "../../convert/index.js"
  * Return as [ d , di , dj ], where d is the array and di and dj are its left
  * and right bounds.
  */
-export function _euclidean_algorithm_loop ( r , a , ai , aj , b , bi , bj  ) {
-
+export function _euclidean_algorithm_loop(r, a, ai, aj, b, bi, bj) {
 	assert(r >= 2);
 
-	assert(0 <= ai && aj <= a.length);
-	assert(0 <= bi && bj <= b.length);
+	assert(ai >= 0 && aj <= a.length);
+	assert(bi >= 0 && bj <= b.length);
 
 	assert(aj - ai <= 0 || a[ai] !== 0);
 	assert(bj - bi <= 0 || b[bi] !== 0);
 
 	assert(ge(a, ai, aj, b, bi, bj));
 
-	const _j = aj - ai ;
-	const _ = _alloc(_j) ;
+	const _j = aj - ai;
+	const _ = _alloc(_j);
 
-	while ( true ) {
+	while (true) {
+		if (bi === bj) return [a, ai, aj];
 
-		if ( bi === bj ) return [ a , ai , aj ] ;
+		_imod(r, a, ai, aj, b, bi, bj, _, _j - (aj - ai), _j);
 
-		_imod( r , a , ai , aj , b , bi , bj , _ , _j - (aj - ai) , _j ) ;
+		ai = _trim_positive(a, aj - (bj - bi), aj);
 
-		ai = _trim_positive( a , aj - (bj - bi) , aj ) ;
+		if (ai === aj) return [b, bi, bj];
 
-		if ( ai === aj ) return [ b , bi , bj ] ;
+		_imod(r, b, bi, bj, a, ai, aj, _, _j - (bj - bi), _j);
 
-		_imod( r , b , bi , bj , a , ai , aj , _ , _j - (bj - bi) , _j ) ;
-
-		bi = _trim_positive( b , bj - (aj - ai) , bj ) ;
-
+		bi = _trim_positive(b, bj - (aj - ai), bj);
 	}
-
 }

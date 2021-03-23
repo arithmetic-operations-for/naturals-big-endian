@@ -1,4 +1,4 @@
-import assert from 'assert' ;
+import assert from 'assert';
 
 /**
  * Divides a big endian number by a single limb number.
@@ -22,24 +22,22 @@ import assert from 'assert' ;
  * @param {Array} Q The quotient.
  * @param {Number} Qi Left of quotient.
  */
-export function _div_limb_with_prefix ( r , tmp , d , D , Di , Dj , Q , Qi ) {
-
+export function _div_limb_with_prefix(r, tmp, d, D, Di, Dj, Q, Qi) {
 	assert(r >= 2);
-	assert(1 <= d && d <= r - 1);
-	assert(0 <= tmp && tmp <= d - 1);
-	assert(0 <= Di && Dj <= D.length);
-	assert(0 <= Qi);
+	assert(d >= 1 && d <= r - 1);
+	assert(tmp >= 0 && tmp <= d - 1);
+	assert(Di >= 0 && Dj <= D.length);
+	assert(Qi >= 0);
 	assert(Dj - Di <= Q.length - Qi);
 
-	while ( Di < Dj ) {
+	while (Di < Dj) {
+		tmp *= r;
+		tmp += D[Di];
 
-		tmp *= r ; tmp += D[Di] ;
+		Q[Qi] = (tmp / d) | 0;
+		tmp %= d;
 
-		Q[Qi] = tmp / d | 0 ;
-		tmp %= d ;
-
-		++Qi ; ++Di ;
-
+		++Qi;
+		++Di;
 	}
-
 }

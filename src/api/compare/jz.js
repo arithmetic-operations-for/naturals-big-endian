@@ -1,4 +1,4 @@
-import assert from 'assert' ;
+import assert from 'assert';
 
 /**
  * Returns true if input number A is 0.
@@ -12,12 +12,10 @@ import assert from 'assert' ;
  * @param {int} aj a right
  */
 
-export function jz ( a , ai , aj ) {
+export function jz(a, ai, aj) {
+	assert(ai >= 0 && aj <= a.length);
 
-	assert(0 <= ai && aj <= a.length);
+	for (; ai < aj; ++ai) if (a[ai] !== 0) return false;
 
-	for ( ; ai < aj ; ++ai ) if ( a[ai] !== 0 ) return false ;
-
-	return true ;
-
+	return true;
 }

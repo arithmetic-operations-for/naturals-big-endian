@@ -1,4 +1,4 @@
-import assert from 'assert' ;
+import assert from 'assert';
 
 /**
  * Multiply b by x where x is a single limb.
@@ -9,23 +9,19 @@ import assert from 'assert' ;
  *
  * TODO define constant. Reuse elsewhere?
  */
-export function _imul_limb ( r , x , b , bi , bj ) {
-
+export function _imul_limb(r, x, b, bi, bj) {
 	assert(r >= 2);
 	assert(r <= 94906266);
-	assert(0 <= x && x <= r);
-	assert(0 <= bi && bj <= b.length);
+	assert(x >= 0 && x <= r);
+	assert(bi >= 0 && bj <= b.length);
 
-	let C = 0 ;
+	let C = 0;
 
-	while ( --bj >= bi ) {
+	while (--bj >= bi) {
+		const t = b[bj] * x + C;
 
-		const t = b[bj] * x + C ;
+		b[bj] = t % r;
 
-		b[bj] = t % r ;
-
-		C = (t / r) | 0 ;
-
+		C = (t / r) | 0;
 	}
-
 }

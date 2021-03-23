@@ -1,4 +1,4 @@
-import assert from 'assert' ;
+import assert from 'assert';
 
 /**
  * Compares two big endian arrays.
@@ -15,14 +15,13 @@ import assert from 'assert' ;
  * @return {Number} 1 if a > b; 0 if a = b; -1 otherwise.
  */
 
-export function _cmp_n ( a , ai , aj , b , bi ) {
-
-	assert(0 <= ai && aj <= a.length);
-	assert(0 <= bi);
+export function _cmp_n(a, ai, aj, b, bi) {
+	assert(ai >= 0 && aj <= a.length);
+	assert(bi >= 0);
 	assert(b.length - bi >= aj - ai);
 
 	for (; ai < aj; ++ai, ++bi) {
-		if (a[ai] > b[bi]) return  1;
+		if (a[ai] > b[bi]) return 1;
 		if (a[ai] < b[bi]) return -1;
 	}
 
