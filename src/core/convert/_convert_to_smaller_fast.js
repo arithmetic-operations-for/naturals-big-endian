@@ -20,21 +20,21 @@ export function _convert_to_smaller_fast ( br , z , a , ai , aj , b , bi , bj ) 
 	assert(aj - ai >= 0);
 	assert(bj - bi >= 0);
 
-	var m, n, q, r, i, w, t;
+	var q, i, t;
 
-	m = bj - bi;
-	n = aj - ai;
+	const m = bj - bi;
+	const n = aj - ai;
 
 	// number of parts of first
 	// destination block if incomplete
-	r = m % z;
+	const r = m % z;
 
 	// number of complete blocks in destination
 	q = (m / z) | 0;
 
 	// total number of blocks in destination
 	// (complete ones + first if incomplete)
-	w = q + !!r;
+	const w = q + !!r;
 
 
 	if (n >= w) {
