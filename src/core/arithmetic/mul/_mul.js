@@ -6,11 +6,27 @@ import THRESHOLD_MUL_TOOM22 from '../../thresholds/THRESHOLD_MUL_TOOM22.js';
 import assert from 'assert';
 
 /**
- * C is zero initialized
- * |A| >= |B| >= 0, |C| >= |A| + |B|.
- * TODO use schoolbook mul if n = O(log m)
+ * Computes C = A+B.
+ *
+ * Constraints:
+ *   - C is zero initialized,
+ *   - |A| >= |B| >= 0,
+ *   - |C| >= |A| + |B|.
+ *
+ * TODO:
+ *   - Use schoolbook mul if n = O(log m).
+ *
+ * @param {Number} r base (radix)
+ * @param {Array} a first operand
+ * @param {Number} ai a left
+ * @param {Number} aj a right
+ * @param {Array} b second operand, cannot have more limbs than A
+ * @param {Number} bi b left
+ * @param {Number} bj b right
+ * @param {Array} c result, must be 0 initialized and be able to contain A+B
+ * @param {Number} ci c left
+ * @param {Number} cj c right
  */
-
 export default function _mul(r, a, ai, aj, b, bi, bj, c, ci, cj) {
 	assert(r >= 2);
 	assert(ai >= 0 && aj <= a.length);
