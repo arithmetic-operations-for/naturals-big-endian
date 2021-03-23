@@ -3,6 +3,13 @@ import _reset from './_reset.js';
 
 import assert from 'assert';
 
+/**
+ * Allocate a new limb array filled with zeros.
+ *
+ * @param {number} n The size of the allocated array.
+ *
+ * @return {number[]} The newly allocated array.
+ */
 export default function _zeros(n) {
 	assert(n >= 0);
 

@@ -2,6 +2,13 @@ import _fill from './_fill.js';
 
 import assert from 'assert';
 
+/**
+ * Fill the input limb array with zeros.
+ *
+ * @param {number[]} a input limb array
+ * @param {number} ai
+ * @param {number} aj
+ */
 export default function _reset(a, ai, aj) {
 	assert(ai >= 0);
 	assert(aj <= a.length);

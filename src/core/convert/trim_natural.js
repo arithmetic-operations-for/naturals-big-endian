@@ -2,6 +2,16 @@ import _trim_positive from './_trim_positive.js';
 import _alloc from '../array/_alloc.js';
 import _copy from '../array/_copy.js';
 
+/**
+ * Trim a limb array so that it is either [0] or does not start with any
+ * leading zeros. Return a newly allocated array and does not modify the input.
+ *
+ * @param {number[]} a The input limb array.
+ * @param {number} ai
+ * @param {number} aj
+ *
+ * @return {number[]} The input but trimmed.
+ */
 export default function trim_natural(a, ai, aj) {
 	const x = _trim_positive(a, ai, aj);
 

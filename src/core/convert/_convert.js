@@ -7,14 +7,14 @@ import _convert_to_larger from './_convert_to_larger.js';
  * Dispatcher for the various base conversion implementations.
  * The decision is based on the relation f <= t.
  *
- * @param {Number} f the base to convert from
- * @param {Number} t the base to convert to
- * @param {Array} a the origin array
- * @param {Number} ai start offset in the origin array
- * @param {Number} aj end offset in the origin array
- * @param {Array} b the destination array
- * @param {Number} bi start offset in the destination array
- * @param {Number} bj end offset in the destination array
+ * @param {number} f the base to convert from
+ * @param {number} t the base to convert to
+ * @param {number[]} a the origin array
+ * @param {number} ai start offset in the origin array
+ * @param {number} aj end offset in the origin array
+ * @param {number[]} b the destination array
+ * @param {number} bi start offset in the destination array
+ * @param {number} bj end offset in the destination array
  */
 
 export default function _convert(f, t, a, ai, aj, b, bi, bj) {

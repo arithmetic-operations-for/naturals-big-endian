@@ -3,6 +3,19 @@ import trim_natural from '../../core/convert/trim_natural.js';
 
 import assert from 'assert';
 
+/**
+ * Converts the input number A represented in base f to a number B represented
+ * in base t. If A is 0 the output is B = [0], otherwise all leading zeros are
+ * trimmed.
+ *
+ * @param {number} f the base to convert from
+ * @param {number} t the base to convert to
+ * @param {number[]} a the origin array
+ * @param {number} ai start offset in the origin array
+ * @param {number} aj end offset in the origin array
+ *
+ * @return {number[]} The result of the conversion.
+ */
 export default function convert(f, t, a, ai, aj) {
 	assert(f >= 2);
 	assert(t >= 2);
