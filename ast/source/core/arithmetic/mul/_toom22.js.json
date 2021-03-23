@@ -1,28 +1,28 @@
 {
   "type": "File",
   "start": 0,
-  "end": 81,
+  "end": 95,
   "loc": {
     "start": {
       "line": 1,
       "column": 0
     },
     "end": {
-      "line": 4,
+      "line": 5,
       "column": 0
     }
   },
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 81,
+    "end": 95,
     "loc": {
       "start": {
         "line": 1,
         "column": 0
       },
       "end": {
-        "line": 4,
+        "line": 5,
         "column": 0
       }
     },
@@ -31,7 +31,7 @@
       {
         "type": "ImportDeclaration",
         "start": 0,
-        "end": 43,
+        "end": 41,
         "loc": {
           "start": {
             "line": 1,
@@ -39,53 +39,36 @@
           },
           "end": {
             "line": 1,
-            "column": 43
+            "column": 41
           }
         },
         "specifiers": [
           {
-            "type": "ImportSpecifier",
-            "start": 9,
-            "end": 19,
+            "type": "ImportDefaultSpecifier",
+            "start": 7,
+            "end": 17,
             "loc": {
               "start": {
                 "line": 1,
-                "column": 9
+                "column": 7
               },
               "end": {
                 "line": 1,
-                "column": 19
+                "column": 17
               }
-            },
-            "imported": {
-              "type": "Identifier",
-              "start": 9,
-              "end": 19,
-              "loc": {
-                "start": {
-                  "line": 1,
-                  "column": 9
-                },
-                "end": {
-                  "line": 1,
-                  "column": 19
-                },
-                "identifierName": "_karatsuba"
-              },
-              "name": "_karatsuba"
             },
             "local": {
               "type": "Identifier",
-              "start": 9,
-              "end": 19,
+              "start": 7,
+              "end": 17,
               "loc": {
                 "start": {
                   "line": 1,
-                  "column": 9
+                  "column": 7
                 },
                 "end": {
                   "line": 1,
-                  "column": 19
+                  "column": 17
                 },
                 "identifierName": "_karatsuba"
               },
@@ -95,29 +78,29 @@
         ],
         "source": {
           "type": "StringLiteral",
-          "start": 27,
-          "end": 41,
+          "start": 23,
+          "end": 40,
           "loc": {
             "start": {
               "line": 1,
-              "column": 27
+              "column": 23
             },
             "end": {
               "line": 1,
-              "column": 41
+              "column": 40
             }
           },
           "extra": {
-            "rawValue": "./_karatsuba",
-            "raw": "'./_karatsuba'"
+            "rawValue": "./_karatsuba.js",
+            "raw": "'./_karatsuba.js'"
           },
-          "value": "./_karatsuba"
+          "value": "./_karatsuba.js"
         }
       },
       {
-        "type": "ExportNamedDeclaration",
-        "start": 45,
-        "end": 80,
+        "type": "Identifier",
+        "start": 43,
+        "end": 70,
         "loc": {
           "start": {
             "line": 3,
@@ -125,52 +108,155 @@
           },
           "end": {
             "line": 3,
-            "column": 35
+            "column": 27
           }
         },
-        "specifiers": [],
-        "source": null,
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "start": 49,
+            "end": 69,
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 6
+              },
+              "end": {
+                "line": 3,
+                "column": 26
+              }
+            },
+            "id": {
+              "type": "Identifier",
+              "start": 49,
+              "end": 56,
+              "loc": {
+                "start": {
+                  "line": 3,
+                  "column": 6
+                },
+                "end": {
+                  "line": 3,
+                  "column": 13
+                },
+                "identifierName": "_toom22"
+              },
+              "name": "_toom22"
+            },
+            "init": {
+              "type": "Identifier",
+              "start": 59,
+              "end": 69,
+              "loc": {
+                "start": {
+                  "line": 3,
+                  "column": 16
+                },
+                "end": {
+                  "line": 3,
+                  "column": 26
+                },
+                "identifierName": "_karatsuba"
+              },
+              "name": "_karatsuba"
+            }
+          }
+        ],
+        "kind": "const",
+        "name": "_",
+        "leadingComments": [],
+        "trailingComments": []
+      },
+      {
+        "type": "Identifier",
+        "start": 71,
+        "end": 94,
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 0
+          },
+          "end": {
+            "line": 4,
+            "column": 23
+          }
+        },
+        "declaration": {
+          "type": "Identifier",
+          "start": 86,
+          "end": 93,
+          "loc": {
+            "start": {
+              "line": 4,
+              "column": 15
+            },
+            "end": {
+              "line": 4,
+              "column": 22
+            },
+            "identifierName": "_toom22"
+          },
+          "name": "_toom22"
+        },
+        "name": "_",
+        "leadingComments": [],
+        "trailingComments": []
+      },
+      {
+        "type": "ExportDefaultDeclaration",
+        "start": 71,
+        "end": 94,
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 0
+          },
+          "end": {
+            "line": 4,
+            "column": 23
+          }
+        },
         "declaration": {
           "type": "VariableDeclaration",
-          "start": 52,
-          "end": 80,
+          "start": 43,
+          "end": 70,
           "loc": {
             "start": {
               "line": 3,
-              "column": 7
+              "column": 0
             },
             "end": {
               "line": 3,
-              "column": 35
+              "column": 27
             }
           },
           "declarations": [
             {
               "type": "VariableDeclarator",
-              "start": 58,
-              "end": 78,
+              "start": 49,
+              "end": 69,
               "loc": {
                 "start": {
                   "line": 3,
-                  "column": 13
+                  "column": 6
                 },
                 "end": {
                   "line": 3,
-                  "column": 33
+                  "column": 26
                 }
               },
               "id": {
                 "type": "Identifier",
-                "start": 58,
-                "end": 65,
+                "start": 49,
+                "end": 56,
                 "loc": {
                   "start": {
                     "line": 3,
-                    "column": 13
+                    "column": 6
                   },
                   "end": {
                     "line": 3,
-                    "column": 20
+                    "column": 13
                   },
                   "identifierName": "_toom22"
                 },
@@ -178,16 +264,16 @@
               },
               "init": {
                 "type": "Identifier",
-                "start": 68,
-                "end": 78,
+                "start": 59,
+                "end": 69,
                 "loc": {
                   "start": {
                     "line": 3,
-                    "column": 23
+                    "column": 16
                   },
                   "end": {
                     "line": 3,
-                    "column": 33
+                    "column": 26
                   },
                   "identifierName": "_karatsuba"
                 },
@@ -235,31 +321,6 @@
     },
     {
       "type": {
-        "label": "{",
-        "beforeExpr": true,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "start": 7,
-      "end": 8,
-      "loc": {
-        "start": {
-          "line": 1,
-          "column": 7
-        },
-        "end": {
-          "line": 1,
-          "column": 8
-        }
-      }
-    },
-    {
-      "type": {
         "label": "name",
         "beforeExpr": false,
         "startsExpr": true,
@@ -271,41 +332,16 @@
         "binop": null
       },
       "value": "_karatsuba",
-      "start": 9,
-      "end": 19,
+      "start": 7,
+      "end": 17,
       "loc": {
         "start": {
           "line": 1,
-          "column": 9
+          "column": 7
         },
         "end": {
           "line": 1,
-          "column": 19
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "}",
-        "beforeExpr": false,
-        "startsExpr": false,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "start": 20,
-      "end": 21,
-      "loc": {
-        "start": {
-          "line": 1,
-          "column": 20
-        },
-        "end": {
-          "line": 1,
-          "column": 21
+          "column": 17
         }
       }
     },
@@ -322,16 +358,16 @@
         "binop": null
       },
       "value": "from",
-      "start": 22,
-      "end": 26,
+      "start": 18,
+      "end": 22,
       "loc": {
         "start": {
           "line": 1,
-          "column": 22
+          "column": 18
         },
         "end": {
           "line": 1,
-          "column": 26
+          "column": 22
         }
       }
     },
@@ -348,17 +384,17 @@
         "binop": null,
         "updateContext": null
       },
-      "value": "./_karatsuba",
-      "start": 27,
-      "end": 41,
+      "value": "./_karatsuba.js",
+      "start": 23,
+      "end": 40,
       "loc": {
         "start": {
           "line": 1,
-          "column": 27
+          "column": 23
         },
         "end": {
           "line": 1,
-          "column": 41
+          "column": 40
         }
       }
     },
@@ -375,44 +411,16 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 42,
-      "end": 43,
+      "start": 40,
+      "end": 41,
       "loc": {
         "start": {
           "line": 1,
-          "column": 42
+          "column": 40
         },
         "end": {
           "line": 1,
-          "column": 43
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "export",
-        "keyword": "export",
-        "beforeExpr": false,
-        "startsExpr": false,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null,
-        "updateContext": null
-      },
-      "value": "export",
-      "start": 45,
-      "end": 51,
-      "loc": {
-        "start": {
-          "line": 3,
-          "column": 0
-        },
-        "end": {
-          "line": 3,
-          "column": 6
+          "column": 41
         }
       }
     },
@@ -431,16 +439,16 @@
         "updateContext": null
       },
       "value": "const",
-      "start": 52,
-      "end": 57,
+      "start": 43,
+      "end": 48,
       "loc": {
         "start": {
           "line": 3,
-          "column": 7
+          "column": 0
         },
         "end": {
           "line": 3,
-          "column": 12
+          "column": 5
         }
       }
     },
@@ -457,16 +465,16 @@
         "binop": null
       },
       "value": "_toom22",
-      "start": 58,
-      "end": 65,
+      "start": 49,
+      "end": 56,
       "loc": {
         "start": {
           "line": 3,
-          "column": 13
+          "column": 6
         },
         "end": {
           "line": 3,
-          "column": 20
+          "column": 13
         }
       }
     },
@@ -484,16 +492,16 @@
         "updateContext": null
       },
       "value": "=",
-      "start": 66,
-      "end": 67,
+      "start": 57,
+      "end": 58,
       "loc": {
         "start": {
           "line": 3,
-          "column": 21
+          "column": 14
         },
         "end": {
           "line": 3,
-          "column": 22
+          "column": 15
         }
       }
     },
@@ -510,16 +518,16 @@
         "binop": null
       },
       "value": "_karatsuba",
-      "start": 68,
-      "end": 78,
+      "start": 59,
+      "end": 69,
       "loc": {
         "start": {
           "line": 3,
-          "column": 23
+          "column": 16
         },
         "end": {
           "line": 3,
-          "column": 33
+          "column": 26
         }
       }
     },
@@ -536,16 +544,124 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 79,
-      "end": 80,
+      "start": 69,
+      "end": 70,
       "loc": {
         "start": {
           "line": 3,
-          "column": 34
+          "column": 26
         },
         "end": {
           "line": 3,
-          "column": 35
+          "column": 27
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "export",
+        "keyword": "export",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "export",
+      "start": 71,
+      "end": 77,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 0
+        },
+        "end": {
+          "line": 4,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "default",
+        "keyword": "default",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "default",
+      "start": 78,
+      "end": 85,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 7
+        },
+        "end": {
+          "line": 4,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "_toom22",
+      "start": 86,
+      "end": 93,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 15
+        },
+        "end": {
+          "line": 4,
+          "column": 22
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 93,
+      "end": 94,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 22
+        },
+        "end": {
+          "line": 4,
+          "column": 23
         }
       }
     },
@@ -562,15 +678,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 81,
-      "end": 81,
+      "start": 95,
+      "end": 95,
       "loc": {
         "start": {
-          "line": 4,
+          "line": 5,
           "column": 0
         },
         "end": {
-          "line": 4,
+          "line": 5,
           "column": 0
         }
       }

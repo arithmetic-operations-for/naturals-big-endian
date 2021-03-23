@@ -1,20 +1,20 @@
 window.esdocSearchIndex = [
   [
-    "@aureooms/js-integer-big-endian/src/core/thresholds/conversion.js~threshold_convert_dc",
+    "@aureooms/js-integer-big-endian/src/core/thresholds/threshold_convert_dc.js~threshold_convert_dc",
     "variable/index.html#static-variable-THRESHOLD_CONVERT_DC",
-    "<span>THRESHOLD_CONVERT_DC</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/thresholds/conversion.js</span>",
+    "<span>THRESHOLD_CONVERT_DC</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/thresholds/THRESHOLD_CONVERT_DC.js</span>",
     "variable"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/thresholds/division.js~threshold_div_dc",
+    "@aureooms/js-integer-big-endian/src/core/thresholds/threshold_div_dc.js~threshold_div_dc",
     "variable/index.html#static-variable-THRESHOLD_DIV_DC",
-    "<span>THRESHOLD_DIV_DC</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/thresholds/division.js</span>",
+    "<span>THRESHOLD_DIV_DC</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/thresholds/THRESHOLD_DIV_DC.js</span>",
     "variable"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/thresholds/multiplication.js~threshold_mul_toom22",
+    "@aureooms/js-integer-big-endian/src/core/thresholds/threshold_mul_toom22.js~threshold_mul_toom22",
     "variable/index.html#static-variable-THRESHOLD_MUL_TOOM22",
-    "<span>THRESHOLD_MUL_TOOM22</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/thresholds/multiplication.js</span>",
+    "<span>THRESHOLD_MUL_TOOM22</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/thresholds/THRESHOLD_MUL_TOOM22.js</span>",
     "variable"
   ],
   [
@@ -54,15 +54,15 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/compare/_cmp_half.js~_cmp_half_even_radix",
+    "@aureooms/js-integer-big-endian/src/core/compare/_cmp_half_even_radix.js~_cmp_half_even_radix",
     "function/index.html#static-function-_cmp_half_even_radix",
-    "<span>_cmp_half_even_radix</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/compare/_cmp_half.js</span>",
+    "<span>_cmp_half_even_radix</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/compare/_cmp_half_even_radix.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/compare/_cmp_half.js~_cmp_half_odd_radix",
+    "@aureooms/js-integer-big-endian/src/core/compare/_cmp_half_odd_radix.js~_cmp_half_odd_radix",
     "function/index.html#static-function-_cmp_half_odd_radix",
-    "<span>_cmp_half_odd_radix</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/compare/_cmp_half.js</span>",
+    "<span>_cmp_half_odd_radix</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/compare/_cmp_half_odd_radix.js</span>",
     "function"
   ],
   [
@@ -270,6 +270,30 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_imod_schoolbook.js~_imod_schoolbook",
+    "function/index.html#static-function-_imod_schoolbook",
+    "<span>_imod_schoolbook</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/div/_imod_schoolbook.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_imod_schoolbook_large_divisor.js~_imod_schoolbook_large_divisor",
+    "function/index.html#static-function-_imod_schoolbook_large_divisor",
+    "<span>_imod_schoolbook_large_divisor</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/div/_imod_schoolbook_large_divisor.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_imod_schoolbook_subroutine.js~_imod_schoolbook_subroutine",
+    "function/index.html#static-function-_imod_schoolbook_subroutine",
+    "<span>_imod_schoolbook_subroutine</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/div/_imod_schoolbook_subroutine.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_imod_schoolbook_subroutine_do.js~_imod_schoolbook_subroutine_do",
+    "function/index.html#static-function-_imod_schoolbook_subroutine_do",
+    "<span>_imod_schoolbook_subroutine_do</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/div/_imod_schoolbook_subroutine_do.js</span>",
+    "function"
+  ],
+  [
     "@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_imul_limb.js~_imul_limb",
     "function/index.html#static-function-_imul_limb",
     "<span>_imul_limb</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_imul_limb.js</span>",
@@ -369,6 +393,12 @@ window.esdocSearchIndex = [
     "@aureooms/js-integer-big-endian/src/core/convert/_trim_positive.js~_trim_positive",
     "function/index.html#static-function-_trim_positive",
     "<span>_trim_positive</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/_trim_positive.js</span>",
+    "function"
+  ],
+  [
+    "@aureooms/js-integer-big-endian/src/core/array/_validate.js~_validate",
+    "function/index.html#static-function-_validate",
+    "<span>_validate</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/array/_validate.js</span>",
     "function"
   ],
   [
@@ -495,12 +525,6 @@ window.esdocSearchIndex = [
     "@aureooms/js-integer-big-endian/src/api/convert/stringify.js~stringify",
     "function/index.html#static-function-stringify",
     "<span>stringify</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/convert/stringify.js</span>",
-    "function"
-  ],
-  [
-    "@aureooms/js-integer-big-endian/src/core/convert/stringify.js~stringify",
-    "function/index.html#static-function-stringify",
-    "<span>stringify</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/stringify.js</span>",
     "function"
   ],
   [
@@ -816,12 +840,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/api/arithmetic/add/index.js",
-    "file/src/api/arithmetic/add/index.js.html",
-    "src/api/arithmetic/add/index.js",
-    "file"
-  ],
-  [
     "src/api/arithmetic/div/_divmod.js",
     "file/src/api/arithmetic/div/_divmod.js.html",
     "src/api/arithmetic/div/_divmod.js",
@@ -840,12 +858,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/api/arithmetic/div/index.js",
-    "file/src/api/arithmetic/div/index.js.html",
-    "src/api/arithmetic/div/index.js",
-    "file"
-  ],
-  [
     "src/api/arithmetic/gcd/euclidean_algorithm.js",
     "file/src/api/arithmetic/gcd/euclidean_algorithm.js.html",
     "src/api/arithmetic/gcd/euclidean_algorithm.js",
@@ -858,24 +870,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/api/arithmetic/gcd/index.js",
-    "file/src/api/arithmetic/gcd/index.js.html",
-    "src/api/arithmetic/gcd/index.js",
-    "file"
-  ],
-  [
-    "src/api/arithmetic/index.js",
-    "file/src/api/arithmetic/index.js.html",
-    "src/api/arithmetic/index.js",
-    "file"
-  ],
-  [
-    "src/api/arithmetic/mul/index.js",
-    "file/src/api/arithmetic/mul/index.js.html",
-    "src/api/arithmetic/mul/index.js",
-    "file"
-  ],
-  [
     "src/api/arithmetic/mul/mul.js",
     "file/src/api/arithmetic/mul/mul.js.html",
     "src/api/arithmetic/mul/mul.js",
@@ -885,12 +879,6 @@ window.esdocSearchIndex = [
     "src/api/arithmetic/sub/decrement.js",
     "file/src/api/arithmetic/sub/decrement.js.html",
     "src/api/arithmetic/sub/decrement.js",
-    "file"
-  ],
-  [
-    "src/api/arithmetic/sub/index.js",
-    "file/src/api/arithmetic/sub/index.js.html",
-    "src/api/arithmetic/sub/index.js",
     "file"
   ],
   [
@@ -915,12 +903,6 @@ window.esdocSearchIndex = [
     "src/api/compare/gt.js",
     "file/src/api/compare/gt.js.html",
     "src/api/compare/gt.js",
-    "file"
-  ],
-  [
-    "src/api/compare/index.js",
-    "file/src/api/compare/index.js.html",
-    "src/api/compare/index.js",
     "file"
   ],
   [
@@ -954,12 +936,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/api/convert/index.js",
-    "file/src/api/convert/index.js.html",
-    "src/api/convert/index.js",
-    "file"
-  ],
-  [
     "src/api/convert/parse.js",
     "file/src/api/convert/parse.js.html",
     "src/api/convert/parse.js",
@@ -978,12 +954,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/api/index.js",
-    "file/src/api/index.js.html",
-    "src/api/index.js",
-    "file"
-  ],
-  [
     "src/core/arithmetic/add/_add.js",
     "file/src/core/arithmetic/add/_add.js.html",
     "src/core/arithmetic/add/_add.js",
@@ -999,12 +969,6 @@ window.esdocSearchIndex = [
     "src/core/arithmetic/add/_iadd_limb.js",
     "file/src/core/arithmetic/add/_iadd_limb.js.html",
     "src/core/arithmetic/add/_iadd_limb.js",
-    "file"
-  ],
-  [
-    "src/core/arithmetic/add/index.js",
-    "file/src/core/arithmetic/add/index.js.html",
-    "src/core/arithmetic/add/index.js",
     "file"
   ],
   [
@@ -1080,15 +1044,33 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/core/arithmetic/div/_mod_limb.js",
-    "file/src/core/arithmetic/div/_mod_limb.js.html",
-    "src/core/arithmetic/div/_mod_limb.js",
+    "src/core/arithmetic/div/_imod_schoolbook.js",
+    "file/src/core/arithmetic/div/_imod_schoolbook.js.html",
+    "src/core/arithmetic/div/_imod_schoolbook.js",
     "file"
   ],
   [
-    "src/core/arithmetic/div/index.js",
-    "file/src/core/arithmetic/div/index.js.html",
-    "src/core/arithmetic/div/index.js",
+    "src/core/arithmetic/div/_imod_schoolbook_large_divisor.js",
+    "file/src/core/arithmetic/div/_imod_schoolbook_large_divisor.js.html",
+    "src/core/arithmetic/div/_imod_schoolbook_large_divisor.js",
+    "file"
+  ],
+  [
+    "src/core/arithmetic/div/_imod_schoolbook_subroutine.js",
+    "file/src/core/arithmetic/div/_imod_schoolbook_subroutine.js.html",
+    "src/core/arithmetic/div/_imod_schoolbook_subroutine.js",
+    "file"
+  ],
+  [
+    "src/core/arithmetic/div/_imod_schoolbook_subroutine_do.js",
+    "file/src/core/arithmetic/div/_imod_schoolbook_subroutine_do.js.html",
+    "src/core/arithmetic/div/_imod_schoolbook_subroutine_do.js",
+    "file"
+  ],
+  [
+    "src/core/arithmetic/div/_mod_limb.js",
+    "file/src/core/arithmetic/div/_mod_limb.js.html",
+    "src/core/arithmetic/div/_mod_limb.js",
     "file"
   ],
   [
@@ -1113,18 +1095,6 @@ window.esdocSearchIndex = [
     "src/core/arithmetic/gcd/_extended_euclidean_algorithm_loop.js",
     "file/src/core/arithmetic/gcd/_extended_euclidean_algorithm_loop.js.html",
     "src/core/arithmetic/gcd/_extended_euclidean_algorithm_loop.js",
-    "file"
-  ],
-  [
-    "src/core/arithmetic/gcd/index.js",
-    "file/src/core/arithmetic/gcd/index.js.html",
-    "src/core/arithmetic/gcd/index.js",
-    "file"
-  ],
-  [
-    "src/core/arithmetic/index.js",
-    "file/src/core/arithmetic/index.js.html",
-    "src/core/arithmetic/index.js",
     "file"
   ],
   [
@@ -1170,12 +1140,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/core/arithmetic/mul/index.js",
-    "file/src/core/arithmetic/mul/index.js.html",
-    "src/core/arithmetic/mul/index.js",
-    "file"
-  ],
-  [
     "src/core/arithmetic/pow/_pow_double.js",
     "file/src/core/arithmetic/pow/_pow_double.js.html",
     "src/core/arithmetic/pow/_pow_double.js",
@@ -1188,12 +1152,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/core/arithmetic/pow/index.js",
-    "file/src/core/arithmetic/pow/index.js.html",
-    "src/core/arithmetic/pow/index.js",
-    "file"
-  ],
-  [
     "src/core/arithmetic/sub/_isub.js",
     "file/src/core/arithmetic/sub/_isub.js.html",
     "src/core/arithmetic/sub/_isub.js",
@@ -1203,12 +1161,6 @@ window.esdocSearchIndex = [
     "src/core/arithmetic/sub/_sub.js",
     "file/src/core/arithmetic/sub/_sub.js.html",
     "src/core/arithmetic/sub/_sub.js",
-    "file"
-  ],
-  [
-    "src/core/arithmetic/sub/index.js",
-    "file/src/core/arithmetic/sub/index.js.html",
-    "src/core/arithmetic/sub/index.js",
     "file"
   ],
   [
@@ -1242,15 +1194,15 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/core/array/_zeros.js",
-    "file/src/core/array/_zeros.js.html",
-    "src/core/array/_zeros.js",
+    "src/core/array/_validate.js",
+    "file/src/core/array/_validate.js.html",
+    "src/core/array/_validate.js",
     "file"
   ],
   [
-    "src/core/array/index.js",
-    "file/src/core/array/index.js.html",
-    "src/core/array/index.js",
+    "src/core/array/_zeros.js",
+    "file/src/core/array/_zeros.js.html",
+    "src/core/array/_zeros.js",
     "file"
   ],
   [
@@ -1266,15 +1218,21 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/core/compare/_cmp_n.js",
-    "file/src/core/compare/_cmp_n.js.html",
-    "src/core/compare/_cmp_n.js",
+    "src/core/compare/_cmp_half_even_radix.js",
+    "file/src/core/compare/_cmp_half_even_radix.js.html",
+    "src/core/compare/_cmp_half_even_radix.js",
     "file"
   ],
   [
-    "src/core/compare/index.js",
-    "file/src/core/compare/index.js.html",
-    "src/core/compare/index.js",
+    "src/core/compare/_cmp_half_odd_radix.js",
+    "file/src/core/compare/_cmp_half_odd_radix.js.html",
+    "src/core/compare/_cmp_half_odd_radix.js",
+    "file"
+  ],
+  [
+    "src/core/compare/_cmp_n.js",
+    "file/src/core/compare/_cmp_n.js.html",
+    "src/core/compare/_cmp_n.js",
     "file"
   ],
   [
@@ -1374,21 +1332,9 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/core/convert/index.js",
-    "file/src/core/convert/index.js.html",
-    "src/core/convert/index.js",
-    "file"
-  ],
-  [
     "src/core/convert/parse_keep_zeros.js",
     "file/src/core/convert/parse_keep_zeros.js.html",
     "src/core/convert/parse_keep_zeros.js",
-    "file"
-  ],
-  [
-    "src/core/convert/stringify.js",
-    "file/src/core/convert/stringify.js.html",
-    "src/core/convert/stringify.js",
     "file"
   ],
   [
@@ -1398,33 +1344,21 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/core/index.js",
-    "file/src/core/index.js.html",
-    "src/core/index.js",
+    "src/core/thresholds/threshold_convert_dc.js",
+    "file/src/core/thresholds/THRESHOLD_CONVERT_DC.js.html",
+    "src/core/thresholds/THRESHOLD_CONVERT_DC.js",
     "file"
   ],
   [
-    "src/core/thresholds/conversion.js",
-    "file/src/core/thresholds/conversion.js.html",
-    "src/core/thresholds/conversion.js",
+    "src/core/thresholds/threshold_div_dc.js",
+    "file/src/core/thresholds/THRESHOLD_DIV_DC.js.html",
+    "src/core/thresholds/THRESHOLD_DIV_DC.js",
     "file"
   ],
   [
-    "src/core/thresholds/division.js",
-    "file/src/core/thresholds/division.js.html",
-    "src/core/thresholds/division.js",
-    "file"
-  ],
-  [
-    "src/core/thresholds/index.js",
-    "file/src/core/thresholds/index.js.html",
-    "src/core/thresholds/index.js",
-    "file"
-  ],
-  [
-    "src/core/thresholds/multiplication.js",
-    "file/src/core/thresholds/multiplication.js.html",
-    "src/core/thresholds/multiplication.js",
+    "src/core/thresholds/threshold_mul_toom22.js",
+    "file/src/core/thresholds/THRESHOLD_MUL_TOOM22.js.html",
+    "src/core/thresholds/THRESHOLD_MUL_TOOM22.js",
     "file"
   ],
   [
