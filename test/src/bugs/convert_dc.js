@@ -65,8 +65,7 @@ function convert_keep_zeros ( f , t , a , ai , aj ) {
 		_convert_dc( 2 * THRESHOLD_MUL_TOOM22 , f , t , a , ai , aj , b , bi , bj ) ;
 	}
 	else {
-		if ( t === t ) _copy(a, ai, aj, b, bi, bj) ;
-		else _convert( f , t , a , ai , aj , b , bi , bj ) ;
+		_convert( f , t , a , ai , aj , b , bi , bj ) ;
 	}
 
 	return b ;
