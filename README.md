@@ -15,7 +15,7 @@ integer.translate( 10 , 16 , '255' ) ; // 'ff'
 
 [![License](https://img.shields.io/github/license/aureooms/js-integer-big-endian.svg)](https://raw.githubusercontent.com/aureooms/js-integer-big-endian/main/LICENSE)
 [![Version](https://img.shields.io/npm/v/@aureooms/js-integer-big-endian.svg)](https://www.npmjs.org/package/@aureooms/js-integer-big-endian)
-[![Build](https://img.shields.io/travis/aureooms/js-integer-big-endian/main.svg)](https://travis-ci.com/aureooms/js-integer-big-endian/branches)
+[![Tests](https://img.shields.io/github/workflow/status/aureooms/js-integer-big-endian/ci:test?event=push&label=tests)](https://github.com/aureooms/js-integer-big-endian/actions/workflows/ci:test.yml?query=branch:main)
 [![Dependencies](https://img.shields.io/david/aureooms/js-integer-big-endian.svg)](https://david-dm.org/aureooms/js-integer-big-endian)
 [![Dev dependencies](https://img.shields.io/david/dev/aureooms/js-integer-big-endian.svg)](https://david-dm.org/aureooms/js-integer-big-endian?type=dev)
 [![GitHub issues](https://img.shields.io/github/issues/aureooms/js-integer-big-endian.svg)](https://github.com/aureooms/js-integer-big-endian/issues)
