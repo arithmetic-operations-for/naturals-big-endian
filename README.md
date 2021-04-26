@@ -1,10 +1,10 @@
-:elephant: [@aureooms/js-integer-big-endian](https://aureooms.github.io/js-integer-big-endian)
+:elephant: [@aureooms/js-integer-big-endian](https://make-github-pseudonymous-again.github.io/js-integer-big-endian)
 ==
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/Big-Endian.svg" width="864">
 
 Arbitrary precision arithmetic for integers in big endian order.
-See [docs](https://aureooms.github.io/js-integer-big-endian).
+See [docs](https://make-github-pseudonymous-again.github.io/js-integer-big-endian).
 Twin project of [@aureooms/js-integer-little-endian](https://github.com/aureooms/js-integer-little-endian).
 
 ```js
@@ -25,7 +25,7 @@ integer.translate( 10 , 16 , '255' ) ; // 'ff'
 [![Code maintainability](https://img.shields.io/codeclimate/maintainability/aureooms/js-integer-big-endian.svg)](https://codeclimate.com/github/aureooms/js-integer-big-endian/trends/churn)
 [![Code coverage (alls)](https://img.shields.io/coveralls/github/aureooms/js-integer-big-endian/main.svg)](https://coveralls.io/github/aureooms/js-integer-big-endian)
 [![Code technical debt](https://img.shields.io/codeclimate/tech-debt/aureooms/js-integer-big-endian.svg)](https://codeclimate.com/github/aureooms/js-integer-big-endian/trends/technical_debt)
-[![Documentation](https://aureooms.github.io/js-integer-big-endian/badge.svg)](https://aureooms.github.io/js-integer-big-endian/source.html)
+[![Documentation](https://make-github-pseudonymous-again.github.io/js-integer-big-endian/badge.svg)](https://make-github-pseudonymous-again.github.io/js-integer-big-endian/source.html)
 [![Package size](https://img.shields.io/bundlephobia/minzip/@aureooms/js-integer-big-endian)](https://bundlephobia.com/result?p=@aureooms/js-integer-big-endian)
 
 ## :scroll: Reference
