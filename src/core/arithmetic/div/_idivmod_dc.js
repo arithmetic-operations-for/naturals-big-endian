@@ -92,9 +92,9 @@ export default function _idivmod_dc(X, a, ai, aj, b, bi, bj, c, ci, cj) {
 
 	if (_normalize) {
 		const p = _mod_limb(X, z, _a, _ai, _ak);
-		_div_limb_with_prefix(X, p, z, _a, _ak, _aj - shift, a, ai, aj);
+		_div_limb_with_prefix(X, p, z, _a, _ak, _aj - shift, a, ai);
 	} else {
-		_copy(_a, _ak, _aj - shift, a, ai, aj);
+		_copy(_a, _ak, _aj - shift, a, ai);
 	}
 
 	// C is completely overwritten here
