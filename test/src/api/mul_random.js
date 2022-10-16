@@ -1,6 +1,6 @@
 import test from 'ava';
-import {range} from '@aureooms/js-itertools';
-import {randint} from '@aureooms/js-random';
+import {range} from '@iterable-iterator/range';
+import {randint} from '@randomized/random';
 
 import {parse, _zeros, mul, stringify} from '../../../src/index.js';
 
@@ -21,21 +21,21 @@ function macro(t, r, A, B) {
 macro.title = (providedTitle, r, A, B) =>
 	providedTitle || `mul(${r},${A},${B}) = ${A * B} <random>`;
 
-const N = 20000;
+const N = 20_000;
 const MIN_RADIX = 2;
 const MAX_RADIX = 36;
 const MIN = 0;
 const MAX = 2 ** Math.floor(Math.log(Math.sqrt(2 ** 53)));
 const DONE = new Set();
 
-test(macro, 2, 236498, 196086);
-test(macro, 2, 237731, 234914);
-test(macro, 2, 242475, 221659);
-test(macro, 2, 247796, 204437);
-test(macro, 2, 87996, 226805);
-test(macro, 2, 240042, 191854);
-test(macro, 3, 58072, 38617);
-test(macro, 3, 51224, 54163);
+test(macro, 2, 236_498, 196_086);
+test(macro, 2, 237_731, 234_914);
+test(macro, 2, 242_475, 221_659);
+test(macro, 2, 247_796, 204_437);
+test(macro, 2, 87_996, 226_805);
+test(macro, 2, 240_042, 191_854);
+test(macro, 3, 58_072, 38_617);
+test(macro, 3, 51_224, 54_163);
 
 // eslint-disable-next-line no-unused-vars
 for (const _ of range(N)) {

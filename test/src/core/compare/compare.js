@@ -1,6 +1,6 @@
 import test from 'ava';
 
-import operator from '@aureooms/js-operator';
+import * as operator from '@functional-abstraction/operator';
 
 import * as integer from '../../../../src/index.js';
 

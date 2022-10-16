@@ -1,6 +1,6 @@
 import test from 'ava';
-import {range} from '@aureooms/js-itertools';
-import {randint} from '@aureooms/js-random';
+import {range} from '@iterable-iterator/range';
+import {randint} from '@randomized/random';
 
 import {parse, _zeros, add, stringify} from '../../../src/index.js';
 
@@ -21,7 +21,7 @@ function macro(t, r, A, B) {
 macro.title = (providedTitle, r, A, B) =>
 	providedTitle || `add(${r},${A},${B}) = ${A + B} <random>`;
 
-const N = 20000;
+const N = 20_000;
 const MIN_RADIX = 2;
 const MAX_RADIX = 36;
 const MIN = 0;
