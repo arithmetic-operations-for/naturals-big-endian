@@ -1,6 +1,5 @@
-import _copy from '../../array/_copy.js';
-
 import assert from 'assert';
+import _copy from '../../array/_copy.js';
 
 /**
  * Adds two big endian arrays and puts result in a destination array.

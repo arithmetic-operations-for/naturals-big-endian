@@ -11,7 +11,7 @@ import assert from 'assert';
  */
 export default function _imul_limb(r, x, b, bi, bj) {
 	assert(r >= 2);
-	assert(r <= 94906266);
+	assert(r <= 94_906_266);
 	assert(x >= 0 && x <= r);
 	assert(bi >= 0 && bj <= b.length);
 

@@ -1,3 +1,4 @@
+import assert from 'assert';
 import _build from '../array/_build.js';
 import _alloc from '../array/_alloc.js';
 import _zeros from '../array/_zeros.js';
@@ -9,8 +10,6 @@ import _pow_double from '../arithmetic/pow/_pow_double.js';
 import mul from '../../api/arithmetic/mul/mul.js';
 import _convert_slow from './_convert_slow.js';
 import _trim_positive from './_trim_positive.js';
-
-import assert from 'assert';
 
 /**
  *

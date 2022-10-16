@@ -1,6 +1,5 @@
-import _mul from '../../../core/arithmetic/mul/_mul.js';
-
 import assert from 'assert';
+import _mul from '../../../core/arithmetic/mul/_mul.js';
 
 /**
  *  Multiplies two big endian arrays and puts result in a destination array.

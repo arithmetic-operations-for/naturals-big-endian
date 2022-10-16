@@ -1,6 +1,6 @@
-import _trim_positive from './_trim_positive.js';
 import _alloc from '../array/_alloc.js';
 import _copy from '../array/_copy.js';
+import _trim_positive from './_trim_positive.js';
 
 /**
  * Trim a limb array so that it is either [0] or does not start with any

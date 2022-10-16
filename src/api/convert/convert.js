@@ -1,7 +1,6 @@
+import assert from 'assert';
 import convert_keep_zeros from '../../core/convert/convert_keep_zeros.js';
 import trim_natural from '../../core/convert/trim_natural.js';
-
-import assert from 'assert';
 
 /**
  * Converts the input number A represented in base f to a number B represented

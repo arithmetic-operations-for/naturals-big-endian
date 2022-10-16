@@ -1,8 +1,7 @@
+import assert from 'assert';
 import _zeros from '../../array/_zeros.js';
 import _iadd from '../add/_iadd.js';
 import _mul from './_mul.js';
-
-import assert from 'assert';
 
 /**
  *

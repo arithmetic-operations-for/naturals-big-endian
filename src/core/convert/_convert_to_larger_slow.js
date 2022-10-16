@@ -1,7 +1,6 @@
+import assert from 'assert';
 import _iadd_limb from '../arithmetic/add/_iadd_limb.js';
 import _imul_limb from '../arithmetic/mul/_imul_limb.js';
-
-import assert from 'assert';
 
 /**
  *

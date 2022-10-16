@@ -4,11 +4,10 @@ import _zeros from '../../array/_zeros.js';
 import _copy from '../../array/_copy.js';
 import _cmp_n from '../../compare/_cmp_n.js';
 import _imul_limb from '../mul/_imul_limb.js';
+import jz from '../../../api/compare/jz.js';
 import _idivmod_dc_21 from './_idivmod_dc_21.js';
 import _div_limb_with_prefix from './_div_limb_with_prefix.js';
 import _mod_limb from './_mod_limb.js';
-
-import jz from '../../../api/compare/jz.js';
 
 /**
  * Input

@@ -53,7 +53,7 @@ test('convert bug', (t) => {
 	const src =
 		'2a9a63896d946d67f7a9d370d6c60d971a0659e5d96548e799e92b79f784e24f';
 
-	const parsed = integer.parse(16, 10000000, src);
+	const parsed = integer.parse(16, 10_000_000, src);
 
-	t.deepEqual(src, integer.stringify(10000000, 16, parsed, 0, parsed.length));
+	t.deepEqual(src, integer.stringify(10_000_000, 16, parsed, 0, parsed.length));
 });

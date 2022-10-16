@@ -7,9 +7,8 @@ import _mul from '../mul/_mul.js';
 import lt from '../../../api/compare/lt.js';
 import iadd from '../../../api/arithmetic/add/iadd.js';
 import decrement from '../../../api/arithmetic/sub/decrement.js';
-import _idivmod_dc_21 from './_idivmod_dc_21.js';
-
 import _cmp_half from '../../compare/_cmp_half.js';
+import _idivmod_dc_21 from './_idivmod_dc_21.js';
 
 /**
  * Algorithm 3.4 Divide-and-conquer division (3 by 2)

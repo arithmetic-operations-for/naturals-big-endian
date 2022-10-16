@@ -4,9 +4,8 @@ import _trim_positive from '../../convert/_trim_positive.js';
 import lt from '../../../api/compare/lt.js';
 import _validate from '../../array/_validate.js';
 import _isub from '../sub/_isub.js';
-import _idivmod_schoolbook_subroutine from './_idivmod_schoolbook_subroutine.js';
-
 import _cmp_half from '../../compare/_cmp_half.js';
+import _idivmod_schoolbook_subroutine from './_idivmod_schoolbook_subroutine.js';
 
 /**
  * Input

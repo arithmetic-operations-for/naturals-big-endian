@@ -3,10 +3,9 @@ import assert from 'assert';
 import _zeros from '../../array/_zeros.js';
 import _copy from '../../array/_copy.js';
 import _mul_limb from '../mul/_mul_limb.js';
+import jz from '../../../api/compare/jz.js';
 import _idivmod_schoolbook_large_divisor from './_idivmod_schoolbook_large_divisor.js';
 import _div_limb_with_prefix from './_div_limb_with_prefix.js';
-
-import jz from '../../../api/compare/jz.js';
 
 /**
  * Computes q <- a / b and a <- a % b.

@@ -1,5 +1,5 @@
-import convert from './convert.js';
 import _to_string from '../../core/convert/_to_string.js';
+import convert from './convert.js';
 
 /**
  * Converts a limb array in base f to a string representation in base t.

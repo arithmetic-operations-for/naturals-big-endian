@@ -71,5 +71,5 @@ macro_convert.title = (_, f, _t, s) =>
 const seed = '1';
 const prng = new XorShift128Plus(seed);
 const _b8192 = prng.randomBytes(8192).toString('hex').replace(/^0*/, '');
-test(macro_convert, 16, 94906266, _b8192);
+test(macro_convert, 16, 94_906_266, _b8192);
 test(macro_convert, 16, 13, _b8192);

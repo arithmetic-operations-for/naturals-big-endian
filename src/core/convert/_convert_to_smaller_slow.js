@@ -1,9 +1,8 @@
+import assert from 'assert';
 import _alloc from '../array/_alloc.js';
 import _copy from '../array/_copy.js';
 import _idivmod_limb from '../arithmetic/div/_idivmod_limb.js';
 import _trim_positive from './_trim_positive.js';
-
-import assert from 'assert';
 
 /**
  *

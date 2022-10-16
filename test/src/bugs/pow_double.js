@@ -27,4 +27,4 @@ test(macro, 0);
 test(macro, 1);
 test(macro, 2);
 test(macro, 3);
-test(macro, 10000);
+test(macro, 10_000);

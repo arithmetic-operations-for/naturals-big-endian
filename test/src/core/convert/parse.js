@@ -12,36 +12,20 @@ test('parse', (t) => {
 	t.deepEqual(integer.parse(2, 2, '10'), [1, 0]);
 	t.deepEqual(integer.parse(2, 2, '11'), [1, 1]);
 
-	t.deepEqual(integer.parse(2, 2, '1001010111'), [
-		1,
-		0,
-		0,
-		1,
-		0,
-		1,
-		0,
-		1,
-		1,
-		1,
-	]);
+	t.deepEqual(
+		integer.parse(2, 2, '1001010111'),
+		[1, 0, 0, 1, 0, 1, 0, 1, 1, 1],
+	);
 
 	t.deepEqual(integer.parse(16, 16, '0'), [0]);
 	t.deepEqual(integer.parse(16, 16, 'a'), [10]);
 	t.deepEqual(integer.parse(16, 16, 'A0'), [10, 0]);
 	t.deepEqual(integer.parse(16, 16, 'a1'), [10, 1]);
 
-	t.deepEqual(integer.parse(16, 16, 'a00b0C0def'), [
-		10,
-		0,
-		0,
-		11,
-		0,
-		12,
-		0,
-		13,
-		14,
-		15,
-	]);
+	t.deepEqual(
+		integer.parse(16, 16, 'a00b0C0def'),
+		[10, 0, 0, 11, 0, 12, 0, 13, 14, 15],
+	);
 
 	t.deepEqual(integer.parse(2, 16, '11'), [3]);
 	t.deepEqual(integer.parse(16, 2, '3'), [1, 1]);
@@ -60,37 +44,17 @@ test('parse', (t) => {
 
 	t.deepEqual(integer.parse(16, 100, 'ff'), [2, 55]);
 	t.deepEqual(integer.parse(16, 1000, 'ff'), [255]);
-	t.deepEqual(integer.parse(16, 10000, 'ff'), [255]);
-
-	t.deepEqual(integer.parse(16, 100, 'fedcba9876543210'), [
-		18,
-		36,
-		47,
-		58,
-		54,
-		44,
-		93,
-		6,
-		47,
-		20,
-	]);
+	t.deepEqual(integer.parse(16, 10_000, 'ff'), [255]);
 
 	t.deepEqual(
-		integer.parse(36, 10000, '1234567890azertyuiopqsdfghjklmwxcvbn'),
+		integer.parse(16, 100, 'fedcba9876543210'),
+		[18, 36, 47, 58, 54, 44, 93, 6, 47, 20],
+	);
+
+	t.deepEqual(
+		integer.parse(36, 10_000, '1234567890azertyuiopqsdfghjklmwxcvbn'),
 		[
-			312,
-			6485,
-			6500,
-			280,
-			6599,
-			6167,
-			8564,
-			7451,
-			522,
-			8125,
-			564,
-			4362,
-			6409,
+			312, 6485, 6500, 280, 6599, 6167, 8564, 7451, 522, 8125, 564, 4362, 6409,
 			4355,
 		],
 	);

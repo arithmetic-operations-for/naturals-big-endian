@@ -3,9 +3,8 @@ import assert from 'assert';
 import _trim_positive from '../../convert/_trim_positive.js';
 import lt from '../../../api/compare/lt.js';
 import _isub from '../sub/_isub.js';
-import _imod_schoolbook_subroutine from './_imod_schoolbook_subroutine.js';
-
 import _cmp_half from '../../compare/_cmp_half.js';
+import _imod_schoolbook_subroutine from './_imod_schoolbook_subroutine.js';
 
 /**
  * Input

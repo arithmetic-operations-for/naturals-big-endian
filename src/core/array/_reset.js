@@ -1,6 +1,5 @@
-import _fill from './_fill.js';
-
 import assert from 'assert';
+import _fill from './_fill.js';
 
 /**
  * Fill the input limb array with zeros.
