@@ -8,9 +8,10 @@ See [docs](https://arithmetic-operations-for.github.io/naturals-big-endian).
 Twin project of [@arithmetic-operations-for/naturals-little-endian](https://github.com/arithmetic-operations-for/naturals-big-endian).
 
 ```js
-integer.parse( 16 , 100 , 'ff' ) ; // [ 2 , 55 ]
-integer.stringify( 100 , 16 , [ 2 , 55 ] ) ; // 'ff'
-integer.translate( 10 , 16 , '255' ) ; // 'ff'
+import {parse, stringify, translate} from '@arithmetic-operations-for/naturals-big-endian';
+parse(16, 100, 'ff'); // [ 2 , 55 ]
+stringify(100, 16, [2, 55]); // 'ff'
+translate(10, 16, '255'); // 'ff'
 ```
 
 [![License](https://img.shields.io/github/license/arithmetic-operations-for/naturals-big-endian.svg)](https://raw.githubusercontent.com/arithmetic-operations-for/naturals-big-endian/main/LICENSE)
