@@ -22,7 +22,7 @@ integer.translate( 10 , 16 , '255' ) ; // 'ff'
 
 [![Code issues](https://img.shields.io/codeclimate/issues/make-github-pseudonymous-again/js-integer-big-endian.svg)](https://codeclimate.com/github/make-github-pseudonymous-again/js-integer-big-endian/issues)
 [![Code maintainability](https://img.shields.io/codeclimate/maintainability/make-github-pseudonymous-again/js-integer-big-endian.svg)](https://codeclimate.com/github/make-github-pseudonymous-again/js-integer-big-endian/trends/churn)
-[![Code coverage (alls)](https://img.shields.io/coveralls/github/make-github-pseudonymous-again/js-integer-big-endian/main.svg)](https://coveralls.io/github/make-github-pseudonymous-again/js-integer-big-endian)
+[![Code coverage (cov)](https://img.shields.io/codecov/c/gh/make-github-pseudonymous-again/js-integer-big-endian/main.svg)](https://codecov.io/gh/make-github-pseudonymous-again/js-integer-big-endian)
 [![Code technical debt](https://img.shields.io/codeclimate/tech-debt/make-github-pseudonymous-again/js-integer-big-endian.svg)](https://codeclimate.com/github/make-github-pseudonymous-again/js-integer-big-endian/trends/technical_debt)
 [![Documentation](https://make-github-pseudonymous-again.github.io/js-integer-big-endian/badge.svg)](https://make-github-pseudonymous-again.github.io/js-integer-big-endian/source.html)
 [![Package size](https://img.shields.io/bundlephobia/minzip/@aureooms/js-integer-big-endian)](https://bundlephobia.com/result?p=@aureooms/js-integer-big-endian)
