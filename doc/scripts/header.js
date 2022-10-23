@@ -10,7 +10,7 @@ const domReady = function (callback) {
 domReady(() => {
 	const projectname = document.createElement('a');
 	projectname.classList.add('project-name');
-	projectname.text = 'aureooms/js-integer-big-endian';
+	projectname.text = '@aureooms/js-integer-big-endian';
 	projectname.href = './index.html';
 
 	const header = document.querySelector('header');
