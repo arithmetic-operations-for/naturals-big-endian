@@ -1,10 +1,6 @@
 import test from 'ava';
 
-import {
-	parse,
-	stringify,
-	euclidean_algorithm,
-} from '#module';
+import {parse, stringify, euclidean_algorithm} from '#module';
 
 function macro(t, A, B, D) {
 	const r = 10;
