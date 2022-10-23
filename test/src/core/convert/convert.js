@@ -8,7 +8,7 @@ import {
 	_convert_to_smaller_fast,
 	_log,
 	_zeros,
-} from '../../../../src/index.js';
+} from '#module';
 
 function macro_larger(t, f, _t, a, e) {
 	const [z, x] = _log(_t, f);

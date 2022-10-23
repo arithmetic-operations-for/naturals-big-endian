@@ -4,7 +4,7 @@ import {
 	parse,
 	stringify,
 	euclidean_algorithm,
-} from '../../../../../src/index.js';
+} from '#module';
 
 function macro(t, A, B, D) {
 	const r = 10;

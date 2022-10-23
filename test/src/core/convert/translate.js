@@ -1,5 +1,5 @@
 import test from 'ava';
-import * as integer from '../../../../src/index.js';
+import * as integer from '#module';
 
 test('translate', (t) => {
 	t.throws(integer.translate.bind(null, 16, 16, '!00b0C0def'), {

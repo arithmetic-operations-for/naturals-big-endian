@@ -1,5 +1,5 @@
 import test from 'ava';
-import {_mul_limb} from '../../../../../src/index.js';
+import {_mul_limb} from '#module';
 
 test('_mul_limb', (t) => {
 	let r = 10;

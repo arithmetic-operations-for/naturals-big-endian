@@ -1,5 +1,5 @@
 import test from 'ava';
-import {parse, _zeros, add, stringify} from '../../../src/index.js';
+import {parse, _zeros, add, stringify} from '#module';
 
 function macro(t, A, B, C) {
 	const r = 10;

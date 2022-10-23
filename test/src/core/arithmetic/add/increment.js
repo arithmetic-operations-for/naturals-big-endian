@@ -1,5 +1,5 @@
 import test from 'ava';
-import {increment} from '../../../../../src/index.js';
+import {increment} from '#module';
 
 test('increment', (t) => {
 	const a = [0, 9, 9];

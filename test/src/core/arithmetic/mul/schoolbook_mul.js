@@ -4,7 +4,7 @@ import {
 	_zeros,
 	_schoolbook_mul,
 	stringify,
-} from '../../../../../src/index.js';
+} from '#module';
 
 function macro(t, A, B, C) {
 	const r = 10;

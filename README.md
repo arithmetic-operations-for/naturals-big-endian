@@ -15,7 +15,7 @@ integer.translate( 10 , 16 , '255' ) ; // 'ff'
 
 [![License](https://img.shields.io/github/license/make-github-pseudonymous-again/js-integer-big-endian.svg)](https://raw.githubusercontent.com/make-github-pseudonymous-again/js-integer-big-endian/main/LICENSE)
 [![Version](https://img.shields.io/npm/v/@aureooms/js-integer-big-endian.svg)](https://www.npmjs.org/package/@aureooms/js-integer-big-endian)
-[![Tests](https://img.shields.io/github/workflow/status/make-github-pseudonymous-again/js-integer-big-endian/ci:test?event=push&label=tests)](https://github.com/make-github-pseudonymous-again/js-integer-big-endian/actions/workflows/ci:test.yml?query=branch:main)
+[![Tests](https://img.shields.io/github/workflow/status/make-github-pseudonymous-again/js-integer-big-endian/ci?event=push&label=tests)](https://github.com/make-github-pseudonymous-again/js-integer-big-endian/actions/workflows/ci.yml?query=branch:main)
 [![Dependencies](https://img.shields.io/librariesio/github/make-github-pseudonymous-again/js-integer-big-endian.svg)](https://github.com/make-github-pseudonymous-again/js-integer-big-endian/network/dependencies)
 [![GitHub issues](https://img.shields.io/github/issues/make-github-pseudonymous-again/js-integer-big-endian.svg)](https://github.com/make-github-pseudonymous-again/js-integer-big-endian/issues)
 [![Downloads](https://img.shields.io/npm/dm/@aureooms/js-integer-big-endian.svg)](https://www.npmjs.org/package/@aureooms/js-integer-big-endian)

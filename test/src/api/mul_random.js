@@ -2,7 +2,7 @@ import test from 'ava';
 import {range} from '@iterable-iterator/range';
 import {randint} from '@randomized/random';
 
-import {parse, _zeros, mul, stringify} from '../../../src/index.js';
+import {parse, _zeros, mul, stringify} from '#module';
 
 function macro(t, r, A, B) {
 	const C = A * B;

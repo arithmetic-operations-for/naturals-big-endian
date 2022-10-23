@@ -1,5 +1,5 @@
 import test from 'ava';
-import * as integer from '../../../../../src/index.js';
+import * as integer from '#module';
 
 function macro(t, dividend, divisor, quotient, remainder) {
 	const B = 10;

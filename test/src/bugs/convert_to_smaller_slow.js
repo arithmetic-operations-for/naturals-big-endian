@@ -1,5 +1,5 @@
 import test from 'ava';
-import * as integer from '../../../src/index.js';
+import * as integer from '#module';
 
 test('_convert_to_smaller_slow out of bound', (t) => {
 	const a = [

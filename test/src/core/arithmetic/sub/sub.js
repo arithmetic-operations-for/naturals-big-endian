@@ -1,6 +1,6 @@
 import test from 'ava';
 
-import {parse, stringify, _zeros, _sub} from '../../../../../src/index.js';
+import {parse, stringify, _zeros, _sub} from '#module';
 
 test('_sub: wraps', (t) => {
 	const a = [0];

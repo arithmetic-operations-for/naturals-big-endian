@@ -5,7 +5,7 @@ import {
 	_pow_double,
 	_pow_double_recursive,
 	stringify,
-} from '../../../../../src/index.js';
+} from '#module';
 
 function macro(t, A, x, C) {
 	const r = 10;

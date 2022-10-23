@@ -5,7 +5,7 @@ import {
 	_idivmod,
 	_divmod,
 	stringify,
-} from '../../../src/index.js';
+} from '#module';
 
 function test_idivmod(t, dividend, divisor, quotient, remainder) {
 	const B = 10;

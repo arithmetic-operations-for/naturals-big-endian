@@ -2,7 +2,7 @@ import test from 'ava';
 
 import * as operator from '@functional-abstraction/operator';
 
-import * as integer from '../../../../src/index.js';
+import * as integer from '#module';
 
 function check(t, Ctor, cmp, transform) {
 	cmp = cmp[1];

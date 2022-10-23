@@ -1,6 +1,6 @@
 import test from 'ava';
 
-import {jz} from '../../../src/index.js';
+import {jz} from '#module';
 
 function macro_jz(t, a, ai, aj, e) {
 	t.is(e, jz(a, ai, aj));

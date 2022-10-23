@@ -8,7 +8,7 @@ import {
 	_from_string,
 	_convert,
 	_zeros,
-} from '../../../src/index.js';
+} from '#module';
 
 function translate(f, t, string) {
 	const a = parse(f, t, string);

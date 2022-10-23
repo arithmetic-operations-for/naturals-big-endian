@@ -1,5 +1,5 @@
 import test from 'ava';
-import {_zeros, mul, stringify} from '../../../src/index.js';
+import {_zeros, mul, stringify} from '#module';
 
 function boundaries(t, a, ai, aj, b, bi, bj, C) {
 	const r = 10;

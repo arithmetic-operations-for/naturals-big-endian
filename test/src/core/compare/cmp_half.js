@@ -1,5 +1,5 @@
 import test from 'ava';
-import {_cmp_half} from '../../../../src/index.js';
+import {_cmp_half} from '#module';
 
 function macro(t, r, a, ai, aj, expected) {
 	const result = _cmp_half(r, a, ai, aj);

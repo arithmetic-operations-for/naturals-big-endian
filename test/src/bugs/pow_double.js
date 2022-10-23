@@ -4,7 +4,7 @@ import {
 	_zeros,
 	_pow_double,
 	_pow_double_recursive,
-} from '../../../src/index.js';
+} from '#module';
 
 function macro(t, x) {
 	const r = 10;

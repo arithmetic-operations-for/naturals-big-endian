@@ -1,5 +1,5 @@
 import test from 'ava';
-import {decrement} from '../../../src/index.js';
+import {decrement} from '#module';
 
 function macro(t, r, x, e) {
 	const _x = ['x', ...x.slice(), 'x'];

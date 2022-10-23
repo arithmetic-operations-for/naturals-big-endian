@@ -4,7 +4,7 @@ import {
 	parse,
 	stringify,
 	extended_euclidean_algorithm,
-} from '../../../../../src/index.js';
+} from '#module';
 
 const ge = (t, a, b, v) => t.true(a >= b, `${v} = ${a} >= ${b}`);
 const le = (t, a, b, v) => t.true(a <= b, `${v} = ${a} <= ${b}`);

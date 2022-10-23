@@ -1,6 +1,6 @@
 import test from 'ava';
 
-import {_zeros, _schoolbook_mul} from '../../../src/index.js';
+import {_zeros, _schoolbook_mul} from '#module';
 
 test('_schoolbook_mul handles overflows', (t) => {
 	const MAX_BASE = Math.floor(2 ** (53 / 2)) | 0;
