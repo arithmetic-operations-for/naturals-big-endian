@@ -1,7 +1,7 @@
 # Usage
 
 ```js
-const integer = await import('@aureooms/js-integer-big-endian');
+const integer = await import('@arithmetic-operations-for/naturals-big-endian');
 // or
-import * as integer from '@aureooms/js-integer-big-endian';
+import * as integer from '@arithmetic-operations-for/naturals-big-endian';
 ```

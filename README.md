@@ -1,11 +1,11 @@
-:elephant: [@aureooms/js-integer-big-endian](https://make-github-pseudonymous-again.github.io/js-integer-big-endian)
+:elephant: [@arithmetic-operations-for/naturals-big-endian](https://arithmetic-operations-for.github.io/naturals-big-endian)
 ==
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/Big-Endian.svg" width="864">
 
 Arbitrary precision arithmetic for integers in big endian order.
-See [docs](https://make-github-pseudonymous-again.github.io/js-integer-big-endian).
-Twin project of [@aureooms/js-integer-little-endian](https://github.com/make-github-pseudonymous-again/js-integer-little-endian).
+See [docs](https://arithmetic-operations-for.github.io/naturals-big-endian).
+Twin project of [@arithmetic-operations-for/naturals-little-endian](https://github.com/arithmetic-operations-for/naturals-big-endian).
 
 ```js
 integer.parse( 16 , 100 , 'ff' ) ; // [ 2 , 55 ]
@@ -13,19 +13,19 @@ integer.stringify( 100 , 16 , [ 2 , 55 ] ) ; // 'ff'
 integer.translate( 10 , 16 , '255' ) ; // 'ff'
 ```
 
-[![License](https://img.shields.io/github/license/make-github-pseudonymous-again/js-integer-big-endian.svg)](https://raw.githubusercontent.com/make-github-pseudonymous-again/js-integer-big-endian/main/LICENSE)
-[![Version](https://img.shields.io/npm/v/@aureooms/js-integer-big-endian.svg)](https://www.npmjs.org/package/@aureooms/js-integer-big-endian)
-[![Tests](https://img.shields.io/github/workflow/status/make-github-pseudonymous-again/js-integer-big-endian/ci?event=push&label=tests)](https://github.com/make-github-pseudonymous-again/js-integer-big-endian/actions/workflows/ci.yml?query=branch:main)
-[![Dependencies](https://img.shields.io/librariesio/github/make-github-pseudonymous-again/js-integer-big-endian.svg)](https://github.com/make-github-pseudonymous-again/js-integer-big-endian/network/dependencies)
-[![GitHub issues](https://img.shields.io/github/issues/make-github-pseudonymous-again/js-integer-big-endian.svg)](https://github.com/make-github-pseudonymous-again/js-integer-big-endian/issues)
-[![Downloads](https://img.shields.io/npm/dm/@aureooms/js-integer-big-endian.svg)](https://www.npmjs.org/package/@aureooms/js-integer-big-endian)
+[![License](https://img.shields.io/github/license/arithmetic-operations-for/naturals-big-endian.svg)](https://raw.githubusercontent.com/arithmetic-operations-for/naturals-big-endian/main/LICENSE)
+[![Version](https://img.shields.io/npm/v/@arithmetic-operations-for/naturals-big-endian.svg)](https://www.npmjs.org/package/@arithmetic-operations-for/naturals-big-endian)
+[![Tests](https://img.shields.io/github/workflow/status/arithmetic-operations-for/naturals-big-endian/ci?event=push&label=tests)](https://github.com/arithmetic-operations-for/naturals-big-endian/actions/workflows/ci.yml?query=branch:main)
+[![Dependencies](https://img.shields.io/librariesio/github/arithmetic-operations-for/naturals-big-endian.svg)](https://github.com/arithmetic-operations-for/naturals-big-endian/network/dependencies)
+[![GitHub issues](https://img.shields.io/github/issues/arithmetic-operations-for/naturals-big-endian.svg)](https://github.com/arithmetic-operations-for/naturals-big-endian/issues)
+[![Downloads](https://img.shields.io/npm/dm/@arithmetic-operations-for/naturals-big-endian.svg)](https://www.npmjs.org/package/@arithmetic-operations-for/naturals-big-endian)
 
-[![Code issues](https://img.shields.io/codeclimate/issues/make-github-pseudonymous-again/js-integer-big-endian.svg)](https://codeclimate.com/github/make-github-pseudonymous-again/js-integer-big-endian/issues)
-[![Code maintainability](https://img.shields.io/codeclimate/maintainability/make-github-pseudonymous-again/js-integer-big-endian.svg)](https://codeclimate.com/github/make-github-pseudonymous-again/js-integer-big-endian/trends/churn)
-[![Code coverage (cov)](https://img.shields.io/codecov/c/gh/make-github-pseudonymous-again/js-integer-big-endian/main.svg)](https://codecov.io/gh/make-github-pseudonymous-again/js-integer-big-endian)
-[![Code technical debt](https://img.shields.io/codeclimate/tech-debt/make-github-pseudonymous-again/js-integer-big-endian.svg)](https://codeclimate.com/github/make-github-pseudonymous-again/js-integer-big-endian/trends/technical_debt)
-[![Documentation](https://make-github-pseudonymous-again.github.io/js-integer-big-endian/badge.svg)](https://make-github-pseudonymous-again.github.io/js-integer-big-endian/source.html)
-[![Package size](https://img.shields.io/bundlephobia/minzip/@aureooms/js-integer-big-endian)](https://bundlephobia.com/result?p=@aureooms/js-integer-big-endian)
+[![Code issues](https://img.shields.io/codeclimate/issues/arithmetic-operations-for/naturals-big-endian.svg)](https://codeclimate.com/github/arithmetic-operations-for/naturals-big-endian/issues)
+[![Code maintainability](https://img.shields.io/codeclimate/maintainability/arithmetic-operations-for/naturals-big-endian.svg)](https://codeclimate.com/github/arithmetic-operations-for/naturals-big-endian/trends/churn)
+[![Code coverage (cov)](https://img.shields.io/codecov/c/gh/arithmetic-operations-for/naturals-big-endian/main.svg)](https://codecov.io/gh/arithmetic-operations-for/naturals-big-endian)
+[![Code technical debt](https://img.shields.io/codeclimate/tech-debt/arithmetic-operations-for/naturals-big-endian.svg)](https://codeclimate.com/github/arithmetic-operations-for/naturals-big-endian/trends/technical_debt)
+[![Documentation](https://arithmetic-operations-for.github.io/naturals-big-endian/badge.svg)](https://arithmetic-operations-for.github.io/naturals-big-endian/source.html)
+[![Package size](https://img.shields.io/bundlephobia/minzip/@arithmetic-operations-for/naturals-big-endian)](https://bundlephobia.com/result?p=@arithmetic-operations-for/naturals-big-endian)
 
 ## :scroll: Reference
 
