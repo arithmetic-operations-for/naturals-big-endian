@@ -19,8 +19,10 @@ function macro(t, x) {
 
 macro.title = (_, x) => `bugs _pow_double: 0 ([]) ^ ${x} throws`;
 
-test(macro, 0);
-test(macro, 1);
-test(macro, 2);
-test(macro, 3);
-test(macro, 10_000);
+const _test = _pow_double.toString().includes('assert(') ? test : test.skip;
+
+_test(macro, 0);
+_test(macro, 1);
+_test(macro, 2);
+_test(macro, 3);
+_test(macro, 10_000);
