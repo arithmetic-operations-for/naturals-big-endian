@@ -108,14 +108,14 @@
     "files": [
       "test/src/**/*"
     ],
+    "nodeArguments": [
+      "--experimental-loader=@node-loader/core"
+    ],
     "require": [
       "regenerator-runtime/runtime"
     ],
     "timeout": "3m",
-    "concurrency": 8,
-    "nodeArguments": [
-      "--experimental-loader=@node-loader/core"
-    ]
+    "concurrency": 8
   },
   "babel": {
     "sourceMaps": true,
