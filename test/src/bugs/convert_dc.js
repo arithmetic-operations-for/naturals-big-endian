@@ -1,5 +1,8 @@
 import test from 'ava';
-import {XorShift128Plus} from 'xorshift.js/index.js';
+
+import {xoroshiro128plus, fill} from '@entropy-source/pseudo-random';
+import {decode as hex} from '@codec-bytes/base16';
+
 import {
 	_convert_dc,
 	trim_natural,
@@ -204,7 +207,9 @@ test('convert_dc bug 9 8 translate', (t) => {
 	t.is(s9, translate(8, 9, out));
 });
 
-const seed = '1';
-const prng = new XorShift128Plus(seed);
-const _b8192 = prng.randomBytes(8192).toString('hex').replace(/^0*/, '');
+const seed = [1, 0, 0, 0];
+const prng = xoroshiro128plus(seed, {});
+const buffer = new Uint8Array(8192);
+fill(prng, buffer);
+const _b8192 = hex(buffer).toLowerCase().replace(/^0*/, '');
 test(macro_convert, 16, 94_906_266, _b8192);
