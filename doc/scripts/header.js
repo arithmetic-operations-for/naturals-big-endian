@@ -18,7 +18,7 @@ domReady(() => {
 
 	const testlink = document.querySelector('header > a[data-ice="testLink"]');
 	testlink.href =
-		'https://coveralls.io/github/make-github-pseudonymous-again/js-integer-big-endian';
+		'https://app.codecov.io/gh/make-github-pseudonymous-again/js-integer-big-endian';
 	testlink.target = '_BLANK';
 
 	const searchBox = document.querySelector('.search-box');
