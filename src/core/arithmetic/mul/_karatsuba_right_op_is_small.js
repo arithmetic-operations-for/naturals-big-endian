@@ -76,7 +76,16 @@ export default function _karatsuba_right_op_is_small(
 
 	// RECURSIVE CALLS
 	_mul(r, a, i_, aj, b, bi, bj, c, cj - N, cj); // C += a0.b0
-	_mul(r, a, ai, i_, b, bi, bj, z, 0, N_); // Z = a1.b0
+	if (j === n) {
+		// NOTE If j === n and i is odd then j === floor(i/2) + 1
+		// which leads to all sorts of problems. If i is even, this is
+		// equivalent to the other branch, but we avoid the use of an extra
+		// conditional.
+		// TODO Find a better way to handle this edge case. Maybe upstream?
+		_mul(r, b, bi, bj, a, ai, i_, z, 0, N_); // Z = a1.b0
+	} else {
+		_mul(r, a, ai, i_, b, bi, bj, z, 0, N_); // Z = a1.b0
+	}
 
 	_iadd(r, c, ci, cj - n, z, 0, N_); // C += a1.b0 . r^{n}
 }

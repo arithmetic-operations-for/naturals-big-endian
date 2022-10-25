@@ -207,9 +207,15 @@ test('convert_dc bug 9 8 translate', (t) => {
 	t.is(s9, translate(8, 9, out));
 });
 
-const seed = [1, 0, 0, 0];
-const prng = xoroshiro128plus(seed, {});
-const buffer = new Uint8Array(8192);
-fill(prng, buffer);
-const _b8192 = hex(buffer).toLowerCase().replace(/^0*/, '');
-test(macro_convert, 16, 94_906_266, _b8192);
+for (const seed of [
+	[1, 0, 0, 0],
+	[0, 1, 0, 0],
+	[0, 0, 1, 0],
+	[0, 0, 0, 1],
+]) {
+	const prng = xoroshiro128plus(seed, {});
+	const buffer = new Uint8Array(8192);
+	fill(prng, buffer);
+	const _b8192 = hex(buffer).toLowerCase().replace(/^0*/, '');
+	test(macro_convert, 16, 94_906_266, _b8192);
+}
