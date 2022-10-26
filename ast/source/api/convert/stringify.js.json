@@ -31,7 +31,7 @@
       {
         "type": "ImportDeclaration",
         "start": 0,
-        "end": 35,
+        "end": 58,
         "loc": {
           "start": {
             "line": 1,
@@ -39,104 +39,35 @@
           },
           "end": {
             "line": 1,
-            "column": 35
-          }
-        },
-        "specifiers": [
-          {
-            "type": "ImportDefaultSpecifier",
-            "start": 7,
-            "end": 14,
-            "loc": {
-              "start": {
-                "line": 1,
-                "column": 7
-              },
-              "end": {
-                "line": 1,
-                "column": 14
-              }
-            },
-            "local": {
-              "type": "Identifier",
-              "start": 7,
-              "end": 14,
-              "loc": {
-                "start": {
-                  "line": 1,
-                  "column": 7
-                },
-                "end": {
-                  "line": 1,
-                  "column": 14
-                },
-                "identifierName": "convert"
-              },
-              "name": "convert"
-            }
-          }
-        ],
-        "source": {
-          "type": "StringLiteral",
-          "start": 20,
-          "end": 34,
-          "loc": {
-            "start": {
-              "line": 1,
-              "column": 20
-            },
-            "end": {
-              "line": 1,
-              "column": 34
-            }
-          },
-          "extra": {
-            "rawValue": "./convert.js",
-            "raw": "'./convert.js'"
-          },
-          "value": "./convert.js"
-        }
-      },
-      {
-        "type": "ImportDeclaration",
-        "start": 36,
-        "end": 94,
-        "loc": {
-          "start": {
-            "line": 2,
-            "column": 0
-          },
-          "end": {
-            "line": 2,
             "column": 58
           }
         },
         "specifiers": [
           {
             "type": "ImportDefaultSpecifier",
-            "start": 43,
-            "end": 53,
+            "start": 7,
+            "end": 17,
             "loc": {
               "start": {
-                "line": 2,
+                "line": 1,
                 "column": 7
               },
               "end": {
-                "line": 2,
+                "line": 1,
                 "column": 17
               }
             },
             "local": {
               "type": "Identifier",
-              "start": 43,
-              "end": 53,
+              "start": 7,
+              "end": 17,
               "loc": {
                 "start": {
-                  "line": 2,
+                  "line": 1,
                   "column": 7
                 },
                 "end": {
-                  "line": 2,
+                  "line": 1,
                   "column": 17
                 },
                 "identifierName": "_to_string"
@@ -147,15 +78,15 @@
         ],
         "source": {
           "type": "StringLiteral",
-          "start": 59,
-          "end": 93,
+          "start": 23,
+          "end": 57,
           "loc": {
             "start": {
-              "line": 2,
+              "line": 1,
               "column": 23
             },
             "end": {
-              "line": 2,
+              "line": 1,
               "column": 57
             }
           },
@@ -164,6 +95,75 @@
             "raw": "'../../core/convert/_to_string.js'"
           },
           "value": "../../core/convert/_to_string.js"
+        }
+      },
+      {
+        "type": "ImportDeclaration",
+        "start": 59,
+        "end": 94,
+        "loc": {
+          "start": {
+            "line": 2,
+            "column": 0
+          },
+          "end": {
+            "line": 2,
+            "column": 35
+          }
+        },
+        "specifiers": [
+          {
+            "type": "ImportDefaultSpecifier",
+            "start": 66,
+            "end": 73,
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 7
+              },
+              "end": {
+                "line": 2,
+                "column": 14
+              }
+            },
+            "local": {
+              "type": "Identifier",
+              "start": 66,
+              "end": 73,
+              "loc": {
+                "start": {
+                  "line": 2,
+                  "column": 7
+                },
+                "end": {
+                  "line": 2,
+                  "column": 14
+                },
+                "identifierName": "convert"
+              },
+              "name": "convert"
+            }
+          }
+        ],
+        "source": {
+          "type": "StringLiteral",
+          "start": 79,
+          "end": 93,
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 20
+            },
+            "end": {
+              "line": 2,
+              "column": 34
+            }
+          },
+          "extra": {
+            "rawValue": "./convert.js",
+            "raw": "'./convert.js'"
+          },
+          "value": "./convert.js"
         },
         "trailingComments": [
           {
@@ -812,9 +812,9 @@
         "postfix": false,
         "binop": null
       },
-      "value": "convert",
+      "value": "_to_string",
       "start": 7,
-      "end": 14,
+      "end": 17,
       "loc": {
         "start": {
           "line": 1,
@@ -822,7 +822,7 @@
         },
         "end": {
           "line": 1,
-          "column": 14
+          "column": 17
         }
       }
     },
@@ -839,16 +839,16 @@
         "binop": null
       },
       "value": "from",
-      "start": 15,
-      "end": 19,
+      "start": 18,
+      "end": 22,
       "loc": {
         "start": {
           "line": 1,
-          "column": 15
+          "column": 18
         },
         "end": {
           "line": 1,
-          "column": 19
+          "column": 22
         }
       }
     },
@@ -865,17 +865,17 @@
         "binop": null,
         "updateContext": null
       },
-      "value": "./convert.js",
-      "start": 20,
-      "end": 34,
+      "value": "../../core/convert/_to_string.js",
+      "start": 23,
+      "end": 57,
       "loc": {
         "start": {
           "line": 1,
-          "column": 20
+          "column": 23
         },
         "end": {
           "line": 1,
-          "column": 34
+          "column": 57
         }
       }
     },
@@ -892,16 +892,16 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 34,
-      "end": 35,
+      "start": 57,
+      "end": 58,
       "loc": {
         "start": {
           "line": 1,
-          "column": 34
+          "column": 57
         },
         "end": {
           "line": 1,
-          "column": 35
+          "column": 58
         }
       }
     },
@@ -920,8 +920,8 @@
         "updateContext": null
       },
       "value": "import",
-      "start": 36,
-      "end": 42,
+      "start": 59,
+      "end": 65,
       "loc": {
         "start": {
           "line": 2,
@@ -945,9 +945,9 @@
         "postfix": false,
         "binop": null
       },
-      "value": "_to_string",
-      "start": 43,
-      "end": 53,
+      "value": "convert",
+      "start": 66,
+      "end": 73,
       "loc": {
         "start": {
           "line": 2,
@@ -955,7 +955,7 @@
         },
         "end": {
           "line": 2,
-          "column": 17
+          "column": 14
         }
       }
     },
@@ -972,16 +972,16 @@
         "binop": null
       },
       "value": "from",
-      "start": 54,
-      "end": 58,
+      "start": 74,
+      "end": 78,
       "loc": {
         "start": {
           "line": 2,
-          "column": 18
+          "column": 15
         },
         "end": {
           "line": 2,
-          "column": 22
+          "column": 19
         }
       }
     },
@@ -998,17 +998,17 @@
         "binop": null,
         "updateContext": null
       },
-      "value": "../../core/convert/_to_string.js",
-      "start": 59,
+      "value": "./convert.js",
+      "start": 79,
       "end": 93,
       "loc": {
         "start": {
           "line": 2,
-          "column": 23
+          "column": 20
         },
         "end": {
           "line": 2,
-          "column": 57
+          "column": 34
         }
       }
     },
@@ -1030,11 +1030,11 @@
       "loc": {
         "start": {
           "line": 2,
-          "column": 57
+          "column": 34
         },
         "end": {
           "line": 2,
-          "column": 58
+          "column": 35
         }
       }
     },

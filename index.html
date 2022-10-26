@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl">
-  <title data-ice="title">Home | @aureooms/js-integer-big-endian</title>
+  <title data-ice="title">Home | @arithmetic-operations-for/naturals-big-endian</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
   <script src="script/manual.js"></script>
-<link rel="stylesheet" href="./inject/css/0-style.css"><script src="./inject/script/0-header.js"></script><meta name="description" content="Arbitrary precision arithmetic for integers in big endian order for JavaScript"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@aureooms/js-integer-big-endian"><meta property="twitter:description" content="Arbitrary precision arithmetic for integers in big endian order for JavaScript"></head>
+<link rel="stylesheet" href="./inject/css/0-style.css"><script src="./inject/script/0-header.js"></script><meta name="description" content="Arbitrary precision arithmetic for integers in big endian order for JavaScript"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@arithmetic-operations-for/naturals-big-endian"><meta property="twitter:description" content="Arbitrary precision arithmetic for integers in big endian order for JavaScript"></head>
 <body class="layout-container" data-ice="rootContainer">
 
 <header>
@@ -24,7 +24,7 @@
   </span>
     <ul class="search-result"></ul>
   </div>
-<a style="position:relative; top:3px;" href="https://github.com/aureooms/js-integer-big-endian"><img width="20px" src="./image/github.png"></a></header>
+<a style="position:relative; top:3px;" href="https://github.com/arithmetic-operations-for/naturals-big-endian"><img width="20px" src="./image/github.png"></a></header>
 
 <nav class="navigation" data-ice="nav"><div>
   <ul>
@@ -75,8 +75,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_extended_euclidean_algorithm">_extended_euclidean_algorithm</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_extended_euclidean_algorithm_allocate">_extended_euclidean_algorithm_allocate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_extended_euclidean_algorithm_loop">_extended_euclidean_algorithm_loop</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core-arithmetic-mul">core/arithmetic/mul</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_imul_limb">_imul_limb</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_karatsuba">_karatsuba</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core-arithmetic-mul">core/arithmetic/mul</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_karatsuba">_karatsuba</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_karatsuba_right_op_is_small">_karatsuba_right_op_is_small</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_mul">_mul</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_mul_limb">_mul_limb</a></span></span></li>
@@ -123,27 +122,27 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="-elephant---a-href--https---aureooms-github-io-js-integer-big-endian---aureooms-js-integer-big-endian--a-">:elephant: <a href="https://aureooms.github.io/js-integer-big-endian">@aureooms/js-integer-big-endian</a></h1><p><img src="https://upload.wikimedia.org/wikipedia/commons/5/54/Big-Endian.svg" width="864"></p>
+<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="-elephant---a-href--https---arithmetic-operations-for-github-io-naturals-big-endian---arithmetic-operations-for-naturals-big-endian--a-">:elephant: <a href="https://arithmetic-operations-for.github.io/naturals-big-endian">@arithmetic-operations-for/naturals-big-endian</a></h1><p><img src="https://upload.wikimedia.org/wikipedia/commons/5/54/Big-Endian.svg" width="864"></p>
 <p>Arbitrary precision arithmetic for integers in big endian order.
-See <a href="https://aureooms.github.io/js-integer-big-endian">docs</a>.
-Twin project of <a href="https://github.com/aureooms/js-integer-little-endian">@aureooms/js-integer-little-endian</a>.</p>
-<pre><code class="lang-js"><code class="source-code prettyprint">integer.parse( 16 , 100 , &apos;ff&apos; ) ; // [ 2 , 55 ]
-integer.stringify( 100 , 16 , [ 2 , 55 ] ) ; // &apos;ff&apos;
-integer.translate( 10 , 16 , &apos;255&apos; ) ; // &apos;ff&apos;</code>
+See <a href="https://arithmetic-operations-for.github.io/naturals-big-endian">docs</a>.
+Twin project of <a href="https://github.com/arithmetic-operations-for/naturals-big-endian">@arithmetic-operations-for/naturals-little-endian</a>.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">import {parse, stringify, translate} from &apos;@arithmetic-operations-for/naturals-big-endian&apos;;
+parse(16, 100, &apos;ff&apos;); // [ 2 , 55 ]
+stringify(100, 16, [2, 55]); // &apos;ff&apos;
+translate(10, 16, &apos;255&apos;); // &apos;ff&apos;</code>
 </code></pre>
-<p><a href="https://raw.githubusercontent.com/aureooms/js-integer-big-endian/main/LICENSE"><img src="https://img.shields.io/github/license/aureooms/js-integer-big-endian.svg" alt="License"></a>
-<a href="https://www.npmjs.org/package/@aureooms/js-integer-big-endian"><img src="https://img.shields.io/npm/v/@aureooms/js-integer-big-endian.svg" alt="Version"></a>
-<a href="https://github.com/aureooms/js-integer-big-endian/actions/workflows/ci:test.yml?query=branch:main"><img src="https://img.shields.io/github/workflow/status/aureooms/js-integer-big-endian/ci:test?event=push&amp;label=tests" alt="Tests"></a>
-<a href="https://david-dm.org/aureooms/js-integer-big-endian"><img src="https://img.shields.io/david/aureooms/js-integer-big-endian.svg" alt="Dependencies"></a>
-<a href="https://david-dm.org/aureooms/js-integer-big-endian?type=dev"><img src="https://img.shields.io/david/dev/aureooms/js-integer-big-endian.svg" alt="Dev dependencies"></a>
-<a href="https://github.com/aureooms/js-integer-big-endian/issues"><img src="https://img.shields.io/github/issues/aureooms/js-integer-big-endian.svg" alt="GitHub issues"></a>
-<a href="https://www.npmjs.org/package/@aureooms/js-integer-big-endian"><img src="https://img.shields.io/npm/dm/@aureooms/js-integer-big-endian.svg" alt="Downloads"></a></p>
-<p><a href="https://codeclimate.com/github/aureooms/js-integer-big-endian/issues"><img src="https://img.shields.io/codeclimate/issues/aureooms/js-integer-big-endian.svg" alt="Code issues"></a>
-<a href="https://codeclimate.com/github/aureooms/js-integer-big-endian/trends/churn"><img src="https://img.shields.io/codeclimate/maintainability/aureooms/js-integer-big-endian.svg" alt="Code maintainability"></a>
-<a href="https://coveralls.io/github/aureooms/js-integer-big-endian"><img src="https://img.shields.io/coveralls/github/aureooms/js-integer-big-endian/main.svg" alt="Code coverage (alls)"></a>
-<a href="https://codeclimate.com/github/aureooms/js-integer-big-endian/trends/technical_debt"><img src="https://img.shields.io/codeclimate/tech-debt/aureooms/js-integer-big-endian.svg" alt="Code technical debt"></a>
-<a href="https://aureooms.github.io/js-integer-big-endian/source.html"><img src="https://aureooms.github.io/js-integer-big-endian/badge.svg" alt="Documentation"></a>
-<a href="https://bundlephobia.com/result?p=@aureooms/js-integer-big-endian"><img src="https://img.shields.io/bundlephobia/minzip/@aureooms/js-integer-big-endian" alt="Package size"></a></p>
+<p><a href="https://raw.githubusercontent.com/arithmetic-operations-for/naturals-big-endian/main/LICENSE"><img src="https://img.shields.io/github/license/arithmetic-operations-for/naturals-big-endian.svg" alt="License"></a>
+<a href="https://www.npmjs.org/package/@arithmetic-operations-for/naturals-big-endian"><img src="https://img.shields.io/npm/v/@arithmetic-operations-for/naturals-big-endian.svg" alt="Version"></a>
+<a href="https://github.com/arithmetic-operations-for/naturals-big-endian/actions/workflows/ci.yml?query=branch:main"><img src="https://img.shields.io/github/workflow/status/arithmetic-operations-for/naturals-big-endian/ci?event=push&amp;label=tests" alt="Tests"></a>
+<a href="https://github.com/arithmetic-operations-for/naturals-big-endian/network/dependencies"><img src="https://img.shields.io/librariesio/github/arithmetic-operations-for/naturals-big-endian.svg" alt="Dependencies"></a>
+<a href="https://github.com/arithmetic-operations-for/naturals-big-endian/issues"><img src="https://img.shields.io/github/issues/arithmetic-operations-for/naturals-big-endian.svg" alt="GitHub issues"></a>
+<a href="https://www.npmjs.org/package/@arithmetic-operations-for/naturals-big-endian"><img src="https://img.shields.io/npm/dm/@arithmetic-operations-for/naturals-big-endian.svg" alt="Downloads"></a></p>
+<p><a href="https://codeclimate.com/github/arithmetic-operations-for/naturals-big-endian/issues"><img src="https://img.shields.io/codeclimate/issues/arithmetic-operations-for/naturals-big-endian.svg" alt="Code issues"></a>
+<a href="https://codeclimate.com/github/arithmetic-operations-for/naturals-big-endian/trends/churn"><img src="https://img.shields.io/codeclimate/maintainability/arithmetic-operations-for/naturals-big-endian.svg" alt="Code maintainability"></a>
+<a href="https://codecov.io/gh/arithmetic-operations-for/naturals-big-endian"><img src="https://img.shields.io/codecov/c/gh/arithmetic-operations-for/naturals-big-endian/main.svg" alt="Code coverage (cov)"></a>
+<a href="https://codeclimate.com/github/arithmetic-operations-for/naturals-big-endian/trends/technical_debt"><img src="https://img.shields.io/codeclimate/tech-debt/arithmetic-operations-for/naturals-big-endian.svg" alt="Code technical debt"></a>
+<a href="https://arithmetic-operations-for.github.io/naturals-big-endian/source.html"><img src="https://arithmetic-operations-for.github.io/naturals-big-endian/badge.svg" alt="Documentation"></a>
+<a href="https://bundlephobia.com/result?p=@arithmetic-operations-for/naturals-big-endian"><img src="https://img.shields.io/bundlephobia/minzip/@arithmetic-operations-for/naturals-big-endian" alt="Package size"></a></p>
 <h2 id="-scroll--reference">:scroll: Reference</h2><ul>
 <li><a href="https://gmplib.org/">The GNU Multiple Precision Arithmetic Library</a></li>
 <li><a href="https://gmplib.org/gmp-man-6.0.0a.pdf">https://gmplib.org/gmp-man-6.0.0a.pdf</a></li>

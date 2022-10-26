@@ -1,542 +1,536 @@
 window.esdocSearchIndex = [
   [
-    "@aureooms/js-integer-big-endian/src/core/thresholds/threshold_convert_dc.js~threshold_convert_dc",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/thresholds/threshold_convert_dc.js~threshold_convert_dc",
     "variable/index.html#static-variable-THRESHOLD_CONVERT_DC",
-    "<span>THRESHOLD_CONVERT_DC</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/thresholds/THRESHOLD_CONVERT_DC.js</span>",
+    "<span>THRESHOLD_CONVERT_DC</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/thresholds/THRESHOLD_CONVERT_DC.js</span>",
     "variable"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/thresholds/threshold_div_dc.js~threshold_div_dc",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/thresholds/threshold_div_dc.js~threshold_div_dc",
     "variable/index.html#static-variable-THRESHOLD_DIV_DC",
-    "<span>THRESHOLD_DIV_DC</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/thresholds/THRESHOLD_DIV_DC.js</span>",
+    "<span>THRESHOLD_DIV_DC</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/thresholds/THRESHOLD_DIV_DC.js</span>",
     "variable"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/thresholds/threshold_mul_toom22.js~threshold_mul_toom22",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/thresholds/threshold_mul_toom22.js~threshold_mul_toom22",
     "variable/index.html#static-variable-THRESHOLD_MUL_TOOM22",
-    "<span>THRESHOLD_MUL_TOOM22</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/thresholds/THRESHOLD_MUL_TOOM22.js</span>",
+    "<span>THRESHOLD_MUL_TOOM22</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/thresholds/THRESHOLD_MUL_TOOM22.js</span>",
     "variable"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/add/_add.js~_add",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/add/_add.js~_add",
     "function/index.html#static-function-_add",
-    "<span>_add</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/add/_add.js</span>",
+    "<span>_add</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/add/_add.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/array/_alloc.js~_alloc",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/array/_alloc.js~_alloc",
     "function/index.html#static-function-_alloc",
-    "<span>_alloc</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/array/_alloc.js</span>",
+    "<span>_alloc</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/array/_alloc.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/array/_build.js~_build",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/array/_build.js~_build",
     "function/index.html#static-function-_build",
-    "<span>_build</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/array/_build.js</span>",
+    "<span>_build</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/array/_build.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/convert/_chr.js~_chr",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/convert/_chr.js~_chr",
     "function/index.html#static-function-_chr",
-    "<span>_chr</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/_chr.js</span>",
+    "<span>_chr</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/convert/_chr.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/compare/_cmp.js~_cmp",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/compare/_cmp.js~_cmp",
     "function/index.html#static-function-_cmp",
-    "<span>_cmp</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/compare/_cmp.js</span>",
+    "<span>_cmp</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/compare/_cmp.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/compare/_cmp_half.js~_cmp_half",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/compare/_cmp_half.js~_cmp_half",
     "function/index.html#static-function-_cmp_half",
-    "<span>_cmp_half</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/compare/_cmp_half.js</span>",
+    "<span>_cmp_half</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/compare/_cmp_half.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/compare/_cmp_half_even_radix.js~_cmp_half_even_radix",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/compare/_cmp_half_even_radix.js~_cmp_half_even_radix",
     "function/index.html#static-function-_cmp_half_even_radix",
-    "<span>_cmp_half_even_radix</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/compare/_cmp_half_even_radix.js</span>",
+    "<span>_cmp_half_even_radix</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/compare/_cmp_half_even_radix.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/compare/_cmp_half_odd_radix.js~_cmp_half_odd_radix",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/compare/_cmp_half_odd_radix.js~_cmp_half_odd_radix",
     "function/index.html#static-function-_cmp_half_odd_radix",
-    "<span>_cmp_half_odd_radix</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/compare/_cmp_half_odd_radix.js</span>",
+    "<span>_cmp_half_odd_radix</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/compare/_cmp_half_odd_radix.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/compare/_cmp_n.js~_cmp_n",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/compare/_cmp_n.js~_cmp_n",
     "function/index.html#static-function-_cmp_n",
-    "<span>_cmp_n</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/compare/_cmp_n.js</span>",
+    "<span>_cmp_n</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/compare/_cmp_n.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/convert/_convert.js~_convert",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/convert/_convert.js~_convert",
     "function/index.html#static-function-_convert",
-    "<span>_convert</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/_convert.js</span>",
+    "<span>_convert</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/convert/_convert.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/convert/_convert_dc.js~_convert_dc",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/convert/_convert_dc.js~_convert_dc",
     "function/index.html#static-function-_convert_dc",
-    "<span>_convert_dc</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/_convert_dc.js</span>",
+    "<span>_convert_dc</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/convert/_convert_dc.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/convert/_convert_slow.js~_convert_slow",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/convert/_convert_slow.js~_convert_slow",
     "function/index.html#static-function-_convert_slow",
-    "<span>_convert_slow</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/_convert_slow.js</span>",
+    "<span>_convert_slow</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/convert/_convert_slow.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/convert/_convert_to_larger.js~_convert_to_larger",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/convert/_convert_to_larger.js~_convert_to_larger",
     "function/index.html#static-function-_convert_to_larger",
-    "<span>_convert_to_larger</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/_convert_to_larger.js</span>",
+    "<span>_convert_to_larger</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/convert/_convert_to_larger.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/convert/_convert_to_larger_fast.js~_convert_to_larger_fast",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/convert/_convert_to_larger_fast.js~_convert_to_larger_fast",
     "function/index.html#static-function-_convert_to_larger_fast",
-    "<span>_convert_to_larger_fast</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/_convert_to_larger_fast.js</span>",
+    "<span>_convert_to_larger_fast</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/convert/_convert_to_larger_fast.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/convert/_convert_to_larger_slow.js~_convert_to_larger_slow",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/convert/_convert_to_larger_slow.js~_convert_to_larger_slow",
     "function/index.html#static-function-_convert_to_larger_slow",
-    "<span>_convert_to_larger_slow</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/_convert_to_larger_slow.js</span>",
+    "<span>_convert_to_larger_slow</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/convert/_convert_to_larger_slow.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/convert/_convert_to_smaller.js~_convert_to_smaller",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/convert/_convert_to_smaller.js~_convert_to_smaller",
     "function/index.html#static-function-_convert_to_smaller",
-    "<span>_convert_to_smaller</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/_convert_to_smaller.js</span>",
+    "<span>_convert_to_smaller</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/convert/_convert_to_smaller.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/convert/_convert_to_smaller_fast.js~_convert_to_smaller_fast",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/convert/_convert_to_smaller_fast.js~_convert_to_smaller_fast",
     "function/index.html#static-function-_convert_to_smaller_fast",
-    "<span>_convert_to_smaller_fast</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/_convert_to_smaller_fast.js</span>",
+    "<span>_convert_to_smaller_fast</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/convert/_convert_to_smaller_fast.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/convert/_convert_to_smaller_slow.js~_convert_to_smaller_slow",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/convert/_convert_to_smaller_slow.js~_convert_to_smaller_slow",
     "function/index.html#static-function-_convert_to_smaller_slow",
-    "<span>_convert_to_smaller_slow</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/_convert_to_smaller_slow.js</span>",
+    "<span>_convert_to_smaller_slow</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/convert/_convert_to_smaller_slow.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/array/_copy.js~_copy",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/array/_copy.js~_copy",
     "function/index.html#static-function-_copy",
-    "<span>_copy</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/array/_copy.js</span>",
+    "<span>_copy</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/array/_copy.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_div_limb_with_prefix.js~_div_limb_with_prefix",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/div/_div_limb_with_prefix.js~_div_limb_with_prefix",
     "function/index.html#static-function-_div_limb_with_prefix",
-    "<span>_div_limb_with_prefix</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/div/_div_limb_with_prefix.js</span>",
+    "<span>_div_limb_with_prefix</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/div/_div_limb_with_prefix.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/api/arithmetic/div/_divmod.js~_divmod",
+    "@arithmetic-operations-for/naturals-big-endian/src/api/arithmetic/div/_divmod.js~_divmod",
     "function/index.html#static-function-_divmod",
-    "<span>_divmod</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/arithmetic/div/_divmod.js</span>",
+    "<span>_divmod</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/api/arithmetic/div/_divmod.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/gcd/_euclidean_algorithm_loop.js~_euclidean_algorithm_loop",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/gcd/_euclidean_algorithm_loop.js~_euclidean_algorithm_loop",
     "function/index.html#static-function-_euclidean_algorithm_loop",
-    "<span>_euclidean_algorithm_loop</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/gcd/_euclidean_algorithm_loop.js</span>",
+    "<span>_euclidean_algorithm_loop</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/gcd/_euclidean_algorithm_loop.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/gcd/_extended_euclidean_algorithm.js~_extended_euclidean_algorithm",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/gcd/_extended_euclidean_algorithm.js~_extended_euclidean_algorithm",
     "function/index.html#static-function-_extended_euclidean_algorithm",
-    "<span>_extended_euclidean_algorithm</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/gcd/_extended_euclidean_algorithm.js</span>",
+    "<span>_extended_euclidean_algorithm</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/gcd/_extended_euclidean_algorithm.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/gcd/_extended_euclidean_algorithm_allocate.js~_extended_euclidean_algorithm_allocate",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/gcd/_extended_euclidean_algorithm_allocate.js~_extended_euclidean_algorithm_allocate",
     "function/index.html#static-function-_extended_euclidean_algorithm_allocate",
-    "<span>_extended_euclidean_algorithm_allocate</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/gcd/_extended_euclidean_algorithm_allocate.js</span>",
+    "<span>_extended_euclidean_algorithm_allocate</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/gcd/_extended_euclidean_algorithm_allocate.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/gcd/_extended_euclidean_algorithm_loop.js~_extended_euclidean_algorithm_loop",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/gcd/_extended_euclidean_algorithm_loop.js~_extended_euclidean_algorithm_loop",
     "function/index.html#static-function-_extended_euclidean_algorithm_loop",
-    "<span>_extended_euclidean_algorithm_loop</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/gcd/_extended_euclidean_algorithm_loop.js</span>",
+    "<span>_extended_euclidean_algorithm_loop</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/gcd/_extended_euclidean_algorithm_loop.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/array/_fill.js~_fill",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/array/_fill.js~_fill",
     "function/index.html#static-function-_fill",
-    "<span>_fill</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/array/_fill.js</span>",
+    "<span>_fill</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/array/_fill.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/convert/_from_string.js~_from_string",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/convert/_from_string.js~_from_string",
     "function/index.html#static-function-_from_string",
-    "<span>_from_string</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/_from_string.js</span>",
+    "<span>_from_string</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/convert/_from_string.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/add/_iadd.js~_iadd",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/add/_iadd.js~_iadd",
     "function/index.html#static-function-_iadd",
-    "<span>_iadd</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/add/_iadd.js</span>",
+    "<span>_iadd</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/add/_iadd.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/add/_iadd_limb.js~_iadd_limb",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/add/_iadd_limb.js~_iadd_limb",
     "function/index.html#static-function-_iadd_limb",
-    "<span>_iadd_limb</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/add/_iadd_limb.js</span>",
+    "<span>_iadd_limb</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/add/_iadd_limb.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/api/arithmetic/div/_idivmod.js~_idivmod",
+    "@arithmetic-operations-for/naturals-big-endian/src/api/arithmetic/div/_idivmod.js~_idivmod",
     "function/index.html#static-function-_idivmod",
-    "<span>_idivmod</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/arithmetic/div/_idivmod.js</span>",
+    "<span>_idivmod</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/api/arithmetic/div/_idivmod.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_dc.js~_idivmod_dc",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/div/_idivmod_dc.js~_idivmod_dc",
     "function/index.html#static-function-_idivmod_dc",
-    "<span>_idivmod_dc</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_dc.js</span>",
+    "<span>_idivmod_dc</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/div/_idivmod_dc.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_dc_21.js~_idivmod_dc_21",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/div/_idivmod_dc_21.js~_idivmod_dc_21",
     "function/index.html#static-function-_idivmod_dc_21",
-    "<span>_idivmod_dc_21</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_dc_21.js</span>",
+    "<span>_idivmod_dc_21</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/div/_idivmod_dc_21.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_dc_32.js~_idivmod_dc_32",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/div/_idivmod_dc_32.js~_idivmod_dc_32",
     "function/index.html#static-function-_idivmod_dc_32",
-    "<span>_idivmod_dc_32</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_dc_32.js</span>",
+    "<span>_idivmod_dc_32</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/div/_idivmod_dc_32.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_limb.js~_idivmod_limb",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/div/_idivmod_limb.js~_idivmod_limb",
     "function/index.html#static-function-_idivmod_limb",
-    "<span>_idivmod_limb</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_limb.js</span>",
+    "<span>_idivmod_limb</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/div/_idivmod_limb.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_limb_with_prefix.js~_idivmod_limb_with_prefix",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/div/_idivmod_limb_with_prefix.js~_idivmod_limb_with_prefix",
     "function/index.html#static-function-_idivmod_limb_with_prefix",
-    "<span>_idivmod_limb_with_prefix</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_limb_with_prefix.js</span>",
+    "<span>_idivmod_limb_with_prefix</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/div/_idivmod_limb_with_prefix.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_schoolbook.js~_idivmod_schoolbook",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/div/_idivmod_schoolbook.js~_idivmod_schoolbook",
     "function/index.html#static-function-_idivmod_schoolbook",
-    "<span>_idivmod_schoolbook</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_schoolbook.js</span>",
+    "<span>_idivmod_schoolbook</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/div/_idivmod_schoolbook.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_schoolbook_large_divisor.js~_idivmod_schoolbook_large_divisor",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/div/_idivmod_schoolbook_large_divisor.js~_idivmod_schoolbook_large_divisor",
     "function/index.html#static-function-_idivmod_schoolbook_large_divisor",
-    "<span>_idivmod_schoolbook_large_divisor</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_schoolbook_large_divisor.js</span>",
+    "<span>_idivmod_schoolbook_large_divisor</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/div/_idivmod_schoolbook_large_divisor.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_schoolbook_subroutine.js~_idivmod_schoolbook_subroutine",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/div/_idivmod_schoolbook_subroutine.js~_idivmod_schoolbook_subroutine",
     "function/index.html#static-function-_idivmod_schoolbook_subroutine",
-    "<span>_idivmod_schoolbook_subroutine</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_schoolbook_subroutine.js</span>",
+    "<span>_idivmod_schoolbook_subroutine</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/div/_idivmod_schoolbook_subroutine.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_schoolbook_subroutine_do.js~_idivmod_schoolbook_subroutine_do",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/div/_idivmod_schoolbook_subroutine_do.js~_idivmod_schoolbook_subroutine_do",
     "function/index.html#static-function-_idivmod_schoolbook_subroutine_do",
-    "<span>_idivmod_schoolbook_subroutine_do</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_schoolbook_subroutine_do.js</span>",
+    "<span>_idivmod_schoolbook_subroutine_do</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/div/_idivmod_schoolbook_subroutine_do.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_slow.js~_idivmod_slow",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/div/_idivmod_slow.js~_idivmod_slow",
     "function/index.html#static-function-_idivmod_slow",
-    "<span>_idivmod_slow</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/div/_idivmod_slow.js</span>",
+    "<span>_idivmod_slow</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/div/_idivmod_slow.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/api/arithmetic/div/_imod.js~_imod",
+    "@arithmetic-operations-for/naturals-big-endian/src/api/arithmetic/div/_imod.js~_imod",
     "function/index.html#static-function-_imod",
-    "<span>_imod</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/arithmetic/div/_imod.js</span>",
+    "<span>_imod</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/api/arithmetic/div/_imod.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_imod_limb.js~_imod_limb",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/div/_imod_limb.js~_imod_limb",
     "function/index.html#static-function-_imod_limb",
-    "<span>_imod_limb</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/div/_imod_limb.js</span>",
+    "<span>_imod_limb</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/div/_imod_limb.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_imod_schoolbook.js~_imod_schoolbook",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/div/_imod_schoolbook.js~_imod_schoolbook",
     "function/index.html#static-function-_imod_schoolbook",
-    "<span>_imod_schoolbook</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/div/_imod_schoolbook.js</span>",
+    "<span>_imod_schoolbook</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/div/_imod_schoolbook.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_imod_schoolbook_large_divisor.js~_imod_schoolbook_large_divisor",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/div/_imod_schoolbook_large_divisor.js~_imod_schoolbook_large_divisor",
     "function/index.html#static-function-_imod_schoolbook_large_divisor",
-    "<span>_imod_schoolbook_large_divisor</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/div/_imod_schoolbook_large_divisor.js</span>",
+    "<span>_imod_schoolbook_large_divisor</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/div/_imod_schoolbook_large_divisor.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_imod_schoolbook_subroutine.js~_imod_schoolbook_subroutine",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/div/_imod_schoolbook_subroutine.js~_imod_schoolbook_subroutine",
     "function/index.html#static-function-_imod_schoolbook_subroutine",
-    "<span>_imod_schoolbook_subroutine</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/div/_imod_schoolbook_subroutine.js</span>",
+    "<span>_imod_schoolbook_subroutine</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/div/_imod_schoolbook_subroutine.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_imod_schoolbook_subroutine_do.js~_imod_schoolbook_subroutine_do",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/div/_imod_schoolbook_subroutine_do.js~_imod_schoolbook_subroutine_do",
     "function/index.html#static-function-_imod_schoolbook_subroutine_do",
-    "<span>_imod_schoolbook_subroutine_do</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/div/_imod_schoolbook_subroutine_do.js</span>",
+    "<span>_imod_schoolbook_subroutine_do</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/div/_imod_schoolbook_subroutine_do.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_imul_limb.js~_imul_limb",
-    "function/index.html#static-function-_imul_limb",
-    "<span>_imul_limb</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_imul_limb.js</span>",
-    "function"
-  ],
-  [
-    "@aureooms/js-integer-big-endian/src/core/convert/_int.js~_int",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/convert/_int.js~_int",
     "function/index.html#static-function-_int",
-    "<span>_int</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/_int.js</span>",
+    "<span>_int</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/convert/_int.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/sub/_isub.js~_isub",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/sub/_isub.js~_isub",
     "function/index.html#static-function-_isub",
-    "<span>_isub</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/sub/_isub.js</span>",
+    "<span>_isub</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/sub/_isub.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_karatsuba.js~_karatsuba",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/mul/_karatsuba.js~_karatsuba",
     "function/index.html#static-function-_karatsuba",
-    "<span>_karatsuba</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_karatsuba.js</span>",
+    "<span>_karatsuba</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/mul/_karatsuba.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_karatsuba_right_op_is_small.js~_karatsuba_right_op_is_small",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/mul/_karatsuba_right_op_is_small.js~_karatsuba_right_op_is_small",
     "function/index.html#static-function-_karatsuba_right_op_is_small",
-    "<span>_karatsuba_right_op_is_small</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_karatsuba_right_op_is_small.js</span>",
+    "<span>_karatsuba_right_op_is_small</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/mul/_karatsuba_right_op_is_small.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/convert/_log.js~_log",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/convert/_log.js~_log",
     "function/index.html#static-function-_log",
-    "<span>_log</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/_log.js</span>",
+    "<span>_log</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/convert/_log.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/div/_mod_limb.js~_mod_limb",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/div/_mod_limb.js~_mod_limb",
     "function/index.html#static-function-_mod_limb",
-    "<span>_mod_limb</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/div/_mod_limb.js</span>",
+    "<span>_mod_limb</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/div/_mod_limb.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_mul.js~_mul",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/mul/_mul.js~_mul",
     "function/index.html#static-function-_mul",
-    "<span>_mul</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_mul.js</span>",
+    "<span>_mul</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/mul/_mul.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_mul_limb.js~_mul_limb",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/mul/_mul_limb.js~_mul_limb",
     "function/index.html#static-function-_mul_limb",
-    "<span>_mul_limb</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_mul_limb.js</span>",
+    "<span>_mul_limb</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/mul/_mul_limb.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/pow/_pow_double.js~_pow_double",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/pow/_pow_double.js~_pow_double",
     "function/index.html#static-function-_pow_double",
-    "<span>_pow_double</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/pow/_pow_double.js</span>",
+    "<span>_pow_double</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/pow/_pow_double.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/pow/_pow_double_recursive.js~_pow_double_recursive",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/pow/_pow_double_recursive.js~_pow_double_recursive",
     "function/index.html#static-function-_pow_double_recursive",
-    "<span>_pow_double_recursive</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/pow/_pow_double_recursive.js</span>",
+    "<span>_pow_double_recursive</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/pow/_pow_double_recursive.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/array/_reset.js~_reset",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/array/_reset.js~_reset",
     "function/index.html#static-function-_reset",
-    "<span>_reset</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/array/_reset.js</span>",
+    "<span>_reset</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/array/_reset.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_schoolbook_mul.js~_schoolbook_mul",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/mul/_schoolbook_mul.js~_schoolbook_mul",
     "function/index.html#static-function-_schoolbook_mul",
-    "<span>_schoolbook_mul</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_schoolbook_mul.js</span>",
+    "<span>_schoolbook_mul</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/mul/_schoolbook_mul.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/sub/_sub.js~_sub",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/sub/_sub.js~_sub",
     "function/index.html#static-function-_sub",
-    "<span>_sub</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/sub/_sub.js</span>",
+    "<span>_sub</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/sub/_sub.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/convert/_to_string.js~_to_string",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/convert/_to_string.js~_to_string",
     "function/index.html#static-function-_to_string",
-    "<span>_to_string</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/_to_string.js</span>",
+    "<span>_to_string</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/convert/_to_string.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_toom22.js~_toom22",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/mul/_toom22.js~_toom22",
     "variable/index.html#static-variable-_toom22",
-    "<span>_toom22</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/arithmetic/mul/_toom22.js</span>",
+    "<span>_toom22</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/arithmetic/mul/_toom22.js</span>",
     "variable"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/convert/_trim_positive.js~_trim_positive",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/convert/_trim_positive.js~_trim_positive",
     "function/index.html#static-function-_trim_positive",
-    "<span>_trim_positive</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/_trim_positive.js</span>",
+    "<span>_trim_positive</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/convert/_trim_positive.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/array/_validate.js~_validate",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/array/_validate.js~_validate",
     "function/index.html#static-function-_validate",
-    "<span>_validate</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/array/_validate.js</span>",
+    "<span>_validate</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/array/_validate.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/array/_zeros.js~_zeros",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/array/_zeros.js~_zeros",
     "function/index.html#static-function-_zeros",
-    "<span>_zeros</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/array/_zeros.js</span>",
+    "<span>_zeros</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/array/_zeros.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/api/arithmetic/add/add.js~add",
+    "@arithmetic-operations-for/naturals-big-endian/src/api/arithmetic/add/add.js~add",
     "function/index.html#static-function-add",
-    "<span>add</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/arithmetic/add/add.js</span>",
+    "<span>add</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/api/arithmetic/add/add.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/api/compare/cmp.js~cmp",
+    "@arithmetic-operations-for/naturals-big-endian/src/api/compare/cmp.js~cmp",
     "function/index.html#static-function-cmp",
-    "<span>cmp</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/compare/cmp.js</span>",
+    "<span>cmp</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/api/compare/cmp.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/api/convert/convert.js~convert",
+    "@arithmetic-operations-for/naturals-big-endian/src/api/convert/convert.js~convert",
     "function/index.html#static-function-convert",
-    "<span>convert</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/convert/convert.js</span>",
+    "<span>convert</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/api/convert/convert.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/convert/convert_keep_zeros.js~convert_keep_zeros",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/convert/convert_keep_zeros.js~convert_keep_zeros",
     "function/index.html#static-function-convert_keep_zeros",
-    "<span>convert_keep_zeros</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/convert_keep_zeros.js</span>",
+    "<span>convert_keep_zeros</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/convert/convert_keep_zeros.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/api/arithmetic/sub/decrement.js~decrement",
+    "@arithmetic-operations-for/naturals-big-endian/src/api/arithmetic/sub/decrement.js~decrement",
     "function/index.html#static-function-decrement",
-    "<span>decrement</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/arithmetic/sub/decrement.js</span>",
+    "<span>decrement</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/api/arithmetic/sub/decrement.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/api/compare/eq.js~eq",
+    "@arithmetic-operations-for/naturals-big-endian/src/api/compare/eq.js~eq",
     "function/index.html#static-function-eq",
-    "<span>eq</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/compare/eq.js</span>",
+    "<span>eq</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/api/compare/eq.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/api/arithmetic/gcd/euclidean_algorithm.js~euclidean_algorithm",
+    "@arithmetic-operations-for/naturals-big-endian/src/api/arithmetic/gcd/euclidean_algorithm.js~euclidean_algorithm",
     "function/index.html#static-function-euclidean_algorithm",
-    "<span>euclidean_algorithm</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/arithmetic/gcd/euclidean_algorithm.js</span>",
+    "<span>euclidean_algorithm</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/api/arithmetic/gcd/euclidean_algorithm.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/api/arithmetic/gcd/extended_euclidean_algorithm.js~extended_euclidean_algorithm",
+    "@arithmetic-operations-for/naturals-big-endian/src/api/arithmetic/gcd/extended_euclidean_algorithm.js~extended_euclidean_algorithm",
     "function/index.html#static-function-extended_euclidean_algorithm",
-    "<span>extended_euclidean_algorithm</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/arithmetic/gcd/extended_euclidean_algorithm.js</span>",
+    "<span>extended_euclidean_algorithm</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/api/arithmetic/gcd/extended_euclidean_algorithm.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/api/compare/ge.js~ge",
+    "@arithmetic-operations-for/naturals-big-endian/src/api/compare/ge.js~ge",
     "function/index.html#static-function-ge",
-    "<span>ge</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/compare/ge.js</span>",
+    "<span>ge</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/api/compare/ge.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/api/compare/gt.js~gt",
+    "@arithmetic-operations-for/naturals-big-endian/src/api/compare/gt.js~gt",
     "function/index.html#static-function-gt",
-    "<span>gt</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/compare/gt.js</span>",
+    "<span>gt</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/api/compare/gt.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/api/arithmetic/add/iadd.js~iadd",
+    "@arithmetic-operations-for/naturals-big-endian/src/api/arithmetic/add/iadd.js~iadd",
     "function/index.html#static-function-iadd",
-    "<span>iadd</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/arithmetic/add/iadd.js</span>",
+    "<span>iadd</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/api/arithmetic/add/iadd.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/api/arithmetic/add/increment.js~increment",
+    "@arithmetic-operations-for/naturals-big-endian/src/api/arithmetic/add/increment.js~increment",
     "function/index.html#static-function-increment",
-    "<span>increment</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/arithmetic/add/increment.js</span>",
+    "<span>increment</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/api/arithmetic/add/increment.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/api/compare/jz.js~jz",
+    "@arithmetic-operations-for/naturals-big-endian/src/api/compare/jz.js~jz",
     "function/index.html#static-function-jz",
-    "<span>jz</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/compare/jz.js</span>",
+    "<span>jz</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/api/compare/jz.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/api/compare/le.js~le",
+    "@arithmetic-operations-for/naturals-big-endian/src/api/compare/le.js~le",
     "function/index.html#static-function-le",
-    "<span>le</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/compare/le.js</span>",
+    "<span>le</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/api/compare/le.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/api/compare/lt.js~lt",
+    "@arithmetic-operations-for/naturals-big-endian/src/api/compare/lt.js~lt",
     "function/index.html#static-function-lt",
-    "<span>lt</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/compare/lt.js</span>",
+    "<span>lt</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/api/compare/lt.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/api/arithmetic/mul/mul.js~mul",
+    "@arithmetic-operations-for/naturals-big-endian/src/api/arithmetic/mul/mul.js~mul",
     "function/index.html#static-function-mul",
-    "<span>mul</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/arithmetic/mul/mul.js</span>",
+    "<span>mul</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/api/arithmetic/mul/mul.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/api/compare/ne.js~ne",
+    "@arithmetic-operations-for/naturals-big-endian/src/api/compare/ne.js~ne",
     "function/index.html#static-function-ne",
-    "<span>ne</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/compare/ne.js</span>",
+    "<span>ne</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/api/compare/ne.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/api/convert/parse.js~parse",
+    "@arithmetic-operations-for/naturals-big-endian/src/api/convert/parse.js~parse",
     "function/index.html#static-function-parse",
-    "<span>parse</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/convert/parse.js</span>",
+    "<span>parse</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/api/convert/parse.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/convert/parse_keep_zeros.js~parse_keep_zeros",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/convert/parse_keep_zeros.js~parse_keep_zeros",
     "function/index.html#static-function-parse_keep_zeros",
-    "<span>parse_keep_zeros</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/parse_keep_zeros.js</span>",
+    "<span>parse_keep_zeros</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/convert/parse_keep_zeros.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/api/convert/stringify.js~stringify",
+    "@arithmetic-operations-for/naturals-big-endian/src/api/convert/stringify.js~stringify",
     "function/index.html#static-function-stringify",
-    "<span>stringify</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/convert/stringify.js</span>",
+    "<span>stringify</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/api/convert/stringify.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/api/convert/translate.js~translate",
+    "@arithmetic-operations-for/naturals-big-endian/src/api/convert/translate.js~translate",
     "function/index.html#static-function-translate",
-    "<span>translate</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/api/convert/translate.js</span>",
+    "<span>translate</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/api/convert/translate.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-integer-big-endian/src/core/convert/trim_natural.js~trim_natural",
+    "@arithmetic-operations-for/naturals-big-endian/src/core/convert/trim_natural.js~trim_natural",
     "function/index.html#static-function-trim_natural",
-    "<span>trim_natural</span> <span class=\"search-result-import-path\">@aureooms/js-integer-big-endian/src/core/convert/trim_natural.js</span>",
+    "<span>trim_natural</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/naturals-big-endian/src/core/convert/trim_natural.js</span>",
     "function"
   ],
   [
@@ -1095,12 +1089,6 @@ window.esdocSearchIndex = [
     "src/core/arithmetic/gcd/_extended_euclidean_algorithm_loop.js",
     "file/src/core/arithmetic/gcd/_extended_euclidean_algorithm_loop.js.html",
     "src/core/arithmetic/gcd/_extended_euclidean_algorithm_loop.js",
-    "file"
-  ],
-  [
-    "src/core/arithmetic/mul/_imul_limb.js",
-    "file/src/core/arithmetic/mul/_imul_limb.js.html",
-    "src/core/arithmetic/mul/_imul_limb.js",
     "file"
   ],
   [
