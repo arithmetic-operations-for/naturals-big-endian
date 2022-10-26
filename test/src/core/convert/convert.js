@@ -24,7 +24,8 @@ function macro_larger(t, f, _t, a, e) {
 	t.deepEqual(e, b);
 }
 
-macro_larger.title = (providedTitle, f, t, a, e) =>
+macro_larger.title = (title, f, t, a, e) =>
+	title ??
 	`_convert_to_larger_fast(${f}, ${t}, ${JSON.stringify(a)}) <${e.length}>`;
 
 function macro_smaller(t, f, _t, a, e) {
@@ -39,7 +40,8 @@ function macro_smaller(t, f, _t, a, e) {
 	t.deepEqual(e, b);
 }
 
-macro_smaller.title = (providedTitle, f, t, a, e) =>
+macro_smaller.title = (title, f, t, a, e) =>
+	title ??
 	`_convert_to_smaller_fast(${f}, ${t}, ${JSON.stringify(a)}) <${e.length}>`;
 
 test(macro_larger, 16, 256, [], []);

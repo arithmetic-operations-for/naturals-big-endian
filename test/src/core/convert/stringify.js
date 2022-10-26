@@ -8,8 +8,8 @@ function macro(t, from, to, array, i, j, expected) {
 	t.is(expected, second_time);
 }
 
-macro.title = (providedTitle, from, to, array, i, j, expected) =>
-	providedTitle ||
+macro.title = (title, from, to, array, i, j, expected) =>
+	title ??
 	`stringify ${JSON.stringify(
 		array,
 	)}[${i}:${j}]_${from} ->_${to} = ${expected}`;
@@ -19,8 +19,8 @@ function throws(t, from, to, array, i, j, expected) {
 	t.throws(fn, expected);
 }
 
-throws.title = (providedTitle, from, to, array, i, j, _expected) =>
-	providedTitle ||
+throws.title = (title, from, to, array, i, j, _expected) =>
+	title ??
 	`stringify ${JSON.stringify(array)}[${i}:${j}]_${from} -> ${to} throws`;
 
 test(throws, 37, 37, [0], 0, 1, {message: /not implemented/});
