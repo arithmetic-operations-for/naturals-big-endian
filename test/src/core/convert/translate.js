@@ -1,59 +1,78 @@
 import test from 'ava';
-import * as integer from '#module';
+import {translate} from '#module';
 
-test('translate', (t) => {
-	t.throws(integer.translate.bind(null, 16, 16, '!00b0C0def'), {
-		message: /invalid/,
-	});
-	t.throws(integer.translate.bind(null, 37, 36, '!'), {
-		message: /not implemented/,
-	});
-	t.throws(integer.translate.bind(null, 36, 37, 'z'), {
-		message: /not implemented/,
-	});
-
-	t.is(integer.translate(2, 2, '0'), '0');
-	t.is(integer.translate(2, 2, '1'), '1');
-	t.is(integer.translate(2, 2, '10'), '10');
-	t.is(integer.translate(2, 2, '11'), '11');
-
-	t.is(integer.translate(2, 2, '1001010111'), '1001010111');
-
-	t.is(integer.translate(16, 16, '0'), '0');
-	t.is(integer.translate(16, 16, 'a'), 'a');
-	t.is(integer.translate(16, 16, 'A0'), 'a0');
-	t.is(integer.translate(16, 16, 'a1'), 'a1');
-
-	t.is(integer.translate(16, 16, 'a00b0C0def'), 'a00b0c0def');
-
-	t.is(integer.translate(2, 16, '11'), '3');
-	t.is(integer.translate(16, 2, '3'), '11');
-
-	t.is(integer.translate(2, 16, '10001'), '11');
-	t.is(integer.translate(16, 2, '11'), '10001');
-
-	t.is(integer.translate(2, 10, '11'), '3');
-	t.is(integer.translate(10, 2, '3'), '11');
-
-	t.is(integer.translate(10, 16, '256'), '100');
-	t.is(integer.translate(16, 10, '100'), '256');
-
-	t.is(integer.translate(10, 16, '255'), 'ff');
-	t.is(integer.translate(16, 10, 'ff'), '255');
-
-	t.is(integer.translate(16, 10, 'fedcba9876543210'), '18364758544493064720');
-
-	t.is(
-		integer.translate(36, 10, '1234567890azertyuiopqsdfghjklmwxcvbn'),
-		'3126485650002806599616785647451052281250564436264094355',
-	);
+const throws = test.macro({
+	exec(t, from, to, string, expected) {
+		t.throws(() => translate(from, to, string), expected);
+	},
+	title(title, from, to, string, expected) {
+		return (
+			title ??
+			`translate(${from}, ${to}, ${JSON.stringify(
+				string,
+			)}) throws ${JSON.stringify(expected)}`
+		);
+	},
 });
 
-test('convert bug', (t) => {
-	const src =
-		'2a9a63896d946d67f7a9d370d6c60d971a0659e5d96548e799e92b79f784e24f';
-
-	const parsed = integer.parse(16, 10_000_000, src);
-
-	t.deepEqual(src, integer.stringify(10_000_000, 16, parsed, 0, parsed.length));
+test(throws, 16, 16, '!00b0C0def', {message: /invalid/});
+test(throws, 37, 36, '!', {
+	message: /not implemented/,
 });
+test(throws, 36, 37, 'z', {
+	message: /not implemented/,
+});
+
+const macro = test.macro({
+	exec(t, from, to, string, expected) {
+		const translated = translate(from, to, string);
+		t.deepEqual(translated, expected);
+	},
+	title(title, from, to, string, expected) {
+		return (
+			title ??
+			`translate(${from}, ${to}, ${JSON.stringify(
+				string,
+			)}) === ${JSON.stringify(expected)}`
+		);
+	},
+});
+
+test(macro, 2, 2, '0', '0');
+test(macro, 2, 2, '1', '1');
+test(macro, 2, 2, '10', '10');
+test(macro, 2, 2, '11', '11');
+
+test(macro, 2, 2, '1001010111', '1001010111');
+
+test(macro, 16, 16, '0', '0');
+test(macro, 16, 16, 'a', 'a');
+test(macro, 16, 16, 'A0', 'a0');
+test(macro, 16, 16, 'a1', 'a1');
+
+test(macro, 16, 16, 'a00b0C0def', 'a00b0c0def');
+
+test(macro, 2, 16, '11', '3');
+test(macro, 16, 2, '3', '11');
+
+test(macro, 2, 16, '10001', '11');
+test(macro, 16, 2, '11', '10001');
+
+test(macro, 2, 10, '11', '3');
+test(macro, 10, 2, '3', '11');
+
+test(macro, 10, 16, '256', '100');
+test(macro, 16, 10, '100', '256');
+
+test(macro, 10, 16, '255', 'ff');
+test(macro, 16, 10, 'ff', '255');
+
+test(macro, 16, 10, 'fedcba9876543210', '18364758544493064720');
+
+test(
+	macro,
+	36,
+	10,
+	'1234567890azertyuiopqsdfghjklmwxcvbn',
+	'3126485650002806599616785647451052281250564436264094355',
+);
