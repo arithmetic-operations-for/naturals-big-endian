@@ -16,7 +16,7 @@ translate(10, 16, '255'); // 'ff'
 
 [![License](https://img.shields.io/github/license/arithmetic-operations-for/naturals-big-endian.svg)](https://raw.githubusercontent.com/arithmetic-operations-for/naturals-big-endian/main/LICENSE)
 [![Version](https://img.shields.io/npm/v/@arithmetic-operations-for/naturals-big-endian.svg)](https://www.npmjs.org/package/@arithmetic-operations-for/naturals-big-endian)
-[![Tests](https://img.shields.io/github/workflow/status/arithmetic-operations-for/naturals-big-endian/ci?event=push&label=tests)](https://github.com/arithmetic-operations-for/naturals-big-endian/actions/workflows/ci.yml?query=branch:main)
+[![Tests](https://img.shields.io/github/actions/workflow/status/arithmetic-operations-for/naturals-big-endian/ci.yml?branch=main&event=push&label=tests)](https://github.com/arithmetic-operations-for/naturals-big-endian/actions/workflows/ci.yml?query=branch:main)
 [![Dependencies](https://img.shields.io/librariesio/github/arithmetic-operations-for/naturals-big-endian.svg)](https://github.com/arithmetic-operations-for/naturals-big-endian/network/dependencies)
 [![GitHub issues](https://img.shields.io/github/issues/arithmetic-operations-for/naturals-big-endian.svg)](https://github.com/arithmetic-operations-for/naturals-big-endian/issues)
 [![Downloads](https://img.shields.io/npm/dm/@arithmetic-operations-for/naturals-big-endian.svg)](https://www.npmjs.org/package/@arithmetic-operations-for/naturals-big-endian)
