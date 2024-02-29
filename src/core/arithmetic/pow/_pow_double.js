@@ -1,9 +1,9 @@
 import assert from 'assert';
 
 import jz from '../../../api/compare/jz.js';
-import _reset from '../../array/_reset.js';
 import _alloc from '../../array/_alloc.js';
 import _copy from '../../array/_copy.js';
+import _reset from '../../array/_reset.js';
 import _mul from '../mul/_mul.js';
 
 /**

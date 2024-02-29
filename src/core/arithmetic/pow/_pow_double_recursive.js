@@ -1,8 +1,8 @@
 import assert from 'assert';
 
 import jz from '../../../api/compare/jz.js';
-import _zeros from '../../array/_zeros.js';
 import _copy from '../../array/_copy.js';
+import _zeros from '../../array/_zeros.js';
 import _mul from '../mul/_mul.js';
 
 /**

@@ -1,4 +1,5 @@
 import assert from 'assert';
+
 import _fill from './_fill.js';
 
 /**

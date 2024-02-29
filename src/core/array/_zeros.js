@@ -1,4 +1,5 @@
 import assert from 'assert';
+
 import _alloc from './_alloc.js';
 import _reset from './_reset.js';
 

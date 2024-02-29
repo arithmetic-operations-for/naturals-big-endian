@@ -1,4 +1,5 @@
 import test from 'ava';
+
 import {_cmp_n} from '#module';
 
 test('_cmp_n', (t) => {

@@ -1,4 +1,5 @@
 import test from 'ava';
+
 import {decrement} from '#module';
 
 function macro(t, r, x, e) {

@@ -1,13 +1,15 @@
 import assert from 'assert';
-import _build from '../array/_build.js';
-import _alloc from '../array/_alloc.js';
-import _zeros from '../array/_zeros.js';
-import _reset from '../array/_reset.js';
-import _copy from '../array/_copy.js';
+
+import mul from '../../api/arithmetic/mul/mul.js';
 import _iadd from '../arithmetic/add/_iadd.js';
 import _mul from '../arithmetic/mul/_mul.js';
 import _pow_double from '../arithmetic/pow/_pow_double.js';
-import mul from '../../api/arithmetic/mul/mul.js';
+import _alloc from '../array/_alloc.js';
+import _build from '../array/_build.js';
+import _copy from '../array/_copy.js';
+import _reset from '../array/_reset.js';
+import _zeros from '../array/_zeros.js';
+
 import _convert_slow from './_convert_slow.js';
 import _trim_positive from './_trim_positive.js';
 

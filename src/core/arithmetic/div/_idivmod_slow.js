@@ -1,8 +1,8 @@
 import assert from 'assert';
 
-import _sub from '../sub/_sub.js';
-import lt from '../../../api/compare/lt.js';
 import jz from '../../../api/compare/jz.js';
+import lt from '../../../api/compare/lt.js';
+import _sub from '../sub/_sub.js';
 
 /**
  * Computes quotient and remainder of two big endian arrays.

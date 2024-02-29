@@ -1,4 +1,5 @@
 import test from 'ava';
+
 import {parse, _zeros, _schoolbook_mul, stringify} from '#module';
 
 function macro(t, A, B, C) {

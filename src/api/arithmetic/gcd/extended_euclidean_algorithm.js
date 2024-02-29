@@ -1,6 +1,6 @@
-import _trim_positive from '../../../core/convert/_trim_positive.js';
-import _cmp_n from '../../../core/compare/_cmp_n.js';
 import _extended_euclidean_algorithm from '../../../core/arithmetic/gcd/_extended_euclidean_algorithm.js';
+import _cmp_n from '../../../core/compare/_cmp_n.js';
+import _trim_positive from '../../../core/convert/_trim_positive.js';
 
 /**
  * No constraints on the input.

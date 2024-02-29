@@ -1,4 +1,5 @@
 import assert from 'assert';
+
 import _mul from '../../../core/arithmetic/mul/_mul.js';
 
 /**

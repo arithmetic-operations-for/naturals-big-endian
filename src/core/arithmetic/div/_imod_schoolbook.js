@@ -2,8 +2,9 @@ import assert from 'assert';
 
 import _zeros from '../../array/_zeros.js';
 import _mul_limb from '../mul/_mul_limb.js';
-import _imod_schoolbook_large_divisor from './_imod_schoolbook_large_divisor.js';
+
 import _div_limb_with_prefix from './_div_limb_with_prefix.js';
+import _imod_schoolbook_large_divisor from './_imod_schoolbook_large_divisor.js';
 
 /**
  * Divides a big endian number by another big endian number and writes the

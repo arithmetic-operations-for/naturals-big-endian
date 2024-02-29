@@ -1,6 +1,7 @@
 import _copy from '../array/_copy.js';
-import _convert_to_smaller from './_convert_to_smaller.js';
+
 import _convert_to_larger from './_convert_to_larger.js';
+import _convert_to_smaller from './_convert_to_smaller.js';
 
 /**
  *

@@ -1,4 +1,5 @@
 import assert from 'assert';
+
 import _copy from '../../array/_copy.js';
 
 /**
@@ -36,9 +37,7 @@ export default function _add(r, a, ai, aj, b, bi, bj, c, ci, cj) {
 	if (C !== 0) {
 		while (--aj >= ai && a[aj] === r - 1) c[--cj] = 0;
 		if (--cj >= ci) {
-			if (aj >= ai) {
-				c[cj] = a[aj] + 1;
-			} else c[cj] = 1;
+			c[cj] = aj >= ai ? a[aj] + 1 : 1;
 		}
 	}
 

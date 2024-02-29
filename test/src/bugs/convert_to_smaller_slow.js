@@ -1,4 +1,5 @@
 import test from 'ava';
+
 import * as integer from '#module';
 
 test('_convert_to_smaller_slow out of bound', (t) => {

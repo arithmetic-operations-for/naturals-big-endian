@@ -1,11 +1,13 @@
 import assert from 'assert';
+
 import add from '../../../api/arithmetic/add/add.js';
 import iadd from '../../../api/arithmetic/add/iadd.js';
-import _zeros from '../../array/_zeros.js';
 import _copy from '../../array/_copy.js';
+import _zeros from '../../array/_zeros.js';
 import _isub from '../sub/_isub.js';
-import _mul from './_mul.js';
+
 import _karatsuba_right_op_is_small from './_karatsuba_right_op_is_small.js';
+import _mul from './_mul.js';
 
 /**
  *

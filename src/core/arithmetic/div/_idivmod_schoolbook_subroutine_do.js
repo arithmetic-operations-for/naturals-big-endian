@@ -1,12 +1,11 @@
 import assert from 'assert';
 
-import _zeros from '../../array/_zeros.js';
-import _validate from '../../array/_validate.js';
 import gt from '../../../api/compare/gt.js';
-import _isub from '../sub/_isub.js';
-import _mul_limb from '../mul/_mul_limb.js';
-
+import _validate from '../../array/_validate.js';
+import _zeros from '../../array/_zeros.js';
 import _cmp_half from '../../compare/_cmp_half.js';
+import _mul_limb from '../mul/_mul_limb.js';
+import _isub from '../sub/_isub.js';
 
 /**
  * Input

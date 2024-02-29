@@ -1,4 +1,5 @@
 import test from 'ava';
+
 import {translate} from '#module';
 
 const throws = test.macro({

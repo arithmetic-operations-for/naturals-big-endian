@@ -1,7 +1,8 @@
 import assert from 'assert';
 
-import THRESHOLD_DIV_DC from '../../thresholds/THRESHOLD_DIV_DC.js';
 import _cmp_half from '../../compare/_cmp_half.js';
+import THRESHOLD_DIV_DC from '../../thresholds/THRESHOLD_DIV_DC.js';
+
 import _idivmod_dc_32 from './_idivmod_dc_32.js';
 import _idivmod_schoolbook_large_divisor from './_idivmod_schoolbook_large_divisor.js';
 

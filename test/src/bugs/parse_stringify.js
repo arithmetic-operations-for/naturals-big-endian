@@ -1,4 +1,5 @@
 import test from 'ava';
+
 import {parse, stringify} from '#module';
 
 test('convert bug', (t) => {

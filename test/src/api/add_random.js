@@ -1,4 +1,5 @@
 import test from 'ava';
+
 import {range} from '@iterable-iterator/range';
 import {randint} from '@randomized/random';
 
@@ -28,7 +29,6 @@ const MIN = 0;
 const MAX = 2 ** 53 - 1;
 const DONE = new Set();
 
-// eslint-disable-next-line no-unused-vars
 for (const _ of range(N)) {
 	while (true) {
 		const r = randint(MIN_RADIX, MAX_RADIX + 1);

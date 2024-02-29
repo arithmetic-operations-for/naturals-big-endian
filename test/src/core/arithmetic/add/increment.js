@@ -1,4 +1,5 @@
 import test from 'ava';
+
 import {increment} from '#module';
 
 test('increment', (t) => {

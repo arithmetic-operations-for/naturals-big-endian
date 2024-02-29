@@ -1,9 +1,9 @@
 import assert from 'assert';
 
-import _reset from '../../../core/array/_reset.js';
+import _idivmod_dc from '../../../core/arithmetic/div/_idivmod_dc.js';
 import _imod_limb from '../../../core/arithmetic/div/_imod_limb.js';
 import _imod_schoolbook from '../../../core/arithmetic/div/_imod_schoolbook.js';
-import _idivmod_dc from '../../../core/arithmetic/div/_idivmod_dc.js';
+import _reset from '../../../core/array/_reset.js';
 import THRESHOLD_DIV_DC from '../../../core/thresholds/THRESHOLD_DIV_DC.js';
 
 /**

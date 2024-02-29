@@ -1,8 +1,10 @@
 import assert from 'assert';
+
 import THRESHOLD_MUL_TOOM22 from '../../thresholds/THRESHOLD_MUL_TOOM22.js';
+
+import _karatsuba from './_karatsuba.js';
 import _mul_limb from './_mul_limb.js';
 import _schoolbook_mul from './_schoolbook_mul.js';
-import _karatsuba from './_karatsuba.js';
 
 /**
  * Computes C = A+B.

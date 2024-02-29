@@ -1,4 +1,5 @@
 import test from 'ava';
+
 import * as integer from '#module';
 
 function macro(t, dividend, divisor, quotient, remainder) {

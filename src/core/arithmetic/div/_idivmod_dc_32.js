@@ -1,13 +1,14 @@
 import assert from 'assert';
 
-import _zeros from '../../array/_zeros.js';
-import _fill from '../../array/_fill.js';
-import _isub from '../sub/_isub.js';
-import _mul from '../mul/_mul.js';
-import lt from '../../../api/compare/lt.js';
 import iadd from '../../../api/arithmetic/add/iadd.js';
 import decrement from '../../../api/arithmetic/sub/decrement.js';
+import lt from '../../../api/compare/lt.js';
+import _fill from '../../array/_fill.js';
+import _zeros from '../../array/_zeros.js';
 import _cmp_half from '../../compare/_cmp_half.js';
+import _mul from '../mul/_mul.js';
+import _isub from '../sub/_isub.js';
+
 import _idivmod_dc_21 from './_idivmod_dc_21.js';
 
 /**

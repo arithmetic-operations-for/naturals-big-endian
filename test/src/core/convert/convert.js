@@ -1,7 +1,7 @@
 import test from 'ava';
 
-import {xoroshiro128plus, fill} from '@entropy-source/pseudo-random';
 import {decode as hex} from '@codec-bytes/base16';
+import {xoroshiro128plus, fill} from '@entropy-source/pseudo-random';
 
 import {
 	parse,

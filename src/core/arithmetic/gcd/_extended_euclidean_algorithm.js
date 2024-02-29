@@ -1,7 +1,7 @@
 import assert from 'assert';
 
-import _copy from '../../array/_copy.js';
 import ge from '../../../api/compare/ge.js';
+import _copy from '../../array/_copy.js';
 
 import _extended_euclidean_algorithm_allocate from './_extended_euclidean_algorithm_allocate.js';
 import _extended_euclidean_algorithm_loop from './_extended_euclidean_algorithm_loop.js';

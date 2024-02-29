@@ -1,9 +1,11 @@
 import assert from 'assert';
+
 import THRESHOLD_CONVERT_DC from '../thresholds/THRESHOLD_CONVERT_DC.js';
-import _log from './_log.js';
+
+import _convert_dc from './_convert_dc.js';
 import _convert_to_larger_fast from './_convert_to_larger_fast.js';
 import _convert_to_larger_slow from './_convert_to_larger_slow.js';
-import _convert_dc from './_convert_dc.js';
+import _log from './_log.js';
 
 /**
  *

@@ -1,4 +1,5 @@
 import test from 'ava';
+
 import {parse, _zeros, _idivmod_dc, stringify} from '#module';
 
 function macro(t, dividend, divisor, quotient, remainder) {

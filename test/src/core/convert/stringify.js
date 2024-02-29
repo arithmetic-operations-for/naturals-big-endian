@@ -1,4 +1,5 @@
 import test from 'ava';
+
 import {stringify} from '#module';
 
 function macro(t, from, to, array, i, j, expected) {

@@ -1,9 +1,10 @@
 import assert from 'assert';
 
+import increment from '../../../api/arithmetic/add/increment.js';
 import _cmp_half from '../../compare/_cmp_half.js';
 import _cmp_n from '../../compare/_cmp_n.js';
-import increment from '../../../api/arithmetic/add/increment.js';
 import _isub from '../sub/_isub.js';
+
 import _idivmod_schoolbook_subroutine_do from './_idivmod_schoolbook_subroutine_do.js';
 
 /**

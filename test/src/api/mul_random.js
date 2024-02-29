@@ -1,4 +1,5 @@
 import test from 'ava';
+
 import {range} from '@iterable-iterator/range';
 import {randint} from '@randomized/random';
 
@@ -37,7 +38,6 @@ test(macro, 2, 240_042, 191_854);
 test(macro, 3, 58_072, 38_617);
 test(macro, 3, 51_224, 54_163);
 
-// eslint-disable-next-line no-unused-vars
 for (const _ of range(N)) {
 	while (true) {
 		const r = randint(MIN_RADIX, MAX_RADIX + 1);

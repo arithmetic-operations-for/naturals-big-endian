@@ -1,15 +1,13 @@
 import assert from 'assert';
 
+import increment from '../../../api/arithmetic/add/increment.js';
 import _idivmod from '../../../api/arithmetic/div/_idivmod.js';
 import mul from '../../../api/arithmetic/mul/mul.js';
-import _iadd from '../add/_iadd.js';
-import increment from '../../../api/arithmetic/add/increment.js';
-import _reset from '../../array/_reset.js';
-import _copy from '../../array/_copy.js';
-
-import _trim_positive from '../../convert/_trim_positive.js';
-
 import ge from '../../../api/compare/ge.js';
+import _copy from '../../array/_copy.js';
+import _reset from '../../array/_reset.js';
+import _trim_positive from '../../convert/_trim_positive.js';
+import _iadd from '../add/_iadd.js';
 
 /**
  * Extended Euclidean algorithm.

@@ -1,9 +1,8 @@
-import _trim_positive from '../../../core/convert/_trim_positive.js';
+import _euclidean_algorithm_loop from '../../../core/arithmetic/gcd/_euclidean_algorithm_loop.js';
 import _alloc from '../../../core/array/_alloc.js';
 import _copy from '../../../core/array/_copy.js';
-
 import _cmp_n from '../../../core/compare/_cmp_n.js';
-import _euclidean_algorithm_loop from '../../../core/arithmetic/gcd/_euclidean_algorithm_loop.js';
+import _trim_positive from '../../../core/convert/_trim_positive.js';
 
 /**
  * No constraints on the input.

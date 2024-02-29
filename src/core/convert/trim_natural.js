@@ -1,5 +1,6 @@
 import _alloc from '../array/_alloc.js';
 import _copy from '../array/_copy.js';
+
 import _trim_positive from './_trim_positive.js';
 
 /**

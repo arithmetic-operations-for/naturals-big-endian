@@ -1,4 +1,5 @@
 import test from 'ava';
+
 import {_cmp_half} from '#module';
 
 function macro(t, r, a, ai, aj, expected) {

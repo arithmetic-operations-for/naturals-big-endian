@@ -1,8 +1,8 @@
 import assert from 'assert';
 
+import _idivmod_dc from '../../../core/arithmetic/div/_idivmod_dc.js';
 import _idivmod_limb from '../../../core/arithmetic/div/_idivmod_limb.js';
 import _idivmod_schoolbook from '../../../core/arithmetic/div/_idivmod_schoolbook.js';
-import _idivmod_dc from '../../../core/arithmetic/div/_idivmod_dc.js';
 import THRESHOLD_DIV_DC from '../../../core/thresholds/THRESHOLD_DIV_DC.js';
 import jz from '../../compare/jz.js';
 
